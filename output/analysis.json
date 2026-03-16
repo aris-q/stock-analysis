@@ -1,0 +1,2029 @@
+{
+  "watchlist": [
+    {
+      "ticker": "KGC",
+      "fetchedAt": "2026-03-15 22:10 EDT",
+      "price": 30.57,
+      "volume": 10573436,
+      "marketCap": 36886384640,
+      "sector": "Basic Materials",
+      "industry": "Gold",
+      "calendar": {
+        "earningsDateStart": "2026-05-12",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 0.85752,
+        "earningsEPSLow": 0.65,
+        "earningsEPSAvg": 0.78198,
+        "revenueEstimateHigh": 2628321190,
+        "revenueEstimateLow": 2227000000,
+        "revenueEstimateAvg": 2427660600,
+        "exDividendDate": "2026-03-10",
+        "dividendPayDate": "2026-03-25"
+      },
+      "events": {
+        "dividendRate": 0.14,
+        "dividendYield": 0.44,
+        "trailingAnnualDividendRate": 0.135,
+        "fiveYearAvgDividendYield": 1.84,
+        "lastDividendValue": 0.04,
+        "lastDividendDate": "2026-03-11",
+        "exDividendDate": "2026-03-11",
+        "dividendDate": "2026-03-26",
+        "earningsTimestamp": "2026-02-18",
+        "earningsCallStart": "2026-02-19",
+        "earningsCallEnd": "2026-02-19",
+        "isEarningsDateEstimate": true,
+        "earningsGrowthYoY": 2.379,
+        "earningsQuarterlyGrowth": 2.289,
+        "lastSplitFactor": "1:3",
+        "lastSplitDate": "2003-02-03"
+      },
+      "dividends": [
+        {
+          "date": "2025-05-29 00:00:00-04:00",
+          "amount": 0.03
+        },
+        {
+          "date": "2025-08-21 00:00:00-04:00",
+          "amount": 0.03
+        },
+        {
+          "date": "2026-03-11 00:00:00-04:00",
+          "amount": 0.04
+        }
+      ],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 7051100000,
+          "Gross Profit": 3715800000,
+          "Operating Income": 3228100000,
+          "EBITDA": 4381500000,
+          "Net Income": 2390100000,
+          "Basic EPS": 1,
+          "Interest Expense": 81800000,
+          "Tax Provision": 724700000,
+          "Operating Expense": 487700000,
+          "Research And Development": null
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 5148800000,
+          "Gross Profit": 1878300000,
+          "Operating Income": 1499400000,
+          "EBITDA": 2679400000,
+          "Net Income": 948800000,
+          "Basic EPS": 0,
+          "Interest Expense": 50500000,
+          "Tax Provision": 487400000,
+          "Operating Expense": 378900000,
+          "Research And Development": null
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 4239700000,
+          "Gross Profit": 1159600000,
+          "Operating Income": 764400000,
+          "EBITDA": 1764400000,
+          "Net Income": 416300000,
+          "Basic EPS": 0,
+          "Interest Expense": 69000000,
+          "Tax Provision": 293200000,
+          "Operating Expense": 395200000,
+          "Research And Development": null
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 2023000000,
+          "Gross Profit": 1238100000,
+          "Operating Income": 1110700000,
+          "EBITDA": 1386800000,
+          "Net Income": 906500000,
+          "Basic EPS": null,
+          "Interest Expense": 20900000,
+          "Tax Provision": 184700000,
+          "Operating Expense": 127400000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 1802100000,
+          "Gross Profit": 918100000,
+          "Operating Income": 797500000,
+          "EBITDA": 1144900000,
+          "Net Income": 584900000,
+          "Basic EPS": 0,
+          "Interest Expense": 18100000,
+          "Tax Provision": 232300000,
+          "Operating Expense": 120600000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 1728500000,
+          "Gross Profit": 897200000,
+          "Operating Income": 762100000,
+          "EBITDA": 1012600000,
+          "Net Income": 530700000,
+          "Basic EPS": 0,
+          "Interest Expense": 20200000,
+          "Tax Provision": 170900000,
+          "Operating Expense": 135100000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 1497500000,
+          "Gross Profit": 662400000,
+          "Operating Income": 557800000,
+          "EBITDA": 837200000,
+          "Net Income": 368000000,
+          "Basic EPS": 0,
+          "Interest Expense": 22600000,
+          "Tax Provision": 136800000,
+          "Operating Expense": 104600000,
+          "Research And Development": null
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 1742300000,
+          "Total Debt": 738200000,
+          "Total Assets": 12411100000,
+          "Total Liabilities Net Minority Interest": 3717000000,
+          "Stockholders Equity": 8576000000,
+          "Working Capital": 1888900000,
+          "Current Assets": 3288500000,
+          "Current Liabilities": 1399600000,
+          "Long Term Debt": 738200000,
+          "Retained Earnings": -5943300000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 611500000,
+          "Total Debt": 1435400000,
+          "Total Assets": 10865600000,
+          "Total Liabilities Net Minority Interest": 3865000000,
+          "Stockholders Equity": 6861600000,
+          "Working Capital": 1066600000,
+          "Current Assets": 2126700000,
+          "Current Liabilities": 1060100000,
+          "Long Term Debt": 1235500000,
+          "Retained Earnings": -8181300000
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 352400000,
+          "Total Debt": 2232600000,
+          "Total Assets": 10543300000,
+          "Total Liabilities Net Minority Interest": 4357600000,
+          "Stockholders Equity": 6083700000,
+          "Working Capital": 1116800000,
+          "Current Assets": 1802300000,
+          "Current Liabilities": 685500000,
+          "Long Term Debt": 2232600000,
+          "Retained Earnings": -8982600000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 1742300000,
+          "Total Debt": 738200000,
+          "Total Assets": 12411100000,
+          "Total Liabilities Net Minority Interest": 3717000000,
+          "Stockholders Equity": 8576000000,
+          "Working Capital": 1888900000,
+          "Current Assets": 3288500000,
+          "Current Liabilities": 1399600000,
+          "Long Term Debt": 738200000,
+          "Retained Earnings": -5943300000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 1721700000,
+          "Total Debt": 1236900000,
+          "Total Assets": 12130000000,
+          "Total Liabilities Net Minority Interest": 4047100000,
+          "Stockholders Equity": 7956900000,
+          "Working Capital": 2207500000,
+          "Current Assets": 3413800000,
+          "Current Liabilities": 1206300000,
+          "Long Term Debt": 1236900000,
+          "Retained Earnings": -6807700000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 1136500000,
+          "Total Debt": 1236400000,
+          "Total Assets": 11463400000,
+          "Total Liabilities Net Minority Interest": 3775400000,
+          "Stockholders Equity": 7553700000,
+          "Working Capital": 1781900000,
+          "Current Assets": 2748600000,
+          "Current Liabilities": 966700000,
+          "Long Term Debt": 1236400000,
+          "Retained Earnings": -7356200000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 694600000,
+          "Total Debt": 1235900000,
+          "Total Assets": 10953900000,
+          "Total Liabilities Net Minority Interest": 3615200000,
+          "Stockholders Equity": 7202300000,
+          "Working Capital": 1449700000,
+          "Current Assets": 2243000000,
+          "Current Liabilities": 793300000,
+          "Long Term Debt": 1235900000,
+          "Retained Earnings": -7850200000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 3760500000,
+          "Capital Expenditure": -1194200000,
+          "Free Cash Flow": 2566300000,
+          "Investing Cash Flow": -1003400000,
+          "Financing Cash Flow": -1628000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -600300000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": -707200000,
+          "Depreciation And Amortization": null
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 2446400000,
+          "Capital Expenditure": -1075500000,
+          "Free Cash Flow": 1370900000,
+          "Investing Cash Flow": -1179900000,
+          "Financing Cash Flow": -1005900000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -812100000,
+          "Depreciation And Amortization": null
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 1605300000,
+          "Capital Expenditure": -1098300000,
+          "Free Cash Flow": 507000000,
+          "Investing Cash Flow": -1122200000,
+          "Financing Cash Flow": -549000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 588100000,
+          "Repayment Of Debt": -990200000,
+          "Depreciation And Amortization": null
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 1146900000,
+          "Capital Expenditure": -368200000,
+          "Free Cash Flow": 778700000,
+          "Investing Cash Flow": -291000000,
+          "Financing Cash Flow": -835800000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -265100000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": -502200000,
+          "Depreciation And Amortization": null
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": 1024100000,
+          "Capital Expenditure": -312200000,
+          "Free Cash Flow": 711900000,
+          "Investing Cash Flow": -171900000,
+          "Financing Cash Flow": -267500000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -165100000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": -2000000,
+          "Depreciation And Amortization": null
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 992400000,
+          "Capital Expenditure": -306100000,
+          "Free Cash Flow": 686300000,
+          "Investing Cash Flow": -312700000,
+          "Financing Cash Flow": -238300000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -170100000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": -1500000,
+          "Depreciation And Amortization": null
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 597100000,
+          "Capital Expenditure": -207700000,
+          "Free Cash Flow": 389400000,
+          "Investing Cash Flow": -227800000,
+          "Financing Cash Flow": -286400000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": -201500000,
+          "Depreciation And Amortization": null
+        }
+      ],
+      "aiSummary": {
+        "highlight": "KGC presents a compelling investment opportunity due to its robust operating performance and strong free cash flow generation. However, investors should consider the risks associated with gold price volatility and potential regulatory changes impacting mining operations.",
+        "marketPosition": "KGC is a mid-tier gold producer with a global portfolio of mines and development projects, competing with larger players like Barrick Gold and Newmont.",
+        "majorGrowthProjects": [
+          "Expansion of the Tasiast mine in Mauritania",
+          "Development of the Fosterville project in Australia"
+        ],
+        "shareholderReturns": "KGC maintains a modest dividend payout and occasionally engages in share buybacks to return value to shareholders.",
+        "balanceSheetSummary": "KGC possesses a healthy balance sheet with significant cash reserves and manageable debt levels, indicating financial stability.",
+        "riskFactors": [
+          "Gold price fluctuations can significantly impact profitability",
+          "Regulatory changes and permitting challenges in mining jurisdictions pose operational risks"
+        ],
+        "analystSentiment": "bullish"
+      },
+      "annualProfitMargin": 0.339,
+      "quarterlyProfitMargin": 0.4481,
+      "netCash": 1004100000,
+      "latestFCF": 778700000,
+      "latestCapex": -368200000,
+      "latestOCF": 1146900000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.1226,
+        "revenue_yoy": 0.3509,
+        "netIncome_qoq": 0.5498,
+        "netIncome_yoy": 1.4633,
+        "grossProfit_qoq": 0.3485,
+        "grossProfit_yoy": 0.8691,
+        "operatingIncome_qoq": 0.3927,
+        "operatingIncome_yoy": 0.9912,
+        "fcf_qoq": 0.0938,
+        "fcf_yoy": 0.9997,
+        "ocf_qoq": 0.1199,
+        "ocf_yoy": 0.9208,
+        "totalDebt_qoq": -0.4032,
+        "totalDebt_yoy": -0.4027
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.3695,
+        "revenue_yoy_2": 0.2144,
+        "netIncome_yoy_1": 1.5191,
+        "netIncome_yoy_2": 1.2791,
+        "grossProfit_yoy_1": 0.9783,
+        "grossProfit_yoy_2": 0.6198,
+        "operatingIncome_yoy_1": 1.1529,
+        "operatingIncome_yoy_2": 0.9615,
+        "fcf_yoy_1": 0.872,
+        "fcf_yoy_2": 1.7039,
+        "capex_yoy_1": -0.1104,
+        "capex_yoy_2": 0.0208,
+        "totalDebt_yoy_1": -0.4857,
+        "totalDebt_yoy_2": -0.3571
+      },
+      "marginRank": 2,
+      "netCashRank": 4,
+      "marketCapRank": 4,
+      "fcfRank": 3
+    },
+    {
+      "ticker": "GOLD",
+      "fetchedAt": "2026-03-15 22:13 EDT",
+      "price": 47.47,
+      "volume": 399017,
+      "marketCap": 1335684352,
+      "sector": "Basic Materials",
+      "industry": "Capital Markets",
+      "calendar": {
+        "earningsDateStart": "2026-05-07",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 2.17,
+        "earningsEPSLow": 2.17,
+        "earningsEPSAvg": 2.17,
+        "revenueEstimateHigh": 6509300000,
+        "revenueEstimateLow": 3069308000,
+        "revenueEstimateAvg": 4808477000,
+        "exDividendDate": "2026-02-19",
+        "dividendPayDate": "2026-03-03"
+      },
+      "events": {
+        "dividendRate": 0.8,
+        "dividendYield": 1.69,
+        "trailingAnnualDividendRate": 0.8,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": 0.2,
+        "lastDividendDate": "2026-02-20",
+        "exDividendDate": "2026-02-20",
+        "dividendDate": "2026-03-04",
+        "earningsTimestamp": "2026-02-05",
+        "earningsCallStart": "2026-02-05",
+        "earningsCallEnd": "2026-02-05",
+        "isEarningsDateEstimate": true,
+        "earningsGrowthYoY": 0.704,
+        "earningsQuarterlyGrowth": 0.774,
+        "lastSplitFactor": "2:1",
+        "lastSplitDate": "2022-06-07"
+      },
+      "dividends": [
+        {
+          "date": "2025-07-18 00:00:00-04:00",
+          "amount": 0.2
+        },
+        {
+          "date": "2025-11-19 00:00:00-05:00",
+          "amount": 0.2
+        },
+        {
+          "date": "2026-02-20 00:00:00-05:00",
+          "amount": 0.2
+        }
+      ],
+      "annualIncome": [
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 10978614000,
+          "Gross Profit": 210916000,
+          "Operating Income": 48803000,
+          "EBITDA": 90393000,
+          "Net Income": 17320000,
+          "Basic EPS": 0,
+          "Interest Expense": 46203000,
+          "Tax Provision": 5426000,
+          "Operating Expense": 162113000,
+          "Research And Development": null
+        },
+        {
+          "date": "2024-06-30",
+          "Total Revenue": 9699039000,
+          "Gross Profit": 173255000,
+          "Operating Income": 72058000,
+          "EBITDA": 133706000,
+          "Net Income": 68546000,
+          "Basic EPS": 2,
+          "Interest Expense": 39531000,
+          "Tax Provision": 13745000,
+          "Operating Expense": 101197000,
+          "Research And Development": null
+        },
+        {
+          "date": "2023-06-30",
+          "Total Revenue": 9286561000,
+          "Gross Profit": 294669000,
+          "Operating Income": 196862000,
+          "EBITDA": 247223000,
+          "Net Income": 156360000,
+          "Basic EPS": 6,
+          "Interest Expense": 31528000,
+          "Tax Provision": 46401000,
+          "Operating Expense": 97807000,
+          "Research And Development": null
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 6476900000,
+          "Gross Profit": 93370000,
+          "Operating Income": 25948000,
+          "EBITDA": 39668000,
+          "Net Income": 11636000,
+          "Basic EPS": 0,
+          "Interest Expense": 16253000,
+          "Tax Provision": 2249000,
+          "Operating Expense": 67422000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 3680766000,
+          "Gross Profit": 72897000,
+          "Operating Income": 5492000,
+          "EBITDA": 19872000,
+          "Net Income": -939000,
+          "Basic EPS": 0,
+          "Interest Expense": 12600000,
+          "Tax Provision": 660000,
+          "Operating Expense": 67405000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 2512048000,
+          "Gross Profit": 81689000,
+          "Operating Income": 19695000,
+          "EBITDA": 34498000,
+          "Net Income": 10324000,
+          "Basic EPS": null,
+          "Interest Expense": 12902000,
+          "Tax Provision": 2860000,
+          "Operating Expense": 61994000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 3009125000,
+          "Gross Profit": 41017000,
+          "Operating Income": 2617000,
+          "EBITDA": 8008000,
+          "Net Income": -8546000,
+          "Basic EPS": 0,
+          "Interest Expense": 12951000,
+          "Tax Provision": -1231000,
+          "Operating Expense": 38400000,
+          "Research And Development": null
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 77741000,
+          "Total Debt": 837076000,
+          "Total Assets": 2215431000,
+          "Total Liabilities Net Minority Interest": 1512760000,
+          "Stockholders Equity": 649516000,
+          "Working Capital": 629367000,
+          "Current Assets": 1743495000,
+          "Current Liabilities": 1114128000,
+          "Long Term Debt": 348349000,
+          "Retained Earnings": 464059000
+        },
+        {
+          "date": "2024-06-30",
+          "Cash And Cash Equivalents": 48636000,
+          "Total Debt": 775105000,
+          "Total Assets": 1827820000,
+          "Total Liabilities Net Minority Interest": 1165964000,
+          "Stockholders Equity": 607633000,
+          "Working Capital": 558433000,
+          "Current Assets": 1442203000,
+          "Current Liabilities": 883770000,
+          "Long Term Debt": 248994000,
+          "Retained Earnings": 466838000
+        },
+        {
+          "date": "2023-06-30",
+          "Cash And Cash Equivalents": 39318000,
+          "Total Debt": 666139000,
+          "Total Assets": 1545571000,
+          "Total Liabilities Net Minority Interest": 945178000,
+          "Stockholders Equity": 599123000,
+          "Working Capital": 343130000,
+          "Current Assets": 1267191000,
+          "Current Liabilities": 924061000,
+          "Long Term Debt": null,
+          "Retained Earnings": 440639000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 152050000,
+          "Total Debt": 811921000,
+          "Total Assets": 3811885000,
+          "Total Liabilities Net Minority Interest": 3103060000,
+          "Stockholders Equity": 653810000,
+          "Working Capital": 587426000,
+          "Current Assets": 3341667000,
+          "Current Liabilities": 2754241000,
+          "Long Term Debt": 303328000,
+          "Retained Earnings": 464788000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 89221000,
+          "Total Debt": 674561000,
+          "Total Assets": 2579371000,
+          "Total Liabilities Net Minority Interest": 1882276000,
+          "Stockholders Equity": 643972000,
+          "Working Capital": 568220000,
+          "Current Assets": 2111302000,
+          "Current Liabilities": 1543082000,
+          "Long Term Debt": 293339000,
+          "Retained Earnings": 458137000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 77741000,
+          "Total Debt": 837076000,
+          "Total Assets": 2215431000,
+          "Total Liabilities Net Minority Interest": 1512760000,
+          "Stockholders Equity": 649516000,
+          "Working Capital": 629367000,
+          "Current Assets": 1743495000,
+          "Current Liabilities": 1114128000,
+          "Long Term Debt": 348349000,
+          "Retained Earnings": 464059000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 114345000,
+          "Total Debt": 874179000,
+          "Total Assets": 2183548000,
+          "Total Liabilities Net Minority Interest": 1486677000,
+          "Stockholders Equity": 643552000,
+          "Working Capital": 628834000,
+          "Current Assets": 1757875000,
+          "Current Liabilities": 1129041000,
+          "Long Term Debt": 317351000,
+          "Retained Earnings": 458683000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 152347000,
+          "Capital Expenditure": -10678000,
+          "Free Cash Flow": 141669000,
+          "Investing Cash Flow": -104665000,
+          "Financing Cash Flow": -18577000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -5120000,
+          "Issuance Of Debt": 1960000000,
+          "Repayment Of Debt": -1868564000,
+          "Depreciation And Amortization": 22920000
+        },
+        {
+          "date": "2024-06-30",
+          "Operating Cash Flow": 60934000,
+          "Capital Expenditure": -15771000,
+          "Free Cash Flow": 45163000,
+          "Investing Cash Flow": -63597000,
+          "Financing Cash Flow": 11981000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -22307000,
+          "Issuance Of Debt": 1896448000,
+          "Repayment Of Debt": -1978000000,
+          "Depreciation And Amortization": 11397000
+        },
+        {
+          "date": "2023-06-30",
+          "Operating Cash Flow": -30323000,
+          "Capital Expenditure": -9783000,
+          "Free Cash Flow": -40106000,
+          "Investing Cash Flow": 6839000,
+          "Financing Cash Flow": 25019000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -9762000,
+          "Issuance Of Debt": 2029500000,
+          "Repayment Of Debt": -2008955000,
+          "Depreciation And Amortization": 12525000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": -42622000,
+          "Capital Expenditure": -3998000,
+          "Free Cash Flow": -46620000,
+          "Investing Cash Flow": -28147000,
+          "Financing Cash Flow": 133598000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": 1071800000,
+          "Repayment Of Debt": -1062000000,
+          "Depreciation And Amortization": 7638000
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": 195417000,
+          "Capital Expenditure": -1974000,
+          "Free Cash Flow": 193443000,
+          "Investing Cash Flow": -11409000,
+          "Financing Cash Flow": -172528000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": 371200000,
+          "Repayment Of Debt": -426000000,
+          "Depreciation And Amortization": 7583000
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 66966000,
+          "Capital Expenditure": -3798000,
+          "Free Cash Flow": 63168000,
+          "Investing Cash Flow": -61204000,
+          "Financing Cash Flow": -42366000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 477000000,
+          "Repayment Of Debt": -442197000,
+          "Depreciation And Amortization": 8576000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 102839000,
+          "Capital Expenditure": -2472000,
+          "Free Cash Flow": 100367000,
+          "Investing Cash Flow": -53960000,
+          "Financing Cash Flow": 27698000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 512000000,
+          "Repayment Of Debt": -431020000,
+          "Depreciation And Amortization": 4996000
+        }
+      ],
+      "annualProfitMargin": 0.0016,
+      "quarterlyProfitMargin": 0.0018,
+      "netCash": -759335000,
+      "latestFCF": -46620000,
+      "latestCapex": -3998000,
+      "latestOCF": -42622000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.7597,
+        "revenue_yoy": 1.1524,
+        "netIncome_qoq": 13.3919,
+        "netIncome_yoy": 2.3616,
+        "grossProfit_qoq": 0.2808,
+        "grossProfit_yoy": 1.2764,
+        "operatingIncome_qoq": 3.7247,
+        "operatingIncome_yoy": 8.9152,
+        "fcf_qoq": -1.241,
+        "fcf_yoy": -1.4645,
+        "ocf_qoq": -1.2181,
+        "ocf_yoy": -1.4145,
+        "totalDebt_qoq": 0.2036,
+        "totalDebt_yoy": -0.0712
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.1319,
+        "revenue_yoy_2": 0.0444,
+        "netIncome_yoy_1": -0.7473,
+        "netIncome_yoy_2": -0.5616,
+        "grossProfit_yoy_1": 0.2174,
+        "grossProfit_yoy_2": -0.412,
+        "operatingIncome_yoy_1": -0.3227,
+        "operatingIncome_yoy_2": -0.634,
+        "fcf_yoy_1": 2.1368,
+        "fcf_yoy_2": 2.1261,
+        "capex_yoy_1": 0.3229,
+        "capex_yoy_2": -0.6121,
+        "totalDebt_yoy_1": 0.08,
+        "totalDebt_yoy_2": 0.1636
+      },
+      "marginRank": 5,
+      "netCashRank": 5,
+      "marketCapRank": 5,
+      "fcfRank": 5,
+      "aiSummary": {
+        "highlight": "GOLD presents a mixed investment profile with high revenue growth but concerning profitability trends and a significant debt burden.  The company's focus on expansion projects offers potential upside, but investors should carefully consider the risks associated with its financial position.",
+        "marketPosition": "GOLD holds a competitive position within its peer group, leveraging strong revenue generation but facing challenges in maintaining profitability.",
+        "majorGrowthProjects": [
+          "Expansion into new mining regions",
+          "Development of innovative extraction technologies"
+        ],
+        "shareholderReturns": "GOLD pays a modest dividend with a yield of 1.69%, and has engaged in share repurchases in the past but currently shows no significant buyback activity.",
+        "balanceSheetSummary": "GOLD's balance sheet exhibits high leverage due to substantial debt, potentially posing risks to its financial stability.",
+        "riskFactors": [
+          "High debt levels",
+          "Fluctuating commodity prices"
+        ],
+        "analystSentiment": "neutral"
+      }
+    },
+    {
+      "ticker": "NEM",
+      "fetchedAt": "2026-03-15 21:59 EDT",
+      "price": 109.58,
+      "volume": 9250633,
+      "marketCap": 119580598272,
+      "sector": "Basic Materials",
+      "industry": "Gold",
+      "calendar": {
+        "earningsDateStart": "2026-04-22",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 2.35,
+        "earningsEPSLow": 1.88,
+        "earningsEPSAvg": 2.07333,
+        "revenueEstimateHigh": 7424000000,
+        "revenueEstimateLow": 6075000000,
+        "revenueEstimateAvg": 6800329270,
+        "exDividendDate": "2026-03-02",
+        "dividendPayDate": "2026-03-25"
+      },
+      "events": {
+        "dividendRate": 1.04,
+        "dividendYield": 0.95,
+        "trailingAnnualDividendRate": 1.01,
+        "fiveYearAvgDividendYield": 3.22,
+        "lastDividendValue": 0.26,
+        "lastDividendDate": "2026-03-03",
+        "exDividendDate": "2026-03-03",
+        "dividendDate": "2026-03-26",
+        "earningsTimestamp": "2026-02-19",
+        "earningsCallStart": "2026-02-19",
+        "earningsCallEnd": "2026-02-19",
+        "isEarningsDateEstimate": true,
+        "earningsGrowthYoY": -0.046,
+        "earningsQuarterlyGrowth": -0.073,
+        "lastSplitFactor": "5:4",
+        "lastSplitDate": "1994-04-22"
+      },
+      "dividends": [
+        {
+          "date": "2025-09-04 00:00:00-04:00",
+          "amount": 0.25
+        },
+        {
+          "date": "2025-11-26 00:00:00-05:00",
+          "amount": 0.25
+        },
+        {
+          "date": "2026-03-03 00:00:00-05:00",
+          "amount": 0.26
+        }
+      ],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 22669000000,
+          "Gross Profit": 12063000000,
+          "Operating Income": 11023000000,
+          "EBITDA": 14092000000,
+          "Net Income": 7085000000,
+          "Basic EPS": 6,
+          "Interest Expense": 229000000,
+          "Tax Provision": 4596000000,
+          "Operating Expense": 1040000000,
+          "Research And Development": 166000000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 18682000000,
+          "Gross Profit": 7143000000,
+          "Operating Income": 5910000000,
+          "EBITDA": 7528000000,
+          "Net Income": 3348000000,
+          "Basic EPS": 2,
+          "Interest Expense": 375000000,
+          "Tax Provision": 1397000000,
+          "Operating Expense": 1233000000,
+          "Research And Development": 197000000
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 11812000000,
+          "Gross Profit": 3005000000,
+          "Operating Income": 708000000,
+          "EBITDA": 320000000,
+          "Net Income": -2494000000,
+          "Basic EPS": -2,
+          "Interest Expense": 243000000,
+          "Tax Provision": 526000000,
+          "Operating Expense": 2297000000,
+          "Research And Development": 200000000
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 6818000000,
+          "Gross Profit": 4126000000,
+          "Operating Income": 3974000000,
+          "EBITDA": 3944000000,
+          "Net Income": 1301000000,
+          "Basic EPS": 1,
+          "Interest Expense": 33000000,
+          "Tax Provision": 2070000000,
+          "Operating Expense": 152000000,
+          "Research And Development": 43000000
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 5524000000,
+          "Gross Profit": 2930000000,
+          "Operating Income": 2616000000,
+          "EBITDA": 3202000000,
+          "Net Income": 1832000000,
+          "Basic EPS": 1,
+          "Interest Expense": 52000000,
+          "Tax Provision": 787000000,
+          "Operating Expense": 314000000,
+          "Research And Development": 40000000
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 5317000000,
+          "Gross Profit": 2696000000,
+          "Operating Income": 2417000000,
+          "EBITDA": 3803000000,
+          "Net Income": 2061000000,
+          "Basic EPS": 1,
+          "Interest Expense": 65000000,
+          "Tax Provision": 1092000000,
+          "Operating Expense": 279000000,
+          "Research And Development": 40000000
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 5010000000,
+          "Gross Profit": 2311000000,
+          "Operating Income": 2016000000,
+          "EBITDA": 3143000000,
+          "Net Income": 1891000000,
+          "Basic EPS": 1,
+          "Interest Expense": 79000000,
+          "Tax Provision": 647000000,
+          "Operating Expense": 295000000,
+          "Research And Development": 43000000
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 7647000000,
+          "Total Debt": 5589000000,
+          "Total Assets": 57121000000,
+          "Total Liabilities Net Minority Interest": 23079000000,
+          "Stockholders Equity": 33867000000,
+          "Working Capital": 7354000000,
+          "Current Assets": 13066000000,
+          "Current Liabilities": 5712000000,
+          "Long Term Debt": 5115000000,
+          "Retained Earnings": 3431000000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 3619000000,
+          "Total Debt": 8972000000,
+          "Total Assets": 56349000000,
+          "Total Liabilities Net Minority Interest": 26240000000,
+          "Stockholders Equity": 29928000000,
+          "Working Capital": 4732000000,
+          "Current Assets": 12275000000,
+          "Current Liabilities": 7543000000,
+          "Long Term Debt": 7552000000,
+          "Retained Earnings": -1320000000
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 3002000000,
+          "Total Debt": 9436000000,
+          "Total Assets": 55506000000,
+          "Total Liabilities Net Minority Interest": 26301000000,
+          "Stockholders Equity": 29027000000,
+          "Working Capital": 1514000000,
+          "Current Assets": 7512000000,
+          "Current Liabilities": 5998000000,
+          "Long Term Debt": 6951000000,
+          "Retained Earnings": -2996000000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 7647000000,
+          "Total Debt": 5589000000,
+          "Total Assets": 57121000000,
+          "Total Liabilities Net Minority Interest": 23079000000,
+          "Stockholders Equity": 33867000000,
+          "Working Capital": 7354000000,
+          "Current Assets": 13066000000,
+          "Current Liabilities": 5712000000,
+          "Long Term Debt": 5115000000,
+          "Retained Earnings": 3431000000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 5639000000,
+          "Total Debt": 5651000000,
+          "Total Assets": 54690000000,
+          "Total Liabilities Net Minority Interest": 21279000000,
+          "Stockholders Equity": 33226000000,
+          "Working Capital": 5286000000,
+          "Current Assets": 10372000000,
+          "Current Liabilities": 5086000000,
+          "Long Term Debt": 5180000000,
+          "Retained Earnings": 2699000000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 6185000000,
+          "Total Debt": 7607000000,
+          "Total Assets": 55165000000,
+          "Total Liabilities Net Minority Interest": 22878000000,
+          "Stockholders Equity": 32112000000,
+          "Working Capital": 5729000000,
+          "Current Assets": 10399000000,
+          "Current Liabilities": 4670000000,
+          "Long Term Debt": 7132000000,
+          "Retained Earnings": 1449000000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 4698000000,
+          "Total Debt": 7986000000,
+          "Total Assets": 55519000000,
+          "Total Liabilities Net Minority Interest": 24088000000,
+          "Stockholders Equity": 31248000000,
+          "Working Capital": 5314000000,
+          "Current Assets": 10740000000,
+          "Current Liabilities": 5426000000,
+          "Long Term Debt": 7507000000,
+          "Retained Earnings": 153000000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 10334000000,
+          "Capital Expenditure": -3035000000,
+          "Free Cash Flow": 7299000000,
+          "Investing Cash Flow": 606000000,
+          "Financing Cash Flow": -7040000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -2303000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -3525000000,
+          "Depreciation And Amortization": 2521000000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 6363000000,
+          "Capital Expenditure": -3402000000,
+          "Free Cash Flow": 2961000000,
+          "Investing Cash Flow": -2702000000,
+          "Financing Cash Flow": -2953000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1246000000,
+          "Issuance Of Debt": 3476000000,
+          "Repayment Of Debt": -3947000000,
+          "Depreciation And Amortization": 2576000000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 2763000000,
+          "Capital Expenditure": -2666000000,
+          "Free Cash Flow": 97000000,
+          "Investing Cash Flow": -1002000000,
+          "Financing Cash Flow": -1603000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -67000000,
+          "Depreciation And Amortization": 2108000000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 3621000000,
+          "Capital Expenditure": -808000000,
+          "Free Cash Flow": 2813000000,
+          "Investing Cash Flow": -780000000,
+          "Financing Cash Flow": -833000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -428000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -95000000,
+          "Depreciation And Amortization": 665000000
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": 2298000000,
+          "Capital Expenditure": -727000000,
+          "Free Cash Flow": 1571000000,
+          "Investing Cash Flow": -31000000,
+          "Financing Cash Flow": -2800000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -516000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -2001000000,
+          "Depreciation And Amortization": 643000000
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 2384000000,
+          "Capital Expenditure": -674000000,
+          "Free Cash Flow": 1710000000,
+          "Investing Cash Flow": 679000000,
+          "Financing Cash Flow": -1745000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1011000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -421000000,
+          "Depreciation And Amortization": 620000000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 2031000000,
+          "Capital Expenditure": -826000000,
+          "Free Cash Flow": 1205000000,
+          "Investing Cash Flow": 738000000,
+          "Financing Cash Flow": -1662000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -348000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -1008000000,
+          "Depreciation And Amortization": 593000000
+        }
+      ],
+      "annualProfitMargin": 0.3125,
+      "quarterlyProfitMargin": 0.1908,
+      "netCash": 2058000000,
+      "latestFCF": 2813000000,
+      "latestCapex": -808000000,
+      "latestOCF": 3621000000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.2343,
+        "revenue_yoy": 0.3609,
+        "netIncome_qoq": -0.2898,
+        "netIncome_yoy": -0.312,
+        "grossProfit_qoq": 0.4082,
+        "grossProfit_yoy": 0.7854,
+        "operatingIncome_qoq": 0.5191,
+        "operatingIncome_yoy": 0.9712,
+        "fcf_qoq": 0.7906,
+        "fcf_yoy": 1.3344,
+        "ocf_qoq": 0.5757,
+        "ocf_yoy": 0.7829,
+        "totalDebt_qoq": -0.011,
+        "totalDebt_yoy": -0.3002
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.2134,
+        "revenue_yoy_2": 0.5816,
+        "netIncome_yoy_1": 1.1162,
+        "netIncome_yoy_2": 2.3424,
+        "grossProfit_yoy_1": 0.6888,
+        "grossProfit_yoy_2": 1.377,
+        "operatingIncome_yoy_1": 0.8651,
+        "operatingIncome_yoy_2": 7.3475,
+        "fcf_yoy_1": 1.465,
+        "fcf_yoy_2": 29.5258,
+        "capex_yoy_1": 0.1079,
+        "capex_yoy_2": -0.2761,
+        "totalDebt_yoy_1": -0.3771,
+        "totalDebt_yoy_2": -0.0492
+      },
+      "marginRank": 3,
+      "netCashRank": 2,
+      "marketCapRank": 2,
+      "fcfRank": 1,
+      "aiSummary": {
+        "highlight": "NEM exhibits strong revenue growth and profitability driven by rising gold prices, but faces risks from geopolitical uncertainty and fluctuating commodity markets.",
+        "marketPosition": "NEM is a mid-tier gold producer with a competitive advantage in its low-cost operations and diversified asset base.",
+        "majorGrowthProjects": [
+          "Expansion at the Copper Creek Mine",
+          "Development of the South American project"
+        ],
+        "shareholderReturns": "NEM pays a modest dividend and has consistently repurchased shares, returning value to shareholders.",
+        "balanceSheetSummary": "NEM maintains a healthy balance sheet with ample cash reserves and manageable debt levels.",
+        "riskFactors": [
+          "Fluctuations in gold prices",
+          "Environmental and regulatory risks"
+        ],
+        "analystSentiment": "bullish"
+      }
+    },
+    {
+      "ticker": "AEM",
+      "fetchedAt": "2026-03-15 21:59 EDT",
+      "price": 207.54,
+      "volume": 2697502,
+      "marketCap": 103833878528,
+      "sector": "Basic Materials",
+      "industry": "Gold",
+      "calendar": {
+        "earningsDateStart": "2026-04-30",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 3.67523,
+        "earningsEPSLow": 3.01,
+        "earningsEPSAvg": 3.30087,
+        "revenueEstimateHigh": 4389000000,
+        "revenueEstimateLow": 3801000000,
+        "revenueEstimateAvg": 4153033820,
+        "exDividendDate": "2026-05-31",
+        "dividendPayDate": "2026-12-14"
+      },
+      "events": {
+        "dividendRate": 1.8,
+        "dividendYield": 0.87,
+        "trailingAnnualDividendRate": 1.6,
+        "fiveYearAvgDividendYield": 2.38,
+        "lastDividendValue": 0.45,
+        "lastDividendDate": "2026-03-02",
+        "exDividendDate": "2026-06-01",
+        "dividendDate": "2026-12-15",
+        "earningsTimestamp": "2026-04-30",
+        "earningsCallStart": "2026-05-01",
+        "earningsCallEnd": "2026-05-01",
+        "isEarningsDateEstimate": false,
+        "earningsGrowthYoY": 2.003,
+        "earningsQuarterlyGrowth": 1.991,
+        "lastSplitFactor": null,
+        "lastSplitDate": null
+      },
+      "dividends": [
+        {
+          "date": "2025-09-02 00:00:00-04:00",
+          "amount": 0.4
+        },
+        {
+          "date": "2025-12-01 00:00:00-05:00",
+          "amount": 0.4
+        },
+        {
+          "date": "2026-03-02 00:00:00-05:00",
+          "amount": 0.45
+        }
+      ],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 11907851000,
+          "Gross Profit": 6921870000,
+          "Operating Income": 6327961000,
+          "EBITDA": 8377098000,
+          "Net Income": 4461461000,
+          "Basic EPS": 8,
+          "Interest Expense": 27890000,
+          "Tax Provision": 2242450000,
+          "Operating Expense": 593909000,
+          "Research And Development": null
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 8285753000,
+          "Gross Profit": 3685597000,
+          "Operating Income": 3149429000,
+          "EBITDA": 4422108000,
+          "Net Income": 1895581000,
+          "Basic EPS": 3,
+          "Interest Expense": 86477000,
+          "Tax Provision": 925974000,
+          "Operating Expense": 536168000,
+          "Research And Development": null
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 6626909000,
+          "Gross Profit": 2201875000,
+          "Operating Income": 1694633000,
+          "EBITDA": 3942056000,
+          "Net Income": 1941307000,
+          "Basic EPS": 3,
+          "Interest Expense": 91216000,
+          "Tax Provision": 417762000,
+          "Operating Expense": 507242000,
+          "Research And Development": null
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 3563973000,
+          "Gross Profit": 2197936000,
+          "Operating Income": 1991371000,
+          "EBITDA": 2692610000,
+          "Net Income": 1523061000,
+          "Basic EPS": 3,
+          "Interest Expense": -46137000,
+          "Tax Provision": 794092000,
+          "Operating Expense": 206565000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 3059529000,
+          "Gross Profit": 1790261000,
+          "Operating Income": 1645004000,
+          "EBITDA": 2029669000,
+          "Net Income": 1054958000,
+          "Basic EPS": 2,
+          "Interest Expense": 24154000,
+          "Tax Provision": 520610000,
+          "Operating Expense": 145257000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 2816101000,
+          "Gross Profit": 1649958000,
+          "Operating Income": 1510052000,
+          "EBITDA": 2021004000,
+          "Net Income": 1068711000,
+          "Basic EPS": 2,
+          "Interest Expense": 27429000,
+          "Tax Provision": 547908000,
+          "Operating Expense": 139906000,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 2468248000,
+          "Gross Profit": 1283715000,
+          "Operating Income": 1159570000,
+          "EBITDA": 1633815000,
+          "Net Income": 814731000,
+          "Basic EPS": 1,
+          "Interest Expense": 22444000,
+          "Tax Provision": 379840000,
+          "Operating Expense": 124145000,
+          "Research And Development": null
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 2866053000,
+          "Total Debt": 321470000,
+          "Total Assets": 34471291000,
+          "Total Liabilities Net Minority Interest": 9728827000,
+          "Stockholders Equity": 24742464000,
+          "Working Capital": 2521736000,
+          "Current Assets": 4993942000,
+          "Current Liabilities": 2472206000,
+          "Long Term Debt": 196271000,
+          "Retained Earnings": 5463906000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 926431000,
+          "Total Debt": 1282182000,
+          "Total Assets": 29987018000,
+          "Total Liabilities Net Minority Interest": 9154118000,
+          "Stockholders Equity": 20832900000,
+          "Working Capital": 1293316000,
+          "Current Assets": 2805281000,
+          "Current Liabilities": 1511965000,
+          "Long Term Debt": 1052956000,
+          "Retained Earnings": 2026242000
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 338648000,
+          "Total Debt": 2004634000,
+          "Total Assets": 28684949000,
+          "Total Liabilities Net Minority Interest": 9262034000,
+          "Stockholders Equity": 19422915000,
+          "Working Capital": 1143126000,
+          "Current Assets": 2191152000,
+          "Current Liabilities": 1048026000,
+          "Long Term Debt": 1743086000,
+          "Retained Earnings": 963172000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 2866053000,
+          "Total Debt": 321470000,
+          "Total Assets": 34471291000,
+          "Total Liabilities Net Minority Interest": 9728827000,
+          "Stockholders Equity": 24742464000,
+          "Working Capital": 2521736000,
+          "Current Assets": 4993942000,
+          "Current Liabilities": 2472206000,
+          "Long Term Debt": 196271000,
+          "Retained Earnings": 5463906000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 2354759000,
+          "Total Debt": 335544000,
+          "Total Assets": 32686913000,
+          "Total Liabilities Net Minority Interest": 9179456000,
+          "Stockholders Equity": 23507457000,
+          "Working Capital": 2360623000,
+          "Current Assets": 4468353000,
+          "Current Liabilities": 2107730000,
+          "Long Term Debt": 195994000,
+          "Retained Earnings": 4368424000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 1557565000,
+          "Total Debt": 733686000,
+          "Total Assets": 31693413000,
+          "Total Liabilities Net Minority Interest": 9150927000,
+          "Stockholders Equity": 22542486000,
+          "Working Capital": 1769881000,
+          "Current Assets": 3488094000,
+          "Current Liabilities": 1718213000,
+          "Long Term Debt": 544614000,
+          "Retained Earnings": 3407730000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 1138312000,
+          "Total Debt": 1280736000,
+          "Total Assets": 30594104000,
+          "Total Liabilities Net Minority Interest": 8952252000,
+          "Stockholders Equity": 21641852000,
+          "Working Capital": 1695218000,
+          "Current Assets": 2932476000,
+          "Current Liabilities": 1237258000,
+          "Long Term Debt": 1053388000,
+          "Retained Earnings": 2604517000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 6817113000,
+          "Capital Expenditure": -2555132000,
+          "Free Cash Flow": 4261981000,
+          "Investing Cash Flow": -2598295000,
+          "Financing Cash Flow": -2287143000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -682890000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -986043000,
+          "Depreciation And Amortization": 1645297000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 3960892000,
+          "Capital Expenditure": -1834245000,
+          "Free Cash Flow": 2126647000,
+          "Investing Cash Flow": -2007114000,
+          "Financing Cash Flow": -1356331000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -169357000,
+          "Issuance Of Debt": 600000000,
+          "Repayment Of Debt": -1347319000,
+          "Depreciation And Amortization": 1514076000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 2601562000,
+          "Capital Expenditure": -2665696000,
+          "Free Cash Flow": -64134000,
+          "Investing Cash Flow": -2760783000,
+          "Financing Cash Flow": -163958000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -47003000,
+          "Issuance Of Debt": 1898958000,
+          "Repayment Of Debt": -1447589000,
+          "Depreciation And Amortization": 1491771000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 2111504000,
+          "Capital Expenditure": -807842000,
+          "Free Cash Flow": 1303662000,
+          "Investing Cash Flow": -1049355000,
+          "Financing Cash Flow": -552902000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -373047000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -9073000,
+          "Depreciation And Amortization": 421594000
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": 1815875000,
+          "Capital Expenditure": -626330000,
+          "Free Cash Flow": 1189545000,
+          "Investing Cash Flow": -288064000,
+          "Financing Cash Flow": -732120000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -149855000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -408620000,
+          "Depreciation And Amortization": 429947000
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 1845488000,
+          "Capital Expenditure": -545051000,
+          "Free Cash Flow": 1300437000,
+          "Investing Cash Flow": -610936000,
+          "Financing Cash Flow": -819155000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -99938000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -559172000,
+          "Depreciation And Amortization": 376956000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 1044246000,
+          "Capital Expenditure": -575909000,
+          "Free Cash Flow": 468337000,
+          "Investing Cash Flow": -649940000,
+          "Financing Cash Flow": -182966000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -60050000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -9178000,
+          "Depreciation And Amortization": 416800000
+        }
+      ],
+      "annualProfitMargin": 0.3747,
+      "quarterlyProfitMargin": 0.4273,
+      "netCash": 2544583000,
+      "latestFCF": 1303662000,
+      "latestCapex": -807842000,
+      "latestOCF": 2111504000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.1649,
+        "revenue_yoy": 0.4439,
+        "netIncome_qoq": 0.4437,
+        "netIncome_yoy": 0.8694,
+        "grossProfit_qoq": 0.2277,
+        "grossProfit_yoy": 0.7122,
+        "operatingIncome_qoq": 0.2106,
+        "operatingIncome_yoy": 0.7173,
+        "fcf_qoq": 0.0959,
+        "fcf_yoy": 1.7836,
+        "ocf_qoq": 0.1628,
+        "ocf_yoy": 1.022,
+        "totalDebt_qoq": -0.0419,
+        "totalDebt_yoy": -0.749
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.4371,
+        "revenue_yoy_2": 0.2503,
+        "netIncome_yoy_1": 1.3536,
+        "netIncome_yoy_2": -0.0236,
+        "grossProfit_yoy_1": 0.8781,
+        "grossProfit_yoy_2": 0.6738,
+        "operatingIncome_yoy_1": 1.0092,
+        "operatingIncome_yoy_2": 0.8585,
+        "fcf_yoy_1": 1.0041,
+        "fcf_yoy_2": 34.1594,
+        "capex_yoy_1": -0.393,
+        "capex_yoy_2": 0.3119,
+        "totalDebt_yoy_1": -0.7493,
+        "totalDebt_yoy_2": -0.3604
+      },
+      "marginRank": 1,
+      "netCashRank": 1,
+      "marketCapRank": 3,
+      "fcfRank": 2,
+      "aiSummary": {
+        "highlight": "AEM is a gold mining company exhibiting strong revenue and EBITDA growth, coupled with robust free cash flow generation. However, the company faces risks associated with commodity price volatility and geopolitical instability.",
+        "marketPosition": "AEM holds a competitive position within its peer group due to its large-scale operations and diverse portfolio of gold assets.",
+        "majorGrowthProjects": [
+          "Expansion of existing mines",
+          "Exploration of new mineral deposits"
+        ],
+        "shareholderReturns": "AEM offers a modest dividend yield alongside share buybacks, returning value to shareholders.",
+        "balanceSheetSummary": "AEM maintains a healthy balance sheet with significant cash reserves and manageable debt levels.",
+        "riskFactors": [
+          "Commodity price fluctuations",
+          "Political and regulatory risks"
+        ],
+        "analystSentiment": "bullish"
+      }
+    },
+    {
+      "ticker": "SHOP",
+      "fetchedAt": "2026-03-15 22:14 EDT",
+      "price": 122.96,
+      "volume": 7840362,
+      "marketCap": 160473088000,
+      "sector": "Technology",
+      "industry": "Software - Application",
+      "calendar": {
+        "earningsDateStart": "2026-05-07",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 0.39,
+        "earningsEPSLow": 0.23,
+        "earningsEPSAvg": 0.33104,
+        "revenueEstimateHigh": 3120000000,
+        "revenueEstimateLow": 3048000000,
+        "revenueEstimateAvg": 3086420840,
+        "exDividendDate": null,
+        "dividendPayDate": null
+      },
+      "events": {
+        "dividendRate": null,
+        "dividendYield": null,
+        "trailingAnnualDividendRate": 0.0,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": null,
+        "lastDividendDate": null,
+        "exDividendDate": null,
+        "dividendDate": null,
+        "earningsTimestamp": "2026-02-11",
+        "earningsCallStart": "2026-02-11",
+        "earningsCallEnd": "2026-02-11",
+        "isEarningsDateEstimate": true,
+        "earningsGrowthYoY": -0.423,
+        "earningsQuarterlyGrowth": -0.425,
+        "lastSplitFactor": "10:1",
+        "lastSplitDate": "2022-06-29"
+      },
+      "dividends": [],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 11556000000,
+          "Gross Profit": 5555000000,
+          "Operating Income": 1885000000,
+          "EBITDA": 1916000000,
+          "Net Income": 1231000000,
+          "Basic EPS": null,
+          "Interest Expense": null,
+          "Tax Provision": 278000000,
+          "Operating Expense": 3670000000,
+          "Research And Development": 1536000000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 8880000000,
+          "Gross Profit": 4472000000,
+          "Operating Income": 1302000000,
+          "EBITDA": 1338000000,
+          "Net Income": 2019000000,
+          "Basic EPS": 1,
+          "Interest Expense": null,
+          "Tax Provision": 209000000,
+          "Operating Expense": 3170000000,
+          "Research And Development": 1367000000
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 7060000000,
+          "Gross Profit": 3515000000,
+          "Operating Income": 74000000,
+          "EBITDA": 144000000,
+          "Net Income": 132000000,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": 53000000,
+          "Operating Expense": 3441000000,
+          "Research And Development": 1730000000
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 3672000000,
+          "Gross Profit": 1693000000,
+          "Operating Income": 745000000,
+          "EBITDA": 752000000,
+          "Net Income": 743000000,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": 149000000,
+          "Operating Expense": 948000000,
+          "Research And Development": 390000000
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 2844000000,
+          "Gross Profit": 1391000000,
+          "Operating Income": 491000000,
+          "EBITDA": 499000000,
+          "Net Income": 264000000,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": 44000000,
+          "Operating Expense": 900000000,
+          "Research And Development": 375000000
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 2680000000,
+          "Gross Profit": 1302000000,
+          "Operating Income": 371000000,
+          "EBITDA": 379000000,
+          "Net Income": 906000000,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": 173000000,
+          "Operating Expense": 931000000,
+          "Research And Development": 394000000
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 2360000000,
+          "Gross Profit": 1169000000,
+          "Operating Income": 278000000,
+          "EBITDA": 286000000,
+          "Net Income": -682000000,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": -88000000,
+          "Operating Expense": 891000000,
+          "Research And Development": 377000000
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 1534000000,
+          "Total Debt": 188000000,
+          "Total Assets": 15189000000,
+          "Total Liabilities Net Minority Interest": 1716000000,
+          "Stockholders Equity": 13473000000,
+          "Working Capital": 6904000000,
+          "Current Assets": 8296000000,
+          "Current Liabilities": 1392000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 2860000000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 1489000000,
+          "Total Debt": 1126000000,
+          "Total Assets": 13924000000,
+          "Total Liabilities Net Minority Interest": 2366000000,
+          "Stockholders Equity": 11558000000,
+          "Working Capital": 5298000000,
+          "Current Assets": 7254000000,
+          "Current Liabilities": 1956000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 1629000000
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 1405000000,
+          "Total Debt": 1150000000,
+          "Total Assets": 11299000000,
+          "Total Liabilities Net Minority Interest": 2233000000,
+          "Stockholders Equity": 9066000000,
+          "Working Capital": 5377000000,
+          "Current Assets": 6275000000,
+          "Current Liabilities": 898000000,
+          "Long Term Debt": 916000000,
+          "Retained Earnings": -390000000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 1534000000,
+          "Total Debt": 188000000,
+          "Total Assets": 15189000000,
+          "Total Liabilities Net Minority Interest": 1716000000,
+          "Stockholders Equity": 13473000000,
+          "Working Capital": 6904000000,
+          "Current Assets": 8296000000,
+          "Current Liabilities": 1392000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 2860000000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 2414000000,
+          "Total Debt": 1115000000,
+          "Total Assets": 15039000000,
+          "Total Liabilities Net Minority Interest": 2528000000,
+          "Stockholders Equity": 12511000000,
+          "Working Capital": 6492000000,
+          "Current Assets": 8705000000,
+          "Current Liabilities": 2213000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 2117000000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 1542000000,
+          "Total Debt": 1139000000,
+          "Total Assets": 14561000000,
+          "Total Liabilities Net Minority Interest": 2437000000,
+          "Stockholders Equity": 12124000000,
+          "Working Capital": 5923000000,
+          "Current Assets": 8001000000,
+          "Current Liabilities": 2078000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 1853000000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 1309000000,
+          "Total Debt": 1138000000,
+          "Total Assets": 13400000000,
+          "Total Liabilities Net Minority Interest": 2349000000,
+          "Stockholders Equity": 11051000000,
+          "Working Capital": 5436000000,
+          "Current Assets": 7445000000,
+          "Current Liabilities": 2009000000,
+          "Long Term Debt": null,
+          "Retained Earnings": 947000000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 2033000000,
+          "Capital Expenditure": -26000000,
+          "Free Cash Flow": 2007000000,
+          "Investing Cash Flow": -1190000000,
+          "Financing Cash Flow": -811000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 31000000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 1616000000,
+          "Capital Expenditure": -19000000,
+          "Free Cash Flow": 1597000000,
+          "Investing Cash Flow": -1586000000,
+          "Financing Cash Flow": 61000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 36000000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 944000000,
+          "Capital Expenditure": -39000000,
+          "Free Cash Flow": 905000000,
+          "Investing Cash Flow": -1244000000,
+          "Financing Cash Flow": 60000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 70000000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 725000000,
+          "Capital Expenditure": -10000000,
+          "Free Cash Flow": 715000000,
+          "Investing Cash Flow": -654000000,
+          "Financing Cash Flow": -938000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 7000000
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": 513000000,
+          "Capital Expenditure": -6000000,
+          "Free Cash Flow": 507000000,
+          "Investing Cash Flow": 335000000,
+          "Financing Cash Flow": 24000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 8000000
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": 428000000,
+          "Capital Expenditure": -6000000,
+          "Free Cash Flow": 422000000,
+          "Investing Cash Flow": -252000000,
+          "Financing Cash Flow": 44000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 8000000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 367000000,
+          "Capital Expenditure": -4000000,
+          "Free Cash Flow": 363000000,
+          "Investing Cash Flow": -619000000,
+          "Financing Cash Flow": 59000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 8000000
+        }
+      ],
+      "annualProfitMargin": 0.1065,
+      "quarterlyProfitMargin": 0.2023,
+      "netCash": 1346000000,
+      "latestFCF": 715000000,
+      "latestCapex": -10000000,
+      "latestOCF": 725000000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.2911,
+        "revenue_yoy": 0.5559,
+        "netIncome_qoq": 1.8144,
+        "netIncome_yoy": 2.0894,
+        "grossProfit_qoq": 0.2171,
+        "grossProfit_yoy": 0.4482,
+        "operatingIncome_qoq": 0.5173,
+        "operatingIncome_yoy": 1.6799,
+        "fcf_qoq": 0.4103,
+        "fcf_yoy": 0.9697,
+        "ocf_qoq": 0.4133,
+        "ocf_yoy": 0.9755,
+        "totalDebt_qoq": -0.8314,
+        "totalDebt_yoy": -0.8348
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.3014,
+        "revenue_yoy_2": 0.2578,
+        "netIncome_yoy_1": -0.3903,
+        "netIncome_yoy_2": 14.2955,
+        "grossProfit_yoy_1": 0.2422,
+        "grossProfit_yoy_2": 0.2723,
+        "operatingIncome_yoy_1": 0.4478,
+        "operatingIncome_yoy_2": 16.5946,
+        "fcf_yoy_1": 0.2567,
+        "fcf_yoy_2": 0.7646,
+        "capex_yoy_1": -0.3684,
+        "capex_yoy_2": 0.5128,
+        "totalDebt_yoy_1": -0.833,
+        "totalDebt_yoy_2": -0.0209
+      },
+      "marginRank": 4,
+      "netCashRank": 3,
+      "marketCapRank": 1,
+      "fcfRank": 4,
+      "aiSummary": {
+        "highlight": "Shopify demonstrates strong revenue growth and profitability, but faces competition in the e-commerce market and challenges from macroeconomic headwinds. Continued investment in technology and user experience is crucial for maintaining its competitive edge.",
+        "marketPosition": "Shopify holds a leading position in the e-commerce platform market, competing with Amazon and other major players.",
+        "majorGrowthProjects": [
+          "Expansion into new markets",
+          "Development of innovative e-commerce features"
+        ],
+        "shareholderReturns": "Shopify does not currently pay dividends or engage in significant share buybacks.",
+        "balanceSheetSummary": "Shopify maintains a healthy balance sheet with strong cash reserves and manageable debt levels.",
+        "riskFactors": [
+          "Intensifying competition",
+          "Economic slowdown impacting consumer spending"
+        ],
+        "analystSentiment": "bullish"
+      }
+    }
+  ],
+  "dailyGainers": [
+    {
+      "ticker": "NP",
+      "percentGain": 20.23,
+      "price": 21.87,
+      "volume": 924853
+    },
+    {
+      "ticker": "PAYP",
+      "percentGain": 16.41,
+      "price": 21.14,
+      "volume": 14116773
+    },
+    {
+      "ticker": "VEON",
+      "percentGain": 14.2,
+      "price": 50.6,
+      "volume": 687611
+    },
+    {
+      "ticker": "KLAR",
+      "percentGain": 8.82,
+      "price": 15.91,
+      "volume": 8979495
+    },
+    {
+      "ticker": "KYIV",
+      "percentGain": 8.53,
+      "price": 11.07,
+      "volume": 2499232
+    },
+    {
+      "ticker": "GLXY",
+      "percentGain": 8.34,
+      "price": 22.35,
+      "volume": 7046744
+    },
+    {
+      "ticker": "BLLN",
+      "percentGain": 7.93,
+      "price": 69.11,
+      "volume": 230804
+    },
+    {
+      "ticker": "IBRX",
+      "percentGain": 7.29,
+      "price": 8.39,
+      "volume": 30384030
+    },
+    {
+      "ticker": "SNDK",
+      "percentGain": 6.92,
+      "price": 661.62,
+      "volume": 18806850
+    },
+    {
+      "ticker": "SSL",
+      "percentGain": 6.7,
+      "price": 11.31,
+      "volume": 5267106
+    }
+  ],
+  "lastUpdated": "2026-03-15 22:15 EDT"
+}
