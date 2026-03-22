@@ -9,6 +9,74 @@ KNOWN_SECTORS = {
     "AEM": "Basic Materials",
 }
 
+BANK_SECTORS = {"Financial Services", "Banks - Diversified", "Banks - Regional"}
+
+def compute_bank_metrics(stock):
+    ticker = stock.get("ticker")
+    industry = stock.get("industry", "")
+    sector = stock.get("sector", "")
+    
+    if sector not in BANK_SECTORS and "Bank" not in industry:
+        return None
+
+    annual_income = stock.get("annualIncome", [])
+    annual_balance = stock.get("annualBalance", [])
+
+    try:
+        net_income = annual_income[0].get("Net Income") if annual_income else None
+        equity_0 = annual_balance[0].get("Stockholders Equity") if len(annual_balance) > 0 else None
+        equity_1 = annual_balance[1].get("Stockholders Equity") if len(annual_balance) > 1 else None
+        avg_equity = (equity_0 + equity_1) / 2 if equity_0 and equity_1 else equity_0
+
+        roe = round(net_income / avg_equity, 4) if net_income and avg_equity else None
+
+        total_debt = annual_balance[0].get("Total Debt") if annual_balance else None
+        total_assets = annual_balance[0].get("Total Assets") if annual_balance else None
+        loan_to_deposit = round(total_debt / total_assets, 4) if total_debt and total_assets else None
+
+        checklist = [
+            {
+                "metric": "ROE",
+                "threshold": "> 12%",
+                "value": f"{round(roe*100,1)}%" if roe else None,
+                "pass": roe > 0.12 if roe else None,
+                "auto": True
+            },
+            {
+                "metric": "Loan-to-Deposit (proxy)",
+                "threshold": "< 90%",
+                "value": f"{round(loan_to_deposit*100,1)}%" if loan_to_deposit else None,
+                "pass": loan_to_deposit < 0.90 if loan_to_deposit else None,
+                "auto": True
+            },
+            {
+                "metric": "CET1",
+                "threshold": "> 10%",
+                "value": None,
+                "pass": None,
+                "auto": False
+            },
+            {
+                "metric": "LCR",
+                "threshold": "> 100%",
+                "value": None,
+                "pass": None,
+                "auto": False
+            },
+            {
+                "metric": "NPL Ratio",
+                "threshold": "< 2%",
+                "value": None,
+                "pass": None,
+                "auto": False
+            },
+        ]
+        log.info(f"Bank metrics {ticker} | ROE:{roe} LTD:{loan_to_deposit}")
+        return checklist
+
+    except Exception as e:
+        log.error(f"Bank metrics FAIL: {ticker} | {e}")
+        return None
 
 def fix_sector(ticker, sector):
     corrected = KNOWN_SECTORS.get(ticker.upper(), sector)
@@ -31,7 +99,7 @@ def compute_period_changes(periods, field, label):
     try:
         q0 = periods[0].get(field) if len(periods) > 0 else None
         q1 = periods[1].get(field) if len(periods) > 1 else None
-        q4 = periods[3].get(field) if len(periods) > 3 else None
+        q4 = periods[4].get(field) if len(periods) > 4 else None
 
         result[f"{label}_qoq"] = pct_change(q0, q1)
         result[f"{label}_yoy"] = pct_change(q0, q4)
@@ -74,6 +142,7 @@ def compute_metrics(stock):
     quarterly_cashflow = stock.get("quarterlyCashflow", [])
     annual_balance = stock.get("annualBalance", [])
     quarterly_balance = stock.get("quarterlyBalance", [])
+    bank_checklist = compute_bank_metrics({**stock, "sector": corrected_sector})
 
     log.info(f"--- Computing: {ticker} ---")
 
@@ -126,6 +195,8 @@ def compute_metrics(stock):
         "latestOCF": latest_ocf,
         "quarterlyChanges": quarterly_changes,
         "annualChanges": annual_changes,
+        "bankChecklist": bank_checklist,
+
     }
 
 

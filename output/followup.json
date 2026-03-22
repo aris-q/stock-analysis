@@ -1,0 +1,48 @@
+{
+  "CLS.TO_Q1_2026_Earnings_Release": {
+    "summary": "CLS.TO is poised to release Q1 2026 earnings on April 23rd, presenting a potential buying opportunity if results exceed expectations.",
+    "steps": [
+      {
+        "date": "2026-04-21",
+        "title": "Monitor Pre-Earnings Sentiment",
+        "instructions": "Observe news articles and analyst commentary for any pre-earnings sentiment shifts or updates regarding CLS.TO's performance.",
+        "fetchRequired": true,
+        "sources": [
+          "Yahoo Finance News",
+          "Bloomberg"
+        ]
+      },
+      {
+        "date": "2026-04-23",
+        "title": "Earnings Release Analysis",
+        "instructions": "Immediately review the earnings press release and SEC filing (Form 8-K) for EPS, revenue, operating margin, and guidance. Compare these figures to analyst estimates and previous quarter results.",
+        "fetchRequired": true,
+        "sources": [
+          "SEC EDGAR",
+          "Company IR page"
+        ]
+      },
+      {
+        "date": "2026-04-23 - 2026-04-25",
+        "title": "Earnings Call Transcript Review",
+        "instructions": "Listen to or read the full earnings call transcript for management commentary on operational performance, future outlook, and any key risks or opportunities.",
+        "fetchRequired": true,
+        "sources": [
+          "Company IR page",
+          "Seeking Alpha"
+        ]
+      }
+    ],
+    "redFlags": [
+      "Significant revenue miss relative to analyst estimates",
+      "Weak guidance for future quarters indicating slowing growth"
+    ],
+    "greenFlags": [
+      "Strong beat on both EPS and revenue, exceeding analyst expectations",
+      "Positive commentary on operational efficiency and cost management"
+    ],
+    "decisionPoint": "Buy if EPS and revenue exceed estimates by more than 5% on April 24th, with a target price range of $390-$410. Sell if EPS and revenue miss estimates by more than 3% on April 25th, with a stop-loss at $340.",
+    "savedAt": "2026-03-21 15:48 EDT",
+    "cached": false
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "SHOP.TO": {
+    "todayItems": [
+      {
+        "title": "Shopify (SHOP) Call Option Spread Garners a 33% Return Potential",
+        "summary": "Option spreads can be profitable even if the underlying stock decreases or remains flat, providing us with an entirely new dimension of money-making opportunities.",
+        "pubDate": "2026-03-20T15:17:00Z",
+        "url": "https://finance.yahoo.com/markets/options/articles/shopify-shop-call-option-spread-151700227.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "DoorDash vs. Shopify: Which E-Commerce Stock Has an Edge Now?",
+        "summary": "DASH benefits from strong order growth and expanding partnerships, but rising competition may cap upside as SHOP gains momentum with AI and enterprise wins.",
+        "pubDate": "2026-03-20T14:37:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/doordash-vs-shopify-e-commerce-143700133.html",
+        "provider": "Zacks"
+      }
+    ],
+    "todayFetchedAt": "2026-03-20 17:24 EDT"
+  },
+  "CLS.TO": {
+    "todayItems": [],
+    "todayFetchedAt": "2026-03-22 14:18 EDT",
+    "sevenDayItems": [
+      {
+        "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Renewable Energy Firm Humming",
+        "summary": "Among the best stocks in earnings performance, Comfort Systems has a pristine 99 EPS Rating, the highest in IBD's air conditioning and heating products industry group.",
+        "pubDate": "2026-03-21T12:45:21Z",
+        "url": "https://www.investors.com/research/best-stocks-seven-magnificent-stocks-earnings-growth/?src=A00220&yptr=yahoo",
+        "provider": "Investor's Business Daily"
+      },
+      {
+        "title": "Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks",
+        "summary": "Intel (NASDAQ:INTC) stock is down 5% in Friday trading, pulling back to around $44 after a strong run that has seen the stock nearly double over the past year. Advanced Micro Devices (NASDAQ:AMD) stock is also in the red, slipping 3% to less than $200. Both moves reflect a broader semiconductor sector under pressure from ... Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks",
+        "pubDate": "2026-03-20T18:56:49Z",
+        "url": "https://247wallst.com/investing/2026/03/20/intel-dips-5-amd-down-3-rising-competition-and-sector-pressure-test-two-of-wall-streets-favorite-chip-stocks/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "AMD Relies on a Rich Partner Base to Drive Sales: More Upside Ahead?",
+        "summary": "Advanced Micro Devices expands AI push with Celestica, Nutanix and Samsung, advancing Helios and next-gen chips while battling NVDA and AVGO pressure.",
+        "pubDate": "2026-03-20T15:19:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/amd-relies-rich-partner-drive-151900413.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Why Celestica (TSX:CLS) Is Up 8.2% After Teaming With AMD On Helios AI Networking Switches",
+        "summary": "In March 2026, AMD announced a collaboration with Celestica to develop and manufacture scale-up networking switches for the Helios rack-scale AI platform, using Open Compute Project, Open-Rack-Wide designs and Ultra Accelerator Link over Ethernet to connect next-generation AMD Instinct MI450 Series GPUs across large AI clusters. This partnership highlights how Celestica is moving further up the AI infrastructure stack by combining its design and manufacturing strengths with AMD\u2019s compute...",
+        "pubDate": "2026-03-20T09:06:56Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-celestica-tsx-cls-8-090656442.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "As Celestica Partners with AMD, Should You Buy the Lesser-Known AI Stock Now?",
+        "summary": "Celestica's new collaboration with AMD follows Q4 revenue growth, an attractive EPS growth forecast, and a $375 consensus price target implying upside from current levels.",
+        "pubDate": "2026-03-19T18:56:29Z",
+        "url": "https://www.barchart.com/story/news/849750/as-celestica-partners-with-amd-should-you-buy-the-lesser-known-ai-stock-now",
+        "provider": "Barchart"
+      },
+      {
+        "title": "RBC Capital Maintains a Sector Perform Rating on Advanced Micro Devices (AMD) Stock",
+        "summary": "Advanced Micro Devices, Inc. (NASDAQ:AMD) is one of the Best Semiconductor Stocks to Invest In Now. On March 15, RBC Capital maintained a \u201cSector Perform\u201d rating and a price objective of $230 on the company\u2019s stock. The company reiterated that MI450/Helios is on track, with Advanced Micro Devices, Inc. (NASDAQ:AMD) having strong conviction in OpenAI and Meta volume ramps [\u2026]",
+        "pubDate": "2026-03-19T15:44:19Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/rbc-capital-maintains-sector-perform-154419059.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Here's Why Celestica (CLS) Fell More Than Broader Market",
+        "summary": "In the closing of the recent trading day, Celestica (CLS) stood at $273.58, denoting a -2.97% move from the preceding trading day.",
+        "pubDate": "2026-03-18T21:45:05Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-celestica-cls-fell-214505170.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Advanced Micro Devices Inc. (AMD) and Celestica Bring Open-Standard \u2018Helios\u2019 AI Platform to Market",
+        "summary": "Advanced Micro Devices Inc. (NASDAQ:AMD) is one of the most buzzing stocks to buy with the highest upside potential. On March 16, AMD and Celestica (NYSE:CLS) announced a collaboration to bring \u2018Helios\u2019, an open standards-based rack-scale AI platform, to the market. This partnership combines AMD\u2019s leadership in HPC with Celestica\u2019s expertise in advanced networking switch [\u2026]",
+        "pubDate": "2026-03-18T20:27:14Z",
+        "url": "https://finance.yahoo.com/news/advanced-micro-devices-inc-amd-202714429.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Jabil Q2 Earnings Beat Estimates on Solid Revenue Growth",
+        "summary": "JBL tops fiscal Q2 estimates as revenues jump to $8.3B, driven by AI data center and infrastructure demand, while raising its full-year outlook.",
+        "pubDate": "2026-03-18T18:16:00Z",
+        "url": "https://finance.yahoo.com/news/jabil-q2-earnings-beat-estimates-181600804.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Can Celestica's Tie-Up With AMD for AI Switches Stoke Growth?",
+        "summary": "CLS teams up with AMD to build Helios AI platform switches, enabling high-speed GPU links and strengthening its play in booming hyperscale AI demand.",
+        "pubDate": "2026-03-18T15:20:00Z",
+        "url": "https://finance.yahoo.com/news/celesticas-tie-amd-ai-switches-152000220.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-22 12:54 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights a strategic partnership between Celestica and AMD to develop AI networking switches, boosting investor confidence in Celestica's growth prospects.",
+      "priceImpact": "Likely short-term price increase within the range of 5% - 10%",
+      "keyThemes": [
+        "AI Infrastructure Growth",
+        "Strategic Partnerships",
+        "Earnings Performance and Upside Potential"
+      ],
+      "tradingImplication": "Buy based on positive news regarding Celestica's involvement in the burgeoning AI market through a partnership with AMD.",
+      "watchFor": "Celestica's upcoming earnings report for further confirmation of its strong financial performance and progress in the AI sector.",
+      "newsItems": [
+        {
+          "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Renewable Energy Firm Humming (Investor's Business Daily)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Mentions Comfort Systems, a positive comparison to Celestica's performance."
+        },
+        {
+          "title": "Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks (24/7 Wall St.)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Focuses on Intel and AMD, indirectly relevant to Celestica's partnership with AMD."
+        },
+        {
+          "title": "AMD Relies on a Rich Partner Base to Drive Sales: More Upside Ahead? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Highlights AMD's expansion into AI, boosting Celestica through their partnership."
+        },
+        {
+          "title": "Why Celestica (TSX:CLS) Is Up 8.2% After Teaming With AMD On Helios AI Networking Switches (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Directly attributes Celestica's price increase to the positive news about their partnership with AMD."
+        },
+        {
+          "title": "As Celestica Partners with AMD, Should You Buy the Lesser-Known AI Stock Now? (Barchart)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Encourages investors to consider buying Celestica due to its partnership with AMD and positive future outlook."
+        },
+        {
+          "title": "RBC Capital Maintains a Sector Perform Rating on Advanced Micro Devices (AMD) Stock (Insider Monkey)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Neutral stance on AMD, indirectly relevant to Celestica's partnership with AMD."
+        },
+        {
+          "title": "Here's Why Celestica (CLS) Fell More Than Broader Market (Zacks)",
+          "impact": "negative",
+          "significance": "medium",
+          "oneLineSummary": "Celestica's stock price dropped, potentially a precursor to the positive news about their partnership with AMD."
+        },
+        {
+          "title": "Advanced Micro Devices Inc. (AMD) and Celestica Bring Open-Standard \u2018Helios\u2019 AI Platform to Market (Insider Monkey)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Announces the launch of the Helios AI platform, a significant development in the partnership between AMD and Celestica."
+        },
+        {
+          "title": "Jabil Q2 Earnings Beat Estimates on Solid Revenue Growth (Zacks)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Positive news about Jabil, a competitor in the same industry, indirectly relevant to Celestica."
+        },
+        {
+          "title": "Can Celestica's Tie-Up With AMD for AI Switches Stoke Growth? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Explores the potential for Celestica's partnership with AMD to drive growth in the AI sector."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-22 13:12 EDT"
+  },
+  "BNS.TO": {
+    "todayItems": [],
+    "todayFetchedAt": "2026-03-22 12:53 EDT"
+  },
+  "WELL.TO": {
+    "todayItems": [
+      {
+        "title": "WELL Health Record Revenue Spurs Clinic Growth And Wellstar Spin Out",
+        "summary": "WELL Health Technologies (TSX:WELL) reported record annual revenue and a 52% increase in yearly revenue. The company expanded its clinic footprint and patient visits over the year. WELL Health advanced growth plans through new medical billing acquisitions. The company is preparing to spin out its Wellstar business as a separate entity. WELL Health Technologies, a digital health and clinic operator, operates at the intersection of primary care, virtual care, and health IT services. With more...",
+        "pubDate": "2026-03-21T09:05:31Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/well-health-record-revenue-spurs-090531412.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "todayFetchedAt": "2026-03-21 15:38 EDT"
+  },
+  "BMO.TO": {
+    "todayItems": [
+      {
+        "title": "FedEx price target raised to $410 from $400 at BMO Capital",
+        "summary": "BMO Capital raised the firm\u2019s price target on FedEx (FDX) to $410 from $400 and keeps a Market Perform rating on the shares. The company\u2019s Q3 results were well ahead of expectations and the outlook was raised thanks to strong execution across both commercial and operational fronts, the analyst tells investors in a research note. BMO adds, however, that while the conflict in the Middle East is not expected to have a material impact on Q4 results, incremental headwinds from variable compensation a",
+        "pubDate": "2026-03-21T11:36:26Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/fedex-price-target-raised-410-113626813.html",
+        "provider": "TipRanks"
+      },
+      {
+        "title": "Accenture price target lowered to $230 from $300 at BMO Capital",
+        "summary": "BMO Capital lowered the firm\u2019s price target on Accenture (ACN) to $230 from $300 and keeps a Market Perform rating on the shares. The company reported a reasonable Q2 with impressive results in free cash flow being a standout, the analyst tells investors in a research note. BMO adds however that while it believes Accenture has strong AI positioning due to factors such as scale, partnerships, and training investments, it continues to question whether AI is a longer-term tailwind given efficiency",
+        "pubDate": "2026-03-21T11:35:44Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/accenture-price-target-lowered-230-113544600.html",
+        "provider": "TipRanks"
+      }
+    ],
+    "todayFetchedAt": "2026-03-21 13:30 EDT",
+    "sevenDayItems": [
+      {
+        "title": "FedEx price target raised to $410 from $400 at BMO Capital",
+        "summary": "BMO Capital raised the firm\u2019s price target on FedEx (FDX) to $410 from $400 and keeps a Market Perform rating on the shares. The company\u2019s Q3 results were well ahead of expectations and the outlook was raised thanks to strong execution across both commercial and operational fronts, the analyst tells investors in a research note. BMO adds, however, that while the conflict in the Middle East is not expected to have a material impact on Q4 results, incremental headwinds from variable compensation a",
+        "pubDate": "2026-03-21T11:36:26Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/fedex-price-target-raised-410-113626813.html",
+        "provider": "TipRanks"
+      },
+      {
+        "title": "Accenture price target lowered to $230 from $300 at BMO Capital",
+        "summary": "BMO Capital lowered the firm\u2019s price target on Accenture (ACN) to $230 from $300 and keeps a Market Perform rating on the shares. The company reported a reasonable Q2 with impressive results in free cash flow being a standout, the analyst tells investors in a research note. BMO adds however that while it believes Accenture has strong AI positioning due to factors such as scale, partnerships, and training investments, it continues to question whether AI is a longer-term tailwind given efficiency",
+        "pubDate": "2026-03-21T11:35:44Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/accenture-price-target-lowered-230-113544600.html",
+        "provider": "TipRanks"
+      },
+      {
+        "title": "Why Bank of Montreal (BMO) is a Great Dividend Stock Right Now",
+        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does Bank of Montreal (BMO) have what it takes? Let's find out.",
+        "pubDate": "2026-03-20T15:45:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-bank-montreal-bmo-great-154503629.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Treasury Yields Rise on Inflation Worries",
+        "summary": "A selloff in the Treasury market continues, sending yields higher, as traders remain concerned about the inflation impact of the war in Iran and implications for the Fed's policy response.  With the risk of more escalation ahead, \"we suspect investors will be very wary of carrying a Treasury long into the weekend,\" Ian Lyngen of BMO writes.",
+        "pubDate": "2026-03-20T14:15:43Z",
+        "url": "https://www.barrons.com/livecoverage/stock-market-news-today-032026/card/treasury-yields-rise-on-inflation-worries-gOmjgUycOO9weAu88IE0?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      },
+      {
+        "title": "BMO On The Day Ahead In Canada",
+        "summary": "Investors will get a few mid-tier indicators out in Canada, Friday, all at 8:30 a.m. ET, said Bank o",
+        "pubDate": "2026-03-20T11:37:48Z",
+        "url": "https://finance.yahoo.com/markets/currencies/articles/bmo-day-ahead-canada-113748943.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "BMO Says Canadian Small Business Confidence Faces New War",
+        "summary": "The Iran conflict appears to have wounded the Canadian small business sentiment in March, said Bank",
+        "pubDate": "2026-03-20T10:48:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-says-canadian-small-business-104804712.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "BMO Capital Lowers IBM Target but Highlights Stable Business Mix",
+        "summary": "International Business Machines Corporation (NYSE:IBM) is included among the 15 Dividend Stocks to Buy for Steady Income. On March 19, BMO Capital lowered its price recommendation on International Business Machines Corporation (NYSE:IBM) to $290 from $350. It reiterated a Market Perform rating on the shares. The firm said it does not see enough upside to [\u2026]",
+        "pubDate": "2026-03-20T04:19:12Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-capital-lowers-ibm-target-041912648.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "BMO\u2019s Western U.S. Expansion Raises Questions On Valuation And Earnings Mix",
+        "summary": "BMO (TSX:BMO) plans to open more than 130 new branches in California and around 15 in Arizona. The expansion significantly increases the bank's California presence and deepens its Western U.S. footprint. New locations are expected to offer integrated personal, business, commercial, and wealth services. BMO is leaning further into its U.S. retail banking business, with a focus on California and Arizona, two large and fast growing Western markets. For investors, the move underscores how...",
+        "pubDate": "2026-03-19T20:04:33Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-western-u-expansion-raises-200433776.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "BMO Says \"Meaningful\" Economy Rebound in Canada Needs Clarity on CUSMA Trade Review, Business Investment Boost",
+        "summary": "The inflationary impact of rising oil prices on Canada is similar to that in the United States and w",
+        "pubDate": "2026-03-19T16:07:51Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/bmo-says-meaningful-economy-rebound-160751306.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "BMO Says Bank of Canada On Hold Until Inflation Risks Become Clearer",
+        "summary": "The Bank of Canada kept its key overnight lending rate steady at 2.25% on Wednesday for the third co",
+        "pubDate": "2026-03-18T16:32:56Z",
+        "url": "https://finance.yahoo.com/news/bmo-says-bank-canada-hold-163256812.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-22 14:18 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "neutral",
+      "sentimentScore": 1,
+      "summary": "Recent BMO news is mixed, with some positive coverage on their dividend prospects and sector analysis, but also cautionary notes on potential economic headwinds and adjustments to price targets.",
+      "priceImpact": "Minimal short-term impact expected. Price range fluctuation within +/- 1%. ",
+      "keyThemes": [
+        "Dividend Focus",
+        "Economic Uncertainty",
+        "Sector Analysis"
+      ],
+      "tradingImplication": "Hold. Current news does not provide a strong enough signal to buy or sell. Monitor upcoming economic data and BMO's earnings report for further clarity.",
+      "watchFor": "Upcoming Canadian inflation data, Bank of Canada announcements, and Q1 2026 earnings release from BMO.",
+      "newsItems": [
+        {
+          "title": "FedEx price target raised to $410 from $400 at BMO Capital (TipRanks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "BMO's positive outlook on FedEx could reflect positively on BMO's analytical capabilities."
+        },
+        {
+          "title": "Accenture price target lowered to $230 from $300 at BMO Capital (TipRanks)",
+          "impact": "negative",
+          "significance": "medium",
+          "oneLineSummary": "Lowered Accenture target may indicate caution in the tech sector, potentially impacting BMO's overall performance."
+        },
+        {
+          "title": "Why Bank of Montreal (BMO) is a Great Dividend Stock Right Now (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Positive article highlighting BMO's dividend potential could attract investors."
+        },
+        {
+          "title": "Treasury Yields Rise on Inflation Worries (Barrons.com)",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "Broad market trend may indirectly affect BMO's performance."
+        },
+        {
+          "title": "BMO Says Canadian Small Business Confidence Faces New War (MT Newswires)",
+          "impact": "negative",
+          "significance": "medium",
+          "oneLineSummary": "Economic concerns regarding small businesses may negatively impact BMO's outlook."
+        },
+        {
+          "title": "BMO Capital Lowers IBM Target but Highlights Stable Business Mix (Insider Monkey)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Analysis on IBM may not directly impact BMO's performance."
+        },
+        {
+          "title": "BMO\u2019s Western U.S. Expansion Raises Questions On Valuation And Earnings Mix (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Expansion strategy may be subject to market scrutiny and impact BMO's valuation."
+        },
+        {
+          "title": "BMO Says \"Meaningful\" Economy Rebound in Canada Needs Clarity on CUSMA Trade Review, Business Investment Boost (MT Newswires)",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "Economic outlook for Canada is uncertain and could affect BMO's performance."
+        },
+        {
+          "title": "BMO Says Bank of Canada On Hold Until Inflation Risks Become Clearer (MT Newswires)",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "Monetary policy stance could influence BMO's lending and investment activities."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-22 15:21 EDT"
+  }
+}

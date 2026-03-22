@@ -395,13 +395,28 @@
     .peer-rank.r1 { background: rgba(200,241,53,0.15); color: var(--accent); }
     .peer-rank.r2 { background: rgba(124,106,247,0.15); color: var(--accent2); }
 
+    /* STATUS BAR */
+    .status-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px 32px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      z-index: 100;
+    }
     .status-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--muted);
       display: inline-block;
-      margin-right: 4px;
-      vertical-align: middle;
+      margin-right: 6px;
     }
     .status-dot.running { background: var(--accent); animation: pulse 1s infinite; }
 
@@ -666,223 +681,6 @@
     }
     .modal-decision-label { font-size: 10px; color: var(--accent); letter-spacing: 1px; margin-bottom: 4px; }
 
-    /* PRICE CONTEXT */
-    .price-context-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-    .price-context-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 12px;
-      text-align: center;
-    }
-    .price-context-label { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 4px; }
-    .price-context-value { font-size: 14px; font-weight: 600; font-family: 'Syne', sans-serif; }
-    .confirmation-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-    .confirmation-badge.CONFIRMS { background: rgba(74,222,128,0.1); color: var(--up); border: 1px solid rgba(74,222,128,0.3); }
-    .confirmation-badge.CONTRADICTS { background: rgba(248,113,113,0.1); color: var(--down); border: 1px solid rgba(248,113,113,0.3); }
-    .confirmation-badge.MIXED { background: rgba(251,191,36,0.1); color: var(--warn); border: 1px solid rgba(251,191,36,0.3); }
-    .rsi-bar-wrap { margin-bottom: 14px; }
-    .rsi-bar-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
-    .rsi-bar-track { height: 6px; background: var(--surface2); border-radius: 3px; position: relative; overflow: hidden; }
-    .rsi-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
-
-    /* NEWS */
-    .news-sentiment-bar {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: 8px;
-      margin-bottom: 16px;
-    }
-    .news-sentiment-bar.bullish { background: rgba(74,222,128,0.08); border: 1px solid rgba(74,222,128,0.2); }
-    .news-sentiment-bar.bearish { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
-    .news-sentiment-bar.neutral { background: rgba(107,107,128,0.08); border: 1px solid var(--border); }
-    .news-score {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      min-width: 48px;
-      text-align: center;
-    }
-    .news-score.positive { color: var(--up); }
-    .news-score.negative { color: var(--down); }
-    .news-score.neutral-score { color: var(--muted); }
-    .news-sentiment-info { flex: 1; }
-    .news-sentiment-label { font-size: 12px; font-weight: 500; margin-bottom: 4px; }
-    .news-summary-text { font-size: 12px; color: var(--muted); line-height: 1.6; }
-    .news-meta-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .news-meta-card {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 10px 14px;
-    }
-    .news-meta-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.5px; }
-    .news-meta-value { font-size: 12px; color: var(--text); line-height: 1.5; }
-    .news-themes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-    .news-theme {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      background: rgba(124,106,247,0.1);
-      border: 1px solid rgba(124,106,247,0.2);
-      color: var(--accent2);
-    }
-    .news-divider {
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin: 16px 0 10px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-    .news-item {
-      padding: 12px 14px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-bottom: 8px;
-    }
-    .news-item:last-child { margin-bottom: 0; }
-    .news-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .news-item-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.4;
-      flex: 1;
-    }
-    .news-item-title a { color: var(--text); text-decoration: none; }
-    .news-item-title a:hover { color: var(--accent); }
-    .news-impact-badge {
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-    .news-impact-badge.positive { background: rgba(74,222,128,0.1); color: var(--up); border: 1px solid rgba(74,222,128,0.2); }
-    .news-impact-badge.negative { background: rgba(248,113,113,0.1); color: var(--down); border: 1px solid rgba(248,113,113,0.2); }
-    .news-impact-badge.neutral { background: rgba(107,107,128,0.1); color: var(--muted); border: 1px solid var(--border); }
-    .news-item-meta { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
-    .news-item-summary { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
-    .news-item-impact { font-size: 12px; color: var(--text); font-style: italic; }
-    .ni-block { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .ni-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .ni-label { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 4px; }
-    .ni-summary { font-size: 12px; color: var(--text); line-height: 1.6; margin-bottom: 6px; }
-    .ni-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
-    .ni-footer { display: flex; align-items: center; justify-content: space-between; gap:8px; margin-top:6px; }
-    .ni-ts { font-size: 10px; color: var(--muted); }
-    .ni-link { font-size: 10px; color: var(--accent2); cursor: pointer; text-decoration: underline; background:none; border:none; padding:0; }
-    .ni-refresh { font-size: 10px; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent2); background: none; cursor: pointer; }
-    .news-sig-high { color: var(--accent); }
-    .news-sig-medium { color: var(--warn); }
-    .news-sig-low { color: var(--muted); }
-
-    /* BANK HEALTH */
-    .bank-checklist { display: flex; flex-direction: column; gap: 8px; }
-    .bank-check-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 12px;
-      background: var(--surface2);
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
-    .bank-check-left { display: flex; align-items: center; gap: 10px; flex: 1; }
-    .bank-check-icon { font-size: 16px; flex-shrink: 0; width: 20px; text-align: center; }
-    .bank-check-name { font-size: 12px; font-weight: 500; }
-    .bank-check-threshold { font-size: 11px; color: var(--muted); margin-top: 2px; }
-    .bank-check-value { font-size: 13px; font-weight: 600; }
-    .bank-check-value.pass { color: var(--up); }
-    .bank-check-value.fail { color: var(--down); }
-    .bank-check-value.unknown { color: var(--muted); font-size: 11px; }
-    .bank-guide-btn {
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 4px;
-      background: rgba(124,106,247,0.1);
-      border: 1px solid rgba(124,106,247,0.25);
-      color: var(--accent2);
-      cursor: pointer;
-      margin-top: 10px;
-      display: inline-block;
-    }
-    .bank-guide-btn:hover { background: rgba(124,106,247,0.2); }
-
-    /* BANK GUIDE MODAL TABS */
-    .guide-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-    .guide-tab {
-      padding: 8px 16px;
-      font-size: 12px;
-      cursor: pointer;
-      color: var(--muted);
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
-    }
-    .guide-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-    .guide-tab-panel { display: none; }
-    .guide-tab-panel.active { display: block; }
-    .guide-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-    .guide-table th {
-      font-size: 11px; color: var(--muted); text-align: left;
-      padding: 6px 10px; border-bottom: 1px solid var(--border);
-      letter-spacing: 0.5px;
-    }
-    .guide-table td { font-size: 12px; padding: 8px 10px; border-bottom: 1px solid rgba(42,42,58,0.4); vertical-align: top; }
-    .guide-table tr:last-child td { border-bottom: none; }
-    .guide-table td:first-child { font-weight: 500; color: var(--text); white-space: nowrap; }
-    .guide-pass { color: var(--up); font-weight: 600; }
-    .guide-fail { color: var(--down); font-weight: 600; }
-    .guide-warn { color: var(--warn); font-weight: 600; }
-
-    .gainers-toggle {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-    .gainers-toggle-btn {
-      padding: 6px 18px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: var(--surface2);
-      color: var(--muted);
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .gainers-toggle-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(200,241,53,0.08); }
-    .gainers-toggle-btn:hover { color: var(--text); border-color: var(--text); }
-
     /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
@@ -900,14 +698,10 @@
   <div class="header-left">
     <div class="logo">STOCK<span>.</span>AI</div>
     <div class="status-pill" id="statusPill">IDLE</div>
-    <span class="status-dot" id="statusDot"></span>
-    <span id="statusText" style="font-size:11px;color:var(--muted)">{{ status.message }}</span>
   </div>
   <div class="header-actions">
-    <div id="lastUpdated" style="font-size:11px;color:var(--muted);margin-right:6px"></div>
     <a href="/logs" class="btn" target="_blank">LOGS</a>
     <a href="/fetch/new" class="btn">+ FETCH NEW</a>
-    <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn)">⚡ SMART REFRESH</a>
     <a href="/fetch" class="btn btn-primary">↺ FETCH ALL</a>
   </div>
 </div>
@@ -952,7 +746,10 @@
 
 </div>
 
-
+<div class="status-bar">
+  <div><span class="status-dot" id="statusDot"></span><span id="statusText">{{ status.message }}</span></div>
+  <div id="lastUpdated"></div>
+</div>
 
 <div class="tooltip-popup" id="tooltipPopup">
   <div class="tt-title" id="ttTitle"></div>
@@ -994,42 +791,42 @@ const TOOLTIPS = {
   },
   revenueQoQ: {
     title: "REVENUE QoQ",
-    desc: "Current quarter vs previous quarter.",
+    desc: "Revenue change vs previous quarter.",
     formula: "(Q0 − Q1) ÷ |Q1|"
   },
   revenueYoY: {
-    title: "REVENUE YoY",
-    desc: "Current quarter vs same quarter last year (Q0 vs Q4).",
+    title: "REVENUE YoY (SAME QUARTER)",
+    desc: "Revenue change vs same quarter last year.",
     formula: "(Q0 − Q4) ÷ |Q4|"
   },
   netIncomeQoQ: {
     title: "NET INCOME QoQ",
-    desc: "Current quarter vs previous quarter.",
+    desc: "Net income change vs previous quarter.",
     formula: "(Q0 − Q1) ÷ |Q1|"
   },
   netIncomeYoY: {
-    title: "NET INCOME YoY",
-    desc: "Current quarter vs same quarter last year (Q0 vs Q4).",
+    title: "NET INCOME YoY (SAME QUARTER)",
+    desc: "Net income change vs same quarter last year.",
     formula: "(Q0 − Q4) ÷ |Q4|"
   },
   annualYoY1: {
-    title: "ANNUAL YoY (Y0 vs Y1)",
-    desc: "Most recent full year vs prior full year.",
-    formula: "(Y0 − Y1) ÷ |Y1|"
+    title: "ANNUAL YoY (FY2025 vs FY2024)",
+    desc: "Full year comparison between most recent and prior year.",
+    formula: "(FY2025 − FY2024) ÷ |FY2024|"
   },
   annualYoY2: {
-    title: "ANNUAL YoY (Y1 vs Y2)",
-    desc: "Prior full year vs two years ago.",
-    formula: "(Y1 − Y2) ÷ |Y2|"
+    title: "ANNUAL YoY (FY2024 vs FY2023)",
+    desc: "Full year comparison between prior and two years ago.",
+    formula: "(FY2024 − FY2023) ÷ |FY2023|"
   },
   fcfQoQ: {
     title: "FCF QoQ",
-    desc: "Free cash flow: current quarter vs previous quarter.",
+    desc: "Free cash flow change vs previous quarter.",
     formula: "(Q0 FCF − Q1 FCF) ÷ |Q1 FCF|"
   },
   fcfYoY: {
-    title: "FCF YoY",
-    desc: "Free cash flow: current quarter vs same quarter last year.",
+    title: "FCF YoY (SAME QUARTER)",
+    desc: "Free cash flow change vs same quarter last year.",
     formula: "(Q0 FCF − Q4 FCF) ÷ |Q4 FCF|"
   },
   marginRank: {
@@ -1056,14 +853,12 @@ const TOOLTIPS = {
 
 const popup = document.getElementById('tooltipPopup');
 
-function showTooltip(el, key, vals) {
+function showTooltip(el, key) {
   const t = TOOLTIPS[key];
   if (!t) return;
   document.getElementById('ttTitle').textContent = t.title;
   document.getElementById('ttDesc').textContent = t.desc;
-  let formulaText = t.formula;
-  if (vals) formulaText += '\n\nCalculation:\n' + vals;
-  document.getElementById('ttFormula').textContent = formulaText;
+  document.getElementById('ttFormula').textContent = t.formula;
   popup.classList.add('visible');
   positionTooltip(el);
 }
@@ -1074,7 +869,7 @@ function hideTooltip() {
 
 function positionTooltip(el) {
   const rect = el.getBoundingClientRect();
-  const pw = 280;
+  const pw = 260;
   let left = rect.right + 8;
   let top = rect.top - 10;
   if (left + pw > window.innerWidth) left = rect.left - pw - 8;
@@ -1083,9 +878,8 @@ function positionTooltip(el) {
   popup.style.top = top + 'px';
 }
 
-function infoIcon(key, vals) {
-  const v = vals ? `,'${String(vals).replace(/'/g, "\\'")}'` : '';
-  return `<i class="info-icon" onclick="showTooltip(this,'${key}'${v})" onmouseleave="hideTooltip()">ⓘ</i>`;
+function infoIcon(key) {
+  return `<i class="info-icon" onclick="showTooltip(this,'${key}')" onmouseleave="hideTooltip()">ⓘ</i>`;
 }
 
 function fmt(n) {
@@ -1124,65 +918,6 @@ function toggleSection(el) {
   }
 }
 
-function sentimentBadgeClass(s) {
-  if (!s) return 'neutral';
-  s = s.toLowerCase();
-  if (s === 'bullish' || s === 'positive') return 'positive';
-  if (s === 'bearish' || s === 'negative') return 'negative';
-  return 'neutral';
-}
-
-function renderNewsImpactInline(ticker, data) {
-  const el = document.getElementById(`news-impact-${ticker}`);
-  if (!el) return;
-
-  function buildBlock(label, entry, todayOnly) {
-    const imp = entry && entry.impact;
-    const ts = entry && entry.fetchedAt;
-    if (!imp) {
-      return `<div class="ni-block">
-        <div class="ni-label">${label}</div>
-        <div class="ni-summary" style="color:var(--muted);font-style:italic">No analysis cached yet.</div>
-        <div class="ni-footer">
-          <button class="ni-refresh" onclick="getNews('${ticker}', this, ${todayOnly})">📰 Fetch & Analyze</button>
-        </div>
-      </div>`;
-    }
-    const sc = imp.sentimentScore >= 2 ? 'positive' : imp.sentimentScore <= -2 ? 'negative' : 'neutral';
-    return `<div class="ni-block">
-      <div class="ni-label">${label}</div>
-      <div class="ni-meta">
-        <span class="news-impact-badge ${sc}">${(imp.overallSentiment||'neutral').toUpperCase()}</span>
-        ${imp.sentimentScore != null ? `<span style="font-size:10px;color:var(--muted)">Score: ${imp.sentimentScore > 0 ? '+' : ''}${imp.sentimentScore}</span>` : ''}
-      </div>
-      <div class="ni-summary">${imp.summary || '—'}</div>
-      <div style="font-size:11px;color:var(--text);margin-bottom:4px">→ ${imp.tradingImplication || '—'}</div>
-      <div class="ni-footer">
-        <span class="ni-ts">🕐 ${ts || 'unknown'}</span>
-        <div style="display:flex;gap:8px;align-items:center">
-          <button class="ni-link" onclick="getNews('${ticker}', this, ${todayOnly})">↺ Refresh</button>
-          <button class="ni-link" onclick="getNews('${ticker}', this, ${todayOnly})">📰 View Full</button>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  el.innerHTML = buildBlock('7-DAY NEWS', data.sevenDay, false) + buildBlock('TODAY\'S NEWS', data.today, true);
-}
-
-async function loadCachedNewsImpact(ticker) {
-  try {
-    const res = await fetch(`/news/cached-impact/${ticker}`);
-    const data = await res.json();
-    renderNewsImpactInline(ticker, data);
-    console.log(`[NewsImpact] ${ticker} | 7d:${!!(data.sevenDay && data.sevenDay.impact)} today:${!!(data.today && data.today.impact)}`);
-  } catch(e) {
-    const el = document.getElementById(`news-impact-${ticker}`);
-    if (el) el.innerHTML = `<div style="font-size:11px;color:var(--muted)">Failed to load cached analysis.</div>`;
-    console.error(`[NewsImpact] FAIL ${ticker} | ${e}`);
-  }
-}
-
 function renderWatchlist(data) {
   const stocks = data.watchlist || [];
   if (!stocks.length) return '<div class="loading">No data yet. Click FETCH DATA.</div>';
@@ -1213,7 +948,7 @@ function renderWatchlist(data) {
 
   const cardsHTML = stocks.map(s => {
     const ai = s.aiSummary || {};
-    const qIncome = (s.quarterlyIncome || []).slice(0, 5);
+    const qIncome = s.quarterlyIncome || [];
     const aIncome = s.annualIncome || [];
     const aCashflow = s.annualCashflow || [];
     const cal = s.calendar || {};
@@ -1232,17 +967,9 @@ function renderWatchlist(data) {
           <div class="ticker-meta">${s.industry || s.sector || '—'}</div>
           ${s.fetchedAt ? `<div class="ticker-meta" style="margin-top:4px;color:var(--muted)">🕐 ${s.fetchedAt} <a href="/fetch/ticker/${s.ticker}" style="color:var(--accent2);text-decoration:none;margin-left:6px;font-size:10px">↺ REFRESH</a></div>` : ''}
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-          <div class="price-block">
-            <div class="price">$${s.price != null ? s.price.toFixed(2) : '—'}</div>
-            <div class="mktcap">MCap $${fmt(s.marketCap)}</div>
-          </div>
-          <div style="display:flex;gap:6px">
-            <button class="btn" style="font-size:11px;padding:4px 10px;border-color:var(--accent);color:var(--accent)"
-              onclick="getNews('${s.ticker}', this, false)">📰 7D</button>
-            <button class="btn" style="font-size:11px;padding:4px 10px;border-color:var(--warn);color:var(--warn)"
-              onclick="getNews('${s.ticker}', this, true)">📰 TODAY</button>
-          </div>
+        <div class="price-block">
+          <div class="price">$${s.price != null ? s.price.toFixed(2) : '—'}</div>
+          <div class="mktcap">MCap $${fmt(s.marketCap)}</div>
         </div>
       </div>
 
@@ -1264,10 +991,8 @@ function renderWatchlist(data) {
       </div>` : ''}
 
       ${ai.eventImpacts && ai.eventImpacts.length ? `
-      <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">UPCOMING EVENT IMPACT</div>
-        <span class="section-toggle" onclick="toggleSection(this)">+</span>
-        <div class="section-content">
+      <div class="event-impact-section">
+        <div class="section-title" style="margin-bottom:10px">UPCOMING EVENT IMPACT</div>
         ${ai.eventImpacts.map(e => `
         <div class="event-impact-item">
           <div class="event-impact-header">
@@ -1300,27 +1025,13 @@ function renderWatchlist(data) {
           </div>` : ''}
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
             ${e.strategy ? `<span class="event-impact-strategy">→ ${e.strategy}</span>` : '<span></span>'}
-            <button class="btn followup-btn" 
-              id="followup-btn-${s.ticker}-${(e.event||'').replace(/[^a-zA-Z0-9]/g,'_')}"
-              style="font-size:10px;padding:4px 12px;border-color:var(--accent2);color:var(--accent2)"
-              onclick="getFollowupPlan('${s.ticker}', '${(e.event||'').replace(/'/g,"\\'")}', this, false)">
+            <button class="btn" style="font-size:10px;padding:4px 12px;border-color:var(--accent2);color:var(--accent2)"
+              onclick="getFollowupPlan('${s.ticker}', '${(e.event||'').replace(/'/g,"\\'")}', this)">
               🤖 GET FOLLOW-UP PLAN
             </button>
           </div>
         </div>`).join('')}
-        </div>
       </div>` : ''}
-
-      ${ai.highlight ? `
-      <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT</div>
-        <span class="section-toggle" onclick="toggleSection(this)">+</span>
-        <div class="section-content">
-          <div id="news-impact-${s.ticker}" class="news-impact-inline">
-            <div class="news-impact-loading" style="font-size:11px;color:var(--muted);padding:6px 0">Loading cached analysis...</div>
-          </div>
-        </div>
-      </div>`  : ''}
 
       ${ai.highlight ? `
       <div class="card-section">
@@ -1346,70 +1057,33 @@ function renderWatchlist(data) {
         <div class="section-content">
             <div class="metrics-grid">
             <div class="metric">
-                ${(() => {
-                  const ni = annual['Net Income']; const rev = annual['Total Revenue'];
-                  const pct = s.annualProfitMargin;
-                  return `<div class="m-label">ANNUAL MARGIN ${infoIcon('annualMargin', `($${fmt(ni)} ÷ $${fmt(rev)}) = ${pct!=null?(pct*100).toFixed(1)+'%':'—'}`)}</div>`;
-                })()}
+                <div class="m-label">ANNUAL MARGIN ${infoIcon('annualMargin')}</div>
                 <div class="m-value">${s.annualProfitMargin != null ? (s.annualProfitMargin*100).toFixed(1)+'%' : '—'}</div>
-                ${(() => {
-                  const y0 = (aIncome[0]||{})['Net Income']; const y1 = (aIncome[1]||{})['Net Income'];
-                  const r = ac.netIncome_yoy_1;
-                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('annualYoY1', `(Y0-Y1)/|Y1| = ($${fmt(y0)}-$${fmt(y1)})/|$${fmt(y1)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
-                })()}
+                <div class="m-change ${pctClass(ac.netIncome_yoy_1)}">${fmtPct(ac.netIncome_yoy_1)} YoY ${infoIcon('annualYoY1')}</div>
             </div>
             <div class="metric">
-                ${(() => {
-                  const cash = (s.annualBalance||[{}])[0]['Cash And Cash Equivalents'];
-                  const debt = (s.annualBalance||[{}])[0]['Total Debt'];
-                  return `<div class="m-label">NET CASH ${infoIcon('netCash', `$${fmt(cash)} − $${fmt(debt)} = $${fmt(s.netCash)}`)}</div>`;
-                })()}
+                <div class="m-label">NET CASH ${infoIcon('netCash')}</div>
                 <div class="m-value ${s.netCash >= 0 ? 'up' : 'down'}">$${fmt(s.netCash)}</div>
             </div>
             <div class="metric">
-                ${(() => {
-                  const ocf = s.latestOCF; const capex = s.latestCapex;
-                  return `<div class="m-label">LATEST FCF ${infoIcon('fcf', `$${fmt(ocf)} − $${fmt(capex)} = $${fmt(s.latestFCF)}`)}</div>`;
-                })()}
+                <div class="m-label">LATEST FCF ${infoIcon('fcf')}</div>
                 <div class="m-value">$${fmt(s.latestFCF)}</div>
-                ${(() => {
-                  const q0 = (s.quarterlyCashflow||[])[0]; const q1 = (s.quarterlyCashflow||[])[1];
-                  const f0 = q0&&q0['Free Cash Flow']; const f1 = q1&&q1['Free Cash Flow'];
-                  const r = qc.fcf_qoq;
-                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} QoQ ${infoIcon('fcfQoQ', `(Q0-Q1)/|Q1| = ($${fmt(f0)}-$${fmt(f1)})/|$${fmt(f1)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
-                })()}
+                <div class="m-change ${pctClass(qc.fcf_qoq)}">${fmtPct(qc.fcf_qoq)} QoQ ${infoIcon('fcfQoQ')}</div>
             </div>
             <div class="metric">
-                ${(() => {
-                  const q0v = latest['Total Revenue']; const q1v = (qIncome[1]||{})['Total Revenue'];
-                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Total Revenue'];
-                  return `<div class="m-label">Q REVENUE ${infoIcon('revenueQoQ', `(Q0-Q1)/|Q1| = ($${fmt(q0v)}-$${fmt(q1v)})/|$${fmt(q1v)}| = ${fmtPct(qc.revenue_qoq)}`)}</div>`;
-                })()}
+                <div class="m-label">Q REVENUE ${infoIcon('revenueQoQ')}</div>
                 <div class="m-value">$${fmt(latest['Total Revenue'])}</div>
                 <div class="m-change ${pctClass(qc.revenue_qoq)}">${fmtPct(qc.revenue_qoq)} QoQ</div>
-                ${(() => {
-                  const q0v = latest['Total Revenue'];
-                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Total Revenue'];
-                  const r = qc.revenue_yoy;
-                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('revenueYoY', `(Q0-Q4)/|Q4| = ($${fmt(q0v)}-$${fmt(q4v)})/|$${fmt(q4v)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
-                })()}
+                <div class="m-change ${pctClass(qc.revenue_yoy)}">${fmtPct(qc.revenue_yoy)} YoY ${infoIcon('revenueYoY')}</div>
             </div>
             <div class="metric">
-                ${(() => {
-                  const q0v = latest['Net Income']; const q1v = (qIncome[1]||{})['Net Income'];
-                  return `<div class="m-label">Q NET INCOME ${infoIcon('netIncomeQoQ', `(Q0-Q1)/|Q1| = ($${fmt(q0v)}-$${fmt(q1v)})/|$${fmt(q1v)}| = ${fmtPct(qc.netIncome_qoq)}`)}</div>`;
-                })()}
+                <div class="m-label">Q NET INCOME ${infoIcon('netIncomeQoQ')}</div>
                 <div class="m-value">$${fmt(latest['Net Income'])}</div>
                 <div class="m-change ${pctClass(qc.netIncome_qoq)}">${fmtPct(qc.netIncome_qoq)} QoQ</div>
-                ${(() => {
-                  const q0v = latest['Net Income'];
-                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Net Income'];
-                  const r = qc.netIncome_yoy;
-                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('netIncomeYoY', `(Q0-Q4)/|Q4| = ($${fmt(q0v)}-$${fmt(q4v)})/|$${fmt(q4v)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
-                })()}
+                <div class="m-change ${pctClass(qc.netIncome_yoy)}">${fmtPct(qc.netIncome_yoy)} YoY ${infoIcon('netIncomeYoY')}</div>
             </div>
             <div class="metric">
-                <div class="m-label">CAPEX ${infoIcon('capex', `Latest Q: $${fmt(s.latestCapex)}`)}</div>
+                <div class="m-label">CAPEX ${infoIcon('capex')}</div>
                 <div class="m-value">$${fmt(s.latestCapex)}</div>
             </div>
             </div>
@@ -1417,7 +1091,7 @@ function renderWatchlist(data) {
       </div>
 
       <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">QUARTERLY INCOME & CASH FLOW</div>
+        <div class="section-title" onclick="toggleSection(this)">QUARTERLY INCOME</div>
         <span class="section-toggle" onclick="toggleSection(this)">+</span>
         <div class="section-content">
             <table class="fin-table">
@@ -1430,27 +1104,12 @@ function renderWatchlist(data) {
                 <td>${field}</td>
                 ${qIncome.map(q=>`<td>$${fmt(q[field])}</td>`).join('')}
             </tr>`).join('')}
-            ${(() => {
-              const qCashflow = (s.quarterlyCashflow||[]).slice(0,5);
-              return ['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-              <tr style="border-top:1px solid var(--border)">
-                <td style="color:var(--accent2)">${field === 'Capital Expenditure' ? 'CapEx' : field === 'Operating Cash Flow' ? 'Op. Cash Flow' : 'FCF'}</td>
-                ${qCashflow.map(c=>`<td>$${fmt(c[field])}</td>`).join('')}
-              </tr>`).join('');
-            })()}
-            ${(() => {
-              const qBal = (s.quarterlyBalance||[]).slice(0,5);
-              return `<tr style="border-top:1px solid var(--border)">
-                <td style="color:var(--warn)">Net Cash</td>
-                ${qBal.map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}
-              </tr>`;
-            })()}
             </table>
         </div>
       </div>
 
       <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">ANNUAL INCOME & CASH FLOW</div>
+        <div class="section-title" onclick="toggleSection(this)">ANNUAL INCOME</div>
         <span class="section-toggle" onclick="toggleSection(this)">+</span>
         <div class="section-content">
             <table class="fin-table">
@@ -1458,20 +1117,14 @@ function renderWatchlist(data) {
                 <th>METRIC</th>
                 ${aIncome.map(a=>`<th>${a.date}</th>`).join('')}
             </tr>
-            ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
+            ${['Total Revenue','Gross Profit','Operating Income','Net Income','Free Cash Flow'].map(field=>`
             <tr>
-                <td>${field}</td>
-                ${aIncome.map(a=>`<td>$${fmt(a[field])}</td>`).join('')}
+                <td>${field === 'Free Cash Flow' ? 'FCF' : field}</td>
+                ${field === 'Free Cash Flow'
+                ? (s.annualCashflow||[]).map(c=>`<td>$${fmt(c[field])}</td>`).join('')
+                : aIncome.map(a=>`<td>$${fmt(a[field])}</td>`).join('')
+                }
             </tr>`).join('')}
-            ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-            <tr style="border-top:${field==='Operating Cash Flow'?'1px solid var(--border)':'none'}">
-                <td style="color:var(--accent2)">${field === 'Capital Expenditure' ? 'CapEx' : field === 'Operating Cash Flow' ? 'Op. Cash Flow' : 'FCF'}</td>
-                ${(s.annualCashflow||[]).map(c=>`<td>$${fmt(c[field])}</td>`).join('')}
-            </tr>`).join('')}
-            <tr style="border-top:1px solid var(--border)">
-                <td style="color:var(--warn)">Net Cash</td>
-                ${(s.annualBalance||[]).map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}
-            </tr>
             </table>
         </div>
       </div>
@@ -1513,30 +1166,6 @@ function renderWatchlist(data) {
         </div>
       </div>
 
-      ${s.bankChecklist && s.bankChecklist.length ? `
-      <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">🏦 BANK HEALTH CHECKLIST</div>
-        <span class="section-toggle" onclick="toggleSection(this)">+</span>
-        <div class="section-content">
-          <div class="bank-checklist">
-            ${s.bankChecklist.map(item => `
-            <div class="bank-check-item">
-              <div class="bank-check-left">
-                <span class="bank-check-icon">${item.pass === true ? '✅' : item.pass === false ? '❌' : '⚠️'}</span>
-                <div>
-                  <div class="bank-check-name">${item.metric}</div>
-                  <div class="bank-check-threshold">Threshold: ${item.threshold}</div>
-                </div>
-              </div>
-              <div class="bank-check-value ${item.pass === true ? 'pass' : item.pass === false ? 'fail' : 'unknown'}">
-                ${item.value || (item.auto ? '—' : 'Check Annual Report')}
-              </div>
-            </div>`).join('')}
-          </div>
-          <span class="bank-guide-btn" onclick="showBankGuide('${s.ticker}')">📖 View Bank Metrics Guide & Benchmarks</span>
-        </div>
-      </div>` : ''}
-
       ${s.dividends && s.dividends.length ? `
       <div class="card-section">
         <div class="section-title" onclick="toggleSection(this)">RECENT DIVIDENDS</div>
@@ -1555,10 +1184,9 @@ function renderWatchlist(data) {
   return summaryHTML + `<div class="stocks-grid">${cardsHTML}</div>`;
 }
 
-let gainersMarket = 'cdn';
-
-function renderGainersTable(gainers) {
-  if (!gainers.length) return '<div class="loading" style="padding:40px">No gainers data available for this market.</div>';
+function renderGainers(data) {
+  const gainers = data.dailyGainers || [];
+  if (!gainers.length) return '<div class="loading">No gainers data available.</div>';
   return `
     <table class="gainers-table">
       <thead>
@@ -1588,34 +1216,6 @@ function renderGainersTable(gainers) {
         </tr>`).join('')}
       </tbody>
     </table>`;
-}
-
-function switchGainersMarket(market, btn) {
-  gainersMarket = market;
-  document.querySelectorAll('.gainers-toggle-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const data = window._lastGainersData;
-  if (!data) return;
-  const gainers = market === 'cdn' ? (data.dailyGainersCDN || []) : (data.dailyGainers || []);
-  document.getElementById('gainersTableContainer').innerHTML = renderGainersTable(gainers);
-}
-
-function renderGainers(data) {
-  window._lastGainersData = data;
-  const cdnGainers = data.dailyGainersCDN || [];
-  const usGainers = data.dailyGainers || [];
-  const active = gainersMarket === 'cdn' ? cdnGainers : usGainers;
-  return `
-    <div class="gainers-toggle">
-      <button class="gainers-toggle-btn ${gainersMarket === 'cdn' ? 'active' : ''}"
-        onclick="switchGainersMarket('cdn', this)">🍁 TSX (Canada)</button>
-      <button class="gainers-toggle-btn ${gainersMarket === 'us' ? 'active' : ''}"
-        onclick="switchGainersMarket('us', this)">🇺🇸 US Market</button>
-      <span style="font-size:11px;color:var(--muted);align-self:center;margin-left:4px">
-        CDN: ${cdnGainers.length} · US: ${usGainers.length}
-      </span>
-    </div>
-    <div id="gainersTableContainer">${renderGainersTable(active)}</div>`;
 }
 
 function renderRecommendations(data) {
@@ -1686,14 +1286,12 @@ function showTab(name, el) {
 
 let dataLoaded = false;
 let wasRunning = false;
-let pendingReload = false;
 
 async function loadData() {
   try {
     const res = await fetch('/data');
     const data = await res.json();
     document.getElementById('watchlistContent').innerHTML = renderWatchlist(data);
-    (data.watchlist || []).forEach(s => loadCachedNewsImpact(s.ticker));
     document.getElementById('gainersContent').innerHTML = renderGainers(data);
     document.getElementById('peersContent').innerHTML = renderPeers(data);
     document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data);
@@ -1701,13 +1299,6 @@ async function loadData() {
       document.getElementById('lastUpdated').textContent = 'Last updated: ' + data.lastUpdated;
     }
     dataLoaded = true;
-    // Check followup cache for all event buttons
-    (data.watchlist || []).forEach(stock => {
-      const ai = stock.aiSummary || {};
-      (ai.eventImpacts || []).forEach(e => {
-        if (e.event) checkFollowupCache(stock.ticker, e.event);
-      });
-    });
   } catch(e) {
     if (!dataLoaded) {
       document.getElementById('watchlistContent').innerHTML = '<div class="loading">No data yet — click FETCH DATA to begin.</div>';
@@ -1728,283 +1319,80 @@ async function pollStatus() {
   } catch(e) {}
 }
 
-function renderFollowupPlan(plan, ticker, eventName) {
-  let html = '';
-  if (plan.savedAt) {
-    const cacheLabel = plan.cached ? '📋 Cached' : '🤖 AI Generated';
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <span style="font-size:11px;color:var(--muted)">${cacheLabel} · Saved: ${plan.savedAt}</span>
-      <button class="btn" style="font-size:10px;padding:3px 10px;border-color:var(--warn);color:var(--warn)"
-        onclick="getFollowupPlan('${ticker}','${eventName.replace(/'/g,"\\'")}',this,true)">↺ REFRESH</button>
-    </div>`;
-  }
-  if (plan.steps && plan.steps.length) {
-    html += '<div style="margin-bottom:16px">';
-    plan.steps.forEach(step => {
-      html += `
-      <div class="modal-step">
-        <div class="modal-step-header">
-          <span class="modal-step-title">${step.title||''}</span>
-          <div style="display:flex;gap:6px">
-            ${step.fetchRequired ? `<span class="modal-step-fetch">↺ FETCH REQUIRED</span>` : ''}
-            <span class="modal-step-date">${step.date||''}</span>
-          </div>
-        </div>
-        <div class="modal-step-instructions">${step.instructions||''}</div>
-        ${step.sources && step.sources.length ? `
-        <div class="modal-step-sources">
-          ${step.sources.map(s=>`<span class="modal-step-source">${s}</span>`).join('')}
-        </div>` : ''}
-      </div>`;
-    });
-    html += '</div>';
-  }
-  if (plan.redFlags || plan.greenFlags) {
-    html += '<div class="modal-flags">';
-    if (plan.redFlags && plan.redFlags.length) {
-      html += `<div class="modal-flag-section">
-        <div class="modal-flag-title red">⚠ RED FLAGS</div>
-        <ul class="modal-flag-list red">${plan.redFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
-      </div>`;
-    }
-    if (plan.greenFlags && plan.greenFlags.length) {
-      html += `<div class="modal-flag-section">
-        <div class="modal-flag-title green">✓ GREEN FLAGS</div>
-        <ul class="modal-flag-list green">${plan.greenFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
-      </div>`;
-    }
-    html += '</div>';
-  }
-  if (plan.decisionPoint) {
-    html += `<div class="modal-decision">
-      <div class="modal-decision-label">DECISION POINT</div>
-      ${plan.decisionPoint}
-    </div>`;
-  }
-  return html;
-}
-
-async function checkFollowupCache(ticker, eventName) {
-  try {
-    const res = await fetch(`/followup/check/${ticker}/${encodeURIComponent(eventName)}`);
-    const data = await res.json();
-    const btnId = `followup-btn-${ticker}-${eventName.replace(/[^a-zA-Z0-9]/g,'_')}`;
-    const btn = document.getElementById(btnId);
-    if (btn && data.exists) {
-      btn.textContent = `📋 VIEW PLAN · ${data.savedAt || ''}`;
-      btn.style.borderColor = 'var(--up)';
-      btn.style.color = 'var(--up)';
-    }
-  } catch(e) {}
-}
-
-async function getFollowupPlan(ticker, eventName, btn, forceRefresh=false) {
+async function getFollowupPlan(ticker, eventName, btn) {
   const modal = document.getElementById('followupModal');
   const body = document.getElementById('followupBody');
   const title = document.getElementById('followupTitle');
   const subtitle = document.getElementById('followupSubtitle');
   title.textContent = ticker + ' — ' + eventName;
-  subtitle.textContent = forceRefresh ? 'Refreshing AI plan...' : 'Loading follow-up plan...';
-  body.innerHTML = `<div class="modal-loading">${forceRefresh ? '🤖 Regenerating AI plan...' : '📋 Loading plan...'}<br><span style="font-size:11px;color:var(--muted)">This may take 30-60 seconds</span></div>`;
+  subtitle.textContent = 'Generating AI follow-up plan...';
+  body.innerHTML = '<div class="modal-loading">🤖 AI is generating your step-by-step plan...<br><span style="font-size:11px;color:var(--muted)">This may take 30-60 seconds</span></div>';
   modal.classList.add('visible');
-  const origText = btn.textContent;
   btn.textContent = '⏳ Loading...';
   btn.disabled = true;
   try {
-    const url = `/followup/${ticker}/${encodeURIComponent(eventName)}${forceRefresh ? '?refresh=1' : ''}`;
-    const res = await fetch(url);
+    const res = await fetch(`/followup/${ticker}/${encodeURIComponent(eventName)}`);
     const plan = await res.json();
     if (plan.error) {
       body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Error: ${plan.error}</div>`;
       return;
     }
     subtitle.textContent = plan.summary || '';
-    body.innerHTML = renderFollowupPlan(plan, ticker, eventName);
-
-    const btnId = `followup-btn-${ticker}-${eventName.replace(/[^a-zA-Z0-9]/g,'_')}`;
-    const origBtn = document.getElementById(btnId);
-    if (origBtn) {
-      origBtn.textContent = `📋 VIEW PLAN · ${plan.savedAt || ''}`;
-      origBtn.style.borderColor = 'var(--up)';
-      origBtn.style.color = 'var(--up)';
+    let html = '';
+    if (plan.steps && plan.steps.length) {
+      html += '<div style="margin-bottom:16px">';
+      plan.steps.forEach(step => {
+        html += `
+        <div class="modal-step">
+          <div class="modal-step-header">
+            <span class="modal-step-title">${step.title||''}</span>
+            <div style="display:flex;gap:6px">
+              ${step.fetchRequired ? `<span class="modal-step-fetch">↺ FETCH REQUIRED</span>` : ''}
+              <span class="modal-step-date">${step.date||''}</span>
+            </div>
+          </div>
+          <div class="modal-step-instructions">${step.instructions||''}</div>
+          ${step.sources && step.sources.length ? `
+          <div class="modal-step-sources">
+            ${step.sources.map(s=>`<span class="modal-step-source">${s}</span>`).join('')}
+          </div>` : ''}
+        </div>`;
+      });
+      html += '</div>';
     }
+    if (plan.redFlags || plan.greenFlags) {
+      html += '<div class="modal-flags">';
+      if (plan.redFlags && plan.redFlags.length) {
+        html += `<div class="modal-flag-section">
+          <div class="modal-flag-title red">⚠ RED FLAGS</div>
+          <ul class="modal-flag-list red">${plan.redFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>`;
+      }
+      if (plan.greenFlags && plan.greenFlags.length) {
+        html += `<div class="modal-flag-section">
+          <div class="modal-flag-title green">✓ GREEN FLAGS</div>
+          <ul class="modal-flag-list green">${plan.greenFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>`;
+      }
+      html += '</div>';
+    }
+    if (plan.decisionPoint) {
+      html += `<div class="modal-decision">
+        <div class="modal-decision-label">DECISION POINT</div>
+        ${plan.decisionPoint}
+      </div>`;
+    }
+    body.innerHTML = html;
   } catch(e) {
-    console.error('Followup error:', e);
     body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Failed to load plan. Check logs.</div>`;
   } finally {
-    btn.textContent = origText;
+    btn.textContent = '🤖 GET FOLLOW-UP PLAN';
     btn.disabled = false;
   }
-}
-
-async function getNews(ticker, btn, todayOnly=false) {
-  const modal = document.getElementById('newsModal');
-  const body = document.getElementById('newsBody');
-  const title = document.getElementById('newsTitle');
-  const subtitle = document.getElementById('newsSubtitle');
-  title.textContent = ticker + (todayOnly ? ' — TODAY\'S NEWS' : ' — 7 DAY NEWS');
-  subtitle.textContent = todayOnly ? 'Fetching today\'s news...' : 'Fetching last 7 days of news...';
-  body.innerHTML = `<div class="modal-loading">📰 Fetching ${todayOnly ? "today's" : "7-day"} news & running AI analysis...<br><span style="font-size:11px;color:var(--muted)">This may take 30-60 seconds</span></div>`;
-  modal.classList.add('visible');
-  const origText = btn.textContent;
-  btn.textContent = '⏳ Loading...';
-  btn.disabled = true;
-  try {
-    const url = `/news/${ticker}${todayOnly ? '?today=1' : ''}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log('News response:', JSON.stringify(data).slice(0, 500));
-    if (data.error && !data.items.length) {
-      body.innerHTML = `<div class="modal-loading" style="color:var(--muted)">${data.error}</div>`;
-      return;
-    }
-    const impact = data.impact || {};
-    const items = data.items || [];
-    const pc = data.priceContext || {};
-    const score = impact.sentimentScore || 0;
-    const sentiment = (impact.overallSentiment || 'neutral').toLowerCase();
-    const scoreClass = score > 0 ? 'positive' : score < 0 ? 'negative' : 'neutral-score';
-    const confirmation = (impact.marketConfirmation || 'MIXED').toUpperCase();
-    const cacheLabel = data.cached ? ' · from cache' : ' · live';
-    subtitle.textContent = `${items.length} articles${cacheLabel} · RSI ${pc.rsi14 || '—'} · Vol ${pc.volumeRatio || '—'}x avg`;
-
-    // Price context panel
-    const pctColor = v => v == null ? 'var(--muted)' : v >= 0 ? 'var(--up)' : 'var(--down)';
-    const pctFmt = v => v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
-    const rsi = pc.rsi14;
-    const rsiColor = rsi > 70 ? 'var(--down)' : rsi < 30 ? 'var(--up)' : 'var(--accent)';
-    const rsiWidth = rsi ? Math.min(100, rsi) : 50;
-
-    let html = `
-      <div class="price-context-grid">
-        <div class="price-context-card">
-          <div class="price-context-label">1D CHANGE</div>
-          <div class="price-context-value" style="color:${pctColor(pc.change1d)}">${pctFmt(pc.change1d)}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">7D CHANGE</div>
-          <div class="price-context-value" style="color:${pctColor(pc.change7d)}">${pctFmt(pc.change7d)}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">30D CHANGE</div>
-          <div class="price-context-value" style="color:${pctColor(pc.change30d)}">${pctFmt(pc.change30d)}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">VOL RATIO</div>
-          <div class="price-context-value" style="color:${pc.volumeRatio > 2 ? 'var(--warn)' : 'var(--text)'}">${pc.volumeRatio || '—'}x</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">RSI 14</div>
-          <div class="price-context-value" style="color:${rsiColor}">${rsi || '—'}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">vs MA20</div>
-          <div class="price-context-value" style="color:${pctColor(pc.priceVsMa20)}">${pctFmt(pc.priceVsMa20)}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">vs MA50</div>
-          <div class="price-context-value" style="color:${pctColor(pc.priceVsMa50)}">${pctFmt(pc.priceVsMa50)}</div>
-        </div>
-        <div class="price-context-card">
-          <div class="price-context-label">PRICE</div>
-          <div class="price-context-value">$${pc.currentPrice || '—'}</div>
-        </div>
-      </div>
-      ${rsi ? `<div class="rsi-bar-wrap">
-        <div class="rsi-bar-label"><span>OVERSOLD (30)</span><span>RSI ${rsi}</span><span>OVERBOUGHT (70)</span></div>
-        <div class="rsi-bar-track">
-          <div class="rsi-bar-fill" style="width:${rsiWidth}%;background:${rsiColor}"></div>
-        </div>
-      </div>` : ''}
-      <div style="margin-bottom:14px">
-        <span class="confirmation-badge ${confirmation}">
-          ${confirmation === 'CONFIRMS' ? '✓' : confirmation === 'CONTRADICTS' ? '✗' : '~'}
-          MARKET ${confirmation} NEWS SENTIMENT
-        </span>
-      </div>
-      <div class="news-sentiment-bar ${sentiment}">
-        <div class="news-score ${scoreClass}">${score > 0 ? '+' : ''}${score}</div>
-        <div class="news-sentiment-info">
-          <div class="news-sentiment-label">${sentiment.toUpperCase()} SENTIMENT</div>
-          <div class="news-summary-text">${impact.summary || ''}</div>
-        </div>
-      </div>`;
-
-    if (impact.priceImpact || impact.tradingImplication) {
-      html += `<div class="news-meta-row">
-        ${impact.priceImpact ? `<div class="news-meta-card">
-          <div class="news-meta-label">PRICE IMPACT</div>
-          <div class="news-meta-value">${impact.priceImpact}</div>
-        </div>` : ''}
-        ${impact.tradingImplication ? `<div class="news-meta-card">
-          <div class="news-meta-label">TRADING IMPLICATION</div>
-          <div class="news-meta-value">${impact.tradingImplication}</div>
-        </div>` : ''}
-      </div>`;
-    }
-    if (impact.watchFor) {
-      html += `<div class="news-meta-card" style="margin-bottom:16px">
-        <div class="news-meta-label">WATCH FOR</div>
-        <div class="news-meta-value">${impact.watchFor}</div>
-      </div>`;
-    }
-    if (impact.keyThemes && impact.keyThemes.length) {
-      html += `<div class="news-themes">${impact.keyThemes.map(t=>`<span class="news-theme">${t}</span>`).join('')}</div>`;
-    }
-    html += `<div class="news-divider">ARTICLES (${items.length})</div>`;
-    const aiItems = {};
-    (impact.newsItems || []).forEach(n => { aiItems[n.title] = n; });
-    items.forEach(item => {
-      const ai = aiItems[item.title] || {};
-      const impactType = (ai.impact || 'neutral').toLowerCase();
-      const sig = (ai.significance || 'low').toLowerCase();
-      const date = item.pubDate ? item.pubDate.slice(0,10) : '';
-      html += `
-      <div class="news-item">
-        <div class="news-item-header">
-          <div class="news-item-title">
-            ${item.url ? `<a href="${item.url}" target="_blank">${item.title}</a>` : item.title}
-          </div>
-          <span class="news-impact-badge ${impactType}">${impactType.toUpperCase()}</span>
-        </div>
-        <div class="news-item-meta">
-          ${item.provider || ''} · ${date}
-          ${sig !== 'low' ? `· <span class="news-sig-${sig}">${sig.toUpperCase()} SIGNIFICANCE</span>` : ''}
-        </div>
-        ${item.summary ? `<div class="news-item-summary">${item.summary.slice(0,200)}${item.summary.length>200?'...':''}</div>` : ''}
-        ${ai.oneLineSummary ? `<div class="news-item-impact">→ ${ai.oneLineSummary}</div>` : ''}
-      </div>`;
-    });
-    body.innerHTML = html;
-    loadCachedNewsImpact(ticker);
-  } catch(e) {
-    console.error('News error:', e);
-    body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Failed to load news: ${e.message}</div>`;
-  } finally {
-    btn.textContent = origText;
-    btn.disabled = false;
-  }
-}
-
-function showGuideTab(name, el) {
-  document.querySelectorAll('.guide-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.guide-tab-panel').forEach(p => p.classList.remove('active'));
-  if (el) el.classList.add('active');
-  const panel = document.getElementById('guide-' + name);
-  if (panel) panel.classList.add('active');
 }
 
 function closeModal() {
   document.getElementById('followupModal').classList.remove('visible');
-  document.getElementById('newsModal').classList.remove('visible');
-  document.getElementById('bankGuideModal').classList.remove('visible');
-  if (pendingReload) loadData();
-}
-
-function showBankGuide(ticker) {
-  document.getElementById('bankGuideModal').classList.add('visible');
-  document.getElementById('bankGuideTitle').textContent = ticker + ' — BANK METRICS GUIDE';
-  showGuideTab('checklist', document.querySelector('.guide-tab'));
 }
 
 loadData();
@@ -2021,169 +1409,6 @@ setInterval(pollStatus, 3000);
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div id="followupBody"></div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="newsModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-header">
-      <div>
-        <div class="modal-title" id="newsTitle"></div>
-        <div class="modal-subtitle" id="newsSubtitle"></div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div id="newsBody"></div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="bankGuideModal" onclick="if(event.target===this)closeModal()">
-  <div class="modal" style="max-width:780px">
-    <div class="modal-header">
-      <div>
-        <div class="modal-title" id="bankGuideTitle">BANK METRICS GUIDE</div>
-        <div class="modal-subtitle">5-step health checklist with benchmarks</div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
-    <div class="guide-tabs">
-      <div class="guide-tab active" onclick="showGuideTab('checklist', this)">CHECKLIST</div>
-      <div class="guide-tab" onclick="showGuideTab('explained', this)">EXPLAINED</div>
-      <div class="guide-tab" onclick="showGuideTab('benchmarks', this)">BENCHMARKS</div>
-      <div class="guide-tab" onclick="showGuideTab('howto', this)">HOW TO READ</div>
-    </div>
-
-    <div class="guide-tab-panel active" id="guide-checklist">
-      <table class="guide-table">
-        <tr><th>METRIC</th><th>THRESHOLD</th><th>WHY IT MATTERS</th><th>DATA SOURCE</th></tr>
-        <tr>
-          <td>ROE</td>
-          <td><span class="guide-pass">> 12%</span></td>
-          <td>Measures how efficiently the bank generates profit from shareholders' equity. Below 12% = destroying value.</td>
-          <td>Auto-computed</td>
-        </tr>
-        <tr>
-          <td>Loan-to-Deposit (proxy)</td>
-          <td><span class="guide-pass">< 90%</span></td>
-          <td>How much of deposits are lent out. Too high = liquidity risk. Too low = inefficient capital use.</td>
-          <td>Auto-computed</td>
-        </tr>
-        <tr>
-          <td>CET1 Ratio</td>
-          <td><span class="guide-pass">> 10%</span></td>
-          <td>Core capital buffer vs risk-weighted assets. Regulatory minimum. Canadian banks typically 11-13%.</td>
-          <td>Annual Report / Earnings Release</td>
-        </tr>
-        <tr>
-          <td>LCR</td>
-          <td><span class="guide-pass">> 100%</span></td>
-          <td>Liquidity Coverage Ratio — can the bank survive 30 days of stress? Regulatory minimum is 100%.</td>
-          <td>Annual Report (Liquidity section)</td>
-        </tr>
-        <tr>
-          <td>NPL Ratio</td>
-          <td><span class="guide-pass">< 2%</span></td>
-          <td>Non-performing loans as % of total loans. Rising NPL = credit quality deteriorating.</td>
-          <td>Annual Report (Credit Risk section)</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="guide-tab-panel" id="guide-explained">
-      <table class="guide-table">
-        <tr><th>METRIC</th><th>FULL NAME</th><th>FORMULA</th></tr>
-        <tr>
-          <td>ROE</td>
-          <td>Return on Equity</td>
-          <td>Net Income ÷ Average Shareholders Equity × 100</td>
-        </tr>
-        <tr>
-          <td>Loan-to-Deposit</td>
-          <td>Loan-to-Deposit Ratio (proxy)</td>
-          <td>Total Debt ÷ Total Assets × 100 (proxy — true L/D requires internal data)</td>
-        </tr>
-        <tr>
-          <td>CET1</td>
-          <td>Common Equity Tier 1 Ratio</td>
-          <td>CET1 Capital ÷ Risk-Weighted Assets × 100 (Basel III standard)</td>
-        </tr>
-        <tr>
-          <td>LCR</td>
-          <td>Liquidity Coverage Ratio</td>
-          <td>High-Quality Liquid Assets ÷ Net Cash Outflows over 30 days × 100</td>
-        </tr>
-        <tr>
-          <td>NPL</td>
-          <td>Non-Performing Loan Ratio</td>
-          <td>Non-Performing Loans ÷ Total Loans × 100</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="guide-tab-panel" id="guide-benchmarks">
-      <table class="guide-table">
-        <tr><th>METRIC</th><th><span class="guide-pass">STRONG</span></th><th><span class="guide-warn">ACCEPTABLE</span></th><th><span class="guide-fail">WEAK</span></th></tr>
-        <tr>
-          <td>ROE</td>
-          <td class="guide-pass">> 15%</td>
-          <td class="guide-warn">12–15%</td>
-          <td class="guide-fail">< 12%</td>
-        </tr>
-        <tr>
-          <td>Loan-to-Deposit</td>
-          <td class="guide-pass">< 75%</td>
-          <td class="guide-warn">75–90%</td>
-          <td class="guide-fail">> 90%</td>
-        </tr>
-        <tr>
-          <td>CET1</td>
-          <td class="guide-pass">> 13%</td>
-          <td class="guide-warn">10–13%</td>
-          <td class="guide-fail">< 10%</td>
-        </tr>
-        <tr>
-          <td>LCR</td>
-          <td class="guide-pass">> 130%</td>
-          <td class="guide-warn">100–130%</td>
-          <td class="guide-fail">< 100%</td>
-        </tr>
-        <tr>
-          <td>NPL Ratio</td>
-          <td class="guide-pass">< 1%</td>
-          <td class="guide-warn">1–2%</td>
-          <td class="guide-fail">> 2%</td>
-        </tr>
-      </table>
-      <div style="margin-top:14px;font-size:11px;color:var(--muted);line-height:1.7">
-        <strong style="color:var(--text)">Canadian Big 6 context:</strong> BMO, RBC, TD, BNS, CM, NA typically maintain CET1 > 12%, LCR > 130%, NPL < 0.5% due to OSFI oversight. Use these as peer benchmarks.
-      </div>
-    </div>
-
-    <div class="guide-tab-panel" id="guide-howto">
-      <div style="font-size:12px;line-height:1.8;color:var(--text)">
-        <div style="margin-bottom:14px">
-          <strong style="color:var(--accent)">Step 1 — Find the Annual Report</strong><br>
-          Go to the bank's Investor Relations page → Annual Reports → Most Recent PDF
-        </div>
-        <div style="margin-bottom:14px">
-          <strong style="color:var(--accent)">Step 2 — Find CET1</strong><br>
-          Search PDF for "CET1" or "Common Equity Tier 1". Usually in Capital Management section. Canadian banks report quarterly via earnings releases too.
-        </div>
-        <div style="margin-bottom:14px">
-          <strong style="color:var(--accent)">Step 3 — Find LCR</strong><br>
-          Search for "Liquidity Coverage Ratio" or "LCR". In Liquidity Risk Management section. Also disclosed in quarterly supplemental packages.
-        </div>
-        <div style="margin-bottom:14px">
-          <strong style="color:var(--accent)">Step 4 — Find NPL</strong><br>
-          Search for "Non-performing" or "Impaired Loans". In Credit Risk section. Usually shown as $ amount — divide by total loans disclosed nearby.
-        </div>
-        <div>
-          <strong style="color:var(--accent)">Step 5 — Quick links for Canadian banks</strong><br>
-          BMO: bmo.com/investor-relations &nbsp;|&nbsp; BNS: scotiabank.com/investors<br>
-          RBC: rbc.com/investorrelations &nbsp;|&nbsp; TD: td.com/investor-relations
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 

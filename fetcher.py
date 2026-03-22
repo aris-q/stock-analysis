@@ -1,10 +1,101 @@
 import requests
 import yfinance as yf
 import logging
+import math
+from datetime import datetime, timezone, timedelta
 
 log = logging.getLogger(__name__)
 
+def fetch_daily_gainers():
+    us_gainers = fetch_us_gainers()
+    cdn_gainers = fetch_cdn_gainers()
+    return {"us": us_gainers, "cdn": cdn_gainers}
 
+
+def fetch_us_gainers():
+    try:
+        screener = yf.screen("day_gainers")
+        quotes = screener.get("quotes", [])
+        gainers = [
+            {
+                "ticker": q.get("symbol"),
+                "percentGain": round(q.get("regularMarketChangePercent", 0), 2),
+                "price": q.get("regularMarketPrice"),
+                "volume": q.get("regularMarketVolume"),
+            }
+            for q in quotes[:10]
+        ]
+        log.info(f"US gainers fetched: {len(gainers)}")
+        return gainers
+    except Exception as e:
+        log.error(f"US gainers FAIL: {e}")
+        return []
+
+
+def fetch_cdn_gainers():
+    try:
+        r = requests.post(
+            'https://app-money.tmx.com/graphql',
+            headers={
+                'User-Agent': 'Mozilla/5.0',
+                'Content-Type': 'application/json',
+                'Origin': 'https://money.tmx.com',
+                'Referer': 'https://money.tmx.com/'
+            },
+            json={'query': '{ getMarketMovers(statExchange: "TSX", sortOrder: "DESC", limit: 100) { symbol percentChange price volume } }'},
+            timeout=10
+        )
+        data = r.json()
+        movers = data.get('data', {}).get('getMarketMovers', [])
+        gainers = [
+            {
+                "ticker": f"{m['symbol']}.TO",
+                "percentGain": round(m['percentChange'], 2),
+                "price": m['price'],
+                "volume": m['volume'],
+            }
+            for m in movers
+            if m.get('percentChange', 0) > 0
+        ]
+        gainers.sort(key=lambda x: x['percentGain'], reverse=True)
+        top = gainers[:10]
+        log.info(f"CDN gainers fetched: {len(top)}")
+        return top
+    except Exception as e:
+        log.error(f"CDN gainers FAIL: {e}")
+        return []
+
+def fetch_news(ticker):
+    try:
+        stock = yf.Ticker(ticker)
+        news = stock.news
+        cutoff = datetime.now(timezone.utc) - timedelta(days=7)
+        filtered = []
+        for item in news:
+            try:
+                content = item.get("content", {})
+                pub_date_str = content.get("pubDate") or content.get("displayTime")
+                if not pub_date_str:
+                    continue
+                pub_date = datetime.fromisoformat(pub_date_str.replace("Z", "+00:00"))
+                if pub_date < cutoff:
+                    continue
+                filtered.append({
+                    "title": content.get("title", ""),
+                    "summary": content.get("summary", ""),
+                    "pubDate": pub_date_str,
+                    "url": content.get("canonicalUrl", {}).get("url", ""),
+                    "provider": content.get("provider", {}).get("displayName", ""),
+                })
+            except Exception as e:
+                log.warning(f"News item parse FAIL: {ticker} | {e}")
+                continue
+        log.info(f"News fetched: {ticker} | {len(filtered)} articles (last 7 days)")
+        return filtered
+    except Exception as e:
+        log.error(f"News FAIL: {ticker} | {e}")
+        return []
+    
 def safe_get(df, field):
     try:
         if df is not None and field in df.index and not df.empty:
@@ -152,32 +243,97 @@ def fetch_yfinance(ticker):
             "events": events_data,
             "dividends": recent_dividends,
             "annualIncome": extract_periods(annual_income, INCOME_FIELDS, 3),
-            "quarterlyIncome": extract_periods(quarterly_income, INCOME_FIELDS, 4),
+            "quarterlyIncome": extract_periods(quarterly_income, INCOME_FIELDS, 8),
             "annualBalance": extract_periods(annual_balance, BALANCE_FIELDS, 3),
-            "quarterlyBalance": extract_periods(quarterly_balance, BALANCE_FIELDS, 4),
+            "quarterlyBalance": extract_periods(quarterly_balance, BALANCE_FIELDS, 8),
             "annualCashflow": extract_periods(annual_cashflow, CASHFLOW_FIELDS, 3),
-            "quarterlyCashflow": extract_periods(quarterly_cashflow, CASHFLOW_FIELDS, 4),
+            "quarterlyCashflow": extract_periods(quarterly_cashflow, CASHFLOW_FIELDS, 8),
         }
     except Exception as e:
         log.error(f"yfinance FAIL: {ticker} | {e}")
         return None
 
 
-def fetch_daily_gainers():
+# def fetch_daily_gainers():
+#     try:
+#         screener = yf.screen("day_gainers")
+#         quotes = screener.get("quotes", [])
+#         gainers = [
+#             {
+#                 "ticker": q.get("symbol"),
+#                 "percentGain": round(q.get("regularMarketChangePercent", 0), 2),
+#                 "price": q.get("regularMarketPrice"),
+#                 "volume": q.get("regularMarketVolume"),
+#             }
+#             for q in quotes
+#             if q.get("symbol", "").endswith(".TO")
+#         ][:10]
+#         log.info(f"Daily gainers (.TO) fetched: {len(gainers)}")
+#         return gainers
+#     except Exception as e:
+#         log.error(f"Daily gainers FAIL: {e}")
+#         return []
+
+def clean_float(v):
+    if v is None:
+        return None
     try:
-        screener = yf.screen("day_gainers")
-        quotes = screener.get("quotes", [])
-        gainers = [
-            {
-                "ticker": q.get("symbol"),
-                "percentGain": round(q.get("regularMarketChangePercent", 0), 2),
-                "price": q.get("regularMarketPrice"),
-                "volume": q.get("regularMarketVolume"),
-            }
-            for q in quotes[:10]
-        ]
-        log.info(f"Daily gainers fetched: {len(gainers)}")
-        return gainers
+        if math.isnan(v) or math.isinf(v):
+            return None
+        return round(v, 2)
+    except Exception:
+        return None
+
+def fetch_price_context(ticker):
+    try:
+        stock = yf.Ticker(ticker)
+        hist = stock.history(period="35d")
+        if hist.empty:
+            log.warning(f"Price context empty: {ticker}")
+            return {}
+
+        current_price = hist['Close'].iloc[-1]
+        price_1d_ago = hist['Close'].iloc[-2] if len(hist) >= 2 else None
+        price_7d_ago = hist['Close'].iloc[-7] if len(hist) >= 7 else None
+        price_30d_ago = hist['Close'].iloc[-30] if len(hist) >= 30 else None
+
+        vol_today = hist['Volume'].iloc[-1]
+        vol_avg_30d = hist['Volume'].iloc[-30:].mean()
+        vol_ratio = round(vol_today / vol_avg_30d, 2) if vol_avg_30d else None
+
+        def pct(current, prev):
+            if prev and prev != 0:
+                return round((current - prev) / prev * 100, 2)
+            return None
+
+        # RSI calculation (14-day)
+        delta = hist['Close'].diff()
+        gain = delta.clip(lower=0).rolling(14).mean()
+        loss = (-delta.clip(upper=0)).rolling(14).mean()
+        rs = gain / loss
+        rsi_series = 100 - (100 / (1 + rs))
+        rsi = round(rsi_series.iloc[-1], 1) if not rsi_series.empty else None
+
+        # 20-day and 50-day moving averages
+        ma20 = round(hist['Close'].rolling(20).mean().iloc[-1], 2) if len(hist) >= 20 else None
+        ma50 = round(hist['Close'].rolling(50).mean().iloc[-1], 2) if len(hist) >= 35 else None
+
+        context = {
+            "currentPrice": clean_float(current_price),
+            "change1d": clean_float(pct(current_price, price_1d_ago)),
+            "change7d": clean_float(pct(current_price, price_7d_ago)),
+            "change30d": clean_float(pct(current_price, price_30d_ago)),
+            "volumeToday": int(vol_today),
+            "volumeAvg30d": int(vol_avg_30d),
+            "volumeRatio": clean_float(vol_ratio),
+            "rsi14": clean_float(rsi),
+            "ma20": clean_float(ma20),
+            "ma50": clean_float(ma50),
+            "priceVsMa20": clean_float(pct(current_price, ma20) if ma20 else None),
+            "priceVsMa50": clean_float(pct(current_price, ma50) if ma50 else None),
+        }
+        log.info(f"Price context OK: {ticker} | rsi:{rsi} vol_ratio:{vol_ratio} 7d:{context['change7d']}%")
+        return context
     except Exception as e:
-        log.error(f"Daily gainers FAIL: {e}")
-        return []
+        log.error(f"Price context FAIL: {ticker} | {e}")
+        return {}

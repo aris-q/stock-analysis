@@ -793,15 +793,6 @@
     .news-item-meta { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
     .news-item-summary { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 6px; }
     .news-item-impact { font-size: 12px; color: var(--text); font-style: italic; }
-    .ni-block { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
-    .ni-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .ni-label { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 4px; }
-    .ni-summary { font-size: 12px; color: var(--text); line-height: 1.6; margin-bottom: 6px; }
-    .ni-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
-    .ni-footer { display: flex; align-items: center; justify-content: space-between; gap:8px; margin-top:6px; }
-    .ni-ts { font-size: 10px; color: var(--muted); }
-    .ni-link { font-size: 10px; color: var(--accent2); cursor: pointer; text-decoration: underline; background:none; border:none; padding:0; }
-    .ni-refresh { font-size: 10px; padding: 2px 8px; border-radius: 4px; border: 1px solid var(--accent2); color: var(--accent2); background: none; cursor: pointer; }
     .news-sig-high { color: var(--accent); }
     .news-sig-medium { color: var(--warn); }
     .news-sig-low { color: var(--muted); }
@@ -1124,65 +1115,6 @@ function toggleSection(el) {
   }
 }
 
-function sentimentBadgeClass(s) {
-  if (!s) return 'neutral';
-  s = s.toLowerCase();
-  if (s === 'bullish' || s === 'positive') return 'positive';
-  if (s === 'bearish' || s === 'negative') return 'negative';
-  return 'neutral';
-}
-
-function renderNewsImpactInline(ticker, data) {
-  const el = document.getElementById(`news-impact-${ticker}`);
-  if (!el) return;
-
-  function buildBlock(label, entry, todayOnly) {
-    const imp = entry && entry.impact;
-    const ts = entry && entry.fetchedAt;
-    if (!imp) {
-      return `<div class="ni-block">
-        <div class="ni-label">${label}</div>
-        <div class="ni-summary" style="color:var(--muted);font-style:italic">No analysis cached yet.</div>
-        <div class="ni-footer">
-          <button class="ni-refresh" onclick="getNews('${ticker}', this, ${todayOnly})">📰 Fetch & Analyze</button>
-        </div>
-      </div>`;
-    }
-    const sc = imp.sentimentScore >= 2 ? 'positive' : imp.sentimentScore <= -2 ? 'negative' : 'neutral';
-    return `<div class="ni-block">
-      <div class="ni-label">${label}</div>
-      <div class="ni-meta">
-        <span class="news-impact-badge ${sc}">${(imp.overallSentiment||'neutral').toUpperCase()}</span>
-        ${imp.sentimentScore != null ? `<span style="font-size:10px;color:var(--muted)">Score: ${imp.sentimentScore > 0 ? '+' : ''}${imp.sentimentScore}</span>` : ''}
-      </div>
-      <div class="ni-summary">${imp.summary || '—'}</div>
-      <div style="font-size:11px;color:var(--text);margin-bottom:4px">→ ${imp.tradingImplication || '—'}</div>
-      <div class="ni-footer">
-        <span class="ni-ts">🕐 ${ts || 'unknown'}</span>
-        <div style="display:flex;gap:8px;align-items:center">
-          <button class="ni-link" onclick="getNews('${ticker}', this, ${todayOnly})">↺ Refresh</button>
-          <button class="ni-link" onclick="getNews('${ticker}', this, ${todayOnly})">📰 View Full</button>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  el.innerHTML = buildBlock('7-DAY NEWS', data.sevenDay, false) + buildBlock('TODAY\'S NEWS', data.today, true);
-}
-
-async function loadCachedNewsImpact(ticker) {
-  try {
-    const res = await fetch(`/news/cached-impact/${ticker}`);
-    const data = await res.json();
-    renderNewsImpactInline(ticker, data);
-    console.log(`[NewsImpact] ${ticker} | 7d:${!!(data.sevenDay && data.sevenDay.impact)} today:${!!(data.today && data.today.impact)}`);
-  } catch(e) {
-    const el = document.getElementById(`news-impact-${ticker}`);
-    if (el) el.innerHTML = `<div style="font-size:11px;color:var(--muted)">Failed to load cached analysis.</div>`;
-    console.error(`[NewsImpact] FAIL ${ticker} | ${e}`);
-  }
-}
-
 function renderWatchlist(data) {
   const stocks = data.watchlist || [];
   if (!stocks.length) return '<div class="loading">No data yet. Click FETCH DATA.</div>';
@@ -1264,10 +1196,8 @@ function renderWatchlist(data) {
       </div>` : ''}
 
       ${ai.eventImpacts && ai.eventImpacts.length ? `
-      <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">UPCOMING EVENT IMPACT</div>
-        <span class="section-toggle" onclick="toggleSection(this)">+</span>
-        <div class="section-content">
+      <div class="event-impact-section">
+        <div class="section-title" style="margin-bottom:10px">UPCOMING EVENT IMPACT</div>
         ${ai.eventImpacts.map(e => `
         <div class="event-impact-item">
           <div class="event-impact-header">
@@ -1300,27 +1230,13 @@ function renderWatchlist(data) {
           </div>` : ''}
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
             ${e.strategy ? `<span class="event-impact-strategy">→ ${e.strategy}</span>` : '<span></span>'}
-            <button class="btn followup-btn" 
-              id="followup-btn-${s.ticker}-${(e.event||'').replace(/[^a-zA-Z0-9]/g,'_')}"
-              style="font-size:10px;padding:4px 12px;border-color:var(--accent2);color:var(--accent2)"
-              onclick="getFollowupPlan('${s.ticker}', '${(e.event||'').replace(/'/g,"\\'")}', this, false)">
+            <button class="btn" style="font-size:10px;padding:4px 12px;border-color:var(--accent2);color:var(--accent2)"
+              onclick="getFollowupPlan('${s.ticker}', '${(e.event||'').replace(/'/g,"\\'")}', this)">
               🤖 GET FOLLOW-UP PLAN
             </button>
           </div>
         </div>`).join('')}
-        </div>
       </div>` : ''}
-
-      ${ai.highlight ? `
-      <div class="card-section">
-        <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT</div>
-        <span class="section-toggle" onclick="toggleSection(this)">+</span>
-        <div class="section-content">
-          <div id="news-impact-${s.ticker}" class="news-impact-inline">
-            <div class="news-impact-loading" style="font-size:11px;color:var(--muted);padding:6px 0">Loading cached analysis...</div>
-          </div>
-        </div>
-      </div>`  : ''}
 
       ${ai.highlight ? `
       <div class="card-section">
@@ -1693,7 +1609,6 @@ async function loadData() {
     const res = await fetch('/data');
     const data = await res.json();
     document.getElementById('watchlistContent').innerHTML = renderWatchlist(data);
-    (data.watchlist || []).forEach(s => loadCachedNewsImpact(s.ticker));
     document.getElementById('gainersContent').innerHTML = renderGainers(data);
     document.getElementById('peersContent').innerHTML = renderPeers(data);
     document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data);
@@ -1701,13 +1616,6 @@ async function loadData() {
       document.getElementById('lastUpdated').textContent = 'Last updated: ' + data.lastUpdated;
     }
     dataLoaded = true;
-    // Check followup cache for all event buttons
-    (data.watchlist || []).forEach(stock => {
-      const ai = stock.aiSummary || {};
-      (ai.eventImpacts || []).forEach(e => {
-        if (e.event) checkFollowupCache(stock.ticker, e.event);
-      });
-    });
   } catch(e) {
     if (!dataLoaded) {
       document.getElementById('watchlistContent').innerHTML = '<div class="loading">No data yet — click FETCH DATA to begin.</div>';
@@ -1728,111 +1636,74 @@ async function pollStatus() {
   } catch(e) {}
 }
 
-function renderFollowupPlan(plan, ticker, eventName) {
-  let html = '';
-  if (plan.savedAt) {
-    const cacheLabel = plan.cached ? '📋 Cached' : '🤖 AI Generated';
-    html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-      <span style="font-size:11px;color:var(--muted)">${cacheLabel} · Saved: ${plan.savedAt}</span>
-      <button class="btn" style="font-size:10px;padding:3px 10px;border-color:var(--warn);color:var(--warn)"
-        onclick="getFollowupPlan('${ticker}','${eventName.replace(/'/g,"\\'")}',this,true)">↺ REFRESH</button>
-    </div>`;
-  }
-  if (plan.steps && plan.steps.length) {
-    html += '<div style="margin-bottom:16px">';
-    plan.steps.forEach(step => {
-      html += `
-      <div class="modal-step">
-        <div class="modal-step-header">
-          <span class="modal-step-title">${step.title||''}</span>
-          <div style="display:flex;gap:6px">
-            ${step.fetchRequired ? `<span class="modal-step-fetch">↺ FETCH REQUIRED</span>` : ''}
-            <span class="modal-step-date">${step.date||''}</span>
-          </div>
-        </div>
-        <div class="modal-step-instructions">${step.instructions||''}</div>
-        ${step.sources && step.sources.length ? `
-        <div class="modal-step-sources">
-          ${step.sources.map(s=>`<span class="modal-step-source">${s}</span>`).join('')}
-        </div>` : ''}
-      </div>`;
-    });
-    html += '</div>';
-  }
-  if (plan.redFlags || plan.greenFlags) {
-    html += '<div class="modal-flags">';
-    if (plan.redFlags && plan.redFlags.length) {
-      html += `<div class="modal-flag-section">
-        <div class="modal-flag-title red">⚠ RED FLAGS</div>
-        <ul class="modal-flag-list red">${plan.redFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
-      </div>`;
-    }
-    if (plan.greenFlags && plan.greenFlags.length) {
-      html += `<div class="modal-flag-section">
-        <div class="modal-flag-title green">✓ GREEN FLAGS</div>
-        <ul class="modal-flag-list green">${plan.greenFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
-      </div>`;
-    }
-    html += '</div>';
-  }
-  if (plan.decisionPoint) {
-    html += `<div class="modal-decision">
-      <div class="modal-decision-label">DECISION POINT</div>
-      ${plan.decisionPoint}
-    </div>`;
-  }
-  return html;
-}
-
-async function checkFollowupCache(ticker, eventName) {
-  try {
-    const res = await fetch(`/followup/check/${ticker}/${encodeURIComponent(eventName)}`);
-    const data = await res.json();
-    const btnId = `followup-btn-${ticker}-${eventName.replace(/[^a-zA-Z0-9]/g,'_')}`;
-    const btn = document.getElementById(btnId);
-    if (btn && data.exists) {
-      btn.textContent = `📋 VIEW PLAN · ${data.savedAt || ''}`;
-      btn.style.borderColor = 'var(--up)';
-      btn.style.color = 'var(--up)';
-    }
-  } catch(e) {}
-}
-
-async function getFollowupPlan(ticker, eventName, btn, forceRefresh=false) {
+async function getFollowupPlan(ticker, eventName, btn) {
   const modal = document.getElementById('followupModal');
   const body = document.getElementById('followupBody');
   const title = document.getElementById('followupTitle');
   const subtitle = document.getElementById('followupSubtitle');
   title.textContent = ticker + ' — ' + eventName;
-  subtitle.textContent = forceRefresh ? 'Refreshing AI plan...' : 'Loading follow-up plan...';
-  body.innerHTML = `<div class="modal-loading">${forceRefresh ? '🤖 Regenerating AI plan...' : '📋 Loading plan...'}<br><span style="font-size:11px;color:var(--muted)">This may take 30-60 seconds</span></div>`;
+  subtitle.textContent = 'Generating AI follow-up plan...';
+  body.innerHTML = '<div class="modal-loading">🤖 AI is generating your step-by-step plan...<br><span style="font-size:11px;color:var(--muted)">This may take 30-60 seconds</span></div>';
   modal.classList.add('visible');
-  const origText = btn.textContent;
   btn.textContent = '⏳ Loading...';
   btn.disabled = true;
   try {
-    const url = `/followup/${ticker}/${encodeURIComponent(eventName)}${forceRefresh ? '?refresh=1' : ''}`;
-    const res = await fetch(url);
+    const res = await fetch(`/followup/${ticker}/${encodeURIComponent(eventName)}`);
     const plan = await res.json();
     if (plan.error) {
       body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Error: ${plan.error}</div>`;
       return;
     }
     subtitle.textContent = plan.summary || '';
-    body.innerHTML = renderFollowupPlan(plan, ticker, eventName);
-
-    const btnId = `followup-btn-${ticker}-${eventName.replace(/[^a-zA-Z0-9]/g,'_')}`;
-    const origBtn = document.getElementById(btnId);
-    if (origBtn) {
-      origBtn.textContent = `📋 VIEW PLAN · ${plan.savedAt || ''}`;
-      origBtn.style.borderColor = 'var(--up)';
-      origBtn.style.color = 'var(--up)';
+    let html = '';
+    if (plan.steps && plan.steps.length) {
+      html += '<div style="margin-bottom:16px">';
+      plan.steps.forEach(step => {
+        html += `
+        <div class="modal-step">
+          <div class="modal-step-header">
+            <span class="modal-step-title">${step.title||''}</span>
+            <div style="display:flex;gap:6px">
+              ${step.fetchRequired ? `<span class="modal-step-fetch">↺ FETCH REQUIRED</span>` : ''}
+              <span class="modal-step-date">${step.date||''}</span>
+            </div>
+          </div>
+          <div class="modal-step-instructions">${step.instructions||''}</div>
+          ${step.sources && step.sources.length ? `
+          <div class="modal-step-sources">
+            ${step.sources.map(s=>`<span class="modal-step-source">${s}</span>`).join('')}
+          </div>` : ''}
+        </div>`;
+      });
+      html += '</div>';
     }
+    if (plan.redFlags || plan.greenFlags) {
+      html += '<div class="modal-flags">';
+      if (plan.redFlags && plan.redFlags.length) {
+        html += `<div class="modal-flag-section">
+          <div class="modal-flag-title red">⚠ RED FLAGS</div>
+          <ul class="modal-flag-list red">${plan.redFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>`;
+      }
+      if (plan.greenFlags && plan.greenFlags.length) {
+        html += `<div class="modal-flag-section">
+          <div class="modal-flag-title green">✓ GREEN FLAGS</div>
+          <ul class="modal-flag-list green">${plan.greenFlags.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>`;
+      }
+      html += '</div>';
+    }
+    if (plan.decisionPoint) {
+      html += `<div class="modal-decision">
+        <div class="modal-decision-label">DECISION POINT</div>
+        ${plan.decisionPoint}
+      </div>`;
+    }
+    body.innerHTML = html;
   } catch(e) {
-    console.error('Followup error:', e);
     body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Failed to load plan. Check logs.</div>`;
   } finally {
-    btn.textContent = origText;
+    btn.textContent = '🤖 GET FOLLOW-UP PLAN';
     btn.disabled = false;
   }
 }
@@ -1976,7 +1847,6 @@ async function getNews(ticker, btn, todayOnly=false) {
       </div>`;
     });
     body.innerHTML = html;
-    loadCachedNewsImpact(ticker);
   } catch(e) {
     console.error('News error:', e);
     body.innerHTML = `<div class="modal-loading" style="color:var(--down)">Failed to load news: ${e.message}</div>`;
