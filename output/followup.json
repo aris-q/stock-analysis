@@ -44,5 +44,139 @@
     "decisionPoint": "Buy if EPS and revenue exceed estimates by more than 5% on April 24th, with a target price range of $390-$410. Sell if EPS and revenue miss estimates by more than 3% on April 25th, with a stop-loss at $340.",
     "savedAt": "2026-03-21 15:48 EDT",
     "cached": false
+  },
+  "WELL.TO_Q1_2026_Earnings_Release": {
+    "summary": "WELL.TO is currently trading at $3.77 with a bearish sentiment. The Q1 2026 earnings release on May 13th will be crucial for determining future price direction.",
+    "steps": [
+      {
+        "date": "2026-04-01",
+        "title": "Start Monitoring News and Analyst Reports",
+        "instructions": "Begin tracking news articles, analyst reports, and industry trends related to WELL.TO and the broader mining sector. Pay attention to any factors that could influence Q1 earnings.",
+        "fetchRequired": true,
+        "sources": [
+          "Financial news websites (e.g., Bloomberg, Reuters)",
+          "WELL.TO investor relations page",
+          "Analyst report platforms (e.g., Seeking Alpha)"
+        ]
+      },
+      {
+        "date": "2026-05-13",
+        "title": "Analyze Q1 2026 Earnings Report",
+        "instructions": "Carefully review the earnings release, including EPS and revenue figures compared to estimates. Scrutinize management commentary for insights on cost-cutting initiatives, market expansion plans, and future guidance. ",
+        "fetchRequired": true,
+        "sources": [
+          "WELL.TO investor relations page",
+          "SEC EDGAR",
+          "Yahoo Finance earnings page"
+        ]
+      }
+    ],
+    "redFlags": [
+      "Significant EPS miss compared to estimates",
+      "Downgraded guidance for revenue or expenses",
+      "Negative management commentary on market conditions or operational challenges"
+    ],
+    "greenFlags": [
+      "EPS beating expectations and positive guidance",
+      "Strong commentary on cost-cutting efforts and market expansion plans",
+      "Positive industry trends supporting WELL.TO's business"
+    ],
+    "decisionPoint": "2026-05-14: If EPS beats expectations and guidance is positive, consider initiating a small long position with a strict stop-loss order. If EPS misses expectations or guidance is downgraded, hold short position or add to existing short position.",
+    "savedAt": "2026-03-22 22:27 EDT",
+    "cached": false
+  },
+  "BNS.TO_Q1_2026_Earnings_Release": {
+    "summary": "BNS.TO is currently bullish, with recent positive performance in revenue and net income growth. Earnings are expected on May 27th, providing a key opportunity to assess the impact of rising interest rates.",
+    "steps": [
+      {
+        "date": "2026-05-23",
+        "title": "Earnings Pre-Read",
+        "instructions": "Review recent BNS.TO news and analyst reports for any pre-earnings commentary or updated estimates on EPS and revenue. Pay attention to discussions surrounding interest rate impacts.",
+        "fetchRequired": true,
+        "sources": [
+          "Financial News Websites (e.g., Bloomberg, Reuters)",
+          "Analyst Reports (provided by your broker or platform)"
+        ]
+      },
+      {
+        "date": "2026-05-27",
+        "title": "Earnings Release Review",
+        "instructions": "Immediately review the Q1 2026 earnings report and conference call transcript.  Focus on key metrics: Net interest margin (NIM), loan growth, efficiency ratio, provision for credit losses, and management's commentary on future outlook.",
+        "fetchRequired": true,
+        "sources": [
+          "BNS Investor Relations Page",
+          "SEC EDGAR",
+          "Yahoo Finance Earnings Page"
+        ]
+      },
+      {
+        "date": "2026-05-28",
+        "title": "Analyst Reaction Analysis",
+        "instructions": "Analyze analyst reactions to the earnings release. Note any revisions to EPS and revenue estimates, as well as commentary on key performance indicators and future outlook.",
+        "fetchRequired": true,
+        "sources": [
+          "Financial News Websites (e.g., Bloomberg, Reuters)",
+          "Analyst Reports (provided by your broker or platform)"
+        ]
+      }
+    ],
+    "redFlags": [
+      "Significant decline in NIM",
+      "Sharp increase in loan delinquencies or provision for credit losses"
+    ],
+    "greenFlags": [
+      "Strong loan growth coupled with a healthy NIM",
+      "Positive management commentary on future prospects and industry conditions"
+    ],
+    "decisionPoint": "2026-05-30: If earnings exceed expectations, the stock demonstrates strength in price action, and analysts maintain positive outlooks, consider increasing portfolio allocation to BNS.TO. Conversely, if earnings disappoint, the stock weakens, and analyst sentiment turns negative, consider reducing or selling your position.",
+    "savedAt": "2026-03-22 22:40 EDT",
+    "cached": false
+  },
+  "ENB.TO_Q1_2026_Earnings_Release": {
+    "summary": "ENB.TO is currently trading at $73.02 with a bullish sentiment. The Q1 2026 earnings release on May 8th presents an opportunity to assess their performance against estimates and revise the investment thesis.",
+    "steps": [
+      {
+        "date": "2026-05-08",
+        "title": "Earnings Release Day - Monitor & Analyze",
+        "instructions": "Track ENB.TO's stock price throughout the day for any immediate reactions to the earnings announcement. Review the press release on company IR page and Yahoo Finance for initial key figures like EPS, revenue, and operating margin compared to estimates ($0.965 avg EPS, $18669432310 revenue).",
+        "fetchRequired": true,
+        "sources": [
+          "Company IR page",
+          "Yahoo Finance"
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "title": "Earnings Call Transcript Review",
+        "instructions": "Read the earnings call transcript (available on Company IR page and SEC EDGAR) for management commentary. Pay attention to guidance on future capital expenditure projects and their impact on long-term growth.",
+        "fetchRequired": true,
+        "sources": [
+          "Company IR page",
+          "SEC EDGAR"
+        ]
+      },
+      {
+        "date": "2026-05-10",
+        "title": "Initial Assessment & Sentiment Analysis",
+        "instructions": "Compare ENB.TO's performance to the consensus estimates and peer companies. Gauge analyst sentiment on financial news outlets like Bloomberg and Reuters.",
+        "fetchRequired": true,
+        "sources": [
+          "Bloomberg",
+          "Reuters",
+          "Yahoo Finance"
+        ]
+      }
+    ],
+    "redFlags": [
+      "Lower-than-expected earnings per share or revenue growth indicating operational challenges.",
+      "Negative guidance on future capital expenditure projects suggesting a lack of confidence in long-term growth."
+    ],
+    "greenFlags": [
+      "Higher-than-expected earnings per share and revenue exceeding estimates, demonstrating strong operational efficiency.",
+      "Positive guidance on future capital expenditure projects aligned with the industry trend and ENB.TO's strategic objectives."
+    ],
+    "decisionPoint": "2026-05-15: If key performance indicators align with or exceed expectations, coupled with positive analyst sentiment, consider maintaining or increasing your investment position in ENB.TO. Conversely, if red flags emerge and the overall outlook appears unfavorable, consider reducing your exposure to the stock.",
+    "savedAt": "2026-03-23 10:04 EDT",
+    "cached": false
   }
 }

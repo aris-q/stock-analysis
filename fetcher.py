@@ -233,8 +233,18 @@ def fetch_yfinance(ticker):
 
         log.info(f"yfinance OK: {ticker} | rev_annual:{safe_get(annual_income, 'Total Revenue')} rev_q:{safe_get(quarterly_income, 'Total Revenue')}")
 
+        previous_close = None
+        try:
+            hist2 = stock.history(period="5d")
+            if len(hist2) >= 2:
+                previous_close = round(float(hist2['Close'].iloc[-2]), 2)
+                log.info(f"previousClose OK: {ticker} | {previous_close}")
+        except Exception as e:
+            log.warning(f"previousClose FAIL: {ticker} | {e}")
+
         return {
             "price": info.get("currentPrice"),
+            "previousClose": previous_close,
             "volume": info.get("volume"),
             "marketCap": info.get("marketCap"),
             "sector": info.get("sector"),
@@ -337,3 +347,30 @@ def fetch_price_context(ticker):
     except Exception as e:
         log.error(f"Price context FAIL: {ticker} | {e}")
         return {}
+
+def fetch_price_only(ticker):
+    """Fast price-only fetch: currentPrice, previousClose, volume, marketCap."""
+    try:
+        stock = yf.Ticker(ticker)
+        info = stock.info
+        hist = stock.history(period="5d")
+
+        previous_close = None
+        current_price = info.get("currentPrice") or info.get("regularMarketPrice")
+
+        if len(hist) >= 2:
+            previous_close = round(float(hist['Close'].iloc[-2]), 2)
+        if current_price is None and not hist.empty:
+            current_price = round(float(hist['Close'].iloc[-1]), 2)
+
+        result = {
+            "price": current_price,
+            "previousClose": previous_close,
+            "volume": info.get("volume"),
+            "marketCap": info.get("marketCap"),
+        }
+        log.info(f"fetch_price_only OK: {ticker} | price:{current_price} prevClose:{previous_close}")
+        return result
+    except Exception as e:
+        log.error(f"fetch_price_only FAIL: {ticker} | {e}")
+        return None

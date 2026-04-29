@@ -883,78 +883,6 @@
     .gainers-toggle-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(200,241,53,0.08); }
     .gainers-toggle-btn:hover { color: var(--text); border-color: var(--text); }
 
-
-    /* SLIM WATCHLIST CARDS (4-per-row) */
-    .watchlist-grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-    @media (max-width: 1400px) { .watchlist-grid-4 { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 700px)  { .watchlist-grid-4 { grid-template-columns: 1fr; } }
-
-    .slim-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s;
-      cursor: pointer;
-    }
-    .slim-card:hover { border-color: var(--accent2); }
-    .slim-card-header { display: flex; align-items: flex-start; justify-content: space-between; }
-    .slim-ticker { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
-    .slim-industry { font-size: 10px; color: var(--muted); margin-top: 2px; }
-    .slim-mcap { font-size: 11px; color: var(--muted); }
-    .slim-prices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .slim-price-block { background: var(--surface2); border-radius: 6px; padding: 8px 10px; }
-    .slim-price-label { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 3px; }
-    .slim-price-value { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; }
-    .slim-actions { display: flex; gap: 8px; align-items: center; justify-content: space-between; }
-    .slim-fetch-ts { font-size: 10px; color: var(--muted); }
-    .btn-detail { background: rgba(124,106,247,0.12); border: 1px solid rgba(124,106,247,0.3); color: var(--accent2); font-family: 'DM Mono', monospace; font-size: 11px; padding: 5px 12px; border-radius: 5px; cursor: pointer; transition: all 0.2s; }
-    .btn-detail:hover { background: rgba(124,106,247,0.25); }
-    .btn-refresh-price { background: none; border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
-    .btn-refresh-price:hover { border-color: var(--warn); color: var(--warn); }
-    .btn-refresh-price:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    /* TICKER DETAIL TAB */
-    .ticker-tab-header {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .ticker-tab-back { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-family: 'DM Mono', monospace; font-size: 11px; padding: 6px 14px; border-radius: 5px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-    .ticker-tab-back:hover { border-color: var(--accent); color: var(--accent); }
-    .ticker-tab-title { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
-    .ticker-tab-ts { font-size: 11px; color: var(--muted); }
-    .ticker-tab-actions { display: flex; gap: 8px; margin-left: auto; }
-
-    /* ADMIN TAB */
-    .admin-grid { display: flex; flex-direction: column; gap: 12px; max-width: 600px; }
-    .admin-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 18px;
-      gap: 16px;
-    }
-    .admin-row-left { display: flex; flex-direction: column; gap: 4px; }
-    .admin-op-label { font-size: 12px; font-weight: 500; }
-    .admin-op-ts { font-size: 11px; color: var(--muted); }
-    .admin-row a, .admin-row button { white-space: nowrap; flex-shrink: 0; }
-
     /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; height: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
@@ -968,10 +896,6 @@
 </head>
 <body>
 
-<div id="priceBanner" style="display:none;background:var(--warn);color:#0a0a0f;text-align:center;padding:8px 32px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.5px;position:sticky;top:0;z-index:200;">
-  ⚡ UPDATING PRICES — PLEASE WAIT...
-</div>
-
 <div class="header">
   <div class="header-left">
     <div class="logo">STOCK<span>.</span>AI</div>
@@ -981,6 +905,10 @@
   </div>
   <div class="header-actions">
     <div id="lastUpdated" style="font-size:11px;color:var(--muted);margin-right:6px"></div>
+    <a href="/logs" class="btn" target="_blank">LOGS</a>
+    <a href="/fetch/new" class="btn">+ FETCH NEW</a>
+    <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn)">⚡ SMART REFRESH</a>
+    <a href="/fetch" class="btn btn-primary">↺ FETCH ALL</a>
   </div>
 </div>
 
@@ -997,24 +925,16 @@
   </form>
 </div>
 
-<div class="tabs" id="mainTabs">
-  <div class="tab active" onclick="showTab('watchlist', this)" data-tab="watchlist">WATCHLIST</div>
-  <div class="tab" onclick="showTab('gainers', this)" data-tab="gainers">DAILY GAINERS</div>
-  <div class="tab" onclick="showTab('peers', this)" data-tab="peers">PEER RANKINGS</div>
-  <div class="tab" onclick="showTab('recommendations', this)" data-tab="recommendations">BUY RECOMMENDATIONS</div>
-  <div class="tab" onclick="showTab('admin', this)" data-tab="admin">ADMIN</div>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('watchlist', this)">WATCHLIST</div>
+  <div class="tab" onclick="showTab('gainers', this)">DAILY GAINERS</div>
+  <div class="tab" onclick="showTab('peers', this)">PEER RANKINGS</div>
+  <div class="tab" onclick="showTab('recommendations', this)">BUY RECOMMENDATIONS</div>
 </div>
 
 <div class="content">
 
   <div class="tab-panel active" id="tab-watchlist">
-    <div id="priceRefreshBar" style="display:none;align-items:center;gap:12px;margin-bottom:20px;padding:12px 16px;background:rgba(200,241,53,0.08);border:1px solid rgba(200,241,53,0.3);border-radius:8px;">
-      <span style="font-family:'Syne',sans-serif;font-weight:700;color:var(--warn);font-size:13px;">⚡ UPDATING ALL PRICES...</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;">
-      <a href="/fetch/prices" class="btn" id="refreshAllPricesBtn" style="background:var(--warn);color:#0a0a0f;border-color:var(--warn);font-weight:700;font-size:13px;padding:9px 20px;">⚡ REFRESH ALL PRICES</a>
-      <span id="lastPriceRefreshLabel" style="font-size:11px;color:var(--muted)"></span>
-    </div>
     <div id="watchlistContent"><div class="loading">Loading analysis data...</div></div>
   </div>
 
@@ -1028,10 +948,6 @@
 
   <div class="tab-panel" id="tab-recommendations">
     <div id="recommendationsContent"><div class="loading">Loading recommendations...</div></div>
-  </div>
-
-  <div class="tab-panel" id="tab-admin">
-    <div id="adminContent"><div class="loading">Loading admin...</div></div>
   </div>
 
 </div>
@@ -1409,47 +1325,350 @@ function renderWatchlist(data) {
     </div>`;
 
   const cardsHTML = stocks.map(s => {
-    const priceFetchedAt = s.priceFetchedAt || s.fetchedAt || '—';
-    const prevClose = s.previousClose != null ? `$${s.previousClose.toFixed(2)}` : '—';
-    const todayPrice = s.price != null ? s.price.toFixed(2) : '—';
-    const priceDiff = (s.price != null && s.previousClose != null) ? s.price - s.previousClose : null;
-    const priceDiffPct = (priceDiff != null && s.previousClose) ? (priceDiff / s.previousClose * 100) : null;
-    const priceColor = priceDiff == null ? 'var(--text)' : priceDiff >= 0 ? 'var(--up)' : 'var(--down)';
-    const diffLabel = priceDiffPct != null ? ` (${priceDiffPct >= 0 ? '+' : ''}${priceDiffPct.toFixed(2)}%)` : '';
-    const tabId = 'ticker-' + s.ticker.replace('.', '_');
+    const ai = s.aiSummary || {};
+    const qIncome = (s.quarterlyIncome || []).slice(0, 5);
+    const aIncome = s.annualIncome || [];
+    const aCashflow = s.annualCashflow || [];
+    const cal = s.calendar || {};
+    const ev = s.events || {};
+    const qc = s.quarterlyChanges || {};
+    const ac = s.annualChanges || {};
+    const latest = qIncome[0] || {};
+    const annual = aIncome[0] || {};
+    const cashflow = aCashflow[0] || {};
 
     return `
-    <div class="slim-card" onclick="showTickerTab('${s.ticker}')">
-      <div class="slim-card-header">
+    <div class="stock-card">
+      <div class="card-header">
         <div>
-          <div class="slim-ticker">${s.ticker}</div>
-          <div class="slim-industry">${s.industry || s.sector || '—'}</div>
-          <div class="slim-mcap">MCap: $${fmt(s.marketCap)}</div>
+          <div class="ticker-name">${s.ticker}</div>
+          <div class="ticker-meta">${s.industry || s.sector || '—'}</div>
+          ${s.fetchedAt ? `<div class="ticker-meta" style="margin-top:4px;color:var(--muted)">🕐 ${s.fetchedAt} <a href="/fetch/ticker/${s.ticker}" style="color:var(--accent2);text-decoration:none;margin-left:6px;font-size:10px">↺ REFRESH</a></div>` : ''}
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="price-block">
+            <div class="price">$${s.price != null ? s.price.toFixed(2) : '—'}</div>
+            <div class="mktcap">MCap $${fmt(s.marketCap)}</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="btn" style="font-size:11px;padding:4px 10px;border-color:var(--accent);color:var(--accent)"
+              onclick="getNews('${s.ticker}', this, false)">📰 7D</button>
+            <button class="btn" style="font-size:11px;padding:4px 10px;border-color:var(--warn);color:var(--warn)"
+              onclick="getNews('${s.ticker}', this, true)">📰 TODAY</button>
+          </div>
         </div>
       </div>
-      <div class="slim-prices">
-        <div class="slim-price-block">
-          <div class="slim-price-label">PREV CLOSE</div>
-          <div class="slim-price-value" style="color:var(--muted)">${prevClose}</div>
+
+      <div class="ranks-row">
+        ${s.marginRank ? `<span class="rank-badge rank-${s.marginRank}">MARGIN #${s.marginRank} ${infoIcon('marginRank')}</span>` : ''}
+        ${s.netCashRank ? `<span class="rank-badge rank-${s.netCashRank}">NET CASH #${s.netCashRank} ${infoIcon('netCashRank')}</span>` : ''}
+        ${s.marketCapRank ? `<span class="rank-badge rank-${s.marketCapRank}">MCAP #${s.marketCapRank} ${infoIcon('marketCapRank')}</span>` : ''}
+        ${s.fcfRank ? `<span class="rank-badge rank-${s.fcfRank}">FCF #${s.fcfRank} ${infoIcon('fcfRank')}</span>` : ''}
+      </div>
+
+      ${ai.shortWarning && ai.shortWarning.shouldShort ? `
+      <div class="short-warning">
+        <div class="short-warning-icon">⚠️</div>
+        <div class="short-warning-text">
+          <strong>SHORT SIGNAL</strong>
+          <span class="short-warning-confidence">${(ai.shortWarning.confidence||'').toUpperCase()}</span><br/>
+          ${ai.shortWarning.reason || ''}
         </div>
-        <div class="slim-price-block">
-          <div class="slim-price-label">TODAY${diffLabel}</div>
-          <div class="slim-price-value" style="color:${priceColor}">$${todayPrice}</div>
+      </div>` : ''}
+
+      ${ai.eventImpacts && ai.eventImpacts.length ? `
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">UPCOMING EVENT IMPACT</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+        ${ai.eventImpacts.map(e => `
+        <div class="event-impact-item">
+          <div class="event-impact-header">
+            <span class="event-impact-name">${e.event || ''}</span>
+            <div style="display:flex;gap:6px;align-items:center">
+              ${e.startWatchingDate ? `<span class="event-days-badge">Start watching: ${e.startWatchingDate}</span>` : ''}
+              <span class="event-impact-date">${e.date || ''}</span>
+            </div>
+          </div>
+          <div class="event-impact-body">${e.expectedImpact || ''}</div>
+          ${e.epsEstimate ? `<div style="font-size:11px;margin:4px 0;color:var(--text)">📊 EPS Est: <strong>${e.epsEstimate}</strong></div>` : ''}
+          ${e.revenueEstimate ? `<div style="font-size:11px;margin:4px 0;color:var(--text)">💰 Rev Est: <strong>${e.revenueEstimate}</strong></div>` : ''}
+          ${e.whatToWatchFor && e.whatToWatchFor.length ? `
+          <div style="margin-top:8px">
+            <div style="font-size:10px;color:var(--muted);letter-spacing:0.5px;margin-bottom:4px">WATCH FOR:</div>
+            <ul class="ai-list">${e.whatToWatchFor.map(w=>`<li>${w}</li>`).join('')}</ul>
+          </div>` : ''}
+          ${e.whereToMonitor && e.whereToMonitor.length ? `
+          <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:4px">
+            ${e.whereToMonitor.map(w=>`<span class="modal-step-source">${w}</span>`).join('')}
+          </div>` : ''}
+          ${e.actionPlan && e.actionPlan.length ? `
+          <div style="margin-top:10px">
+            <div style="font-size:10px;color:var(--muted);letter-spacing:0.5px;margin-bottom:6px">ACTION PLAN:</div>
+            ${e.actionPlan.map(a=>`
+            <div style="display:flex;gap:8px;align-items:flex-start;padding:4px 0;border-bottom:1px solid rgba(42,42,58,0.5)">
+              <span class="modal-step-date" style="flex-shrink:0">${a.date||''}</span>
+              <span style="font-size:11px;color:var(--text)">${a.action||''}</span>
+            </div>`).join('')}
+          </div>` : ''}
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+            ${e.strategy ? `<span class="event-impact-strategy">→ ${e.strategy}</span>` : '<span></span>'}
+            <button class="btn followup-btn" 
+              id="followup-btn-${s.ticker}-${(e.event||'').replace(/[^a-zA-Z0-9]/g,'_')}"
+              style="font-size:10px;padding:4px 12px;border-color:var(--accent2);color:var(--accent2)"
+              onclick="getFollowupPlan('${s.ticker}', '${(e.event||'').replace(/'/g,"\\'")}', this, false)">
+              🤖 GET FOLLOW-UP PLAN
+            </button>
+          </div>
+        </div>`).join('')}
+        </div>
+      </div>` : ''}
+
+      ${ai.highlight ? `
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+          <div id="news-impact-${s.ticker}" class="news-impact-inline">
+            <div class="news-impact-loading" style="font-size:11px;color:var(--muted);padding:6px 0">Loading cached analysis...</div>
+          </div>
+        </div>
+      </div>`  : ''}
+
+      ${ai.highlight ? `
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">AI SUMMARY</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <span class="ai-tag ${sentimentClass(ai.analystSentiment)}">${(ai.analystSentiment||'neutral').toUpperCase()}</span>
+            <div class="ai-highlight">${ai.highlight}</div>
+            ${ai.riskFactors && ai.riskFactors.length ? `
+            <div class="section-title" style="margin-top:10px">RISK FACTORS</div>
+            <ul class="ai-list">${ai.riskFactors.map(r=>`<li>${r}</li>`).join('')}</ul>
+            ` : ''}
+            ${ai.majorGrowthProjects && ai.majorGrowthProjects.length ? `
+            <div class="section-title" style="margin-top:10px">GROWTH CATALYSTS</div>
+            <ul class="ai-list">${ai.majorGrowthProjects.map(p=>`<li>${p}</li>`).join('')}</ul>
+            ` : ''}
+        </div>
+      </div>` : ''}
+
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">KEY METRICS</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <div class="metrics-grid">
+            <div class="metric">
+                ${(() => {
+                  const ni = annual['Net Income']; const rev = annual['Total Revenue'];
+                  const pct = s.annualProfitMargin;
+                  return `<div class="m-label">ANNUAL MARGIN ${infoIcon('annualMargin', `($${fmt(ni)} ÷ $${fmt(rev)}) = ${pct!=null?(pct*100).toFixed(1)+'%':'—'}`)}</div>`;
+                })()}
+                <div class="m-value">${s.annualProfitMargin != null ? (s.annualProfitMargin*100).toFixed(1)+'%' : '—'}</div>
+                ${(() => {
+                  const y0 = (aIncome[0]||{})['Net Income']; const y1 = (aIncome[1]||{})['Net Income'];
+                  const r = ac.netIncome_yoy_1;
+                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('annualYoY1', `(Y0-Y1)/|Y1| = ($${fmt(y0)}-$${fmt(y1)})/|$${fmt(y1)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
+                })()}
+            </div>
+            <div class="metric">
+                ${(() => {
+                  const cash = (s.annualBalance||[{}])[0]['Cash And Cash Equivalents'];
+                  const debt = (s.annualBalance||[{}])[0]['Total Debt'];
+                  return `<div class="m-label">NET CASH ${infoIcon('netCash', `$${fmt(cash)} − $${fmt(debt)} = $${fmt(s.netCash)}`)}</div>`;
+                })()}
+                <div class="m-value ${s.netCash >= 0 ? 'up' : 'down'}">$${fmt(s.netCash)}</div>
+            </div>
+            <div class="metric">
+                ${(() => {
+                  const ocf = s.latestOCF; const capex = s.latestCapex;
+                  return `<div class="m-label">LATEST FCF ${infoIcon('fcf', `$${fmt(ocf)} − $${fmt(capex)} = $${fmt(s.latestFCF)}`)}</div>`;
+                })()}
+                <div class="m-value">$${fmt(s.latestFCF)}</div>
+                ${(() => {
+                  const q0 = (s.quarterlyCashflow||[])[0]; const q1 = (s.quarterlyCashflow||[])[1];
+                  const f0 = q0&&q0['Free Cash Flow']; const f1 = q1&&q1['Free Cash Flow'];
+                  const r = qc.fcf_qoq;
+                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} QoQ ${infoIcon('fcfQoQ', `(Q0-Q1)/|Q1| = ($${fmt(f0)}-$${fmt(f1)})/|$${fmt(f1)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
+                })()}
+            </div>
+            <div class="metric">
+                ${(() => {
+                  const q0v = latest['Total Revenue']; const q1v = (qIncome[1]||{})['Total Revenue'];
+                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Total Revenue'];
+                  return `<div class="m-label">Q REVENUE ${infoIcon('revenueQoQ', `(Q0-Q1)/|Q1| = ($${fmt(q0v)}-$${fmt(q1v)})/|$${fmt(q1v)}| = ${fmtPct(qc.revenue_qoq)}`)}</div>`;
+                })()}
+                <div class="m-value">$${fmt(latest['Total Revenue'])}</div>
+                <div class="m-change ${pctClass(qc.revenue_qoq)}">${fmtPct(qc.revenue_qoq)} QoQ</div>
+                ${(() => {
+                  const q0v = latest['Total Revenue'];
+                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Total Revenue'];
+                  const r = qc.revenue_yoy;
+                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('revenueYoY', `(Q0-Q4)/|Q4| = ($${fmt(q0v)}-$${fmt(q4v)})/|$${fmt(q4v)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
+                })()}
+            </div>
+            <div class="metric">
+                ${(() => {
+                  const q0v = latest['Net Income']; const q1v = (qIncome[1]||{})['Net Income'];
+                  return `<div class="m-label">Q NET INCOME ${infoIcon('netIncomeQoQ', `(Q0-Q1)/|Q1| = ($${fmt(q0v)}-$${fmt(q1v)})/|$${fmt(q1v)}| = ${fmtPct(qc.netIncome_qoq)}`)}</div>`;
+                })()}
+                <div class="m-value">$${fmt(latest['Net Income'])}</div>
+                <div class="m-change ${pctClass(qc.netIncome_qoq)}">${fmtPct(qc.netIncome_qoq)} QoQ</div>
+                ${(() => {
+                  const q0v = latest['Net Income'];
+                  const q4v = (s.quarterlyIncome||[])[4] && (s.quarterlyIncome||[])[4]['Net Income'];
+                  const r = qc.netIncome_yoy;
+                  return `<div class="m-change ${pctClass(r)}">${fmtPct(r)} YoY ${infoIcon('netIncomeYoY', `(Q0-Q4)/|Q4| = ($${fmt(q0v)}-$${fmt(q4v)})/|$${fmt(q4v)}| = ${r!=null?fmtPct(r):'—'}`)}</div>`;
+                })()}
+            </div>
+            <div class="metric">
+                <div class="m-label">CAPEX ${infoIcon('capex', `Latest Q: $${fmt(s.latestCapex)}`)}</div>
+                <div class="m-value">$${fmt(s.latestCapex)}</div>
+            </div>
+            </div>
         </div>
       </div>
-      <div class="slim-actions">
-        <span class="slim-fetch-ts">🕐 ${priceFetchedAt}</span>
-        <div style="display:flex;gap:6px">
-          <button class="btn-refresh-price" onclick="event.stopPropagation();refreshTickerPrice('${s.ticker}', this)">↺ Price</button>
-          <button class="btn-detail" onclick="event.stopPropagation();showTickerTab('${s.ticker}')">Detail →</button>
+
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">QUARTERLY INCOME & CASH FLOW</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <table class="fin-table">
+            <tr>
+                <th>METRIC</th>
+                ${qIncome.map(q=>`<th>${q.date}</th>`).join('')}
+            </tr>
+            ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
+            <tr>
+                <td>${field}</td>
+                ${qIncome.map(q=>`<td>$${fmt(q[field])}</td>`).join('')}
+            </tr>`).join('')}
+            ${(() => {
+              const qCashflow = (s.quarterlyCashflow||[]).slice(0,5);
+              return ['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
+              <tr style="border-top:1px solid var(--border)">
+                <td style="color:var(--accent2)">${field === 'Capital Expenditure' ? 'CapEx' : field === 'Operating Cash Flow' ? 'Op. Cash Flow' : 'FCF'}</td>
+                ${qCashflow.map(c=>`<td>$${fmt(c[field])}</td>`).join('')}
+              </tr>`).join('');
+            })()}
+            ${(() => {
+              const qBal = (s.quarterlyBalance||[]).slice(0,5);
+              return `<tr style="border-top:1px solid var(--border)">
+                <td style="color:var(--warn)">Net Cash</td>
+                ${qBal.map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}
+              </tr>`;
+            })()}
+            </table>
         </div>
       </div>
+
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">ANNUAL INCOME & CASH FLOW</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <table class="fin-table">
+            <tr>
+                <th>METRIC</th>
+                ${aIncome.map(a=>`<th>${a.date}</th>`).join('')}
+            </tr>
+            ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
+            <tr>
+                <td>${field}</td>
+                ${aIncome.map(a=>`<td>$${fmt(a[field])}</td>`).join('')}
+            </tr>`).join('')}
+            ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
+            <tr style="border-top:${field==='Operating Cash Flow'?'1px solid var(--border)':'none'}">
+                <td style="color:var(--accent2)">${field === 'Capital Expenditure' ? 'CapEx' : field === 'Operating Cash Flow' ? 'Op. Cash Flow' : 'FCF'}</td>
+                ${(s.annualCashflow||[]).map(c=>`<td>$${fmt(c[field])}</td>`).join('')}
+            </tr>`).join('')}
+            <tr style="border-top:1px solid var(--border)">
+                <td style="color:var(--warn)">Net Cash</td>
+                ${(s.annualBalance||[]).map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}
+            </tr>
+            </table>
+        </div>
+      </div>
+
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">UPCOMING EVENTS</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <div class="events-list">
+            ${cal.earningsDateStart ? `
+            <div class="event-item">
+                <div>
+                <div class="event-label">EARNINGS DATE</div>
+                <div class="event-estimate">EPS est: $${cal.earningsEPSAvg?.toFixed(2)||'—'} | Rev est: $${fmt(cal.revenueEstimateAvg)}</div>
+                </div>
+                <div class="event-value">${cal.earningsDateStart}</div>
+            </div>` : ''}
+            ${cal.exDividendDate ? `
+            <div class="event-item">
+                <div class="event-label">EX-DIVIDEND DATE</div>
+                <div class="event-value">${cal.exDividendDate}</div>
+            </div>` : ''}
+            ${cal.dividendPayDate ? `
+            <div class="event-item">
+                <div class="event-label">DIVIDEND PAY DATE</div>
+                <div class="event-value">${cal.dividendPayDate}</div>
+            </div>` : ''}
+            ${ev.dividendRate ? `
+            <div class="event-item">
+                <div class="event-label">DIVIDEND RATE / YIELD</div>
+                <div class="event-value">$${ev.dividendRate} / ${ev.dividendYield != null ? (ev.dividendYield).toFixed(2)+'%' : '—'}</div>
+            </div>` : ''}
+            ${ev.earningsCallStart ? `
+            <div class="event-item">
+                <div class="event-label">EARNINGS CALL</div>
+                <div class="event-value">${ev.earningsCallStart}</div>
+            </div>` : ''}
+            </div>
+        </div>
+      </div>
+
+      ${s.bankChecklist && s.bankChecklist.length ? `
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">🏦 BANK HEALTH CHECKLIST</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+          <div class="bank-checklist">
+            ${s.bankChecklist.map(item => `
+            <div class="bank-check-item">
+              <div class="bank-check-left">
+                <span class="bank-check-icon">${item.pass === true ? '✅' : item.pass === false ? '❌' : '⚠️'}</span>
+                <div>
+                  <div class="bank-check-name">${item.metric}</div>
+                  <div class="bank-check-threshold">Threshold: ${item.threshold}</div>
+                </div>
+              </div>
+              <div class="bank-check-value ${item.pass === true ? 'pass' : item.pass === false ? 'fail' : 'unknown'}">
+                ${item.value || (item.auto ? '—' : 'Check Annual Report')}
+              </div>
+            </div>`).join('')}
+          </div>
+          <span class="bank-guide-btn" onclick="showBankGuide('${s.ticker}')">📖 View Bank Metrics Guide & Benchmarks</span>
+        </div>
+      </div>` : ''}
+
+      ${s.dividends && s.dividends.length ? `
+      <div class="card-section">
+        <div class="section-title" onclick="toggleSection(this)">RECENT DIVIDENDS</div>
+        <span class="section-toggle" onclick="toggleSection(this)">+</span>
+        <div class="section-content">
+            <table class="fin-table">
+            <tr><th>DATE</th><th>AMOUNT</th></tr>
+            ${s.dividends.map(d=>`<tr><td>${d.date.split(' ')[0]}</td><td>$${d.amount.toFixed(3)}</td></tr>`).join('')}
+            </table>
+        </div>
+      </div>` : ''}
+
     </div>`;
   }).join('');
 
-  return summaryHTML + `<div class="watchlist-grid-4">${cardsHTML}</div>`;
+  return summaryHTML + `<div class="stocks-grid">${cardsHTML}</div>`;
 }
 
+let gainersMarket = 'cdn';
 
 function renderGainersTable(gainers) {
   if (!gainers.length) return '<div class="loading" style="padding:40px">No gainers data available for this market.</div>';
@@ -1574,349 +1793,8 @@ function renderPeers(data) {
 function showTab(name, el) {
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  if (el) el.classList.add('active');
-  const panel = document.getElementById('tab-'+name);
-  if (panel) panel.classList.add('active');
-  console.log(`[Tab] switched to: ${name}`);
-}
-
-function showTickerTab(ticker) {
-  const tabId = 'ticker-' + ticker.replace('.', '_');
-  const tab = document.querySelector(`.tab[data-tab="${tabId}"]`);
-  showTab(tabId, tab);
-  console.log(`[TickerTab] navigating to: ${ticker}`);
-}
-
-function backToWatchlist() {
-  const tab = document.querySelector('.tab[data-tab="watchlist"]');
-  showTab('watchlist', tab);
-}
-
-// ── TICKER DETAIL TAB RENDERER ────────────────────────────────────────────────
-function renderTickerDetail(s) {
-  const ai = s.aiSummary || {};
-  const qIncome = (s.quarterlyIncome || []).slice(0, 5);
-  const aIncome = s.annualIncome || [];
-  const aCashflow = s.annualCashflow || [];
-  const cal = s.calendar || {};
-  const ev = s.events || {};
-  const qc = s.quarterlyChanges || {};
-  const ac = s.annualChanges || {};
-  const latest = qIncome[0] || {};
-  const annual = aIncome[0] || {};
-  const cashflow = aCashflow[0] || {};
-  const priceFetchedAt = s.priceFetchedAt || s.fetchedAt || '—';
-  const fetchedAt = s.fetchedAt || '—';
-
-  // Reuse the full stock card HTML from the original renderWatchlist card structure
-  // but with all sections expanded by default (add .expanded to card-section)
-  const sentClass = sentimentClass(ai.analystSentiment);
-  const qCashflow = (s.quarterlyCashflow || []).slice(0, 5);
-
-  let html = `
-  <div class="stock-card" style="max-width:100%">
-    <div class="card-header">
-      <div>
-        <div class="ticker-name">${s.ticker}</div>
-        <div class="ticker-meta">${s.industry || s.sector || '—'}</div>
-        ${priceFetchedAt ? `<div class="ticker-meta" style="margin-top:4px;color:var(--muted)">💰 Price updated: ${priceFetchedAt}</div>` : ''}
-        ${fetchedAt ? `<div class="ticker-meta" style="margin-top:2px;color:var(--muted)">📊 Data updated: ${fetchedAt}</div>` : ''}
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
-        <div class="price-block">
-          <div class="price">$${s.price != null ? s.price.toFixed(2) : '—'}</div>
-          ${s.previousClose != null ? `<div class="mktcap">Prev: $${s.previousClose.toFixed(2)}</div>` : ''}
-          <div class="mktcap">MCap: $${fmt(s.marketCap)}</div>
-        </div>
-      </div>
-    </div>`;
-
-  // Ranks row
-  const rankBadges = [];
-  if (s.marginRank) rankBadges.push(`<span class="rank-badge rank-${s.marginRank}">MARGIN #${s.marginRank}</span>`);
-  if (s.netCashRank) rankBadges.push(`<span class="rank-badge rank-${s.netCashRank}">NET CASH #${s.netCashRank}</span>`);
-  if (s.marketCapRank) rankBadges.push(`<span class="rank-badge rank-${s.marketCapRank}">MKTCAP #${s.marketCapRank}</span>`);
-  if (s.fcfRank) rankBadges.push(`<span class="rank-badge rank-${s.fcfRank}">FCF #${s.fcfRank}</span>`);
-  if (rankBadges.length) html += `<div class="ranks-row">${rankBadges.join('')}</div>`;
-
-  // AI Summary (expanded)
-  if (ai.highlight) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">AI SUMMARY</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <div class="ai-highlight">
-          <span class="ai-tag ${sentClass}">${(ai.analystSentiment||'neutral').toUpperCase()}</span>
-          <div style="margin-top:6px">${ai.highlight}</div>
-        </div>
-        ${ai.riskFactors && ai.riskFactors.length ? `<ul class="ai-list">${ai.riskFactors.map(r=>`<li>${r}</li>`).join('')}</ul>` : ''}
-      </div>
-    </div>`;
-  }
-
-  // Key Metrics (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">KEY METRICS</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <div class="metrics-grid">
-        <div class="metric"><div class="m-label">ANNUAL MARGIN ${infoIcon('annualMargin')}</div><div class="m-value">${s.annualProfitMargin != null ? fmtPct(s.annualProfitMargin) : '—'}</div></div>
-        <div class="metric"><div class="m-label">Q MARGIN ${infoIcon('qMargin')}</div><div class="m-value">${s.quarterlyProfitMargin != null ? fmtPct(s.quarterlyProfitMargin) : '—'}</div></div>
-        <div class="metric"><div class="m-label">NET CASH ${infoIcon('netCash')}</div><div class="m-value ${s.netCash >= 0 ? 'up' : 'down'}">$${fmt(s.netCash)}</div></div>
-        <div class="metric"><div class="m-label">FCF ${infoIcon('fcf')}</div><div class="m-value">$${fmt(s.latestFCF)}</div></div>
-        <div class="metric"><div class="m-label">CAPEX ${infoIcon('capex')}</div><div class="m-value">$${fmt(s.latestCapex)}</div></div>
-        <div class="metric"><div class="m-label">OP CF ${infoIcon('ocf')}</div><div class="m-value">$${fmt(s.latestOCF)}</div></div>
-      </div>
-    </div>
-  </div>`;
-
-  // Quarterly Changes (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">QUARTERLY CHANGES</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <div class="metrics-grid">
-        <div class="metric"><div class="m-label">REV QoQ ${infoIcon('revenueQoQ')}</div><div class="m-value ${pctClass(qc.revenue_qoq)}">${fmtPct(qc.revenue_qoq)}</div></div>
-        <div class="metric"><div class="m-label">REV YoY ${infoIcon('revenueYoY')}</div><div class="m-value ${pctClass(qc.revenue_yoy)}">${fmtPct(qc.revenue_yoy)}</div></div>
-        <div class="metric"><div class="m-label">NI QoQ ${infoIcon('netIncomeQoQ')}</div><div class="m-value ${pctClass(qc.netIncome_qoq)}">${fmtPct(qc.netIncome_qoq)}</div></div>
-        <div class="metric"><div class="m-label">NI YoY ${infoIcon('netIncomeYoY')}</div><div class="m-value ${pctClass(qc.netIncome_yoy)}">${fmtPct(qc.netIncome_yoy)}</div></div>
-        <div class="metric"><div class="m-label">FCF QoQ ${infoIcon('fcfQoQ')}</div><div class="m-value ${pctClass(qc.fcf_qoq)}">${fmtPct(qc.fcf_qoq)}</div></div>
-        <div class="metric"><div class="m-label">FCF YoY ${infoIcon('fcfYoY')}</div><div class="m-value ${pctClass(qc.fcf_yoy)}">${fmtPct(qc.fcf_yoy)}</div></div>
-      </div>
-    </div>
-  </div>`;
-
-  // Annual YoY (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">ANNUAL YoY</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <div class="metrics-grid">
-        <div class="metric"><div class="m-label">REV Y0vsY1 ${infoIcon('annualYoY1')}</div><div class="m-value ${pctClass(ac.revenue_yoy_1)}">${fmtPct(ac.revenue_yoy_1)}</div></div>
-        <div class="metric"><div class="m-label">REV Y1vsY2 ${infoIcon('annualYoY2')}</div><div class="m-value ${pctClass(ac.revenue_yoy_2)}">${fmtPct(ac.revenue_yoy_2)}</div></div>
-        <div class="metric"><div class="m-label">NI Y0vsY1</div><div class="m-value ${pctClass(ac.netIncome_yoy_1)}">${fmtPct(ac.netIncome_yoy_1)}</div></div>
-        <div class="metric"><div class="m-label">NI Y1vsY2</div><div class="m-value ${pctClass(ac.netIncome_yoy_2)}">${fmtPct(ac.netIncome_yoy_2)}</div></div>
-        <div class="metric"><div class="m-label">FCF Y0vsY1</div><div class="m-value ${pctClass(ac.fcf_yoy_1)}">${fmtPct(ac.fcf_yoy_1)}</div></div>
-        <div class="metric"><div class="m-label">FCF Y1vsY2</div><div class="m-value ${pctClass(ac.fcf_yoy_2)}">${fmtPct(ac.fcf_yoy_2)}</div></div>
-      </div>
-    </div>
-  </div>`;
-
-  // News Impact (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <div id="news-impact-${s.ticker}"><div style="font-size:11px;color:var(--muted)">Loading cached analysis...</div></div>
-    </div>
-  </div>`;
-
-  // Event Impacts (expanded)
-  if (ai.eventImpacts && ai.eventImpacts.length) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">EVENT IMPACTS</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <div class="events-list">
-          ${ai.eventImpacts.map(e => {
-            const btnId = `followup-btn-${s.ticker}-${e.event.replace(/[^a-zA-Z0-9]/g,'_')}`;
-            return `<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">
-              <div style="display:flex;justify-content:space-between;width:100%">
-                <div class="event-value">${e.event}</div>
-                <span class="event-value" style="color:var(--muted);font-size:11px">${e.date||'—'}</span>
-              </div>
-              <div class="event-label">${e.expectedImpact||''}</div>
-              ${e.epsEstimate ? `<div class="event-label">EPS: ${e.epsEstimate}</div>` : ''}
-              <button id="${btnId}" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"
-                onclick="getFollowupPlan('${s.ticker}','${e.event.replace(/'/g,"\'")}',this)">📋 FOLLOW-UP PLAN</button>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>
-    </div>`;
-  }
-
-  // Quarterly Income Table (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">QUARTERLY INCOME & CASH FLOW</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <table class="fin-table">
-        <tr><th>METRIC</th>${qIncome.map(q=>`<th>${q.date}</th>`).join('')}</tr>
-        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
-        <tr><td>${field}</td>${qIncome.map(q=>`<td>$${fmt(q[field])}</td>`).join('')}</tr>`).join('')}
-        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-        <tr><td style="color:var(--accent2)">${field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF'}</td>
-        ${qCashflow.map(c=>`<td>$${fmt(c[field])}</td>`).join('')}</tr>`).join('')}
-        ${(() => {
-          const qBal = (s.quarterlyBalance||[]).slice(0,5);
-          return `<tr style="border-top:1px solid var(--border)"><td style="color:var(--warn)">Net Cash</td>
-          ${qBal.map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}</tr>`;
-        })()}
-      </table>
-    </div>
-  </div>`;
-
-  // Annual Income Table (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">ANNUAL INCOME & CASH FLOW</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <table class="fin-table">
-        <tr><th>METRIC</th>${aIncome.map(a=>`<th>${a.date}</th>`).join('')}</tr>
-        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
-        <tr><td>${field}</td>${aIncome.map(a=>`<td>$${fmt(a[field])}</td>`).join('')}</tr>`).join('')}
-        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-        <tr><td style="color:var(--accent2)">${field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF'}</td>
-        ${(s.annualCashflow||[]).map(c=>`<td>$${fmt(c[field])}</td>`).join('')}</tr>`).join('')}
-        <tr style="border-top:1px solid var(--border)"><td style="color:var(--warn)">Net Cash</td>
-        ${(s.annualBalance||[]).map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}</tr>
-      </table>
-    </div>
-  </div>`;
-
-  // Upcoming Events (expanded)
-  if (cal.earningsDateStart || cal.exDividendDate || cal.dividendPayDate || ev.dividendRate || ev.earningsCallStart) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">UPCOMING EVENTS</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <div class="events-list">
-          ${cal.earningsDateStart ? `<div class="event-item"><div><div class="event-label">EARNINGS DATE</div><div class="event-estimate">EPS est: $${cal.earningsEPSAvg?.toFixed(2)||'—'} | Rev est: $${fmt(cal.revenueEstimateAvg)}</div></div><div class="event-value">${cal.earningsDateStart}</div></div>` : ''}
-          ${cal.exDividendDate ? `<div class="event-item"><div class="event-label">EX-DIVIDEND DATE</div><div class="event-value">${cal.exDividendDate}</div></div>` : ''}
-          ${cal.dividendPayDate ? `<div class="event-item"><div class="event-label">DIVIDEND PAY DATE</div><div class="event-value">${cal.dividendPayDate}</div></div>` : ''}
-          ${ev.dividendRate ? `<div class="event-item"><div class="event-label">DIVIDEND RATE / YIELD</div><div class="event-value">$${ev.dividendRate} / ${ev.dividendYield != null ? (ev.dividendYield).toFixed(2)+'%' : '—'}</div></div>` : ''}
-          ${ev.earningsCallStart ? `<div class="event-item"><div class="event-label">EARNINGS CALL</div><div class="event-value">${ev.earningsCallStart}</div></div>` : ''}
-        </div>
-      </div>
-    </div>`;
-  }
-
-  // Bank Health (expanded if applicable)
-  if (s.bankChecklist && s.bankChecklist.length) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">🏦 BANK HEALTH CHECKLIST</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <div class="bank-checklist">
-          ${s.bankChecklist.map(item => `
-          <div class="bank-check-item">
-            <div class="bank-check-left">
-              <span class="bank-check-icon">${item.pass === true ? '✅' : item.pass === false ? '❌' : '⚠️'}</span>
-              <div><div class="bank-check-name">${item.metric}</div><div class="bank-check-threshold">Threshold: ${item.threshold}</div></div>
-            </div>
-            <div class="bank-check-value ${item.pass === true ? 'pass' : item.pass === false ? 'fail' : 'unknown'}">${item.value || (item.auto ? '—' : 'Check Annual Report')}</div>
-          </div>`).join('')}
-        </div>
-        <span class="bank-guide-btn" onclick="showBankGuide('${s.ticker}')">📖 View Bank Metrics Guide</span>
-      </div>
-    </div>`;
-  }
-
-  // Dividends (expanded if applicable)
-  if (s.dividends && s.dividends.length) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">RECENT DIVIDENDS</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <table class="fin-table">
-          <tr><th>DATE</th><th>AMOUNT</th></tr>
-          ${s.dividends.map(d=>`<tr><td>${d.date.split(' ')[0]}</td><td>$${d.amount.toFixed(3)}</td></tr>`).join('')}
-        </table>
-      </div>
-    </div>`;
-  }
-
-  html += '</div>'; // close stock-card
-  return html;
-}
-
-// ── ADMIN TAB RENDERER ──────────────────────────────────────────────────────
-function renderAdmin(opTs) {
-  const ts = opTs || {};
-  return `
-  <div style="margin-bottom:24px">
-    <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:6px">ADMIN</div>
-    <div style="font-size:11px;color:var(--muted)">Manage data fetching and logs. All operations run in background.</div>
-  </div>
-  <div class="admin-grid">
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">📋 LOGS</div>
-        <div class="admin-op-ts">View last 50 lines of app.log</div>
-      </div>
-      <a href="/logs" target="_blank" class="btn">VIEW LOGS</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">⚡ REFRESH ALL PRICES</div>
-        <div class="admin-op-ts" id="admin-ts-prices">Last: ${ts.prices || 'Never'}</div>
-      </div>
-      <a href="/fetch/prices" class="btn" style="border-color:var(--warn);color:var(--warn)">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">+ FETCH NEW TICKERS</div>
-        <div class="admin-op-ts" id="admin-ts-new">Last: ${ts.new || 'Never'}</div>
-      </div>
-      <a href="/fetch/new" class="btn">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">⚡ SMART REFRESH</div>
-        <div class="admin-op-ts" id="admin-ts-smart">Last: ${ts.smart || 'Never'}</div>
-      </div>
-      <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn)">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">↺ FETCH ALL</div>
-        <div class="admin-op-ts" id="admin-ts-all">Last: ${ts.all || 'Never'}</div>
-      </div>
-      <a href="/fetch" class="btn btn-primary">RUN</a>
-    </div>
-  </div>`;
-}
-
-// ── PER-TICKER PRICE REFRESH ────────────────────────────────────────────────
-async function refreshTickerPrice(ticker, btn) {
-  if (btn.disabled) return;
-  const orig = btn.textContent;
-  btn.textContent = '⏳';
-  btn.disabled = true;
-  console.log(`[PriceRefresh] Starting: ${ticker}`);
-  try {
-    await fetch(`/fetch/ticker/${ticker}`);
-    // Poll until done
-    let attempts = 0;
-    const poll = setInterval(async () => {
-      attempts++;
-      const res = await fetch('/status');
-      const s = await res.json();
-      if (!s.running || attempts > 60) {
-        clearInterval(poll);
-        btn.textContent = orig;
-        btn.disabled = false;
-        loadData();
-        console.log(`[PriceRefresh] Done: ${ticker}`);
-      }
-    }, 2000);
-  } catch(e) {
-    btn.textContent = orig;
-    btn.disabled = false;
-    console.error(`[PriceRefresh] FAIL: ${ticker} | ${e}`);
-  }
+  el.classList.add('active');
+  document.getElementById('tab-'+name).classList.add('active');
 }
 
 let dataLoaded = false;
@@ -1927,85 +1805,27 @@ async function loadData() {
   try {
     const res = await fetch('/data');
     const data = await res.json();
-    const stocks = data.watchlist || [];
-
     document.getElementById('watchlistContent').innerHTML = renderWatchlist(data);
+    (data.watchlist || []).forEach(s => loadCachedNewsImpact(s.ticker));
     document.getElementById('gainersContent').innerHTML = renderGainers(data);
     document.getElementById('peersContent').innerHTML = renderPeers(data);
     document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data);
-    document.getElementById('adminContent').innerHTML = renderAdmin(data.opTimestamps);
-
-    if (data.lastPriceRefresh) {
-      const lbl = document.getElementById('lastPriceRefreshLabel');
-      if (lbl) lbl.textContent = 'Last price refresh: ' + data.lastPriceRefresh;
-      document.getElementById('lastUpdated').textContent = 'Prices: ' + data.lastPriceRefresh;
-    } else if (data.lastUpdated) {
+    if (data.lastUpdated) {
       document.getElementById('lastUpdated').textContent = 'Last updated: ' + data.lastUpdated;
     }
-
-    // Build/update ticker tabs
-    buildTickerTabs(stocks, data.opTimestamps);
-
-    stocks.forEach(s => {
-      loadCachedNewsImpact(s.ticker);
-      const ai = s.aiSummary || {};
+    dataLoaded = true;
+    // Check followup cache for all event buttons
+    (data.watchlist || []).forEach(stock => {
+      const ai = stock.aiSummary || {};
       (ai.eventImpacts || []).forEach(e => {
-        if (e.event) checkFollowupCache(s.ticker, e.event);
+        if (e.event) checkFollowupCache(stock.ticker, e.event);
       });
     });
-
-    dataLoaded = true;
-    console.log(`[LoadData] OK | tickers:${stocks.map(s=>s.ticker).join(',')}`);
   } catch(e) {
-    console.error('[LoadData] FAIL:', e);
     if (!dataLoaded) {
       document.getElementById('watchlistContent').innerHTML = '<div class="loading">No data yet — click FETCH DATA to begin.</div>';
     }
   }
-}
-
-function buildTickerTabs(stocks, opTs) {
-  const tabsEl = document.getElementById('mainTabs');
-  const contentEl = document.querySelector('.content');
-
-  // Remove old ticker tabs and panels
-  document.querySelectorAll('.tab[data-tab^="ticker-"]').forEach(t => t.remove());
-  document.querySelectorAll('.tab-panel[id^="tab-ticker-"]').forEach(p => p.remove());
-
-  stocks.forEach(s => {
-    const tabId = 'ticker-' + s.ticker.replace('.', '_');
-
-    // Add tab
-    const tab = document.createElement('div');
-    tab.className = 'tab';
-    tab.dataset.tab = tabId;
-    tab.textContent = s.ticker;
-    tab.onclick = function() { showTab(tabId, this); };
-    tabsEl.appendChild(tab);
-
-    // Add panel
-    const panel = document.createElement('div');
-    panel.className = 'tab-panel';
-    panel.id = 'tab-' + tabId;
-
-    const priceFetchedAt = s.priceFetchedAt || s.fetchedAt || 'Never';
-    const fetchedAt = s.fetchedAt || 'Never';
-
-    panel.innerHTML = `
-      <div class="ticker-tab-header">
-        <button class="ticker-tab-back" onclick="backToWatchlist()">← Watchlist</button>
-        <div class="ticker-tab-title">${s.ticker}</div>
-        <div class="ticker-tab-ts">💰 Price: ${priceFetchedAt} &nbsp;|&nbsp; 📊 Data: ${fetchedAt}</div>
-        <div class="ticker-tab-actions">
-          <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn);font-size:11px">⚡ Smart Refresh</a>
-          <a href="/fetch/ticker/${s.ticker}" class="btn btn-primary" style="font-size:11px">↺ Fetch All</a>
-        </div>
-      </div>
-      <div id="ticker-detail-${s.ticker.replace('.','_')}">${renderTickerDetail(s)}</div>
-    `;
-    contentEl.appendChild(panel);
-    console.log(`[TickerTab] Built: ${s.ticker}`);
-  });
 }
 
 async function pollStatus() {
@@ -2016,35 +1836,9 @@ async function pollStatus() {
     document.getElementById('statusPill').textContent = s.running ? 'RUNNING' : 'IDLE';
     document.getElementById('statusPill').className = 'status-pill' + (s.running ? ' running' : '');
     document.getElementById('statusDot').className = 'status-dot' + (s.running ? ' running' : '');
-
-    // Price banner: show when prices operation is running
-    const isPriceOp = s.running && (s.operation === 'prices' || s.message.toLowerCase().includes('price'));
-    const banner = document.getElementById('priceBanner');
-    const priceBar = document.getElementById('priceRefreshBar');
-    if (banner) banner.style.display = isPriceOp ? 'block' : 'none';
-    if (priceBar) priceBar.style.display = isPriceOp ? 'flex' : 'none';
-
-    // Update admin timestamps if available
-    if (s.opTimestamps) {
-      const fields = {prices:'admin-ts-prices', new:'admin-ts-new', smart:'admin-ts-smart', all:'admin-ts-all'};
-      Object.entries(fields).forEach(([k, elId]) => {
-        const el = document.getElementById(elId);
-        if (el && s.opTimestamps[k]) el.textContent = 'Last: ' + s.opTimestamps[k];
-      });
-      if (s.lastPriceRefresh) {
-        const lbl = document.getElementById('lastPriceRefreshLabel');
-        if (lbl) lbl.textContent = 'Last price refresh: ' + s.lastPriceRefresh;
-      }
-    }
-
-    if (wasRunning && !s.running) {
-      console.log('[Poll] Operation complete, reloading data');
-      loadData();
-    }
+    if (wasRunning && !s.running) loadData();
     wasRunning = s.running;
-  } catch(e) {
-    console.error('[Poll] FAIL:', e);
-  }
+  } catch(e) {}
 }
 
 function renderFollowupPlan(plan, ticker, eventName) {

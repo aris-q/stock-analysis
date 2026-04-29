@@ -16,164 +16,467 @@
         "provider": "Zacks"
       }
     ],
-    "todayFetchedAt": "2026-03-20 17:24 EDT"
-  },
-  "CLS.TO": {
-    "todayItems": [],
-    "todayFetchedAt": "2026-03-22 14:18 EDT",
+    "todayFetchedAt": "2026-03-20 17:24 EDT",
     "sevenDayItems": [
       {
-        "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Renewable Energy Firm Humming",
+        "title": "DASH Benefits From Robust E-Commerce Growth: More Upside Ahead?",
+        "summary": "DoorDash's e-commerce push lifts orders and GOV sharply, but rising competition and a premium valuation complicate the outlook for sustained growth momentum.",
+        "pubDate": "2026-03-25T15:18:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/dash-benefits-robust-e-commerce-151800471.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Big Returns From AI Investments Are Here, CFOs Say",
+        "summary": "Finance chiefs once questioned the returns on investing in artificial intelligence.  Speaking at The Wall Street Journal\u2019s CFO Council Summit in Palo Alto, Calif., finance chiefs from the tech, retail and financial services sectors said their companies are seeing big gains in efficiency and productivity\u2014in some cases worth millions of dollars\u2014from their investments in generative AI.  Nudging employees to embrace AI also has yielded new ideas about how to accomplish time-consuming tasks, CFOs said.",
+        "pubDate": "2026-03-25T00:23:00Z",
+        "url": "https://www.wsj.com/cfo-journal/big-returns-from-ai-investments-are-here-cfos-say-a684339e?siteid=yhoof2&yptr=yahoo",
+        "provider": "The Wall Street Journal"
+      },
+      {
+        "title": "What Is the Future of Agentic Commerce?",
+        "summary": "Shopify CFO Jeff Hoffmeister details the timeline for \"agentic commerce\"\u2014where AI knows consumers' habits so well that it makes purchases on their behalf.",
+        "pubDate": "2026-03-24T19:02:00Z",
+        "url": "https://finance.yahoo.com/video/future-agentic-commerce-190200791.html",
+        "provider": "WSJ"
+      },
+      {
+        "title": "Shopify Recognition Raises Questions On Growth Premium And Platform Strength",
+        "summary": "Shopify (NasdaqGS:SHOP) has been ranked third on Fast Company's 2026 Most Innovative Companies list. The company appears alongside technology leaders such as Google and Nvidia. The recognition highlights Shopify's foundational technologies and platform-focused approach to commerce. For investors tracking commerce platforms, this recognition places Shopify's core business of powering online and omnichannel retail in a wider technology context. Instead of centering on a single product launch,...",
+        "pubDate": "2026-03-24T18:15:41Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/shopify-recognition-raises-questions-growth-181541801.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "How Shopify Grew Without Adding to Its Headcount",
+        "summary": "Shopify CFO Jeff Hoffmeister breaks down how a companywide mandate to build with AI drove immediate ROI\u2014allowing the e-commerce giant to grow 30% annually over three years without expanding its workforce.",
+        "pubDate": "2026-03-24T17:25:00Z",
+        "url": "https://finance.yahoo.com/video/shopify-grew-without-adding-headcount-172500843.html",
+        "provider": "WSJ"
+      },
+      {
+        "title": "The Global Commerce Reset and a New CFO Playbook",
+        "summary": "Shopify CFO Jeff Hoffmeister discusses the expanded role of today\u2019s CFO and shares insights on capital allocation, AI investment and navigating trade through geopolitical complexity.",
+        "pubDate": "2026-03-24T17:07:00Z",
+        "url": "https://finance.yahoo.com/video/global-commerce-reset-cfo-playbook-170700892.html",
+        "provider": "WSJ"
+      },
+      {
+        "title": "Investors Heavily Search Shopify Inc. (SHOP): Here is What You Need to Know",
+        "summary": "Zacks.com users have recently been watching Shopify (SHOP) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects.",
+        "pubDate": "2026-03-24T13:00:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-shopify-inc-130003154.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "3 Growth Stocks with Explosive Upside",
+        "summary": "Growth is a hallmark of all great companies, but the laws of gravity eventually take hold. Those who rode the COVID boom and ensuing tech selloff in 2022 will surely remember that the market\u2019s punishment can be swift and severe when trajectories fall.",
+        "pubDate": "2026-03-23T20:29:35Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-explosive-upside-202935100.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "Why Shopify (SHOP) Stock Is Trading Up Today",
+        "summary": "Shares of e-commerce platform Shopify (NYSE:SHOP) jumped 3.8% in the afternoon session after comments from President Trump regarding talks with Iran sparked a broad market rally.",
+        "pubDate": "2026-03-23T19:24:35Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-shopify-shop-stock-trading-192435323.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "MercadoLibre Integrates AI Deeper: Can It Boost Conversion Rates?",
+        "summary": "MELI deepens AI across search, ads and support, lifting conversions as items sold jump 43% and GMV grows 37% in Q4 2025.",
+        "pubDate": "2026-03-23T15:40:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/mercadolibre-integrates-ai-deeper-boost-154000685.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-25 21:16 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 6,
+      "summary": "Recent news highlights Shopify's focus on AI integration and its recognition as an innovative company, suggesting potential for future growth.",
+      "priceImpact": "Likely to see a short-term positive impact, with the price potentially rising by 2% - 5%. ",
+      "keyThemes": [
+        "AI Integration",
+        "Innovation",
+        "Growth Potential"
+      ],
+      "tradingImplication": "Hold or consider buying SHOP.TO as the news suggests a positive trajectory. However, monitor future AI adoption developments and market sentiment for confirmation.",
+      "watchFor": "Upcoming earnings reports and investor conference presentations where Shopify can elaborate on its AI strategy and growth plans.",
+      "newsItems": [
+        {
+          "title": "DASH Benefits From Robust E-Commerce Growth: More Upside Ahead?",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "DoorDash's e-commerce success highlights a favorable market trend for Shopify."
+        },
+        {
+          "title": "Big Returns From AI Investments Are Here, CFOs Say",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Growing confidence in AI investments may boost investor sentiment towards Shopify's AI-driven strategies."
+        },
+        {
+          "title": "What Is the Future of Agentic Commerce?",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Shopify's focus on 'agentic commerce' showcases its forward-thinking approach and potential market disruption."
+        },
+        {
+          "title": "Shopify Recognition Raises Questions On Growth Premium And Platform Strength",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Fast Company recognition strengthens Shopify's brand image and positions it among leading technology companies."
+        },
+        {
+          "title": "How Shopify Grew Without Adding to Its Headcount",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Shopify's AI-driven growth strategy demonstrates efficiency and cost-effectiveness, attracting investor attention."
+        },
+        {
+          "title": "The Global Commerce Reset and a New CFO Playbook",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Shopify's CFO emphasizes its proactive approach to navigating market challenges and investing in future growth."
+        },
+        {
+          "title": "Investors Heavily Search Shopify Inc. (SHOP): Here is What You Need to Know",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Increased investor interest in Shopify may indicate a growing perception of its value and potential."
+        },
+        {
+          "title": "3 Growth Stocks with Explosive Upside",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Shopify being categorized as a growth stock suggests continued market optimism about its future performance."
+        },
+        {
+          "title": "Why Shopify (SHOP) Stock Is Trading Up Today",
+          "impact": "positive",
+          "significance": "low",
+          "oneLineSummary": "Market-wide rally triggered by President Trump's comments positively impacted Shopify's stock price."
+        },
+        {
+          "title": "MercadoLibre Integrates AI Deeper: Can It Boost Conversion Rates?",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "MercadoLibre's success with AI integration strengthens the narrative that AI can drive growth in e-commerce."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-25 21:17 EDT"
+  },
+  "CLS.TO": {
+    "todayItems": [
+      {
+        "title": "Celestica Price Target Raised to US$425 at CIBC",
+        "summary": "CIBC Capital Markets raised its price target on Celestica Inc. (CLS.TO, CLS) to US$425 from US$360.",
+        "pubDate": "2026-04-14T12:12:30Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-price-target-raised-us-121230812.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "todayFetchedAt": "2026-04-14 09:57 EDT",
+    "sevenDayItems": [
+      {
+        "title": "Celestica Price Target Raised to US$425 at CIBC",
+        "summary": "CIBC Capital Markets raised its price target on Celestica Inc. (CLS.TO, CLS) to US$425 from US$360.",
+        "pubDate": "2026-04-14T12:12:30Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-price-target-raised-us-121230812.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Celestica vs. Sanmina: Which EMS Stock is the Better Buy?",
+        "summary": "AI-driven data center demand, revenue growth trends, and valuation levels are shaping the investment case as SANM and CLS compete in the EMS space.",
+        "pubDate": "2026-04-13T18:15:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-vs-sanmina-ems-stock-181500156.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Can Sanmina's Modern Defense Portfolio Boost Its Growth Prospects?",
+        "summary": "SANM delivers integrated manufacturing solutions for defense and aerospace, producing advanced electronics for radar, satellites, avionics and mission systems.",
+        "pubDate": "2026-04-13T15:19:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/sanminas-modern-defense-portfolio-boost-151900819.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Ballard Power Systems Appoints Ralph Robinett as Chief Operating Officer",
+        "summary": "Ballard Power Systems (BLDP.TO) on Monday said it appointed Ralph Robinett as senior vice president",
+        "pubDate": "2026-04-13T12:46:50Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/ballard-power-systems-appoints-ralph-124650771.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "This AI Stock With Earnings Seen Rising 48% Climbs Toward Entry",
+        "summary": "The artificial intelligence revolution is front of mind for investors. And this AI stock is expected to see profits surge for years to come.",
+        "pubDate": "2026-04-10T15:25:50Z",
+        "url": "https://www.investors.com/stock-lists/stock-spotlight/ai-stock-celestica-cls-earnings-seen-rising-climbs-toward-entry/?src=A00220&yptr=yahoo",
+        "provider": "Investor's Business Daily"
+      },
+      {
+        "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; AI-Related Stocks Rebound",
         "summary": "Among the best stocks in earnings performance, Comfort Systems has a pristine 99 EPS Rating, the highest in IBD's air conditioning and heating products industry group.",
-        "pubDate": "2026-03-21T12:45:21Z",
+        "pubDate": "2026-04-10T12:45:21Z",
         "url": "https://www.investors.com/research/best-stocks-seven-magnificent-stocks-earnings-growth/?src=A00220&yptr=yahoo",
         "provider": "Investor's Business Daily"
       },
       {
-        "title": "Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks",
-        "summary": "Intel (NASDAQ:INTC) stock is down 5% in Friday trading, pulling back to around $44 after a strong run that has seen the stock nearly double over the past year. Advanced Micro Devices (NASDAQ:AMD) stock is also in the red, slipping 3% to less than $200. Both moves reflect a broader semiconductor sector under pressure from ... Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks",
-        "pubDate": "2026-03-20T18:56:49Z",
-        "url": "https://247wallst.com/investing/2026/03/20/intel-dips-5-amd-down-3-rising-competition-and-sector-pressure-test-two-of-wall-streets-favorite-chip-stocks/",
-        "provider": "24/7 Wall St."
-      },
-      {
-        "title": "AMD Relies on a Rich Partner Base to Drive Sales: More Upside Ahead?",
-        "summary": "Advanced Micro Devices expands AI push with Celestica, Nutanix and Samsung, advancing Helios and next-gen chips while battling NVDA and AVGO pressure.",
-        "pubDate": "2026-03-20T15:19:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/amd-relies-rich-partner-drive-151900413.html",
-        "provider": "Zacks"
-      },
-      {
-        "title": "Why Celestica (TSX:CLS) Is Up 8.2% After Teaming With AMD On Helios AI Networking Switches",
-        "summary": "In March 2026, AMD announced a collaboration with Celestica to develop and manufacture scale-up networking switches for the Helios rack-scale AI platform, using Open Compute Project, Open-Rack-Wide designs and Ultra Accelerator Link over Ethernet to connect next-generation AMD Instinct MI450 Series GPUs across large AI clusters. This partnership highlights how Celestica is moving further up the AI infrastructure stack by combining its design and manufacturing strengths with AMD\u2019s compute...",
-        "pubDate": "2026-03-20T09:06:56Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/why-celestica-tsx-cls-8-090656442.html",
+        "title": "Is Celestica\u2019s (TSX:CLS) Rising AI Role and CEO Shift Quietly Rewriting Its Investment Story?",
+        "summary": "In recent weeks, Celestica has attracted increased attention as analysts highlighted its expanding role in AI infrastructure, upcoming earnings report, and a leadership transition that will see CEO Rob Mionis move to board chair. This combination of growing AI hardware exposure, management continuity, and broadly positive, but mixed, analyst views is reshaping how investors assess the company\u2019s long-term positioning. With Celestica gaining prominence as an AI infrastructure supplier, we\u2019ll...",
+        "pubDate": "2026-04-09T20:09:41Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celestica-tsx-cls-rising-ai-200941384.html",
         "provider": "Simply Wall St."
       },
       {
-        "title": "As Celestica Partners with AMD, Should You Buy the Lesser-Known AI Stock Now?",
-        "summary": "Celestica's new collaboration with AMD follows Q4 revenue growth, an attractive EPS growth forecast, and a $375 consensus price target implying upside from current levels.",
-        "pubDate": "2026-03-19T18:56:29Z",
-        "url": "https://www.barchart.com/story/news/849750/as-celestica-partners-with-amd-should-you-buy-the-lesser-known-ai-stock-now",
-        "provider": "Barchart"
-      },
-      {
-        "title": "RBC Capital Maintains a Sector Perform Rating on Advanced Micro Devices (AMD) Stock",
-        "summary": "Advanced Micro Devices, Inc. (NASDAQ:AMD) is one of the Best Semiconductor Stocks to Invest In Now. On March 15, RBC Capital maintained a \u201cSector Perform\u201d rating and a price objective of $230 on the company\u2019s stock. The company reiterated that MI450/Helios is on track, with Advanced Micro Devices, Inc. (NASDAQ:AMD) having strong conviction in OpenAI and Meta volume ramps [\u2026]",
-        "pubDate": "2026-03-19T15:44:19Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/rbc-capital-maintains-sector-perform-154419059.html",
-        "provider": "Insider Monkey"
-      },
-      {
-        "title": "Here's Why Celestica (CLS) Fell More Than Broader Market",
-        "summary": "In the closing of the recent trading day, Celestica (CLS) stood at $273.58, denoting a -2.97% move from the preceding trading day.",
-        "pubDate": "2026-03-18T21:45:05Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-celestica-cls-fell-214505170.html",
+        "title": "Can Jabil's Next-Generation Telecom Solutions Drive Future Growth?",
+        "summary": "JBL sharpens telecom focus, leveraging 5G, IoT and advanced manufacturing to help global players build faster, scalable and high-performance networks.",
+        "pubDate": "2026-04-09T14:21:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jabils-next-generation-telecom-solutions-142100286.html",
         "provider": "Zacks"
       },
       {
-        "title": "Advanced Micro Devices Inc. (AMD) and Celestica Bring Open-Standard \u2018Helios\u2019 AI Platform to Market",
-        "summary": "Advanced Micro Devices Inc. (NASDAQ:AMD) is one of the most buzzing stocks to buy with the highest upside potential. On March 16, AMD and Celestica (NYSE:CLS) announced a collaboration to bring \u2018Helios\u2019, an open standards-based rack-scale AI platform, to the market. This partnership combines AMD\u2019s leadership in HPC with Celestica\u2019s expertise in advanced networking switch [\u2026]",
-        "pubDate": "2026-03-18T20:27:14Z",
-        "url": "https://finance.yahoo.com/news/advanced-micro-devices-inc-amd-202714429.html",
-        "provider": "Insider Monkey"
-      },
-      {
-        "title": "Jabil Q2 Earnings Beat Estimates on Solid Revenue Growth",
-        "summary": "JBL tops fiscal Q2 estimates as revenues jump to $8.3B, driven by AI data center and infrastructure demand, while raising its full-year outlook.",
-        "pubDate": "2026-03-18T18:16:00Z",
-        "url": "https://finance.yahoo.com/news/jabil-q2-earnings-beat-estimates-181600804.html",
+        "title": "Should You Bet on JBL Stock Amid Rising Earnings Estimate Revisions?",
+        "summary": "Jabil's earnings estimates for 2026-27 jumped as raised guidance and AI optical-module momentum builds on its diversified end-market strength.",
+        "pubDate": "2026-04-09T12:56:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bet-jbl-stock-amid-rising-125600541.html",
         "provider": "Zacks"
       },
       {
-        "title": "Can Celestica's Tie-Up With AMD for AI Switches Stoke Growth?",
-        "summary": "CLS teams up with AMD to build Helios AI platform switches, enabling high-speed GPU links and strengthening its play in booming hyperscale AI demand.",
-        "pubDate": "2026-03-18T15:20:00Z",
-        "url": "https://finance.yahoo.com/news/celesticas-tie-amd-ai-switches-152000220.html",
-        "provider": "Zacks"
+        "title": "Nascent Market Rally Creates This Tightrope Balancing Act",
+        "summary": "As the Nasdaq and S&P add to the current rally, Cloudflare leads a slew of stocks to watch eying a buy zone.",
+        "pubDate": "2026-04-08T19:17:14Z",
+        "url": "https://www.investors.com/research/breakout-stocks-technical-analysis/stocks-to-watch-cloudflare-celestica-emcore-lead-breakout-watch/?src=A00220&yptr=yahoo",
+        "provider": "Investor's Business Daily"
       }
     ],
-    "sevenDayFetchedAt": "2026-03-22 12:54 EDT",
+    "sevenDayFetchedAt": "2026-04-14 09:58 EDT",
     "sevenDayImpact": {
       "overallSentiment": "bullish",
       "sentimentScore": 7,
-      "summary": "Recent news highlights a strategic partnership between Celestica and AMD to develop AI networking switches, boosting investor confidence in Celestica's growth prospects.",
-      "priceImpact": "Likely short-term price increase within the range of 5% - 10%",
+      "summary": "Positive analyst coverage and industry trends focused on AI infrastructure are driving bullish sentiment towards Celestica.",
+      "priceImpact": "Potentially positive, with a short-term price increase of 3% - 5% expected",
       "keyThemes": [
-        "AI Infrastructure Growth",
-        "Strategic Partnerships",
-        "Earnings Performance and Upside Potential"
+        "AI Infrastructure",
+        "Analyst Upgradings",
+        "Earnings Growth Expectations"
       ],
-      "tradingImplication": "Buy based on positive news regarding Celestica's involvement in the burgeoning AI market through a partnership with AMD.",
-      "watchFor": "Celestica's upcoming earnings report for further confirmation of its strong financial performance and progress in the AI sector.",
+      "tradingImplication": "Hold or consider buying on dips. The positive news and analyst upgrades suggest further upside potential.",
+      "watchFor": "Upcoming earnings report, expected to show strong growth driven by AI demand and the success of Celestica's new CEO strategy",
       "newsItems": [
         {
-          "title": "These 7 Stocks Are Analyst Favorites For Magnificent Earnings Growth; Renewable Energy Firm Humming (Investor's Business Daily)",
-          "impact": "positive",
-          "significance": "medium",
-          "oneLineSummary": "Mentions Comfort Systems, a positive comparison to Celestica's performance."
-        },
-        {
-          "title": "Intel Dips 5%, AMD Down 3%: Rising Competition and Sector Pressure Test Two of Wall Street\u2019s Favorite Chip Stocks (24/7 Wall St.)",
-          "impact": "neutral",
-          "significance": "low",
-          "oneLineSummary": "Focuses on Intel and AMD, indirectly relevant to Celestica's partnership with AMD."
-        },
-        {
-          "title": "AMD Relies on a Rich Partner Base to Drive Sales: More Upside Ahead? (Zacks)",
+          "title": "Celestica Price Target Raised to US$425 at CIBC (MT Newswires)",
           "impact": "positive",
           "significance": "high",
-          "oneLineSummary": "Highlights AMD's expansion into AI, boosting Celestica through their partnership."
+          "oneLineSummary": "CIBC raised its price target on Celestica, signaling confidence in the company's future performance."
         },
         {
-          "title": "Why Celestica (TSX:CLS) Is Up 8.2% After Teaming With AMD On Helios AI Networking Switches (Simply Wall St.)",
-          "impact": "positive",
-          "significance": "high",
-          "oneLineSummary": "Directly attributes Celestica's price increase to the positive news about their partnership with AMD."
-        },
-        {
-          "title": "As Celestica Partners with AMD, Should You Buy the Lesser-Known AI Stock Now? (Barchart)",
+          "title": "Is Celestica\u2019s (TSX:CLS) Rising AI Role and CEO Shift Quietly Rewriting Its Investment Story? (Simply Wall St.)",
           "impact": "positive",
           "significance": "medium",
-          "oneLineSummary": "Encourages investors to consider buying Celestica due to its partnership with AMD and positive future outlook."
+          "oneLineSummary": "This article highlights Celestica's expanding role in the AI sector and its new leadership, suggesting a positive outlook for investors."
         },
         {
-          "title": "RBC Capital Maintains a Sector Perform Rating on Advanced Micro Devices (AMD) Stock (Insider Monkey)",
+          "title": "Celestica vs. Sanmina: Which EMS Stock is the Better Buy? (Zacks)",
           "impact": "neutral",
           "significance": "medium",
-          "oneLineSummary": "Neutral stance on AMD, indirectly relevant to Celestica's partnership with AMD."
-        },
-        {
-          "title": "Here's Why Celestica (CLS) Fell More Than Broader Market (Zacks)",
-          "impact": "negative",
-          "significance": "medium",
-          "oneLineSummary": "Celestica's stock price dropped, potentially a precursor to the positive news about their partnership with AMD."
-        },
-        {
-          "title": "Advanced Micro Devices Inc. (AMD) and Celestica Bring Open-Standard \u2018Helios\u2019 AI Platform to Market (Insider Monkey)",
-          "impact": "positive",
-          "significance": "high",
-          "oneLineSummary": "Announces the launch of the Helios AI platform, a significant development in the partnership between AMD and Celestica."
-        },
-        {
-          "title": "Jabil Q2 Earnings Beat Estimates on Solid Revenue Growth (Zacks)",
-          "impact": "neutral",
-          "significance": "low",
-          "oneLineSummary": "Positive news about Jabil, a competitor in the same industry, indirectly relevant to Celestica."
-        },
-        {
-          "title": "Can Celestica's Tie-Up With AMD for AI Switches Stoke Growth? (Zacks)",
-          "impact": "positive",
-          "significance": "high",
-          "oneLineSummary": "Explores the potential for Celestica's partnership with AMD to drive growth in the AI sector."
+          "oneLineSummary": "This article compares Celestica to Sanmina, providing a neutral perspective on their respective performance."
         }
       ]
     },
-    "sevenDayImpactAt": "2026-03-22 13:12 EDT"
+    "sevenDayImpactAt": "2026-04-14 09:58 EDT",
+    "todayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "CIBC's price target increase on Celestica reflects positive sentiment and expectations for future growth.",
+      "priceImpact": "Slight upward pressure expected, potentially pushing the stock within a +2% to +5% range in the short term.",
+      "keyThemes": [
+        "Analyst Sentiment",
+        "Price Target Revisions",
+        "Growth Expectations"
+      ],
+      "tradingImplication": "Hold. The price target increase provides further validation of Celestica's current trajectory, but a more significant catalyst is needed for a strong buy signal.",
+      "watchFor": "Upcoming earnings report and guidance to confirm CIBC's bullish stance.",
+      "newsItems": [
+        {
+          "title": "Celestica Price Target Raised to US$425 at CIBC (MT Newswires)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "CIBC's price target increase suggests confidence in Celestica's future performance."
+        }
+      ]
+    },
+    "todayImpactAt": "2026-04-14 09:57 EDT"
   },
   "BNS.TO": {
-    "todayItems": [],
-    "todayFetchedAt": "2026-03-22 12:53 EDT"
+    "todayItems": [
+      {
+        "title": "The Bank of Nova Scotia Gets Approval to Repurchase Up to 15 Million Common Shares",
+        "summary": "The Bank of Nova Scotia (BNS.TO) on Thursday said the Toronto Stock Exchange and the Office of the S",
+        "pubDate": "2026-04-02T10:29:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bank-nova-scotia-gets-approval-102904592.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "todayFetchedAt": "2026-04-02 22:25 EDT",
+    "sevenDayItems": [
+      {
+        "title": "Is It Time To Reassess Bank of Nova Scotia (TSX:BNS) After Recent Share Price Pullback",
+        "summary": "Investors may be wondering if Bank of Nova Scotia at around $93.61 is offering good value right now, or if the easy gains are already behind it. The stock has had a mixed run, with a 1 year return of 43.4% and a 3 year return of 70.1%, while the last 30 days show an 11.5% decline and the year to date return sits at an 8.6% decline. Recent headlines have focused on Bank of Nova Scotia as one of Canada's major banks, with attention on its capital position, dividend track record and exposure...",
+        "pubDate": "2026-03-22T18:05:06Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/time-reassess-bank-nova-scotia-180506094.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Scotiabank Previews Friday's Retail Sales, Producer Prices In Canada",
+        "summary": "Canada will release retail sales for January and preliminary figures for February Friday at 8:30 a.m",
+        "pubDate": "2026-03-20T12:10:45Z",
+        "url": "https://finance.yahoo.com/markets/articles/scotiabank-previews-friday-apos-retail-121045903.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Scotiabank Revises Rexford Industrial (REXR) Outlook as REIT Strategy Shifts",
+        "summary": "Rexford Industrial Realty, Inc. (NYSE:REXR) is included among the 14 Under-the-Radar High Dividend Stocks to Buy Now. On March 2, Scotiabank lowered its price recommendation on Rexford Industrial Realty, Inc. (NYSE:REXR) to $39 from $44. It reiterated a Sector Perform rating on the shares. The analyst said the firm is updating its price targets across U.S. [\u2026]",
+        "pubDate": "2026-03-19T04:52:20Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/scotiabank-revises-rexford-industrial-rexr-045220720.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Why Bank of Nova Scotia (BNS) is a Top Dividend Stock for Your Portfolio",
+        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does Bank of Nova Scotia (BNS) have what it takes? Let's find out.",
+        "pubDate": "2026-03-18T15:45:03Z",
+        "url": "https://finance.yahoo.com/news/why-bank-nova-scotia-bns-154503758.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Will New Covered Bond Issues and Governance Moves Change Bank of Nova Scotia's (TSX:BNS) Narrative",
+        "summary": "In recent days, The Bank of Nova Scotia has raised new funding through multiple bond issues, including US$1.75 billion of fixed\u2011to\u2011floating covered bonds due March 13, 2029, and smaller callable Eurobond offerings such as step\u2011up notes due March 17, 2033, and 4.86% notes due March 12, 2036. These transactions, alongside a proposed settlement of a non\u2011sufficient funds fee class action and by\u2011law amendments on director compensation, shed light on how Scotiabank is refining its funding mix,...",
+        "pubDate": "2026-03-17T19:10:45Z",
+        "url": "https://finance.yahoo.com/news/covered-bond-issues-governance-moves-191045097.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Assessing Bank Of Nova Scotia (TSX:BNS) Valuation As New Debt Issuance And Analyst Downgrade Shape Expectations",
+        "summary": "Bank of Nova Scotia (TSX:BNS) has been active in global debt markets, issuing US$1.75b of 3.791% covered bonds due 2029, along with new step up and fixed rate notes, while also facing a recent analyst downgrade. See our latest analysis for Bank of Nova Scotia. These funding moves and the recent downgrade come as Bank of Nova Scotia trades at CA$95.75, with a 30 day share price return showing a 7.18% decline but a 1 year total shareholder return of 44.97%. This suggests that longer term...",
+        "pubDate": "2026-03-17T10:06:27Z",
+        "url": "https://finance.yahoo.com/news/assessing-bank-nova-scotia-tsx-100627900.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "How The Galiano Gold (TSX:GAU) Story Is Shifting As Analysts Rework Fair Value Estimates",
+        "summary": "Galiano Gold\u2019s modeled fair value has been revised from CA$5.77 to CA$6.49, reflecting a higher price estimate for the shares in updated analyst work. That change is tied directly to fresh views on discount rates and revenue potential, alongside reassessed expectations for how the market might price the company\u2019s earnings. As you read on, you will see what sits behind this shift and how to track the story as the analyst narrative continues to evolve. Analyst Price Targets don't always capture...",
+        "pubDate": "2026-03-17T10:06:18Z",
+        "url": "https://finance.yahoo.com/news/galiano-gold-tsx-gau-story-100618299.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Canada's CPI Slows as Expected in February Thanks to End of Tax Breaks",
+        "summary": "The Canadian consumer price index rose 1.8% on a year-over-year basis in February, following a 2.3%",
+        "pubDate": "2026-03-16T12:55:45Z",
+        "url": "https://finance.yahoo.com/news/canada-apos-cpi-slows-expected-125545513.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Scotiabank Says Monday's CPI in Canada Is Backward Reading",
+        "summary": "Canada refreshes the consumer price index for February at 8:30 a.m. ET on Monday as the last major r",
+        "pubDate": "2026-03-16T12:12:38Z",
+        "url": "https://finance.yahoo.com/news/scotiabank-says-monday-apos-cpi-121238530.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-22 22:05 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "neutral",
+      "sentimentScore": 1,
+      "summary": "Recent news on BNS is mixed, with some articles highlighting dividend potential and others focusing on recent debt issuance and analyst revisions. Overall sentiment remains neutral.",
+      "priceImpact": "likely minor short-term price fluctuations within a +/- 2% range",
+      "keyThemes": [
+        "dividend yield",
+        "debt issuance",
+        "analyst sentiment"
+      ],
+      "tradingImplication": "hold. Monitor upcoming earnings reports and economic data releases for further clarity on BNS's performance.",
+      "watchFor": "Q1 2026 earnings report, Bank of Canada interest rate decision",
+      "newsItems": [
+        {
+          "title": "Is It Time To Reassess Bank of Nova Scotia (TSX:BNS) After Recent Share Price Pullback (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Article analyzes recent share price performance and future potential, providing a balanced view."
+        },
+        {
+          "title": "Scotiabank Previews Friday's Retail Sales, Producer Prices In Canada (MT Newswires)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "News about upcoming economic data releases may indirectly influence BNS stock price."
+        },
+        {
+          "title": "Scotiabank Revises Rexford Industrial (REXR) Outlook as REIT Strategy Shifts (Insider Monkey)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Analyst changes to a company Scotiabank covers could signal broader market trends."
+        },
+        {
+          "title": "Why Bank of Nova Scotia (BNS) is a Top Dividend Stock for Your Portfolio (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Article highlights BNS's dividend potential, attracting investors seeking income."
+        },
+        {
+          "title": "Will New Covered Bond Issues and Governance Moves Change Bank of Nova Scotia's (TSX:BNS) Narrative (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Article discusses recent debt issuance and governance changes, providing a neutral perspective."
+        },
+        {
+          "title": "Assessing Bank Of Nova Scotia (TSX:BNS) Valuation As New Debt Issuance And Analyst Downgrade Shape Expectations (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "Article analyzes BNS's valuation in light of recent debt issuance and analyst opinions."
+        },
+        {
+          "title": "How The Galiano Gold (TSX:GAU) Story Is Shifting As Analysts Rework Fair Value Estimates (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Article about a different company may indirectly reflect broader market sentiment."
+        },
+        {
+          "title": "Canada's CPI Slows as Expected in February Thanks to End of Tax Breaks (MT Newswires)",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "Economic data release could influence Bank of Canada's future interest rate decisions."
+        },
+        {
+          "title": "Scotiabank Says Monday's CPI in Canada Is Backward Reading (MT Newswires)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Analyst commentary on economic data release may influence market sentiment."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-22 22:06 EDT",
+    "todayImpact": {
+      "overallSentiment": "neutral",
+      "sentimentScore": 2,
+      "summary": "BNS received approval for a share repurchase program which could modestly increase earnings per share but doesn't signal significant business expansion.",
+      "priceImpact": "Slight positive in the short-term, with potential for a 1% - 3% bump",
+      "keyThemes": [
+        "Share Repurchases",
+        "Financial Health",
+        "Capital Allocation"
+      ],
+      "tradingImplication": "Hold. The repurchase program is generally viewed positively but the impact on BNS's overall stock price may be limited.",
+      "watchFor": "Upcoming earnings reports to gauge if the share buyback is impacting profitability.",
+      "newsItems": [
+        {
+          "title": "The Bank of Nova Scotia Gets Approval to Repurchase Up to 15 Million Common Shares",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "BNS received approval to repurchase shares, which could increase earnings per share and signal confidence in the company's future."
+        }
+      ]
+    },
+    "todayImpactAt": "2026-04-02 22:26 EDT"
   },
   "WELL.TO": {
     "todayItems": [
@@ -185,7 +488,43 @@
         "provider": "Simply Wall St."
       }
     ],
-    "todayFetchedAt": "2026-03-21 15:38 EDT"
+    "todayFetchedAt": "2026-03-21 15:38 EDT",
+    "sevenDayItems": [],
+    "sevenDayFetchedAt": "2026-04-14 14:26 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "WELL Health Technologies reported record revenue and growth across its clinics, indicating positive financial performance and market expansion.",
+      "priceImpact": "Potentially +5% to +10% in the short term due to strong earnings and growth prospects.",
+      "keyThemes": [
+        "Strong Financial Performance",
+        "Clinic Expansion",
+        "Market Growth"
+      ],
+      "tradingImplication": "Buy WELL.TO as the positive news and future outlook warrant an investment position.",
+      "watchFor": "Upcoming regulatory approvals or partnerships that could further accelerate revenue growth.",
+      "newsItems": [
+        {
+          "title": "WELL Health Record Revenue Spurs Clinic Growth And Wellstar Spin Out (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Record revenue and clinic expansion demonstrate WELL Health's strong performance and market dominance."
+        },
+        {
+          "title": "WELL Health Technologies Corp (WHTCF) Q4 2025 Earnings Call Highlights: Record Revenue and ... (GuruFocus.com)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Despite challenges, WELL Health achieved record revenue and strategic expansion initiatives."
+        },
+        {
+          "title": "WELL Health Technologies Q4 Earnings Call Highlights (MarketBeat)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Well Health highlighted increased profitability and continued clinic footprint growth, signaling positive future prospects."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-25 21:18 EDT"
   },
   "BMO.TO": {
     "todayItems": [
@@ -207,146 +546,651 @@
     "todayFetchedAt": "2026-03-21 13:30 EDT",
     "sevenDayItems": [
       {
-        "title": "FedEx price target raised to $410 from $400 at BMO Capital",
-        "summary": "BMO Capital raised the firm\u2019s price target on FedEx (FDX) to $410 from $400 and keeps a Market Perform rating on the shares. The company\u2019s Q3 results were well ahead of expectations and the outlook was raised thanks to strong execution across both commercial and operational fronts, the analyst tells investors in a research note. BMO adds, however, that while the conflict in the Middle East is not expected to have a material impact on Q4 results, incremental headwinds from variable compensation a",
-        "pubDate": "2026-03-21T11:36:26Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/fedex-price-target-raised-410-113626813.html",
-        "provider": "TipRanks"
+        "title": "Gold Gains for Second Day as Traders Gauge Outlook for Ceasefire",
+        "summary": "(Bloomberg) -- Gold climbed for a second day as traders weighed the likelihood of US-Iran ceasefire negotiations. Bullion advanced as much as 2.8%, adding to a 1.6% jump in the previous session. White House Press Secretary Karoline Leavitt on Wednesday insisted that peace talks with Iran are ongoing. Meanwhile, Tehran has publicly rejected US overtures and issued fresh conditions of its own to end the conflict that\u2019s wreaked havoc across the Middle East and global markets.Even through the back-a",
+        "pubDate": "2026-03-25T20:32:01Z",
+        "url": "https://finance.yahoo.com/news/gold-extends-gains-reports-iran-062123180.html",
+        "provider": "Bloomberg"
       },
       {
-        "title": "Accenture price target lowered to $230 from $300 at BMO Capital",
-        "summary": "BMO Capital lowered the firm\u2019s price target on Accenture (ACN) to $230 from $300 and keeps a Market Perform rating on the shares. The company reported a reasonable Q2 with impressive results in free cash flow being a standout, the analyst tells investors in a research note. BMO adds however that while it believes Accenture has strong AI positioning due to factors such as scale, partnerships, and training investments, it continues to question whether AI is a longer-term tailwind given efficiency",
-        "pubDate": "2026-03-21T11:35:44Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/accenture-price-target-lowered-230-113544600.html",
-        "provider": "TipRanks"
+        "title": "Halliburton\u2019s $42 Price Target From BMO Signals More Runway After a Monster 2026",
+        "summary": "Halliburton (NYSE:HAL) has been on a strong run heading into spring 2026. The stock is up 6.24% over the past week, 9.53% over the past month and 30.51% year to date, recently touching a 52-week high of $38.68. Over the past year, shares have climbed 50.37%. Most Wall Street analysts carry a more measured view, ... Halliburton\u2019s $42 Price Target From BMO Signals More Runway After a Monster 2026",
+        "pubDate": "2026-03-25T14:32:36Z",
+        "url": "https://247wallst.com/investing/2026/03/25/halliburtons-42-price-target-from-bmo-signals-more-runway-after-a-monster-2026/",
+        "provider": "24/7 Wall St."
       },
       {
-        "title": "Why Bank of Montreal (BMO) is a Great Dividend Stock Right Now",
-        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does Bank of Montreal (BMO) have what it takes? Let's find out.",
-        "pubDate": "2026-03-20T15:45:03Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/why-bank-montreal-bmo-great-154503629.html",
+        "title": "BMO Sees Manitoba Looks on Track to Reach A Provincial Budget Surplus",
+        "summary": "The Canadian province of Manitoba is projecting a $498 million summary budget deficit in FY26/27, be",
+        "pubDate": "2026-03-25T14:25:12Z",
+        "url": "https://finance.yahoo.com/economy/policy/articles/bmo-sees-manitoba-looks-track-142512499.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Is AIA (AAGIY) Outperforming Other Finance Stocks This Year?",
+        "summary": "Here is how AIA (AAGIY) and Bank of Montreal (BMO) have performed compared to their sector so far this year.",
+        "pubDate": "2026-03-25T13:40:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/aia-aagiy-outperforming-other-finance-134003763.html",
         "provider": "Zacks"
       },
       {
-        "title": "Treasury Yields Rise on Inflation Worries",
-        "summary": "A selloff in the Treasury market continues, sending yields higher, as traders remain concerned about the inflation impact of the war in Iran and implications for the Fed's policy response.  With the risk of more escalation ahead, \"we suspect investors will be very wary of carrying a Treasury long into the weekend,\" Ian Lyngen of BMO writes.",
-        "pubDate": "2026-03-20T14:15:43Z",
-        "url": "https://www.barrons.com/livecoverage/stock-market-news-today-032026/card/treasury-yields-rise-on-inflation-worries-gOmjgUycOO9weAu88IE0?siteid=yhoof2&yptr=yahoo",
-        "provider": "Barrons.com"
-      },
-      {
-        "title": "BMO On The Day Ahead In Canada",
-        "summary": "Investors will get a few mid-tier indicators out in Canada, Friday, all at 8:30 a.m. ET, said Bank o",
-        "pubDate": "2026-03-20T11:37:48Z",
-        "url": "https://finance.yahoo.com/markets/currencies/articles/bmo-day-ahead-canada-113748943.html",
+        "title": "RBC Lowers Price Targets on Five Canadian Banks",
+        "summary": "RBC Capital Markets lowered its price target on five Canadian banks on Wednesday as it resets return",
+        "pubDate": "2026-03-25T12:06:20Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/rbc-lowers-price-targets-five-120620014.html",
         "provider": "MT Newswires"
       },
       {
-        "title": "BMO Says Canadian Small Business Confidence Faces New War",
-        "summary": "The Iran conflict appears to have wounded the Canadian small business sentiment in March, said Bank",
-        "pubDate": "2026-03-20T10:48:04Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-says-canadian-small-business-104804712.html",
-        "provider": "MT Newswires"
-      },
-      {
-        "title": "BMO Capital Lowers IBM Target but Highlights Stable Business Mix",
-        "summary": "International Business Machines Corporation (NYSE:IBM) is included among the 15 Dividend Stocks to Buy for Steady Income. On March 19, BMO Capital lowered its price recommendation on International Business Machines Corporation (NYSE:IBM) to $290 from $350. It reiterated a Market Perform rating on the shares. The firm said it does not see enough upside to [\u2026]",
-        "pubDate": "2026-03-20T04:19:12Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-capital-lowers-ibm-target-041912648.html",
+        "title": "BofA Raises its Price Target on CF Industries Holdings (CF) to $103 from $86",
+        "summary": "CF Industries Holdings, Inc. (NYSE:CF) is one of the 10 Most Profitable S&P 500 Stocks to Buy Now. On March 18, 2026, BofA raised the price target on CF Industries Holdings, Inc. (NYSE:CF) to $103 from $86 and maintained an Underperform rating, citing stronger FY26 profit expectations but warning the fertilizer cycle could prove \u201csticky.\u201d The [\u2026]",
+        "pubDate": "2026-03-25T11:01:52Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bofa-raises-price-target-cf-110152743.html",
         "provider": "Insider Monkey"
       },
       {
-        "title": "BMO\u2019s Western U.S. Expansion Raises Questions On Valuation And Earnings Mix",
-        "summary": "BMO (TSX:BMO) plans to open more than 130 new branches in California and around 15 in Arizona. The expansion significantly increases the bank's California presence and deepens its Western U.S. footprint. New locations are expected to offer integrated personal, business, commercial, and wealth services. BMO is leaning further into its U.S. retail banking business, with a focus on California and Arizona, two large and fast growing Western markets. For investors, the move underscores how...",
-        "pubDate": "2026-03-19T20:04:33Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/bmo-western-u-expansion-raises-200433776.html",
+        "title": "BMO Says Markets View Energy Spike as A Short-Term Shock in Canada for Now",
+        "summary": "Inflation expectations in Canada have jumped since the beginning of the Iran conflict, but it has so",
+        "pubDate": "2026-03-25T10:58:21Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/bmo-says-markets-view-energy-105821632.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "BMO Is First Bank to Join CME's Tokenized Cash Platform on Google Cloud",
+        "summary": "BMO joins CME Group and Google Cloud to enable 24/7 tokenized cash settlement for institutional clients.",
+        "pubDate": "2026-03-24T16:54:17Z",
+        "url": "https://decrypt.co/362188/bmo-first-bank-cme-tokenized-cash-platform-google-cloud",
+        "provider": "decrypt"
+      },
+      {
+        "title": "Canada\u2019s Bank Of Montreal Partners With Google On Tokenized Cash",
+        "summary": "Canada\u2019s Bank of Montreal (TSX: $BMO) (NYSE: $BMO) is partnering with Google parent company Alphabet (NASDAQ:...",
+        "pubDate": "2026-03-24T14:22:00Z",
+        "url": "https://www.cryptoprowl.com/releases/canadas-bank-of-montreal-partners-with-google-on-tokenized-cash-3948",
+        "provider": "CryptoProwl"
+      },
+      {
+        "title": "Bank Of Montreal Expands Digital Reach With DollarGPS And Tokenized Cash",
+        "summary": "Bank of Montreal (TSX:BMO) launched the DollarGPS app in partnership with MSN Holding Limited, aiming to expand digital engagement with U.S. clients. BMO introduced tokenized cash capabilities with CME Group and Google Cloud to support real time margin management in 24/7 markets. These moves extend BMO's digital product set into consumer budgeting tools and institutional-grade blockchain based settlement. For a large North American bank like TSX:BMO, the push into consumer apps and...",
+        "pubDate": "2026-03-24T13:07:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bank-montreal-expands-digital-reach-130704439.html",
         "provider": "Simply Wall St."
-      },
-      {
-        "title": "BMO Says \"Meaningful\" Economy Rebound in Canada Needs Clarity on CUSMA Trade Review, Business Investment Boost",
-        "summary": "The inflationary impact of rising oil prices on Canada is similar to that in the United States and w",
-        "pubDate": "2026-03-19T16:07:51Z",
-        "url": "https://finance.yahoo.com/sectors/energy/articles/bmo-says-meaningful-economy-rebound-160751306.html",
-        "provider": "MT Newswires"
-      },
-      {
-        "title": "BMO Says Bank of Canada On Hold Until Inflation Risks Become Clearer",
-        "summary": "The Bank of Canada kept its key overnight lending rate steady at 2.25% on Wednesday for the third co",
-        "pubDate": "2026-03-18T16:32:56Z",
-        "url": "https://finance.yahoo.com/news/bmo-says-bank-canada-hold-163256812.html",
-        "provider": "MT Newswires"
       }
     ],
-    "sevenDayFetchedAt": "2026-03-22 14:18 EDT",
+    "sevenDayFetchedAt": "2026-03-25 21:14 EDT",
     "sevenDayImpact": {
       "overallSentiment": "neutral",
       "sentimentScore": 1,
-      "summary": "Recent BMO news is mixed, with some positive coverage on their dividend prospects and sector analysis, but also cautionary notes on potential economic headwinds and adjustments to price targets.",
-      "priceImpact": "Minimal short-term impact expected. Price range fluctuation within +/- 1%. ",
+      "summary": "Recent news about BMO is mixed, with some positive developments like their participation in the CME's Tokenized Cash platform and partnerships, but also a general focus on market conditions and economic outlooks.",
+      "priceImpact": "Minimal short-term impact expected. Price range fluctuation of +/- 1% possible",
       "keyThemes": [
-        "Dividend Focus",
-        "Economic Uncertainty",
-        "Sector Analysis"
+        "Technological Innovation",
+        "Market Volatility",
+        "Economic Outlook"
       ],
-      "tradingImplication": "Hold. Current news does not provide a strong enough signal to buy or sell. Monitor upcoming economic data and BMO's earnings report for further clarity.",
-      "watchFor": "Upcoming Canadian inflation data, Bank of Canada announcements, and Q1 2026 earnings release from BMO.",
+      "tradingImplication": "Hold. While BMO shows positive steps in digitalization, broader market uncertainty warrants a cautious approach.",
+      "watchFor": "Upcoming earnings reports and further developments regarding the Iran conflict and its impact on global markets.",
       "newsItems": [
         {
-          "title": "FedEx price target raised to $410 from $400 at BMO Capital (TipRanks)",
-          "impact": "positive",
+          "title": "Gold Gains for Second Day as Traders Gauge Outlook for Ceasefire",
+          "impact": "neutral",
           "significance": "medium",
-          "oneLineSummary": "BMO's positive outlook on FedEx could reflect positively on BMO's analytical capabilities."
+          "oneLineSummary": "Gold price increase may indirectly benefit BMO's investment portfolio."
         },
         {
-          "title": "Accenture price target lowered to $230 from $300 at BMO Capital (TipRanks)",
+          "title": "Halliburton\u2019s $42 Price Target From BMO Signals More Runway After a Monster 2026",
+          "impact": "positive",
+          "significance": "low",
+          "oneLineSummary": "BMO's positive outlook on Halliburton could reflect well on their overall investment strategy."
+        },
+        {
+          "title": "BMO Sees Manitoba Looks on Track to Reach A Provincial Budget Surplus",
+          "impact": "positive",
+          "significance": "low",
+          "oneLineSummary": "Manitoba's budget surplus could indicate a positive economic outlook for Canada, potentially benefiting BMO."
+        },
+        {
+          "title": "Is AIA (AAGIY) Outperforming Other Finance Stocks This Year?",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Comparison with AIA doesn't directly impact BMO's performance."
+        },
+        {
+          "title": "RBC Lowers Price Targets on Five Canadian Banks",
           "impact": "negative",
           "significance": "medium",
-          "oneLineSummary": "Lowered Accenture target may indicate caution in the tech sector, potentially impacting BMO's overall performance."
+          "oneLineSummary": "Lower price targets for Canadian banks, including BMO, could reflect market concerns."
         },
         {
-          "title": "Why Bank of Montreal (BMO) is a Great Dividend Stock Right Now (Zacks)",
+          "title": "BofA Raises its Price Target on CF Industries Holdings (CF) to $103 from $86",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "BofA's action on CF Industries doesn't directly impact BMO."
+        },
+        {
+          "title": "BMO Says Markets View Energy Spike as A Short-Term Shock in Canada for Now",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Market sentiment on energy prices could influence BMO's investment decisions."
+        },
+        {
+          "title": "BMO Is First Bank to Join CME\u2019s Tokenized Cash Platform on Google Cloud",
           "impact": "positive",
           "significance": "high",
-          "oneLineSummary": "Positive article highlighting BMO's dividend potential could attract investors."
+          "oneLineSummary": "BMO's partnership with CME and Google for tokenized cash settlement showcases their commitment to innovation."
         },
         {
-          "title": "Treasury Yields Rise on Inflation Worries (Barrons.com)",
-          "impact": "neutral",
+          "title": "Canada\u2019s Bank Of Montreal Partners With Google On Tokenized Cash",
+          "impact": "positive",
           "significance": "high",
-          "oneLineSummary": "Broad market trend may indirectly affect BMO's performance."
+          "oneLineSummary": "Partnership with Google strengthens BMO's digital presence and explores new financial solutions."
         },
         {
-          "title": "BMO Says Canadian Small Business Confidence Faces New War (MT Newswires)",
-          "impact": "negative",
-          "significance": "medium",
-          "oneLineSummary": "Economic concerns regarding small businesses may negatively impact BMO's outlook."
-        },
-        {
-          "title": "BMO Capital Lowers IBM Target but Highlights Stable Business Mix (Insider Monkey)",
-          "impact": "neutral",
-          "significance": "medium",
-          "oneLineSummary": "Analysis on IBM may not directly impact BMO's performance."
-        },
-        {
-          "title": "BMO\u2019s Western U.S. Expansion Raises Questions On Valuation And Earnings Mix (Simply Wall St.)",
-          "impact": "neutral",
-          "significance": "medium",
-          "oneLineSummary": "Expansion strategy may be subject to market scrutiny and impact BMO's valuation."
-        },
-        {
-          "title": "BMO Says \"Meaningful\" Economy Rebound in Canada Needs Clarity on CUSMA Trade Review, Business Investment Boost (MT Newswires)",
-          "impact": "neutral",
+          "title": "Bank Of Montreal Expands Digital Reach With DollarGPS And Tokenized Cash",
+          "impact": "positive",
           "significance": "high",
-          "oneLineSummary": "Economic outlook for Canada is uncertain and could affect BMO's performance."
-        },
-        {
-          "title": "BMO Says Bank of Canada On Hold Until Inflation Risks Become Clearer (MT Newswires)",
-          "impact": "neutral",
-          "significance": "high",
-          "oneLineSummary": "Monetary policy stance could influence BMO's lending and investment activities."
+          "oneLineSummary": "DollarGPS app launch and tokenized cash capabilities demonstrate BMO's focus on expanding digital offerings."
         }
       ]
     },
-    "sevenDayImpactAt": "2026-03-22 15:21 EDT"
+    "sevenDayImpactAt": "2026-03-25 21:15 EDT"
+  },
+  "ENB.TO": {
+    "sevenDayItems": [
+      {
+        "title": "Enbridge (ENB) Upgraded to Buy: Here's What You Should Know",
+        "summary": "Enbridge (ENB) has been upgraded to a Zacks Rank #2 (Buy), reflecting growing optimism about the company's earnings prospects. This might drive the stock higher in the near term.",
+        "pubDate": "2026-03-25T16:00:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/enbridge-enb-upgraded-buy-heres-160002907.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Strong Backlog and Natural Gas Tailwinds Support Archrock's Growth",
+        "summary": "AROC's strong 2026 backlog and rising U.S. natural gas demand from LNG and data centers are set to support steady growth and revenue visibility.",
+        "pubDate": "2026-03-25T15:59:00Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/strong-backlog-natural-gas-tailwinds-155900075.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Jim Cramer Says \u201cYou Don\u2019t Buy Enbridge for Its LNG Exposure, You Buy It for the Gas Pipelines and the Bountiful Dividend\u201d",
+        "summary": "Enbridge Inc. (NYSE:ENB) is one of the stocks highlighted in Jim Cramer\u2019s latest Mad Money recap as he provided top stock insights. Cramer explained the reason the stock should be bought, as he remarked: Another great option is Enbridge. That\u2019s a member of the elite eight income stocks with growth that I highlight in How [\u2026]",
+        "pubDate": "2026-03-24T14:26:27Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-don-t-142627984.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Don't Panic: 2 Steady Stocks That Hold Their Value When Markets Tumble",
+        "summary": "Enbridge and Verizon, two large-cap stocks with low volatility, are bulwarks against market downturns",
+        "pubDate": "2026-03-23T18:20:00Z",
+        "url": "https://www.fool.com/investing/2026/03/23/dont-panic-2-steady-stocks-that-hold-their-value/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "How The Enbridge (TSX:ENB) Story Is Shifting As Analysts Tighten Price Targets",
+        "summary": "Enbridge\u2019s analyst fair value estimate has shifted from C$73.81 to C$75.29, giving you a slightly higher implied price target to compare against the current share price. That move lines up with the recent cluster of updated targets in the C$72 to C$77 range, where Buy, Outperform, Market Perform, Neutral and Hold ratings are all anchored around similar numbers. As you read on, you will see how these target tweaks fit into the broader narrative and what to watch as opinions on Enbridge...",
+        "pubDate": "2026-03-20T12:05:48Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/enbridge-tsx-enb-story-shifting-120548367.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Enbridge (ENB) Increases Despite Market Slip: Here's What You Need to Know",
+        "summary": "In the latest trading session, Enbridge (ENB) closed at $54.07, marking a +1.56% move from the previous day.",
+        "pubDate": "2026-03-19T21:45:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/enbridge-enb-increases-despite-market-214503033.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "2 Oil Stocks to Buy Now and Hold For Decades",
+        "summary": "If you are looking at the energy sector because of high oil prices, you should err on the side of caution with these reliable dividend investments.",
+        "pubDate": "2026-03-19T14:35:00Z",
+        "url": "https://www.fool.com/investing/2026/03/19/2-oil-stocks-to-buy-now-and-hold-for-decades/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Want Decades of Passive Income? 2 Energy Stocks to Buy Right Now",
+        "summary": "Both companies offer a level of stability in an uncertain market.",
+        "pubDate": "2026-03-19T12:54:00Z",
+        "url": "https://www.fool.com/investing/2026/03/19/want-decades-of-passive-income-2-energy-stocks-to/",
+        "provider": "Motley Fool"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-25 21:21 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights Enbridge's strong earnings prospects and analyst upgrades, driving positive sentiment and potentially leading to price appreciation.",
+      "priceImpact": "Potentially +3% to +5% in the short term due to positive analyst ratings and market performance.",
+      "keyThemes": [
+        "analyst optimism",
+        "earnings growth",
+        "dividends"
+      ],
+      "tradingImplication": "Hold or consider buying based on the positive news flow and potential for continued price growth.",
+      "watchFor": "Upcoming earnings report and any updates on LNG project developments to confirm current market sentiment.",
+      "newsItems": [
+        {
+          "title": "Enbridge (ENB) Upgraded to Buy: Here's What You Should Know (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Analyst upgrade to Buy rating signals growing confidence in Enbridge's earnings potential."
+        },
+        {
+          "title": "Jim Cramer Says \u201cYou Don\u2019t Buy Enbridge for Its LNG Exposure, You Buy It for the Gas Pipelines and the Bountiful Dividend\u201d (Insider Monkey)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Cramer's endorsement of ENB based on its pipeline infrastructure and dividends reinforces positive investor sentiment."
+        },
+        {
+          "title": "Don't Panic: 2 Steady Stocks That Hold Their Value When Markets Tumble (Motley Fool)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Inclusion of ENB as a stable stock in uncertain markets suggests investor confidence in its long-term performance."
+        },
+        {
+          "title": "How The Enbridge (TSX:ENB) Story Is Shifting As Analysts Tighten Price Targets (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Analyst price target adjustments upward suggest improved earnings expectations and potential for stock growth."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-25 21:21 EDT"
+  },
+  "CNQ.TO": {
+    "sevenDayItems": [
+      {
+        "title": "New Strong Sell Stocks for March 23rd",
+        "summary": "FUFU, CNQ and ABR have been added to the Zacks Rank #5 (Strong Sell) List on March 23, 2026.",
+        "pubDate": "2026-03-23T10:02:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/strong-sell-stocks-march-23rd-100200094.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Oil Is Down Today, Up Tomorrow. Here's Why I'm Not Worried.",
+        "summary": "These oil stocks can cash in on higher prices while still thriving at lower levels.",
+        "pubDate": "2026-03-21T11:25:00Z",
+        "url": "https://www.fool.com/investing/2026/03/21/oil-is-down-today-up-tomorrow-heres-why-im-not-wor/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Stock Market Today, March 19: Brent Crude's $119 Spike Rattles Markets",
+        "summary": "On March 19, 2026, gold\u2019s slide pulls on Newmont, and oil shocks ripple through an already risk\u2011averse U.S. market.",
+        "pubDate": "2026-03-19T21:39:22Z",
+        "url": "https://www.fool.com/coverage/stock-market-today/2026/03/19/stock-market-today-march-19-brent-crude-s-usd119-spike-rattles-markets/",
+        "provider": "Motley Fool"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-24 16:34 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bearish",
+      "sentimentScore": -3,
+      "summary": "CNQ.TO was downgraded to a Strong Sell by Zacks while the broader energy sector faces headwinds from fluctuating oil prices and market risk aversion.",
+      "priceImpact": "Potentially negative short-term impact with an estimated price range of -2% to -5%",
+      "keyThemes": [
+        "Earnings Revisions",
+        "Sector Weakness",
+        "Market Volatility"
+      ],
+      "tradingImplication": "Hold CNQ.TO and monitor upcoming earnings reports for signs of resilience.",
+      "watchFor": "CNQ's Q1 2026 earnings release scheduled for April 30th, 2026.",
+      "newsItems": [
+        {
+          "title": "New Strong Sell Stocks for March 23rd (Zacks)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "CNQ.TO was added to the Zacks Rank #5 (Strong Sell) List, signaling a negative outlook."
+        },
+        {
+          "title": "Oil Is Down Today, Up Tomorrow. Here's Why I'm Not Worried. (Motley Fool)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "This article provides a neutral outlook on oil prices and its potential impact on CNQ.TO."
+        },
+        {
+          "title": "Stock Market Today, March 19: Brent Crude's $119 Spike Rattles Markets (Motley Fool)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "Rising oil prices and market risk aversion negatively impact the energy sector, potentially affecting CNQ.TO."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-24 16:35 EDT"
+  },
+  "SU.TO": {
+    "sevenDayItems": [
+      {
+        "title": "Suncor Stock Gains 49% in Past 6 Months: Here's How to Play",
+        "summary": "SU stock jumps 49% in six months on strong cash flow, record output and refining gains, but rising costs and weaker oil prices cloud near-term upside.",
+        "pubDate": "2026-03-24T15:11:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/suncor-stock-gains-49-past-151100898.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is Schneider Electric (ENXTPA:SU) Still Attractive After Recent Share Price Pullback?",
+        "summary": "Wondering whether Schneider Electric at \u20ac237.15 is still a reasonable entry point or starting to look stretched? This breakdown will help you weigh the current price against what you are actually getting. The stock has seen mixed returns, with a 4.2% gain over the last year and longer term returns of 75.7% over 3 years and 108.5% over 5 years. However, the 7 day and 30 day moves of 4.4% and 9.2% declines show that sentiment has cooled recently. Recent coverage has focused on how Schneider...",
+        "pubDate": "2026-03-21T03:08:22Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/schneider-electric-enxtpa-su-still-030822532.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Chevron vs. Suncor: Which Energy Stock Wins at 52-Week Highs?",
+        "summary": "Chevron vs. Suncor at 52-week highs: Chevron's diversification and Guyana growth face Suncor's cost cuts, buybacks, and stronger recent surge.",
+        "pubDate": "2026-03-20T12:02:00Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/chevron-vs-suncor-energy-stock-120200156.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Imperial Oil Stock's Record Run: Time to Hold or Lock in Profits?",
+        "summary": "IMO shares climb 48% in 3 months, outpacing peers and sector as strong cash flow, integrated operations and returns fuel debate on holding or booking profits.",
+        "pubDate": "2026-03-18T13:23:00Z",
+        "url": "https://finance.yahoo.com/news/imperial-oil-stocks-record-run-132300414.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-24 16:36 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights Suncor's strong performance with rising output and refining gains but also acknowledges concerns about rising costs and oil price weakness.",
+      "priceImpact": "Potential for short-term consolidation with slight upward bias. Price range: +2% to -5%",
+      "keyThemes": [
+        "Strong Operational Performance",
+        "Cost Pressures",
+        "Oil Price Volatility"
+      ],
+      "tradingImplication": "Hold current position. Monitor upcoming earnings reports and oil price trends for further clarity.",
+      "watchFor": "Next quarterly earnings report, OPEC+ production meeting outcomes",
+      "newsItems": [
+        {
+          "title": "Suncor Stock Gains 49% in Past 6 Months: Here's How to Play (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Highlights Suncor's strong performance with cash flow, output and refining gains but cautions about near-term upside."
+        },
+        {
+          "title": "Chevron vs. Suncor: Which Energy Stock Wins at 52-Week Highs? (Zacks)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Compares Suncor's performance with Chevron, highlighting both strengths and weaknesses of each company."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-24 16:37 EDT"
+  },
+  "KGC": {
+    "sevenDayItems": [
+      {
+        "title": "How to Find Strong Basic Materials Stocks Slated for Positive Earnings Surprises",
+        "summary": "Investors looking for ways to find stocks that are set to beat quarterly earnings estimates should check out the Zacks Earnings ESP.",
+        "pubDate": "2026-03-24T13:00:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/strong-basic-materials-stocks-slated-130003266.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "NEM vs. KGC: Which Gold Mining Stock Is a Better Pick Now?",
+        "summary": "Both Newmont and Kinross are executing strong projects and seeing cash flow gains and rising earnings estimates.",
+        "pubDate": "2026-03-24T12:36:00Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/nem-vs-kgc-gold-mining-123600836.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "RBC Capital Upgrades Kinross Gold (KGC) Stock to Outperform from Sector Perform",
+        "summary": "Kinross Gold Corporation (NYSE:KGC) is one of the Most Undervalued Stocks to Buy According to Analysts. On March 12, RBC Capital upgraded the company\u2019s stock to \u201cOutperform\u201d from \u201cSector Perform\u201d with a price objective of $45, an increase from the prior target of $36. As per the firm, Kinross Gold Corporation (NYSE:KGC) provides increased FCF, leverage to [\u2026]",
+        "pubDate": "2026-03-23T12:41:23Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/rbc-capital-upgrades-kinross-gold-124123762.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Why Is Kinross Gold (KGC) Down 18% Since Last Earnings Report?",
+        "summary": "Kinross Gold (KGC) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
+        "pubDate": "2026-03-20T15:30:08Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-kinross-gold-kgc-down-153008477.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Kinross Gold Unveils New NCIB Program to Buy Back Up to 104.2M Shares",
+        "summary": "KGC renews share buyback program, targeting up to 10% of float, as Kinross bets its valuation undervalues the business.",
+        "pubDate": "2026-03-20T13:38:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/kinross-gold-unveils-ncib-program-133800694.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Will Kinross Gold's Rising Costs Threaten Margins in FY26?",
+        "summary": "KGC posts profit surge on higher gold prices, but rising costs raise questions about margins.",
+        "pubDate": "2026-03-20T12:00:00Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/kinross-golds-rising-costs-threaten-120000147.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Can Agnico Eagle's Low Debt Profile Drive Stronger Growth Ahead?",
+        "summary": "AEM's ultra-low debt, surging free cash flow and strong gold prices boost its growth potential and shareholder returns.",
+        "pubDate": "2026-03-19T13:55:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/agnico-eagles-low-debt-profile-135500149.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-25 21:13 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights Kinross Gold's (KGC) positive earnings outlook, analyst upgrades, and share buyback program, suggesting investor confidence in the company's future.",
+      "priceImpact": "likely to see a short-term price increase of 3%-5% as investors react to the bullish sentiment.",
+      "keyThemes": [
+        "Earnings Growth",
+        "Analyst Optimism",
+        "Share Repurchase"
+      ],
+      "tradingImplication": "Hold or consider buying KGC shares due to the positive news and strong financial outlook. ",
+      "watchFor": "Q1 2026 earnings report for further confirmation of growth and margin performance.",
+      "newsItems": [
+        {
+          "title": "How to Find Strong Basic Materials Stocks Slated for Positive Earnings Surprises (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "The article suggests KGC may be poised for earnings surprises, boosting investor sentiment."
+        },
+        {
+          "title": "NEM vs. KGC: Which Gold Mining Stock Is a Better Pick Now? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "The article compares KGC favorably to NEM, highlighting its strong projects and cash flow gains."
+        },
+        {
+          "title": "RBC Capital Upgrades Kinross Gold (KGC) Stock to Outperform from Sector Perform (Insider Monkey)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "RBC Capital's upgrade signifies increased confidence in KGC's future performance."
+        },
+        {
+          "title": "Why Is Kinross Gold (KGC) Down 18% Since Last Earnings Report? (Zacks)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "The article analyzes KGC's recent stock decline, suggesting it may be a buying opportunity."
+        },
+        {
+          "title": "Kinross Gold Unveils New NCIB Program to Buy Back Up to 104.2M Shares (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "The share buyback program indicates KGC's belief in its undervalued status and aims to boost shareholder value."
+        },
+        {
+          "title": "Will Kinross Gold's Rising Costs Threaten Margins in FY26? (Zacks)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "The article raises concerns about rising costs impacting KGC's margins, requiring further monitoring."
+        },
+        {
+          "title": "Can Agnico Eagle's Low Debt Profile Drive Stronger Growth Ahead? (Zacks)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "This article focuses on a different company and has minimal direct impact on KGC."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-25 21:13 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-03-25 21:11 EDT"
+  },
+  "OLA.TO": {
+    "sevenDayItems": [
+      {
+        "title": "Orla Mining\u2019s New Dividend And Camino Rojo Approvals Reshape Valuation",
+        "summary": "Orla Mining (TSX:OLA) received final environmental approvals for its Camino Rojo project, clearing the way for underground exploration and expansion. The company more than doubled its annual gold production through the acquisition of the Musselwhite mine. Orla initiated a dividend, signaling management\u2019s confidence in the company\u2019s ability to generate ongoing cash flow. Orla Mining enters this phase with a share price of CA$19.29 and a 5-year return of about 4x, alongside a 51.9% gain over...",
+        "pubDate": "2026-03-21T08:06:12Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-mining-dividend-camino-rojo-080612203.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Orla Mining Ltd (ORLA) Q4 2025 Earnings Call Highlights: Strong Gold Production and Financial ...",
+        "summary": "Orla Mining Ltd (ORLA) reports robust revenue and net income, driven by significant gold production and strategic developments.",
+        "pubDate": "2026-03-20T21:00:30Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/orla-mining-ltd-orla-q4-210030215.html",
+        "provider": "GuruFocus.com"
+      },
+      {
+        "title": "Orla Mining Q4 Earnings Call Highlights",
+        "summary": "Orla Mining (NYSEAMERICAN:ORLA) highlighted a step-change in scale and cash generation during its fourth-quarter 2025 earnings call, driven by the addition of the Musselwhite mine and supported by higher gold prices. Management said 2025 marked a \u201cpivotal year,\u201d with the company more than doubling a",
+        "pubDate": "2026-03-20T15:40:27Z",
+        "url": "https://www.marketbeat.com/instant-alerts/orla-mining-q4-earnings-call-highlights-2026-03-20/?utm_source=yahoofinance&utm_medium=yahoofinance",
+        "provider": "MarketBeat"
+      },
+      {
+        "title": "Orla Mining Maintained at Buy at Stifel Canada as It Receives Camino Rojo Permits; Price Target Kept at C$36.00",
+        "summary": "Stifel Canada on Friday maintained its buy rating on the shares of Orla Mining (OLA.TO) and its C$36",
+        "pubDate": "2026-03-20T15:30:16Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-mining-maintained-buy-stifel-153016165.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Here's Why Orla Mining (ORLA) Is a Great 'Buy the Bottom' Stock Now",
+        "summary": "Orla Mining (ORLA) witnesses a hammer chart pattern, indicating support found by the stock after losing some value lately. This coupled with an upward trend in earnings estimate revisions could mean a trend reversal for the stock in the near term.",
+        "pubDate": "2026-03-20T13:55:01Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/heres-why-orla-mining-orla-135501016.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is Orla Mining (ORLA) a Solid Growth Stock? 3 Reasons to Think \"Yes\"",
+        "summary": "Orla Mining (ORLA) is well positioned to outperform the market, as it exhibits above-average growth in financials.",
+        "pubDate": "2026-03-18T16:45:01Z",
+        "url": "https://finance.yahoo.com/news/orla-mining-orla-solid-growth-164501432.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-24 16:52 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 8,
+      "summary": "Recent news highlights positive developments for Orla Mining with project approvals, strong Q4 earnings, and analyst endorsements, suggesting a bullish outlook.",
+      "priceImpact": "Expect a short-term price increase of 5% to 10% as investors react positively to the company's progress.",
+      "keyThemes": [
+        "Project Approvals & Expansion",
+        "Strong Financial Performance",
+        "Analyst Confidence"
+      ],
+      "tradingImplication": "Buy Orla Mining (OLA.TO) on positive sentiment and strong fundamentals, aiming for a short-term price target of $21.50 - $21.75.",
+      "watchFor": "Confirmation of increased gold production at Camino Rojo and Musselwhite mines in upcoming reports.",
+      "newsItems": [
+        {
+          "title": "Orla Mining\u2019s New Dividend And Camino Rojo Approvals Reshape Valuation (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Camino Rojo project approvals pave the way for expansion and boost Orla's valuation."
+        },
+        {
+          "title": "Orla Mining Ltd (ORLA) Q4 2025 Earnings Call Highlights: Strong Gold Production and Financial ... (GuruFocus.com)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Robust revenue and net income driven by gold production signal Orla's financial strength."
+        },
+        {
+          "title": "Orla Mining Q4 Earnings Call Highlights (MarketBeat)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Emphasis on scale and cash generation highlights positive operational performance at Orla Mining."
+        },
+        {
+          "title": "Orla Mining Maintained at Buy at Stifel Canada as It Receives Camino Rojo Permits; Price Target Kept at C$36.00 (MT Newswires)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Analyst confidence reaffirmed with a maintained 'Buy' rating and price target increase."
+        },
+        {
+          "title": "Here's Why Orla Mining (ORLA) Is a Great 'Buy the Bottom' Stock Now (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Hammer chart pattern and positive earnings estimates suggest potential for stock price recovery."
+        },
+        {
+          "title": "Is Orla Mining (ORLA) a Solid Growth Stock? 3 Reasons to Think \"Yes\" (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Above-average growth in financials positions Orla Mining for market outperformance."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-24 16:53 EDT"
+  },
+  "TD.TO": {
+    "sevenDayItems": [
+      {
+        "title": "TD Bank Group Issuing C$1.5 Billion Green Bond",
+        "summary": "TD Bank Group (TD.TO, TD) said Tuesday it has issued its sixth sustainable-labelled bond, in the amo",
+        "pubDate": "2026-03-24T18:38:10Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/td-bank-group-issuing-c-183810839.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Assessing Toronto-Dominion Bank\u2019s Valuation After Recent Share Price Pullback",
+        "summary": "Toronto-Dominion Bank (TSX:TD) shares have seen mixed recent returns, with a 1 day decline of 2% and a 4.2% drop over the month, while the past year shows a total return above 50%. See our latest analysis for Toronto-Dominion Bank. Recent share price returns have been softer, with short term declines contrasting with strong multi year total shareholder returns. This suggests earlier momentum has cooled as investors reassess growth and risk around the current CA$126.11 share price. If this...",
+        "pubDate": "2026-03-21T02:04:50Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/assessing-toronto-dominion-bank-valuation-020450633.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Why Toronto-Dominion Bank (TD) is a Great Dividend Stock Right Now",
+        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does Toronto-Dominion (TD) have what it takes? Let's find out.",
+        "pubDate": "2026-03-19T15:45:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-toronto-dominion-bank-td-154502690.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-03-24 16:55 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights TD Bank Group's commitment to sustainable finance with a green bond issuance and positive investor sentiment regarding its dividend potential.",
+      "priceImpact": "Slight positive impact expected, potentially pushing the price up by 1-3% in the short term.",
+      "keyThemes": [
+        "Sustainable Finance",
+        "Dividend Growth",
+        "Valuation"
+      ],
+      "tradingImplication": "Hold. The news is generally positive but doesn't warrant a significant change in position. Continue monitoring for further catalysts related to dividend performance and valuation.",
+      "watchFor": "Upcoming earnings reports and any updates on TD Bank Group's green initiatives.",
+      "newsItems": [
+        {
+          "title": "TD Bank Group Issuing C$1.5 Billion Green Bond",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "The green bond issuance reinforces TD's commitment to sustainability and may attract environmentally conscious investors."
+        },
+        {
+          "title": "Assessing Toronto-Dominion Bank\u2019s Valuation After Recent Share Price Pullback",
+          "impact": "neutral",
+          "significance": "high",
+          "oneLineSummary": "The analysis provides a neutral outlook on TD's valuation, suggesting investors should consider the recent share price decline before making decisions."
+        },
+        {
+          "title": "Why Toronto-Dominion Bank (TD) is a Great Dividend Stock Right Now",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "The article highlights TD's strong dividend potential, which could attract income-seeking investors."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-03-24 16:56 EDT"
+  },
+  "QNTM": {
+    "sevenDayItems": [],
+    "sevenDayFetchedAt": "2026-03-25 21:20 EDT"
   }
 }

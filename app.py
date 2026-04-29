@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import json, os, logging, threading
 from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -50,7 +50,8 @@ def save_watchlist():
 
 watchlist = load_watchlist()
 
-fetch_status = {"running": False, "message": "Idle"}
+fetch_status = {"running": False, "message": "Idle", "operation": None}
+op_timestamps = {"prices": None, "smart": None, "new": None, "all": None}
 last_fetched_tickers = set()
 
 
@@ -82,9 +83,51 @@ def sync_watchlist_to_analysis(existing_watchlist, watchlist):
     return existing_map
 
 
+def run_price_refresh(triggered_by="startup"):
+    global fetch_status, op_timestamps
+    fetch_status = {"running": True, "message": f"⚡ Updating prices for all tickers...", "operation": "prices"}
+    log.info(f"=== Price Refresh Started [{triggered_by}]: {watchlist} ===")
+
+    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    existing_map = {s["ticker"]: s for s in existing.get("watchlist", [])}
+
+    for ticker in watchlist:
+        log.info(f"--- Price refresh: {ticker} ---")
+        try:
+            price_data = fetch_price_only(ticker)
+            if not price_data:
+                log.error(f"Price refresh no data: {ticker}")
+                continue
+            stock = existing_map.get(ticker, {"ticker": ticker})
+            stock.update({
+                "ticker": ticker,
+                "price": price_data.get("price"),
+                "previousClose": price_data.get("previousClose"),
+                "volume": price_data.get("volume"),
+                "marketCap": price_data.get("marketCap"),
+                "priceFetchedAt": ts(),
+            })
+            existing_map[ticker] = stock
+            log.info(f"Price refresh OK: {ticker} | price:{price_data.get('price')} prevClose:{price_data.get('previousClose')}")
+        except Exception as e:
+            log.error(f"Price refresh FAIL: {ticker} | {e}")
+
+    now_ts = ts()
+    op_timestamps["prices"] = now_ts
+
+    results = [existing_map[t] for t in watchlist if t in existing_map]
+    out = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    out["watchlist"] = results
+    out["lastPriceRefresh"] = now_ts
+    save_json(OUTPUT_PATH, out)
+
+    fetch_status = {"running": False, "message": f"Prices updated: {now_ts}", "operation": None}
+    log.info(f"=== Price Refresh Complete [{triggered_by}] ===")
+
+
 def run_fetch(tickers_to_fetch, mode="all"):
-    global fetch_status, last_fetched_tickers
-    fetch_status = {"running": True, "message": f"[{mode.upper()}] Fetching {len(tickers_to_fetch)} ticker(s)..."}
+    global fetch_status, last_fetched_tickers, op_timestamps
+    fetch_status = {"running": True, "message": f"[{mode.upper()}] Fetching {len(tickers_to_fetch)} ticker(s)...", "operation": mode}
     log.info(f"=== Fetch Started [{mode}]: {tickers_to_fetch} ===")
 
     existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
@@ -138,19 +181,27 @@ def run_fetch(tickers_to_fetch, mode="all"):
     recommendations = generate_recommendations(results)
 
     log.info(f"Total before save: {len(results)} | {[r['ticker'] for r in results]}")
-    save_json(OUTPUT_PATH, {
+    now_ts = ts()
+    if mode == "all":
+        op_timestamps["all"] = now_ts
+    elif mode == "new":
+        op_timestamps["new"] = now_ts
+    out = load_json(OUTPUT_PATH, {})
+    out.update({
         "watchlist": results,
         "dailyGainers": gainers.get("us", []),
         "dailyGainersCDN": gainers.get("cdn", []),
         "recommendations": recommendations,
-        "lastUpdated": ts()
+        "lastUpdated": now_ts,
+        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
     })
-    fetch_status = {"running": False, "message": f"Done! [{mode}] {len(tickers_to_fetch)} ticker(s) updated."}
+    save_json(OUTPUT_PATH, out)
+    fetch_status = {"running": False, "message": f"Done! [{mode}] {len(tickers_to_fetch)} ticker(s) updated.", "operation": None}
     log.info("=== Fetch Complete ===")
 
 
 def run_smart_refresh():
-    global fetch_status
+    global fetch_status, op_timestamps
     fetch_status = {"running": True, "message": "Smart refresh: checking what needs updating..."}
     log.info("=== Smart Refresh Started ===")
 
@@ -220,13 +271,18 @@ def run_smart_refresh():
     gainers = fetch_daily_gainers()
     recommendations = generate_recommendations(results)
 
-    save_json(OUTPUT_PATH, {
+    now_ts = ts()
+    op_timestamps["smart"] = now_ts
+    out = load_json(OUTPUT_PATH, {})
+    out.update({
         "watchlist": results,
         "dailyGainers": gainers or existing.get("dailyGainers", []),
         "recommendations": recommendations,
-        "lastUpdated": ts()
+        "lastUpdated": now_ts,
+        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
     })
-    fetch_status = {"running": False, "message": f"Smart refresh done: {len(tickers_needing_refresh)} ticker(s) updated."}
+    save_json(OUTPUT_PATH, out)
+    fetch_status = {"running": False, "message": f"Smart refresh done: {len(tickers_needing_refresh)} ticker(s) updated.", "operation": None}
     log.info("=== Smart Refresh Complete ===")
 
 def reconcile_with_watchlist(existing_map):
@@ -261,6 +317,14 @@ def trigger_fetch_new():
     return redirect("/")
 
 
+@app.route("/fetch/prices")
+def trigger_fetch_prices():
+    if not fetch_status["running"]:
+        thread = threading.Thread(target=run_price_refresh, args=("manual",))
+        thread.start()
+    return redirect("/")
+
+
 @app.route("/fetch/smart")
 def trigger_smart_refresh():
     if not fetch_status["running"]:
@@ -278,7 +342,12 @@ def trigger_fetch_ticker(ticker):
 
 @app.route("/status")
 def status():
-    return jsonify(fetch_status)
+    out = load_json(OUTPUT_PATH, {})
+    return jsonify({
+        **fetch_status,
+        "opTimestamps": out.get("opTimestamps", {}),
+        "lastPriceRefresh": out.get("lastPriceRefresh"),
+    })
 
 @app.route("/news/<ticker>")
 def get_news(ticker):
@@ -469,6 +538,11 @@ def followup_check(ticker, event_name):
     cache_key = f"{ticker}_{event_name}".replace(" ", "_")
     entry = followup_db.get(cache_key)
     return jsonify({"exists": entry is not None, "savedAt": entry.get("savedAt") if entry else None})
+
+# Auto price refresh on startup
+_startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
+_startup_thread.start()
+log.info("=== Startup price refresh triggered ===")
 
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
