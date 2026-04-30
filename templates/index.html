@@ -244,7 +244,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
     }
-    .metric { }
     .metric .m-label { font-size: 10px; color: var(--muted); margin-bottom: 3px; }
     .metric .m-value { font-size: 13px; font-weight: 500; }
     .metric .m-change { font-size: 10px; margin-top: 2px; }
@@ -648,7 +647,6 @@
       color: var(--muted);
     }
     .modal-flags { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
-    .modal-flag-section { }
     .modal-flag-title { font-size: 10px; letter-spacing: 1px; margin-bottom: 8px; }
     .modal-flag-title.red { color: var(--down); }
     .modal-flag-title.green { color: var(--up); }
@@ -1638,12 +1636,67 @@ function renderTickerDetail(s) {
   if (s.marketCapRank) rankBadges.push(`<span class="rank-badge rank-${s.marketCapRank}">MKTCAP #${s.marketCapRank}</span>`);
   if (s.fcfRank) rankBadges.push(`<span class="rank-badge rank-${s.fcfRank}">FCF #${s.fcfRank}</span>`);
   if (rankBadges.length) html += `<div class="ranks-row">${rankBadges.join('')}</div>`;
+  // AI Summary (expanded)
+  if (!ai.highlight) {
+    html += `
+    <div class="card-section expanded">
+      <div class="section-title">AI SUMMARY
+        <span style="margin-left:10px;font-size:10px;color:var(--muted)">Not yet generated</span>
+        <a href="/fetch/ticker/${s.ticker}/ai" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Run AI Summary</a>
+      </div>
+      <div class="section-content"><span style="color:var(--muted);font-size:12px">Click Run AI Summary above to generate analysis for this ticker.</span></div>
+    </div>\`;
+  }
+
+  // News Impact (expanded)
+  html += `
+  <div class="card-section expanded">
+    <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT
+      <span style="margin-left:10px;font-size:10px;color:var(--muted)">${s.newsFetchedAt ? '🕐 '+s.newsFetchedAt : ''}</span>
+      <a href="/news/${s.ticker}/refresh" onclick="event.stopPropagation()" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Refresh</a>
+    </div>
+    <span class="section-toggle" onclick="toggleSection(this)">−</span>
+    <div class="section-content">
+      <div id="news-impact-${s.ticker}"><div style="font-size:11px;color:var(--muted)">Loading cached analysis...</div></div>
+    </div>
+  </div>`;
+
+  // Event Impacts (expanded)
+  if (ai.eventImpacts && ai.eventImpacts.length) {
+    html += `
+    <div class="card-section expanded">
+      <div class="section-title" onclick="toggleSection(this)">EVENT IMPACTS
+        <span style="margin-left:10px;font-size:10px;color:var(--muted)">${s.aiSummaryUpdatedAt ? '🕐 '+s.aiSummaryUpdatedAt : ''}</span>
+      </div>
+      <span class="section-toggle" onclick="toggleSection(this)">−</span>
+      <div class="section-content">
+        <div class="events-list">
+          ${ai.eventImpacts.map(e => {
+            const btnId = `followup-btn-${s.ticker}-${e.event.replace(/[^a-zA-Z0-9]/g,'_')}`;
+            return `<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">
+              <div style="display:flex;justify-content:space-between;width:100%">
+                <div class="event-value">${e.event}</div>
+                <span class="event-value" style="color:var(--muted);font-size:11px">${e.date||'—'}</span>
+              </div>
+              <div class="event-label">${e.expectedImpact||''}</div>
+              ${e.epsEstimate ? `<div class="event-label">EPS: ${e.epsEstimate}</div>` : ''}
+              <button id="${btnId}" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"
+                onclick="getFollowupPlan('${s.ticker}','${e.event.replace(/'/g,"\'")}',this)">📋 FOLLOW-UP PLAN</button>
+            </div>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>`;
+  }
 
   // AI Summary (expanded)
   if (ai.highlight) {
     html += `
     <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">AI SUMMARY</div>
+      <div class="section-title" onclick="toggleSection(this)">AI SUMMARY
+        <span style="margin-left:10px;font-size:10px;color:var(--muted)">${s.aiSummaryUpdatedAt ? '🕐 '+s.aiSummaryUpdatedAt : 'Never run'}</span>
+        <a href="/fetch/ticker/${s.ticker}/ai" onclick="event.stopPropagation()" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Run AI</a>
+      </div>
       <span class="section-toggle" onclick="toggleSection(this)">−</span>
       <div class="section-content">
         <div class="ai-highlight">
@@ -1705,42 +1758,6 @@ function renderTickerDetail(s) {
       </div>
     </div>
   </div>`;
-
-  // News Impact (expanded)
-  html += `
-  <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT</div>
-    <span class="section-toggle" onclick="toggleSection(this)">−</span>
-    <div class="section-content">
-      <div id="news-impact-${s.ticker}"><div style="font-size:11px;color:var(--muted)">Loading cached analysis...</div></div>
-    </div>
-  </div>`;
-
-  // Event Impacts (expanded)
-  if (ai.eventImpacts && ai.eventImpacts.length) {
-    html += `
-    <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)">EVENT IMPACTS</div>
-      <span class="section-toggle" onclick="toggleSection(this)">−</span>
-      <div class="section-content">
-        <div class="events-list">
-          ${ai.eventImpacts.map(e => {
-            const btnId = `followup-btn-${s.ticker}-${e.event.replace(/[^a-zA-Z0-9]/g,'_')}`;
-            return `<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">
-              <div style="display:flex;justify-content:space-between;width:100%">
-                <div class="event-value">${e.event}</div>
-                <span class="event-value" style="color:var(--muted);font-size:11px">${e.date||'—'}</span>
-              </div>
-              <div class="event-label">${e.expectedImpact||''}</div>
-              ${e.epsEstimate ? `<div class="event-label">EPS: ${e.epsEstimate}</div>` : ''}
-              <button id="${btnId}" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"
-                onclick="getFollowupPlan('${s.ticker}','${e.event.replace(/'/g,"\'")}',this)">📋 FOLLOW-UP PLAN</button>
-            </div>`;
-          }).join('')}
-        </div>
-      </div>
-    </div>`;
-  }
 
   // Quarterly Income Table (expanded)
   html += `
@@ -1862,6 +1879,7 @@ function renderAdmin(opTs) {
       <div class="admin-row-left">
         <div class="admin-op-label">⚡ SMART REFRESH</div>
         <div class="admin-op-ts" id="admin-ts-smart">Last: ${ts.smart || 'Never'}</div>
+        <div class="admin-op-ts" style="color:var(--warn);margin-top:3px">⚠ AI Summary not included — run per ticker</div>
       </div>
       <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn)">RUN</a>
     </div>
@@ -1869,6 +1887,7 @@ function renderAdmin(opTs) {
       <div class="admin-row-left">
         <div class="admin-op-label">↺ FETCH ALL</div>
         <div class="admin-op-ts" id="admin-ts-all">Last: ${ts.all || 'Never'}</div>
+        <div class="admin-op-ts" style="color:var(--warn);margin-top:3px">⚠ AI Summary not included — run per ticker</div>
       </div>
       <a href="/fetch" class="btn btn-primary">RUN</a>
     </div>
@@ -2005,8 +2024,8 @@ function buildTickerTabs(stocks, opTs) {
         <div class="ticker-tab-title">${s.ticker}</div>
         <div class="ticker-tab-ts">💰 Price: ${priceFetchedAt} &nbsp;|&nbsp; 📊 Data: ${fetchedAt}</div>
         <div class="ticker-tab-actions">
-          <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn);font-size:11px">⚡ Smart Refresh</a>
-          <a href="/fetch/ticker/${s.ticker}" class="btn btn-primary" style="font-size:11px">↺ Fetch All</a>
+          <a href="/fetch/ticker/${s.ticker}" class="btn" style="font-size:11px">↺ Refresh Data</a>
+          <a href="/fetch/ticker/${s.ticker}/ai" class="btn" style="border-color:var(--warn);color:#0a0a0f;background:var(--warn);font-size:11px;font-weight:700">⚡ Run AI Summary</a>
         </div>
       </div>
       <div id="ticker-detail-${s.ticker.replace('.','_')}">${renderTickerDetail(s)}</div>

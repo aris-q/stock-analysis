@@ -125,6 +125,32 @@ def run_price_refresh(triggered_by="startup"):
     log.info(f"=== Price Refresh Complete [{triggered_by}] ===")
 
 
+def run_ai_summary(ticker):
+    global fetch_status
+    fetch_status = {"running": True, "message": f"⚡ Generating AI summary: {ticker}...", "operation": "ai"}
+    log.info(f"=== AI Summary Started: {ticker} ===")
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        existing_map = {s["ticker"]: s for s in existing.get("watchlist", [])}
+        stock = existing_map.get(ticker)
+        if not stock:
+            log.error(f"AI summary FAIL: {ticker} not found in data")
+            fetch_status = {"running": False, "message": f"AI summary FAIL: {ticker} not found.", "operation": None}
+            return
+        now_ts = ts()
+        stock["aiSummary"] = generate_summary(stock)
+        stock["aiSummaryUpdatedAt"] = now_ts
+        existing_map[ticker] = stock
+        out = load_json(OUTPUT_PATH, {})
+        out["watchlist"] = [existing_map.get(t, s) for t, s in [(s["ticker"], s) for s in existing.get("watchlist", [])]]
+        save_json(OUTPUT_PATH, out)
+        fetch_status = {"running": False, "message": f"AI summary done: {ticker} at {now_ts}", "operation": None}
+        log.info(f"=== AI Summary Complete: {ticker} ===")
+    except Exception as e:
+        log.error(f"AI summary FAIL: {ticker} | {e}")
+        fetch_status = {"running": False, "message": f"AI summary FAIL: {ticker}", "operation": None}
+
+
 def run_fetch(tickers_to_fetch, mode="all"):
     global fetch_status, last_fetched_tickers, op_timestamps
     fetch_status = {"running": True, "message": f"[{mode.upper()}] Fetching {len(tickers_to_fetch)} ticker(s)...", "operation": mode}
@@ -171,14 +197,9 @@ def run_fetch(tickers_to_fetch, mode="all"):
     results = [existing_map[t] for t in watchlist if t in existing_map]
     results = process_watchlist(results)
 
-    fetch_status = {"running": True, "message": f"Generating AI summaries for {len(tickers_to_fetch)} ticker(s)..."}
-    for stock in results:
-        if stock["ticker"] in tickers_to_fetch:
-            log.info(f"--- AI Summary: {stock['ticker']} ---")
-            stock["aiSummary"] = generate_summary(stock)
-
     log.info(f"Generating recommendations...")
     recommendations = generate_recommendations(results)
+    log.info("AI summaries skipped — run per ticker manually.")
 
     log.info(f"Total before save: {len(results)} | {[r['ticker'] for r in results]}")
     now_ts = ts()
@@ -262,14 +283,9 @@ def run_smart_refresh():
     results = list(existing_map.values())
     results = process_watchlist(results)
 
-    fetch_status = {"running": True, "message": "Smart refresh: updating AI summaries..."}
-    for stock in results:
-        if stock["ticker"] in tickers_needing_refresh and refresh_plans.get(stock["ticker"], {}).get("ai"):
-            log.info(f"AI update: {stock['ticker']}")
-            stock["aiSummary"] = generate_summary(stock)
-
     gainers = fetch_daily_gainers()
     recommendations = generate_recommendations(results)
+    log.info("Smart refresh: AI summaries skipped — run per ticker manually.")
 
     now_ts = ts()
     op_timestamps["smart"] = now_ts
@@ -337,6 +353,13 @@ def trigger_smart_refresh():
 def trigger_fetch_ticker(ticker):
     if not fetch_status["running"] and ticker in watchlist:
         thread = threading.Thread(target=run_fetch, args=([ticker], "single"))
+        thread.start()
+
+
+@app.route("/fetch/ticker/<ticker>/ai")
+def trigger_fetch_ticker_ai(ticker):
+    if not fetch_status["running"] and ticker in watchlist:
+        thread = threading.Thread(target=run_ai_summary, args=(ticker,))
         thread.start()
     return redirect("/")
 
