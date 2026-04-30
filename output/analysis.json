@@ -553,7 +553,7 @@
       },
       "industry": "Gold",
       "previousClose": 30.52,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "BNS.TO",
@@ -1090,7 +1090,7 @@
       },
       "industry": "Banks - Diversified",
       "previousClose": 104.9,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "SHOP.TO",
@@ -1593,7 +1593,7 @@
       },
       "calendarFetchedAt": "2026-04-29 21:28 EDT",
       "previousClose": 167.17,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "BMO.TO",
@@ -2129,7 +2129,7 @@
       },
       "industry": "Banks - Diversified",
       "previousClose": 207.2,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "WELL.TO",
@@ -2614,7 +2614,7 @@
       },
       "industry": "Medical Care Facilities",
       "previousClose": 4.21,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "OLA.TO",
@@ -3080,7 +3080,7 @@
         ]
       },
       "previousClose": 18.66,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "CLS.TO",
@@ -3580,7 +3580,7 @@
         ]
       },
       "previousClose": 493.22,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "TD.TO",
@@ -4076,7 +4076,7 @@
         ]
       },
       "previousClose": 144.14,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     },
     {
       "ticker": "TMQ",
@@ -4558,7 +4558,7 @@
         ]
       },
       "previousClose": 4.13,
-      "priceFetchedAt": "2026-04-29 21:25 EDT"
+      "priceFetchedAt": "2026-04-29 21:37 EDT"
     }
   ],
   "dailyGainers": [
@@ -4690,7 +4690,7 @@
     "generatedAt": "2023-10-26"
   },
   "lastUpdated": "2026-04-29 21:29 EDT",
-  "lastPriceRefresh": "2026-04-29 21:25 EDT",
+  "lastPriceRefresh": "2026-04-29 21:37 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "HOU.TO",
