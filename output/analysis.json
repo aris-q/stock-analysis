@@ -3,9 +3,9 @@
     {
       "ticker": "KGC",
       "fetchedAt": "2026-04-14 10:16 EDT",
-      "price": 30.52,
-      "volume": 7796330,
-      "marketCap": 36692705280,
+      "price": 29.86,
+      "volume": 9506513,
+      "marketCap": 35899219968,
       "quarterlyIncome": [
         {
           "date": "2025-12-31",
@@ -552,15 +552,15 @@
         ]
       },
       "industry": "Gold",
-      "previousClose": 32.14,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 30.52,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "BNS.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
-      "price": 104.9,
-      "volume": 5623975,
-      "marketCap": 129177387008,
+      "price": 103.62,
+      "volume": 3583189,
+      "marketCap": 127601156096,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -1089,15 +1089,15 @@
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 104.25,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 104.9,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "SHOP.TO",
-      "fetchedAt": "2026-04-14 10:16 EDT",
-      "price": 167.17,
-      "volume": 1146242,
-      "marketCap": 217486016512,
+      "fetchedAt": "2026-04-29 21:28 EDT",
+      "price": 166.06,
+      "volume": 1247192,
+      "marketCap": 216041914368,
       "sector": "Technology",
       "industry": "Software - Application",
       "calendar": {
@@ -1105,10 +1105,10 @@
         "earningsDateEnd": null,
         "earningsEPSHigh": 0.39,
         "earningsEPSLow": 0.23,
-        "earningsEPSAvg": 0.32988,
+        "earningsEPSAvg": 0.32979,
         "revenueEstimateHigh": 3144000000,
-        "revenueEstimateLow": 3050000000,
-        "revenueEstimateAvg": 3089675460,
+        "revenueEstimateLow": 2894200000,
+        "revenueEstimateAvg": 3085160280,
         "exDividendDate": null,
         "dividendPayDate": null
       },
@@ -1122,8 +1122,8 @@
         "exDividendDate": null,
         "dividendDate": null,
         "earningsTimestamp": "2026-05-05",
-        "earningsCallStart": "2026-05-07",
-        "earningsCallEnd": "2026-05-07",
+        "earningsCallStart": "2026-05-05",
+        "earningsCallEnd": "2026-05-05",
         "isEarningsDateEstimate": false,
         "earningsGrowthYoY": -0.423,
         "earningsQuarterlyGrowth": -0.425,
@@ -1250,19 +1250,6 @@
           "Tax Provision": null,
           "Operating Expense": null,
           "Research And Development": null
-        },
-        {
-          "date": "2024-06-30",
-          "Total Revenue": null,
-          "Gross Profit": null,
-          "Operating Income": null,
-          "EBITDA": null,
-          "Net Income": null,
-          "Basic EPS": null,
-          "Interest Expense": null,
-          "Tax Provision": null,
-          "Operating Expense": null,
-          "Research And Development": null
         }
       ],
       "annualBalance": [
@@ -1374,19 +1361,6 @@
         },
         {
           "date": "2024-09-30",
-          "Cash And Cash Equivalents": null,
-          "Total Debt": null,
-          "Total Assets": null,
-          "Total Liabilities Net Minority Interest": null,
-          "Stockholders Equity": null,
-          "Working Capital": null,
-          "Current Assets": null,
-          "Current Liabilities": null,
-          "Long Term Debt": 917000000,
-          "Retained Earnings": null
-        },
-        {
-          "date": "2024-06-30",
           "Cash And Cash Equivalents": null,
           "Total Debt": null,
           "Total Assets": null,
@@ -1563,65 +1537,70 @@
       "marketCapRank": 2,
       "fcfRank": 4,
       "aiSummary": {
-        "highlight": "SHOP.TO shows robust revenue growth and expanding margins, but profitability lags behind peers. The company's focus on strategic acquisitions and new product launches positions it for future expansion.",
-        "marketPosition": "SHOP.TO holds a strong competitive position in the growing software-as-a-service market.",
+        "highlight": "SHOP.TO shows strong revenue growth and a commitment to reinvestment, but profitability remains elusive. The upcoming earnings report will be crucial in assessing whether the company can deliver on its ambitious targets.",
+        "marketPosition": "SHOP.TO is positioned as a leader in the e-commerce software space with a robust customer base.",
         "majorGrowthProjects": [
           "Expansion into new international markets",
-          "Development of artificial intelligence-powered features"
+          "Development of AI-powered features for its platform"
         ],
-        "shareholderReturns": "The company does not currently pay dividends or engage in share buybacks.",
-        "balanceSheetSummary": "SHOP.TO boasts a healthy balance sheet with strong cash reserves and low debt levels.",
+        "shareholderReturns": "SHOP.TO currently does not pay dividends or engage in share buybacks, focusing instead on reinvesting profits for growth.",
+        "balanceSheetSummary": "The company maintains a healthy balance sheet with strong cash reserves and manageable debt levels.",
         "riskFactors": [
-          "Dependence on a limited number of key customers",
-          "Intensifying competition in the software market"
+          "Competition from larger tech companies",
+          "Dependence on key customer relationships"
         ],
         "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
-          "reason": "null",
-          "confidence": "null"
+          "reason": null,
+          "confidence": null
         },
         "eventImpacts": [
           {
             "event": "Q1 2026 Earnings Release",
             "date": "2026-05-05",
-            "startWatchingDate": "2026-04-14",
-            "expectedImpact": "Potential for share price volatility based on earnings per share (EPS) and revenue performance. Analysts expect EPS of $0.32988, with a range of $0.23 to $0.39. Revenue estimates range from $3.05 billion to $3.14 billion.",
-            "epsEstimate": "$0.32988 avg",
-            "revenueEstimate": "$3.089675460 billion avg",
+            "startWatchingDate": "2026-04-29",
+            "expectedImpact": "Potential price increase of 5-10% if earnings and revenue exceed analyst estimates. Conversely, a miss could lead to a decline of 3-7%.  The focus should be on the company's guidance for the upcoming quarter and any updates on their growth initiatives.",
+            "epsEstimate": "$0.32979 avg",
+            "revenueEstimate": "$3085160280 avg",
             "whereToMonitor": [
               "Yahoo Finance earnings page",
               "SEC EDGAR",
               "company IR page"
             ],
             "whatToWatchFor": [
-              "EPS performance compared to estimates",
-              "Revenue growth rate"
+              "Revenue growth compared to last quarter and previous year",
+              "Operating margin expansion",
+              "Guidance for future quarters"
             ],
             "actionPlan": [
               {
                 "date": "2026-05-05",
-                "action": "Analyze earnings report and conference call transcript"
+                "action": "Review earnings report and conference call transcript"
               },
               {
-                "date": "2026-05-08",
-                "action": "Review market reaction and adjust investment thesis if necessary"
+                "date": "2026-05-09",
+                "action": "Reassess investment thesis based on earnings performance"
+              },
+              {
+                "date": "2026-05-12",
+                "action": "Update portfolio if necessary"
               }
             ],
-            "strategy": "Maintain a long position based on the company's growth potential and strong market position. Monitor earnings closely for signs of continued momentum."
+            "strategy": "Monitor SHOP.TO's execution on its growth strategy and assess its ability to drive profitability. Consider initiating a position if the company demonstrates strong performance and guidance."
           }
         ]
       },
-      "calendarFetchedAt": "2026-04-14 10:16 EDT",
-      "previousClose": 169.49,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "calendarFetchedAt": "2026-04-29 21:28 EDT",
+      "previousClose": 167.17,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "BMO.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
-      "price": 207.2,
-      "volume": 4675715,
-      "marketCap": 146059411456,
+      "price": 202.99,
+      "volume": 1711097,
+      "marketCap": 143091695616,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -2149,14 +2128,14 @@
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 207.79,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 207.2,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "WELL.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
       "price": 4.21,
-      "volume": 761464,
+      "volume": 668659,
       "marketCap": 1075506944,
       "quarterlyIncome": [
         {
@@ -2634,16 +2613,16 @@
         ]
       },
       "industry": "Medical Care Facilities",
-      "previousClose": 4.27,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 4.21,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "OLA.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
       "calendarFetchedAt": "2026-04-14 10:16 EDT",
-      "price": 18.66,
-      "volume": 963074,
-      "marketCap": 6346948096,
+      "price": 17.71,
+      "volume": 1029373,
+      "marketCap": 6023817728,
       "sector": "Basic Materials",
       "industry": "Gold",
       "calendar": {
@@ -3100,16 +3079,16 @@
           }
         ]
       },
-      "previousClose": 19.62,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 18.66,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "CLS.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
       "calendarFetchedAt": "2026-04-14 10:16 EDT",
-      "price": 493.22,
-      "volume": 947862,
-      "marketCap": 56707035136,
+      "price": 515.17,
+      "volume": 546156,
+      "marketCap": 59230691328,
       "sector": "Technology",
       "industry": "Electronic Components",
       "calendar": {
@@ -3600,16 +3579,16 @@
           }
         ]
       },
-      "previousClose": 576.75,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 493.22,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "TD.TO",
       "fetchedAt": "2026-04-14 10:16 EDT",
       "calendarFetchedAt": "2026-04-14 10:16 EDT",
-      "price": 144.14,
-      "volume": 5303121,
-      "marketCap": 241690525696,
+      "price": 142.93,
+      "volume": 5430552,
+      "marketCap": 239661613056,
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
       "calendar": {
@@ -4097,15 +4076,15 @@
         ]
       },
       "previousClose": 144.14,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     },
     {
       "ticker": "TMQ",
       "fetchedAt": "2026-04-14 10:11 EDT",
       "calendarFetchedAt": "2026-04-14 10:11 EDT",
-      "price": 4.13,
-      "volume": 1841395,
-      "marketCap": 712613504,
+      "price": 3.98,
+      "volume": 1988442,
+      "marketCap": 686731648,
       "sector": "Basic Materials",
       "industry": "Other Industrial Metals & Mining",
       "calendar": {
@@ -4578,194 +4557,203 @@
           }
         ]
       },
-      "previousClose": 4.29,
-      "priceFetchedAt": "2026-04-28 22:00 EDT"
+      "previousClose": 4.13,
+      "priceFetchedAt": "2026-04-29 21:25 EDT"
     }
   ],
-  "dailyGainers": {
-    "us": [
-      {
-        "ticker": "TVTX",
-        "percentGain": 34.28,
-        "price": 41.225,
-        "volume": 7733543
-      },
-      {
-        "ticker": "XNDU",
-        "percentGain": 30.72,
-        "price": 15.02,
-        "volume": 1451267
-      },
-      {
-        "ticker": "BE",
-        "percentGain": 18.75,
-        "price": 209.79,
-        "volume": 8737851
-      },
-      {
-        "ticker": "IONQ",
-        "percentGain": 17.07,
-        "price": 34.8398,
-        "volume": 20962644
-      },
-      {
-        "ticker": "CRDO",
-        "percentGain": 14.47,
-        "price": 153.805,
-        "volume": 7090614
-      },
-      {
-        "ticker": "QBTS",
-        "percentGain": 13.55,
-        "price": 16.635,
-        "volume": 12468679
-      },
-      {
-        "ticker": "APLD",
-        "percentGain": 12.36,
-        "price": 31.01,
-        "volume": 13771694
-      },
-      {
-        "ticker": "RGTI",
-        "percentGain": 13.12,
-        "price": 17.115,
-        "volume": 19929106
-      },
-      {
-        "ticker": "SMR",
-        "percentGain": 11.73,
-        "price": 10.705,
-        "volume": 20322586
-      },
-      {
-        "ticker": "CRCL",
-        "percentGain": 11.12,
-        "price": 109.655,
-        "volume": 7720412
-      }
-    ],
-    "cdn": [
-      {
-        "ticker": "KEEL.TO",
-        "percentGain": 20.81,
-        "price": 3.89,
-        "volume": 2448614
-      },
-      {
-        "ticker": "MDA.TO",
-        "percentGain": 7.91,
-        "price": 46.5,
-        "volume": 678933
-      },
-      {
-        "ticker": "USA.TO",
-        "percentGain": 7.63,
-        "price": 8.46,
-        "volume": 525219
-      },
-      {
-        "ticker": "MSTR.TO",
-        "percentGain": 7.22,
-        "price": 9.8,
-        "volume": 262997
-      },
-      {
-        "ticker": "NOU.TO",
-        "percentGain": 7.11,
-        "price": 2.635,
-        "volume": 257005
-      },
-      {
-        "ticker": "AYA.TO",
-        "percentGain": 6.77,
-        "price": 24.91,
-        "volume": 348237
-      },
-      {
-        "ticker": "MSTE.TO",
-        "percentGain": 6.59,
-        "price": 3.56,
-        "volume": 509626
-      },
-      {
-        "ticker": "OCG.TO",
-        "percentGain": 6.15,
-        "price": 0.345,
-        "volume": 312936
-      },
-      {
-        "ticker": "ORAC.TO",
-        "percentGain": 5.8,
-        "price": 8.21,
-        "volume": 323178
-      },
-      {
-        "ticker": "ASM.TO",
-        "percentGain": 5.54,
-        "price": 10.1,
-        "volume": 286715
-      }
-    ]
-  },
+  "dailyGainers": [
+    {
+      "ticker": "SIMO",
+      "percentGain": 45.8,
+      "price": 217.5,
+      "volume": 4293329
+    },
+    {
+      "ticker": "MXL",
+      "percentGain": 29.82,
+      "price": 67.52,
+      "volume": 17231526
+    },
+    {
+      "ticker": "COCO",
+      "percentGain": 29.67,
+      "price": 66.95,
+      "volume": 5746269
+    },
+    {
+      "ticker": "EXTR",
+      "percentGain": 28.15,
+      "price": 21.85,
+      "volume": 8299972
+    },
+    {
+      "ticker": "BE",
+      "percentGain": 27.21,
+      "price": 287.97,
+      "volume": 18739817
+    },
+    {
+      "ticker": "NXPI",
+      "percentGain": 25.59,
+      "price": 289.25,
+      "volume": 10368214
+    },
+    {
+      "ticker": "CHEF",
+      "percentGain": 17.84,
+      "price": 75.7,
+      "volume": 1210509
+    },
+    {
+      "ticker": "RSI",
+      "percentGain": 16.58,
+      "price": 27.98,
+      "volume": 6108030
+    },
+    {
+      "ticker": "GNRC",
+      "percentGain": 16.49,
+      "price": 252.92,
+      "volume": 2102233
+    },
+    {
+      "ticker": "LKNCY",
+      "percentGain": 15.83,
+      "price": 36.0,
+      "volume": 1571297
+    }
+  ],
   "recommendations": {
     "recommendations": [
       {
-        "ticker": "MSFT",
-        "companyName": "Microsoft Corporation",
-        "reason": "Strong cloud computing revenue growth through Azure, coupled with a diversified business model across software, gaming, and hardware.",
-        "sector": "Technology",
+        "ticker": "VRTX",
+        "companyName": "Vertex Pharmaceuticals Incorporated",
+        "reason": "Strong pipeline of cystic fibrosis drugs and expanding indications in other diseases.  Recent positive clinical trial results driving investor confidence.",
+        "sector": "Healthcare",
         "catalysts": [
-          "Continued expansion of Azure cloud services",
-          "Growth in Gaming segment driven by Xbox Game Pass",
-          "Strong enterprise demand for Microsoft 365"
+          "Cystic fibrosis drug approvals",
+          "Expansion into new disease areas"
         ],
         "riskLevel": "medium",
         "timeHorizon": "medium-term"
       },
       {
-        "ticker": "JPM",
-        "companyName": "JPMorgan Chase & Co.",
-        "reason": "Leading position in investment banking and asset management, coupled with a solid track record of navigating economic cycles.",
-        "sector": "Financial Services",
+        "ticker": "MSFT",
+        "companyName": "Microsoft Corporation",
+        "reason": "Dominant position in cloud computing (Azure) with strong growth potential.  Continued investment in AI and enterprise solutions.",
+        "sector": "Technology",
         "catalysts": [
-          "Rising interest rates benefiting net interest income",
-          "Continued growth in wealth management assets under management",
-          "Strong credit quality despite macroeconomic headwinds"
+          "Cloud computing market expansion",
+          "AI integration across products"
         ],
-        "riskLevel": "medium",
+        "riskLevel": "low",
         "timeHorizon": "long-term"
       },
       {
-        "ticker": "ABBV",
-        "companyName": "AbbVie Inc.",
-        "reason": "Strong portfolio of established and growing pharmaceuticals, including immunology and oncology drugs, with a focus on innovation.",
+        "ticker": "JNJ",
+        "companyName": "Johnson & Johnson",
+        "reason": "Diversified healthcare portfolio with strong brands and a history of innovation.  Focus on developing new treatments in areas like oncology and immunology.",
         "sector": "Healthcare",
         "catalysts": [
-          "Continued growth of blockbuster drug Humira",
-          "Pipeline of promising new therapies in immunology and oncology",
-          "Focus on expanding market share in emerging markets"
+          "New drug approvals",
+          "Consumer health products growth"
         ],
         "riskLevel": "low",
-        "timeHorizon": "medium-term"
+        "timeHorizon": "long-term"
       },
       {
         "ticker": "AMZN",
-        "companyName": "Amazon.com Inc.",
-        "reason": "Dominant e-commerce platform with expanding reach in cloud computing (AWS) and subscription services, leveraging its vast customer base and logistics network.",
-        "sector": "Technology",
+        "companyName": "Amazon.com, Inc.",
+        "reason": "Ecommerce giant with a growing presence in cloud computing (AWS), advertising, and other sectors.  Continued investment in logistics and innovation.",
+        "sector": "Consumer Discretionary",
         "catalysts": [
-          "Continued growth in e-commerce sales",
-          "Expansion of AWS market share in the cloud computing sector",
-          "Growth of Amazon Prime subscriptions and other recurring revenue streams"
+          "Ecommerce market growth",
+          "AWS expansion"
         ],
         "riskLevel": "medium",
         "timeHorizon": "long-term"
+      },
+      {
+        "ticker": "RTX",
+        "companyName": "Raytheon Technologies Corporation",
+        "reason": "Leading aerospace and defense contractor with a strong backlog of orders.  Benefitting from government spending on national security.",
+        "sector": "Industrials",
+        "catalysts": [
+          "Defense budget increases",
+          "Commercial aerospace recovery"
+        ],
+        "riskLevel": "medium",
+        "timeHorizon": "medium-term"
       }
     ],
-    "marketContext": "Current market conditions are characterized by moderate inflation, rising interest rates, and geopolitical uncertainties. Investors are seeking companies with strong fundamentals, resilient business models, and potential for growth.",
+    "marketContext": "Current market conditions are characterized by moderate inflation and rising interest rates. This environment favors companies with strong fundamentals, pricing power, and a history of profitability.",
     "generatedAt": "2023-10-26"
   },
-  "lastUpdated": "2026-04-14 10:24 EDT",
-  "lastPriceRefresh": "2026-04-28 22:00 EDT"
+  "lastUpdated": "2026-04-29 21:29 EDT",
+  "lastPriceRefresh": "2026-04-29 21:25 EDT",
+  "dailyGainersCDN": [
+    {
+      "ticker": "HOU.TO",
+      "percentGain": 13.78,
+      "price": 27.9,
+      "volume": 3851159
+    },
+    {
+      "ticker": "SOIL.TO",
+      "percentGain": 8.53,
+      "price": 7,
+      "volume": 2673846
+    },
+    {
+      "ticker": "FLT.TO",
+      "percentGain": 6.15,
+      "price": 0.69,
+      "volume": 1121427
+    },
+    {
+      "ticker": "FT.TO",
+      "percentGain": 5.88,
+      "price": 0.18,
+      "volume": 10169994
+    },
+    {
+      "ticker": "PXT.TO",
+      "percentGain": 5.33,
+      "price": 28.84,
+      "volume": 1109510
+    },
+    {
+      "ticker": "CVE.TO",
+      "percentGain": 4.85,
+      "price": 39.37,
+      "volume": 7929142
+    },
+    {
+      "ticker": "BB.TO",
+      "percentGain": 4.84,
+      "price": 7.37,
+      "volume": 3741535
+    },
+    {
+      "ticker": "SLVD.TO",
+      "percentGain": 4.05,
+      "price": 3.85,
+      "volume": 1210787
+    },
+    {
+      "ticker": "BTE.TO",
+      "percentGain": 3.54,
+      "price": 7.02,
+      "volume": 8736414
+    },
+    {
+      "ticker": "HND.TO",
+      "percentGain": 3.54,
+      "price": 5.55,
+      "volume": 1530769
+    }
+  ],
+  "opTimestamps": {
+    "prices": "2026-04-29 21:25 EDT"
+  }
 }

@@ -1294,7 +1294,7 @@ function buildNewsModalHtml(ticker, data, todayOnly) {
         <div class="price-context-card"><div class="price-context-label">vs MA50</div><div class="price-context-value" style="color:${pctColor(pc.priceVsMa50)}">${pctFmt(pc.priceVsMa50)}</div></div>
         <div class="price-context-card"><div class="price-context-label">PRICE</div><div class="price-context-value">$${pc.currentPrice || '—'}</div></div>
       </div>
-      ${rsi ? `<div class="rsi-bar-wrap"><div class="rsi-bar-label"><span>OVERSOLD (30)</span><span>RSI ${rsi}</span><span>OVERBOUGHT (70)</span></div><div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:${rsiWidth}%;background:${rsiColor}"></div></div></div>` : ''}`;
+      ${ rsi ? '<div class="rsi-bar-wrap"><div class="rsi-bar-label"><span>OVERSOLD (30)</span><span>RSI '+rsi+'</span><span>OVERBOUGHT (70)</span></div><div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:'+rsiWidth+'%;background:'+rsiColor+'"></div></div></div>' : ''}` ;
   }
 
   html += `
@@ -1317,7 +1317,7 @@ function buildNewsModalHtml(ticker, data, todayOnly) {
   if (impact.watchFor) html += `<div style="font-size:11px;color:var(--muted);margin-bottom:14px">👁 Watch for: ${impact.watchFor}</div>`;
 
   if (impact.keyThemes && impact.keyThemes.length) {
-    html += `<div style="margin-bottom:14px"><div style="font-size:10px;color:var(--muted);letter-spacing:0.5px;margin-bottom:6px">KEY THEMES</div><div style="display:flex;flex-wrap:wrap;gap:6px">${impact.keyThemes.map(t=>`<span style="font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(42,42,58,0.6);color:var(--text);border:1px solid var(--border)">${t}</span>`).join('')}</div></div>`;
+    html += '<div style="margin-bottom:14px"><div style="font-size:10px;color:var(--muted);letter-spacing:0.5px;margin-bottom:6px">KEY THEMES</div><div style="display:flex;flex-wrap:wrap;gap:6px">'+impact.keyThemes.map(t=>'<span style="font-size:11px;padding:2px 8px;border-radius:4px;background:rgba(42,42,58,0.6);color:var(--text);border:1px solid var(--border)">'+t+'</span>').join('')+ '</div></div>';
   }
 
   if (items.length) {
@@ -1650,7 +1650,7 @@ function renderTickerDetail(s) {
           <span class="ai-tag ${sentClass}">${(ai.analystSentiment||'neutral').toUpperCase()}</span>
           <div style="margin-top:6px">${ai.highlight}</div>
         </div>
-        ${ai.riskFactors && ai.riskFactors.length ? `<ul class="ai-list">${ai.riskFactors.map(r=>`<li>${r}</li>`).join('')}</ul>` : ''}
+        ${ai.riskFactors && ai.riskFactors.length ? '<ul class="ai-list">' + ai.riskFactors.map(r=>'<li>'+r+'</li>').join('') + '</ul>' : ''}
       </div>
     </div>`;
   }
@@ -1750,15 +1750,11 @@ function renderTickerDetail(s) {
     <div class="section-content">
       <table class="fin-table">
         <tr><th>METRIC</th>${qIncome.map(q=>`<th>${q.date}</th>`).join('')}</tr>
-        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
-        <tr><td>${field}</td>${qIncome.map(q=>`<td>$${fmt(q[field])}</td>`).join('')}</tr>`).join('')}
-        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-        <tr><td style="color:var(--accent2)">${field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF'}</td>
-        ${qCashflow.map(c=>`<td>$${fmt(c[field])}</td>`).join('')}</tr>`).join('')}
+        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>'<tr><td>'+field+'</td>'+qIncome.map(q=>'<td>$'+fmt(q[field])+'</td>').join('')+'</tr>').join('')}
+        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>'<tr><td style="color:var(--accent2)">'+(field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF')+'</td>'+qCashflow.map(c=>'<td>$'+fmt(c[field])+'</td>').join('')+'</tr>').join('')}
         ${(() => {
           const qBal = (s.quarterlyBalance||[]).slice(0,5);
-          return `<tr style="border-top:1px solid var(--border)"><td style="color:var(--warn)">Net Cash</td>
-          ${qBal.map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}</tr>`;
+          return '<tr style="border-top:1px solid var(--border)"><td style="color:var(--warn)">Net Cash</td>'+qBal.map(b=>'<td style="color:"'+(((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)')+'">$'+fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))+'</td>').join('')+'</tr>';
         })()}
       </table>
     </div>
@@ -1772,13 +1768,10 @@ function renderTickerDetail(s) {
     <div class="section-content">
       <table class="fin-table">
         <tr><th>METRIC</th>${aIncome.map(a=>`<th>${a.date}</th>`).join('')}</tr>
-        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>`
-        <tr><td>${field}</td>${aIncome.map(a=>`<td>$${fmt(a[field])}</td>`).join('')}</tr>`).join('')}
-        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>`
-        <tr><td style="color:var(--accent2)">${field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF'}</td>
-        ${(s.annualCashflow||[]).map(c=>`<td>$${fmt(c[field])}</td>`).join('')}</tr>`).join('')}
+        ${['Total Revenue','Gross Profit','Operating Income','Net Income','EBITDA'].map(field=>'<tr><td>'+field+'</td>'+aIncome.map(a=>'<td>$'+fmt(a[field])+'</td>').join('')+'</tr>').join('')}
+        ${['Operating Cash Flow','Capital Expenditure','Free Cash Flow'].map(field=>'<tr><td style="color:var(--accent2)">'+(field==='Capital Expenditure'?'CapEx':field==='Operating Cash Flow'?'Op. CF':'FCF')+'</td>'+(s.annualCashflow||[]).map(c=>'<td>$'+fmt(c[field])+'</td>').join('')+'</tr>').join('')}
         <tr style="border-top:1px solid var(--border)"><td style="color:var(--warn)">Net Cash</td>
-        ${(s.annualBalance||[]).map(b=>`<td style="color:${((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)'}">$${fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))}</td>`).join('')}</tr>
+        ${(s.annualBalance||[]).map(b=>'<td style="color:'+(((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))>=0?'var(--up)':'var(--down)')+'">$'+fmt((b['Cash And Cash Equivalents']||0)-(b['Total Debt']||0))+'</td>').join('')}</tr>
       </table>
     </div>
   </div>`;
@@ -1809,14 +1802,7 @@ function renderTickerDetail(s) {
       <span class="section-toggle" onclick="toggleSection(this)">−</span>
       <div class="section-content">
         <div class="bank-checklist">
-          ${s.bankChecklist.map(item => `
-          <div class="bank-check-item">
-            <div class="bank-check-left">
-              <span class="bank-check-icon">${item.pass === true ? '✅' : item.pass === false ? '❌' : '⚠️'}</span>
-              <div><div class="bank-check-name">${item.metric}</div><div class="bank-check-threshold">Threshold: ${item.threshold}</div></div>
-            </div>
-            <div class="bank-check-value ${item.pass === true ? 'pass' : item.pass === false ? 'fail' : 'unknown'}">${item.value || (item.auto ? '—' : 'Check Annual Report')}</div>
-          </div>`).join('')}
+          ${s.bankChecklist.map(item => '<div class="bank-check-item"><div class="bank-check-left"><span class="bank-check-icon">'+(item.pass===true?'✅':item.pass===false?'❌':'⚠️')+'</span><div><div class="bank-check-name">'+item.metric+'</div><div class="bank-check-threshold">Threshold: '+item.threshold+'</div></div></div><div class="bank-check-value '+(item.pass===true?'pass':item.pass===false?'fail':'unknown')+'">'+( item.value||(item.auto?'—':'Check Annual Report'))+'</div></div>').join('')}
         </div>
         <span class="bank-guide-btn" onclick="showBankGuide('${s.ticker}')">📖 View Bank Metrics Guide</span>
       </div>
@@ -1832,7 +1818,7 @@ function renderTickerDetail(s) {
       <div class="section-content">
         <table class="fin-table">
           <tr><th>DATE</th><th>AMOUNT</th></tr>
-          ${s.dividends.map(d=>`<tr><td>${d.date.split(' ')[0]}</td><td>$${d.amount.toFixed(3)}</td></tr>`).join('')}
+          ${s.dividends.map(d=>'<tr><td>'+d.date.split(' ')[0]+'</td><td>$'+d.amount.toFixed(3)+'</td></tr>').join('')}
         </table>
       </div>
     </div>`;
@@ -1921,15 +1907,37 @@ async function refreshTickerPrice(ticker, btn) {
 
 let dataLoaded = false;
 let wasRunning = false;
+let gainersMarket = "cdn";
 let pendingReload = false;
 
 async function loadData() {
   try {
+    console.log('[loadData] starting fetch /data');
     const res = await fetch('/data');
     const data = await res.json();
+    console.log('[loadData] data received, watchlist length:', (data.watchlist||[]).length);
     const stocks = data.watchlist || [];
 
-    document.getElementById('watchlistContent').innerHTML = renderWatchlist(data);
+    console.log('[loadData] calling renderWatchlist');
+    let whtml;
+    try { whtml = renderWatchlist(data); console.log('[loadData] renderWatchlist OK, length:', whtml.length); }
+    catch(e) { console.error('[loadData] renderWatchlist CRASH:', e); throw e; }
+    document.getElementById('watchlistContent').innerHTML = whtml;
+
+    console.log('[loadData] calling renderGainers');
+    try { document.getElementById('gainersContent').innerHTML = renderGainers(data); } catch(e) { console.error('[loadData] renderGainers CRASH:', e); }
+
+    console.log('[loadData] calling renderPeers');
+    try { document.getElementById('peersContent').innerHTML = renderPeers(data); } catch(e) { console.error('[loadData] renderPeers CRASH:', e); }
+
+    console.log('[loadData] calling renderRecommendations');
+    try { document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data); } catch(e) { console.error('[loadData] renderRecommendations CRASH:', e); }
+
+    console.log('[loadData] calling renderAdmin');
+    try { document.getElementById('adminContent').innerHTML = renderAdmin(data.opTimestamps); } catch(e) { console.error('[loadData] renderAdmin CRASH:', e); }
+
+    console.log('[loadData] calling buildTickerTabs');
+    try { buildTickerTabs(stocks, data.opTimestamps); } catch(e) { console.error('[loadData] buildTickerTabs CRASH:', e); throw e; }
     document.getElementById('gainersContent').innerHTML = renderGainers(data);
     document.getElementById('peersContent').innerHTML = renderPeers(data);
     document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data);
@@ -2268,7 +2276,7 @@ async function getNews(ticker, btn, todayOnly=false) {
       </div>`;
     }
     if (impact.keyThemes && impact.keyThemes.length) {
-      html += `<div class="news-themes">${impact.keyThemes.map(t=>`<span class="news-theme">${t}</span>`).join('')}</div>`;
+      html += '<div class="news-themes">'+impact.keyThemes.map(t=>'<span class="news-theme">'+t+'</span>').join('')+'</div>';
     }
     html += `<div class="news-divider">ARTICLES (${items.length})</div>`;
     const aiItems = {};
