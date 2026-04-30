@@ -1672,17 +1672,17 @@ function renderTickerDetail(s) {
       <div class="section-content">
         <div class="events-list">
           ${ai.eventImpacts.map(e => {
-            const btnId = `followup-btn-${s.ticker}-${e.event.replace(/[^a-zA-Z0-9]/g,'_')}`;
-            return `<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">
-              <div style="display:flex;justify-content:space-between;width:100%">
-                <div class="event-value">${e.event}</div>
-                <span class="event-value" style="color:var(--muted);font-size:11px">${e.date||'—'}</span>
-              </div>
-              <div class="event-label">${e.expectedImpact||''}</div>
-              ${e.epsEstimate ? `<div class="event-label">EPS: ${e.epsEstimate}</div>` : ''}
-              <button id="${btnId}" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"
-                onclick="getFollowupPlan('${s.ticker}','${e.event.replace(/'/g,"\'")}',this)">📋 FOLLOW-UP PLAN</button>
-            </div>`;
+            const btnId = 'followup-btn-'+s.ticker+'-'+e.event.replace(/[^a-zA-Z0-9]/g,'_');
+            return '<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">'+
+              '<div style="display:flex;justify-content:space-between;width:100%">'+
+              '<div class="event-value">'+e.event+'</div>'+
+              '<span class="event-value" style="color:var(--muted);font-size:11px">'+(e.date||'—')+'</span>'+
+              '</div>'+
+              '<div class="event-label">'+(e.expectedImpact||'')+'</div>'+
+              (e.epsEstimate ? '<div class="event-label">EPS: '+e.epsEstimate+'</div>' : '')+
+              '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"'+
+              ' onclick="getFollowupPlan(''+s.ticker+'',''+e.event.replace(/'/g,"\'")+'''+',this)">📋 FOLLOW-UP PLAN</button>'+
+            '</div>';
           }).join('')}
         </div>
       </div>

@@ -3,9 +3,9 @@
     {
       "ticker": "KGC",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 29.86,
-      "volume": 9506513,
-      "marketCap": 35899219968,
+      "price": 30.12,
+      "volume": 4373416,
+      "marketCap": 36211806208,
       "quarterlyIncome": [
         {
           "date": "2025-12-31",
@@ -513,16 +513,16 @@
         ]
       },
       "industry": "Gold",
-      "previousClose": 30.52,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 29.86,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "bankChecklist": null
     },
     {
       "ticker": "BNS.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 103.62,
-      "volume": 3583189,
-      "marketCap": 127601156096,
+      "price": 105.28,
+      "volume": 1251847,
+      "marketCap": 129645330432,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -1052,8 +1052,8 @@
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 104.9,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 103.62,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -1095,9 +1095,9 @@
     {
       "ticker": "SHOP.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 166.06,
-      "volume": 1247192,
-      "marketCap": 216041914368,
+      "price": 163.65,
+      "volume": 456620,
+      "marketCap": 212906541056,
       "sector": "Technology",
       "industry": "Software - Application",
       "calendar": {
@@ -1587,16 +1587,16 @@
         ]
       },
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "previousClose": 167.17,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 166.06,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "bankChecklist": null
     },
     {
       "ticker": "BMO.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 202.99,
-      "volume": 1711097,
-      "marketCap": 143091695616,
+      "price": 206.41,
+      "volume": 2432769,
+      "marketCap": 145502519296,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -2125,8 +2125,8 @@
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 207.2,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 202.99,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -2168,9 +2168,9 @@
     {
       "ticker": "WELL.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 4.21,
-      "volume": 668659,
-      "marketCap": 1075506944,
+      "price": 4.27,
+      "volume": 451425,
+      "marketCap": 1090834816,
       "quarterlyIncome": [
         {
           "date": "2025-12-31",
@@ -2648,16 +2648,16 @@
       },
       "industry": "Medical Care Facilities",
       "previousClose": 4.21,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "bankChecklist": null
     },
     {
       "ticker": "OLA.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 17.71,
-      "volume": 1029373,
-      "marketCap": 6023817728,
+      "price": 17.76,
+      "volume": 718709,
+      "marketCap": 6040825344,
       "sector": "Basic Materials",
       "industry": "Gold",
       "calendar": {
@@ -3114,8 +3114,8 @@
           }
         ]
       },
-      "previousClose": 18.66,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 17.71,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "annualProfitMargin": 0.101,
       "quarterlyProfitMargin": 0.2094,
       "netCash": 54521000,
@@ -3163,9 +3163,9 @@
       "ticker": "CLS.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 515.17,
-      "volume": 546156,
-      "marketCap": 59230691328,
+      "price": 538.0,
+      "volume": 239627,
+      "marketCap": 61855531008,
       "sector": "Technology",
       "industry": "Electronic Components",
       "calendar": {
@@ -3652,8 +3652,8 @@
           }
         ]
       },
-      "previousClose": 493.22,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 515.17,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "annualProfitMargin": 0.0672,
       "quarterlyProfitMargin": 0.0525,
       "netCash": -180900000,
@@ -3701,9 +3701,9 @@
       "ticker": "TD.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 142.93,
-      "volume": 5430552,
-      "marketCap": 239661613056,
+      "price": 145.41,
+      "volume": 1049784,
+      "marketCap": 243820036096,
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
       "calendar": {
@@ -4190,8 +4190,8 @@
           }
         ]
       },
-      "previousClose": 144.14,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 142.93,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "annualProfitMargin": 0.3351,
       "quarterlyProfitMargin": 0.245,
       "netCash": -325500000000,
@@ -4275,9 +4275,9 @@
       "ticker": "TMQ",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendarFetchedAt": "2026-04-29 22:27 EDT",
-      "price": 3.98,
-      "volume": 1988442,
-      "marketCap": 686731648,
+      "price": 4.37,
+      "volume": 2168008,
+      "marketCap": 754024384,
       "sector": "Basic Materials",
       "industry": "Other Industrial Metals & Mining",
       "calendar": {
@@ -4751,8 +4751,8 @@
           }
         ]
       },
-      "previousClose": 4.13,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "previousClose": 3.98,
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
       "netCash": 51502000,
@@ -4799,9 +4799,9 @@
       "ticker": "SOIL.TO",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendarFetchedAt": "2026-04-29 22:27 EDT",
-      "price": 7.0,
-      "volume": 2673595,
-      "marketCap": 1271256192,
+      "price": 6.7,
+      "volume": 739118,
+      "marketCap": 1216773760,
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
       "calendar": {
@@ -5291,16 +5291,16 @@
           }
         ]
       },
-      "previousClose": 6.45,
-      "priceFetchedAt": "2026-04-29 22:15 EDT"
+      "previousClose": 7.0,
+      "priceFetchedAt": "2026-04-30 13:08 EDT"
     },
     {
       "ticker": "HOU.TO",
-      "price": null,
-      "previousClose": 24.52,
-      "volume": 3848659,
+      "price": 26.41,
+      "previousClose": 27.9,
+      "volume": 3280572,
       "marketCap": null,
-      "priceFetchedAt": "2026-04-29 22:15 EDT",
+      "priceFetchedAt": "2026-04-30 13:08 EDT",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendar": {
         "earningsDateStart": null,
@@ -5562,7 +5562,7 @@
     "generatedAt": "2023-10-27"
   },
   "lastUpdated": "2026-04-29 22:37 EDT",
-  "lastPriceRefresh": "2026-04-29 22:15 EDT",
+  "lastPriceRefresh": "2026-04-30 13:08 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "HOU.TO",
