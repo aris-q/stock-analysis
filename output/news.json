@@ -2,21 +2,35 @@
   "SHOP.TO": {
     "todayItems": [
       {
-        "title": "Shopify (SHOP) Call Option Spread Garners a 33% Return Potential",
-        "summary": "Option spreads can be profitable even if the underlying stock decreases or remains flat, providing us with an entirely new dimension of money-making opportunities.",
-        "pubDate": "2026-03-20T15:17:00Z",
-        "url": "https://finance.yahoo.com/markets/options/articles/shopify-shop-call-option-spread-151700227.html",
+        "title": "Exploring High Growth US Tech Stocks This April 2026",
+        "summary": "The United States market has shown impressive growth, with a 28% increase over the past year despite remaining flat last week, and earnings are projected to grow by 16% annually. In this context, identifying high-growth tech stocks involves focusing on companies that demonstrate strong innovation and adaptability in an evolving economic landscape.",
+        "pubDate": "2026-04-30T17:38:27Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exploring-high-growth-us-tech-173827443.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "META vs. SHOP: Which Stock Leads the AI Commerce Revolution?",
+        "summary": "Shopify is betting on \"agentic commerce,\" letting merchants sell through ChatGPT, Gemini and Copilot, while building the AI-powered backbone of checkout and payments.",
+        "pubDate": "2026-04-30T16:32:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/meta-vs-shop-stock-leads-163200726.html",
         "provider": "Zacks"
       },
       {
-        "title": "DoorDash vs. Shopify: Which E-Commerce Stock Has an Edge Now?",
-        "summary": "DASH benefits from strong order growth and expanding partnerships, but rising competition may cap upside as SHOP gains momentum with AI and enterprise wins.",
-        "pubDate": "2026-03-20T14:37:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/doordash-vs-shopify-e-commerce-143700133.html",
+        "title": "Is Shopify Inc. (SHOP) A Good Stock To Buy Now?",
+        "summary": "Is SHOP a good stock to buy? We came across a bullish thesis on Shopify Inc. on Investomine\u2019s Substack. In this article, we will summarize the bulls\u2019 thesis on SHOP. Shopify Inc.\u2019s share was trading at $ 131.15 as of April 17th. SHOP\u2019s trailing and forward P/E were 139.52 and 69.44 respectively according to Yahoo Finance. Shopify [\u2026]",
+        "pubDate": "2026-04-30T13:39:12Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/shopify-inc-shop-good-stock-133912941.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Exploring Analyst Estimates for Shopify (SHOP) Q1 Earnings, Beyond Revenue and EPS",
+        "summary": "Evaluate the expected performance of Shopify (SHOP) for the quarter ended March 2026, looking beyond the conventional Wall Street top-and-bottom-line estimates and examining some of its key metrics for better insight.",
+        "pubDate": "2026-04-30T13:15:07Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exploring-analyst-estimates-shopify-shop-131507541.html",
         "provider": "Zacks"
       }
     ],
-    "todayFetchedAt": "2026-03-20 17:24 EDT",
+    "todayFetchedAt": "2026-04-30 21:11 EDT",
     "sevenDayItems": [
       {
         "title": "DASH Benefits From Robust E-Commerce Growth: More Upside Ahead?",
@@ -165,7 +179,47 @@
         }
       ]
     },
-    "sevenDayImpactAt": "2026-03-25 21:17 EDT"
+    "sevenDayImpactAt": "2026-03-25 21:17 EDT",
+    "todayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights Shopify's focus on AI integration in commerce and bullish analyst sentiment surrounding Q1 earnings.",
+      "priceImpact": "Potential for short-term price appreciation within a range of +5% to +8%",
+      "keyThemes": [
+        "AI Integration",
+        "Earnings Expectations",
+        "US Tech Growth"
+      ],
+      "tradingImplication": "Hold with a potential buy recommendation on confirmation from Q1 earnings report.",
+      "watchFor": "Shopify's Q1 earnings release and analyst commentary on AI-powered initiatives.",
+      "newsItems": [
+        {
+          "title": "Exploring High Growth US Tech Stocks This April 2026 (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Positive market outlook for US tech stocks, including Shopify."
+        },
+        {
+          "title": "META vs. SHOP: Which Stock Leads the AI Commerce Revolution? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Shopify's focus on 'agentic commerce' and AI integration in checkout is highlighted as a positive."
+        },
+        {
+          "title": "Is Shopify Inc. (SHOP) A Good Stock To Buy Now? (Insider Monkey)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Bullish thesis on SHOP presented by Investomine, citing potential for growth."
+        },
+        {
+          "title": "Exploring Analyst Estimates for Shopify (SHOP) Q1 Earnings, Beyond Revenue and EPS (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Focus on Shopify's Q1 earnings performance and key metrics beyond revenue and EPS."
+        }
+      ]
+    },
+    "todayImpactAt": "2026-04-30 21:12 EDT"
   },
   "CLS.TO": {
     "todayItems": [
@@ -919,56 +973,77 @@
   "KGC": {
     "sevenDayItems": [
       {
-        "title": "How to Find Strong Basic Materials Stocks Slated for Positive Earnings Surprises",
-        "summary": "Investors looking for ways to find stocks that are set to beat quarterly earnings estimates should check out the Zacks Earnings ESP.",
-        "pubDate": "2026-03-24T13:00:03Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/strong-basic-materials-stocks-slated-130003266.html",
-        "provider": "Zacks"
-      },
-      {
-        "title": "NEM vs. KGC: Which Gold Mining Stock Is a Better Pick Now?",
-        "summary": "Both Newmont and Kinross are executing strong projects and seeing cash flow gains and rising earnings estimates.",
-        "pubDate": "2026-03-24T12:36:00Z",
-        "url": "https://finance.yahoo.com/markets/commodities/articles/nem-vs-kgc-gold-mining-123600836.html",
-        "provider": "Zacks"
-      },
-      {
-        "title": "RBC Capital Upgrades Kinross Gold (KGC) Stock to Outperform from Sector Perform",
-        "summary": "Kinross Gold Corporation (NYSE:KGC) is one of the Most Undervalued Stocks to Buy According to Analysts. On March 12, RBC Capital upgraded the company\u2019s stock to \u201cOutperform\u201d from \u201cSector Perform\u201d with a price objective of $45, an increase from the prior target of $36. As per the firm, Kinross Gold Corporation (NYSE:KGC) provides increased FCF, leverage to [\u2026]",
-        "pubDate": "2026-03-23T12:41:23Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/rbc-capital-upgrades-kinross-gold-124123762.html",
+        "title": "Kinross Gold Corporation (KGC) Asserts Status as one of Goldman Sachs top Gold Stock Picks",
+        "summary": "Kinross Gold Corporation (NYSE:KGC) is one of Goldman Sachs top gold stock picks. On April 22, it became clear that Peak Gold Joint Venture, in which Kinross Gold Corporation (NYSE:KGC) owns a 70% stake, has achieved significant milestones. For starters, 5,900 meters of underground drilling have already been completed at the Lucky Shot project, with [\u2026]",
+        "pubDate": "2026-04-30T21:52:40Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/kinross-gold-corporation-kgc-asserts-215240271.html",
         "provider": "Insider Monkey"
       },
       {
-        "title": "Why Is Kinross Gold (KGC) Down 18% Since Last Earnings Report?",
-        "summary": "Kinross Gold (KGC) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
-        "pubDate": "2026-03-20T15:30:08Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/why-kinross-gold-kgc-down-153008477.html",
+        "title": "Kinross Gold Maintained at Buy at Stifel Canada Following Q1 Results; Price Target Kept atC$65.00",
+        "summary": "Stifel Canada on Thursday maintained its buy rating on the shares of Kinross Gold (K.TO, KGC) and it",
+        "pubDate": "2026-04-30T16:29:56Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/kinross-gold-maintained-buy-stifel-162956267.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "The Zacks Analyst Blog Highlights Barrick Mining, Kinross Gold, Centerra Gold and IAMGOLD",
+        "summary": "Barrick Mining, Kinross, Centerra and IAMGOLD are poised to beat Q1 estimates as higher gold prices and efficiency gains support earnings.",
+        "pubDate": "2026-04-30T13:03:00Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/zacks-analyst-blog-highlights-barrick-130300231.html",
         "provider": "Zacks"
       },
       {
-        "title": "Kinross Gold Unveils New NCIB Program to Buy Back Up to 104.2M Shares",
-        "summary": "KGC renews share buyback program, targeting up to 10% of float, as Kinross bets its valuation undervalues the business.",
-        "pubDate": "2026-03-20T13:38:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/kinross-gold-unveils-ncib-program-133800694.html",
+        "title": "Compared to Estimates, Kinross Gold (KGC) Q1 Earnings: A Look at Key Metrics",
+        "summary": "While the top- and bottom-line numbers for Kinross Gold (KGC) give a sense of how the business performed in the quarter ended March 2026, it could be worth looking at how some of its key metrics compare to Wall Street estimates and year-ago values.",
+        "pubDate": "2026-04-29T23:30:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/compared-estimates-kinross-gold-kgc-233003046.html",
         "provider": "Zacks"
       },
       {
-        "title": "Will Kinross Gold's Rising Costs Threaten Margins in FY26?",
-        "summary": "KGC posts profit surge on higher gold prices, but rising costs raise questions about margins.",
-        "pubDate": "2026-03-20T12:00:00Z",
-        "url": "https://finance.yahoo.com/markets/commodities/articles/kinross-golds-rising-costs-threaten-120000147.html",
+        "title": "Kinross Gold (KGC) Q1 Earnings and Revenues Surpass Estimates",
+        "summary": "Kinross Gold (KGC) delivered earnings and revenue surprises of +4.20% and +10.75%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-04-29T22:40:09Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/kinross-gold-kgc-q1-earnings-224009725.html",
         "provider": "Zacks"
       },
       {
-        "title": "Can Agnico Eagle's Low Debt Profile Drive Stronger Growth Ahead?",
-        "summary": "AEM's ultra-low debt, surging free cash flow and strong gold prices boost its growth potential and shareholder returns.",
-        "pubDate": "2026-03-19T13:55:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/agnico-eagles-low-debt-profile-135500149.html",
+        "title": "ATI Set to Report Q1 Earnings: What's in Store for the Stock?",
+        "summary": "ATI heads into Q1 results on April 30 with revenues expected to rise 3.7% as aerospace, defense and proprietary materials demand support growth.",
+        "pubDate": "2026-04-28T15:15:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/ati-set-report-q1-earnings-151500030.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "International Paper Stock to Report Q1 Earnings: What's in Store?",
+        "summary": "IP heads into Q1 earnings release with falling profit estimates, weak demand signals and a mixed segment outlook despite DS Smith-driven sales growth.",
+        "pubDate": "2026-04-28T15:07:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/international-paper-stock-report-q1-150700210.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Smurfit Westrock Set to Report Q1 Earnings: What's in Store?",
+        "summary": "SW heads into Q1 results, with falling EPS estimates and mixed demand trends, as stable packaging needs and e-commerce gains face European volume weakness.",
+        "pubDate": "2026-04-28T15:06:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/smurfit-westrock-set-report-q1-150600347.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Linde Gears Up to Report Q1 Earnings: What's in the Offing?",
+        "summary": "LIN eyes Q1 earnings growth as pricing, volumes and currency tailwinds support outlook ahead of results.",
+        "pubDate": "2026-04-28T14:41:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/linde-gears-report-q1-earnings-144100379.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "4 Gold Mining Stocks Poised to Outshine Q1 Earnings Estimates",
+        "summary": "Gold miners' Q1 results are likely to reflect the benefits of higher realized prices and cost-management actions. B, KGC, CGAU and IAG look set to beat earnings estimates.",
+        "pubDate": "2026-04-28T12:11:00Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/4-gold-mining-stocks-poised-121100489.html",
         "provider": "Zacks"
       }
     ],
-    "sevenDayFetchedAt": "2026-03-25 21:13 EDT",
+    "sevenDayFetchedAt": "2026-04-30 21:51 EDT",
     "sevenDayImpact": {
       "overallSentiment": "bullish",
       "sentimentScore": 7,
@@ -1027,8 +1102,64 @@
       ]
     },
     "sevenDayImpactAt": "2026-03-25 21:13 EDT",
-    "todayItems": [],
-    "todayFetchedAt": "2026-03-25 21:11 EDT"
+    "todayItems": [
+      {
+        "title": "Kinross Gold Corporation (KGC) Asserts Status as one of Goldman Sachs top Gold Stock Picks",
+        "summary": "Kinross Gold Corporation (NYSE:KGC) is one of Goldman Sachs top gold stock picks. On April 22, it became clear that Peak Gold Joint Venture, in which Kinross Gold Corporation (NYSE:KGC) owns a 70% stake, has achieved significant milestones. For starters, 5,900 meters of underground drilling have already been completed at the Lucky Shot project, with [\u2026]",
+        "pubDate": "2026-04-30T21:52:40Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/kinross-gold-corporation-kgc-asserts-215240271.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Kinross Gold Maintained at Buy at Stifel Canada Following Q1 Results; Price Target Kept atC$65.00",
+        "summary": "Stifel Canada on Thursday maintained its buy rating on the shares of Kinross Gold (K.TO, KGC) and it",
+        "pubDate": "2026-04-30T16:29:56Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/kinross-gold-maintained-buy-stifel-162956267.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "The Zacks Analyst Blog Highlights Barrick Mining, Kinross Gold, Centerra Gold and IAMGOLD",
+        "summary": "Barrick Mining, Kinross, Centerra and IAMGOLD are poised to beat Q1 estimates as higher gold prices and efficiency gains support earnings.",
+        "pubDate": "2026-04-30T13:03:00Z",
+        "url": "https://finance.yahoo.com/markets/commodities/articles/zacks-analyst-blog-highlights-barrick-130300231.html",
+        "provider": "Zacks"
+      }
+    ],
+    "todayFetchedAt": "2026-04-30 21:52 EDT",
+    "todayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent positive analyst reports and coverage from Goldman Sachs and Stifel Canada suggest continued confidence in Kinross Gold's performance.",
+      "priceImpact": "Likely to see a short-term upward price movement of 2% - 5% due to the positive sentiment.",
+      "keyThemes": [
+        "Analyst Coverage",
+        "Gold Price Appreciation",
+        "Earnings Performance"
+      ],
+      "tradingImplication": "Hold or consider buying KGC based on the positive analyst coverage and potential for gold price appreciation. ",
+      "watchFor": "Q1 earnings release for confirmation of positive analyst expectations.",
+      "newsItems": [
+        {
+          "title": "Kinross Gold Corporation (KGC) Asserts Status as one of Goldman Sachs top Gold Stock Picks (Insider Monkey)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Goldman Sachs naming KGC a top gold stock pick boosts investor confidence."
+        },
+        {
+          "title": "Kinross Gold Maintained at Buy at Stifel Canada Following Q1 Results; Price Target Kept atC$65.00 (MT Newswires)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Stifel Canada's maintained buy rating and price target signals continued positive outlook on KGC."
+        },
+        {
+          "title": "The Zacks Analyst Blog Highlights Barrick Mining, Kinross Gold, Centerra Gold and IAMGOLD (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Positive industry outlook with anticipated Q1 earnings beat for gold companies like KGC."
+        }
+      ]
+    },
+    "todayImpactAt": "2026-04-30 21:53 EDT"
   },
   "OLA.TO": {
     "sevenDayItems": [
@@ -1187,10 +1318,16 @@
         }
       ]
     },
-    "sevenDayImpactAt": "2026-03-24 16:56 EDT"
+    "sevenDayImpactAt": "2026-03-24 16:56 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-04-30 21:37 EDT"
   },
   "QNTM": {
     "sevenDayItems": [],
     "sevenDayFetchedAt": "2026-03-25 21:20 EDT"
+  },
+  "TMQ": {
+    "todayItems": [],
+    "todayFetchedAt": "2026-04-30 21:40 EDT"
   }
 }

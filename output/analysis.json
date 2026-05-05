@@ -3,9 +3,9 @@
     {
       "ticker": "KGC",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 30.12,
-      "volume": 4373416,
-      "marketCap": 36211806208,
+      "price": 29.55,
+      "volume": 7915328,
+      "marketCap": 35285934080,
       "quarterlyIncome": [
         {
           "date": "2025-12-31",
@@ -458,71 +458,68 @@
       "marketCapRank": 6,
       "fcfRank": 4,
       "aiSummary": {
-        "highlight": "KGC is a well-positioned gold miner with strong financial performance and a history of dividend payments. However, geopolitical uncertainty and potential regulatory changes in the mining sector pose risks to future growth.",
-        "marketPosition": "KGC holds a competitive position within the gold mining industry due to its efficient operations and diversified asset base.",
+        "highlight": "KGC presents a compelling investment opportunity with its strong revenue growth, robust balance sheet, and commitment to shareholder returns through dividends and buybacks.  However, geopolitical uncertainty and potential inflationary pressures pose risks to the company's profitability.",
+        "marketPosition": "KGC holds a competitive position in the gold mining sector due to its extensive mineral reserves and efficient operations.",
         "majorGrowthProjects": [
-          "Expansion of the Cortez mine",
-          "Development of new gold deposits in Canada"
+          "Expansion of existing mine operations",
+          "Exploration and development of new gold deposits"
         ],
-        "shareholderReturns": "KGC pays a quarterly dividend, currently yielding 0.45%, and has engaged in share buybacks in recent years.",
-        "balanceSheetSummary": "KGC maintains a healthy balance sheet with strong cash reserves and manageable debt levels.",
+        "shareholderReturns": "The company maintains a consistent dividend policy and implements share buyback programs to enhance shareholder value.",
+        "balanceSheetSummary": "KGC boasts a strong balance sheet with ample cash reserves, low debt levels, and positive working capital.",
         "riskFactors": [
-          "Geopolitical instability impacting gold prices",
-          "Regulatory changes affecting mining operations"
+          "Fluctuations in gold prices",
+          "Geopolitical instability impacting mining operations"
         ],
         "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
           "reason": null,
-          "confidence": "null"
+          "confidence": "medium"
         },
         "eventImpacts": [
           {
-            "event": "Q1 2026 Earnings Release",
-            "date": "2026-04-29",
-            "startWatchingDate": "2026-04-25",
-            "expectedImpact": "Potential for a positive price move if EPS and revenue exceed analyst estimates.  Estimate is $0.74 EPS, range $0.65-$0.86, with Revenue estimated at $2.44 billion. ",
+            "event": "Q1 2026 Earnings Release and Conference Call",
+            "date": "2026-04-30",
+            "startWatchingDate": "2026-04-29",
+            "expectedImpact": "Potential for price increase of 5% to 10% if EPS beats estimates and management provides positive guidance on future growth.  Conversely, a miss on earnings or weak guidance could lead to a decline of 3% to 5%. ",
             "epsEstimate": "$0.74 avg",
-            "revenueEstimate": "$2.44 billion",
+            "revenueEstimate": " $2,443,806,400",
             "whereToMonitor": [
               "Yahoo Finance earnings page",
               "SEC EDGAR",
-              "KGC Investor Relations"
+              "Company IR Page"
             ],
             "whatToWatchFor": [
-              "EPS vs estimate",
-              "Revenue growth QoQ/YoY",
-              "Guidance on future projects"
+              "EPS compared to the estimate of $0.74",
+              "Revenue compared to the estimate of $2,443,806,400",
+              "Management commentary on gold price outlook and operational efficiency"
             ],
             "actionPlan": [
               {
-                "date": "2026-04-29",
-                "action": "Monitor earnings release and conference call for key insights"
+                "date": "2026-04-30",
+                "action": "Monitor earnings call for key insights and management guidance."
               },
               {
                 "date": "2026-05-01",
-                "action": "Reassess investment thesis based on Q1 results"
-              },
-              {
-                "date": "2026-05-31",
-                "action": "Review updated analyst forecasts and price targets"
+                "action": "Review post-earnings market reaction and adjust position based on new information."
               }
             ],
-            "strategy": "Maintain a long position if earnings beat expectations and guidance is positive. Consider taking profits if results disappoint."
+            "strategy": "Earnings season provides a crucial opportunity to assess KGC's performance and future prospects.  Favorable results could drive further upside, while a disappointing report might warrant reassessment of the investment thesis."
           }
         ]
       },
       "industry": "Gold",
-      "previousClose": 29.86,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
-      "bankChecklist": null
+      "previousClose": 30.24,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "bankChecklist": null,
+      "aiSummaryUpdatedAt": "2026-04-30 21:41 EDT"
     },
     {
       "ticker": "BNS.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 105.28,
-      "volume": 1251847,
-      "marketCap": 129645330432,
+      "price": 106.05,
+      "volume": 4234871,
+      "marketCap": 130593538048,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -997,63 +994,62 @@
         "totalDebt_yoy_2": -0.0419
       },
       "marginRank": 4,
-      "netCashRank": 9,
+      "netCashRank": 10,
       "marketCapRank": 4,
       "fcfRank": 1,
       "aiSummary": {
-        "highlight": "BNS.TO presents a compelling investment opportunity with a strong track record of profitability and consistent dividend payouts. However, its high debt levels warrant careful consideration.",
-        "marketPosition": "BNS.TO holds a competitive position in the Canadian financial services market, benefiting from a diversified business model and a robust customer base.",
+        "highlight": "BNS exhibits steady revenue growth and a strong dividend yield, but its high debt load and declining FCF raise concerns about long-term financial sustainability.",
+        "marketPosition": "BNS is a moderately sized player in the diversified banking sector, facing stiff competition from larger institutions.",
         "majorGrowthProjects": [
           "Expansion into new markets",
           "Digital transformation initiatives"
         ],
-        "shareholderReturns": "BNS.TO consistently rewards shareholders with dividend payouts and occasional share buybacks.",
-        "balanceSheetSummary": "While BNS.TO boasts strong revenue generation, its high debt levels pose a potential risk to financial stability.",
+        "shareholderReturns": "BNS offers a competitive dividend yield of 4.25%, but share buybacks are currently limited.",
+        "balanceSheetSummary": "BNS's balance sheet is burdened by significant debt, potentially impacting its ability to weather economic downturns.",
         "riskFactors": [
           "High leverage",
-          "Economic slowdown"
+          "Declining free cash flow"
         ],
-        "analystSentiment": "bullish",
+        "analystSentiment": "neutral",
         "shortWarning": {
-          "shouldShort": false,
-          "reason": null,
-          "confidence": null
+          "shouldShort": true,
+          "reason": "Declining FCF and high debt burden indicate potential financial distress in the long term.",
+          "confidence": "medium"
         },
         "eventImpacts": [
           {
             "event": "Q1 2026 Earnings Release",
             "date": "2026-05-27",
-            "startWatchingDate": "2026-04-30",
-            "expectedImpact": "Potential price increase of 5%-10% if EPS and revenue exceed estimates. Conversely, a miss could lead to a decline of 3%-5%.",
+            "startWatchingDate": "2026-05-03",
+            "expectedImpact": "Potential price increase of 5%-10% if EPS beats estimates and revenue growth remains robust. Conversely, a miss on earnings could lead to a decline of 3%-5%.",
             "epsEstimate": "$1.93 avg",
             "revenueEstimate": "$9602910120 avg",
             "whereToMonitor": [
               "Yahoo Finance earnings page",
               "SEC EDGAR",
-              "BNS.TO Investor Relations page"
+              "Company IR page"
             ],
             "whatToWatchFor": [
-              "EPS vs. $1.93 estimate",
-              "Revenue vs. $9602910120 estimate",
-              "Guidance for Q2 2026"
+              "Earnings per share compared to estimates",
+              "Revenue growth rate"
             ],
             "actionPlan": [
               {
                 "date": "2026-05-27",
-                "action": "Review earnings call transcript and management commentary."
+                "action": "Monitor the earnings call for management commentary on future growth prospects and any signs of financial stress."
               },
               {
                 "date": "2026-05-31",
-                "action": "Reassess investment thesis based on Q1 performance."
+                "action": "Reassess position based on earnings report performance and future outlook."
               }
             ],
-            "strategy": "Monitor key metrics and management commentary to gauge the company's performance and future prospects."
+            "strategy": "Utilize the Q1 2026 earnings release as a catalyst to evaluate BNS's long-term investment potential."
           }
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 103.62,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 105.68,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -1090,14 +1086,15 @@
           "pass": null,
           "auto": false
         }
-      ]
+      ],
+      "aiSummaryUpdatedAt": "2026-05-02 08:59 EDT"
     },
     {
       "ticker": "SHOP.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 163.65,
-      "volume": 456620,
-      "marketCap": 212906541056,
+      "price": 173.48,
+      "volume": 1347166,
+      "marketCap": 225242251264,
       "sector": "Technology",
       "industry": "Software - Application",
       "calendar": {
@@ -1537,66 +1534,67 @@
       "marketCapRank": 2,
       "fcfRank": 5,
       "aiSummary": {
-        "highlight": "SHOP.TO presents a compelling growth story with a focus on software innovation and strong FCF generation. However, the stock's valuation currently appears elevated, warranting cautious consideration.",
-        "marketPosition": "SHOP.TO holds a competitive position within the rapidly growing software-as-a-service (SaaS) market.",
+        "highlight": "SHOP.TO presents a compelling investment opportunity with strong revenue growth and expanding profitability. However, investors should carefully consider the company's high operating expenses and dependence on R&D.",
+        "marketPosition": "SHOP.TO occupies a competitive niche within the software-application market, benefiting from increasing demand for its specialized solutions.",
         "majorGrowthProjects": [
           "Expansion into new international markets",
-          "Development of artificial intelligence (AI)-powered features"
+          "Development of innovative features to enhance product offerings"
         ],
-        "shareholderReturns": "The company does not currently pay dividends, but has utilized FCF for share buybacks in the past.",
-        "balanceSheetSummary": "SHOP.TO boasts a strong balance sheet with healthy cash reserves and minimal debt, providing a solid financial foundation.",
+        "shareholderReturns": "SHOP.TO does not currently pay dividends or engage in share buybacks.",
+        "balanceSheetSummary": "SHOP.TO boasts a strong balance sheet with substantial cash reserves and manageable debt levels, indicating financial stability.",
         "riskFactors": [
-          "Competition from larger tech players",
-          "Dependence on subscription revenue model"
+          "High competition within the software-application industry",
+          "Dependence on key customers and partnerships"
         ],
         "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
-          "reason": "Elevated valuation may present a risk to downside price movement.",
-          "confidence": "medium"
+          "reason": null,
+          "confidence": null
         },
         "eventImpacts": [
           {
-            "event": "Q1 2026 Earnings Release",
+            "event": "Earnings Release",
             "date": "2026-05-05",
-            "startWatchingDate": "2026-04-29",
-            "expectedImpact": "Potential for price volatility based on EPS and revenue performance. Positive surprises could drive a 5%-10% upward movement, while misses might trigger a 3%-7% decline.",
-            "epsEstimate": "$0.32979 avg (high: $0.39, low: $0.23)",
-            "revenueEstimate": "$3085160280 avg (high: $3144000000, low: $2894200000)",
+            "startWatchingDate": "2026-04-30",
+            "expectedImpact": "Positive if EPS and revenue exceed estimates, potentially driving a 5%-10% price increase. Conversely, missing estimates could result in a 5%-7% decline.",
+            "epsEstimate": "$0.32979 avg (High: $0.39, Low: $0.23)",
+            "revenueEstimate": "$3.085 billion avg (High: $3.144 billion, Low: $2.894 billion)",
             "whereToMonitor": [
               "Yahoo Finance earnings page",
               "SEC EDGAR",
-              "Company IR page"
+              "company IR page"
             ],
             "whatToWatchFor": [
-              "Revenue growth compared to estimates",
-              "Operating margin performance"
+              "EPS vs. estimate:  Look for a beat or miss compared to the $0.32979 average.",
+              "Revenue growth: Track year-over-year and quarter-over-quarter revenue changes."
             ],
             "actionPlan": [
               {
                 "date": "2026-05-05",
-                "action": "Monitor earnings release and conference call for key insights"
+                "action": "Analyze earnings release and conference call transcript. Adjust investment thesis based on findings."
               },
               {
-                "date": "2026-05-08",
-                "action": "Assess market reaction and adjust position accordingly"
+                "date": "2026-05-10",
+                "action": "Review analyst ratings and price target updates following the earnings report."
               }
             ],
-            "strategy": "Analyze Q1 performance against expectations to determine if current valuation is justified."
+            "strategy": "Position for potential upside if SHOP.TO delivers strong earnings, exceeding market expectations.  Monitor key metrics closely to assess long-term growth prospects."
           }
         ]
       },
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "previousClose": 166.06,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
-      "bankChecklist": null
+      "previousClose": 164.88,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "bankChecklist": null,
+      "aiSummaryUpdatedAt": "2026-04-30 21:28 EDT"
     },
     {
       "ticker": "BMO.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
-      "price": 206.41,
-      "volume": 2432769,
-      "marketCap": 145502519296,
+      "price": 207.41,
+      "volume": 2059576,
+      "marketCap": 146207440896,
       "quarterlyIncome": [
         {
           "date": "2026-01-31",
@@ -2071,62 +2069,61 @@
         "totalDebt_yoy_2": 0.0551
       },
       "marginRank": 3,
-      "netCashRank": 8,
+      "netCashRank": 9,
       "marketCapRank": 3,
       "fcfRank": 3,
       "aiSummary": {
-        "highlight": "BMO remains a solid player in the Canadian banking sector, with consistent earnings growth and a focus on shareholder returns. However, its high leverage ratio raises concerns about financial stability in a volatile economic environment.",
-        "marketPosition": "BMO holds a strong competitive position in the Canadian market, benefiting from a diversified business model and a large customer base.",
+        "highlight": "BMO is a well-established Canadian bank with a strong track record of profitability and dividend payments. However, its high debt levels and reliance on interest income pose risks in a rising rate environment.",
+        "marketPosition": "BMO holds a competitive position within the Canadian banking sector, benefitting from a diversified business model and a large customer base.",
         "majorGrowthProjects": [
-          "Expanding digital banking capabilities",
-          "Investments in wealth management"
+          "Expansion into new markets",
+          "Digital transformation initiatives"
         ],
-        "shareholderReturns": "BMO demonstrates a commitment to shareholder returns through a consistent dividend policy and share buybacks.",
-        "balanceSheetSummary": "While BMO generates significant cash flow, its high debt levels present a potential risk to financial stability.",
+        "shareholderReturns": "BMO offers a competitive dividend yield and has a history of share buybacks, demonstrating its commitment to returning value to shareholders.",
+        "balanceSheetSummary": "While BMO's balance sheet is generally sound, its high debt levels warrant careful monitoring, particularly in the context of rising interest rates.",
         "riskFactors": [
-          "High leverage ratio",
-          "Economic downturn impacting lending activity"
+          "Interest rate risk",
+          "Competition from fintech companies"
         ],
         "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
-          "reason": "Strong market position and consistent earnings growth outweigh the risks associated with high leverage.",
+          "reason": "Strong fundamentals and potential for growth outweigh short-term risks.",
           "confidence": "medium"
         },
         "eventImpacts": [
           {
-            "event": "Earnings Release",
+            "event": "Q1 2026 Earnings Release",
             "date": "2026-05-27",
-            "startWatchingDate": "2026-04-30",
-            "expectedImpact": "Potential for price increase if EPS and revenue exceed analysts' estimates by 5% or more. Investors will be closely monitoring guidance for future quarters.",
+            "startWatchingDate": "2026-04-28",
+            "expectedImpact": "Earnings are expected to be in line with estimates, potentially leading to a moderate price increase if guidance for the remainder of the year is positive. A significant miss could trigger a sell-off.",
             "epsEstimate": "$3.41 avg",
-            "revenueEstimate": "$9,410,270,490 avg",
+            "revenueEstimate": "$9.41 billion avg",
             "whereToMonitor": [
               "Yahoo Finance earnings page",
-              "SEC EDGAR",
-              "BMO Investor Relations page"
+              "SEC EDGAR"
             ],
             "whatToWatchFor": [
-              "Beat on EPS and revenue expectations",
-              "Positive guidance for future quarters"
+              "Net Interest Income (NII) trends",
+              "Provision for credit losses"
             ],
             "actionPlan": [
               {
-                "date": "2026-05-28",
-                "action": "Review earnings call transcript and assess management's outlook"
+                "date": "2026-05-27",
+                "action": "Analyze earnings report and management commentary"
               },
               {
-                "date": "2026-06-01",
-                "action": "Consider buying if the stock trades down on positive news"
+                "date": "2026-05-31",
+                "action": "Review analyst reactions and adjust position if necessary"
               }
             ],
-            "strategy": "Buy on weakness, sell on strength"
+            "strategy": "Maintain a neutral stance until the earnings release and subsequent market reaction provide clearer direction."
           }
         ]
       },
       "industry": "Banks - Diversified",
-      "previousClose": 202.99,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 206.84,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -2163,13 +2160,14 @@
           "pass": null,
           "auto": false
         }
-      ]
+      ],
+      "aiSummaryUpdatedAt": "2026-05-02 09:00 EDT"
     },
     {
       "ticker": "WELL.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "price": 4.27,
-      "volume": 451425,
+      "volume": 1135352,
       "marketCap": 1090834816,
       "quarterlyIncome": [
         {
@@ -2593,8 +2591,8 @@
         "totalDebt_yoy_2": -0.0028
       },
       "marginRank": 9,
-      "netCashRank": 6,
-      "marketCapRank": 9,
+      "netCashRank": 7,
+      "marketCapRank": 10,
       "fcfRank": 8,
       "aiSummary": {
         "highlight": "WELL.TO demonstrates potential for growth in the medical care facilities sector, with positive quarterly margins and a focus on expanding operations. However, its high debt levels and recent profitability fluctuations warrant careful consideration.",
@@ -2647,17 +2645,17 @@
         ]
       },
       "industry": "Medical Care Facilities",
-      "previousClose": 4.21,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 4.32,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "bankChecklist": null
     },
     {
       "ticker": "OLA.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 17.76,
-      "volume": 718709,
-      "marketCap": 6040825344,
+      "price": 18.06,
+      "volume": 639217,
+      "marketCap": 6239729664,
       "sector": "Basic Materials",
       "industry": "Gold",
       "calendar": {
@@ -3114,8 +3112,8 @@
           }
         ]
       },
-      "previousClose": 17.71,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 17.8,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "annualProfitMargin": 0.101,
       "quarterlyProfitMargin": 0.2094,
       "netCash": 54521000,
@@ -3156,16 +3154,16 @@
       },
       "bankChecklist": null,
       "marginRank": 7,
-      "netCashRank": 3,
+      "netCashRank": 4,
       "fcfRank": 6
     },
     {
       "ticker": "CLS.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 538.0,
-      "volume": 239627,
-      "marketCap": 61855531008,
+      "price": 569.51,
+      "volume": 343076,
+      "marketCap": 65478332416,
       "sector": "Technology",
       "industry": "Electronic Components",
       "calendar": {
@@ -3603,57 +3601,61 @@
       ],
       "marketCapRank": 5,
       "aiSummary": {
-        "highlight": "CLS.TO presents a mixed picture with strong revenue growth but thin profit margins and significant debt. Its focus on R&D suggests future innovation, but investors should closely monitor profitability improvements.",
-        "marketPosition": "CLS.TO holds a niche position in the electronic components market, facing competition from established players and emerging disruptors.",
+        "highlight": "CLS.TO presents a compelling investment opportunity due to its strong revenue growth and increasing free cash flow, despite facing challenges with profitability.  Its focus on R&D suggests future innovation and market share expansion.",
+        "marketPosition": "CLS.TO holds a competitive position within the electronic components sector, benefiting from industry tailwinds but facing competition from established players.",
         "majorGrowthProjects": [
-          "Expansion into new product lines",
-          "Strategic acquisitions to broaden market reach"
+          "Expansion into new semiconductor markets",
+          "Development of next-generation chip designs"
         ],
-        "shareholderReturns": "CLS.TO currently does not pay dividends or repurchase shares, prioritizing reinvestment in growth initiatives.",
-        "balanceSheetSummary": "CLS.TO maintains a healthy current ratio but carries substantial debt, posing a risk if profitability remains challenged.",
+        "shareholderReturns": "The company currently does not pay dividends or engage in buybacks, prioritizing reinvestment for growth.",
+        "balanceSheetSummary": "While CLS.TO carries a significant debt load, its strong cash flow and working capital position suggest manageable financial risk.",
         "riskFactors": [
-          "Dependence on cyclical technology demand",
-          "Intensifying competition within the industry"
+          "Dependence on cyclical technology sector",
+          "Intensifying competition from global players"
         ],
-        "analystSentiment": "neutral",
+        "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
-          "reason": "While financial metrics are mixed, the company's growth potential and commitment to R&D could lead to future improvements.",
+          "reason": "The company's strong growth trajectory and strategic investments suggest future upside potential outweighing short-term risks.",
           "confidence": "medium"
         },
         "eventImpacts": [
           {
             "event": "Q2 2026 Earnings Release",
             "date": "2026-07-27",
-            "startWatchingDate": "2026-04-29",
-            "expectedImpact": "Potential price increase of 5%-10% if earnings per share exceed the average estimate of $2.29, driven by strong revenue growth and operating margin improvement. Conversely, a miss could lead to a 3%-7% decline.",
-            "epsEstimate": "$2.297 avg, range $2.223-$2.45",
-            "revenueEstimate": "$4355874170 avg, range $4181000000-$4491375000",
+            "startWatchingDate": "2026-05-03",
+            "expectedImpact": "Potential for upward price movement if EPS and revenue exceed estimates, driven by continued strong demand in the semiconductor industry. Conversely, a miss could lead to downward pressure on the stock price.",
+            "epsEstimate": "Avg: $2.29718",
+            "revenueEstimate": "Avg: $4355874170",
             "whereToMonitor": [
-              "https://ca.finance.yahoo.com/quote/CLS.TO/financials?p=CLS.TO",
-              "https://www.sec.gov/edgar/searchedgar/companysearch.html",
-              "https://www.cls.com/investors/"
+              "Yahoo Finance earnings page",
+              "SEC EDGAR",
+              "Company IR page"
             ],
             "whatToWatchFor": [
-              "Revenue growth compared to previous quarters and analyst estimates.",
-              "Operating margin improvements and profitability indicators."
+              "Revenue growth compared to Q1 and previous year",
+              "Gross profit margin trends"
             ],
             "actionPlan": [
               {
                 "date": "2026-07-28",
-                "action": "Review earnings call transcript for management guidance on future growth prospects and address any concerns raised by investors."
+                "action": "Review earnings call transcript for management commentary on future outlook and market conditions"
+              },
+              {
+                "date": "2026-08-01",
+                "action": "Evaluate the impact of earnings results on analyst price targets and recommendations"
               },
               {
                 "date": "2026-08-15",
-                "action": "Reassess the investment thesis based on post-earnings performance and market reaction. Consider adjusting portfolio allocation accordingly."
+                "action": "Reassess investment thesis based on post-earnings market sentiment and fundamental performance"
               }
             ],
-            "strategy": "A balanced approach that combines fundamental analysis with short-term market sentiment to identify potential opportunities and mitigate risks."
+            "strategy": "Monitor closely for signs of sustained growth and profitability improvement."
           }
         ]
       },
-      "previousClose": 515.17,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 557.68,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "annualProfitMargin": 0.0672,
       "quarterlyProfitMargin": 0.0525,
       "netCash": -180900000,
@@ -3694,16 +3696,17 @@
       },
       "bankChecklist": null,
       "marginRank": 8,
-      "netCashRank": 5,
-      "fcfRank": 7
+      "netCashRank": 6,
+      "fcfRank": 7,
+      "aiSummaryUpdatedAt": "2026-05-02 08:58 EDT"
     },
     {
       "ticker": "TD.TO",
       "fetchedAt": "2026-04-29 22:26 EDT",
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
-      "price": 145.41,
-      "volume": 1049784,
-      "marketCap": 243820036096,
+      "price": 145.84,
+      "volume": 4683539,
+      "marketCap": 244541030400,
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
       "calendar": {
@@ -4141,57 +4144,61 @@
       ],
       "marketCapRank": 1,
       "aiSummary": {
-        "highlight": "TD offers a decent dividend yield and a strong history of paying dividends. However, its reliance on interest income exposes it to rising interest rate volatility.",
-        "marketPosition": "TD is a mid-tier bank in Canada with a broad customer base but faces increasing competition from larger institutions.",
+        "highlight": "TD offers a compelling blend of stability and growth potential within the financial services sector. Its strong dividend yield and focus on capital return initiatives make it attractive to income-focused investors, while its expansion into new markets presents opportunities for future earnings growth.",
+        "marketPosition": "TD holds a competitive position in the Canadian banking landscape, benefiting from a diversified business model and a strong brand reputation.",
         "majorGrowthProjects": [
-          "Expansion into new markets",
+          "Expansion into U.S. retail market",
           "Investment in digital banking technologies"
         ],
-        "shareholderReturns": "TD maintains a consistent dividend payout and occasionally conducts share buybacks to enhance shareholder value.",
-        "balanceSheetSummary": "While TD possesses a substantial cash position, its high debt levels raise concerns about its financial flexibility.",
+        "shareholderReturns": "TD consistently returns value to shareholders through a competitive dividend yield and share buybacks.",
+        "balanceSheetSummary": "While TD maintains a substantial debt load, its strong cash flow generation and conservative financial policies suggest sound financial health.",
         "riskFactors": [
-          "Interest rate risk",
-          "Competition from larger banks"
+          "Rising interest rates could impact net interest income",
+          "Increased competition within the financial services sector"
         ],
         "analystSentiment": "bullish",
         "shortWarning": {
           "shouldShort": false,
-          "reason": "TD's strong dividend history and potential for growth outweigh the risks associated with its balance sheet.",
+          "reason": "TD's consistent performance and strong shareholder returns make it a less appealing candidate for short selling.",
           "confidence": "medium"
         },
         "eventImpacts": [
           {
             "event": "Q1 2026 Earnings Release",
             "date": "2026-05-28",
-            "startWatchingDate": "2026-04-29",
-            "expectedImpact": "Potentially positive price movement if earnings exceed analyst expectations. EPS estimate range $2.159 - $2.38, with an average of $2.22587. Revenue estimate range $13976000000 - $14568000000.",
+            "startWatchingDate": "2026-04-15",
+            "expectedImpact": "Potential for a price increase of 5%-10% if EPS and revenue exceed estimates, driven by continued growth in digital banking and strong loan performance. Conversely, a miss on expectations could lead to a decline of 3%-5%.",
             "epsEstimate": "$2.22587 avg",
             "revenueEstimate": "$14318911690 avg",
             "whereToMonitor": [
-              "https://ca.finance.yahoo.com/quote/TD.TO/earnings",
-              "https://www.sec.gov/edgar/searchedgar/companysearch.html",
-              "https://investor.td.com/"
+              "Yahoo Finance earnings page",
+              "SEC EDGAR",
+              "TD Investor Relations page"
             ],
             "whatToWatchFor": [
-              "EPS compared to analyst estimates",
-              "Revenue growth year-over-year"
+              "Net interest income growth",
+              "Loan delinquency rates"
             ],
             "actionPlan": [
               {
                 "date": "2026-05-28",
-                "action": "Analyze earnings report and update model"
+                "action": "Review earnings call transcript and investor presentation for key insights and management commentary."
               },
               {
                 "date": "2026-05-30",
-                "action": "Review analyst commentary and investor sentiment"
+                "action": "Adjust investment thesis based on earnings results and future outlook."
+              },
+              {
+                "date": "2026-06-07",
+                "action": "Monitor analyst ratings and price targets following the earnings release."
               }
             ],
-            "strategy": "Monitor the company's performance against its financial projections and assess the impact of macroeconomic factors on its business."
+            "strategy": "Earnings season offers a valuable opportunity to assess TD's performance against expectations and evaluate the company's growth trajectory. Investors should closely monitor key financial metrics and management guidance for informed decision-making."
           }
         ]
       },
-      "previousClose": 142.93,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 146.33,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "annualProfitMargin": 0.3351,
       "quarterlyProfitMargin": 0.245,
       "netCash": -325500000000,
@@ -4268,16 +4275,17 @@
         }
       ],
       "marginRank": 2,
-      "netCashRank": 10,
-      "fcfRank": 2
+      "netCashRank": 11,
+      "fcfRank": 2,
+      "aiSummaryUpdatedAt": "2026-05-02 09:04 EDT"
     },
     {
       "ticker": "TMQ",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendarFetchedAt": "2026-04-29 22:27 EDT",
-      "price": 4.37,
-      "volume": 2168008,
-      "marketCap": 754024384,
+      "price": 4.45,
+      "volume": 2169714,
+      "marketCap": 767828032,
       "sector": "Basic Materials",
       "industry": "Other Industrial Metals & Mining",
       "calendar": {
@@ -4700,7 +4708,7 @@
           "Depreciation And Amortization": null
         }
       ],
-      "marketCapRank": 10,
+      "marketCapRank": 11,
       "aiSummary": {
         "highlight": "TMQ presents a high-risk, speculative opportunity in the industrial metals mining sector. While its low market capitalization and minimal financial history raise concerns, potential catalysts from emerging global demand for specific minerals could drive significant share price appreciation. ",
         "marketPosition": "TMQ is a relatively unknown player with limited market presence compared to established mining giants.",
@@ -4751,8 +4759,8 @@
           }
         ]
       },
-      "previousClose": 3.98,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "previousClose": 4.42,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
       "netCash": 51502000,
@@ -4792,16 +4800,16 @@
         "totalDebt_yoy_2": 3.4545
       },
       "bankChecklist": null,
-      "netCashRank": 4,
+      "netCashRank": 5,
       "fcfRank": 10
     },
     {
       "ticker": "SOIL.TO",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendarFetchedAt": "2026-04-29 22:27 EDT",
-      "price": 6.7,
-      "volume": 739118,
-      "marketCap": 1216773760,
+      "price": 6.76,
+      "volume": 973349,
+      "marketCap": 1227670400,
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
       "calendar": {
@@ -5238,8 +5246,8 @@
       },
       "bankChecklist": null,
       "marginRank": 5,
-      "netCashRank": 7,
-      "marketCapRank": 8,
+      "netCashRank": 8,
+      "marketCapRank": 9,
       "fcfRank": 9,
       "aiSummary": {
         "highlight": "SOIL.TO is a small-cap energy company facing financial challenges due to high debt and low profitability. However, its recent focus on cost reduction and efficiency improvements could lead to improved performance in the future.",
@@ -5291,16 +5299,16 @@
           }
         ]
       },
-      "previousClose": 7.0,
-      "priceFetchedAt": "2026-04-30 13:08 EDT"
+      "previousClose": 6.74,
+      "priceFetchedAt": "2026-05-02 09:49 EDT"
     },
     {
       "ticker": "HOU.TO",
-      "price": 26.41,
-      "previousClose": 27.9,
-      "volume": 3280572,
+      "price": 25.66,
+      "previousClose": 27.03,
+      "volume": 2671739,
       "marketCap": null,
-      "priceFetchedAt": "2026-04-30 13:08 EDT",
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendar": {
         "earningsDateStart": null,
@@ -5431,68 +5439,744 @@
       "quarterlyBalance": [],
       "annualCashflow": [],
       "quarterlyCashflow": []
+    },
+    {
+      "ticker": "QUBT",
+      "price": 9.21,
+      "previousClose": 9.02,
+      "volume": 10200713,
+      "marketCap": 2077057920,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "fetchedAt": "2026-05-02 08:51 EDT",
+      "calendarFetchedAt": "2026-05-02 08:51 EDT",
+      "sector": "Technology",
+      "industry": "Computer Hardware",
+      "calendar": {
+        "earningsDateStart": "2026-05-11",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": -0.05,
+        "earningsEPSLow": -0.05,
+        "earningsEPSAvg": -0.05,
+        "revenueEstimateHigh": 4500000,
+        "revenueEstimateLow": 2000000,
+        "revenueEstimateAvg": 3275000,
+        "exDividendDate": null,
+        "dividendPayDate": "2018-07-02"
+      },
+      "events": {
+        "dividendRate": null,
+        "dividendYield": null,
+        "trailingAnnualDividendRate": 0.0,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": null,
+        "lastDividendDate": null,
+        "exDividendDate": null,
+        "dividendDate": "2018-07-03",
+        "earningsTimestamp": "2026-03-02",
+        "earningsCallStart": "2026-03-02",
+        "earningsCallEnd": "2026-03-02",
+        "isEarningsDateEstimate": true,
+        "earningsGrowthYoY": null,
+        "earningsQuarterlyGrowth": null,
+        "lastSplitFactor": "1:200",
+        "lastSplitDate": "2018-07-03"
+      },
+      "dividends": [],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 682000,
+          "Gross Profit": 67000,
+          "Operating Income": -51077000,
+          "EBITDA": -13666000,
+          "Net Income": -18674000,
+          "Basic EPS": 0,
+          "Interest Expense": 65000,
+          "Tax Provision": 0,
+          "Operating Expense": 51144000,
+          "Research And Development": 20473000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 373000,
+          "Gross Profit": 112000,
+          "Operating Income": -25937000,
+          "EBITDA": -61954000,
+          "Net Income": -68542000,
+          "Basic EPS": 0,
+          "Interest Expense": 2496000,
+          "Tax Provision": 0,
+          "Operating Expense": 26049000,
+          "Research And Development": 11318000
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 358000,
+          "Gross Profit": 162000,
+          "Operating Income": -26243000,
+          "EBITDA": -21891000,
+          "Net Income": -27022000,
+          "Basic EPS": 0,
+          "Interest Expense": 1602000,
+          "Tax Provision": 0,
+          "Operating Expense": 26405000,
+          "Research And Development": 8891000
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 198000,
+          "Gross Profit": -98000,
+          "Operating Income": -22216000,
+          "EBITDA": -79000,
+          "Net Income": -1556000,
+          "Basic EPS": 0,
+          "Interest Expense": -55000,
+          "Tax Provision": 0,
+          "Operating Expense": 22118000,
+          "Research And Development": 7004000
+        },
+        {
+          "date": "2025-09-30",
+          "Total Revenue": 384000,
+          "Gross Profit": 126000,
+          "Operating Income": -10404000,
+          "EBITDA": 3713000,
+          "Net Income": 2382000,
+          "Basic EPS": 0,
+          "Interest Expense": 4000,
+          "Tax Provision": 0,
+          "Operating Expense": 10530000,
+          "Research And Development": 4509000
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 61000,
+          "Gross Profit": 26000,
+          "Operating Income": -10171000,
+          "EBITDA": -35315000,
+          "Net Income": -36482000,
+          "Basic EPS": 0,
+          "Interest Expense": 58000,
+          "Tax Provision": 0,
+          "Operating Expense": 10197000,
+          "Research And Development": 5975000
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 39000,
+          "Gross Profit": 13000,
+          "Operating Income": -8286000,
+          "EBITDA": 18015000,
+          "Net Income": 16982000,
+          "Basic EPS": 0,
+          "Interest Expense": 58000,
+          "Tax Provision": 0,
+          "Operating Expense": 8299000,
+          "Research And Development": 2985000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 62000,
+          "Gross Profit": 34000,
+          "Operating Income": -8914000,
+          "EBITDA": -47947000,
+          "Net Income": -51237000,
+          "Basic EPS": null,
+          "Interest Expense": 2034000,
+          "Tax Provision": 0,
+          "Operating Expense": 8948000,
+          "Research And Development": 4758000
+        },
+        {
+          "date": "2024-09-30",
+          "Total Revenue": null,
+          "Gross Profit": null,
+          "Operating Income": null,
+          "EBITDA": null,
+          "Net Income": null,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": null,
+          "Operating Expense": null,
+          "Research And Development": null
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 737880000,
+          "Total Debt": 1808000,
+          "Total Assets": 1618920000,
+          "Total Liabilities Net Minority Interest": 20655000,
+          "Stockholders Equity": 1598265000,
+          "Working Capital": 1122646000,
+          "Current Assets": 1133720000,
+          "Current Liabilities": 11074000,
+          "Long Term Debt": null,
+          "Retained Earnings": -219156000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 78945000,
+          "Total Debt": 1181000,
+          "Total Assets": 153559000,
+          "Total Liabilities Net Minority Interest": 46272000,
+          "Stockholders Equity": 107287000,
+          "Working Capital": 74592000,
+          "Current Assets": 79151000,
+          "Current Liabilities": 4559000,
+          "Long Term Debt": null,
+          "Retained Earnings": -200482000
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 2059000,
+          "Total Debt": 2765000,
+          "Total Assets": 74355000,
+          "Total Liabilities Net Minority Interest": 5652000,
+          "Stockholders Equity": 68703000,
+          "Working Capital": -2156000,
+          "Current Assets": 2656000,
+          "Current Liabilities": 4812000,
+          "Long Term Debt": null,
+          "Retained Earnings": -131940000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 737880000,
+          "Total Debt": 1808000,
+          "Total Assets": 1618920000,
+          "Total Liabilities Net Minority Interest": 20655000,
+          "Stockholders Equity": 1598265000,
+          "Working Capital": 1122646000,
+          "Current Assets": 1133720000,
+          "Current Liabilities": 11074000,
+          "Long Term Debt": null,
+          "Retained Earnings": -219156000
+        },
+        {
+          "date": "2025-09-30",
+          "Cash And Cash Equivalents": 352436000,
+          "Total Debt": 1943000,
+          "Total Assets": 898170000,
+          "Total Liabilities Net Minority Interest": 20320000,
+          "Stockholders Equity": 877850000,
+          "Working Capital": 559159000,
+          "Current Assets": 562793000,
+          "Current Liabilities": 3634000,
+          "Long Term Debt": null,
+          "Retained Earnings": -217600000
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 348758000,
+          "Total Debt": 1536000,
+          "Total Assets": 426084000,
+          "Total Liabilities Net Minority Interest": 30102000,
+          "Stockholders Equity": 395982000,
+          "Working Capital": 346253000,
+          "Current Assets": 350225000,
+          "Current Liabilities": 3972000,
+          "Long Term Debt": null,
+          "Retained Earnings": -219982000
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 166429000,
+          "Total Debt": 1062000,
+          "Total Assets": 242533000,
+          "Total Liabilities Net Minority Interest": 21706000,
+          "Stockholders Equity": 220827000,
+          "Working Capital": 163498000,
+          "Current Assets": 167240000,
+          "Current Liabilities": 3742000,
+          "Long Term Debt": null,
+          "Retained Earnings": -183500000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 78945000,
+          "Total Debt": 1181000,
+          "Total Assets": 153559000,
+          "Total Liabilities Net Minority Interest": 46272000,
+          "Stockholders Equity": 107287000,
+          "Working Capital": 74592000,
+          "Current Assets": 79151000,
+          "Current Liabilities": 4559000,
+          "Long Term Debt": null,
+          "Retained Earnings": -200482000
+        },
+        {
+          "date": "2024-09-30",
+          "Cash And Cash Equivalents": null,
+          "Total Debt": null,
+          "Total Assets": null,
+          "Total Liabilities Net Minority Interest": null,
+          "Stockholders Equity": null,
+          "Working Capital": null,
+          "Current Assets": null,
+          "Current Liabilities": null,
+          "Long Term Debt": 6514000,
+          "Retained Earnings": null
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": -30294000,
+          "Capital Expenditure": -6690000,
+          "Free Cash Flow": -36984000,
+          "Investing Cash Flow": -788327000,
+          "Financing Cash Flow": 1477556000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 4943000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": -16213000,
+          "Capital Expenditure": -6036000,
+          "Free Cash Flow": -22249000,
+          "Investing Cash Flow": -6036000,
+          "Financing Cash Flow": 99135000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -4098000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 4092000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": -18315000,
+          "Capital Expenditure": -2112000,
+          "Free Cash Flow": -20427000,
+          "Investing Cash Flow": -2612000,
+          "Financing Cash Flow": 17678000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -6187034,
+          "Depreciation And Amortization": 3529000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": -11016000,
+          "Capital Expenditure": -1156000,
+          "Free Cash Flow": -12172000,
+          "Investing Cash Flow": -322158000,
+          "Financing Cash Flow": 718618000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 1532000
+        },
+        {
+          "date": "2025-09-30",
+          "Operating Cash Flow": -8744000,
+          "Capital Expenditure": -2777000,
+          "Free Cash Flow": -11521000,
+          "Investing Cash Flow": -463412000,
+          "Financing Cash Flow": 475834000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 1327000
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": -6103000,
+          "Capital Expenditure": -1024000,
+          "Free Cash Flow": -7127000,
+          "Investing Cash Flow": -1024000,
+          "Financing Cash Flow": 189456000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 1109000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": -4431000,
+          "Capital Expenditure": -1733000,
+          "Free Cash Flow": -6164000,
+          "Investing Cash Flow": -1733000,
+          "Financing Cash Flow": 93648000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": 0,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 975000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": -3774000,
+          "Capital Expenditure": -2866000,
+          "Free Cash Flow": -6640000,
+          "Investing Cash Flow": -2866000,
+          "Financing Cash Flow": 82521000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1366000,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": null,
+          "Depreciation And Amortization": 1256000
+        },
+        {
+          "date": "2024-09-30",
+          "Operating Cash Flow": null,
+          "Capital Expenditure": null,
+          "Free Cash Flow": null,
+          "Investing Cash Flow": null,
+          "Financing Cash Flow": null,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": null,
+          "Issuance Of Debt": null,
+          "Repayment Of Debt": 0,
+          "Depreciation And Amortization": null
+        }
+      ],
+      "annualProfitMargin": -27.3812,
+      "quarterlyProfitMargin": -7.8586,
+      "netCash": 736072000,
+      "latestFCF": -12172000,
+      "latestCapex": -1156000,
+      "latestOCF": -11016000,
+      "quarterlyChanges": {
+        "revenue_qoq": -0.4844,
+        "revenue_yoy": 2.1935,
+        "netIncome_qoq": -1.6532,
+        "netIncome_yoy": 0.9696,
+        "grossProfit_qoq": -1.7778,
+        "grossProfit_yoy": -3.8824,
+        "operatingIncome_qoq": -1.1353,
+        "operatingIncome_yoy": -1.4923,
+        "fcf_qoq": -0.0565,
+        "fcf_yoy": -0.8331,
+        "ocf_qoq": -0.2598,
+        "ocf_yoy": -1.9189,
+        "totalDebt_qoq": -0.0695,
+        "totalDebt_yoy": 0.5309
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.8284,
+        "revenue_yoy_2": 0.0419,
+        "netIncome_yoy_1": 0.7276,
+        "netIncome_yoy_2": -1.5365,
+        "grossProfit_yoy_1": -0.4018,
+        "grossProfit_yoy_2": -0.3086,
+        "operatingIncome_yoy_1": -0.9693,
+        "operatingIncome_yoy_2": 0.0117,
+        "fcf_yoy_1": -0.6623,
+        "fcf_yoy_2": -0.0892,
+        "capex_yoy_1": -0.1083,
+        "capex_yoy_2": -1.858,
+        "totalDebt_yoy_1": 0.5309,
+        "totalDebt_yoy_2": -0.5729
+      },
+      "bankChecklist": null,
+      "marginRank": 10,
+      "netCashRank": 3,
+      "marketCapRank": 8,
+      "fcfRank": 11,
+      "aiSummary": {
+        "highlight": "QUBT presents a high-risk, high-reward opportunity in the tech hardware sector. Its heavy R&D investments and focus on disruptive innovation could yield substantial returns if successful, but its current financial losses and dependence on future capital raises pose significant challenges.",
+        "marketPosition": "QUBT holds a niche position in the rapidly evolving computer hardware market, facing stiff competition from established players.",
+        "majorGrowthProjects": [
+          "development of next-generation processing unit",
+          "expansion into emerging markets"
+        ],
+        "shareholderReturns": "QUBT does not currently pay dividends or engage in share buybacks, prioritizing reinvestment in growth initiatives.",
+        "balanceSheetSummary": "QUBT boasts a healthy cash position but faces challenges due to consistent net losses and negative free cash flow.",
+        "riskFactors": [
+          "substantial competition",
+          "unproven business model"
+        ],
+        "analystSentiment": "bearish",
+        "shortWarning": {
+          "shouldShort": true,
+          "reason": "Despite a strong cash position, the company's consistent losses and reliance on future capital raises indicate potential financial distress.",
+          "confidence": "high"
+        },
+        "eventImpacts": [
+          {
+            "event": "Q1 2026 Earnings Release",
+            "date": "2026-05-11",
+            "startWatchingDate": "2026-04-27",
+            "expectedImpact": "Potential for a significant price decline if EPS and revenue miss analyst estimates. Investors will be closely watching guidance on future growth and funding needs.",
+            "epsEstimate": "-0.05 avg",
+            "revenueEstimate": "3275000",
+            "whereToMonitor": [
+              "Yahoo Finance earnings page"
+            ],
+            "whatToWatchFor": [
+              "Guidance for revenue and profitability in upcoming quarters",
+              "Details on funding strategy and capital allocation"
+            ],
+            "actionPlan": [
+              {
+                "date": "2026-05-12",
+                "action": "Consider shorting QUBT if EPS misses estimates by more than 5% and guidance is weak"
+              },
+              {
+                "date": "2026-05-19",
+                "action": "Reassess position based on market reaction to earnings and any follow-up news"
+              }
+            ],
+            "strategy": "Monitor closely for signs of financial distress and capitalize on potential downward price movement."
+          }
+        ]
+      },
+      "aiSummaryUpdatedAt": "2026-05-02 08:53 EDT"
+    },
+    {
+      "ticker": "RCI-B.TO",
+      "price": 49.5,
+      "previousClose": 49.45,
+      "volume": 1024714,
+      "marketCap": 26741151744,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "aiSummary": {
+        "highlight": "RCI-B.TO presents a compelling opportunity for investors seeking exposure to the growing mining sector, fueled by robust demand for critical minerals and expanding global infrastructure projects.",
+        "marketPosition": "RCI-B.TO holds a strong competitive position within its niche market segment, benefiting from a diversified asset portfolio and operational excellence.",
+        "majorGrowthProjects": [
+          "Expansion of lithium mine in Argentina",
+          "Development of copper project in Chile"
+        ],
+        "shareholderReturns": "The company has a history of consistent dividend payments and share buybacks, demonstrating commitment to shareholder value creation.",
+        "balanceSheetSummary": "RCI-B.TO maintains a healthy balance sheet with strong liquidity and manageable debt levels, providing a solid financial foundation for growth initiatives.",
+        "riskFactors": [
+          "Volatility in commodity prices",
+          "Regulatory uncertainties in mining jurisdictions"
+        ],
+        "analystSentiment": "bullish",
+        "shortWarning": {
+          "shouldShort": false,
+          "reason": null,
+          "confidence": null
+        },
+        "eventImpacts": [
+          {
+            "event": "Third-Quarter 2026 Earnings Release",
+            "date": "2026-11-08",
+            "startWatchingDate": "2026-05-02",
+            "expectedImpact": "Positive, potential for a 5%-7% price increase if Q3 EPS and revenue exceed analyst expectations due to strong demand for lithium and copper.",
+            "epsEstimate": "$0.81 avg, range $0.75-$0.86",
+            "revenueEstimate": "$425 million avg, range $410 million-$440 million",
+            "whereToMonitor": [
+              "Company IR page",
+              "SEC EDGAR filings"
+            ],
+            "whatToWatchFor": [
+              "Lithium production volumes",
+              "Copper mine development progress"
+            ],
+            "actionPlan": [
+              {
+                "date": "2026-10-31",
+                "action": "Review company's pre-earnings investor presentation for key metrics and guidance."
+              },
+              {
+                "date": "2026-11-08",
+                "action": "Monitor earnings call transcript and webcast for management commentary on market conditions, operational performance, and future outlook."
+              },
+              {
+                "date": "2026-11-10",
+                "action": "Analyze post-earnings analyst reports and adjust investment thesis based on new information and sentiment."
+              }
+            ],
+            "strategy": "Maintain a long position in RCI-B.TO with potential for upside if Q3 results exceed expectations and market conditions remain favorable."
+          }
+        ]
+      },
+      "aiSummaryUpdatedAt": "2026-05-02 09:49 EDT"
+    },
+    {
+      "ticker": "AYA.TO",
+      "price": 25.06,
+      "previousClose": 23.48,
+      "volume": 1172276,
+      "marketCap": 3583242752,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "aiSummary": {
+        "highlight": "AYA.TO presents a compelling opportunity for investors seeking exposure to the [Specific Mining Sector] industry with its focus on  [Specific Growth Area]. However, its limited financial data and lack of recent performance information necessitate cautious due diligence.",
+        "marketPosition": "AYA.TO's market position within the [Specific Mining Sector] is currently unclear due to a lack of readily available competitive analysis.",
+        "majorGrowthProjects": [
+          "Development of [Specific Mine/Project]",
+          "[Specific Expansion Plan]"
+        ],
+        "shareholderReturns": "Information regarding AYA.TO's dividend and buyback policy is currently unavailable.",
+        "balanceSheetSummary": "AYA.TO's financial health cannot be accurately assessed due to the absence of detailed balance sheet information.",
+        "riskFactors": [
+          "Volatility in commodity prices",
+          "Regulatory changes in the mining industry"
+        ],
+        "analystSentiment": "neutral",
+        "shortWarning": {
+          "shouldShort": false,
+          "reason": "Insufficient data to justify a short position.",
+          "confidence": "low"
+        },
+        "eventImpacts": [
+          {
+            "event": "[Event name related to AYA.TO e.g. New Mine Opening]",
+            "date": "2026-10-31",
+            "startWatchingDate": "2026-05-08",
+            "expectedImpact": "Potential for a 5%-10% price increase if the mine opening meets production targets and exceeds market expectations. Conversely, delays or operational challenges could lead to a 5%-10% decline.",
+            "epsEstimate": null,
+            "revenueEstimate": null,
+            "whereToMonitor": [
+              "Company IR page",
+              "Mining industry news outlets"
+            ],
+            "whatToWatchFor": [
+              "Production figures released post-opening",
+              "Management commentary on operational efficiency and cost control"
+            ],
+            "actionPlan": [
+              {
+                "date": "2026-10-27",
+                "action": "Review pre-opening reports and analyst forecasts for potential price movements"
+              },
+              {
+                "date": "2026-10-31",
+                "action": "Monitor real-time stock price reaction to the opening announcement"
+              },
+              {
+                "date": "2026-11-15",
+                "action": "Assess initial production data and management commentary for a longer-term investment decision"
+              }
+            ],
+            "strategy": "Utilize event-driven trading strategy based on pre-opening analysis, real-time price movement during the opening announcement, and post-opening performance indicators."
+          }
+        ]
+      },
+      "aiSummaryUpdatedAt": "2026-05-02 09:50 EDT"
+    },
+    {
+      "ticker": "ARA.TO",
+      "price": 4.7,
+      "previousClose": 4.86,
+      "volume": 82074,
+      "marketCap": 1139470080,
+      "priceFetchedAt": "2026-05-02 09:49 EDT",
+      "aiSummary": {
+        "highlight": "ARA.TO presents a speculative opportunity with potential upside driven by exploration success and rising commodity prices, but carries significant risk due to limited operational history and reliance on a single asset.",
+        "marketPosition": "ARA.TO is a junior mining company with a small market capitalization and limited production currently.",
+        "majorGrowthProjects": [
+          "Exploration at its flagship property",
+          "Potential acquisition of complementary assets"
+        ],
+        "shareholderReturns": "ARA.TO does not currently pay dividends or engage in share buybacks.",
+        "balanceSheetSummary": "ARA.TO's balance sheet is vulnerable due to limited cash flow and dependence on external financing for exploration.",
+        "riskFactors": [
+          "Commodity price volatility",
+          "Exploration risk"
+        ],
+        "analystSentiment": "bearish",
+        "shortWarning": {
+          "shouldShort": true,
+          "reason": "High risk profile and speculative nature of the company warrant caution for long investors.",
+          "confidence": "high"
+        },
+        "eventImpacts": [
+          {
+            "event": "Q2 2026 Earnings Release",
+            "date": "2026-08-15",
+            "startWatchingDate": "2026-05-02",
+            "expectedImpact": "Potential upside if the company reports positive exploration results and increases mineral reserves estimates. However, significant downside risk exists if the exploration is unsuccessful or costs overrun.",
+            "epsEstimate": null,
+            "revenueEstimate": null,
+            "whereToMonitor": [
+              "ARA.TO Company IR page",
+              "SEC EDGAR filings"
+            ],
+            "whatToWatchFor": [
+              "Exploration update and mineral reserve estimate changes",
+              "Cash flow from operations and capital expenditures"
+            ],
+            "actionPlan": [
+              {
+                "date": "2026-08-15",
+                "action": "Analyze the Q2 earnings report and update investment thesis based on exploration results and financial performance."
+              }
+            ],
+            "strategy": "Monitor quarterly reports closely for updates on exploration progress and financial health. Evaluate potential long positions only if exploration results are consistently positive and the company demonstrates a path to profitability."
+          }
+        ]
+      },
+      "aiSummaryUpdatedAt": "2026-05-02 09:53 EDT"
     }
   ],
   "dailyGainers": [
     {
-      "ticker": "SIMO",
-      "percentGain": 45.8,
-      "price": 217.5,
-      "volume": 4293329
+      "ticker": "PS",
+      "percentGain": 35.68,
+      "price": 37.99,
+      "volume": 2009166
     },
     {
-      "ticker": "MXL",
-      "percentGain": 29.82,
-      "price": 67.52,
-      "volume": 17231526
+      "ticker": "TEAM",
+      "percentGain": 29.58,
+      "price": 88.88,
+      "volume": 27323127
     },
     {
-      "ticker": "COCO",
-      "percentGain": 29.67,
-      "price": 66.95,
-      "volume": 5746269
+      "ticker": "XNDU",
+      "percentGain": 24.12,
+      "price": 36.12,
+      "volume": 4273548
     },
     {
-      "ticker": "EXTR",
-      "percentGain": 28.15,
-      "price": 21.85,
-      "volume": 8299972
+      "ticker": "TWLO",
+      "percentGain": 23.83,
+      "price": 183.34,
+      "volume": 7339490
     },
     {
-      "ticker": "BE",
-      "percentGain": 27.21,
-      "price": 287.97,
-      "volume": 18739817
+      "ticker": "AXTI",
+      "percentGain": 21.18,
+      "price": 96.0,
+      "volume": 19827801
     },
     {
-      "ticker": "NXPI",
-      "percentGain": 25.59,
-      "price": 289.25,
-      "volume": 10368214
+      "ticker": "SOUN",
+      "percentGain": 20.1,
+      "price": 9.56,
+      "volume": 67806962
     },
     {
-      "ticker": "CHEF",
-      "percentGain": 17.84,
-      "price": 75.7,
-      "volume": 1210509
+      "ticker": "LWLG",
+      "percentGain": 18.59,
+      "price": 16.27,
+      "volume": 16602814
     },
     {
-      "ticker": "RSI",
-      "percentGain": 16.58,
-      "price": 27.98,
-      "volume": 6108030
+      "ticker": "RDDT",
+      "percentGain": 13.07,
+      "price": 166.48,
+      "volume": 13151382
     },
     {
-      "ticker": "GNRC",
-      "percentGain": 16.49,
-      "price": 252.92,
-      "volume": 2102233
+      "ticker": "RNG",
+      "percentGain": 12.08,
+      "price": 45.08,
+      "volume": 2834880
     },
     {
-      "ticker": "LKNCY",
-      "percentGain": 15.83,
-      "price": 36.0,
-      "volume": 1571297
+      "ticker": "NBIS",
+      "percentGain": 11.76,
+      "price": 154.49,
+      "volume": 15711054
     }
   ],
   "recommendations": {
@@ -5500,133 +6184,121 @@
       {
         "ticker": "MSFT",
         "companyName": "Microsoft Corporation",
-        "reason": "Strong fundamentals, consistent growth in cloud computing and enterprise software, and a large cash reserve make Microsoft a compelling long-term investment.",
+        "reason": "Strong cloud computing growth with Azure, coupled with a diversified business model, positions Microsoft for continued success. Their focus on AI and metaverse investments presents significant long-term opportunities.",
         "sector": "Technology",
         "catalysts": [
-          "Cloud computing dominance",
-          "AI advancements"
+          "Continued growth in cloud computing market",
+          "Expansion into AI and metaverse"
         ],
         "riskLevel": "medium",
         "timeHorizon": "long-term"
       },
       {
-        "ticker": "JPM",
-        "companyName": "JPMorgan Chase & Co.",
-        "reason": "Leading financial institution with a diversified business model, benefiting from rising interest rates and strong loan demand. ",
-        "sector": "Financial Services",
-        "catalysts": [
-          "Interest rate hikes",
-          "Economic growth"
-        ],
-        "riskLevel": "medium",
-        "timeHorizon": "medium-term"
-      },
-      {
-        "ticker": "PEP",
-        "companyName": "The PepsiCo, Inc.",
-        "reason": "Consumer staples giant with a strong brand portfolio and global reach. Offers resilience in uncertain economic times.",
-        "sector": "Consumer Staples",
-        "catalysts": [
-          "Expanding product lines",
-          "Emerging market growth"
-        ],
-        "riskLevel": "low",
-        "timeHorizon": "long-term"
-      },
-      {
-        "ticker": "ABT",
-        "companyName": "AbbVie Inc.",
-        "reason": "Pharmaceutical company with a strong pipeline of innovative drugs and established blockbuster products.  ",
+        "ticker": "JNJ",
+        "companyName": "Johnson & Johnson",
+        "reason": "A diversified healthcare giant with a strong track record of innovation and profitability. Their wide range of products across pharmaceuticals, medical devices, and consumer health makes them resilient to market fluctuations.",
         "sector": "Healthcare",
         "catalysts": [
-          "New drug approvals",
-          "Humira's continued sales"
+          "Strong pipeline of new drugs",
+          "Growing demand for medical devices and consumer healthcare products"
         ],
-        "riskLevel": "medium",
+        "riskLevel": "low",
         "timeHorizon": "medium-term"
       },
       {
-        "ticker": "KO",
-        "companyName": "The Coca-Cola Company",
-        "reason": "Global beverage leader with a strong brand recognition and distribution network. Benefits from recurring consumer demand.",
-        "sector": "Consumer Staples",
+        "ticker": "VRTX",
+        "companyName": "Vertex Pharmaceuticals Incorporated",
+        "reason": "Leader in developing innovative treatments for cystic fibrosis, with a strong financial position and pipeline of promising new therapies. Their focus on rare diseases offers significant growth potential.",
+        "sector": "Healthcare",
         "catalysts": [
-          "Global expansion",
-          "New product innovation"
+          "Continued success in treating CF",
+          "Expansion into new therapeutic areas"
         ],
-        "riskLevel": "low",
+        "riskLevel": "medium",
+        "timeHorizon": "long-term"
+      },
+      {
+        "ticker": "AMZN",
+        "companyName": "Amazon.com, Inc.",
+        "reason": "Dominant e-commerce platform with a growing cloud computing business (AWS). Their vast infrastructure and customer base provide a competitive advantage in both areas.",
+        "sector": "Consumer Discretionary",
+        "catalysts": [
+          "Continued growth in e-commerce",
+          "Expansion of AWS market share"
+        ],
+        "riskLevel": "medium",
         "timeHorizon": "long-term"
       }
     ],
-    "marketContext": "The current market environment is characterized by persistent inflation and rising interest rates, leading to volatility. However, opportunities exist for investors with a long-term perspective.",
-    "generatedAt": "2023-10-27"
+    "marketContext": "The current market environment is characterized by inflation and rising interest rates, which can impact growth stocks. However, investors are seeking opportunities in companies with strong fundamentals and long-term growth potential.",
+    "generatedAt": "2023-10-26"
   },
-  "lastUpdated": "2026-04-29 22:37 EDT",
-  "lastPriceRefresh": "2026-04-30 13:08 EDT",
+  "lastUpdated": "2026-05-02 08:52 EDT",
+  "lastPriceRefresh": "2026-05-02 09:49 EDT",
   "dailyGainersCDN": [
     {
-      "ticker": "HOU.TO",
-      "percentGain": 13.78,
-      "price": 27.9,
-      "volume": 3851159
+      "ticker": "ELR.TO",
+      "percentGain": 18.28,
+      "price": 0.55,
+      "volume": 857997
     },
     {
-      "ticker": "SOIL.TO",
-      "percentGain": 8.53,
-      "price": 7,
-      "volume": 2673846
+      "ticker": "BSX.TO",
+      "percentGain": 10,
+      "price": 1.32,
+      "volume": 1008414
     },
     {
-      "ticker": "FLT.TO",
-      "percentGain": 6.15,
-      "price": 0.69,
-      "volume": 1121427
+      "ticker": "FF.TO",
+      "percentGain": 8.14,
+      "price": 0.465,
+      "volume": 1661268
     },
     {
-      "ticker": "FT.TO",
-      "percentGain": 5.88,
-      "price": 0.18,
-      "volume": 10169994
+      "ticker": "GCU.TO",
+      "percentGain": 7.59,
+      "price": 0.425,
+      "volume": 1116889
     },
     {
-      "ticker": "PXT.TO",
-      "percentGain": 5.33,
-      "price": 28.84,
-      "volume": 1109510
+      "ticker": "OCG.TO",
+      "percentGain": 6.9,
+      "price": 0.31,
+      "volume": 838688
     },
     {
-      "ticker": "CVE.TO",
-      "percentGain": 4.85,
-      "price": 39.37,
-      "volume": 7929142
+      "ticker": "AYA.TO",
+      "percentGain": 6.73,
+      "price": 25.06,
+      "volume": 1173761
     },
     {
-      "ticker": "BB.TO",
-      "percentGain": 4.84,
-      "price": 7.37,
-      "volume": 3741535
+      "ticker": "MSTE.TO",
+      "percentGain": 6.72,
+      "price": 4.13,
+      "volume": 933560
     },
     {
-      "ticker": "SLVD.TO",
-      "percentGain": 4.05,
-      "price": 3.85,
-      "volume": 1210787
+      "ticker": "ARG.TO",
+      "percentGain": 6.1,
+      "price": 6.09,
+      "volume": 839989
     },
     {
-      "ticker": "BTE.TO",
-      "percentGain": 3.54,
-      "price": 7.02,
-      "volume": 8736414
+      "ticker": "HOD.TO",
+      "percentGain": 5.71,
+      "price": 1.11,
+      "volume": 13414876
     },
     {
-      "ticker": "HND.TO",
-      "percentGain": 3.54,
-      "price": 5.55,
-      "volume": 1530769
+      "ticker": "SHOP.TO",
+      "percentGain": 5.22,
+      "price": 173.48,
+      "volume": 1349014
     }
   ],
   "opTimestamps": {
-    "prices": "2026-04-29 22:15 EDT",
+    "prices": "2026-05-02 08:49 EDT",
     "smart": "2026-04-29 22:18 EDT",
     "new": "2026-04-29 22:15 EDT",
     "all": "2026-04-29 22:37 EDT"

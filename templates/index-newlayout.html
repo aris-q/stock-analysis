@@ -1222,31 +1222,31 @@ function renderNewsImpactInline(ticker, data) {
     const imp = entry && entry.impact;
     const ts = entry && entry.fetchedAt;
     if (!imp) {
-      const safeT2 = JSON.stringify(ticker);
-      return '<div class="ni-block">'
-        +'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">'
-        +'<div class="ni-label" style="margin-bottom:0">'+label+'</div>'
-        +'<span style="font-size:10px;color:var(--muted)">🕐 No analysis yet</span>'
-        +'<button onclick="getNews('+safeT2+', this, '+todayOnly+')" style="font-size:10px;padding:2px 10px;background:var(--warn);color:#0a0a0f;border:none;border-radius:4px;font-weight:700;cursor:pointer">⚡ Refresh</button>'
-        +'</div>'
-        +'<div class="ni-summary" style="color:var(--muted);font-style:italic">No analysis cached yet.</div>'
-        +'</div>';
+      return `<div class="ni-block">
+        <div class="ni-label">${label}</div>
+        <div class="ni-summary" style="color:var(--muted);font-style:italic">No analysis cached yet.</div>
+        <div class="ni-footer">
+          <button class="ni-refresh" onclick="getNews('${ticker}', this, ${todayOnly})">📰 Fetch & Analyze</button>
+        </div>
+      </div>`;
     }
-    const safeT = JSON.stringify(ticker);
-    return '<div class="ni-block">'
-      +'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">'
-      +'<div class="ni-label" style="margin-bottom:0">'+label+'</div>'
-      +'<span style="font-size:10px;color:var(--muted)">🕐 '+(ts||'unknown')+'</span>'
-      +'<button onclick="getNews('+safeT+', this, '+todayOnly+')" style="font-size:10px;padding:2px 10px;background:var(--warn);color:#0a0a0f;border:none;border-radius:4px;font-weight:700;cursor:pointer">⚡ Refresh</button>'
-      +'<button onclick="showCachedNews('+safeT+', '+todayOnly+')" style="font-size:10px;padding:2px 10px;background:var(--warn);color:#0a0a0f;border:none;border-radius:4px;font-weight:700;cursor:pointer">📰 View All</button>'
-      +'</div>'
-      +'<div class="ni-meta">'
-      +'<span class="news-impact-badge '+(imp.sentimentScore >= 2 ? 'positive' : imp.sentimentScore <= -2 ? 'negative' : 'neutral')+'">'+(imp.overallSentiment||'neutral').toUpperCase()+'</span>'
-      +(imp.sentimentScore != null ? '<span style="font-size:10px;color:var(--muted)">Score: '+(imp.sentimentScore > 0 ? '+' : '')+imp.sentimentScore+'</span>' : '')
-      +'</div>'
-      +'<div class="ni-summary">'+(imp.summary||'—')+'</div>'
-      +'<div style="font-size:11px;color:var(--text);margin-bottom:4px">→ '+(imp.tradingImplication||'—')+'</div>'
-      +'</div>';
+    const sc = imp.sentimentScore >= 2 ? 'positive' : imp.sentimentScore <= -2 ? 'negative' : 'neutral';
+    return `<div class="ni-block">
+      <div class="ni-label">${label}</div>
+      <div class="ni-meta">
+        <span class="news-impact-badge ${sc}">${(imp.overallSentiment||'neutral').toUpperCase()}</span>
+        ${imp.sentimentScore != null ? `<span style="font-size:10px;color:var(--muted)">Score: ${imp.sentimentScore > 0 ? '+' : ''}${imp.sentimentScore}</span>` : ''}
+      </div>
+      <div class="ni-summary">${imp.summary || '—'}</div>
+      <div style="font-size:11px;color:var(--text);margin-bottom:4px">→ ${imp.tradingImplication || '—'}</div>
+      <div class="ni-footer">
+        <span class="ni-ts">🕐 ${ts || 'unknown'}</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="ni-link" onclick="getNews('${ticker}', this, ${todayOnly})">↺ Refresh</button>
+          <button class="ni-link" onclick="showCachedNews('${ticker}', ${todayOnly})">📰 View Full</button>
+        </div>
+      </div>
+    </div>`;
   }
 
   el.innerHTML = buildBlock('7-DAY NEWS', data.sevenDay, false) + buildBlock('TODAY\'S NEWS', data.today, true);
@@ -1636,30 +1636,25 @@ function renderTickerDetail(s) {
   if (s.marketCapRank) rankBadges.push(`<span class="rank-badge rank-${s.marketCapRank}">MKTCAP #${s.marketCapRank}</span>`);
   if (s.fcfRank) rankBadges.push(`<span class="rank-badge rank-${s.fcfRank}">FCF #${s.fcfRank}</span>`);
   if (rankBadges.length) html += `<div class="ranks-row">${rankBadges.join('')}</div>`;
-  // AI Summary placeholder (no data yet)
+  // AI Summary (expanded)
   if (!ai.highlight) {
-    const _aiUrl = '/fetch/ticker/' + s.ticker + '/ai';
-    const _fundUrl = '/fetch/ticker/' + s.ticker;
-    const _fetchedLabel = s.fetchedAt ? '🕐 Updated: ' + s.fetchedAt : 'Never';
-    html += '<div class="card-section expanded">'
-      + '<div class="section-title" style="font-size:16px;font-weight:800">AI SUMMARY</div>'
-      + '<div class="section-content">'
-      + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">'
-      + '<a href="' + _aiUrl + '" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none">⚡ Run AI Summary</a>'
-      + '<span style="font-size:11px;color:var(--muted)">Never run</span>'
-      + '</div>'
-      + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">'
-      + '<a href="' + _fundUrl + '" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none">⚡ Refresh Fundamentals</a>'
-      + '<span style="font-size:11px;color:var(--muted)">' + _fetchedLabel + '</span>'
-      + '</div>'
-      + '<span style="color:var(--muted);font-size:12px">No AI summary yet.</span>'
-      + '</div></div>';
+    html += `
+    <div class="card-section expanded">
+      <div class="section-title">AI SUMMARY
+        <span style="margin-left:10px;font-size:10px;color:var(--muted)">Not yet generated</span>
+        <a href="/fetch/ticker/${s.ticker}/ai" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Run AI Summary</a>
+      </div>
+      <div class="section-content"><span style="color:var(--muted);font-size:12px">Click Run AI Summary above to generate analysis for this ticker.</span></div>
+    </div>`;
   }
 
   // News Impact (expanded)
   html += `
   <div class="card-section expanded">
-    <div class="section-title" onclick="toggleSection(this)" style="font-size:16px;font-weight:800;letter-spacing:-0.3px">NEWS IMPACT</div>
+    <div class="section-title" onclick="toggleSection(this)">NEWS IMPACT
+      <span style="margin-left:10px;font-size:10px;color:var(--muted)">${s.newsFetchedAt ? '🕐 '+s.newsFetchedAt : ''}</span>
+      <a href="/news/${s.ticker}/refresh" onclick="event.stopPropagation()" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Refresh</a>
+    </div>
     <span class="section-toggle" onclick="toggleSection(this)">−</span>
     <div class="section-content">
       <div id="news-impact-${s.ticker}"><div style="font-size:11px;color:var(--muted)">Loading cached analysis...</div></div>
@@ -1678,16 +1673,16 @@ function renderTickerDetail(s) {
         <div class="events-list">
           ${ai.eventImpacts.map(e => {
             const btnId = 'followup-btn-'+s.ticker+'-'+e.event.replace(/[^a-zA-Z0-9]/g,'_');
-            return '<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">'+
-              '<div style="display:flex;justify-content:space-between;width:100%">'+
-              '<div class="event-value">'+e.event+'</div>'+
-              '<span class="event-value" style="color:var(--muted);font-size:11px">'+(e.date||'—')+'</span>'+
-              '</div>'+
-              '<div class="event-label">'+(e.expectedImpact||'')+'</div>'+
-              (e.epsEstimate ? '<div class="event-label">EPS: '+e.epsEstimate+'</div>' : '')+
-              '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"'+
-              + '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px" onclick="'+('getFollowupPlan('+JSON.stringify(s.ticker)+','+JSON.stringify(e.event)+',this)')+'">\xf0\x9f\x93\x8b FOLLOW-UP PLAN</button>'
-            '</div>';
+            const onclick = 'getFollowupPlan('+JSON.stringify(s.ticker)+','+JSON.stringify(e.event)+',this)';
+            return '<div class="event-item" style="flex-direction:column;align-items:flex-start;gap:6px">'
+              +'<div style="display:flex;justify-content:space-between;width:100%">'
+              +'<div class="event-value">'+e.event+'</div>'
+              +'<span class="event-value" style="color:var(--muted);font-size:11px">'+(e.date||'—')+'</span>'
+              +'</div>'
+              +'<div class="event-label">'+(e.expectedImpact||'')+'</div>'
+              +(e.epsEstimate ? '<div class="event-label">EPS: '+e.epsEstimate+'</div>' : '')
+              +'<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px" onclick="'+onclick+'">📋 FOLLOW-UP PLAN</button>'
+              +'</div>';
           }).join('')}
         </div>
       </div>
@@ -1698,17 +1693,12 @@ function renderTickerDetail(s) {
   if (ai.highlight) {
     html += `
     <div class="card-section expanded">
-      <div class="section-title" onclick="toggleSection(this)" style="font-size:16px;font-weight:800;letter-spacing:-0.3px">AI SUMMARY</div>
+      <div class="section-title" onclick="toggleSection(this)">AI SUMMARY
+        <span style="margin-left:10px;font-size:10px;color:var(--muted)">${s.aiSummaryUpdatedAt ? '🕐 '+s.aiSummaryUpdatedAt : 'Never run'}</span>
+        <a href="/fetch/ticker/${s.ticker}/ai" onclick="event.stopPropagation()" style="margin-left:10px;font-size:10px;padding:2px 8px;background:var(--warn);color:#0a0a0f;border-radius:4px;font-weight:700;text-decoration:none">⚡ Run AI</a>
+      </div>
       <span class="section-toggle" onclick="toggleSection(this)">−</span>
       <div class="section-content">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap">
-          <a href="/fetch/ticker/${s.ticker}/ai" onclick="event.stopPropagation()" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none;font-family:'DM Mono',monospace">⚡ Run AI Summary</a>
-          <span style="font-size:11px;color:var(--muted)">${s.aiSummaryUpdatedAt ? '🕐 Updated: '+s.aiSummaryUpdatedAt : 'Never run'}</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
-          <a href="/fetch/ticker/${s.ticker}" onclick="event.stopPropagation()" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none;font-family:'DM Mono',monospace">⚡ Refresh Fundamentals</a>
-          <span style="font-size:11px;color:var(--muted)">${s.fetchedAt ? '🕐 Updated: '+s.fetchedAt : 'Never'}</span>
-        </div>
         <div class="ai-highlight">
           <span class="ai-tag ${sentClass}">${(ai.analystSentiment||'neutral').toUpperCase()}</span>
           <div style="margin-top:6px">${ai.highlight}</div>
@@ -1716,27 +1706,6 @@ function renderTickerDetail(s) {
         ${ai.riskFactors && ai.riskFactors.length ? '<ul class="ai-list">' + ai.riskFactors.map(r=>'<li>'+r+'</li>').join('') + '</ul>' : ''}
       </div>
     </div>`;
-  }
-
-  // AI Summary placeholder (no data yet)
-  if (!ai.highlight) {
-    const aiUrl = '/fetch/ticker/' + s.ticker + '/ai';
-    const fundUrl = '/fetch/ticker/' + s.ticker;
-    const fetchedLabel = s.fetchedAt ? '🕐 Updated: ' + s.fetchedAt : 'Never';
-    html += '<div class="card-section expanded">'
-      + '<div class="section-title" style="font-size:16px;font-weight:800;letter-spacing:-0.3px">AI SUMMARY</div>'
-      + '<div class="section-content">'
-      + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap">'
-      + '<a href="' + aiUrl + '" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none">⚡ Run AI Summary</a>'
-      + '<span style="font-size:11px;color:var(--muted)">Never run</span>'
-      + '</div>'
-      + '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">'
-      + '<a href="' + fundUrl + '" style="font-size:12px;padding:5px 14px;background:var(--warn);color:#0a0a0f;border-radius:5px;font-weight:700;text-decoration:none">⚡ Refresh Fundamentals</a>'
-      + '<span style="font-size:11px;color:var(--muted)">' + fetchedLabel + '</span>'
-      + '</div>'
-      + '<span style="color:var(--muted);font-size:12px">No AI summary yet. Click Run AI Summary above.</span>'
-      + '</div>'
-      + '</div>';
   }
 
   // Key Metrics (expanded)
@@ -2002,6 +1971,7 @@ async function loadData() {
     }
 
     // Build/update ticker tabs
+    buildTickerTabs(stocks, data.opTimestamps);
 
     stocks.forEach(s => {
       loadCachedNewsImpact(s.ticker);
@@ -2052,6 +2022,11 @@ function buildTickerTabs(stocks, opTs) {
       <div class="ticker-tab-header">
         <button class="ticker-tab-back" onclick="backToWatchlist()">← Watchlist</button>
         <div class="ticker-tab-title">${s.ticker}</div>
+        <div class="ticker-tab-ts">💰 Price: ${priceFetchedAt} &nbsp;|&nbsp; 📊 Data: ${fetchedAt}</div>
+        <div class="ticker-tab-actions">
+          <a href="/fetch/ticker/${s.ticker}" class="btn" style="font-size:11px">↺ Refresh Data</a>
+          <a href="/fetch/ticker/${s.ticker}/ai" class="btn" style="border-color:var(--warn);color:#0a0a0f;background:var(--warn);font-size:11px;font-weight:700">⚡ Run AI Summary</a>
+        </div>
       </div>
       <div id="ticker-detail-${s.ticker.replace('.','_')}">${renderTickerDetail(s)}</div>
     `;
