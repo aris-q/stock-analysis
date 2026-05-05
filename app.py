@@ -105,10 +105,12 @@ def run_price_refresh(triggered_by="startup"):
                 "previousClose": price_data.get("previousClose"),
                 "volume": price_data.get("volume"),
                 "marketCap": price_data.get("marketCap"),
+                "rsi14": price_data.get("rsi14"),
+                "bbPercent": price_data.get("bbPercent"),
                 "priceFetchedAt": ts(),
             })
             existing_map[ticker] = stock
-            log.info(f"Price refresh OK: {ticker} | price:{price_data.get('price')} prevClose:{price_data.get('previousClose')}")
+            log.info(f"Price refresh OK: {ticker} | price:{price_data.get('price')} prevClose:{price_data.get('previousClose')} rsi:{price_data.get('rsi14')} bb:{price_data.get('bbPercent')}")
         except Exception as e:
             log.error(f"Price refresh FAIL: {ticker} | {e}")
 
@@ -354,7 +356,8 @@ def trigger_fetch_ticker(ticker):
     if not fetch_status["running"] and ticker in watchlist:
         thread = threading.Thread(target=run_fetch, args=([ticker], "single"))
         thread.start()
-
+    # return redirect("/")
+    return "", 204
 
 @app.route("/fetch/ticker/<ticker>/ai")
 def trigger_fetch_ticker_ai(ticker):
@@ -561,6 +564,77 @@ def followup_check(ticker, event_name):
     cache_key = f"{ticker}_{event_name}".replace(" ", "_")
     entry = followup_db.get(cache_key)
     return jsonify({"exists": entry is not None, "savedAt": entry.get("savedAt") if entry else None})
+
+@app.route("/technical/<ticker>")
+def technical_analysis(ticker):
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        stock = next((s for s in existing.get("watchlist", []) if s["ticker"] == ticker), {})
+        rsi = stock.get("rsi14")
+        bb = stock.get("bbPercent")
+        log.info(f"Technical analysis: {ticker} | rsi:{rsi} bb:{bb}")
+
+        if rsi is None and bb is None:
+            return jsonify({"error": "No technical data. Run a price refresh first.", "ticker": ticker})
+
+        def rsi_label(v):
+            if v is None: return "Unknown", "neutral"
+            if v < 30: return "Oversold", "bullish"
+            if v > 70: return "Overbought", "bearish"
+            if v < 45: return "Mildly Oversold", "mild-bullish"
+            if v > 55: return "Mildly Overbought", "mild-bearish"
+            return "Neutral", "neutral"
+
+        def bb_label(v):
+            if v is None: return "Unknown", "neutral"
+            if v < 0: return "Below Lower Band", "bullish"
+            if v > 1: return "Above Upper Band", "bearish"
+            if v < 0.2: return "Near Lower Band", "mild-bullish"
+            if v > 0.8: return "Near Upper Band", "mild-bearish"
+            return "Mid-Range", "neutral"
+
+        rsi_text, rsi_signal = rsi_label(rsi)
+        bb_text, bb_signal = bb_label(bb)
+
+        signals = [rsi_signal, bb_signal]
+        bullish = signals.count("bullish") + signals.count("mild-bullish") * 0.5
+        bearish = signals.count("bearish") + signals.count("mild-bearish") * 0.5
+
+        if bullish > bearish:
+            if bullish >= 2:
+                verdict = "STRONG BUY WATCH"
+                action = "Both indicators confirm oversold conditions. This is a potential bounce candidate. Watch for a reversal confirmation candle (e.g. green day on above-average volume) before entering. Set a stop below recent low."
+            else:
+                verdict = "MILD BUY WATCH"
+                action = "One indicator suggests oversold but signals are mixed. Proceed cautiously. Wait for price to stabilize or show momentum before considering entry."
+        elif bearish > bullish:
+            if bearish >= 2:
+                verdict = "CAUTION — OVERBOUGHT"
+                action = "Both indicators confirm overbought conditions. Elevated pullback risk. Avoid chasing the price here. If you hold, consider tightening your stop-loss or taking partial profits."
+            else:
+                verdict = "MILD CAUTION"
+                action = "One indicator suggests overbought. Not an immediate sell signal, but avoid adding to position at current levels. Monitor for signs of weakening momentum."
+        else:
+            verdict = "NEUTRAL"
+            action = "Indicators show no strong directional bias. The stock is trading within normal range. No immediate action required — wait for a clearer signal before committing."
+
+        rsi_str = f"RSI {rsi}" if rsi is not None else "RSI N/A"
+        bb_str = f"BB%B {bb}" if bb is not None else "BB%B N/A"
+
+        return jsonify({
+            "ticker": ticker,
+            "rsi14": rsi,
+            "bbPercent": bb,
+            "rsiLabel": rsi_text,
+            "bbLabel": bb_text,
+            "verdict": verdict,
+            "action": action,
+            "summary": f"{rsi_str} ({rsi_text}) · {bb_str} ({bb_text})",
+        })
+    except Exception as e:
+        log.error(f"Technical analysis FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e), "ticker": ticker})
+
 
 # Auto price refresh on startup
 _startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)

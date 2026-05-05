@@ -328,6 +328,23 @@ def fetch_price_context(ticker):
         ma20 = round(hist['Close'].rolling(20).mean().iloc[-1], 2) if len(hist) >= 20 else None
         ma50 = round(hist['Close'].rolling(50).mean().iloc[-1], 2) if len(hist) >= 35 else None
 
+        # Bollinger Bands %B (20-day, 2 std)
+        bb_percent = None
+        try:
+            close = hist['Close']
+            bb_mid = close.rolling(20).mean()
+            bb_std = close.rolling(20).std()
+            bb_upper = bb_mid + 2 * bb_std
+            bb_lower = bb_mid - 2 * bb_std
+            last_close = close.iloc[-1]
+            last_upper = bb_upper.iloc[-1]
+            last_lower = bb_lower.iloc[-1]
+            band_width = last_upper - last_lower
+            if band_width and band_width != 0:
+                bb_percent = round((last_close - last_lower) / band_width, 3)
+        except Exception as e:
+            log.warning(f"BB%B calc FAIL: {ticker} | {e}")
+
         context = {
             "currentPrice": clean_float(current_price),
             "change1d": clean_float(pct(current_price, price_1d_ago)),
@@ -337,23 +354,24 @@ def fetch_price_context(ticker):
             "volumeAvg30d": int(vol_avg_30d),
             "volumeRatio": clean_float(vol_ratio),
             "rsi14": clean_float(rsi),
+            "bbPercent": clean_float(bb_percent),
             "ma20": clean_float(ma20),
             "ma50": clean_float(ma50),
             "priceVsMa20": clean_float(pct(current_price, ma20) if ma20 else None),
             "priceVsMa50": clean_float(pct(current_price, ma50) if ma50 else None),
         }
-        log.info(f"Price context OK: {ticker} | rsi:{rsi} vol_ratio:{vol_ratio} 7d:{context['change7d']}%")
+        log.info(f"Price context OK: {ticker} | rsi:{rsi} bbPct:{bb_percent} vol_ratio:{vol_ratio} 7d:{context['change7d']}%")
         return context
     except Exception as e:
         log.error(f"Price context FAIL: {ticker} | {e}")
         return {}
 
 def fetch_price_only(ticker):
-    """Fast price-only fetch: currentPrice, previousClose, volume, marketCap."""
+    """Price + technicals fetch: price, previousClose, volume, marketCap, rsi14, bbPercent."""
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
-        hist = stock.history(period="5d")
+        hist = stock.history(period="35d")
 
         previous_close = None
         current_price = info.get("currentPrice") or info.get("regularMarketPrice")
@@ -363,13 +381,40 @@ def fetch_price_only(ticker):
         if current_price is None and not hist.empty:
             current_price = round(float(hist['Close'].iloc[-1]), 2)
 
+        rsi = None
+        bb_percent = None
+        try:
+            delta = hist['Close'].diff()
+            gain = delta.clip(lower=0).rolling(14).mean()
+            loss = (-delta.clip(upper=0)).rolling(14).mean()
+            rs = gain / loss
+            rsi_series = 100 - (100 / (1 + rs))
+            rsi = round(float(rsi_series.iloc[-1]), 1) if not rsi_series.empty else None
+        except Exception as e:
+            log.warning(f"RSI calc FAIL in fetch_price_only: {ticker} | {e}")
+
+        try:
+            close = hist['Close']
+            bb_mid = close.rolling(20).mean()
+            bb_std = close.rolling(20).std()
+            bb_upper = bb_mid + 2 * bb_std
+            bb_lower = bb_mid - 2 * bb_std
+            last_close = close.iloc[-1]
+            band_width = bb_upper.iloc[-1] - bb_lower.iloc[-1]
+            if band_width and band_width != 0:
+                bb_percent = round(float((last_close - bb_lower.iloc[-1]) / band_width), 3)
+        except Exception as e:
+            log.warning(f"BB%B calc FAIL in fetch_price_only: {ticker} | {e}")
+
         result = {
             "price": current_price,
             "previousClose": previous_close,
             "volume": info.get("volume"),
             "marketCap": info.get("marketCap"),
+            "rsi14": rsi,
+            "bbPercent": bb_percent,
         }
-        log.info(f"fetch_price_only OK: {ticker} | price:{current_price} prevClose:{previous_close}")
+        log.info(f"fetch_price_only OK: {ticker} | price:{current_price} prevClose:{previous_close} rsi:{rsi} bb:{bb_percent}")
         return result
     except Exception as e:
         log.error(f"fetch_price_only FAIL: {ticker} | {e}")

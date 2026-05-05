@@ -697,16 +697,6 @@
     .rsi-bar-label { font-size: 11px; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
     .rsi-bar-track { height: 6px; background: var(--surface2); border-radius: 3px; position: relative; overflow: hidden; }
     .rsi-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
-    .tech-signals-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-    .tech-signal-card { background: var(--surface2); border-radius: 8px; padding: 12px 14px; }
-    .tech-signal-label { font-size: 10px; color: var(--muted); letter-spacing: 0.5px; margin-bottom: 4px; }
-    .tech-signal-value { font-size: 22px; font-weight: 800; font-family: 'DM Mono', monospace; }
-    .tech-signal-desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
-    .tech-verdict { border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; }
-    .tech-verdict.bullish { background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.3); color: var(--up); }
-    .tech-verdict.bearish { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: var(--down); }
-    .tech-verdict.neutral { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); }
-    .tech-action { font-size: 12px; font-weight: 400; margin-top: 6px; line-height: 1.5; color: var(--text); }
 
     /* NEWS */
     .news-sentiment-bar {
@@ -1445,10 +1435,6 @@ function renderWatchlist(data) {
           <div class="slim-price-value" style="color:${priceColor}">$${todayPrice}</div>
         </div>
       </div>
-      <div style="display:flex;gap:8px;margin:8px 0 4px 0;flex-wrap:wrap">
-        ${s.rsi14 != null ? '<span style="font-size:10px;font-family:\'DM Mono\',monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + (s.rsi14 < 30 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.rsi14 > 70 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)') + '">RSI ' + s.rsi14 + '</span>' : ''}
-        ${s.bbPercent != null ? '<span style="font-size:10px;font-family:\'DM Mono\',monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + (s.bbPercent < 0 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.bbPercent > 1 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)') + '">BB% ' + s.bbPercent.toFixed(2) + '</span>' : ''}
-      </div>
       <div class="slim-actions">
         <span class="slim-fetch-ts">🕐 ${priceFetchedAt}</span>
         <div style="display:flex;gap:6px">
@@ -1604,36 +1590,6 @@ function backToWatchlist() {
   showTab('watchlist', tab);
 }
 
-async function runTechnicalAnalysis(ticker, btn) {
-  const elId = 'tech-analysis-' + ticker.replace('.', '_');
-  const el = document.getElementById(elId);
-  if (!el) return;
-  const orig = btn.textContent;
-  btn.textContent = '⏳ Analysing...';
-  btn.disabled = true;
-  el.innerHTML = '<span style="font-size:11px;color:var(--muted)">Loading...</span>';
-  try {
-    const res = await fetch('/technical/' + ticker);
-    const data = await res.json();
-    console.log('[TechAnalysis] ' + ticker + ' | verdict:' + data.verdict + ' rsi:' + data.rsi14 + ' bb:' + data.bbPercent);
-    if (data.error) {
-      el.innerHTML = '<span style="font-size:12px;color:var(--down)">' + data.error + '</span>';
-    } else {
-      const verdictClass = data.verdict.includes('BUY') ? 'bullish' : data.verdict.includes('CAUTION') ? 'bearish' : 'neutral';
-      el.innerHTML = '<div class="tech-verdict ' + verdictClass + '">'
-        + data.verdict
-        + '<div class="tech-action">' + data.action + '</div>'
-        + '</div>'
-        + '<div style="font-size:11px;color:var(--muted);margin-top:4px">' + (data.summary || '') + '</div>';
-    }
-  } catch(e) {
-    console.error('[TechAnalysis] FAIL:', e);
-    el.innerHTML = '<span style="font-size:12px;color:var(--down)">Request failed</span>';
-  }
-  btn.textContent = orig;
-  btn.disabled = false;
-}
-
 // ── TICKER DETAIL TAB RENDERER ────────────────────────────────────────────────
 function renderTickerDetail(s) {
   const ai = s.aiSummary || {};
@@ -1680,45 +1636,6 @@ function renderTickerDetail(s) {
   if (s.marketCapRank) rankBadges.push(`<span class="rank-badge rank-${s.marketCapRank}">MKTCAP #${s.marketCapRank}</span>`);
   if (s.fcfRank) rankBadges.push(`<span class="rank-badge rank-${s.fcfRank}">FCF #${s.fcfRank}</span>`);
   if (rankBadges.length) html += `<div class="ranks-row">${rankBadges.join('')}</div>`;
-
-  // TECHNICAL SIGNALS section
-  {
-    const rsi = s.rsi14;
-    const bb = s.bbPercent;
-    const rsiColor = rsi > 70 ? 'var(--down)' : rsi < 30 ? 'var(--up)' : 'var(--text)';
-    const bbColor = bb > 1 ? 'var(--down)' : bb < 0 ? 'var(--up)' : 'var(--text)';
-    const rsiLabel = rsi == null ? '—' : rsi < 30 ? 'Oversold' : rsi > 70 ? 'Overbought' : rsi < 45 ? 'Mildly Oversold' : rsi > 55 ? 'Mildly Overbought' : 'Neutral';
-    const bbLabel = bb == null ? '—' : bb < 0 ? 'Below Lower Band' : bb > 1 ? 'Above Upper Band' : bb < 0.2 ? 'Near Lower Band' : bb > 0.8 ? 'Near Upper Band' : 'Mid-Range';
-    const rsiWidth = rsi != null ? Math.min(100, rsi) : 50;
-    const bbWidth = bb != null ? Math.min(100, Math.max(0, bb * 100)) : 50;
-    const bbBorderColor = bb > 1 ? 'rgba(248,113,113,0.3)' : bb < 0 ? 'rgba(74,222,128,0.3)' : 'var(--border)';
-    html += '<div class="card-section expanded" style="order:-1">'
-      + '<div class="section-title" style="font-size:16px;font-weight:800">TECHNICAL SIGNALS</div>'
-      + '<div class="section-content">'
-      + '<div class="tech-signals-grid">'
-      + '<div class="tech-signal-card" style="border:1px solid ' + (rsi < 30 ? 'rgba(74,222,128,0.3)' : rsi > 70 ? 'rgba(248,113,113,0.3)' : 'var(--border)') + '">'
-      + '<div class="tech-signal-label">RSI 14</div>'
-      + '<div class="tech-signal-value" style="color:' + rsiColor + '">' + (rsi != null ? rsi : '—') + '</div>'
-      + '<div class="tech-signal-desc">' + rsiLabel + '</div>'
-      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:0">'
-      + '<div class="rsi-bar-label"><span>30</span><span>70</span></div>'
-      + '<div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:' + rsiWidth + '%;background:' + rsiColor + '"></div></div>'
-      + '</div></div>'
-      + '<div class="tech-signal-card" style="border:1px solid ' + bbBorderColor + '">'
-      + '<div class="tech-signal-label">BOLLINGER %B</div>'
-      + '<div class="tech-signal-value" style="color:' + bbColor + '">' + (bb != null ? bb.toFixed(2) : '—') + '</div>'
-      + '<div class="tech-signal-desc">' + bbLabel + '</div>'
-      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:0">'
-      + '<div class="rsi-bar-label"><span>0</span><span>1</span></div>'
-      + '<div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:' + bbWidth + '%;background:' + bbColor + '"></div></div>'
-      + '</div></div>'
-      + '</div>'
-      + '<button style="font-size:12px;padding:6px 16px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer;margin-bottom:4px" '
-      + 'onclick="runTechnicalAnalysis(' + JSON.stringify(s.ticker) + ',this)">⚡ AI Analysis</button>'
-      + '<div id="tech-analysis-' + s.ticker.replace('.','_') + '" style="margin-top:10px"></div>'
-      + '</div></div>';
-  }
-
   // AI Summary placeholder (no data yet)
   if (!ai.highlight) {
     const _aiUrl = '/fetch/ticker/' + s.ticker + '/ai';
@@ -2115,7 +2032,15 @@ function buildTickerTabs(stocks, opTs) {
   stocks.forEach(s => {
     const tabId = 'ticker-' + s.ticker.replace('.', '_');
 
-    // Add panel (no nav tab — access via watchlist detail button)
+    // Add tab
+    const tab = document.createElement('div');
+    tab.className = 'tab';
+    tab.dataset.tab = tabId;
+    tab.textContent = s.ticker;
+    tab.onclick = function() { showTab(tabId, this); };
+    tabsEl.appendChild(tab);
+
+    // Add panel
     const panel = document.createElement('div');
     panel.className = 'tab-panel';
     panel.id = 'tab-' + tabId;
