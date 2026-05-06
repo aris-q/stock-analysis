@@ -10,3 +10,6 @@ NEWS_PATH = "output/news.json"
 WATCHLIST_PATH = "watchlist.json"
 LOG_FILE = "logs/app.log"
 FOLLOWUP_PATH = "output/followup.json"
+FRED_API_KEY = os.getenv("FRED_API_KEY")
+NEWSAPI_KEY  = os.getenv("NEWSAPI_KEY")
+MACRO_PATH   = "output/macro.json"

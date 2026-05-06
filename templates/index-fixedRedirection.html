@@ -1053,7 +1053,6 @@
 </div>
 
 <script>
-  {%- raw %}
 const TOOLTIPS = {
   annualMargin: {
     title: "ANNUAL PROFIT MARGIN",
@@ -1233,7 +1232,7 @@ function renderNewsImpactInline(ticker, data) {
     const imp = entry && entry.impact;
     const ts = entry && entry.fetchedAt;
     if (!imp) {
-      const safeT2 = "'" + ticker + "'";
+      const safeT2 = JSON.stringify(ticker);
       return '<div class="ni-block">'
         +'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">'
         +'<div class="ni-label" style="margin-bottom:0">'+label+'</div>'
@@ -1243,7 +1242,7 @@ function renderNewsImpactInline(ticker, data) {
         +'<div class="ni-summary" style="color:var(--muted);font-style:italic">No analysis cached yet.</div>'
         +'</div>';
     }
-    const safeT  = "'" + ticker + "'";
+    const safeT = JSON.stringify(ticker);
     return '<div class="ni-block">'
       +'<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px">'
       +'<div class="ni-label" style="margin-bottom:0">'+label+'</div>'
@@ -1426,10 +1425,6 @@ function renderWatchlist(data) {
     const priceColor = priceDiff == null ? 'var(--text)' : priceDiff >= 0 ? 'var(--up)' : 'var(--down)';
     const diffLabel = priceDiffPct != null ? ` (${priceDiffPct >= 0 ? '+' : ''}${priceDiffPct.toFixed(2)}%)` : '';
     const tabId = 'ticker-' + s.ticker.replace('.', '_');
-    const rsiBg = s.rsi14 < 30 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.rsi14 > 70 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)';
-    const bbBg  = s.bbPercent < 0 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.bbPercent > 1 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)';
-    const rsiBadge = s.rsi14 != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + rsiBg + '">RSI ' + s.rsi14 + '</span>' : '';
-    const bbBadge  = s.bbPercent != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + bbBg + '">BB% ' + s.bbPercent.toFixed(2) + '</span>' : '';
 
     return `
     <div class="slim-card" onclick="showTickerTab('${s.ticker}')">
@@ -1451,7 +1446,8 @@ function renderWatchlist(data) {
         </div>
       </div>
       <div style="display:flex;gap:8px;margin:8px 0 4px 0;flex-wrap:wrap">
-        ${rsiBadge}${bbBadge}
+        ${s.rsi14 != null ? '<span style="font-size:10px;font-family:\'DM Mono\',monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + (s.rsi14 < 30 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.rsi14 > 70 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)') + '">RSI ' + s.rsi14 + '</span>' : ''}
+        ${s.bbPercent != null ? '<span style="font-size:10px;font-family:\'DM Mono\',monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + (s.bbPercent < 0 ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.bbPercent > 1 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)') + '">BB% ' + s.bbPercent.toFixed(2) + '</span>' : ''}
       </div>
       <div class="slim-actions">
         <span class="slim-fetch-ts">🕐 ${priceFetchedAt}</span>
@@ -1608,6 +1604,35 @@ function backToWatchlist() {
   showTab('watchlist', tab);
 }
 
+async function runTechnicalAnalysis(ticker, btn) {
+  const elId = 'tech-analysis-' + ticker.replace('.', '_');
+  const el = document.getElementById(elId);
+  if (!el) return;
+  const orig = btn.textContent;
+  btn.textContent = '⏳ Analysing...';
+  btn.disabled = true;
+  el.innerHTML = '<span style="font-size:11px;color:var(--muted)">Loading...</span>';
+  try {
+    const res = await fetch('/technical/' + ticker);
+    const data = await res.json();
+    console.log('[TechAnalysis] ' + ticker + ' | verdict:' + data.verdict + ' rsi:' + data.rsi14 + ' bb:' + data.bbPercent);
+    if (data.error) {
+      el.innerHTML = '<span style="font-size:12px;color:var(--down)">' + data.error + '</span>';
+    } else {
+      const verdictClass = data.verdict.includes('BUY') ? 'bullish' : data.verdict.includes('CAUTION') ? 'bearish' : 'neutral';
+      el.innerHTML = '<div class="tech-verdict ' + verdictClass + '">'
+        + data.verdict
+        + '<div class="tech-action">' + data.action + '</div>'
+        + '</div>'
+        + '<div style="font-size:11px;color:var(--muted);margin-top:4px">' + (data.summary || '') + '</div>';
+    }
+  } catch(e) {
+    console.error('[TechAnalysis] FAIL:', e);
+    el.innerHTML = '<span style="font-size:12px;color:var(--down)">Request failed</span>';
+  }
+  btn.textContent = orig;
+  btn.disabled = false;
+}
 
 // ── TICKER DETAIL TAB RENDERER ────────────────────────────────────────────────
 function renderTickerDetail(s) {
@@ -1667,70 +1692,30 @@ function renderTickerDetail(s) {
     const rsiWidth = rsi != null ? Math.min(100, rsi) : 50;
     const bbWidth = bb != null ? Math.min(100, Math.max(0, bb * 100)) : 50;
     const bbBorderColor = bb > 1 ? 'rgba(248,113,113,0.3)' : bb < 0 ? 'rgba(74,222,128,0.3)' : 'var(--border)';
-
-    // RSI interpretation text
-    const rsiInterp = rsi == null ? 'No data — run a price refresh.'
-      : rsi < 30 ? 'Momentum is deeply negative. Market has likely oversold this stock. Watch for a reversal candle on high volume before entering.'
-      : rsi > 70 ? 'Momentum is overextended. Elevated pullback risk. Avoid chasing — consider tightening stop-loss if holding.'
-      : rsi < 45 ? 'Mild selling pressure. Not yet oversold but leaning weak. Monitor for further dip or stabilization.'
-      : rsi > 55 ? 'Mild buying pressure. Slightly extended but not extreme. Safe to hold; avoid adding aggressively.'
-      : 'Balanced momentum. No directional edge from RSI alone. Wait for a clearer signal.';
-
-    // BB%B interpretation text
-    const bbInterp = bb == null ? 'No data — run a price refresh.'
-      : bb < 0 ? 'Price broke below the lower Bollinger Band — statistically unusual. Strong oversold signal. High-risk, high-reward entry zone.'
-      : bb > 1 ? 'Price broke above the upper Bollinger Band — statistically unusual. Strong overbought signal. Pullback likely.'
-      : bb < 0.2 ? 'Price is hugging the lower band. Within normal range but near the floor. Often precedes a bounce.'
-      : bb > 0.8 ? 'Price is near the upper band ceiling. Room to run is limited. Watch for resistance.'
-      : 'Price is in the middle of its normal range. No extreme reading — neutral positioning.';
-
-    // Combined verdict
-    const rsiSig = rsi == null ? 0 : rsi < 30 ? 2 : rsi > 70 ? -2 : rsi < 45 ? 1 : rsi > 55 ? -1 : 0;
-    const bbSig  = bb  == null ? 0 : bb  < 0  ? 2 : bb  > 1  ? -2 : bb  < 0.2 ? 1 : bb  > 0.8 ? -1 : 0;
-    const score  = rsiSig + bbSig;
-    const verdictText  = score >=  3 ? 'STRONG BUY WATCH'
-      : score >=  1 ? 'MILD BUY WATCH'
-      : score <= -3 ? 'CAUTION — OVERBOUGHT'
-      : score <= -1 ? 'MILD CAUTION'
-      : 'NEUTRAL';
-    const verdictClass = score > 0 ? 'bullish' : score < 0 ? 'bearish' : 'neutral';
-    const verdictAction = score >= 3 ? 'Both signals confirm oversold. Watch for a reversal confirmation before entering. Set a stop below the recent low.'
-      : score >= 1 ? 'Mixed signals lean bullish. Wait for momentum confirmation before committing.'
-      : score <= -3 ? 'Both signals confirm overbought. Avoid chasing. Tighten stops or take partial profits.'
-      : score <= -1 ? 'Mixed signals lean bearish. Avoid adding at current levels.'
-      : 'No strong edge. Hold current position and wait for a clearer signal.';
-
-    html += '<div class="card-section expanded">'
+    html += '<div class="card-section expanded" style="order:-1">'
       + '<div class="section-title" style="font-size:16px;font-weight:800">TECHNICAL SIGNALS</div>'
       + '<div class="section-content">'
       + '<div class="tech-signals-grid">'
-
       + '<div class="tech-signal-card" style="border:1px solid ' + (rsi < 30 ? 'rgba(74,222,128,0.3)' : rsi > 70 ? 'rgba(248,113,113,0.3)' : 'var(--border)') + '">'
       + '<div class="tech-signal-label">RSI 14</div>'
       + '<div class="tech-signal-value" style="color:' + rsiColor + '">' + (rsi != null ? rsi : '—') + '</div>'
-      + '<div class="tech-signal-desc" style="font-weight:600">' + rsiLabel + '</div>'
-      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:8px">'
+      + '<div class="tech-signal-desc">' + rsiLabel + '</div>'
+      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:0">'
       + '<div class="rsi-bar-label"><span>30</span><span>70</span></div>'
       + '<div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:' + rsiWidth + '%;background:' + rsiColor + '"></div></div>'
-      + '</div>'
-      + '<div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px">' + rsiInterp + '</div>'
-      + '</div>'
-
+      + '</div></div>'
       + '<div class="tech-signal-card" style="border:1px solid ' + bbBorderColor + '">'
       + '<div class="tech-signal-label">BOLLINGER %B</div>'
       + '<div class="tech-signal-value" style="color:' + bbColor + '">' + (bb != null ? bb.toFixed(2) : '—') + '</div>'
-      + '<div class="tech-signal-desc" style="font-weight:600">' + bbLabel + '</div>'
-      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:8px">'
+      + '<div class="tech-signal-desc">' + bbLabel + '</div>'
+      + '<div class="rsi-bar-wrap" style="margin-top:8px;margin-bottom:0">'
       + '<div class="rsi-bar-label"><span>0</span><span>1</span></div>'
       + '<div class="rsi-bar-track"><div class="rsi-bar-fill" style="width:' + bbWidth + '%;background:' + bbColor + '"></div></div>'
+      + '</div></div>'
       + '</div>'
-      + '<div style="font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px">' + bbInterp + '</div>'
-      + '</div>'
-
-      + '</div>'
-      + '<div class="tech-verdict ' + verdictClass + '">' + verdictText
-      + '<div class="tech-action">' + verdictAction + '</div>'
-      + '</div>'
+      + '<button style="font-size:12px;padding:6px 16px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer;margin-bottom:4px" '
+      + 'onclick="runTechnicalAnalysis(' + JSON.stringify(s.ticker) + ',this)">⚡ AI Analysis</button>'
+      + '<div id="tech-analysis-' + s.ticker.replace('.','_') + '" style="margin-top:10px"></div>'
       + '</div></div>';
   }
 
@@ -1783,7 +1768,8 @@ function renderTickerDetail(s) {
               '</div>'+
               '<div class="event-label">'+(e.expectedImpact||'')+'</div>'+
               (e.epsEstimate ? '<div class="event-label">EPS: '+e.epsEstimate+'</div>' : '')+
-              '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px" onclick="getFollowupPlan(\'\'+s.ticker+\'\',\'\'+e.event+\'\',this)">📋 FOLLOW-UP PLAN</button>'+
+              '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px"'+
+              + '<button id="'+btnId+'" class="btn" style="font-size:10px;padding:3px 10px;margin-top:4px" onclick="'+('getFollowupPlan('+JSON.stringify(s.ticker)+','+JSON.stringify(e.event)+',this)')+'">\xf0\x9f\x93\x8b FOLLOW-UP PLAN</button>'
             '</div>';
           }).join('')}
         </div>
@@ -2192,12 +2178,10 @@ function renderFollowupPlan(plan, ticker, eventName) {
   let html = '';
   if (plan.savedAt) {
     const cacheLabel = plan.cached ? '📋 Cached' : '🤖 AI Generated';
-    const safeEvent = JSON.stringify(eventName);
-    const safeTicker = JSON.stringify(ticker);
     html += `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
       <span style="font-size:11px;color:var(--muted)">${cacheLabel} · Saved: ${plan.savedAt}</span>
       <button class="btn" style="font-size:10px;padding:3px 10px;border-color:var(--warn);color:var(--warn)"
-        onclick="getFollowupPlan(${safeTicker},${safeEvent},this,true)">↺ REFRESH</button>
+        onclick="getFollowupPlan('${ticker}','${eventName.replace(/'/g,"\\'")}',this,true)">↺ REFRESH</button>
     </div>`;
   }
   if (plan.steps && plan.steps.length) {
@@ -2474,7 +2458,6 @@ function showBankGuide(ticker) {
 
 loadData();
 setInterval(pollStatus, 3000);
-  {%- endraw %}
 </script>
 
 <div class="modal-overlay" id="followupModal" onclick="if(event.target===this)closeModal()">
