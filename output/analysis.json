@@ -4,7 +4,7 @@
       "ticker": "KGC",
       "fetchedAt": "2026-05-04 22:05 EDT",
       "price": 30.78,
-      "volume": 7653058,
+      "volume": 7769214,
       "marketCap": 36754690048,
       "quarterlyIncome": [
         {
@@ -536,7 +536,7 @@
       },
       "industry": "Gold",
       "previousClose": 28.81,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "bankChecklist": null,
       "aiSummaryUpdatedAt": "2026-04-30 21:41 EDT",
       "rsi14": 37.5,
@@ -1077,7 +1077,7 @@
       },
       "industry": "Banks - Diversified",
       "previousClose": 104.36,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -1615,7 +1615,7 @@
       },
       "calendarFetchedAt": "2026-04-29 22:26 EDT",
       "previousClose": 146.28,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "bankChecklist": null,
       "aiSummaryUpdatedAt": "2026-05-05 09:39 EDT",
       "rsi14": 29.8,
@@ -2155,7 +2155,7 @@
       },
       "industry": "Banks - Diversified",
       "previousClose": 205.57,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "bankChecklist": [
         {
           "metric": "ROE",
@@ -2680,7 +2680,7 @@
       },
       "industry": "Medical Care Facilities",
       "previousClose": 4.34,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "bankChecklist": null,
       "rsi14": 63.3,
       "bbPercent": 0.746
@@ -3145,7 +3145,7 @@
         ]
       },
       "previousClose": 18.33,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "annualProfitMargin": 0.101,
       "quarterlyProfitMargin": 0.2094,
       "netCash": 54521000,
@@ -3690,7 +3690,7 @@
         ]
       },
       "previousClose": 569.28,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "annualProfitMargin": 0.0672,
       "quarterlyProfitMargin": 0.0525,
       "netCash": -180900000,
@@ -4235,7 +4235,7 @@
         ]
       },
       "previousClose": 144.26,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "annualProfitMargin": 0.3351,
       "quarterlyProfitMargin": 0.245,
       "netCash": -325500000000,
@@ -4323,7 +4323,7 @@
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendarFetchedAt": "2026-04-29 22:27 EDT",
       "price": 4.65,
-      "volume": 3630232,
+      "volume": 3689688,
       "marketCap": 802337216,
       "sector": "Basic Materials",
       "industry": "Other Industrial Metals & Mining",
@@ -4799,7 +4799,7 @@
         ]
       },
       "previousClose": 4.22,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
       "netCash": 51502000,
@@ -5341,7 +5341,7 @@
         ]
       },
       "previousClose": 6.91,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "rsi14": 62.6,
       "bbPercent": 0.681
     },
@@ -5351,7 +5351,7 @@
       "previousClose": 26.39,
       "volume": 4051039,
       "marketCap": null,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "fetchedAt": "2026-04-29 22:27 EDT",
       "calendar": {
         "earningsDateStart": null,
@@ -5489,9 +5489,9 @@
       "ticker": "QUBT",
       "price": 10.46,
       "previousClose": 9.56,
-      "volume": 17467425,
+      "volume": 19526941,
       "marketCap": 2358961664,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "fetchedAt": "2026-05-02 08:51 EDT",
       "calendarFetchedAt": "2026-05-02 08:51 EDT",
       "sector": "Technology",
@@ -5991,7 +5991,7 @@
       "previousClose": 49.89,
       "volume": 2338185,
       "marketCap": 26811381760,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "aiSummary": {
         "highlight": "RCI-B.TO presents a compelling opportunity for investors seeking exposure to the growing mining sector, fueled by robust demand for critical minerals and expanding global infrastructure projects.",
         "marketPosition": "RCI-B.TO holds a strong competitive position within its niche market segment, benefiting from a diversified asset portfolio and operational excellence.",
@@ -6522,7 +6522,7 @@
       "previousClose": 23.34,
       "volume": 1595099,
       "marketCap": 3506030080,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "aiSummary": {
         "highlight": "AYA.TO presents a compelling opportunity for investors seeking exposure to the [Specific Mining Sector] industry with its focus on  [Specific Growth Area]. However, its limited financial data and lack of recent performance information necessitate cautious due diligence.",
         "marketPosition": "AYA.TO's market position within the [Specific Mining Sector] is currently unclear due to a lack of readily available competitive analysis.",
@@ -7027,7 +7027,7 @@
       "previousClose": 4.42,
       "volume": 126630,
       "marketCap": 1129772416,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "aiSummary": {
         "highlight": "ARA.TO presents a speculative opportunity with potential upside driven by exploration success and rising commodity prices, but carries significant risk due to limited operational history and reliance on a single asset.",
         "marketPosition": "ARA.TO is a junior mining company with a small market capitalization and limited production currently.",
@@ -7566,7 +7566,7 @@
       "marketCap": 4808878080,
       "rsi14": 74.3,
       "bbPercent": 0.867,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "calendarFetchedAt": "2026-05-05 20:43 EDT",
       "industry": "Software - Infrastructure",
       "calendar": {
@@ -8535,7 +8535,7 @@
       "previousClose": 5.9,
       "rsi14": 81.5,
       "bbPercent": 1.257,
-      "priceFetchedAt": "2026-05-06 19:06 EDT"
+      "priceFetchedAt": "2026-05-06 19:53 EDT"
     },
     {
       "ticker": "ENB.TO",
@@ -8545,7 +8545,7 @@
       "marketCap": 161514749952,
       "rsi14": 59.7,
       "bbPercent": 0.651,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "fetchedAt": "2026-05-05 21:26 EDT",
       "calendarFetchedAt": "2026-05-05 21:26 EDT",
       "sector": "Energy",
@@ -9047,7 +9047,7 @@
       "marketCap": null,
       "rsi14": 43.8,
       "bbPercent": 0.523,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "sector": null,
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
@@ -9205,7 +9205,7 @@
       "marketCap": 1093939328,
       "rsi14": 53.9,
       "bbPercent": 0.945,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "sector": null,
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
@@ -9256,7 +9256,7 @@
       "marketCap": 103799316480,
       "rsi14": 51.0,
       "bbPercent": 0.435,
-      "priceFetchedAt": "2026-05-06 19:06 EDT",
+      "priceFetchedAt": "2026-05-06 19:53 EDT",
       "fetchedAt": "2026-05-06 16:15 EDT",
       "calendarFetchedAt": "2026-05-06 16:15 EDT",
       "sector": "Energy",
@@ -9886,7 +9886,7 @@
     "generatedAt": "2023-10-27"
   },
   "lastUpdated": "2026-05-06 16:17 EDT",
-  "lastPriceRefresh": "2026-05-06 19:06 EDT",
+  "lastPriceRefresh": "2026-05-06 19:53 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "HUT.TO",
