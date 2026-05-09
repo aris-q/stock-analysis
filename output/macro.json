@@ -1,0 +1,150 @@
+{
+  "indicators": {
+    "fed_rate": {
+      "label": "Fed Funds Rate",
+      "value": 3.64,
+      "prev": 3.64,
+      "change": 0.0,
+      "date": "2026-04-01",
+      "unit": "%"
+    },
+    "cpi": {
+      "label": "CPI (YoY)",
+      "value": 330.29,
+      "prev": 327.46,
+      "change": 3.32,
+      "date": "2026-03-01",
+      "unit": "%"
+    },
+    "unemployment": {
+      "label": "Unemployment Rate",
+      "value": 4.3,
+      "prev": 4.4,
+      "change": -0.1,
+      "date": "2026-03-01",
+      "unit": "%"
+    },
+    "gdp_growth": {
+      "label": "GDP Growth",
+      "value": 2.0,
+      "prev": 0.5,
+      "change": 1.5,
+      "date": "2026-01-01",
+      "unit": "%"
+    },
+    "ten_yr_yield": {
+      "label": "10-Yr Treasury Yield",
+      "value": 4.43,
+      "prev": 4.45,
+      "change": -0.02,
+      "date": "2026-05-05",
+      "unit": "%"
+    },
+    "two_yr_yield": {
+      "label": "2-Yr Treasury Yield",
+      "value": 3.93,
+      "prev": 3.95,
+      "change": -0.02,
+      "date": "2026-05-05",
+      "unit": "%"
+    },
+    "vix": {
+      "label": "VIX (Fear Index)",
+      "value": 17.38,
+      "prev": 18.29,
+      "change": -0.91,
+      "date": "2026-05-05",
+      "unit": ""
+    },
+    "dollar_index": {
+      "label": "USD Dollar Index",
+      "value": 118.39,
+      "prev": 118.67,
+      "change": -0.28,
+      "date": "2026-05-01",
+      "unit": ""
+    },
+    "oil_wti": {
+      "label": "WTI Crude Oil",
+      "value": 109.76,
+      "prev": 105.38,
+      "change": 4.38,
+      "date": "2026-05-04",
+      "unit": "$"
+    },
+    "sp500": {
+      "label": "S&P 500",
+      "value": 7365.12,
+      "prev": 7259.22,
+      "change": 105.9,
+      "date": "2026-05-06",
+      "unit": ""
+    },
+    "yield_curve": {
+      "label": "Yield Curve (10Y-2Y)",
+      "value": 0.5,
+      "unit": "%",
+      "date": "2026-05-05",
+      "change": null
+    }
+  },
+  "headlines": [
+    {
+      "title": "Publishers sue Meta, claiming it violated copyrights in training AI with their books - The Washington Post",
+      "source": "The Washington Post",
+      "url": "https://www.washingtonpost.com/national-security/2026/05/05/publishers-sue-meta-ai-copyright/",
+      "publishedAt": "2026-05-05T23:40:13Z"
+    },
+    {
+      "title": "Jim Cramer: Here's the list of AI winners to buy for 2026 and beyond - CNBC",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/05/jim-cramer-ai-winners-to-buy.html",
+      "publishedAt": "2026-05-05T22:29:17Z"
+    },
+    {
+      "title": "AMD Stock Jumps on Solid Earnings - Barron's",
+      "source": "Barron's",
+      "url": "https://www.barrons.com/articles/advanced-micro-devices-earnings-stock-price-78a50ca6",
+      "publishedAt": "2026-05-05T22:07:00Z"
+    },
+    {
+      "title": "Real estate titan compares 'tax the rich' slogan to racial slurs - Politico",
+      "source": "Politico",
+      "url": "https://www.politico.com/news/2026/05/05/real-estate-titan-compares-tax-the-rich-slogan-to-racial-slurs-00907424",
+      "publishedAt": "2026-05-05T21:53:58Z"
+    },
+    {
+      "title": "Just 8 States Still Have Gas Below $4 as Prices Keep Rising\u2014See Your State Average - Investopedia",
+      "source": "Investopedia",
+      "url": "https://www.investopedia.com/just-8-states-still-have-gas-below-4-as-prices-keep-rising-see-your-state-average-update-11965251",
+      "publishedAt": "2026-05-05T21:50:46Z"
+    },
+    {
+      "title": "Pennsylvania sues Character.AI over claims chatbot posed as doctor - NPR",
+      "source": "NPR",
+      "url": "https://www.npr.org/2026/05/05/nx-s1-5812861/characterai-chatbot-medical-advice-pennsylvania-lawsuit",
+      "publishedAt": "2026-05-05T21:26:55Z"
+    },
+    {
+      "title": "Apple agrees to pay iPhone owners $250 million for not delivering AI Siri - The Verge",
+      "source": "The Verge",
+      "url": "https://www.theverge.com/tech/924706/apple-iphone-siri-intelligence-class-action-lawsuit-settlement",
+      "publishedAt": "2026-05-05T21:18:23Z"
+    },
+    {
+      "title": "Trump Pressures FDA Commissioner to Approve Flavored Vapes - WSJ",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/politics/policy/trump-pressures-fda-commissioner-to-approve-flavored-vapes-9dad81ee",
+      "publishedAt": "2026-05-05T20:41:00Z"
+    },
+    {
+      "title": "US to safety test new AI models from Google, Microsoft, xAI - BBC",
+      "source": "BBC News",
+      "url": "https://www.bbc.com/news/articles/cgjp2we2j8go",
+      "publishedAt": "2026-05-05T20:16:24Z"
+    }
+  ],
+  "fetchedAt": "2026-05-06 20:06 EDT",
+  "aiSummary": "The current market environment presents a mixed picture with both opportunities and risks. \n\n**Equity markets are currently experiencing positive momentum**, driven by the S&P 500's recent gains and a relatively low VIX, suggesting decreasing investor fear.  However, **high inflation (330.29%) significantly erodes purchasing power and poses a risk to corporate profits**. The Federal Reserve is attempting to control inflation with its current monetary policy stance, but the impact remains to be seen.\n\n**AI is emerging as a key opportunity**, with headlines highlighting both its potential benefits (AMD earnings) and legal challenges (Meta lawsuit).  Sectors like **technology and healthcare are likely to benefit from AI advancements**, while traditional media companies (publishing) may face continued disruption. \n\n**Rising oil prices (109.76$) present a risk to consumer spending and economic growth**. This, coupled with the \"tax the rich\" debate and potential regulatory hurdles for tech giants like Apple, adds further uncertainty to the market outlook.  \n\n\nInvestors should carefully monitor these factors and consider diversifying their portfolios to mitigate risks.",
+  "aiSummaryAt": "2026-05-06 20:07 EDT"
+}

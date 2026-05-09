@@ -419,3 +419,140 @@ def fetch_price_only(ticker):
     except Exception as e:
         log.error(f"fetch_price_only FAIL: {ticker} | {e}")
         return None
+
+
+# ── MACRO DATA ────────────────────────────────────────────────────────────────
+
+FRED_SERIES = {
+    "fed_rate":       {"id": "FEDFUNDS",   "label": "Fed Funds Rate",      "unit": "%"},
+    "cpi":            {"id": "CPIAUCSL",   "label": "CPI (YoY)",           "unit": "%",  "yoy": True},
+    "unemployment":   {"id": "UNRATE",     "label": "Unemployment Rate",   "unit": "%"},
+    "gdp_growth":     {"id": "A191RL1Q225SBEA", "label": "GDP Growth",     "unit": "%"},
+    "ten_yr_yield":   {"id": "DGS10",      "label": "10-Yr Treasury Yield","unit": "%"},
+    "two_yr_yield":   {"id": "DGS2",       "label": "2-Yr Treasury Yield", "unit": "%"},
+    "vix":            {"id": "VIXCLS",     "label": "VIX (Fear Index)",    "unit": ""},
+    "dollar_index":   {"id": "DTWEXBGS",   "label": "USD Dollar Index",    "unit": ""},
+    "oil_wti":        {"id": "DCOILWTICO", "label": "WTI Crude Oil",       "unit": "$"},
+    "sp500":          {"id": "SP500",      "label": "S&P 500",             "unit": ""},
+}
+
+def fetch_fred_series(series_id, api_key, limit=2):
+    try:
+        url = (
+            f"https://api.stlouisfed.org/fred/series/observations"
+            f"?series_id={series_id}&api_key={api_key}&file_type=json"
+            f"&sort_order=desc&limit={limit}"
+        )
+        r = requests.get(url, timeout=10)
+        obs = r.json().get("observations", [])
+        valid = [o for o in obs if o.get("value") not in (".", None, "")]
+        return valid
+    except Exception as e:
+        log.warning(f"FRED FAIL: {series_id} | {e}")
+        return []
+
+def fetch_macro_data(fred_api_key, newsapi_key=None):
+    log.info("=== Macro fetch started ===")
+    indicators = {}
+
+    for key, cfg in FRED_SERIES.items():
+        obs = fetch_fred_series(cfg["id"], fred_api_key, limit=14 if cfg.get("yoy") else 2)
+        if not obs:
+            indicators[key] = {"label": cfg["label"], "value": None, "date": None, "unit": cfg["unit"], "change": None}
+            continue
+        try:
+            latest = float(obs[0]["value"])
+            prev   = float(obs[1]["value"]) if len(obs) > 1 else None
+            # YoY calculation (CPI: compare to 12 months ago = ~obs[12])
+            if cfg.get("yoy") and len(obs) >= 13:
+                year_ago = float(obs[12]["value"])
+                change = round(((latest - year_ago) / year_ago) * 100, 2)
+            else:
+                change = round(latest - prev, 2) if prev is not None else None
+            indicators[key] = {
+                "label":  cfg["label"],
+                "value":  round(latest, 2),
+                "prev":   round(prev, 2) if prev is not None else None,
+                "change": change,
+                "date":   obs[0]["date"],
+                "unit":   cfg["unit"],
+            }
+            log.info(f"FRED OK: {key} | {latest} ({obs[0]['date']})")
+        except Exception as e:
+            log.warning(f"FRED parse FAIL: {key} | {e}")
+            indicators[key] = {"label": cfg["label"], "value": None, "date": None, "unit": cfg["unit"], "change": None}
+
+    # Yield curve spread
+    try:
+        t10 = indicators.get("ten_yr_yield", {}).get("value")
+        t2  = indicators.get("two_yr_yield",  {}).get("value")
+        if t10 is not None and t2 is not None:
+            indicators["yield_curve"] = {
+                "label": "Yield Curve (10Y-2Y)",
+                "value": round(t10 - t2, 2),
+                "unit":  "%",
+                "date":  indicators["ten_yr_yield"]["date"],
+                "change": None,
+            }
+    except Exception:
+        pass
+
+    # Headlines — NewsAPI if key provided, else fallback to yfinance market news
+    headlines = []
+    if newsapi_key and newsapi_key not in ("your_newsapi_key_here", "", None):
+        try:
+            r = requests.get(
+                "https://newsapi.org/v2/top-headlines",
+                params={"category": "business", "language": "en", "pageSize": 10, "apiKey": newsapi_key},
+                timeout=10
+            )
+            articles = r.json().get("articles", [])
+            headlines = [
+                {"title": a.get("title",""), "source": a.get("source",{}).get("name",""), "url": a.get("url",""), "publishedAt": a.get("publishedAt","")}
+                for a in articles if a.get("title")
+            ]
+            log.info(f"NewsAPI OK: {len(headlines)} headlines")
+        except Exception as e:
+            log.warning(f"NewsAPI FAIL: {e}")
+
+    # Fallback: pull news from a few major market tickers via yfinance
+    if not headlines:
+        log.info("Headlines: falling back to yfinance news (SPY, QQQ, GLD)")
+        try:
+            from datetime import datetime, timezone, timedelta
+            cutoff = datetime.now(timezone.utc) - timedelta(days=3)
+            seen = set()
+            for sym in ["SPY", "QQQ", "GLD", "TLT"]:
+                try:
+                    stock = yf.Ticker(sym)
+                    for item in (stock.news or []):
+                        content_block = item.get("content", {})
+                        title = content_block.get("title", "")
+                        if not title or title in seen:
+                            continue
+                        pub = content_block.get("pubDate") or content_block.get("displayTime", "")
+                        try:
+                            pub_dt = datetime.fromisoformat(pub.replace("Z", "+00:00"))
+                            if pub_dt < cutoff:
+                                continue
+                        except Exception:
+                            pass
+                        seen.add(title)
+                        headlines.append({
+                            "title": title,
+                            "source": content_block.get("provider", {}).get("displayName", sym),
+                            "url": content_block.get("canonicalUrl", {}).get("url", ""),
+                            "publishedAt": pub,
+                        })
+                        if len(headlines) >= 12:
+                            break
+                except Exception as e:
+                    log.warning(f"yfinance news FAIL: {sym} | {e}")
+                if len(headlines) >= 12:
+                    break
+            log.info(f"yfinance fallback headlines: {len(headlines)}")
+        except Exception as e:
+            log.warning(f"Headlines fallback FAIL: {e}")
+
+    log.info("=== Macro fetch complete ===")
+    return {"indicators": indicators, "headlines": headlines}

@@ -1,7 +1,13 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import json, os, logging, threading
 from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only
+try:
+    from config import FRED_API_KEY, NEWSAPI_KEY, MACRO_PATH
+except ImportError:
+    FRED_API_KEY = None
+    NEWSAPI_KEY  = None
+    MACRO_PATH   = "output/macro.json"
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -634,6 +640,98 @@ def technical_analysis(ticker):
     except Exception as e:
         log.error(f"Technical analysis FAIL: {ticker} | {e}")
         return jsonify({"error": str(e), "ticker": ticker})
+
+
+
+def run_macro_refresh():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Fetching macro data...", "operation": "macro"}
+    log.info("=== Macro Refresh Started ===")
+    try:
+        if not FRED_API_KEY or FRED_API_KEY == "your_fred_api_key_here":
+            log.error("Macro refresh FAIL: FRED_API_KEY not set in config.py")
+            fetch_status = {"running": False, "message": "Macro FAIL: FRED_API_KEY not set", "operation": None}
+            return
+        data = fetch_macro_data(FRED_API_KEY, NEWSAPI_KEY)
+        now_ts = ts()
+        data["fetchedAt"] = now_ts
+        save_json(MACRO_PATH, data)
+        fetch_status = {"running": False, "message": f"Macro updated: {now_ts}", "operation": None}
+        log.info(f"=== Macro Refresh Complete: {now_ts} ===")
+    except Exception as e:
+        log.error(f"Macro refresh FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Macro FAIL: {e}", "operation": None}
+
+
+@app.route("/macro")
+def get_macro():
+    data = load_json(MACRO_PATH, {})
+    return jsonify(data)
+
+
+@app.route("/macro/refresh", methods=["GET","POST"])
+def macro_refresh():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_macro_refresh, daemon=True)
+    t.start()
+    log.info("Macro refresh triggered via UI")
+    return jsonify({"status": "started"})
+
+
+@app.route("/macro/ai", methods=["GET","POST"])
+def macro_ai():
+    try:
+        data = load_json(MACRO_PATH, {})
+        if not data:
+            return jsonify({"error": "No macro data. Run a refresh first."})
+        indicators = data.get("indicators", {})
+        headlines  = data.get("headlines", [])
+        fetched_at = data.get("fetchedAt", "unknown")
+
+        # Build prompt for Ollama
+        ind_lines = []
+        for k, v in indicators.items():
+            if v.get("value") is None:
+                continue
+            unit = v.get("unit","")
+            chg  = f" (chg: {v['change']:+.2f}{unit})" if v.get("change") is not None else ""
+            ind_lines.append(f"- {v['label']}: {v['value']}{unit}{chg} as of {v.get('date','?')}")
+
+        headline_lines = [f"- {h['title']} ({h['source']})" for h in headlines[:8]]
+
+        ind_block = "\n".join(ind_lines)
+        hl_block  = "\n".join(headline_lines) if headline_lines else "None available"
+        prompt = (
+            "You are a macro-economic analyst. Based on the following current macro indicators and market headlines, "
+            "provide a concise analysis of the current market environment. "
+            "Focus on: (1) what these indicators signal for equity markets, "
+            "(2) key risks and opportunities, "
+            "(3) sectors likely to benefit or suffer. "
+            "Keep the response under 250 words, structured with short paragraphs."
+            "\n\nMACRO INDICATORS:\n" + ind_block +
+            "\n\nRECENT HEADLINES:\n" + hl_block +
+            "\n\nAnalysis:"
+        )
+
+        import requests as req
+        resp = req.post("http://localhost:11434/api/generate",
+            json={"model": "gemma2:9b", "prompt": prompt, "stream": False},
+            timeout=120
+        )
+        result = resp.json().get("response", "").strip()
+        now_ts = ts()
+
+        # Save AI summary back to macro.json
+        data["aiSummary"] = result
+        data["aiSummaryAt"] = now_ts
+        save_json(MACRO_PATH, data)
+
+        log.info(f"Macro AI summary generated: {now_ts} | {len(result)} chars")
+        return jsonify({"summary": result, "generatedAt": now_ts})
+    except Exception as e:
+        log.error(f"Macro AI FAIL: {e}")
+        return jsonify({"error": str(e)})
 
 
 # Auto price refresh on startup
