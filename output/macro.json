@@ -19,9 +19,9 @@
     "unemployment": {
       "label": "Unemployment Rate",
       "value": 4.3,
-      "prev": 4.4,
-      "change": -0.1,
-      "date": "2026-03-01",
+      "prev": 4.3,
+      "change": 0.0,
+      "date": "2026-04-01",
       "unit": "%"
     },
     "gdp_growth": {
@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.43,
-      "prev": 4.45,
-      "change": -0.02,
-      "date": "2026-05-05",
+      "value": 4.41,
+      "prev": 4.36,
+      "change": 0.05,
+      "date": "2026-05-07",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 3.93,
-      "prev": 3.95,
-      "change": -0.02,
-      "date": "2026-05-05",
+      "value": 3.92,
+      "prev": 3.87,
+      "change": 0.05,
+      "date": "2026-05-07",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 17.38,
-      "prev": 18.29,
-      "change": -0.91,
-      "date": "2026-05-05",
+      "value": 17.08,
+      "prev": 17.39,
+      "change": -0.31,
+      "date": "2026-05-07",
       "unit": ""
     },
     "dollar_index": {
@@ -74,77 +74,77 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7365.12,
-      "prev": 7259.22,
-      "change": 105.9,
-      "date": "2026-05-06",
+      "value": 7398.93,
+      "prev": 7337.11,
+      "change": 61.82,
+      "date": "2026-05-08",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.5,
+      "value": 0.49,
       "unit": "%",
-      "date": "2026-05-05",
+      "date": "2026-05-07",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Publishers sue Meta, claiming it violated copyrights in training AI with their books - The Washington Post",
+      "title": "Stock market today: S&P 500, Nasdaq post 6th weekly win as chip stocks rally, jobs data boosts sentiment - Yahoo Finance",
+      "source": "Yahoo Entertainment",
+      "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-sp-500-nasdaq-post-6th-weekly-win-as-chip-stocks-rally-jobs-data-boosts-sentiment-232854301.html",
+      "publishedAt": "2026-05-08T22:23:49Z"
+    },
+    {
+      "title": "Delta employee dies on the job at Orlando International Airport, officials say - WESH",
+      "source": "WESH Orlando",
+      "url": "https://www.wesh.com/article/worker-dies-orlando-international-airport/71251692",
+      "publishedAt": "2026-05-08T21:27:00Z"
+    },
+    {
+      "title": "Tesla recalls some Cybertrucks for wheel issue and more than 200,000 other cars for camera failure - ABC News - Breaking News, Latest News and Videos",
+      "source": "Abcnews.com",
+      "url": "https://abcnews.com/Business/wireStory/tesla-recalls-cybertrucks-wheel-issue-200000-cars-camera-132792485",
+      "publishedAt": "2026-05-08T20:04:20Z"
+    },
+    {
+      "title": "White House prepares to replace FDA leader Marty Makary amid agency turmoil - The Washington Post",
       "source": "The Washington Post",
-      "url": "https://www.washingtonpost.com/national-security/2026/05/05/publishers-sue-meta-ai-copyright/",
-      "publishedAt": "2026-05-05T23:40:13Z"
+      "url": "https://www.washingtonpost.com/health/2026/05/08/fda-commissioner-marty-makary/",
+      "publishedAt": "2026-05-08T19:13:59Z"
     },
     {
-      "title": "Jim Cramer: Here's the list of AI winners to buy for 2026 and beyond - CNBC",
+      "title": "Intel\u2019s stock achieves a never-before-seen feat as Apple enthusiasm builds - MarketWatch",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/story/intels-stock-could-achieve-a-never-before-seen-feat-as-apple-enthusiasm-builds-edd94237",
+      "publishedAt": "2026-05-08T19:13:00Z"
+    },
+    {
+      "title": "Claude, brought to you by Elon Musk - Business Insider",
+      "source": "Business Insider",
+      "url": "https://www.businessinsider.com/claude-elon-musk-anthropic-ai-compute-2026-5",
+      "publishedAt": "2026-05-08T18:56:09Z"
+    },
+    {
+      "title": "Micron surges nearly 38% on week as memory chip rally goes parabolic - CNBC",
       "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/05/jim-cramer-ai-winners-to-buy.html",
-      "publishedAt": "2026-05-05T22:29:17Z"
+      "url": "https://www.cnbc.com/2026/05/08/micron-surges-more-than-30percent-on-week-as-memory-chip-rally-goes-parabolic.html",
+      "publishedAt": "2026-05-08T18:25:44Z"
     },
     {
-      "title": "AMD Stock Jumps on Solid Earnings - Barron's",
-      "source": "Barron's",
-      "url": "https://www.barrons.com/articles/advanced-micro-devices-earnings-stock-price-78a50ca6",
-      "publishedAt": "2026-05-05T22:07:00Z"
+      "title": "Larry Ellison Accused of Promising Trump to Fire CNN Anchors - Mediaite",
+      "source": "Mediaite",
+      "url": "https://www.mediaite.com/media/news/press-freedom-groups-accuse-larry-ellison-of-promising-trump-admin-hed-fire-cnn-anchors-if-he-acquires-warner-bros/",
+      "publishedAt": "2026-05-08T18:25:00Z"
     },
     {
-      "title": "Real estate titan compares 'tax the rich' slogan to racial slurs - Politico",
-      "source": "Politico",
-      "url": "https://www.politico.com/news/2026/05/05/real-estate-titan-compares-tax-the-rich-slogan-to-racial-slurs-00907424",
-      "publishedAt": "2026-05-05T21:53:58Z"
-    },
-    {
-      "title": "Just 8 States Still Have Gas Below $4 as Prices Keep Rising\u2014See Your State Average - Investopedia",
-      "source": "Investopedia",
-      "url": "https://www.investopedia.com/just-8-states-still-have-gas-below-4-as-prices-keep-rising-see-your-state-average-update-11965251",
-      "publishedAt": "2026-05-05T21:50:46Z"
-    },
-    {
-      "title": "Pennsylvania sues Character.AI over claims chatbot posed as doctor - NPR",
-      "source": "NPR",
-      "url": "https://www.npr.org/2026/05/05/nx-s1-5812861/characterai-chatbot-medical-advice-pennsylvania-lawsuit",
-      "publishedAt": "2026-05-05T21:26:55Z"
-    },
-    {
-      "title": "Apple agrees to pay iPhone owners $250 million for not delivering AI Siri - The Verge",
-      "source": "The Verge",
-      "url": "https://www.theverge.com/tech/924706/apple-iphone-siri-intelligence-class-action-lawsuit-settlement",
-      "publishedAt": "2026-05-05T21:18:23Z"
-    },
-    {
-      "title": "Trump Pressures FDA Commissioner to Approve Flavored Vapes - WSJ",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/politics/policy/trump-pressures-fda-commissioner-to-approve-flavored-vapes-9dad81ee",
-      "publishedAt": "2026-05-05T20:41:00Z"
-    },
-    {
-      "title": "US to safety test new AI models from Google, Microsoft, xAI - BBC",
-      "source": "BBC News",
-      "url": "https://www.bbc.com/news/articles/cgjp2we2j8go",
-      "publishedAt": "2026-05-05T20:16:24Z"
+      "title": "Rocket Lab Stock Jumps After Biggest-Ever Launch Contract Shocks Market - Yahoo Finance",
+      "source": "Yahoo Entertainment",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/rocket-lab-stock-jumps-biggest-182212431.html",
+      "publishedAt": "2026-05-08T18:22:12Z"
     }
   ],
-  "fetchedAt": "2026-05-06 20:06 EDT",
-  "aiSummary": "The current market environment presents a mixed picture with both opportunities and risks. \n\n**Equity markets are currently experiencing positive momentum**, driven by the S&P 500's recent gains and a relatively low VIX, suggesting decreasing investor fear.  However, **high inflation (330.29%) significantly erodes purchasing power and poses a risk to corporate profits**. The Federal Reserve is attempting to control inflation with its current monetary policy stance, but the impact remains to be seen.\n\n**AI is emerging as a key opportunity**, with headlines highlighting both its potential benefits (AMD earnings) and legal challenges (Meta lawsuit).  Sectors like **technology and healthcare are likely to benefit from AI advancements**, while traditional media companies (publishing) may face continued disruption. \n\n**Rising oil prices (109.76$) present a risk to consumer spending and economic growth**. This, coupled with the \"tax the rich\" debate and potential regulatory hurdles for tech giants like Apple, adds further uncertainty to the market outlook.  \n\n\nInvestors should carefully monitor these factors and consider diversifying their portfolios to mitigate risks.",
-  "aiSummaryAt": "2026-05-06 20:07 EDT"
+  "fetchedAt": "2026-05-09 20:29 EDT",
+  "aiSummary": "The current market environment appears bullish, driven by strong corporate earnings and positive investor sentiment. The S&P 500's six consecutive weekly gains, fueled by a rally in chip stocks and robust jobs data, suggest confidence in economic growth.  \n\nHowever, risks remain. Inflation remains stubbornly high at 330.29%, potentially prompting further interest rate hikes by the Fed, which could dampen economic expansion. The inverted yield curve (10Y-2Y) also signals potential recessionary pressures. Additionally, headline events like the Delta employee death and Tesla recalls highlight ongoing uncertainties.\n\nSectors benefiting from this environment include technology, particularly semiconductors as evidenced by Micron's surge and Intel's performance. Conversely, sectors sensitive to interest rates and inflation, such as real estate and consumer discretionary, might face headwinds.",
+  "aiSummaryAt": "2026-05-11 11:21 EDT"
 }

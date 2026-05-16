@@ -349,17 +349,30 @@
     "todayImpactAt": "2026-04-14 09:57 EDT"
   },
   "BNS.TO": {
-    "todayItems": [
-      {
-        "title": "The Bank of Nova Scotia Gets Approval to Repurchase Up to 15 Million Common Shares",
-        "summary": "The Bank of Nova Scotia (BNS.TO) on Thursday said the Toronto Stock Exchange and the Office of the S",
-        "pubDate": "2026-04-02T10:29:04Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/bank-nova-scotia-gets-approval-102904592.html",
-        "provider": "MT Newswires"
-      }
-    ],
-    "todayFetchedAt": "2026-04-02 22:25 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-05-09 20:22 EDT",
     "sevenDayItems": [
+      {
+        "title": "Assessing Toronto-Dominion Bank (TSX:TD) Valuation After Fresh Analyst Upgrades And Rising Earnings Optimism",
+        "summary": "Recent analyst upgrades have put Toronto-Dominion Bank (TSX:TD) back in focus, with Zacks raising its rating to Rank #2 and Scotiabank lifting its view, citing stronger earnings estimates and improved sentiment. See our latest analysis for Toronto-Dominion Bank. That optimism has coincided with a clear upswing in the stock, with a 1-day share price return of 2.69%, a 30-day share price return of 11.02%, and a 1-year total shareholder return of 75.83%, suggesting momentum has been building. If...",
+        "pubDate": "2026-05-07T21:19:22Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/assessing-toronto-dominion-bank-tsx-211922504.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "TSX Closer: A Lower Close Amid Uncertainty Over Peace Talks; Rosenberg Research On Canadian Banks",
+        "summary": "The Toronto Stock Exchange was back in negative territory Thursday with both the Base Metals and Ene",
+        "pubDate": "2026-05-07T20:06:58Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/tsx-closer-lower-close-amid-200658168.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Bank of Nova Scotia (BNS) Could Be a Great Choice",
+        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does Bank of Nova Scotia (BNS) have what it takes? Let's find out.",
+        "pubDate": "2026-05-06T15:45:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/bank-nova-scotia-bns-could-154503101.html",
+        "provider": "Zacks"
+      },
       {
         "title": "Bank of Nova Scotia (BNS) Upgraded to Buy: What Does It Mean for the Stock?",
         "summary": "Bank of Nova Scotia (BNS) has been upgraded to a Zacks Rank #2 (Buy), reflecting growing optimism about the company's earnings prospects. This might drive the stock higher in the near term.",
@@ -387,58 +400,43 @@
         "pubDate": "2026-05-04T14:42:06Z",
         "url": "https://finance.yahoo.com/economy/policy/articles/scotiabank-doesn-apos-t-high-144206766.html",
         "provider": "MT Newswires"
-      },
-      {
-        "title": "Scotiabank Sees Canadian Dollar Strength As USD Weakness Supports Outlook, Targets USDCAD At 1.33 By End-2026",
-        "summary": "Scotiabank continues to expect broad-based weakness for the U.S. dollar (USD) against all of the maj",
-        "pubDate": "2026-05-01T19:53:04Z",
-        "url": "https://finance.yahoo.com/markets/currencies/articles/scotiabank-sees-canadian-dollar-strength-195304099.html",
-        "provider": "MT Newswires"
-      },
-      {
-        "title": "How Douglas Emmett (DEI) Narrative Is Shifting As Analysts Reassess Growth And Valuation",
-        "summary": "Douglas Emmett\u2019s fair value estimate has been reset slightly lower, shifting from US$11.65 to US$11.55, a modest 0.9% move that keeps the name in roughly the same valuation zone. This adjustment lines up with fresh Street research, where several firms have trimmed price targets into the US$10 to US$11.50 band and maintained more neutral ratings as they weigh earnings power and capital allocation. As you read on, you will see how this evolving analyst narrative can help you track what might...",
-        "pubDate": "2026-04-29T19:06:46Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/douglas-emmett-dei-narrative-shifting-190646872.html",
-        "provider": "Simply Wall St."
-      },
-      {
-        "title": "Canada's Government Continues to Spend in Its Updated Budget, Says Scotiabank",
-        "summary": "Canada's government tabled its Spring Economic Update on Tuesday, while Prime Minister Mark Carney h",
-        "pubDate": "2026-04-29T10:55:56Z",
-        "url": "https://finance.yahoo.com/economy/policy/articles/canada-apos-government-continues-spend-105556791.html",
-        "provider": "MT Newswires"
       }
     ],
-    "sevenDayFetchedAt": "2026-05-05 20:38 EDT",
+    "sevenDayFetchedAt": "2026-05-09 20:19 EDT",
     "sevenDayImpact": {
       "overallSentiment": "bullish",
       "sentimentScore": 7,
-      "summary": "BNS received a Zacks Rank #2 (Buy) upgrade based on positive earnings prospects. This, along with Scotiabank's positive outlook on the Canadian dollar, suggests a bullish trend.",
-      "priceImpact": "Potential for short-term price increase of 5%-10%",
+      "summary": "Recent analyst upgrades and positive sentiment towards Canadian banks are boosting BNS.TO's outlook.",
+      "priceImpact": "Slight to moderate upward pressure expected in the short term, potentially ranging from +2% to +5%. ",
       "keyThemes": [
-        "Earnings Growth",
-        "Canadian Dollar Strength",
-        "Analyst Upgrading"
+        "Analyst Upgrades",
+        "Positive Earnings Outlook",
+        "Canadian Bank Sector Strength"
       ],
-      "tradingImplication": "Buy. The recent upgrades and positive outlook on earnings and the Canadian dollar create a favorable environment for potential stock appreciation.",
-      "watchFor": "Upcoming earnings report and performance of the Canadian dollar against major currencies.",
+      "tradingImplication": "Hold with a buy bias. Monitor for further analyst commentary and earnings reports.",
+      "watchFor": "Upcoming earnings release from BNS, as well as broader economic data impacting the Canadian banking sector.",
       "newsItems": [
         {
-          "title": "Bank of Nova Scotia (BNS) Upgraded to Buy: What Does It Mean for the Stock?",
-          "impact": "positive",
-          "significance": "high",
-          "oneLineSummary": "Zacks upgraded BNS to a Buy, citing strong earnings prospects, potentially driving stock price higher."
-        },
-        {
-          "title": "Scotiabank Sees Canadian Dollar Strength As USD Weakness Supports Outlook, Targets USDCAD At 1.33 By End-2026",
+          "title": "Bank of Nova Scotia (BNS) Could Be a Great Choice (Zacks)",
           "impact": "positive",
           "significance": "medium",
-          "oneLineSummary": "Scotiabank's positive outlook on the Canadian dollar suggests potential benefit for BNS's financial performance."
+          "oneLineSummary": "Highlights BNS's potential as a strong dividend stock."
+        },
+        {
+          "title": "Bank of Nova Scotia (BNS) Upgraded to Buy: What Does It Mean for the Stock? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Analyst upgrade signals growing optimism about BNS's earnings prospects."
+        },
+        {
+          "title": "Assessing Toronto-Dominion Bank (TSX:TD) Valuation After Fresh Analyst Upgrades And Rising Earnings Optimism (Simply Wall St)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Positive sentiment towards TD could indirectly benefit BNS as a peer in the Canadian banking sector."
         }
       ]
     },
-    "sevenDayImpactAt": "2026-05-05 20:39 EDT",
+    "sevenDayImpactAt": "2026-05-09 20:19 EDT",
     "todayImpact": {
       "overallSentiment": "neutral",
       "sentimentScore": 2,
@@ -1931,5 +1929,729 @@
     "sevenDayFetchedAt": "2026-05-07 21:14 EDT",
     "todayItems": [],
     "todayFetchedAt": "2026-05-07 21:14 EDT"
+  },
+  "ALAB": {
+    "sevenDayItems": [
+      {
+        "title": "Analysts Just Published A Bright New Outlook For Astera Labs, Inc.'s (NASDAQ:ALAB)",
+        "summary": "Celebrations may be in order for Astera Labs, Inc. ( NASDAQ:ALAB ) shareholders, with the analysts delivering a...",
+        "pubDate": "2026-05-10T14:00:16Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/analysts-just-published-bright-outlook-140016572.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "High Insider Ownership Boosts These Growth Stocks In May 2026",
+        "summary": "The United States market has experienced a robust performance, climbing 3.2% in the last week and rising by 31% over the past year, with earnings projected to grow by 16% annually in the coming years. In this thriving environment, growth companies with high insider ownership are particularly noteworthy as they often signal strong confidence from those closest to the business, aligning their interests with shareholders and potentially enhancing long-term value creation.",
+        "pubDate": "2026-05-08T17:36:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/high-insider-ownership-boosts-growth-173602371.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "May 2026's Top Growth Companies With Insider Influence",
+        "summary": "Over the last 7 days, the United States market has risen by 3.2%, contributing to a remarkable 31% increase over the past year, with earnings projected to grow by 16% annually. In such a robust environment, growth companies with high insider ownership often stand out as they can benefit from strong internal alignment and commitment to long-term success.",
+        "pubDate": "2026-05-08T11:36:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/may-2026s-top-growth-companies-113603150.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "3 Growth Stocks Insiders Are Betting On",
+        "summary": "Over the last 7 days, the United States market has risen by 3.2%, contributing to a remarkable 31% increase over the past year, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership often attract attention as they suggest confidence from those closest to the business and potential for sustained performance.",
+        "pubDate": "2026-05-07T17:35:59Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-insiders-betting-173559125.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Should Investors Buy, Hold, or Sell ALAB Stock Post Q1 Earnings?",
+        "summary": "Astera Labs benefits from strong AI connectivity demand and Scorpio expansion, but rising costs, competition, and premium valuation may limit upside.",
+        "pubDate": "2026-05-07T17:14:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/investors-buy-hold-sell-alab-171400096.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "MRVL Climbs 50% in a Month: Time to Buy, Sell or Hold the Stock?",
+        "summary": "Marvell Technology's AI-driven data center growth and NVIDIA tie-up are fueling gains, but rich valuation and competition may limit upside for MRVL.",
+        "pubDate": "2026-05-07T15:53:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/mrvl-climbs-50-month-time-155300902.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "May 2026's Top Insider Picks For Growth Companies",
+        "summary": "The United States market has recently experienced a notable upswing, climbing 3.2% in the last week and an impressive 31% over the past year, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership are particularly attractive as they often indicate strong confidence from those closest to the business, aligning well with current market momentum.",
+        "pubDate": "2026-05-07T11:35:49Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/may-2026s-top-insider-picks-113549338.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "3 Growth Companies With Insider Ownership Up To 15%",
+        "summary": "Over the last 7 days, the United States market has risen by 1.8%, and over the past 12 months, it has increased by 30%, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership can be particularly appealing as they often indicate strong confidence from those closest to the business.",
+        "pubDate": "2026-05-06T17:36:17Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/3-growth-companies-insider-ownership-173617250.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Astera Labs Q1 Earnings Beat Estimates, Revenues Increase Y/Y",
+        "summary": "ALAB tops Q1 estimates as revenue nearly doubles, fueled by PCIe 6 demand and AI connectivity growth, with Scorpio set to accelerate.",
+        "pubDate": "2026-05-06T17:29:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-q1-earnings-beat-172900570.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "5 Signs the Semiconductor Rally Is Getting Silly",
+        "summary": "Artificial intelligence is driving a massive chip stocks rally. Several data points indicate that the rally is getting slightly ridiculous.",
+        "pubDate": "2026-05-06T17:05:00Z",
+        "url": "https://www.barrons.com/articles/semiconductor-rally-ai-chips-021ef0d9?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-10 21:07 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news highlights strong Q1 earnings for ALAB, fueled by AI demand and Scorpio expansion. Analysts remain positive on the company's outlook.",
+      "priceImpact": "Likely a short-term price increase of 5% to 10% as investors react positively to the earnings beat and optimistic analyst reports.",
+      "keyThemes": [
+        "Strong Q1 Earnings",
+        "AI Connectivity Demand",
+        "Scorpio Expansion"
+      ],
+      "tradingImplication": "Hold or consider buying ALAB stock. The strong Q1 results and positive analyst sentiment suggest continued growth potential.",
+      "watchFor": "Upcoming Scorpio product launches and further confirmation of AI demand driving revenue growth.",
+      "newsItems": [
+        {
+          "title": "Astera Labs Q1 Earnings Beat Estimates, Revenues Increase Y/Y (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "ALAB exceeded Q1 earnings expectations with revenue nearly doubling due to PCIe 6 demand and AI connectivity growth."
+        },
+        {
+          "title": "Analysts Just Published A Bright New Outlook For Astera Labs, Inc.'s (NASDAQ:ALAB) (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Analysts are expressing optimism about ALAB's future prospects based on its strong performance and market position."
+        },
+        {
+          "title": "High Insider Ownership Boosts These Growth Stocks In May 2026 (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "ALAB is mentioned among growth stocks with high insider ownership, suggesting confidence in the company's future."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-10 21:07 EDT",
+    "todayItems": [
+      {
+        "title": "Analysts Just Published A Bright New Outlook For Astera Labs, Inc.'s (NASDAQ:ALAB)",
+        "summary": "Celebrations may be in order for Astera Labs, Inc. ( NASDAQ:ALAB ) shareholders, with the analysts delivering a...",
+        "pubDate": "2026-05-10T14:00:16Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/analysts-just-published-bright-outlook-140016572.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "todayFetchedAt": "2026-05-10 21:09 EDT",
+    "todayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Analysts at Simply Wall St have released a positive outlook for ALAB, predicting strong future performance. This news is likely to boost investor confidence and drive share prices higher.",
+      "priceImpact": "Positive; expect price to rise between 5% - 10% in the short term",
+      "keyThemes": [
+        "Analyst Ratings",
+        "Future Performance Expectations",
+        "Investor Confidence"
+      ],
+      "tradingImplication": "Hold or consider buying. The positive analyst outlook suggests ALAB is poised for further growth.",
+      "watchFor": "Earnings report next quarter to confirm analyst predictions and monitor revenue growth.",
+      "newsItems": [
+        {
+          "title": "Analysts Just Published A Bright New Outlook For Astera Labs, Inc.'s (NASDAQ:ALAB) (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Analysts at Simply Wall St predict strong future performance for ALAB, leading to increased investor confidence."
+        }
+      ]
+    },
+    "todayImpactAt": "2026-05-10 21:10 EDT"
+  },
+  "TER": {
+    "sevenDayItems": [
+      {
+        "title": "How Teradyne\u2019s AI-Driven Record Q1 And Guidance At Teradyne (TER) Has Changed Its Investment Story",
+        "summary": "Teradyne, Inc. recently reported first-quarter 2026 results showing sales of US$1,282.49 million and net income of US$398.91 million, and issued second-quarter revenue guidance of US$1,150 million to US$1,250 million with GAAP diluted EPS of US$1.83 to US$2.12. With AI-related applications now contributing nearly 70% of revenue and a quarterly dividend of US$0.13 per share declared, Teradyne\u2019s earnings profile is increasingly tied to AI infrastructure spending while still returning cash to...",
+        "pubDate": "2026-05-08T10:13:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/teradyne-ai-driven-record-q1-101302020.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Has Teradyne (TER) Run Too Far After Its 70.6% Year To Date Surge?",
+        "summary": "How Teradyne's Recent Run Sets Up a Valuation Question Teradyne's share price has moved sharply in recent periods, and if you are wondering whether the current level still makes sense, the numbers give you plenty to think about. Over shorter horizons the stock has recorded returns of 3.1% over 7 days and 10.5% over 30 days, while the year to date return stands at 70.6%. Over longer periods, the 1 year, 3 year and 5 year returns are 362.5%, 293.1% and 208.1% respectively. These price moves...",
+        "pubDate": "2026-05-08T08:19:51Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/teradyne-ter-run-too-far-081951266.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Why to Bet on Quantum Computing ETFs Now",
+        "summary": "Quantum ETFs are surging as breakthroughs, funding and AI demand fuel growth, offering diversified exposure to a high-risk, high-reward theme.",
+        "pubDate": "2026-05-07T17:00:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-bet-quantum-computing-etfs-170000588.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is It Worth Investing in Teradyne (TER) Based on Wall Street's Bullish Views?",
+        "summary": "According to the average brokerage recommendation (ABR), one should invest in Teradyne (TER). It is debatable whether this highly sought-after metric is effective because Wall Street analysts' recommendations tend to be overly optimistic. Would it be worth investing in the stock?",
+        "pubDate": "2026-05-07T13:30:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/worth-investing-teradyne-ter-based-133002751.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Teradyne Stock Trades at a Premium: Should You Buy Now or Wait?",
+        "summary": "TER benefits from booming AI demand, driving strong growth across segments and reinforcing momentum as investors eye continued upside potential.",
+        "pubDate": "2026-05-06T17:27:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/teradyne-stock-trades-premium-buy-172700802.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "ARTY Soared 33% in 2026 While BOTT and ROBO Lag: Which Humanoid Robot ETF to Buy",
+        "summary": "Humanoid robots have moved beyond assembly lines. AI-powered machines are being trialed for legal research, financial analysis, and front-line customer service, pushing automation into work historically considered safe from displacement. AI-powered robotics is moving from factory floors into legal research, financial analysis, and customer service. Three exchange-traded funds offer different angles on that shift: the ... ARTY Soared 33% in 2026 While BOTT and ROBO Lag: Which Humanoid Robot ETF t",
+        "pubDate": "2026-05-06T14:04:04Z",
+        "url": "https://247wallst.com/investing/2026/05/06/arty-soared-33-in-2026-while-bott-and-robo-lag-which-humanoid-robot-etf-to-buy/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "How Teradyne (TER) Is Rewriting Its Story As Analyst Targets And Fair Value Shift",
+        "summary": "Teradyne\u2019s fair value estimate has been lifted from US$307.41 to US$369.53, pointing to a meaningfully higher modeled equity value in recent updates. This reset comes alongside a wave of Street research where many firms have raised price targets and some have issued upgrades, while others have turned cautious on how much optimism is already reflected in the stock. As you read on, you will see how to interpret these shifting targets and use the evolving analyst narrative to frame your own...",
+        "pubDate": "2026-05-05T23:26:05Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/teradyne-ter-rewriting-story-analyst-232605958.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Goldman Sachs Raises its Price Target on Teradyne (TER) to $350",
+        "summary": "Teradyne, Inc. (NASDAQ:TER) is one of the 10 AI Stocks with Potential to Rise 1000 Percent. On April 30, 2026, Goldman Sachs raised its price target on Teradyne, Inc. (NASDAQ:TER) to $350 from $300 and maintained a Buy rating. The firm said the company delivered a strong quarter that may have been overshadowed by elevated [\u2026]",
+        "pubDate": "2026-05-05T12:56:57Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-raises-price-target-125657289.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Rockwell, Teradyne, Tesla see automation demand despite uncertainty",
+        "summary": "The companies are reporting strong earnings growth fueled in part by data center and robotics demand. Elon Musk also teased Tesla\u2019s Optimus as its \"biggest product ever.\"",
+        "pubDate": "2026-05-05T12:11:00Z",
+        "url": "https://www.manufacturingdive.com/news/tesla-rockwell-teradyne-q1-earnings-2026-automation-demand-uncertainty/819320/",
+        "provider": "Manufacturing Dive"
+      },
+      {
+        "title": "Teradyne and Qualcomm have been highlighted as Zacks Bull and Bear of the Day",
+        "summary": "Teradyne and Qualcomm take center stage as AI-driven growth powers TER's surge, while QCOM faces pressure from declining handset sales.",
+        "pubDate": "2026-05-04T13:16:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/teradyne-qualcomm-highlighted-zacks-bull-131600343.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-10 22:14 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 8,
+      "summary": "Recent news highlights strong Q1 earnings, positive analyst sentiment and rising price targets for TER driven by AI demand and growth in automation.",
+      "priceImpact": "likely to see further upward movement with potential range of +5% to +10%",
+      "keyThemes": [
+        "Strong AI-driven earnings",
+        "Positive Analyst Sentiment",
+        "Automation Growth"
+      ],
+      "tradingImplication": "Hold and monitor for further positive news. Consider buying on a dip within the next few days.",
+      "watchFor": "Earnings call transcripts and investor presentations for deeper insights into future growth projections and market share gains.",
+      "newsItems": [
+        {
+          "title": "How Teradyne\u2019s AI-Driven Record Q1 And Guidance At Teradyne (TER) Has Changed Its Investment Story (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Strong Q1 results and positive guidance reinforce bullish outlook for TER."
+        },
+        {
+          "title": "Has Teradyne (TER) Run Too Far After Its 70.6% Year To Date Surge? (Simply Wall St.)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Raises questions about valuation but doesn't fundamentally change the positive outlook for TER."
+        },
+        {
+          "title": "Why to Bet on Quantum Computing ETFs Now (Zacks)",
+          "impact": "positive",
+          "significance": "low",
+          "oneLineSummary": "Indirectly beneficial as quantum computing could leverage Teradyne's test and measurement solutions."
+        },
+        {
+          "title": "Is It Worth Investing in Teradyne (TER) Based on Wall Street's Bullish Views? (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Strong analyst recommendations support continued upward movement for TER stock."
+        },
+        {
+          "title": "Teradyne Stock Trades at a Premium: Should You Buy Now or Wait? (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Positive outlook for TER driven by booming AI demand and strong market performance."
+        },
+        {
+          "title": "ARTY Soared 33% in 2026 While BOTT and ROBO Lag: Which Humanoid Robot ETF to Buy (24/7 Wall St.)",
+          "impact": "positive",
+          "significance": "low",
+          "oneLineSummary": "Highlights growing demand for automation, a positive indicator for Teradyne's business."
+        },
+        {
+          "title": "How Teradyne (TER) Is Rewriting Its Story As Analyst Targets And Fair Value Shift (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Increased fair value estimates and positive analyst reports signal a bullish outlook for TER."
+        },
+        {
+          "title": "Goldman Sachs Raises its Price Target on Teradyne (TER) to $350 (Insider Monkey)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Major investment firm's positive outlook and price target increase boost investor confidence in TER."
+        },
+        {
+          "title": "Rockwell, Teradyne, Tesla see automation demand despite uncertainty (Manufacturing Dive)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Strong earnings growth across the automation sector, particularly for TER, highlights continued market success."
+        },
+        {
+          "title": "Teradyne and Qualcomm have been highlighted as Zacks Bull and Bear of the Day (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "TER recognized as a top performer in AI-driven growth, further solidifying its positive position."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-10 22:15 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-05-10 22:16 EDT"
+  },
+  "PAAS": {
+    "sevenDayItems": [
+      {
+        "title": "Pan American Silver (PAAS) Reports Q1 EPS",
+        "summary": "Pan American Silver Corp. (NYSE:PAAS) is one of the 10 Best Quality Stocks to Buy and Hold for the Next 5 Years. On May 5, 2026, Pan American Silver Corp. (NYSE:PAAS) reported Q1 adjusted EPS of $1.09, versus the $1.06 consensus estimate. Revenue totaled $1.15B, while attributable revenue reached $1.33B compared to consensus expectations of [\u2026]",
+        "pubDate": "2026-05-09T10:14:32Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/pan-american-silver-paas-reports-101432013.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "A Look At Pan American Silver's Valuation As Earnings Jump And A US$1b Return Plan Is Announced",
+        "summary": "Pan American Silver (TSX:PAAS) is back in focus after first quarter 2026 earnings showed US$1.15b in sales, US$457m in net income and a new shareholder return framework targeting up to US$1b in 2026 distributions. See our latest analysis for Pan American Silver. The strong first quarter result and new shareholder return plan have coincided with a sharp reset in sentiment, with a 1 day share price return of 12.1% and a 1 year total shareholder return of about 1.3x. This suggests momentum has...",
+        "pubDate": "2026-05-07T05:22:10Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/look-pan-american-silvers-valuation-052210387.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Pan American Silver (TSX:PAAS) Is Up 10.1% After Strong Q1 Results and New Capital Return Plan - What's Changed",
+        "summary": "In the first quarter of 2026, Pan American Silver Corp. reported sales of US$1,154 million and net income of US$457 million, with basic and diluted earnings per share from continuing operations of US$1.08, all significantly higher than a year earlier. Alongside these results, the company introduced a new shareholder return framework targeting the distribution of 35% to 40% of annual attributable free cash flow and outlined major investment plans for its La Colorada operation, indicating a...",
+        "pubDate": "2026-05-07T03:24:15Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/pan-american-silver-tsx-paas-032415984.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Pan American Silver Corp. Q1 2026 Earnings Call Summary",
+        "summary": "Moby summary of Pan American Silver Corp.'s Q1 2026 earnings call",
+        "pubDate": "2026-05-06T12:30:00Z",
+        "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-pan-american-silver-corp-q1-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss",
+        "provider": "Moby"
+      },
+      {
+        "title": "Here's What Key Metrics Tell Us About Pan American Silver (PAAS) Q1 Earnings",
+        "summary": "The headline numbers for Pan American Silver (PAAS) give insight into how the company performed in the quarter ended March 2026, but it may be worthwhile to compare some of its key metrics to Wall Street estimates and the year-ago actuals.",
+        "pubDate": "2026-05-06T01:00:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/heres-key-metrics-tell-us-010002565.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Pan American Silver (PAAS) Q1 Earnings Surpass Estimates",
+        "summary": "Pan American Silver (PAAS) delivered earnings and revenue surprises of +2.59% and -7.38%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-05-06T00:30:10Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/pan-american-silver-paas-q1-003010299.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-10 22:20 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Pan American Silver's Q1 earnings report significantly exceeded analyst expectations, coupled with a new shareholder return plan, driving positive market sentiment.",
+      "priceImpact": "Likely to see short-term price gains, potentially in the range of 5% - 10%",
+      "keyThemes": [
+        "Earnings Beat",
+        "Shareholder Return Plan",
+        "Strong Q1 Performance"
+      ],
+      "tradingImplication": "Hold or consider a buy position. The positive earnings report and return plan signal strong future prospects.",
+      "watchFor": "Confirmation from upcoming guidance on production targets and the execution of the shareholder return plan.",
+      "newsItems": [
+        {
+          "title": "Pan American Silver (PAAS) Reports Q1 EPS (Insider Monkey)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Highlights PAAS as a potential top stock for long-term investment."
+        },
+        {
+          "title": "A Look At Pan American Silver's Valuation As Earnings Jump And A US$1b Return Plan Is Announced (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Focuses on PAAS's strong Q1 performance and new shareholder return plan, boosting investor confidence."
+        },
+        {
+          "title": "Pan American Silver (TSX:PAAS) Is Up 10.1% After Strong Q1 Results and New Capital Return Plan - What's Changed (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Shares surge after impressive Q1 results and a new capital return plan, indicating market approval."
+        },
+        {
+          "title": "Pan American Silver Corp. Q1 2026 Earnings Call Summary (Moby)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Summarizes key takeaways from the earnings call, reinforcing positive sentiment."
+        },
+        {
+          "title": "Here's What Key Metrics Tell Us About Pan American Silver (PAAS) Q1 Earnings (Zacks)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Provides further analysis on PAAS's Q1 performance, highlighting positive financial indicators."
+        },
+        {
+          "title": "Pan American Silver (PAAS) Q1 Earnings Surpass Estimates (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Reports PAAS's earnings exceeding expectations, fueling investor optimism."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-10 22:21 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-05-10 22:21 EDT"
+  },
+  "SOUN": {
+    "sevenDayItems": [
+      {
+        "title": "Is SoundHound Stock a Buy Based on Its $140 Billion Total Addressable Market?",
+        "summary": "The stock price is dropping, but the long-term outlook is brighter if SoundHound keeps adding clients.",
+        "pubDate": "2026-05-10T02:50:00Z",
+        "url": "https://www.fool.com/investing/2026/05/09/is-soundhound-stock-a-buy-based-on-its-140-billion/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "SoundHound AI Q1 Earnings Call Highlights",
+        "summary": "SoundHound AI (NASDAQ:SOUN) reported first-quarter 2026 revenue of $44.2 million, up 52% from a year earlier, as management pointed to broad enterprise demand, automotive growth and continued expansion across financial services, restaurants, healthcare and technology. CEO and Co-Founder Keyvan Moha",
+        "pubDate": "2026-05-09T02:05:46Z",
+        "url": "https://www.marketbeat.com/instant-alerts/soundhound-ai-q1-earnings-call-highlights-2026-05-08/?utm_source=yahoofinance&utm_medium=yahoofinance",
+        "provider": "MarketBeat"
+      },
+      {
+        "title": "My Top 2 AI Stocks Coming off a Brutal Sell-Off for May 2026",
+        "summary": "Snowflake and SoundHound AI could recover from their recent declines.",
+        "pubDate": "2026-05-08T19:40:00Z",
+        "url": "https://www.fool.com/investing/2026/05/08/my-top-x-ai-stocks-coming-off-a-brutal-sell-off-fo/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "SoundHound AI Robotics Deal Tests Voice Platform Against Analyst Optimism",
+        "summary": "SoundHound AI (NasdaqGM:SOUN) and Richtech Robotics plan to integrate agentic voice AI into robotic systems. The partnership includes a live demonstration at the 2026 National Restaurant Association Show. The collaboration brings SoundHound AI's voice technology into physical service environments, starting with hospitality robotics. SoundHound AI, trading at $9.63, is extending its voice AI beyond digital channels and into real world service roles through this partnership. The move follows...",
+        "pubDate": "2026-05-08T18:19:46Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/soundhound-ai-robotics-deal-tests-181946271.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Why SoundHound AI Stock Is Down 11.5% Today",
+        "summary": "SoundHound AI beat Wall Street's targets but the stock dropped anyway. Here's what investors are missing.",
+        "pubDate": "2026-05-08T17:08:05Z",
+        "url": "https://www.fool.com/investing/2026/05/08/why-soundhound-ai-stock-is-down-115-today/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "SoundHound Grows 52% and Still Falls 6%",
+        "summary": "One-time vendor charges and rising costs weigh on margins",
+        "pubDate": "2026-05-08T16:02:10Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/soundhound-grows-52-still-falls-160210367.html",
+        "provider": "GuruFocus.com"
+      },
+      {
+        "title": "A Look At Richtech Robotics (RR) Valuation After SoundHound AI Partnership And Hospitality Robot Showcases",
+        "summary": "Richtech Robotics (RR) stock is back in focus after the company signed a non binding letter of intent with SoundHound AI to integrate voice AI into its service robots for upcoming hospitality focused demonstrations. See our latest analysis for Richtech Robotics. Those upcoming hospitality demos and recent high profile showcases, such as ADAM serving fans at Vegas Golden Knights games, come after a 30 day share price return of 39.58% and a 1 year total shareholder return of 30.73%, even though...",
+        "pubDate": "2026-05-08T15:22:28Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/look-richtech-robotics-rr-valuation-152228053.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "SoundHound Stock Is Down 13% Today \u2013 Is It Outperforming Other AI Stocks Like Palantir and C3.ai?",
+        "summary": "Shares of SoundHound AI (NASDAQ:SOUN) are down roughly 13% to $8.41 in early Friday trading following the company\u2019s Q1 calendar 2026 earnings report released after the bell on May 7. The stock had closed Thursday at $9.63, up 3% on the day heading into the print. The headline numbers looked strong on the surface. Revenue ... SoundHound Stock Is Down 13% Today \u2013 Is It Outperforming Other AI Stocks Like Palantir and C3.ai?",
+        "pubDate": "2026-05-08T13:58:43Z",
+        "url": "https://247wallst.com/investing/2026/05/08/soundhound-stock-is-down-13-today-is-it-outperforming-other-ai-stocks-like-palantir-and-c3-ai/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "SOUN Q1 Earnings Miss on Higher Costs, Revenue Beat, Stock Down",
+        "summary": "SounHound's Q1 loss misses estimates on acquisition and vendor true-ups, but record $44.2M revenue beat forecasts; shares fell after hours.",
+        "pubDate": "2026-05-08T13:36:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/soun-q1-earnings-miss-higher-133600740.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Wall Street Bulls Look Optimistic About SoundHound AI (SOUN): Should You Buy?",
+        "summary": "Based on the average brokerage recommendation (ABR), SoundHound AI (SOUN) should be added to one's portfolio. Wall Street analysts' overly optimistic recommendations cast doubt on the effectiveness of this highly sought-after metric. So, is the stock worth buying?",
+        "pubDate": "2026-05-08T13:30:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/wall-street-bulls-look-optimistic-133004636.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-10 22:25 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "neutral",
+      "sentimentScore": 0,
+      "summary": "Recent news on SOUN reflects mixed investor sentiment. While the company reported strong revenue growth and secured new partnerships, concerns about rising costs and margins have weighed on the stock price.",
+      "priceImpact": "Potential for short-term volatility with prices ranging within +/-5%.",
+      "keyThemes": [
+        "Revenue Growth",
+        "Margin Pressures",
+        "Strategic Partnerships"
+      ],
+      "tradingImplication": "Hold. Monitor upcoming earnings reports and analyst commentary for clarity on future profitability.",
+      "watchFor": "Q2 earnings report for further insight into cost management strategies and revenue trends.",
+      "newsItems": [
+        {
+          "title": "Is SoundHound Stock a Buy Based on Its $140 Billion Total Addressable Market? (Motley Fool)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Highlights long-term potential but acknowledges current price drop."
+        },
+        {
+          "title": "SoundHound AI Q1 Earnings Call Highlights (MarketBeat)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Reports strong revenue growth driven by enterprise demand and automotive expansion."
+        },
+        {
+          "title": "My Top 2 AI Stocks Coming off a Brutal Sell-Off for May 2026 (Motley Fool)",
+          "impact": "neutral",
+          "significance": "low",
+          "oneLineSummary": "Identifies SOUN as a potential recovery candidate alongside Snowflake."
+        },
+        {
+          "title": "SoundHound AI Robotics Deal Tests Voice Platform Against Analyst Optimism (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Partnership with Richtech Robotics expands SOUN's reach into the robotics sector."
+        },
+        {
+          "title": "Why SoundHound AI Stock Is Down 11.5% Today (Motley Fool)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "Explains investor disappointment despite beating Wall Street targets due to cost concerns."
+        },
+        {
+          "title": "SoundHound Grows 52% and Still Falls 6% (GuruFocus.com)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "Highlights the impact of one-time charges and rising costs on profitability."
+        },
+        {
+          "title": "A Look At Richtech Robotics (RR) Valuation After SoundHound AI Partnership And Hospitality Robot Showcases (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Focuses on the potential benefits of the SOUN-Richtech partnership for both companies."
+        },
+        {
+          "title": "SoundHound Stock Is Down 13% Today \u2013 Is It Outperforming Other AI Stocks Like Palantir and C3.ai? (24/7 Wall St.)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "Analyzes SOUN's stock performance compared to other AI stocks in the wake of earnings."
+        },
+        {
+          "title": "SOUN Q1 Earnings Miss on Higher Costs, Revenue Beat, Stock Down (Zacks)",
+          "impact": "negative",
+          "significance": "high",
+          "oneLineSummary": "Summarizes SOUN's Q1 earnings report: revenue beat estimates but costs exceeded expectations."
+        },
+        {
+          "title": "Wall Street Bulls Look Optimistic About SoundHound AI (SOUN): Should You Buy? (Zacks)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Highlights analysts' bullish recommendations despite concerns about SOUN's future profitability."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-10 22:26 EDT"
+  },
+  "TE": {
+    "sevenDayItems": [
+      {
+        "title": "XPLR Infrastructure (XIFR) Q1 Earnings and Revenues Surpass Estimates",
+        "summary": "XPLR Infrastructure (XIFR) delivered earnings and revenue surprises of +158.33% and +4.03%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-05-07T15:15:10Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/xplr-infrastructure-xifr-q1-earnings-151510174.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is It Too Late To Consider T1 Energy (TE) After A 308% One Year Surge?",
+        "summary": "Wondering whether T1 Energy at US$5.27 is still offering value after a big run, or if you are late to the story, starts with understanding what the recent share performance is really telling you. The stock shows very mixed returns, with a 7.8% gain over 7 days and 30.1% over 30 days, set against a 308.5% return over 1 year but declines of 32.8% year to date, 29.9% over 3 years and 47.0% over 5 years. This combination of sharp 1 year gains alongside weaker multi year returns can often reflect...",
+        "pubDate": "2026-05-07T11:23:23Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-t1-energy-te-112323126.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "SolarEdge Technologies (SEDG) Reports Q1 Loss, Beats Revenue Estimates",
+        "summary": "SolarEdge (SEDG) delivered earnings and revenue surprises of -86.96% and +2.33%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-05-06T12:05:06Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/solaredge-technologies-sedg-reports-q1-120506869.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "FTC Solar (FTCI) Reports Q1 Loss, Lags Revenue Estimates",
+        "summary": "FTC Solar (FTCI) delivered earnings and revenue surprises of -65.43% and -28.55%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-05-05T11:45:01Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/ftc-solar-ftci-reports-q1-114501152.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-11 08:35 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Recent news coverage on TE focuses on its strong performance and potential value despite a significant price surge. The article suggests investors consider factors beyond the recent run-up to make informed decisions.",
+      "priceImpact": "Positive, potentially leading to a short-term price increase of 5%-10%",
+      "keyThemes": [
+        "Strong Performance",
+        "Potential Value",
+        "Investor Sentiment"
+      ],
+      "tradingImplication": "Hold. The current news suggests continued upward momentum but caution is warranted as the article encourages further analysis before making investment decisions.",
+      "watchFor": "Upcoming earnings report from TE to confirm continued positive performance and assess investor expectations.",
+      "newsItems": [
+        {
+          "title": "Is It Too Late To Consider T1 Energy (TE) After A 308% One Year Surge?",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "The article highlights TE's impressive performance and encourages investors to analyze its current value despite the significant price increase."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-11 08:35 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-05-11 08:36 EDT"
+  },
+  "TEM": {
+    "sevenDayItems": [
+      {
+        "title": "Is Tempus AI (TEM) The Best AI Healthcare Stock to Buy?",
+        "summary": "We just covered Cathie Wood\u2019s 11 Biggest AI and Data Center Stock Picks. Tempus AI Inc. (NASDAQ:TEM) ranks #5 (see Cathie Wood\u2019s 5 Biggest AI and Data Center Stock Picks). Cathie Wood\u2019s Stake: $446,275,249 Tempus AI Inc. (NASDAQ:TEM) is an AI healthcare play in Cathie Wood\u2019s portfolio. It\u2019s a healthcare diagnostics and data platform that builds large-scale [\u2026]",
+        "pubDate": "2026-05-10T14:59:09Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/tempus-ai-tem-best-ai-145909457.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Tempus AI Expands Beyond Oncology With New Alzheimer\u2019s Blood Test Alliance",
+        "summary": "Tempus AI (NasdaqGS:TEM) and Lucent Diagnostics, a Quanterix company, are teaming up to bring an AI-enabled care pathway and blood test for Alzheimer's detection into clinical workflows. The collaboration centers on integrating the LucentAD Complete blood-based biomarker panel into Tempus's Next platform for use by neurologists. The partnership extends Tempus AI's reach beyond oncology into neurology and broader precision medicine applications. Tempus AI, trading at around $49.43 per share,...",
+        "pubDate": "2026-05-09T16:16:49Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/tempus-ai-expands-beyond-oncology-161649169.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Friday Amid Employment Data",
+        "summary": "The broad market exchange-traded fund SPDR S&P 500 ETF Trust (SPY) was up 0.6% and the actively trad",
+        "pubDate": "2026-05-08T12:53:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125303923.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Why The Dip In TEM Stock Is A Buying Window",
+        "summary": "Beneath the headline noise of a Q1 2026 beat and raised guidance, the critical insight for Tempus AI lies in a structural tug of war between an accelerating data moat and a currently elevated cost structure. The market is focusing on the 36% year over year top line growth to $348.1 million. The true alpha driver is hidden within the unit economics of the Data and Applications segment. This division is actively shifting the company from a traditional diagnostics provider to a recurring revenue he",
+        "pubDate": "2026-05-06T13:31:10Z",
+        "url": "https://www.trefis.com/articles/598465/why-the-dip-in-tem-stock-is-a-buying-window/2026-05-06",
+        "provider": "Trefis"
+      },
+      {
+        "title": "Tempus AI Q1 Earnings Call Highlights",
+        "summary": "Tempus AI (NASDAQ:TEM) reported first-quarter 2026 revenue of $348.1 million, up a little over 36% year over year, as the company posted growth across both its diagnostics and data and applications segments and raised its full-year outlook. Founder and CEO Eric Lefkofsky said diagnostics revenue ca",
+        "pubDate": "2026-05-06T03:09:11Z",
+        "url": "https://www.marketbeat.com/instant-alerts/tempus-ai-q1-earnings-call-highlights-2026-05-05/?utm_source=yahoofinance&utm_medium=yahoofinance",
+        "provider": "MarketBeat"
+      },
+      {
+        "title": "Tempus AI, Inc. Q1 2026 Earnings Call Summary",
+        "summary": "Moby summary of Tempus AI, Inc.'s Q1 2026 earnings call",
+        "pubDate": "2026-05-06T00:21:46Z",
+        "url": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-tempus-ai-inc-q1-2026-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss",
+        "provider": "Moby"
+      },
+      {
+        "title": "Tempus AI (TEM) Reports Q1 Loss, Beats Revenue Estimates",
+        "summary": "Tempus (TEM) delivered earnings and revenue surprises of +38.10% and +0.75%, respectively, for the quarter ended March 2026. Do the numbers hold clues to what lies ahead for the stock?",
+        "pubDate": "2026-05-05T21:15:05Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/tempus-ai-tem-reports-q1-211505344.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Can Nancy Pelosi\u2019s Favorite AI Stock Hope to Regain Its Momentum?",
+        "summary": "Investors are watching Tempus AI (NASDAQ:TEM) ahead of first-quarter results due after the close tomorrow. The stock burst into investor consciousness in January 2025 after Nancy Pelosi disclosed a position, ran past $100, and has since shed nearly half its value. From Pelosi Halo to Show-Me Story Pelosi\u2019s market-beating track record has turned her trades ... Can Nancy Pelosi\u2019s Favorite AI Stock Hope to Regain Its Momentum?",
+        "pubDate": "2026-05-04T18:56:13Z",
+        "url": "https://247wallst.com/investing/2026/05/04/can-nancy-pelosis-favorite-ai-stock-hope-to-regain-its-momentum/",
+        "provider": "24/7 Wall St."
+      }
+    ],
+    "sevenDayFetchedAt": "2026-05-11 08:37 EDT",
+    "sevenDayImpact": {
+      "overallSentiment": "bullish",
+      "sentimentScore": 7,
+      "summary": "Positive news surrounding Tempus AI's Q1 earnings beat and expansion into Alzheimer's diagnostics is driving optimism. Cathie Wood's investment adds further bullish sentiment.",
+      "priceImpact": "likely to see a short-term price increase of 5% - 10%",
+      "keyThemes": [
+        "Earnings Beat",
+        "AI Healthcare Expansion",
+        "Institutional Investment"
+      ],
+      "tradingImplication": "Hold or buy TEM based on positive news and earnings beat. Watch for continued institutional support and expansion into new healthcare markets.",
+      "watchFor": "Upcoming pipeline updates and partnerships in the Alzheimer's space, as well as further commentary from management on cost structure improvements.",
+      "newsItems": [
+        {
+          "title": "Is Tempus AI (TEM) The Best AI Healthcare Stock to Buy? (Insider Monkey)",
+          "impact": "positive",
+          "significance": "medium",
+          "oneLineSummary": "Cathie Wood's investment in TEM adds credibility and potentially drives further buying."
+        },
+        {
+          "title": "Tempus AI Expands Beyond Oncology With New Alzheimer\u2019s Blood Test Alliance (Simply Wall St.)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Entering the Alzheimer's market through a strategic partnership expands TEM's reach and growth potential."
+        },
+        {
+          "title": "Why The Dip In TEM Stock Is A Buying Window (Trefis)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Trefis identifies the recent dip in TEM stock as a buying opportunity based on the company's strong data moat and growth prospects."
+        },
+        {
+          "title": "Tempus AI Q1 Earnings Call Highlights (MarketBeat)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "TEM exceeded revenue expectations in Q1, showcasing strong financial performance and market acceptance."
+        },
+        {
+          "title": "Tempus AI, Inc. Q1 2026 Earnings Call Summary (Moby)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Provides a concise summary of key points from the earnings call."
+        },
+        {
+          "title": "Tempus AI (TEM) Reports Q1 Loss, Beats Revenue Estimates (Zacks)",
+          "impact": "positive",
+          "significance": "high",
+          "oneLineSummary": "Despite reporting a loss, TEM exceeded revenue estimates in Q1, indicating strong growth trajectory."
+        },
+        {
+          "title": "Can Nancy Pelosi\u2019s Favorite AI Stock Hope to Regain Its Momentum? (24/7 Wall St.)",
+          "impact": "neutral",
+          "significance": "medium",
+          "oneLineSummary": "Discusses investor sentiment and potential for stock recovery after previous momentum loss."
+        }
+      ]
+    },
+    "sevenDayImpactAt": "2026-05-11 08:37 EDT",
+    "todayItems": [],
+    "todayFetchedAt": "2026-05-11 08:38 EDT"
   }
 }

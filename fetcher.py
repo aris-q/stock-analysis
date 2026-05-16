@@ -322,12 +322,14 @@ def fetch_price_context(ticker):
         loss = (-delta.clip(upper=0)).rolling(14).mean()
         rs = gain / loss
         rsi_series = 100 - (100 / (1 + rs))
-        rsi = round(rsi_series.iloc[-1], 1) if not rsi_series.empty else None
+        _rsi_val = rsi_series.iloc[-1]
+        rsi = round(float(_rsi_val), 1) if not rsi_series.empty and not math.isnan(float(_rsi_val)) else None
 
         # 20-day and 50-day moving averages
         ma20 = round(hist['Close'].rolling(20).mean().iloc[-1], 2) if len(hist) >= 20 else None
-        ma50 = round(hist['Close'].rolling(50).mean().iloc[-1], 2) if len(hist) >= 35 else None
-
+        _ma50_val = hist['Close'].rolling(50).mean().iloc[-1]
+        ma50 = round(float(_ma50_val), 2) if not math.isnan(float(_ma50_val)) else None
+        
         # Bollinger Bands %B (20-day, 2 std)
         bb_percent = None
         try:
@@ -389,7 +391,8 @@ def fetch_price_only(ticker):
             loss = (-delta.clip(upper=0)).rolling(14).mean()
             rs = gain / loss
             rsi_series = 100 - (100 / (1 + rs))
-            rsi = round(float(rsi_series.iloc[-1]), 1) if not rsi_series.empty else None
+            _rsi_val = rsi_series.iloc[-1]
+            rsi = round(float(_rsi_val), 1) if not rsi_series.empty and not math.isnan(float(_rsi_val)) else None
         except Exception as e:
             log.warning(f"RSI calc FAIL in fetch_price_only: {ticker} | {e}")
 
@@ -556,3 +559,356 @@ def fetch_macro_data(fred_api_key, newsapi_key=None):
 
     log.info("=== Macro fetch complete ===")
     return {"indicators": indicators, "headlines": headlines}
+
+
+# ── DREAM STOCK SCANNER ───────────────────────────────────────────────────────
+
+ARK_ETFS = ["ARKK", "ARKG", "ARKW", "ARKQ", "ARKF"]
+
+def fetch_ark_holdings():
+    """Pull current ARK ETF holdings via yfinance."""
+    tickers = set()
+    for etf in ARK_ETFS:
+        try:
+            fund = yf.Ticker(etf)
+            holdings = fund.funds_data.top_holdings if hasattr(fund, 'funds_data') and fund.funds_data else None
+            if holdings is not None and not holdings.empty:
+                for sym in holdings.index[:15]:
+                    tickers.add(str(sym).upper())
+                log.info(f"ARK {etf}: {len(holdings)} holdings fetched")
+            else:
+                # Fallback: get from info
+                info = fund.info
+                log.info(f"ARK {etf}: fallback info only | {info.get('symbol','?')}")
+        except Exception as e:
+            log.warning(f"ARK {etf} FAIL: {e}")
+    log.info(f"ARK holdings total unique tickers: {len(tickers)}")
+    return list(tickers)
+
+
+def fetch_yf_growth_screener():
+    """Screen for high-growth stocks via all yfinance screeners."""
+    tickers = []
+    queries = [
+        "day_gainers",
+        "most_actives",
+        "growth_technology_stocks",
+        "undervalued_growth_stocks",
+        "aggressive_small_caps",
+        "small_cap_gainers",
+        "undervalued_large_caps",
+    ]
+    for q in queries:
+        try:
+            result = yf.screen(q)
+            quotes = result.get("quotes", [])
+            added = 0
+            for quote in quotes[:25]:
+                sym = quote.get("symbol", "")
+                if sym:
+                    tickers.append(sym)
+                    added += 1
+            log.info(f"Screener {q}: {added} tickers")
+        except Exception as e:
+            log.warning(f"Screener {q} FAIL: {e}")
+    return list(set(tickers))
+
+
+def fetch_sp500_tickers():
+    """Hardcoded S&P 500 components — updated May 2025. No API needed."""
+    sp500 = [
+        "MMM","AOS","ABT","ABBV","ACN","ADBE","AMD","AES","AFL","A","APD","ABNB","AKAM",
+        "ALB","ARE","ALGN","ALLE","LNT","ALL","GOOGL","GOOG","MO","AMZN","AMCR","AEE",
+        "AEP","AXP","AIG","AMT","AWK","AMP","AME","AMGN","APH","ADI","ANSS","AON","APA",
+        "APO","AAPL","AMAT","APTV","ACGL","ADM","ANET","AJG","AIZ","T","ATO","ADSK",
+        "ADP","AZO","AVB","AVY","AXON","BKR","BALL","BAC","BAX","BDX","BRK.B","BBY",
+        "TECH","BIO","BIIB","BLK","BX","BA","BKNG","BWA","BSX","BMY","AVGO","BR","BRO",
+        "BF.B","BLDR","CHRW","CDNS","CZR","CPT","CPB","COF","CAH","KMX","CCL","CARR",
+        "CTLT","CAT","CBOE","CBRE","CDW","CE","COR","CNC","CNP","CF","CHTR","CVX","CMG",
+        "CB","CHD","CI","CINF","CTAS","CSCO","C","CFG","CLX","CME","CMS","KO","CTSH",
+        "CL","CMCSA","CAG","COP","ED","STZ","CEG","COO","CPRT","GLW","CPAY","CTVA",
+        "CSGP","COST","CTRA","CRWD","CCI","CSX","CMI","CVS","DHR","DRI","DVA","DAY",
+        "DE","DAL","XRAY","DVN","DXCM","FANG","DLR","DFS","DG","DLTR","D","DPZ","DOV",
+        "DOW","DHI","DTE","DUK","DD","EMN","ETN","EBAY","ECL","EIX","EW","EA","ELV",
+        "LLY","EMR","ENPH","ETR","EOG","EPAM","EQT","EFX","EQIX","EQR","ESS","EL",
+        "ETSY","EG","EVRST","ES","EXC","EXPE","EXPD","EXR","XOM","FFIV","FDS","FICO",
+        "FAST","FRT","FDX","FIS","FITB","FSLR","FE","FI","FMC","F","FTNT","FTV","FOXA",
+        "FOX","BEN","FCX","GRMN","IT","GE","GEHC","GEV","GEN","GNRC","GD","GIS","GM",
+        "GPC","GILD","GS","HAL","HIG","HAS","HCA","DOC","HSIC","HSY","HES","HPE","HLT",
+        "HOLX","HD","HON","HRL","HST","HWM","HPQ","HUBB","HUM","HBAN","HII","IBM","IEX",
+        "IDXX","ITW","INCY","IR","PODD","INTC","ICE","IFF","IP","IPG","INTU","ISRG",
+        "IVZ","INVH","IQV","IRM","JBAL","JKHY","J","JBL","JNPR","JPM","JNPR","K","KVUE",
+        "KDP","KEY","KEYS","KMB","KIM","KMI","KLAC","KHC","KR","LHX","LH","LRCX","LW",
+        "LVS","LDOS","LEN","LIN","LYV","LKQ","LMT","L","LOW","LULU","LYB","MTB","MRO",
+        "MPC","MKTX","MAR","MMC","MLM","MAS","MA","MTCH","MKC","MCD","MCK","MDT","MRK",
+        "META","MET","MTD","MGM","MCHP","MU","MSFT","MAA","MRNA","MHK","MOH","TAP","MDLZ",
+        "MPWR","MNST","MCO","MS","MOS","MSI","MSCI","NDAQ","NTAP","NFLX","NEM","NWSA",
+        "NWS","NEE","NKE","NI","NDSN","NSC","NTRS","NOC","NCLH","NRG","NUE","NVDA","NVR",
+        "NXPI","ORLY","OXY","ODFL","OMC","ON","OKE","ORCL","OTIS","PCAR","PKG","PLTR",
+        "PH","PAYX","PAYC","PYPL","PNR","PEP","PFE","PCG","PM","PSX","PNW","PNC","POOL",
+        "PPG","PPL","PFG","PG","PGR","PLD","PRU","PEG","PTC","PSA","PHM","QRVO","PWR",
+        "QCOM","DGX","RL","RJF","RTX","O","REG","REGN","RF","RSG","RMD","RVTY","ROK",
+        "ROL","ROP","ROST","RCL","SPGI","CRM","SBAC","SLB","STX","SRE","NOW","SHW",
+        "SPG","SWKS","SJM","SW","SNA","SOLV","SO","LUV","SWK","SBUX","STT","STLD","STE",
+        "SYK","SMCI","SYF","SNPS","SYY","TMUS","TROW","TTWO","TPR","TRGP","TGT","TEL",
+        "TDY","TFX","TER","TSLA","TXN","TXT","TMO","TJX","TSCO","TT","TDG","TRV","TRMB",
+        "TFC","TYL","TSN","USB","UBER","UDR","ULTA","UNP","UAL","UPS","URI","UNH","UHS",
+        "VLO","VTR","VLTO","VRSN","VRSK","VZ","VRTX","VLTO","VFC","VTRS","VICI","V",
+        "VST","VMC","WRB","GWW","WAB","WBA","WMT","DIS","WBD","WM","WAT","WEC","WFC",
+        "WELL","WST","WDC","WHR","WMB","WTW","WYNN","XEL","XYL","YUM","ZBRA","ZBH","ZTS"
+    ]
+    log.info(f"S&P 500: {len(sp500)} tickers (hardcoded)")
+    return sp500
+
+
+def fetch_tsx60_tickers():
+    """Fetch TSX 60 components — hardcoded as they rarely change."""
+    tsx60 = [
+        "AEM.TO","AGI.TO","ATD.TO","BAM.TO","BCE.TO","BHC.TO","BMO.TO","BNS.TO",
+        "CAE.TO","CCL-B.TO","CCO.TO","CHP-UN.TO","CM.TO","CNQ.TO","CNR.TO","CP.TO",
+        "CSU.TO","CVE.TO","DOL.TO","DSG.TO","EMA.TO","ENB.TO","EQB.TO","FM.TO",
+        "FNV.TO","FTS.TO","GFL.TO","GIB-A.TO","GWO.TO","H.TO","IFC.TO","IMO.TO",
+        "K.TO","KXS.TO","L.TO","LSPD.TO","LUN.TO","MFC.TO","MG.TO","MRU.TO",
+        "NA.TO","NTR.TO","NVEI.TO","OVV.TO","POU.TO","POW.TO","PPL.TO","QBR-B.TO",
+        "RCI-B.TO","RY.TO","SAP.TO","SHOP.TO","SLF.TO","SNC.TO","SU.TO","T.TO",
+        "TD.TO","TECK-B.TO","TRP.TO","WCN.TO"
+    ]
+    log.info(f"TSX 60: {len(tsx60)} tickers")
+    return tsx60
+
+
+def score_dream_stock(ticker, info, hist, financials):
+    """Score a stock 0-100 on dream criteria."""
+    score = 0
+    breakdown = {}
+    flags_good = []
+    flags_warn = []
+
+    try:
+        # 1. Revenue Growth (20pts)
+        rev_growth = info.get("revenueGrowth")
+        if rev_growth is not None:
+            rev_pct = round(rev_growth * 100, 1)
+            if rev_pct >= 40:
+                score += 20
+                flags_good.append(f"Revenue +{rev_pct}% YoY")
+            elif rev_pct >= 20:
+                score += 10
+                flags_good.append(f"Revenue +{rev_pct}% YoY")
+            else:
+                flags_warn.append(f"Revenue growth weak: +{rev_pct}%")
+            breakdown["revenueGrowth"] = rev_pct
+        else:
+            flags_warn.append("Revenue growth N/A")
+            breakdown["revenueGrowth"] = None
+
+        # 2. Gross Margin (15pts)
+        gross_margin = info.get("grossMargins")
+        if gross_margin is not None:
+            gm_pct = round(gross_margin * 100, 1)
+            if gm_pct >= 60:
+                score += 15
+                flags_good.append(f"Gross margin {gm_pct}%")
+            elif gm_pct >= 40:
+                score += 8
+                flags_good.append(f"Gross margin {gm_pct}%")
+            else:
+                flags_warn.append(f"Low margin: {gm_pct}%")
+            breakdown["grossMargin"] = gm_pct
+        else:
+            breakdown["grossMargin"] = None
+
+        # 3. Momentum — RSI position (15pts)
+        rsi = None
+        bb_pct = None
+        if hist is not None and not hist.empty and len(hist) >= 15:
+            delta = hist['Close'].diff()
+            gain = delta.clip(lower=0).rolling(14).mean()
+            loss = (-delta.clip(upper=0)).rolling(14).mean()
+            rs = gain / loss
+            rsi_series = 100 - (100 / (1 + rs))
+            _rsi_val = rsi_series.iloc[-1]
+            rsi = round(float(_rsi_val), 1) if not rsi_series.empty and not math.isnan(float(_rsi_val)) else None
+        if rsi is not None:
+            if 45 <= rsi <= 65:
+                score += 15
+                flags_good.append(f"RSI {rsi} — momentum, not overextended")
+            elif 35 <= rsi < 45:
+                score += 10
+                flags_good.append(f"RSI {rsi} — building momentum")
+            elif rsi > 70:
+                score += 5
+                flags_warn.append(f"RSI {rsi} — overbought, risky entry")
+            else:
+                flags_warn.append(f"RSI {rsi} — weak momentum")
+            breakdown["rsi"] = rsi
+        else:
+            breakdown["rsi"] = None
+
+        # 4. Price trend — above MA50 + near 52w high (15pts)
+        trend_score = 0
+        week52_high = info.get("fiftyTwoWeekHigh")
+        week52_low = info.get("fiftyTwoWeekLow")
+        current_price = info.get("currentPrice") or info.get("regularMarketPrice")
+        ma50 = None
+        if hist is not None and len(hist) >= 35:
+            _ma50_val = hist['Close'].rolling(50).mean().iloc[-1]
+            ma50 = round(float(_ma50_val), 2) if not math.isnan(float(_ma50_val)) else None
+        if current_price and ma50 and current_price > ma50:
+            trend_score += 8
+            flags_good.append("Above MA50")
+        if current_price and week52_high:
+            pct_from_high = (current_price / week52_high) * 100
+            if pct_from_high >= 85:
+                trend_score += 7
+                flags_good.append(f"{round(pct_from_high,0):.0f}% of 52w high — strong trend")
+            elif pct_from_high >= 70:
+                trend_score += 3
+        score += trend_score
+        breakdown["ma50"] = ma50
+        breakdown["week52High"] = week52_high
+        breakdown["priceVs52wHigh"] = round((current_price / week52_high * 100), 1) if current_price and week52_high else None
+
+        # 5. Balance sheet — net cash + FCF (15pts)
+        total_cash = info.get("totalCash")
+        total_debt = info.get("totalDebt")
+        fcf = info.get("freeCashflow")
+        bs_score = 0
+        if total_cash and total_debt:
+            net_cash = total_cash - total_debt
+            if net_cash > 0:
+                bs_score += 8
+                flags_good.append("Net cash positive")
+            else:
+                flags_warn.append("Net debt position")
+            breakdown["netCash"] = net_cash
+        if fcf and fcf > 0:
+            bs_score += 7
+            flags_good.append("FCF positive")
+        elif fcf and fcf < 0:
+            flags_warn.append("FCF negative — burning cash")
+        score += bs_score
+        breakdown["fcf"] = fcf
+
+        # 6. Institutional ownership (10pts)
+        inst_pct = info.get("institutionPercentHeld")
+        if inst_pct is not None:
+            inst_val = round(inst_pct * 100, 1)
+            if inst_val >= 50:
+                score += 10
+                flags_good.append(f"Institutional {inst_val}%")
+            elif inst_val >= 25:
+                score += 5
+                flags_good.append(f"Institutional {inst_val}%")
+            else:
+                flags_warn.append(f"Low institutional: {inst_val}%")
+            breakdown["institutionalPct"] = inst_val
+        else:
+            breakdown["institutionalPct"] = None
+
+        # 7. Market cap — emerging leader (10pts)
+        mcap = info.get("marketCap")
+        if mcap:
+            if 500_000_000 <= mcap <= 10_000_000_000:
+                score += 10
+                flags_good.append("Emerging leader size ($500M-$10B)")
+            elif mcap < 500_000_000:
+                score += 5
+                flags_warn.append("Micro-cap — higher risk")
+            else:
+                score += 6
+        breakdown["marketCap"] = mcap
+
+        score = min(100, score)
+
+    except Exception as e:
+        log.warning(f"Score calc FAIL: {ticker} | {e}")
+
+    return score, breakdown, flags_good, flags_warn
+
+
+def fetch_dream_candidates(watchlist_tickers, gainer_tickers):
+    """Fetch and score all dream stock candidates."""
+    log.info("=== Dream Scan: fetching candidates ===")
+
+    # Gather all unique tickers from all sources
+    ark_tickers      = fetch_ark_holdings()
+    screener_tickers = fetch_yf_growth_screener()
+    sp500_tickers    = fetch_sp500_tickers()
+    tsx60_tickers    = fetch_tsx60_tickers()
+
+    all_tickers = {}
+    for t in watchlist_tickers:
+        all_tickers[t] = "Watchlist"
+    for t in gainer_tickers:
+        if t not in all_tickers:
+            all_tickers[t] = "Daily Gainer"
+    for t in ark_tickers:
+        if t not in all_tickers:
+            all_tickers[t] = "ARK ETF"
+    for t in screener_tickers:
+        if t not in all_tickers:
+            all_tickers[t] = "Screener"
+    for t in sp500_tickers:
+        if t not in all_tickers:
+            all_tickers[t] = "S&P 500"
+    for t in tsx60_tickers:
+        if t not in all_tickers:
+            all_tickers[t] = "TSX 60"
+
+    log.info(
+        f"Dream scan total candidates: {len(all_tickers)} | "
+        f"watchlist:{len(watchlist_tickers)} gainers:{len(gainer_tickers)} "
+        f"ark:{len(ark_tickers)} screener:{len(screener_tickers)} "
+        f"sp500:{len(sp500_tickers)} tsx60:{len(tsx60_tickers)}"
+    )
+
+    candidates = []
+    for ticker, source in all_tickers.items():
+        log.info(f"--- Dream scoring: {ticker} [{source}] ---")
+        try:
+            stock = yf.Ticker(ticker)
+            info = stock.info
+            if not info.get("regularMarketPrice") and not info.get("currentPrice"):
+                log.warning(f"Dream skip (no price): {ticker}")
+                continue
+            hist = stock.history(period="60d")
+
+            # Get top 3 institutional holders
+            institutions = []
+            try:
+                holders = stock.institutional_holders
+                if holders is not None and not holders.empty:
+                    for _, row in holders.head(3).iterrows():
+                        name = str(row.get("Holder", row.get("Name", "Unknown")))
+                        pct = row.get("% Out", row.get("pctHeld", None))
+                        pct_str = f"{round(float(pct)*100,1)}%" if pct is not None else ""
+                        institutions.append({"name": name, "pct": pct_str})
+            except Exception as e:
+                log.warning(f"Institutions FAIL: {ticker} | {e}")
+
+            score, breakdown, flags_good, flags_warn = score_dream_stock(ticker, info, hist, None)
+
+            candidates.append({
+                "ticker": ticker,
+                "source": source,
+                "score": score,
+                "name": info.get("shortName", ticker),
+                "sector": info.get("sector", ""),
+                "industry": info.get("industry", ""),
+                "price": info.get("currentPrice") or info.get("regularMarketPrice"),
+                "marketCap": info.get("marketCap"),
+                "breakdown": breakdown,
+                "flagsGood": flags_good,
+                "flagsWarn": flags_warn,
+                "institutions": institutions,
+                "description": (info.get("longBusinessSummary") or "")[:300],
+            })
+            log.info(f"Dream scored: {ticker} | score:{score} source:{source}")
+        except Exception as e:
+            log.error(f"Dream candidate FAIL: {ticker} | {e}")
+            continue
+
+    candidates.sort(key=lambda x: x["score"], reverse=True)
+    log.info(f"=== Dream Scan complete: {len(candidates)} scored ===")
+    return {"candidates": candidates}

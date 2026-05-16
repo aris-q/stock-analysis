@@ -7,7 +7,8 @@ except ImportError:
     FRED_API_KEY = None
     NEWSAPI_KEY  = None
     MACRO_PATH   = "output/macro.json"
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data
+DREAM_PATH = "output/dream.json"
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -75,9 +76,12 @@ def load_json(path, default):
         return default
 
 def save_json(path, data):
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        json.dump(data, f, indent=2)
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    tmp = path + ".tmp"
+    log.debug(f"[save_json] cwd:{os.getcwd()} path:{path} tmp:{tmp}")
+    with open(tmp, "w") as f:
+        json.dump(data, f, indent=2, allow_nan=False, default=lambda v: None)
+    os.replace(tmp, path)
 
 def sync_watchlist_to_analysis(existing_watchlist, watchlist):
     """Ensure all tickers in watchlist exist in analysis, never remove existing cards."""
@@ -480,9 +484,9 @@ def index():
     return render_template("index.html", watchlist=watchlist, status=fetch_status)
 
 
-@app.route("/add", methods=["POST"])
+@app.route("/add", methods=["POST", "GET"])
 def add_ticker():
-    ticker = request.form.get("ticker", "").upper().strip()
+    ticker = (request.form.get("ticker") or request.args.get("ticker") or "").upper().strip()
     if not ticker or ticker in watchlist:
         return redirect("/")
     try:
@@ -519,10 +523,23 @@ def remove_ticker(ticker):
 def view_logs():
     try:
         with open("logs/app.log", "r") as f:
-            lines = f.readlines()[-50:]
-        return "<pre>" + "".join(lines) + "</pre>"
+            lines = f.readlines()
+        count = len(lines)
+        last = lines[-500:]
+        return jsonify({"lines": [l.rstrip() for l in last], "total": count})
     except Exception as e:
-        return f"No logs yet: {e}"
+        return jsonify({"lines": [], "total": 0, "error": str(e)})
+
+@app.route("/logs/clear", methods=["POST"])
+def clear_logs():
+    try:
+        with open("logs/app.log", "w") as f:
+            f.write("")
+        log.info("Log file cleared by user")
+        return jsonify({"status": "cleared"})
+    except Exception as e:
+        log.error(f"Log clear FAIL: {e}")
+        return jsonify({"error": str(e)})
 
 @app.route("/data")
 def get_data():
@@ -734,10 +751,72 @@ def macro_ai():
         return jsonify({"error": str(e)})
 
 
+
+def run_dream_scan(triggered_by="manual"):
+    global fetch_status
+    fetch_status = {"running": True, "message": "Running Dream Stock Scan...", "operation": "dream"}
+    log.info(f"=== Dream Scan Started [{triggered_by}] ===")
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": [], "dailyGainersCDN": []})
+        watchlist_tickers = [s["ticker"] for s in existing.get("watchlist", [])]
+        us_gainers  = existing.get("dailyGainers", []) or []
+        cdn_gainers = existing.get("dailyGainersCDN", []) or []
+        gainer_tickers = [g["ticker"] for g in us_gainers + cdn_gainers if g.get("ticker")]
+        results = fetch_dream_candidates(watchlist_tickers, gainer_tickers)
+        now_ts = ts()
+        results["scannedAt"] = now_ts
+        save_json(DREAM_PATH, results)
+        fetch_status = {"running": False, "message": f"Dream scan complete: {now_ts}", "operation": None}
+        log.info(f"=== Dream Scan Complete: {now_ts} | {len(results.get('candidates',[]))} candidates ===")
+    except Exception as e:
+        log.error(f"Dream scan FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Dream scan FAIL: {e}", "operation": None}
+
+
+@app.route("/dream")
+def get_dream():
+    data = load_json(DREAM_PATH, {})
+    return jsonify(data)
+
+
+@app.route("/dream/scan", methods=["GET", "POST"])
+def dream_scan():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_dream_scan, args=("manual",), daemon=True)
+    t.start()
+    log.info("Dream scan triggered via UI")
+    return jsonify({"status": "started"})
+
+
+def _maybe_run_dream_scan():
+    import time
+    time.sleep(60)
+    if fetch_status.get("running"):
+        log.info("Dream auto-scan skipped — another operation running")
+        return
+    dream = load_json(DREAM_PATH, {})
+    scanned_at = dream.get("scannedAt")
+    if scanned_at:
+        try:
+            from datetime import datetime
+            last = datetime.strptime(scanned_at[:16], "%Y-%m-%d %H:%M")
+            diff = (datetime.now() - last).total_seconds() / 3600
+            if diff < 20:
+                log.info(f"Dream auto-scan skipped — last ran {diff:.1f}h ago")
+                return
+        except Exception:
+            pass
+    log.info("Dream auto-scan starting (stale or never run)")
+    run_dream_scan("startup")
+
+
 # Auto price refresh on startup
 _startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
 _startup_thread.start()
 log.info("=== Startup price refresh triggered ===")
+_dream_thread = threading.Thread(target=_maybe_run_dream_scan, daemon=True)
+_dream_thread.start()
 
 if __name__ == "__main__":
     app.run(debug=True, port=5050)
