@@ -743,6 +743,41 @@
 
     .dream-help-panel { display:none; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:20px 24px; margin-bottom:20px; }
     .dream-help-panel.open { display:block; }
+    /* TRADE TAB */
+    .trade-section { margin-bottom: 28px; }
+    .trade-section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+    .trade-section-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; letter-spacing:-0.3px; }
+    .trade-section-sub { font-size:11px; color:var(--muted); margin-top:2px; }
+    .trade-account-table { width:100%; border-collapse:collapse; }
+    .trade-account-table th { font-size:10px; color:var(--muted); letter-spacing:0.5px; padding:8px 12px; text-align:left; border-bottom:1px solid var(--border); text-transform:uppercase; }
+    .trade-account-table td { padding:10px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; }
+    .trade-account-table tr:hover td { background:var(--surface2); }
+    .trade-account-table tr:last-child td { border-bottom:none; }
+    .trade-summary-bar { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; background:var(--surface2); border:1px solid var(--border); border-radius:8px; margin-top:12px; }
+    .trade-balance-big { font-family:'Syne',sans-serif; font-size:22px; font-weight:800; }
+    .trade-candidate-row { display:flex; align-items:flex-start; gap:12px; padding:10px 14px; border-bottom:1px solid var(--border); cursor:pointer; transition:background 0.15s; }
+    .trade-candidate-row:hover { background:var(--surface2); }
+    .trade-candidate-row:last-child { border-bottom:none; }
+    .trade-candidate-ticker { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; min-width:80px; }
+    .trade-candidate-reason { font-size:11px; color:var(--muted); flex:1; line-height:1.5; }
+    .trade-candidate-source { font-size:10px; padding:2px 7px; border-radius:4px; background:rgba(139,92,246,0.15); color:#a78bfa; border:1px solid rgba(139,92,246,0.3); white-space:nowrap; }
+    .trade-detail-expand { background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; margin:0 14px 10px; display:none; }
+    .trade-detail-expand.open { display:block; }
+    .trade-detail-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:10px; }
+    .trade-detail-metric { background:var(--surface); border-radius:6px; padding:8px 10px; }
+    .trade-detail-metric .tdm-label { font-size:10px; color:var(--muted); margin-bottom:3px; }
+    .trade-detail-metric .tdm-value { font-size:13px; font-weight:600; }
+    .trade-recommend-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin-bottom:10px; }
+    .trade-recommend-card.buy { border-color:rgba(74,222,128,0.3); background:rgba(74,222,128,0.04); }
+    .trade-recommend-card.sell { border-color:rgba(248,113,113,0.3); background:rgba(248,113,113,0.04); }
+    .trade-action-badge { font-size:11px; font-weight:700; padding:3px 10px; border-radius:4px; margin-right:8px; }
+    .trade-action-badge.buy { background:rgba(74,222,128,0.15); color:var(--up); border:1px solid rgba(74,222,128,0.3); }
+    .trade-action-badge.sell { background:rgba(248,113,113,0.15); color:var(--down); border:1px solid rgba(248,113,113,0.3); }
+    .trade-txn-table { width:100%; border-collapse:collapse; font-size:12px; }
+    .trade-txn-table th { font-size:10px; color:var(--muted); padding:6px 10px; text-align:left; border-bottom:1px solid var(--border); text-transform:uppercase; letter-spacing:0.5px; }
+    .trade-txn-table td { padding:8px 10px; border-bottom:1px solid var(--border); }
+    .trade-txn-table tr:last-child td { border-bottom:none; }
+
     /* MACRO TAB */
     .macro-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
     .macro-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
@@ -1081,6 +1116,8 @@
   <div class="tab" onclick="showTab('recommendations', this)" data-tab="recommendations">BUY RECOMMENDATIONS</div>
   <div class="tab" onclick="showTab('admin', this)" data-tab="admin">ADMIN</div>
   <div class="tab" onclick="showTab('dream', this);loadDream();" data-tab="dream">🌟 DREAM</div>
+  <div class="tab" onclick="showTab('trade', this);loadTrade();" data-tab="trade">💹 TRADE</div>
+  <div class="tab" onclick="showTab('tradeai', this);loadTradeAI();" data-tab="tradeai">🤖 TRADEAI</div>
 </div>
 
 <div class="content">
@@ -1118,6 +1155,14 @@
 
   <div class="tab-panel" id="tab-dream">
     <div id="dreamContent"><div class="loading">Click the 🌟 DREAM tab to run your scan...</div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-trade">
+    <div id="tradeContent"><div class="loading">Click the 💹 TRADE tab to load simulation...</div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-tradeai">
+    <div id="tradeaiContent"><div class="loading">Click the 🤖 TRADEAI tab to load AI simulation...</div></div>
   </div>
 
 </div>
@@ -1509,6 +1554,12 @@ function renderWatchlist(data) {
     const rsiBadge = s.rsi14 != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + rsiBg + '">RSI ' + s.rsi14 + '</span>' : '';
     const bbBadge  = s.bbPercent != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + bbBg + '">BB% ' + s.bbPercent.toFixed(2) + '</span>' : '';
 
+    const insiderBg = s.insiderNet === 'Net Buyer' ? 'rgba(74,222,128,0.15);color:var(--up);border:1px solid rgba(74,222,128,0.3)' : s.insiderNet === 'Net Seller' ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)';
+    const insiderBadge = s.insiderNet ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + insiderBg + '">👤 ' + s.insiderNet + '</span>' : '';
+    const shortBg = s.shortFloat != null && s.shortFloat > 20 ? 'rgba(248,113,113,0.15);color:var(--down);border:1px solid rgba(248,113,113,0.3)' : 'var(--surface2);color:var(--muted);border:1px solid var(--border)';
+    const shortBadge = s.shortFloat != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:' + shortBg + '">Short ' + s.shortFloat + '%</span>' : '';
+    const instBadge = s.institutionalPct != null ? '<span style="font-size:10px;font-family:monospace;padding:2px 8px;border-radius:4px;font-weight:700;background:var(--surface2);color:var(--muted);border:1px solid var(--border)">🏦 ' + s.institutionalPct + '%</span>' : '';
+
     return `
     <div class="slim-card" onclick="showTickerTab('${s.ticker}')">
       <div class="slim-card-header">
@@ -1529,7 +1580,7 @@ function renderWatchlist(data) {
         </div>
       </div>
       <div style="display:flex;gap:8px;margin:8px 0 4px 0;flex-wrap:wrap">
-        ${rsiBadge}${bbBadge}
+        ${rsiBadge}${bbBadge}${insiderBadge}${shortBadge}${instBadge}
       </div>
       <div class="slim-actions">
         <span class="slim-fetch-ts">🕐 ${priceFetchedAt}</span>
@@ -1949,10 +2000,15 @@ function renderDream(data) {
   const scannedAt = data.scannedAt || null;
   const tsLabel = scannedAt ? '🕐 ' + scannedAt : 'Never scanned';
 
-  let html = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">'
-    + '<button onclick="runDreamScan(this)" style="font-size:12px;padding:6px 18px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer">⚡ Run Dream Scan</button>'
-    + '<button onclick="toggleDreamHelp(this)" style="font-size:12px;padding:6px 14px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer">❓ How It Works</button>'
-    + '<span id="dreamScanTs" style="font-size:11px;color:var(--muted)">' + tsLabel + '</span>'
+  let html = '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;padding:16px 20px;background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.25);border-radius:10px;">'
+    + '<div>'
+    + '<div style="font-family:\'Syne\',sans-serif;font-size:15px;font-weight:800;color:var(--warn);margin-bottom:3px">🌟 DREAM SCAN</div>'
+    + '<div id="dreamScanTs" style="font-size:11px;color:var(--muted)">' + tsLabel + '</div>'
+    + '</div>'
+    + '<div style="display:flex;gap:8px;align-items:center">'
+    + '<button onclick="toggleDreamHelp(this)" style="font-size:12px;padding:8px 14px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:6px;font-weight:700;cursor:pointer;font-family:\'DM Mono\',monospace">❓ HOW IT WORKS</button>'
+    + '<button onclick="runDreamScan(this)" style="font-size:13px;padding:9px 22px;background:var(--warn);color:#0a0a0f;border:none;border-radius:6px;font-weight:800;cursor:pointer;font-family:\'DM Mono\',monospace;letter-spacing:0.5px">⚡ RUN DREAM SCAN</button>'
+    + '</div>'
     + '</div>'
     + buildDreamHelpHtml();
 
@@ -2037,6 +2093,8 @@ function renderDream(data) {
       + '<div>' + flagsWarnHtml + '</div>'
       + '</div>'
       + (instNames ? '<div class="dream-inst" style="margin-bottom:8px">🏦 <strong>Top Institutions:</strong> ' + instNames + '</div>' : '')
+      + (c.insiderNet ? '<div style="font-size:11px;margin-bottom:6px">👤 <strong>Insider Activity (90d):</strong> <span style="color:' + (c.insiderNet === 'Net Buyer' ? 'var(--up)' : c.insiderNet === 'Net Seller' ? 'var(--down)' : 'var(--muted)') + ';font-weight:700">' + c.insiderNet + '</span>' + (c.insiderBuys90d || c.insiderSells90d ? ' · Buys: ' + (c.insiderBuys90d||0).toLocaleString() + ' · Sells: ' + (c.insiderSells90d||0).toLocaleString() + ' shares' : '') + '</div>' : '')
+      + (c.shortFloat != null ? '<div style="font-size:11px;margin-bottom:6px">📉 <strong>Short Float:</strong> <span style="color:' + (c.shortFloat > 20 ? 'var(--down)' : 'var(--muted)') + ';font-weight:700">' + c.shortFloat + '%</span>' + (c.shortFloat > 20 ? ' — high short interest' : '') + '</div>' : '')
       + (c.description ? '<div class="dream-desc">' + c.description + '</div>' : '')
       + '</div>'
       + '</td></tr>';
@@ -2515,6 +2573,20 @@ function renderAdmin(opTs) {
         <div class="admin-op-ts" style="color:var(--warn);margin-top:3px">⚠ AI Summary not included — run per ticker</div>
       </div>
       <a href="/fetch" class="btn btn-primary">RUN</a>
+    </div>
+    <div class="admin-row">
+      <div class="admin-row-left">
+        <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADE SIMULATION</div>
+        <div class="admin-op-ts">Wipes all trades, holdings, resets balance to $100,000. Irreversible.</div>
+      </div>
+      <button class="btn" style="border-color:var(--down);color:var(--down)" onclick="resetTradeSimulation(this)">RESET</button>
+    </div>
+    <div class="admin-row">
+      <div class="admin-row-left">
+        <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADEAI SIMULATION</div>
+        <div class="admin-op-ts">Wipes all AI trades, holdings, resets balance to $100,000. Irreversible.</div>
+      </div>
+      <button class="btn" style="border-color:var(--down);color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
     </div>
   </div>`;
 }
@@ -3030,6 +3102,821 @@ function showBankGuide(ticker) {
 
 loadData();
 setInterval(pollStatus, 3000);
+
+// ── TRADE SIMULATION ──────────────────────────────────────────────────────────
+
+let tradeLoaded = false;
+
+async function loadTrade(force) {
+  if (tradeLoaded && !force) return;
+  const el = document.getElementById('tradeContent');
+  el.innerHTML = '<div class="loading">Loading trade simulation...</div>';
+  try {
+    const res = await fetch('/trade');
+    const data = await res.json();
+    el.innerHTML = renderTrade(data);
+    tradeLoaded = true;
+    console.log('[Trade] loaded | balance:' + data.balance + ' holdings:' + (data.holdings||[]).length);
+  } catch(e) {
+    el.innerHTML = '<span style="color:var(--down)">Failed to load trade data.</span>';
+    console.error('[Trade] load FAIL:', e);
+  }
+}
+
+function fmt$(v) {
+  if (v == null) return '—';
+  return '$' + Number(v).toLocaleString('en-CA', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+function fmtPct(v) {
+  if (v == null) return '—';
+  return (v >= 0 ? '+' : '') + v + '%';
+}
+function fmtNum(v) {
+  if (v == null) return '—';
+  return Number(v).toLocaleString('en-CA');
+}
+
+function renderTrade(data) {
+  const holdings = data.holdings || [];
+  const transactions = data.transactions || [];
+  const identified = data.identified || [];
+  const details = data.details || {};
+  const lastRec = data.lastRecommend || null;
+  const balance = data.balance ?? 100000;
+
+  // Total P&L
+  let totalCost = 0, totalValue = 0;
+  holdings.forEach(h => {
+    totalCost += (h.purchasePrice||0) * (h.shares||0);
+    totalValue += (h.currentPrice||h.purchasePrice||0) * (h.shares||0);
+  });
+  const totalGL = totalValue - totalCost;
+  const glClass = totalGL >= 0 ? 'up' : 'down';
+
+  // Month/year options for transaction filter
+  const months = [...new Set(transactions.map(t => t.date ? t.date.slice(0,7) : null).filter(Boolean))].sort().reverse();
+  const monthOptions = months.map(m => `<option value="${m}">${m}</option>`).join('');
+
+  // Holdings table
+  const holdingsRows = holdings.length === 0
+    ? `<tr><td colspan="6" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → Recommend to start.</td></tr>`
+    : holdings.map(h => {
+        const gl = h.gainLoss;
+        const glPct = h.gainLossPct;
+        const glCls = (gl||0) >= 0 ? 'up' : 'down';
+        return `<tr>
+          <td><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">${h.ticker}</span></td>
+          <td>${h.shares}</td>
+          <td>${fmt$(h.purchasePrice)}</td>
+          <td>${fmt$(h.currentPrice)}</td>
+          <td class="${glCls}">${fmt$(gl)}</td>
+          <td class="${glCls}">${fmtPct(glPct)}</td>
+        </tr>`;
+      }).join('');
+
+  // Identified candidates list
+  const identifiedHtml = identified.length === 0
+    ? `<div style="color:var(--muted);padding:16px">No candidates yet. Click Identify.</div>`
+    : `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">` +
+      identified.map((item, i) => {
+        const d = details[item.ticker];
+        const hasDetail = !!d;
+        return `
+        <div class="trade-candidate-row" onclick="toggleTradeDetail('td-${i}')">
+          <div>
+            <div class="trade-candidate-ticker">${item.ticker}</div>
+            ${hasDetail ? `<div style="font-size:10px;color:var(--accent);margin-top:2px">● data loaded</div>` : ''}
+          </div>
+          <div class="trade-candidate-reason">${item.reason || '—'}</div>
+          <span class="trade-candidate-source">${item.source || ''}</span>
+        </div>
+        <div class="trade-detail-expand" id="td-${i}">
+          ${hasDetail ? renderTradeDetailExpand(d) : '<div style="color:var(--muted);font-size:11px">No detail fetched yet. Run Fetch Info.</div>'}
+        </div>`;
+      }).join('') + `</div>`;
+
+  // Recommendation section
+  const recHtml = lastRec
+    ? renderTradeRecommend(lastRec)
+    : `<div style="color:var(--muted);padding:16px">No recommendation yet. Complete Identify → Fetch Info first, then click Recommend.</div>`;
+
+  return `
+  <!-- ACCOUNT SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">ACCOUNT</div>
+        <div class="trade-section-sub">Current holdings & performance</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <select id="txnMonthSelect" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px">
+          <option value="">— Month —</option>
+          ${monthOptions}
+        </select>
+        <button class="btn" onclick="showTransactions()">TRANSACTIONS</button>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <table class="trade-account-table">
+        <thead><tr>
+          <th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th>
+        </tr></thead>
+        <tbody>${holdingsRows}</tbody>
+      </table>
+    </div>
+    <div class="trade-summary-bar">
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">CASH BALANCE</div>
+        <div class="trade-balance-big">${fmt$(balance)}</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">PORTFOLIO VALUE</div>
+        <div class="trade-balance-big">${fmt$(totalValue)}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">TOTAL P&L</div>
+        <div class="trade-balance-big ${glClass}">${fmt$(totalGL)}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDENTIFY SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">IDENTIFY</div>
+        <div class="trade-section-sub">Top dream candidates + current holdings · max 15 tickers${data.identifiedAt ? ' · ' + data.identifiedAt : ''}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="tradeIdentifyBtn" onclick="runTradeOp('identify', this)">IDENTIFY</button>
+        <button class="btn btn-primary" id="tradeFetchBtn" onclick="runTradeOp('fetch', this)">FETCH INFO</button>
+      </div>
+    </div>
+    ${identifiedHtml}
+  </div>
+
+  <!-- RECOMMEND SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">RECOMMEND</div>
+        <div class="trade-section-sub">Scores all candidates · suggests ≤5 buys + sells · auto-executes${lastRec ? ' · ' + lastRec.scoredAt : ''}</div>
+      </div>
+      <button class="btn btn-primary" id="tradeRecommendBtn" onclick="runTradeOp('recommend', this)">RECOMMEND</button>
+    </div>
+    ${recHtml}
+  </div>
+
+  <!-- TRANSACTIONS MODAL -->
+  <div class="modal-overlay" id="txnModal">
+    <div class="modal" style="width:720px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">TRANSACTIONS</div>
+          <div class="modal-subtitle" id="txnModalSub">All transactions</div>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('txnModal').classList.remove('visible')">✕</button>
+      </div>
+      <div id="txnModalBody"></div>
+    </div>
+  </div>
+  `;
+}
+
+function renderTradeDetailExpand(d) {
+  const metrics = [
+    ['Price', fmt$(d.price)],
+    ['RSI 14', d.rsi14 != null ? d.rsi14 : '—'],
+    ['MA50', fmt$(d.ma50)],
+    ['BB%B', d.bbPercent != null ? d.bbPercent : '—'],
+    ['1d Chg', fmtPct(d.change1d)],
+    ['7d Chg', fmtPct(d.change7d)],
+    ['30d Chg', fmtPct(d.change30d)],
+    ['Rev Growth', d.revenueGrowth != null ? d.revenueGrowth + '%' : '—'],
+    ['Gross Margin', d.grossMargin != null ? d.grossMargin + '%' : '—'],
+    ['FCF', d.fcf != null ? fmtNum(d.fcf) : '—'],
+    ['P/E', d.peRatio != null ? d.peRatio : '—'],
+    ['Fwd P/E', d.forwardPE != null ? d.forwardPE : '—'],
+    ['ROE', d.returnOnEquity != null ? d.returnOnEquity + '%' : '—'],
+    ['D/E', d.debtToEquity != null ? d.debtToEquity : '—'],
+    ['Analyst Target', fmt$(d.analystTarget)],
+    ['Upside', d.analystUpside != null ? fmtPct(d.analystUpside) : '—'],
+    ['Inst. %', d.institutionalPct != null ? d.institutionalPct + '%' : '—'],
+    ['Insider %', d.insiderPct != null ? d.insiderPct + '%' : '—'],
+    ['Short Float', d.shortFloat != null ? d.shortFloat + '%' : '—'],
+    ['Insider 90d', d.insiderNet || '—'],
+    ['Analyst Rec', d.recommendation || '—'],
+  ];
+  const grid = metrics.map(([label, val]) => `
+    <div class="trade-detail-metric">
+      <div class="tdm-label">${label}</div>
+      <div class="tdm-value">${val}</div>
+    </div>`).join('');
+  return `
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px">${d.name || ''} · ${d.sector || ''} · ${d.industry || ''}</div>
+    <div class="trade-detail-grid" style="grid-template-columns:repeat(6,1fr)">${grid}</div>
+    ${d.description ? `<div style="font-size:11px;color:var(--muted);font-style:italic;margin-top:8px;line-height:1.5">${d.description}</div>` : ''}
+  `;
+}
+
+function renderTradeRecommend(rec) {
+  const buys = rec.buys || [];
+  const sells = rec.sells || [];
+  const scored = rec.scored || [];
+
+  const buyCards = buys.length === 0
+    ? `<div style="color:var(--muted);font-size:11px">No buys executed.</div>`
+    : buys.map(b => `
+      <div class="trade-recommend-card buy">
+        <div style="display:flex;align-items:center;margin-bottom:6px">
+          <span class="trade-action-badge buy">BUY</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${b.ticker}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted)">${b.shares} shares @ ${fmt$(b.price)} · Cost: ${fmt$(b.amount)} · Balance after: ${fmt$(b.balance)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">${b.reason}</div>
+      </div>`).join('');
+
+  const sellCards = sells.length === 0
+    ? `<div style="color:var(--muted);font-size:11px">No sells executed.</div>`
+    : sells.map(s => `
+      <div class="trade-recommend-card sell">
+        <div style="display:flex;align-items:center;margin-bottom:6px">
+          <span class="trade-action-badge sell">SELL</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${s.ticker}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted)">${s.shares} shares @ ${fmt$(s.price)} · Proceeds: ${fmt$(s.amount)} · Balance after: ${fmt$(s.balance)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">${s.reason}</div>
+      </div>`).join('');
+
+  const scoreRows = scored.map((s, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td style="font-family:'Syne',sans-serif;font-weight:700">${s.ticker}</td>
+      <td>${s.dreamScore}</td>
+      <td>${s.techScore}</td>
+      <td style="font-weight:700;color:var(--accent)">${s.composite}</td>
+      <td>${s.isHeld ? '<span style="color:var(--up)">✓ held</span>' : '—'}</td>
+    </tr>`).join('');
+
+  return `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+      <div>
+        <div style="font-size:10px;letter-spacing:1px;color:var(--up);margin-bottom:10px">BUYS EXECUTED</div>
+        ${buyCards}
+      </div>
+      <div>
+        <div style="font-size:10px;letter-spacing:1px;color:var(--down);margin-bottom:10px">SELLS EXECUTED</div>
+        ${sellCards}
+      </div>
+    </div>
+    <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:10px">COMPOSITE SCORES</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <table class="trade-txn-table">
+        <thead><tr><th>#</th><th>TICKER</th><th>DREAM</th><th>TECH</th><th>COMPOSITE</th><th>STATUS</th></tr></thead>
+        <tbody>${scoreRows}</tbody>
+      </table>
+    </div>`;
+}
+
+function toggleTradeDetail(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+function showTransactions() {
+  const month = document.getElementById('txnMonthSelect').value;
+  const modal = document.getElementById('txnModal');
+  const body = document.getElementById('txnModalBody');
+  const sub = document.getElementById('txnModalSub');
+
+  fetch('/trade').then(r => r.json()).then(data => {
+    let txns = data.transactions || [];
+    if (month) {
+      txns = txns.filter(t => t.date && t.date.startsWith(month));
+      sub.textContent = 'Transactions for ' + month;
+    } else {
+      sub.textContent = 'All transactions (' + txns.length + ')';
+    }
+    txns = [...txns].reverse();
+
+    if (txns.length === 0) {
+      body.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No transactions found.</div>';
+    } else {
+      const rows = txns.map(t => {
+        const isBuy = t.action === 'BUY';
+        const cls = isBuy ? 'up' : 'down';
+        return `<tr>
+          <td>${t.date || '—'}</td>
+          <td><span class="trade-action-badge ${isBuy?'buy':'sell'}">${t.action}</span></td>
+          <td style="font-family:'Syne',sans-serif;font-weight:700">${t.ticker}</td>
+          <td>${t.shares}</td>
+          <td>${fmt$(t.price)}</td>
+          <td class="${cls}">${fmt$(t.amount)}</td>
+          <td>${fmt$(t.balance)}</td>
+        </tr>`;
+      }).join('');
+      body.innerHTML = `
+        <table class="trade-txn-table">
+          <thead><tr><th>DATE</th><th>ACTION</th><th>TICKER</th><th>SHARES</th><th>PRICE</th><th>AMOUNT</th><th>BALANCE</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+    modal.classList.add('visible');
+    console.log('[Trade] transactions modal opened | month:' + (month||'all') + ' count:' + txns.length);
+  }).catch(e => {
+    body.innerHTML = '<div style="color:var(--down)">Failed to load transactions.</div>';
+    console.error('[Trade] transactions FAIL:', e);
+  });
+}
+
+async function runTradeOp(op, btn) {
+  if (btn.disabled) return;
+  const orig = btn.textContent;
+  btn.textContent = '⏳';
+  btn.disabled = true;
+  console.log('[Trade] op started:', op);
+  try {
+    const res = await fetch('/trade/' + op, {method: 'POST'});
+    if (!res.ok) {
+      const err = await res.json();
+      console.error('[Trade] op rejected:', op, err);
+      btn.textContent = orig;
+      btn.disabled = false;
+      return;
+    }
+    // Poll until done
+    let attempts = 0;
+    const poll = setInterval(async () => {
+      attempts++;
+      try {
+        const s = await fetch('/status').then(r => r.json());
+        console.log('[Trade] poll:', op, '| running:', s.running, '| msg:', s.message);
+        if (!s.running || attempts > 120) {
+          clearInterval(poll);
+          btn.textContent = orig;
+          btn.disabled = false;
+          loadTrade(true);
+          console.log('[Trade] op complete:', op);
+        }
+      } catch(e) {
+        clearInterval(poll);
+        btn.textContent = orig;
+        btn.disabled = false;
+        console.error('[Trade] poll FAIL:', e);
+      }
+    }, 3000);
+  } catch(e) {
+    btn.textContent = orig;
+    btn.disabled = false;
+    console.error('[Trade] op FAIL:', op, e);
+  }
+}
+
+async function resetTradeSimulation(btn) {
+  if (!confirm('Reset trade simulation? This wipes all holdings, trades, and resets balance to $100,000.')) return;
+  btn.disabled = true;
+  btn.textContent = '⏳';
+  try {
+    const res = await fetch('/trade/reset', {method: 'POST'});
+    const data = await res.json();
+    console.log('[Trade] reset complete | balance:', data.balance);
+    btn.textContent = 'RESET';
+    btn.disabled = false;
+    if (tradeLoaded) loadTrade(true);
+  } catch(e) {
+    btn.textContent = 'RESET';
+    btn.disabled = false;
+    console.error('[Trade] reset FAIL:', e);
+  }
+}
+
+// ── TRADEAI SIMULATION ────────────────────────────────────────────────────────
+
+let tradeAILoaded = false;
+
+async function loadTradeAI(force) {
+  if (tradeAILoaded && !force) return;
+  const el = document.getElementById('tradeaiContent');
+  el.innerHTML = '<div class="loading">Loading TradeAI simulation...</div>';
+  try {
+    const res = await fetch('/tradeai');
+    const data = await res.json();
+    el.innerHTML = renderTradeAI(data);
+    tradeAILoaded = true;
+    console.log('[TradeAI] loaded | balance:' + data.balance + ' holdings:' + (data.holdings||[]).length + ' assessed:' + Object.keys(data.aiAssessments||{}).length);
+  } catch(e) {
+    el.innerHTML = '<span style="color:var(--down)">Failed to load TradeAI data.</span>';
+    console.error('[TradeAI] load FAIL:', e);
+  }
+}
+
+function renderTradeAI(data) {
+  const holdings = data.holdings || [];
+  const transactions = data.transactions || [];
+  const identified = data.identified || [];
+  const details = data.details || {};
+  const aiAssessments = data.aiAssessments || {};
+  const lastRec = data.lastRecommend || null;
+  const balance = data.balance ?? 100000;
+  const newsTsMap = data.newsTsMap || {};
+
+  let totalCost = 0, totalValue = 0;
+  holdings.forEach(h => {
+    totalCost += (h.purchasePrice||0) * (h.shares||0);
+    totalValue += (h.currentPrice||h.purchasePrice||0) * (h.shares||0);
+  });
+  const totalGL = totalValue - totalCost;
+  const glClass = totalGL >= 0 ? 'up' : 'down';
+
+  const months = [...new Set(transactions.map(t => t.date ? t.date.slice(0,7) : null).filter(Boolean))].sort().reverse();
+  const monthOptions = months.map(m => `<option value="${m}">${m}</option>`).join('');
+
+  const holdingsRows = holdings.length === 0
+    ? `<tr><td colspan="6" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
+    : holdings.map(h => {
+        const gl = h.gainLoss;
+        const glPct = h.gainLossPct;
+        const glCls = (gl||0) >= 0 ? 'up' : 'down';
+        return `<tr>
+          <td><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">${h.ticker}</span></td>
+          <td>${h.shares}</td>
+          <td>${fmt$(h.purchasePrice)}</td>
+          <td>${fmt$(h.currentPrice)}</td>
+          <td class="${glCls}">${fmt$(gl)}</td>
+          <td class="${glCls}">${fmtPct(glPct)}</td>
+        </tr>`;
+      }).join('');
+
+  // Signal badge helper
+  function signalBadge(sig) {
+    const colors = {
+      'Strong Buy': '#4ade80', 'Buy': '#86efac',
+      'Hold': '#fbbf24', 'Avoid': '#f87171', 'Unknown': '#6b7280'
+    };
+    const c = colors[sig] || '#6b7280';
+    return `<span style="font-size:10px;padding:2px 8px;border-radius:4px;background:${c}22;color:${c};border:1px solid ${c}44;font-weight:700">${sig||'—'}</span>`;
+  }
+
+  function trajectoryIcon(t) {
+    if (t === 'Accelerating') return '🚀';
+    if (t === 'Stable') return '➡️';
+    if (t === 'Decelerating') return '📉';
+    return '—';
+  }
+
+  const identifiedHtml = identified.length === 0
+    ? `<div style="color:var(--muted);padding:16px">No candidates yet. Click Identify.</div>`
+    : `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">` +
+      identified.map((item, i) => {
+        const d = details[item.ticker];
+        const ai = aiAssessments[item.ticker];
+        const newsTs = newsTsMap[item.ticker];
+        const hasDetail = !!d;
+        const hasAI = !!ai;
+        return `
+        <div class="trade-candidate-row" onclick="toggleTradeDetail('tai-${i}')">
+          <div style="min-width:90px">
+            <div class="trade-candidate-ticker">${item.ticker}</div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:3px">
+              ${hasDetail ? '<span style="font-size:9px;color:var(--accent)">● data</span>' : ''}
+              ${hasAI ? '<span style="font-size:9px;color:#a78bfa">● AI</span>' : ''}
+            </div>
+          </div>
+          <div style="flex:1">
+            <div class="trade-candidate-reason">${item.reason || '—'}</div>
+            ${hasAI ? `<div style="display:flex;gap:6px;align-items:center;margin-top:4px">${signalBadge(ai.buySignal)}<span style="font-size:10px;color:var(--muted)">${trajectoryIcon(ai.trajectory)} ${ai.trajectory||''} · ${ai.stage||''}</span></div>` : ''}
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
+            ${(()=>{const bkt=item.bucket||'';const bktColors={'Momentum':'#fbbf24','Reversal':'#60a5fa','SmartMoney':'#a78bfa','Account':'#4ade80','Dream':'#6b7280'};const bc=bktColors[bkt]||'#6b7280';return bkt?`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${bkt.toUpperCase()}</span>`:''})()}
+            <span class="trade-candidate-source">${item.source || ''}</span>
+            <button onclick="event.stopPropagation();refreshTickerNews('${item.ticker}', this)" style="font-size:9px;padding:2px 7px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);cursor:pointer;font-family:'DM Mono',monospace">🔄 NEWS</button>
+            <span id="news-ts-${item.ticker}" style="font-size:9px;color:var(--muted)">${newsTs ? newsTs.slice(0,16) : 'no news'}</span>
+          </div>
+        </div>
+        <div class="trade-detail-expand" id="tai-${i}">
+          ${hasDetail ? renderTradeDetailExpand(d) : '<div style="color:var(--muted);font-size:11px;margin-bottom:8px">No detail fetched yet. Run Fetch Info.</div>'}
+          ${hasAI ? renderAIAssessment(ai) : '<div style="color:var(--muted);font-size:11px">No AI analysis yet. Run AI Analyze.</div>'}
+        </div>`;
+      }).join('') + `</div>`;
+
+  const recHtml = lastRec
+    ? renderTradeAIRecommend(lastRec)
+    : `<div style="color:var(--muted);padding:16px">No recommendation yet. Complete all steps then click Recommend.</div>`;
+
+  return `
+  <!-- ACCOUNT SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">🤖 TRADEAI ACCOUNT</div>
+        <div class="trade-section-sub">AI-driven simulation · separate $100k account</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <select id="aiTxnMonthSelect" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:5px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px">
+          <option value="">— Month —</option>
+          ${monthOptions}
+        </select>
+        <button class="btn" onclick="showAITransactions()">TRANSACTIONS</button>
+      </div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+      <table class="trade-account-table">
+        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th></tr></thead>
+        <tbody>${holdingsRows}</tbody>
+      </table>
+    </div>
+    <div class="trade-summary-bar">
+      <div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">CASH BALANCE</div>
+        <div class="trade-balance-big">${fmt$(balance)}</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">PORTFOLIO VALUE</div>
+        <div class="trade-balance-big">${fmt$(totalValue)}</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">TOTAL P&L</div>
+        <div class="trade-balance-big ${glClass}">${fmt$(totalGL)}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDENTIFY SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">IDENTIFY</div>
+        <div class="trade-section-sub">Holdings + top dream scorers · max 15${data.identifiedAt ? ' · ' + data.identifiedAt : ''}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" onclick="runTradeAIOp('identify', this)">IDENTIFY</button>
+        <button class="btn btn-primary" onclick="runTradeAIOp('fetch', this)">FETCH INFO</button>
+      </div>
+    </div>
+    ${identifiedHtml}
+  </div>
+
+  <!-- AI ANALYZE SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">AI ANALYZE</div>
+        <div class="trade-section-sub">Ollama gemma2:9b · trajectory, sentiment, stage, conviction score${data.aiAnalyzedAt ? ' · ' + data.aiAnalyzedAt : ''}</div>
+      </div>
+      <button class="btn btn-primary" onclick="runTradeAIOp('analyze', this)">AI ANALYZE</button>
+    </div>
+    ${identified.length === 0 ? '<div style="color:var(--muted);padding:16px">Run Identify + Fetch Info first.</div>' :
+      '<div style="color:var(--muted);font-size:11px;padding:8px 0">Expand each ticker above to see AI assessment after analysis runs.</div>'}
+  </div>
+
+  <!-- RECOMMEND SECTION -->
+  <div class="trade-section">
+    <div class="trade-section-header">
+      <div>
+        <div class="trade-section-title">RECOMMEND</div>
+        <div class="trade-section-sub">AI-weighted score · trajectory + sentiment · auto-executes${lastRec ? ' · ' + lastRec.scoredAt : ''}</div>
+      </div>
+      <button class="btn btn-primary" onclick="runTradeAIOp('recommend', this)">RECOMMEND</button>
+    </div>
+    ${recHtml}
+  </div>
+
+  <!-- TRANSACTIONS MODAL -->
+  <div class="modal-overlay" id="aiTxnModal">
+    <div class="modal" style="width:720px">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">TRADEAI TRANSACTIONS</div>
+          <div class="modal-subtitle" id="aiTxnModalSub">All transactions</div>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('aiTxnModal').classList.remove('visible')">✕</button>
+      </div>
+      <div id="aiTxnModalBody"></div>
+    </div>
+  </div>
+  `;
+}
+
+function renderAIAssessment(ai) {
+  if (!ai) return '';
+  const sigColors = {'Strong Buy':'#4ade80','Buy':'#86efac','Hold':'#fbbf24','Avoid':'#f87171','Unknown':'#6b7280'};
+  const c = sigColors[ai.buySignal] || '#6b7280';
+  return `
+  <div style="margin-top:12px;padding:12px 14px;background:rgba(139,92,246,0.05);border:1px solid rgba(139,92,246,0.2);border-radius:8px">
+    <div style="font-size:10px;letter-spacing:1px;color:#a78bfa;margin-bottom:8px">🤖 AI ASSESSMENT</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">BUY SIGNAL</div>
+        <div class="tdm-value" style="color:${c}">${ai.buySignal||'—'}</div>
+      </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">AI SCORE</div>
+        <div class="tdm-value">${ai.aiScore != null ? ai.aiScore + '/100' : '—'}</div>
+      </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">TRAJECTORY</div>
+        <div class="tdm-value">${ai.trajectory||'—'}</div>
+      </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">STAGE</div>
+        <div class="tdm-value">${ai.stage||'—'}</div>
+      </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">SENTIMENT</div>
+        <div class="tdm-value">${ai.sentiment||'—'}</div>
+      </div>
+    </div>
+    ${ai.reasoning ? `<div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">${ai.reasoning}</div>` : ''}
+  </div>`;
+}
+
+function renderTradeAIRecommend(rec) {
+  const buys = rec.buys || [];
+  const sells = rec.sells || [];
+  const scored = rec.scored || [];
+
+  const buyCards = buys.length === 0
+    ? `<div style="color:var(--muted);font-size:11px">No buys executed.</div>`
+    : buys.map(b => `
+      <div class="trade-recommend-card buy">
+        <div style="display:flex;align-items:center;margin-bottom:6px">
+          <span class="trade-action-badge buy">BUY</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${b.ticker}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted)">${b.shares} shares @ ${fmt$(b.price)} · Cost: ${fmt$(b.amount)} · Balance after: ${fmt$(b.balance)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-style:italic">${b.reason}</div>
+      </div>`).join('');
+
+  const sellCards = sells.length === 0
+    ? `<div style="color:var(--muted);font-size:11px">No sells executed.</div>`
+    : sells.map(s => `
+      <div class="trade-recommend-card sell">
+        <div style="display:flex;align-items:center;margin-bottom:6px">
+          <span class="trade-action-badge sell">SELL</span>
+          <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${s.ticker}</span>
+        </div>
+        <div style="font-size:12px;color:var(--muted)">${s.shares} shares @ ${fmt$(s.price)} · Proceeds: ${fmt$(s.amount)} · Balance after: ${fmt$(s.balance)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:4px;font-style:italic">${s.reason}</div>
+      </div>`).join('');
+
+  const sigColors = {'Strong Buy':'#4ade80','Buy':'#86efac','Hold':'#fbbf24','Avoid':'#f87171','Unknown':'#6b7280'};
+  const scoreRows = scored.map((s, i) => {
+    const c = sigColors[s.buySignal] || '#6b7280';
+    return `<tr>
+      <td>${i+1}</td>
+      <td style="font-family:'Syne',sans-serif;font-weight:700">${s.ticker}</td>
+      <td>${s.dreamScore}</td>
+      <td>${s.aiScore != null ? s.aiScore : '—'}</td>
+      <td><span style="color:${c};font-size:10px;font-weight:700">${s.buySignal||'—'}</span></td>
+      <td>${s.trajectory||'—'}</td>
+      <td>${s.stage||'—'}</td>
+      <td style="font-weight:700;color:var(--accent)">${s.composite}</td>
+      <td>${s.isHeld ? '<span style="color:var(--up)">✓ held</span>' : '—'}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+      <div>
+        <div style="font-size:10px;letter-spacing:1px;color:var(--up);margin-bottom:10px">BUYS EXECUTED</div>
+        ${buyCards}
+      </div>
+      <div>
+        <div style="font-size:10px;letter-spacing:1px;color:var(--down);margin-bottom:10px">SELLS EXECUTED</div>
+        ${sellCards}
+      </div>
+    </div>
+    <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:10px">AI COMPOSITE SCORES</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <table class="trade-txn-table">
+        <thead><tr><th>#</th><th>TICKER</th><th>DREAM</th><th>AI</th><th>SIGNAL</th><th>TRAJECTORY</th><th>STAGE</th><th>COMPOSITE</th><th>STATUS</th></tr></thead>
+        <tbody>${scoreRows}</tbody>
+      </table>
+    </div>`;
+}
+
+async function runTradeAIOp(op, btn) {
+  if (btn.disabled) return;
+  const orig = btn.textContent;
+  btn.textContent = '⏳';
+  btn.disabled = true;
+  console.log('[TradeAI] op started:', op);
+  try {
+    const res = await fetch('/tradeai/' + op, {method: 'POST'});
+    if (!res.ok) {
+      const err = await res.json();
+      console.error('[TradeAI] op rejected:', op, err);
+      btn.textContent = orig;
+      btn.disabled = false;
+      return;
+    }
+    let attempts = 0;
+    const poll = setInterval(async () => {
+      attempts++;
+      try {
+        const s = await fetch('/status').then(r => r.json());
+        console.log('[TradeAI] poll:', op, '| running:', s.running, '| msg:', s.message);
+        if (!s.running || attempts > 180) {
+          clearInterval(poll);
+          btn.textContent = orig;
+          btn.disabled = false;
+          loadTradeAI(true);
+          console.log('[TradeAI] op complete:', op);
+        }
+      } catch(e) {
+        clearInterval(poll);
+        btn.textContent = orig;
+        btn.disabled = false;
+        console.error('[TradeAI] poll FAIL:', e);
+      }
+    }, 3000);
+  } catch(e) {
+    btn.textContent = orig;
+    btn.disabled = false;
+    console.error('[TradeAI] op FAIL:', op, e);
+  }
+}
+
+async function refreshTickerNews(ticker, btn) {
+  const orig = btn.textContent;
+  btn.textContent = '⏳';
+  btn.disabled = true;
+  console.log('[News] refresh started:', ticker);
+  try {
+    const res = await fetch('/news/refresh/' + ticker, {method: 'POST'});
+    const data = await res.json();
+    const tsEl = document.getElementById('news-ts-' + ticker);
+    if (tsEl && data.fetchedAt) tsEl.textContent = data.fetchedAt.slice(0,16);
+    console.log('[News] refresh OK:', ticker, '| count:', data.count, '| ts:', data.fetchedAt);
+  } catch(e) {
+    console.error('[News] refresh FAIL:', ticker, e);
+  }
+  btn.textContent = orig;
+  btn.disabled = false;
+}
+
+async function showAITransactions() {
+  const month = document.getElementById('aiTxnMonthSelect').value;
+  const modal = document.getElementById('aiTxnModal');
+  const body = document.getElementById('aiTxnModalBody');
+  const sub = document.getElementById('aiTxnModalSub');
+  fetch('/tradeai').then(r => r.json()).then(data => {
+    let txns = data.transactions || [];
+    if (month) {
+      txns = txns.filter(t => t.date && t.date.startsWith(month));
+      sub.textContent = 'Transactions for ' + month;
+    } else {
+      sub.textContent = 'All transactions (' + txns.length + ')';
+    }
+    txns = [...txns].reverse();
+    if (txns.length === 0) {
+      body.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No transactions found.</div>';
+    } else {
+      const rows = txns.map(t => {
+        const isBuy = t.action === 'BUY';
+        const cls = isBuy ? 'up' : 'down';
+        return `<tr>
+          <td>${t.date||'—'}</td>
+          <td><span class="trade-action-badge ${isBuy?'buy':'sell'}">${t.action}</span></td>
+          <td style="font-family:'Syne',sans-serif;font-weight:700">${t.ticker}</td>
+          <td>${t.shares}</td>
+          <td>${fmt$(t.price)}</td>
+          <td class="${cls}">${fmt$(t.amount)}</td>
+          <td>${fmt$(t.balance)}</td>
+        </tr>`;
+      }).join('');
+      body.innerHTML = `
+        <table class="trade-txn-table">
+          <thead><tr><th>DATE</th><th>ACTION</th><th>TICKER</th><th>SHARES</th><th>PRICE</th><th>AMOUNT</th><th>BALANCE</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+    modal.classList.add('visible');
+    console.log('[TradeAI] transactions modal | month:' + (month||'all') + ' count:' + txns.length);
+  }).catch(e => {
+    body.innerHTML = '<div style="color:var(--down)">Failed to load transactions.</div>';
+    console.error('[TradeAI] transactions FAIL:', e);
+  });
+}
+
+async function resetTradeAISimulation(btn) {
+  if (!confirm('Reset TradeAI simulation? Wipes all AI holdings, trades, resets balance to $100,000.')) return;
+  btn.disabled = true;
+  btn.textContent = '⏳';
+  try {
+    const res = await fetch('/tradeai/reset', {method: 'POST'});
+    const data = await res.json();
+    console.log('[TradeAI] reset complete | balance:', data.balance);
+    btn.textContent = 'RESET';
+    btn.disabled = false;
+    if (tradeAILoaded) loadTradeAI(true);
+  } catch(e) {
+    btn.textContent = 'RESET';
+    btn.disabled = false;
+    console.error('[TradeAI] reset FAIL:', e);
+  }
+}
+
   {%- endraw %}
 </script>
 

@@ -10,10 +10,10 @@
     },
     "cpi": {
       "label": "CPI (YoY)",
-      "value": 330.29,
-      "prev": 327.46,
-      "change": 3.32,
-      "date": "2026-03-01",
+      "value": 332.41,
+      "prev": 330.29,
+      "change": 3.95,
+      "date": "2026-04-01",
       "unit": "%"
     },
     "unemployment": {
@@ -34,117 +34,121 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.41,
-      "prev": 4.36,
-      "change": 0.05,
-      "date": "2026-05-07",
+      "value": 4.47,
+      "prev": 4.46,
+      "change": 0.01,
+      "date": "2026-05-14",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 3.92,
-      "prev": 3.87,
-      "change": 0.05,
-      "date": "2026-05-07",
+      "value": 4.0,
+      "prev": 3.98,
+      "change": 0.02,
+      "date": "2026-05-14",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 17.08,
-      "prev": 17.39,
-      "change": -0.31,
-      "date": "2026-05-07",
+      "value": 17.26,
+      "prev": 17.87,
+      "change": -0.61,
+      "date": "2026-05-14",
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 118.39,
-      "prev": 118.67,
-      "change": -0.28,
-      "date": "2026-05-01",
+      "value": 118.04,
+      "prev": 118.01,
+      "change": 0.03,
+      "date": "2026-05-08",
       "unit": ""
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
-      "value": 109.76,
-      "prev": 105.38,
-      "change": 4.38,
-      "date": "2026-05-04",
+      "value": 101.56,
+      "prev": 98.87,
+      "change": 2.69,
+      "date": "2026-05-11",
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7398.93,
-      "prev": 7337.11,
-      "change": 61.82,
-      "date": "2026-05-08",
+      "value": 7408.5,
+      "prev": 7501.24,
+      "change": -92.74,
+      "date": "2026-05-15",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.49,
+      "value": 0.47,
       "unit": "%",
-      "date": "2026-05-07",
+      "date": "2026-05-14",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock market today: S&P 500, Nasdaq post 6th weekly win as chip stocks rally, jobs data boosts sentiment - Yahoo Finance",
-      "source": "Yahoo Entertainment",
-      "url": "https://finance.yahoo.com/markets/stocks/live/stock-market-today-sp-500-nasdaq-post-6th-weekly-win-as-chip-stocks-rally-jobs-data-boosts-sentiment-232854301.html",
-      "publishedAt": "2026-05-08T22:23:49Z"
-    },
-    {
-      "title": "Delta employee dies on the job at Orlando International Airport, officials say - WESH",
-      "source": "WESH Orlando",
-      "url": "https://www.wesh.com/article/worker-dies-orlando-international-airport/71251692",
-      "publishedAt": "2026-05-08T21:27:00Z"
-    },
-    {
-      "title": "Tesla recalls some Cybertrucks for wheel issue and more than 200,000 other cars for camera failure - ABC News - Breaking News, Latest News and Videos",
-      "source": "Abcnews.com",
-      "url": "https://abcnews.com/Business/wireStory/tesla-recalls-cybertrucks-wheel-issue-200000-cars-camera-132792485",
-      "publishedAt": "2026-05-08T20:04:20Z"
-    },
-    {
-      "title": "White House prepares to replace FDA leader Marty Makary amid agency turmoil - The Washington Post",
-      "source": "The Washington Post",
-      "url": "https://www.washingtonpost.com/health/2026/05/08/fda-commissioner-marty-makary/",
-      "publishedAt": "2026-05-08T19:13:59Z"
-    },
-    {
-      "title": "Intel\u2019s stock achieves a never-before-seen feat as Apple enthusiasm builds - MarketWatch",
+      "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall amid inflation jitters as oil prices climb; Treasury yields are up as U.S. oil prices trade above $100 a barrel; S&P 500's tech sector under pressure - MarketWatch",
       "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/story/intels-stock-could-achieve-a-never-before-seen-feat-as-apple-enthusiasm-builds-edd94237",
-      "publishedAt": "2026-05-08T19:13:00Z"
+      "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-and-nasdaq-set-to-pull-back-as-treasury-yields-climb",
+      "publishedAt": "2026-05-15T17:31:00Z"
     },
     {
-      "title": "Claude, brought to you by Elon Musk - Business Insider",
-      "source": "Business Insider",
-      "url": "https://www.businessinsider.com/claude-elon-musk-anthropic-ai-compute-2026-5",
-      "publishedAt": "2026-05-08T18:56:09Z"
+      "title": "Honda shows off new hybrids for America as it absorbs $9 billion EV loss - Ars Technica",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/cars/2026/05/honda-shows-off-new-hybrids-for-america-as-it-absorbs-9-billion-ev-loss/",
+      "publishedAt": "2026-05-15T15:56:33Z"
     },
     {
-      "title": "Micron surges nearly 38% on week as memory chip rally goes parabolic - CNBC",
+      "title": "Trump's Financial Form Shows Purchases Of Paramount, WBD And Netflix - Deadline",
+      "source": "Deadline",
+      "url": "http://deadline.com/2026/05/trump-financial-disclsoure-paramount-warner-bros-1236906103/",
+      "publishedAt": "2026-05-15T15:51:00Z"
+    },
+    {
+      "title": "Stock Market Today: Dow Falls 400 Points Lower on Oil Price Fears \u2014 Live Updates - WSJ",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-05-15-2026",
+      "publishedAt": "2026-05-15T15:34:00Z"
+    },
+    {
+      "title": "Stephen Miran exits the Fed. How he set the stage for Kevin Warsh. - CNBC",
       "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/08/micron-surges-more-than-30percent-on-week-as-memory-chip-rally-goes-parabolic.html",
-      "publishedAt": "2026-05-08T18:25:44Z"
+      "url": "https://www.cnbc.com/2026/05/15/stephen-miran-exits-the-fed-how-he-set-the-stage-for-kevin-warsh.html",
+      "publishedAt": "2026-05-15T15:29:59Z"
     },
     {
-      "title": "Larry Ellison Accused of Promising Trump to Fire CNN Anchors - Mediaite",
-      "source": "Mediaite",
-      "url": "https://www.mediaite.com/media/news/press-freedom-groups-accuse-larry-ellison-of-promising-trump-admin-hed-fire-cnn-anchors-if-he-acquires-warner-bros/",
-      "publishedAt": "2026-05-08T18:25:00Z"
+      "title": "Bill Ackman has been quietly buying Microsoft since February, when AI fears were dragging the stock - Fortune",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/05/15/bill-ackman-microsoft-stock-openai-azure-spending/",
+      "publishedAt": "2026-05-15T15:14:00Z"
     },
     {
-      "title": "Rocket Lab Stock Jumps After Biggest-Ever Launch Contract Shocks Market - Yahoo Finance",
-      "source": "Yahoo Entertainment",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/rocket-lab-stock-jumps-biggest-182212431.html",
-      "publishedAt": "2026-05-08T18:22:12Z"
+      "title": "Chip Stocks Slide After U.S.-China Summit Ends Without Major Tech Deals - WSJ",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/tech/chip-stocks-slide-after-u-s-china-summit-ends-without-major-tech-deals-c7c757b8",
+      "publishedAt": "2026-05-15T14:33:00Z"
+    },
+    {
+      "title": "Starbucks to lay off 300 U.S. employees, shutter some regional support offices - CNBC",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/15/starbucks-to-lay-off-300-us-employees-close-some-regional-offices.html",
+      "publishedAt": "2026-05-15T13:03:00Z"
+    },
+    {
+      "title": "2 Upstate NY metros among top 100 in US for foreclosure rate in first quarter - Syracuse.com",
+      "source": "syracuse.com",
+      "url": "https://www.syracuse.com/data/2026/05/2-upstate-ny-metros-among-top-100-in-us-for-foreclosure-rate-in-first-quarter.html",
+      "publishedAt": "2026-05-15T12:30:00Z"
+    },
+    {
+      "title": "North America\u2019s largest commuter rail system faces a potential shutdown - AP News",
+      "source": "Associated Press",
+      "url": "https://apnews.com/article/lirr-new-york-commuter-rail-strike-union-eefab0d1f91470934fb89bd1809d0a94",
+      "publishedAt": "2026-05-15T11:52:00Z"
     }
   ],
-  "fetchedAt": "2026-05-09 20:29 EDT",
-  "aiSummary": "The current market environment appears bullish, driven by strong corporate earnings and positive investor sentiment. The S&P 500's six consecutive weekly gains, fueled by a rally in chip stocks and robust jobs data, suggest confidence in economic growth.  \n\nHowever, risks remain. Inflation remains stubbornly high at 330.29%, potentially prompting further interest rate hikes by the Fed, which could dampen economic expansion. The inverted yield curve (10Y-2Y) also signals potential recessionary pressures. Additionally, headline events like the Delta employee death and Tesla recalls highlight ongoing uncertainties.\n\nSectors benefiting from this environment include technology, particularly semiconductors as evidenced by Micron's surge and Intel's performance. Conversely, sectors sensitive to interest rates and inflation, such as real estate and consumer discretionary, might face headwinds.",
-  "aiSummaryAt": "2026-05-11 11:21 EDT"
+  "fetchedAt": "2026-05-16 16:54 EDT"
 }

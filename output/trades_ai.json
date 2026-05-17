@@ -1,0 +1,83 @@
+{
+  "balance": 29.91,
+  "holdings": {
+    "MU": {
+      "shares": 27,
+      "purchasePrice": 724.66,
+      "purchasedAt": "2026-05-16 22:13 EDT"
+    },
+    "BMNR": {
+      "shares": 1012,
+      "purchasePrice": 19.87,
+      "purchasedAt": "2026-05-16 22:13 EDT"
+    },
+    "GCTS": {
+      "shares": 10988,
+      "purchasePrice": 1.83,
+      "purchasedAt": "2026-05-16 22:13 EDT"
+    },
+    "VG": {
+      "shares": 1413,
+      "purchasePrice": 14.23,
+      "purchasedAt": "2026-05-16 22:13 EDT"
+    },
+    "ASTS": {
+      "shares": 240,
+      "purchasePrice": 83.67,
+      "purchasedAt": "2026-05-16 22:13 EDT"
+    }
+  },
+  "transactions": [
+    {
+      "ticker": "MU",
+      "action": "BUY",
+      "shares": 27,
+      "price": 724.66,
+      "amount": 19565.82,
+      "date": "2026-05-16 22:13 EDT",
+      "balance": 80434.18,
+      "reason": "Micron's revenue growth is explosive, indicating strong market demand for its memory and storage products.  While the stock price has cooled recently, the forward P/E ratio suggests significant future earnings potential. The company's high ROE and strong institutional ownership further support a bullish outlook. However, geopolitical risks and potential economic slowdown could pose headwinds."
+    },
+    {
+      "ticker": "BMNR",
+      "action": "BUY",
+      "shares": 1012,
+      "price": 19.87,
+      "amount": 20108.44,
+      "date": "2026-05-16 22:13 EDT",
+      "balance": 60325.74,
+      "reason": "BMNR exhibits strong growth with a staggering 627.8% revenue increase, indicating rapid expansion despite being in its early stages.  While the negative FCF and high Forward P/E suggest risk, the positive analyst sentiment and significant upside potential (87.9%) point to continued trajectory acceleration. Institutional backing further supports this bullish outlook, making it a compelling investment opportunity for those seeking high-growth potential."
+    },
+    {
+      "ticker": "GCTS",
+      "action": "BUY",
+      "shares": 10988,
+      "price": 1.83,
+      "amount": 20108.04,
+      "date": "2026-05-16 22:13 EDT",
+      "balance": 40217.7,
+      "reason": "GCTS exhibits a strong accelerating trajectory with impressive revenue growth of 287.1%. Despite negative margins and significant FCF losses, this is typical for a growth company in its early stages.  The high analyst target price and \"Strong Buy\" consensus indicate strong market confidence. However, investors should be cautious as the company's reliance on a specific sector and the need to achieve profitability remain key risks."
+    },
+    {
+      "ticker": "VG",
+      "action": "BUY",
+      "shares": 1413,
+      "price": 14.23,
+      "amount": 20106.99,
+      "date": "2026-05-16 22:13 EDT",
+      "balance": 20110.71,
+      "reason": "Venture Global is rapidly expanding its LNG production capacity, demonstrating strong revenue growth (191.7%) and a high ROE (27.5%).  While debt levels are concerning, the favorable global energy landscape and increasing demand for LNG suggest strong future potential. The low valuation relative to analyst targets and institutional ownership signal continued investor confidence."
+    },
+    {
+      "ticker": "ASTS",
+      "action": "BUY",
+      "shares": 240,
+      "price": 83.67,
+      "amount": 20080.8,
+      "date": "2026-05-16 22:13 EDT",
+      "balance": 29.91,
+      "reason": "ASTS is rapidly developing its unique space-based cellular network, which has the potential to revolutionize global connectivity. While financials are currently dominated by investment and R&D expenses, the revenue growth rate indicates strong momentum and a clear path to profitability.  Key catalysts include successful satellite deployment and partnerships with mobile operators, though regulatory hurdles and competition in the telecom sector pose risks.  The current valuation reflects uncertainty but the potential rewards for early investors are significant."
+    }
+  ],
+  "lastRecommendAt": "2026-05-16 22:13 EDT"
+}

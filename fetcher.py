@@ -912,3 +912,306 @@ def fetch_dream_candidates(watchlist_tickers, gainer_tickers):
     candidates.sort(key=lambda x: x["score"], reverse=True)
     log.info(f"=== Dream Scan complete: {len(candidates)} scored ===")
     return {"candidates": candidates}
+
+
+# ── TRADE DETAIL FETCH ────────────────────────────────────────────────────────
+
+def fetch_trade_detail(ticker):
+    """Fetch enriched detail for a trade candidate: price, technicals, key financials."""
+    try:
+        stock = yf.Ticker(ticker)
+        info = stock.info
+
+        current_price = info.get("currentPrice") or info.get("regularMarketPrice")
+        if not current_price:
+            log.warning(f"fetch_trade_detail: no price for {ticker}")
+            return None
+
+        hist = stock.history(period="60d")
+
+        # RSI 14
+        rsi = None
+        try:
+            delta = hist['Close'].diff()
+            gain = delta.clip(lower=0).rolling(14).mean()
+            loss = (-delta.clip(upper=0)).rolling(14).mean()
+            rs = gain / loss
+            rsi_series = 100 - (100 / (1 + rs))
+            _v = rsi_series.iloc[-1]
+            rsi = round(float(_v), 1) if not math.isnan(float(_v)) else None
+        except Exception as e:
+            log.warning(f"fetch_trade_detail RSI FAIL: {ticker} | {e}")
+
+        # MA50
+        ma50 = None
+        try:
+            if len(hist) >= 35:
+                _m = hist['Close'].rolling(50).mean().iloc[-1]
+                ma50 = round(float(_m), 2) if not math.isnan(float(_m)) else None
+        except Exception as e:
+            log.warning(f"fetch_trade_detail MA50 FAIL: {ticker} | {e}")
+
+        # MA20
+        ma20 = None
+        try:
+            if len(hist) >= 20:
+                ma20 = round(float(hist['Close'].rolling(20).mean().iloc[-1]), 2)
+        except Exception as e:
+            log.warning(f"fetch_trade_detail MA20 FAIL: {ticker} | {e}")
+
+        # Bollinger Band %B
+        bb_percent = None
+        try:
+            close = hist['Close']
+            bb_mid = close.rolling(20).mean()
+            bb_std = close.rolling(20).std()
+            bb_upper = bb_mid + 2 * bb_std
+            bb_lower = bb_mid - 2 * bb_std
+            band_width = bb_upper.iloc[-1] - bb_lower.iloc[-1]
+            if band_width and band_width != 0:
+                bb_percent = round(float((close.iloc[-1] - bb_lower.iloc[-1]) / band_width), 3)
+        except Exception as e:
+            log.warning(f"fetch_trade_detail BB FAIL: {ticker} | {e}")
+
+        # Price changes
+        change1d = change7d = change30d = None
+        try:
+            if len(hist) >= 2:
+                change1d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2] * 100, 2)
+            if len(hist) >= 7:
+                change7d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-7]) / hist['Close'].iloc[-7] * 100, 2)
+            if len(hist) >= 30:
+                change30d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-30]) / hist['Close'].iloc[-30] * 100, 2)
+        except Exception as e:
+            log.warning(f"fetch_trade_detail price changes FAIL: {ticker} | {e}")
+
+        # Key financials
+        revenue_growth = info.get("revenueGrowth")
+        gross_margin = info.get("grossMargins")
+        fcf = info.get("freeCashflow")
+        pe_ratio = info.get("trailingPE")
+        forward_pe = info.get("forwardPE")
+        eps = info.get("trailingEps")
+        debt_to_equity = info.get("debtToEquity")
+        return_on_equity = info.get("returnOnEquity")
+        week52_high = info.get("fiftyTwoWeekHigh")
+        week52_low = info.get("fiftyTwoWeekLow")
+        analyst_target = info.get("targetMeanPrice")
+        recommendation = info.get("recommendationKey")
+        inst_pct = info.get("heldPercentInstitutions") or info.get("institutionPercentHeld")
+        insider_pct = info.get("heldPercentInsiders")
+        short_float = info.get("shortPercentOfFloat")
+
+        upside = None
+        if analyst_target and current_price:
+            upside = round((analyst_target - current_price) / current_price * 100, 1)
+
+        price_vs_52w_high = None
+        if week52_high and current_price:
+            price_vs_52w_high = round(current_price / week52_high * 100, 1)
+
+        # Insider net activity — sum last 90d transactions
+        insider_net = None
+        insider_buys_90d = 0
+        insider_sells_90d = 0
+        try:
+            from datetime import datetime, timezone, timedelta
+            cutoff = datetime.now(timezone.utc) - timedelta(days=90)
+            it = stock.insider_transactions
+            if it is not None and not it.empty:
+                for _, row in it.iterrows():
+                    try:
+                        tx_date = row.get("startDate") or row.get("Start Date")
+                        if tx_date is None:
+                            continue
+                        if hasattr(tx_date, "tzinfo") and tx_date.tzinfo is None:
+                            tx_date = tx_date.replace(tzinfo=timezone.utc)
+                        if tx_date < cutoff:
+                            continue
+                        shares = abs(int(row.get("shares", 0) or row.get("Shares", 0) or 0))
+                        tx_text = str(row.get("text", "") or row.get("Transaction", "")).lower()
+                        if "purchase" in tx_text or "buy" in tx_text or "acquisition" in tx_text:
+                            insider_buys_90d += shares
+                        elif "sale" in tx_text or "sell" in tx_text or "disposition" in tx_text:
+                            insider_sells_90d += shares
+                    except Exception:
+                        continue
+                if insider_buys_90d > 0 or insider_sells_90d > 0:
+                    if insider_buys_90d > insider_sells_90d * 1.5:
+                        insider_net = "Net Buyer"
+                    elif insider_sells_90d > insider_buys_90d * 1.5:
+                        insider_net = "Net Seller"
+                    else:
+                        insider_net = "Neutral"
+        except Exception as e:
+            log.warning(f"fetch_trade_detail insider FAIL: {ticker} | {e}")
+
+        result = {
+            "ticker": ticker,
+            "name": info.get("shortName", ticker),
+            "sector": info.get("sector"),
+            "industry": info.get("industry"),
+            "price": current_price,
+            "marketCap": info.get("marketCap"),
+            "volume": info.get("volume"),
+            "rsi14": rsi,
+            "ma20": ma20,
+            "ma50": ma50,
+            "bbPercent": bb_percent,
+            "change1d": change1d,
+            "change7d": change7d,
+            "change30d": change30d,
+            "revenueGrowth": round(revenue_growth * 100, 1) if revenue_growth is not None else None,
+            "grossMargin": round(gross_margin * 100, 1) if gross_margin is not None else None,
+            "fcf": fcf,
+            "peRatio": round(pe_ratio, 1) if pe_ratio and not math.isnan(pe_ratio) else None,
+            "forwardPE": round(forward_pe, 1) if forward_pe and not math.isnan(forward_pe) else None,
+            "eps": eps,
+            "debtToEquity": round(debt_to_equity, 1) if debt_to_equity else None,
+            "returnOnEquity": round(return_on_equity * 100, 1) if return_on_equity else None,
+            "week52High": week52_high,
+            "week52Low": week52_low,
+            "priceVs52wHigh": price_vs_52w_high,
+            "analystTarget": analyst_target,
+            "analystUpside": upside,
+            "recommendation": recommendation,
+            "institutionalPct": round(inst_pct * 100, 1) if inst_pct else None,
+            "insiderPct": round(insider_pct * 100, 1) if insider_pct else None,
+            "shortFloat": round(short_float * 100, 1) if short_float else None,
+            "insiderNet": insider_net,
+            "insiderBuys90d": insider_buys_90d,
+            "insiderSells90d": insider_sells_90d,
+            "description": (info.get("longBusinessSummary") or "")[:400],
+        }
+
+        log.info(
+            f"fetch_trade_detail OK: {ticker} | price:{current_price} rsi:{rsi} "
+            f"ma50:{ma50} insider:{insider_net} short:{short_float} inst:{inst_pct}"
+        )
+        return result
+
+    except Exception as e:
+        log.error(f"fetch_trade_detail FAIL: {ticker} | {e}")
+        return None
+
+
+# ── TRADEAI: ON-DEMAND NEWS FETCH ─────────────────────────────────────────────
+
+def fetch_ticker_news(ticker):
+    """Fetch latest news for any ticker using same pattern as fetch_news(). Returns list of articles."""
+    return fetch_news(ticker)
+
+
+# ── TRADEAI: OLLAMA AI ANALYSIS ───────────────────────────────────────────────
+
+def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model):
+    """Send ticker data to Ollama and return AI assessment dict."""
+    import requests as req
+
+    # Build news block
+    news_block = ""
+    if news_items:
+        news_block = "\n".join([
+            f"- [{n.get('pubDate','')[:10]}] {n.get('title','')} ({n.get('provider','')})"
+            for n in news_items[:8]
+        ])
+    else:
+        news_block = "No recent news available."
+
+    # Build macro block
+    macro_block = ""
+    if macro:
+        indicators = macro.get("indicators", {})
+        macro_lines = []
+        for k, v in list(indicators.items())[:8]:
+            val = v.get("value") if isinstance(v, dict) else v
+            macro_lines.append(f"- {k}: {val}")
+        macro_block = "\n".join(macro_lines) if macro_lines else "No macro data."
+        macro_summary = macro.get("aiSummary", "")
+        if macro_summary:
+            macro_block += f"\nMacro AI Summary: {macro_summary[:400]}"
+    else:
+        macro_block = "No macro data available."
+
+    # Build financials block
+    fin_block = f"""
+Price: {detail.get('price')}
+RSI14: {detail.get('rsi14')}
+MA50: {detail.get('ma50')}
+1d Change: {detail.get('change1d')}%
+7d Change: {detail.get('change7d')}%
+30d Change: {detail.get('change30d')}%
+Revenue Growth: {detail.get('revenueGrowth')}%
+Gross Margin: {detail.get('grossMargin')}%
+FCF: {detail.get('fcf')}
+P/E: {detail.get('peRatio')}
+Forward P/E: {detail.get('forwardPE')}
+ROE: {detail.get('returnOnEquity')}%
+Debt/Equity: {detail.get('debtToEquity')}
+Analyst Target: {detail.get('analystTarget')} (Upside: {detail.get('analystUpside')}%)
+Analyst Rec: {detail.get('recommendation')}
+Institutional %: {detail.get('institutionalPct')}%
+52w High: {detail.get('week52High')} | Price vs 52w High: {detail.get('priceVs52wHigh')}%
+Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
+""".strip()
+
+    description = (detail.get("description") or "")[:300]
+
+    prompt = f"""You are a stock analyst evaluating early-stage and growth investment opportunities.
+Analyze {ticker} and provide a concise assessment. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
+
+COMPANY: {detail.get('name', ticker)} ({ticker})
+{description}
+
+FINANCIALS:
+{fin_block}
+
+RECENT NEWS (last 7 days):
+{news_block}
+
+MACRO CONTEXT:
+{macro_block}
+
+Respond in this exact format:
+STAGE: [Early-Stage / Growth / Mature / Declining]
+TRAJECTORY: [Accelerating / Stable / Decelerating]
+SENTIMENT: [Bullish / Neutral / Bearish]
+SCORE: [0-100 integer, your conviction score]
+BUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]
+REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]
+"""
+
+    try:
+        resp = req.post(
+            f"{ollama_url}/api/generate",
+            json={"model": ollama_model, "prompt": prompt, "stream": False},
+            timeout=120
+        )
+        raw = resp.json().get("response", "").strip()
+        log.info(f"[AI Analyze] {ticker} | raw response length: {len(raw)}")
+
+        # Parse structured response
+        result = {"raw": raw, "ticker": ticker}
+        for line in raw.splitlines():
+            line = line.strip()
+            if line.startswith("STAGE:"):
+                result["stage"] = line.split(":", 1)[1].strip()
+            elif line.startswith("TRAJECTORY:"):
+                result["trajectory"] = line.split(":", 1)[1].strip()
+            elif line.startswith("SENTIMENT:"):
+                result["sentiment"] = line.split(":", 1)[1].strip()
+            elif line.startswith("SCORE:"):
+                try:
+                    result["aiScore"] = int(line.split(":", 1)[1].strip())
+                except Exception:
+                    result["aiScore"] = None
+            elif line.startswith("BUY_SIGNAL:"):
+                result["buySignal"] = line.split(":", 1)[1].strip()
+            elif line.startswith("REASONING:"):
+                result["reasoning"] = line.split(":", 1)[1].strip()
+
+        return result
+
+    except Exception as e:
+        log.error(f"[AI Analyze] FAIL: {ticker} | {e}")
+        return {"ticker": ticker, "error": str(e), "aiScore": None, "buySignal": "Unknown"}

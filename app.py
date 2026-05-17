@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, jsonify
 import json, os, logging, threading
-from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH, OLLAMA_URL, OLLAMA_MODEL
 try:
     from config import FRED_API_KEY, NEWSAPI_KEY, MACRO_PATH
 except ImportError:
@@ -8,7 +8,7 @@ except ImportError:
     NEWSAPI_KEY  = None
     MACRO_PATH   = "output/macro.json"
 DREAM_PATH = "output/dream.json"
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -77,8 +77,7 @@ def load_json(path, default):
 
 def save_json(path, data):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    tmp = path + ".tmp"
-    log.debug(f"[save_json] cwd:{os.getcwd()} path:{path} tmp:{tmp}")
+    tmp = path + f".{os.getpid()}.tmp"
     with open(tmp, "w") as f:
         json.dump(data, f, indent=2, allow_nan=False, default=lambda v: None)
     os.replace(tmp, path)
@@ -550,7 +549,7 @@ def get_data():
         log.error(f"Data load FAIL: {e}")
         return jsonify({"watchlist": [], "dailyGainers": []})
     
-from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, FOLLOWUP_PATH
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, FOLLOWUP_PATH
 
 @app.route("/followup/<ticker>/<event_name>")
 def followup_plan(ticker, event_name):
@@ -811,12 +810,757 @@ def _maybe_run_dream_scan():
     run_dream_scan("startup")
 
 
+# ── TRADE SIMULATION ──────────────────────────────────────────────────────────
+
+STARTING_BALANCE = 100_000.0
+
+def load_trades():
+    default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
+    return load_json(TRADES_PATH, default)
+
+def save_trades(data):
+    save_json(TRADES_PATH, data)
+
+def run_trade_identify():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: identifying candidates...", "operation": "trade_identify"}
+    log.info("=== Trade Identify Started ===")
+    try:
+        trades = load_trades()
+        held_tickers = list(trades.get("holdings", {}).keys())
+
+        dream = load_json(DREAM_PATH, {})
+        candidates = dream.get("candidates", [])
+
+        # Top dream scorers not already in holdings
+        dream_picks = [c["ticker"] for c in candidates if c["ticker"] not in held_tickers]
+
+        # Build final list: holdings first, then dream top picks, max 15 total
+        slots_remaining = 15 - len(held_tickers)
+        selected_dream = dream_picks[:max(0, slots_remaining)]
+        final_tickers = held_tickers + selected_dream
+
+        # Build reason map from dream data
+        dream_map = {c["ticker"]: c for c in candidates}
+
+        result = []
+        for ticker in final_tickers:
+            if ticker in dream_map:
+                c = dream_map[ticker]
+                reason = f"Dream score {c['score']}/100"
+                if c.get("flagsGood"):
+                    reason += " — " + "; ".join(c["flagsGood"][:2])
+                source = c.get("source", "Dream")
+            else:
+                reason = "Current holding — evaluate for sell"
+                source = "Account"
+            result.append({"ticker": ticker, "reason": reason, "source": source})
+
+        existing = load_json(TRADE_CANDIDATES_PATH, {})
+        existing["identified"] = result
+        existing["identifiedAt"] = ts()
+        save_json(TRADE_CANDIDATES_PATH, existing)
+
+        fetch_status = {"running": False, "message": f"Trade identify done: {len(result)} tickers", "operation": None}
+        log.info(f"=== Trade Identify Complete: {len(result)} tickers ===")
+    except Exception as e:
+        log.error(f"Trade identify FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade identify FAIL: {e}", "operation": None}
+
+
+def run_trade_fetch():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: fetching detailed info...", "operation": "trade_fetch"}
+    log.info("=== Trade Fetch Started ===")
+    try:
+        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        if not identified:
+            fetch_status = {"running": False, "message": "Trade fetch: no identified tickers. Run Identify first.", "operation": None}
+            return
+
+        details = {}
+        for item in identified:
+            ticker = item["ticker"]
+            log.info(f"--- Trade fetch detail: {ticker} ---")
+            try:
+                detail = fetch_trade_detail(ticker)
+                if detail:
+                    details[ticker] = detail
+                    log.info(f"Trade fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
+            except Exception as e:
+                log.error(f"Trade fetch FAIL: {ticker} | {e}")
+
+        candidates_data["details"] = details
+        candidates_data["detailsFetchedAt"] = ts()
+        save_json(TRADE_CANDIDATES_PATH, candidates_data)
+
+        fetch_status = {"running": False, "message": f"Trade fetch done: {len(details)} tickers enriched", "operation": None}
+        log.info(f"=== Trade Fetch Complete: {len(details)} tickers ===")
+    except Exception as e:
+        log.error(f"Trade fetch runner FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade fetch FAIL: {e}", "operation": None}
+
+
+def run_trade_recommend():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: running recommendation engine...", "operation": "trade_recommend"}
+    log.info("=== Trade Recommend Started ===")
+    try:
+        trades = load_trades()
+        balance = trades.get("balance", STARTING_BALANCE)
+        holdings = trades.get("holdings", {})
+        transactions = trades.get("transactions", [])
+
+        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        dream = load_json(DREAM_PATH, {})
+        dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+        # Score each candidate
+        scored = []
+        for item in identified:
+            ticker = item["ticker"]
+            detail = details.get(ticker, {})
+            d_data = dream_map.get(ticker, {})
+            dream_score = d_data.get("score", 0)
+
+            price = detail.get("price") or d_data.get("price")
+            rsi = detail.get("rsi14")
+            ma50 = detail.get("ma50")
+            fcf = detail.get("fcf")
+            revenue_growth = detail.get("revenueGrowth")
+            gross_margin = detail.get("grossMargin")
+
+            # Composite score: 50% dream score + 50% technical signals
+            tech_score = 0
+            if rsi is not None:
+                if 40 <= rsi <= 65: tech_score += 30
+                elif rsi < 40: tech_score += 20
+                elif rsi > 70: tech_score -= 10
+            if price and ma50 and price > ma50: tech_score += 20
+            if revenue_growth and revenue_growth > 0.15: tech_score += 20
+            if gross_margin and gross_margin > 40: tech_score += 15
+            if fcf and fcf > 0: tech_score += 15
+
+            composite = round((dream_score * 0.5) + (min(100, max(0, tech_score)) * 0.5), 1)
+            is_held = ticker in holdings
+
+            scored.append({
+                "ticker": ticker,
+                "price": price,
+                "dreamScore": dream_score,
+                "techScore": tech_score,
+                "composite": composite,
+                "isHeld": is_held,
+                "reason": item.get("reason", ""),
+            })
+
+        scored.sort(key=lambda x: x["composite"], reverse=True)
+
+        # Sell logic: holdings not in top 5 composite → sell
+        top5 = [s["ticker"] for s in scored[:5]]
+        sells = []
+        for ticker, pos in list(holdings.items()):
+            if ticker not in top5:
+                price = next((s["price"] for s in scored if s["ticker"] == ticker), pos.get("purchasePrice"))
+                if price:
+                    proceeds = round(price * pos["shares"], 2)
+                    balance += proceeds
+                    sells.append({
+                        "ticker": ticker,
+                        "action": "SELL",
+                        "shares": pos["shares"],
+                        "price": price,
+                        "amount": proceeds,
+                        "date": ts(),
+                        "balance": round(balance, 2),
+                        "reason": "Outside top 5 composite score",
+                    })
+                    transactions.append(sells[-1])
+                    del holdings[ticker]
+                    log.info(f"Trade SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} balance:{balance}")
+
+        # Buy logic: top 5, not already held, budget = balance / slots available
+        buys = []
+        held_count = len(holdings)
+        max_slots = 5
+        for s in scored[:5]:
+            ticker = s["ticker"]
+            if ticker in holdings:
+                continue
+            if held_count >= max_slots:
+                break
+            price = s.get("price")
+            if not price or price <= 0:
+                log.warning(f"Trade BUY skip (no price): {ticker}")
+                continue
+            slots_left = max_slots - held_count
+            budget_per_slot = round(balance / max(1, slots_left), 2)
+            if budget_per_slot < price:
+                log.warning(f"Trade BUY skip (insufficient funds): {ticker} | budget:{budget_per_slot} price:{price}")
+                continue
+            shares = int(budget_per_slot // price)
+            if shares < 1:
+                continue
+            cost = round(shares * price, 2)
+            balance -= cost
+            holdings[ticker] = {
+                "shares": shares,
+                "purchasePrice": price,
+                "purchasedAt": ts(),
+            }
+            buys.append({
+                "ticker": ticker,
+                "action": "BUY",
+                "shares": shares,
+                "price": price,
+                "amount": cost,
+                "date": ts(),
+                "balance": round(balance, 2),
+                "reason": s.get("reason", ""),
+            })
+            transactions.append(buys[-1])
+            held_count += 1
+            log.info(f"Trade BUY: {ticker} | shares:{shares} price:{price} cost:{cost} balance:{balance}")
+
+        trades["balance"] = round(balance, 2)
+        trades["holdings"] = holdings
+        trades["transactions"] = transactions
+        trades["lastRecommendAt"] = ts()
+        save_trades(trades)
+
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
+        save_json(TRADE_CANDIDATES_PATH, candidates_data)
+
+        fetch_status = {"running": False, "message": f"Trade recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
+        log.info(f"=== Trade Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
+    except Exception as e:
+        log.error(f"Trade recommend FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade recommend FAIL: {e}", "operation": None}
+
+
+@app.route("/trade")
+def get_trade():
+    trades = load_trades()
+    candidates = load_json(TRADE_CANDIDATES_PATH, {})
+    dream = load_json(DREAM_PATH, {})
+    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+    # Enrich holdings with current price from candidates details
+    details = candidates.get("details", {})
+    holdings_out = []
+    for ticker, pos in trades.get("holdings", {}).items():
+        detail = details.get(ticker, {})
+        d_data = dream_map.get(ticker, {})
+        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        purchase_price = pos.get("purchasePrice", 0)
+        shares = pos.get("shares", 0)
+        gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
+        gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
+        holdings_out.append({
+            "ticker": ticker,
+            "shares": shares,
+            "purchasePrice": purchase_price,
+            "currentPrice": current_price,
+            "gainLoss": gain_loss,
+            "gainLossPct": gain_loss_pct,
+            "purchasedAt": pos.get("purchasedAt"),
+        })
+
+    return jsonify({
+        "balance": trades.get("balance", STARTING_BALANCE),
+        "holdings": holdings_out,
+        "transactions": trades.get("transactions", []),
+        "identified": candidates.get("identified", []),
+        "details": details,
+        "lastRecommend": candidates.get("lastRecommend"),
+        "identifiedAt": candidates.get("identifiedAt"),
+        "detailsFetchedAt": candidates.get("detailsFetchedAt"),
+    })
+
+
+@app.route("/trade/identify", methods=["POST"])
+def trade_identify():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_identify, daemon=True)
+    t.start()
+    log.info("Trade identify triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/fetch", methods=["POST"])
+def trade_fetch():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_fetch, daemon=True)
+    t.start()
+    log.info("Trade fetch triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/recommend", methods=["POST"])
+def trade_recommend():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_recommend, daemon=True)
+    t.start()
+    log.info("Trade recommend triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/reset", methods=["POST"])
+def trade_reset():
+    try:
+        save_json(TRADES_PATH, {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []})
+        save_json(TRADE_CANDIDATES_PATH, {})
+        log.info("Trade simulation reset to $100,000")
+        return jsonify({"status": "reset", "balance": STARTING_BALANCE})
+    except Exception as e:
+        log.error(f"Trade reset FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+
+
+# ── TRADEAI SIMULATION ────────────────────────────────────────────────────────
+
+def load_trades_ai():
+    default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
+    return load_json(TRADES_AI_PATH, default)
+
+def save_trades_ai(data):
+    save_json(TRADES_AI_PATH, data)
+
+
+def run_tradeai_identify():
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: identifying candidates (3-bucket)...", "operation": "tradeai_identify"}
+    log.info("=== TradeAI Identify Started (3-bucket) ===")
+    try:
+        trades = load_trades_ai()
+        held_tickers = list(trades.get("holdings", {}).keys())
+        dream = load_json(DREAM_PATH, {})
+        candidates = dream.get("candidates", [])
+        seen = set(held_tickers)
+        result = []
+
+        # Helper to safely get breakdown field
+        def bd(c, key):
+            return (c.get("breakdown") or {}).get(key)
+
+        # Always include current holdings first
+        for ticker in held_tickers:
+            result.append({"ticker": ticker, "reason": "Current holding — evaluate for sell", "source": "Account", "bucket": "Account"})
+
+        # ── BUCKET 1: MOMENTUM (5 slots) ──────────────────────────────────────
+        # RSI 45-70 (trending up, not exhausted) + price above MA50
+        # Fast signal: money already moving, confirm with trend
+        momentum_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "rsi") is not None
+            and 45 <= bd(c, "rsi") <= 70
+            and bd(c, "aboveMa50") is True
+        ]
+        # Fall back to just RSI range if aboveMa50 not available
+        if not momentum_pool:
+            momentum_pool = [
+                c for c in candidates
+                if c["ticker"] not in seen
+                and bd(c, "rsi") is not None
+                and 45 <= bd(c, "rsi") <= 70
+            ]
+        momentum_pool.sort(key=lambda c: bd(c, "rsi") or 0, reverse=True)
+        for c in momentum_pool[:5]:
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rsi_val = bd(c, "rsi")
+            reason = f"Momentum: RSI {rsi_val} — trending, not overextended"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Momentum"})
+        log.info(f"[TradeAI Identify] Bucket 1 Momentum: {[r['ticker'] for r in result if r.get('bucket')=='Momentum']}")
+
+        # ── BUCKET 2: REVERSAL (5 slots) ──────────────────────────────────────
+        # RSI < 40 (oversold) + dream score 20-60 (not trash, not already priced in)
+        # Goal: catch accumulation before it shows — early-stage signal
+        reversal_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "rsi") is not None
+            and bd(c, "rsi") < 40
+            and 20 <= c.get("score", 0) <= 60
+        ]
+        reversal_pool.sort(key=lambda c: bd(c, "rsi") or 99)
+        for c in reversal_pool[:5]:
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rsi_val = bd(c, "rsi")
+            score = c.get("score", "?")
+            reason = f"Reversal: RSI {rsi_val} oversold, dream score {score} — early accumulation signal"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Reversal"})
+        log.info(f"[TradeAI Identify] Bucket 2 Reversal: {[r['ticker'] for r in result if r.get('bucket')=='Reversal']}")
+
+        # ── BUCKET 3: SMART MONEY (5 slots) ───────────────────────────────────
+        # High gross margin + revenue growth + score below top tier
+        # Dream score 35-70: fundamentally strong but not yet consensus buy
+        smart_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "grossMargin") is not None
+            and bd(c, "grossMargin") >= 40
+            and bd(c, "revenueGrowth") is not None
+            and bd(c, "revenueGrowth") >= 15
+            and 35 <= c.get("score", 0) <= 75
+        ]
+        # Sort by revenue growth — accelerating fundamentals
+        smart_pool.sort(key=lambda c: bd(c, "revenueGrowth") or 0, reverse=True)
+        for c in smart_pool[:5]:
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rev = bd(c, "revenueGrowth")
+            gm = bd(c, "grossMargin")
+            reason = f"Smart Money: rev growth {rev}%, margin {gm}% — strong fundamentals, not yet consensus"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "SmartMoney"})
+        log.info(f"[TradeAI Identify] Bucket 3 SmartMoney: {[r['ticker'] for r in result if r.get('bucket')=='SmartMoney']}")
+
+        # ── FILLER: top dream scorers if any bucket came up short ─────────────
+        if len(result) < 15:
+            filler_pool = [c for c in candidates if c["ticker"] not in seen]
+            filler_pool.sort(key=lambda c: c.get("score", 0), reverse=True)
+            for c in filler_pool:
+                if len(result) >= 15:
+                    break
+                ticker = c["ticker"]
+                seen.add(ticker)
+                reason = f"Dream score {c['score']}/100 (filler)"
+                result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Dream"})
+            log.info(f"[TradeAI Identify] Filler added: {len(result)} total")
+
+        existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        existing["identified"] = result
+        existing["identifiedAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, existing)
+        buckets = {}
+        for r in result:
+            b = r.get("bucket", "Dream")
+            buckets[b] = buckets.get(b, 0) + 1
+        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(result)} tickers | {buckets}", "operation": None}
+        log.info(f"=== TradeAI Identify Complete: {len(result)} tickers | buckets:{buckets} ===")
+    except Exception as e:
+        log.error(f"TradeAI identify FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI identify FAIL: {e}", "operation": None}
+
+
+def run_tradeai_fetch():
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: fetching detailed info...", "operation": "tradeai_fetch"}
+    log.info("=== TradeAI Fetch Started ===")
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        if not identified:
+            fetch_status = {"running": False, "message": "TradeAI fetch: no identified tickers. Run Identify first.", "operation": None}
+            return
+        details = {}
+        for item in identified:
+            ticker = item["ticker"]
+            log.info(f"--- TradeAI fetch detail: {ticker} ---")
+            try:
+                detail = fetch_trade_detail(ticker)
+                if detail:
+                    details[ticker] = detail
+                    log.info(f"TradeAI fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
+            except Exception as e:
+                log.error(f"TradeAI fetch FAIL: {ticker} | {e}")
+        candidates_data["details"] = details
+        candidates_data["detailsFetchedAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+        fetch_status = {"running": False, "message": f"TradeAI fetch done: {len(details)} tickers enriched", "operation": None}
+        log.info(f"=== TradeAI Fetch Complete: {len(details)} tickers ===")
+    except Exception as e:
+        log.error(f"TradeAI fetch runner FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI fetch FAIL: {e}", "operation": None}
+
+
+def run_tradeai_analyze():
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: running AI analysis...", "operation": "tradeai_analyze"}
+    log.info("=== TradeAI Analyze Started ===")
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        news_db = load_json(NEWS_PATH, {})
+        macro = load_json(MACRO_PATH, {}) if MACRO_PATH else {}
+
+        if not identified:
+            fetch_status = {"running": False, "message": "TradeAI analyze: run Identify + Fetch Info first.", "operation": None}
+            return
+
+        ai_assessments = {}
+        for item in identified:
+            ticker = item["ticker"]
+            detail = details.get(ticker)
+            if not detail:
+                log.warning(f"TradeAI analyze skip (no detail): {ticker}")
+                continue
+            news_items = news_db.get(ticker, {}).get("articles", [])
+            log.info(f"--- TradeAI analyze: {ticker} | news:{len(news_items)} articles ---")
+            assessment = fetch_ai_analyze(ticker, detail, news_items, macro, OLLAMA_URL, OLLAMA_MODEL)
+            ai_assessments[ticker] = assessment
+            log.info(f"TradeAI analyze OK: {ticker} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
+
+        candidates_data["aiAssessments"] = ai_assessments
+        candidates_data["aiAnalyzedAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+        fetch_status = {"running": False, "message": f"TradeAI analyze done: {len(ai_assessments)} assessed", "operation": None}
+        log.info(f"=== TradeAI Analyze Complete: {len(ai_assessments)} tickers ===")
+    except Exception as e:
+        log.error(f"TradeAI analyze FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI analyze FAIL: {e}", "operation": None}
+
+
+def run_tradeai_recommend():
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: running AI recommendation...", "operation": "tradeai_recommend"}
+    log.info("=== TradeAI Recommend Started ===")
+    try:
+        trades = load_trades_ai()
+        balance = trades.get("balance", STARTING_BALANCE)
+        holdings = trades.get("holdings", {})
+        transactions = trades.get("transactions", [])
+
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        ai_assessments = candidates_data.get("aiAssessments", {})
+        dream = load_json(DREAM_PATH, {})
+        dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+        BUY_SIGNALS = {"Strong Buy": 100, "Buy": 75, "Hold": 40, "Avoid": 0, "Unknown": 20}
+
+        scored = []
+        for item in identified:
+            ticker = item["ticker"]
+            detail = details.get(ticker, {})
+            ai = ai_assessments.get(ticker, {})
+            d_data = dream_map.get(ticker, {})
+            dream_score = d_data.get("score", 0)
+            price = detail.get("price") or d_data.get("price")
+
+            ai_score = ai.get("aiScore") or 0
+            signal_score = BUY_SIGNALS.get(ai.get("buySignal", "Unknown"), 20)
+            trajectory_bonus = 15 if ai.get("trajectory") == "Accelerating" else 0
+            stage_bonus = 10 if ai.get("stage") == "Early-Stage" else (5 if ai.get("stage") == "Growth" else 0)
+
+            composite = round((dream_score * 0.25) + (ai_score * 0.40) + (signal_score * 0.25) + trajectory_bonus + stage_bonus, 1)
+            composite = min(100, composite)
+
+            scored.append({
+                "ticker": ticker,
+                "price": price,
+                "dreamScore": dream_score,
+                "aiScore": ai_score,
+                "buySignal": ai.get("buySignal", "Unknown"),
+                "trajectory": ai.get("trajectory", "—"),
+                "stage": ai.get("stage", "—"),
+                "sentiment": ai.get("sentiment", "—"),
+                "reasoning": ai.get("reasoning", ""),
+                "composite": composite,
+                "isHeld": ticker in holdings,
+            })
+
+        scored.sort(key=lambda x: x["composite"], reverse=True)
+        top5 = [s["ticker"] for s in scored[:5]]
+
+        sells = []
+        for ticker, pos in list(holdings.items()):
+            if ticker not in top5:
+                price = next((s["price"] for s in scored if s["ticker"] == ticker), pos.get("purchasePrice"))
+                if price:
+                    proceeds = round(price * pos["shares"], 2)
+                    balance += proceeds
+                    ai_reason = ai_assessments.get(ticker, {}).get("reasoning", "Outside top 5 AI composite score")
+                    sells.append({
+                        "ticker": ticker, "action": "SELL", "shares": pos["shares"],
+                        "price": price, "amount": proceeds, "date": ts(),
+                        "balance": round(balance, 2), "reason": ai_reason,
+                    })
+                    transactions.append(sells[-1])
+                    del holdings[ticker]
+                    log.info(f"TradeAI SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds}")
+
+        buys = []
+        held_count = len(holdings)
+        max_slots = 5
+        for s in scored[:5]:
+            ticker = s["ticker"]
+            if ticker in holdings:
+                continue
+            if held_count >= max_slots:
+                break
+            if s.get("buySignal") == "Avoid":
+                log.info(f"TradeAI BUY skip (AI says Avoid): {ticker}")
+                continue
+            price = s.get("price")
+            if not price or price <= 0:
+                log.warning(f"TradeAI BUY skip (no price): {ticker}")
+                continue
+            slots_left = max_slots - held_count
+            budget_per_slot = round(balance / max(1, slots_left), 2)
+            if budget_per_slot < price:
+                log.warning(f"TradeAI BUY skip (insufficient funds): {ticker}")
+                continue
+            shares = int(budget_per_slot // price)
+            if shares < 1:
+                continue
+            cost = round(shares * price, 2)
+            balance -= cost
+            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts()}
+            buys.append({
+                "ticker": ticker, "action": "BUY", "shares": shares,
+                "price": price, "amount": cost, "date": ts(),
+                "balance": round(balance, 2), "reason": s.get("reasoning", ""),
+            })
+            transactions.append(buys[-1])
+            held_count += 1
+            log.info(f"TradeAI BUY: {ticker} | shares:{shares} price:{price} cost:{cost} signal:{s.get('buySignal')}")
+
+        trades["balance"] = round(balance, 2)
+        trades["holdings"] = holdings
+        trades["transactions"] = transactions
+        trades["lastRecommendAt"] = ts()
+        save_trades_ai(trades)
+
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+
+        fetch_status = {"running": False, "message": f"TradeAI recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
+        log.info(f"=== TradeAI Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
+    except Exception as e:
+        log.error(f"TradeAI recommend FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI recommend FAIL: {e}", "operation": None}
+
+
+@app.route("/tradeai")
+def get_tradeai():
+    trades = load_trades_ai()
+    candidates = load_json(TRADE_AI_CANDIDATES_PATH, {})
+    dream = load_json(DREAM_PATH, {})
+    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+    details = candidates.get("details", {})
+    news_db = load_json(NEWS_PATH, {})
+
+    holdings_out = []
+    for ticker, pos in trades.get("holdings", {}).items():
+        detail = details.get(ticker, {})
+        d_data = dream_map.get(ticker, {})
+        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        purchase_price = pos.get("purchasePrice", 0)
+        shares = pos.get("shares", 0)
+        gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
+        gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
+        holdings_out.append({
+            "ticker": ticker, "shares": shares,
+            "purchasePrice": purchase_price, "currentPrice": current_price,
+            "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
+            "purchasedAt": pos.get("purchasedAt"),
+        })
+
+    # Build news timestamp map for all identified tickers
+    identified = candidates.get("identified", [])
+    news_ts_map = {}
+    for item in identified:
+        ticker = item["ticker"]
+        entry = news_db.get(ticker, {})
+        news_ts_map[ticker] = entry.get("fetchedAt") or entry.get("updatedAt") or None
+
+    return jsonify({
+        "balance": trades.get("balance", STARTING_BALANCE),
+        "holdings": holdings_out,
+        "transactions": trades.get("transactions", []),
+        "identified": identified,
+        "details": details,
+        "aiAssessments": candidates.get("aiAssessments", {}),
+        "lastRecommend": candidates.get("lastRecommend"),
+        "identifiedAt": candidates.get("identifiedAt"),
+        "detailsFetchedAt": candidates.get("detailsFetchedAt"),
+        "aiAnalyzedAt": candidates.get("aiAnalyzedAt"),
+        "newsTsMap": news_ts_map,
+    })
+
+
+@app.route("/tradeai/identify", methods=["POST"])
+def tradeai_identify():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_identify, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/fetch", methods=["POST"])
+def tradeai_fetch():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_fetch, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/analyze", methods=["POST"])
+def tradeai_analyze():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_analyze, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/recommend", methods=["POST"])
+def tradeai_recommend():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_recommend, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/reset", methods=["POST"])
+def tradeai_reset():
+    try:
+        save_json(TRADES_AI_PATH, {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []})
+        save_json(TRADE_AI_CANDIDATES_PATH, {})
+        log.info("TradeAI simulation reset to $100,000")
+        return jsonify({"status": "reset", "balance": STARTING_BALANCE})
+    except Exception as e:
+        log.error(f"TradeAI reset FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+
+@app.route("/news/refresh/<ticker>", methods=["POST"])
+def refresh_ticker_news(ticker):
+    """On-demand news refresh for any ticker. Saves into shared news.json."""
+    try:
+        news_db = load_json(NEWS_PATH, {})
+        articles = fetch_ticker_news(ticker)
+        news_db[ticker] = {
+            "articles": articles,
+            "fetchedAt": ts(),
+        }
+        save_json(NEWS_PATH, news_db)
+        log.info(f"News refresh OK: {ticker} | {len(articles)} articles")
+        return jsonify({"status": "ok", "ticker": ticker, "count": len(articles), "fetchedAt": news_db[ticker]["fetchedAt"]})
+    except Exception as e:
+        log.error(f"News refresh FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 # Auto price refresh on startup
 _startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
 _startup_thread.start()
 log.info("=== Startup price refresh triggered ===")
-_dream_thread = threading.Thread(target=_maybe_run_dream_scan, daemon=True)
-_dream_thread.start()
 
 if __name__ == "__main__":
     app.run(debug=True, port=5050)

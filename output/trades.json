@@ -1,0 +1,83 @@
+{
+  "balance": 5.38,
+  "holdings": {
+    "FLYW": {
+      "shares": 1245,
+      "purchasePrice": 16.06,
+      "purchasedAt": "2026-05-15 23:09 EDT"
+    },
+    "NVDA": {
+      "shares": 88,
+      "purchasePrice": 225.32,
+      "purchasedAt": "2026-05-15 23:09 EDT"
+    },
+    "AYA.TO": {
+      "shares": 757,
+      "purchasePrice": 26.47,
+      "purchasedAt": "2026-05-15 23:09 EDT"
+    },
+    "CRDO": {
+      "shares": 116,
+      "purchasePrice": 172.17,
+      "purchasedAt": "2026-05-15 23:09 EDT"
+    },
+    "BTO.TO": {
+      "shares": 2987,
+      "purchasePrice": 6.75,
+      "purchasedAt": "2026-05-15 23:09 EDT"
+    }
+  },
+  "transactions": [
+    {
+      "ticker": "FLYW",
+      "action": "BUY",
+      "shares": 1245,
+      "price": 16.06,
+      "amount": 19994.7,
+      "date": "2026-05-15 23:09 EDT",
+      "balance": 80005.3,
+      "reason": "Dream score 90/100 \u2014 Revenue +41.0% YoY; Gross margin 60.6%"
+    },
+    {
+      "ticker": "NVDA",
+      "action": "BUY",
+      "shares": 88,
+      "price": 225.32,
+      "amount": 19828.16,
+      "date": "2026-05-15 23:09 EDT",
+      "balance": 60177.14,
+      "reason": "Dream score 86/100 \u2014 Revenue +73.2% YoY; Gross margin 71.1%"
+    },
+    {
+      "ticker": "AYA.TO",
+      "action": "BUY",
+      "shares": 757,
+      "price": 26.47,
+      "amount": 20037.79,
+      "date": "2026-05-15 23:09 EDT",
+      "balance": 40139.35,
+      "reason": "Dream score 83/100 \u2014 Revenue +246.6% YoY; Gross margin 54.9%"
+    },
+    {
+      "ticker": "CRDO",
+      "action": "BUY",
+      "shares": 116,
+      "price": 172.17,
+      "amount": 19971.72,
+      "date": "2026-05-15 23:09 EDT",
+      "balance": 20167.63,
+      "reason": "Dream score 82/100 \u2014 Revenue +201.5% YoY; Gross margin 67.8%"
+    },
+    {
+      "ticker": "BTO.TO",
+      "action": "BUY",
+      "shares": 2987,
+      "price": 6.75,
+      "amount": 20162.25,
+      "date": "2026-05-15 23:09 EDT",
+      "balance": 5.38,
+      "reason": "Dream score 78/100 \u2014 Revenue +117.7% YoY; Gross margin 65.5%"
+    }
+  ],
+  "lastRecommendAt": "2026-05-15 23:09 EDT"
+}
