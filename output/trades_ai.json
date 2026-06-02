@@ -1,30 +1,40 @@
 {
-  "balance": 29.91,
+  "balance": 57.06,
   "holdings": {
     "MU": {
       "shares": 27,
       "purchasePrice": 724.66,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
-    "BMNR": {
-      "shares": 1012,
-      "purchasePrice": 19.87,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
-    "GCTS": {
-      "shares": 10988,
-      "purchasePrice": 1.83,
-      "purchasedAt": "2026-05-16 22:13 EDT"
+      "purchasedAt": "2026-05-16 22:13 EDT",
+      "livePrice": 895.88,
+      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
     },
     "VG": {
       "shares": 1413,
       "purchasePrice": 14.23,
-      "purchasedAt": "2026-05-16 22:13 EDT"
+      "purchasedAt": "2026-05-16 22:13 EDT",
+      "livePrice": 12.89,
+      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
     },
-    "ASTS": {
-      "shares": 240,
-      "purchasePrice": 83.67,
-      "purchasedAt": "2026-05-16 22:13 EDT"
+    "POET": {
+      "shares": 1707,
+      "purchasePrice": 15.97,
+      "purchasedAt": "2026-05-23 22:06 EDT",
+      "livePrice": 13.35,
+      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+    },
+    "OLA.TO": {
+      "shares": 1648,
+      "purchasePrice": 16.54,
+      "purchasedAt": "2026-05-23 22:06 EDT",
+      "livePrice": 17.34,
+      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+    },
+    "CRWV": {
+      "shares": 258,
+      "purchasePrice": 105.49,
+      "purchasedAt": "2026-05-23 22:06 EDT",
+      "livePrice": 105.89,
+      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
     }
   },
   "transactions": [
@@ -77,7 +87,67 @@
       "date": "2026-05-16 22:13 EDT",
       "balance": 29.91,
       "reason": "ASTS is rapidly developing its unique space-based cellular network, which has the potential to revolutionize global connectivity. While financials are currently dominated by investment and R&D expenses, the revenue growth rate indicates strong momentum and a clear path to profitability.  Key catalysts include successful satellite deployment and partnerships with mobile operators, though regulatory hurdles and competition in the telecom sector pose risks.  The current valuation reflects uncertainty but the potential rewards for early investors are significant."
+    },
+    {
+      "ticker": "BMNR",
+      "action": "SELL",
+      "shares": 1012,
+      "price": 18.88,
+      "amount": 19106.56,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 19136.47,
+      "reason": "Outside top 5 AI composite score"
+    },
+    {
+      "ticker": "GCTS",
+      "action": "SELL",
+      "shares": 10988,
+      "price": 3.39,
+      "amount": 37249.32,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 56385.79,
+      "reason": "Outside top 5 AI composite score"
+    },
+    {
+      "ticker": "ASTS",
+      "action": "SELL",
+      "shares": 240,
+      "price": 105.86,
+      "amount": 25406.4,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 81792.19,
+      "reason": "Outside top 5 AI composite score"
+    },
+    {
+      "ticker": "POET",
+      "action": "BUY",
+      "shares": 1707,
+      "price": 15.97,
+      "amount": 27260.79,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 54531.4,
+      "reason": ""
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "BUY",
+      "shares": 1648,
+      "price": 16.54,
+      "amount": 27257.92,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 27273.48,
+      "reason": ""
+    },
+    {
+      "ticker": "CRWV",
+      "action": "BUY",
+      "shares": 258,
+      "price": 105.49,
+      "amount": 27216.42,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 57.06,
+      "reason": ""
     }
   ],
-  "lastRecommendAt": "2026-05-16 22:13 EDT"
+  "lastRecommendAt": "2026-05-23 22:06 EDT"
 }

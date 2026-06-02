@@ -132,6 +132,33 @@ def run_price_refresh(triggered_by="startup"):
     out["lastPriceRefresh"] = now_ts
     save_json(OUTPUT_PATH, out)
 
+    # Refresh live prices for held positions in both Trade and TradeAI
+    for label, path in [("Trade", TRADES_PATH), ("TradeAI", TRADES_AI_PATH)]:
+        try:
+            trades_data = load_json(path, {})
+            holdings = trades_data.get("holdings", {})
+            if not holdings:
+                continue
+            changed = False
+            for ticker, pos in holdings.items():
+                try:
+                    price_data = fetch_price_only(ticker)
+                    if price_data and price_data.get("price"):
+                        pos["livePrice"] = price_data["price"]
+                        pos["livePriceFetchedAt"] = now_ts
+                        changed = True
+                        log.info(f"Holdings price refresh OK [{label}]: {ticker} | livePrice:{price_data['price']}")
+                    else:
+                        log.warning(f"Holdings price refresh no data [{label}]: {ticker}")
+                except Exception as e:
+                    log.error(f"Holdings price refresh FAIL [{label}]: {ticker} | {e}")
+            if changed:
+                trades_data["holdings"] = holdings
+                save_json(path, trades_data)
+                log.info(f"Holdings prices saved [{label}]")
+        except Exception as e:
+            log.error(f"Holdings price refresh FAIL [{label}]: {e}")
+
     fetch_status = {"running": False, "message": f"Prices updated: {now_ts}", "operation": None}
     log.info(f"=== Price Refresh Complete [{triggered_by}] ===")
 
@@ -1048,13 +1075,13 @@ def get_trade():
     dream = load_json(DREAM_PATH, {})
     dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
 
-    # Enrich holdings with current price from candidates details
+    # Enrich holdings with current price — prefer livePrice (set by price refresh), fallback to candidates/dream cache
     details = candidates.get("details", {})
     holdings_out = []
     for ticker, pos in trades.get("holdings", {}).items():
         detail = details.get(ticker, {})
         d_data = dream_map.get(ticker, {})
-        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        current_price = pos.get("livePrice") or detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
         purchase_price = pos.get("purchasePrice", 0)
         shares = pos.get("shares", 0)
         gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
@@ -1067,6 +1094,7 @@ def get_trade():
             "gainLoss": gain_loss,
             "gainLossPct": gain_loss_pct,
             "purchasedAt": pos.get("purchasedAt"),
+            "livePriceFetchedAt": pos.get("livePriceFetchedAt"),
         })
 
     return jsonify({
@@ -1456,7 +1484,7 @@ def get_tradeai():
     for ticker, pos in trades.get("holdings", {}).items():
         detail = details.get(ticker, {})
         d_data = dream_map.get(ticker, {})
-        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        current_price = pos.get("livePrice") or detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
         purchase_price = pos.get("purchasePrice", 0)
         shares = pos.get("shares", 0)
         gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
@@ -1466,6 +1494,7 @@ def get_tradeai():
             "purchasePrice": purchase_price, "currentPrice": current_price,
             "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
             "purchasedAt": pos.get("purchasedAt"),
+            "livePriceFetchedAt": pos.get("livePriceFetchedAt"),
         })
 
     # Build news timestamp map for all identified tickers

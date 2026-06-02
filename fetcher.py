@@ -1113,7 +1113,7 @@ def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model
     if news_items:
         news_block = "\n".join([
             f"- [{n.get('pubDate','')[:10]}] {n.get('title','')} ({n.get('provider','')})"
-            for n in news_items[:8]
+            for n in news_items[:3]
         ])
     else:
         news_block = "No recent news available."
@@ -1123,13 +1123,13 @@ def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model
     if macro:
         indicators = macro.get("indicators", {})
         macro_lines = []
-        for k, v in list(indicators.items())[:8]:
+        for k, v in list(indicators.items())[:4]:
             val = v.get("value") if isinstance(v, dict) else v
             macro_lines.append(f"- {k}: {val}")
         macro_block = "\n".join(macro_lines) if macro_lines else "No macro data."
         macro_summary = macro.get("aiSummary", "")
         if macro_summary:
-            macro_block += f"\nMacro AI Summary: {macro_summary[:400]}"
+            macro_block += f"\nMacro: {macro_summary[:150]}"
     else:
         macro_block = "No macro data available."
 
@@ -1155,7 +1155,7 @@ Institutional %: {detail.get('institutionalPct')}%
 Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
 """.strip()
 
-    description = (detail.get("description") or "")[:300]
+    description = (detail.get("description") or "")[:150]
 
     prompt = f"""You are a stock analyst evaluating early-stage and growth investment opportunities.
 Analyze {ticker} and provide a concise assessment. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
@@ -1184,8 +1184,17 @@ REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why t
     try:
         resp = req.post(
             f"{ollama_url}/api/generate",
-            json={"model": ollama_model, "prompt": prompt, "stream": False},
-            timeout=120
+            json={
+                "model": ollama_model,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "num_predict": 300,
+                    "temperature": 0.2,
+                    "num_ctx": 2048
+                }
+            },
+            timeout=180
         )
         raw = resp.json().get("response", "").strip()
         log.info(f"[AI Analyze] {ticker} | raw response length: {len(raw)}")
