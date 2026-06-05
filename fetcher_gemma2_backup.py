@@ -1065,7 +1065,7 @@ def fetch_trade_detail(ticker):
             "grossMargin": round(gross_margin * 100, 1) if gross_margin is not None else None,
             "fcf": fcf,
             "peRatio": round(pe_ratio, 1) if pe_ratio and not math.isnan(pe_ratio) else None,
-            "forwardPE": round(float(forward_pe), 1) if forward_pe and str(forward_pe) not in ("Infinity", "NaN", "-Infinity") and not math.isnan(float(forward_pe)) else None,
+            "forwardPE": round(forward_pe, 1) if forward_pe and not math.isnan(forward_pe) else None,
             "eps": eps,
             "debtToEquity": round(debt_to_equity, 1) if debt_to_equity else None,
             "returnOnEquity": round(return_on_equity * 100, 1) if return_on_equity else None,
@@ -1157,12 +1157,8 @@ Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
 
     description = (detail.get("description") or "")[:150]
 
-    prompt = f"""You are a neutral stock analyst. Evaluate {ticker} objectively and critically.
-- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins
-- Score 50-70 for: mixed signals, moderate growth, some risks
-- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts
-- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage
-Do NOT default to bullish. Be skeptical.
+    prompt = f"""You are a stock analyst evaluating early-stage and growth investment opportunities.
+Analyze {ticker} and provide a concise assessment. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
 
 COMPANY: {detail.get('name', ticker)} ({ticker})
 {description}

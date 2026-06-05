@@ -1,40 +1,40 @@
 {
-  "balance": 57.06,
+  "balance": 62.82,
   "holdings": {
-    "MU": {
-      "shares": 27,
-      "purchasePrice": 724.66,
-      "purchasedAt": "2026-05-16 22:13 EDT",
-      "livePrice": 895.88,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
-    },
-    "VG": {
-      "shares": 1413,
-      "purchasePrice": 14.23,
-      "purchasedAt": "2026-05-16 22:13 EDT",
-      "livePrice": 12.89,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
-    },
     "POET": {
       "shares": 1707,
       "purchasePrice": 15.97,
       "purchasedAt": "2026-05-23 22:06 EDT",
-      "livePrice": 13.35,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
-    },
-    "OLA.TO": {
-      "shares": 1648,
-      "purchasePrice": 16.54,
-      "purchasedAt": "2026-05-23 22:06 EDT",
-      "livePrice": 17.34,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 15.38,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "CRWV": {
       "shares": 258,
       "purchasePrice": 105.49,
       "purchasedAt": "2026-05-23 22:06 EDT",
-      "livePrice": 105.89,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 110.93,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+    },
+    "ALAB": {
+      "shares": 77,
+      "purchasePrice": 320.09,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 363.54,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+    },
+    "CDE": {
+      "shares": 1277,
+      "purchasePrice": 19.32,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 18.15,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+    },
+    "ASTS": {
+      "shares": 233,
+      "purchasePrice": 105.65,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 107.73,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     }
   },
   "transactions": [
@@ -147,7 +147,67 @@
       "date": "2026-05-23 22:06 EDT",
       "balance": 57.06,
       "reason": ""
+    },
+    {
+      "ticker": "MU",
+      "action": "SELL",
+      "shares": 27,
+      "price": 1035.5,
+      "amount": 27958.5,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 28015.56,
+      "reason": "Micron Technology, Inc. (MU) has shown strong revenue growth and a robust positive free cash flow in the last quarter which is promising for its financial health. However, it also faces high debt levels with a Debt/Equity ratio of 14.9 that could pose risks if not managed properly or during economic downturns. The company's gross margin stands at an impressive 58.4%, indicating efficient operations and pricing power in the market, which is favorable for its profitability outlook. While there are no recent news items to sway sentiment further either positively or negatively, it would be wise not to overextend on a purchase given uncertainties such as potential supply chain disru01:"
+    },
+    {
+      "ticker": "VG",
+      "action": "SELL",
+      "shares": 1413,
+      "price": 12.68,
+      "amount": 17916.84,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 45932.4,
+      "reason": "Venture Global, Inc. (VG) is a mature LNG company with mixed signals in its financial health and market positioning. While the revenue growth rate of 58.9% appears robust on paper, it's essential to consider that this figure may not be sustainable without consistent demand for liquefied natural gas products or expansion into new markets. The negative Free Cash Flow (FCF) and high Debt/Equity ratio are concerning as they indicate the company is struggling with liquidity issues, which could hamper its ability to invest in growth opportunities or weather market downturns. Furthermore, an RSI of 56.6 suggests that VG's stock price has been overbought recently and may be due for a pullback. The absence of recent news might also suggest complacency within the company management regarding strategic initiatives to drive future growth or improve financial health. Given these factors, it is advisable not to buy at this time but rather hold off until there are clearer signs of positive momentum in both financials and market sentiment."
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "SELL",
+      "shares": 1648,
+      "price": 17.03,
+      "amount": 28065.44,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 73997.84,
+      "reason": "OLA.TO shows strong revenue growth and a positive free cash flow, which are promising signs for its financial health and operational efficiency in the mining sector. However, it also has high debt levels relative to equity that could pose risks if not managed properly or if commodity prices fall significantly. The company' enduring stability amidst a decelerating growth trajectory suggests caution is warranted at this stage of its lifecycle; hence the Hold rating with moderate confidence in potential for future improvement, assuming debt management and market conditions remain favorable."
+    },
+    {
+      "ticker": "ALAB",
+      "action": "BUY",
+      "shares": 77,
+      "price": 320.09,
+      "amount": 24646.93,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 49350.91,
+      "reason": "Astera Labs, Inc. (ALAB) shows strong revenue growth and a robust gross margin in the semiconductor connectivity sector for cloud and AI infrastructure\u2014a promising sign of market demand within this high-growth industry segment. The company's positive free cash flow indicates solid operational efficiency, which is essential given its recent rapid expansion phase. Although RSI suggests potential overvaluation concerns due to a score above 75 and the P/E ratio remains elevated at forward estimates, ALAB has not exhibited negative FCF or declining revenue in this period of growth assessment. The company'threat from macroeconomic factors such as inflation is mitigated by its strong financial performance so far; however, investors should remain cautious about the high valuations and potential market saturation risks inherent to rapid expansion phases within technology sectors."
+    },
+    {
+      "ticker": "CDE",
+      "action": "BUY",
+      "shares": 1277,
+      "price": 19.32,
+      "amount": 24671.64,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 24679.27,
+      "reason": "Coeur Mining, Inc. (CDE) is in the growth stage with an impressive revenue growth of over 137%, indicating a strong market demand for its products and effective business strategies. The company' enduring gross margin at 58.4% suggests efficient operations despite fluctuating commodity prices, which are common risks within this sector. Positive FCF demonstrates the firm\u2019s ability to generate cash from operating activities that exceed capital expenditures and debt repayments\u2014a sign of financial health. The RSI14 is below 50, indicating a balance between overboughtness and oversoldness in stock price movements without extreme volatility suggesting an unstable market sentiment towards the company's shares. While there are no recent news updates to sway investor confidence positively or negatively at this time, CDE\u2019s strong financial fundamentals combined with its growth trajectory warrant a Buy signal for those looking for opportunities in basic materials within an environment of moderate macroeconomic indicators."
+    },
+    {
+      "ticker": "ASTS",
+      "action": "BUY",
+      "shares": 233,
+      "price": 105.65,
+      "amount": 24616.45,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 62.82,
+      "reason": "AST SpaceMobile, Inc. (ASTS) is an early-stage company with a high revenue growth of 1952.2%, indicating strong market demand for its BlueBird satell0bes and potential expansion in the space industry sector. However, it has negative Free Cash Flow (-$14,127,484), which is concerning as it suggests that ASTS may not be generating enough cash to sustain operations or invest back into growth opportunities without external funding. The company's high Debt/Equity ratio of 112.4 and negative ROE at -37.8% further compound the risk, indicating potential solvency issues in the long term if it cannot manage its debt effectively or improve profitability. While there is no recent news to sway my analysis positively, ASTS's strong growth trajectory paired with significant risks warrants a cautious approach\u2014holding off on buying until more stability and positive financial indicators are evident in the company\u2019s performance."
     }
   ],
-  "lastRecommendAt": "2026-05-23 22:06 EDT"
+  "lastRecommendAt": "2026-06-01 23:48 EDT"
 }
