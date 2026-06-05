@@ -5,36 +5,36 @@
       "shares": 1245,
       "purchasePrice": 16.06,
       "purchasedAt": "2026-05-15 23:09 EDT",
-      "livePrice": 16.0,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 14.61,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "NVDA": {
       "shares": 88,
       "purchasePrice": 225.32,
       "purchasedAt": "2026-05-15 23:09 EDT",
-      "livePrice": 214.86,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 214.75,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "AYA.TO": {
       "shares": 757,
       "purchasePrice": 26.47,
       "purchasedAt": "2026-05-15 23:09 EDT",
-      "livePrice": 25.84,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 27.33,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "CRDO": {
       "shares": 116,
       "purchasePrice": 172.17,
       "purchasedAt": "2026-05-15 23:09 EDT",
-      "livePrice": 221.64,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 214.6,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "TSM": {
       "shares": 46,
       "purchasePrice": 404.52,
       "purchasedAt": "2026-05-23 22:16 EDT",
-      "livePrice": 412.32,
-      "livePriceFetchedAt": "2026-05-26 23:56 EDT"
+      "livePrice": 436.69,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     }
   },
   "transactions": [

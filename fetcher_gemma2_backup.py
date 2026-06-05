@@ -677,105 +677,6 @@ def fetch_tsx60_tickers():
     return tsx60
 
 
-def fetch_nasdaq100_tickers():
-    """Hardcoded NASDAQ-100 components — updated June 2025. No API needed."""
-    nasdaq100 = [
-        "ADBE","ADP","ABNB","ALGN","GOOGL","GOOG","AMZN","AMD","AEP","AMGN",
-        "ADI","ANSS","AAPL","AMAT","ASML","AZN","TEAM","ADSK","BKR","BIIB",
-        "BKNG","AVGO","CDNS","CDW","CHTR","CTAS","CSCO","CTSH","CMCSA","CEG",
-        "CPRT","CSGP","COST","CRWD","CSX","DDOG","DXCM","FANG","DLTR","DASH",
-        "EA","EXC","FAST","FTNT","GEHC","GILD","GFS","HON","ILMN","INTC",
-        "INTU","ISRG","KDP","KLAC","KHC","LRCX","LULU","MAR","MRVL","MELI",
-        "META","MCHP","MU","MSFT","MRNA","MDLZ","MDB","MNST","NFLX","NVDA",
-        "NXPI","ORLY","ON","PCAR","PANW","PAYX","PYPL","PDD","QCOM","REGN",
-        "ROST","CRM","SBUX","SNPS","TTWO","TMUS","TSLA","TXN","TTD","VRSK",
-        "VRTX","WBA","WBD","WDAY","XEL","ZS","ZM"
-    ]
-    log.info(f"NASDAQ-100: {len(nasdaq100)} tickers (hardcoded)")
-    return nasdaq100
-
-
-def _hours_since_iso(ts_str):
-    if not ts_str:
-        return 9999
-    try:
-        dt = datetime.fromisoformat(ts_str)
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
-        return (datetime.now(timezone.utc) - dt).total_seconds() / 3600
-    except Exception:
-        return 9999
-
-
-def _latest_period_date(periods):
-    if periods and isinstance(periods, list) and len(periods) > 0:
-        return periods[0].get("date")
-    return None
-
-
-def _fetch_static_enriched(stock_obj, info, ticker):
-    result = {}
-    institutions = []
-    try:
-        holders = stock_obj.institutional_holders
-        if holders is not None and not holders.empty:
-            for _, row in holders.head(3).iterrows():
-                name = str(row.get("Holder", row.get("Name", "Unknown")))
-                pct = row.get("% Out", row.get("pctHeld", None))
-                pct_str = f"{round(float(pct)*100,1)}%" if pct is not None else ""
-                institutions.append({"name": name, "pct": pct_str})
-    except Exception as e:
-        log.warning(f"[Dream Static] institutions FAIL: {ticker} | {e}")
-    result["institutions"] = institutions
-
-    insider_net = None
-    insider_buys = insider_sells = 0
-    try:
-        cutoff = datetime.now(timezone.utc) - timedelta(days=90)
-        it = stock_obj.insider_transactions
-        if it is not None and not it.empty:
-            for _, row in it.iterrows():
-                try:
-                    tx_date = row.get("startDate") or row.get("Start Date")
-                    if tx_date is None:
-                        continue
-                    if hasattr(tx_date, "tzinfo") and tx_date.tzinfo is None:
-                        tx_date = tx_date.replace(tzinfo=timezone.utc)
-                    if tx_date < cutoff:
-                        continue
-                    shares = abs(int(row.get("shares", 0) or row.get("Shares", 0) or 0))
-                    tx_text = str(row.get("text", "") or row.get("Transaction", "")).lower()
-                    if any(w in tx_text for w in ("purchase", "buy", "acquisition")):
-                        insider_buys += shares
-                    elif any(w in tx_text for w in ("sale", "sell", "disposition")):
-                        insider_sells += shares
-                except Exception:
-                    continue
-            if insider_buys > 0 or insider_sells > 0:
-                if insider_buys > insider_sells * 1.5:
-                    insider_net = "Net Buyer"
-                elif insider_sells > insider_buys * 1.5:
-                    insider_net = "Net Seller"
-                else:
-                    insider_net = "Neutral"
-    except Exception as e:
-        log.warning(f"[Dream Static] insider FAIL: {ticker} | {e}")
-
-    result["insiderNet"]       = insider_net
-    result["insiderBuys90d"]   = insider_buys
-    result["insiderSells90d"]  = insider_sells
-    result["shortFloat"]       = round(info.get("shortPercentOfFloat", 0) * 100, 1) if info.get("shortPercentOfFloat") else None
-    result["institutionalPct"] = round(info.get("heldPercentInstitutions", 0) * 100, 1) if info.get("heldPercentInstitutions") else None
-    result["insiderPct"]       = round(info.get("heldPercentInsiders", 0) * 100, 1) if info.get("heldPercentInsiders") else None
-    result["analystTarget"]    = info.get("targetMeanPrice")
-    result["recommendation"]   = info.get("recommendationKey")
-    result["description"]      = (info.get("longBusinessSummary") or "")[:400]
-    result["sector"]           = info.get("sector", "")
-    result["industry"]         = info.get("industry", "")
-    log.info(f"[Dream Static] {ticker} | insider:{insider_net} buys:{insider_buys} sells:{insider_sells} short:{result['shortFloat']}% inst:{result['institutionalPct']}%")
-    return result
-
-
 def score_dream_stock(ticker, info, hist, financials):
     """Score a stock 0-100 on dream criteria."""
     score = 0
@@ -918,25 +819,6 @@ def score_dream_stock(ticker, info, hist, financials):
                 score += 6
         breakdown["marketCap"] = mcap
 
-        # 8. Insider + short float bonus (10pts) — from enriched if available
-        insider_net = (financials or {}).get("insiderNet")
-        short_float = (financials or {}).get("shortFloat")
-        if insider_net == "Net Buyer":
-            score += 5
-            flags_good.append("Insider Net Buyer (90d)")
-        if short_float is not None and short_float < 5:
-            score += 5
-            flags_good.append(f"Low short interest {short_float}%")
-        elif short_float is not None and short_float > 20:
-            flags_warn.append(f"High short interest {short_float}%")
-        breakdown["insiderNet"]  = insider_net
-        breakdown["shortFloat"]  = short_float
-
-        # aboveMa50 flag for identify buckets
-        current_price = info.get("currentPrice") or info.get("regularMarketPrice")
-        ma50 = breakdown.get("ma50")
-        breakdown["aboveMa50"] = bool(current_price and ma50 and current_price > ma50)
-
         score = min(100, score)
 
     except Exception as e:
@@ -945,152 +827,90 @@ def score_dream_stock(ticker, info, hist, financials):
     return score, breakdown, flags_good, flags_warn
 
 
-DREAM_STATIC_TTL_HOURS = 7 * 24
+def fetch_dream_candidates(watchlist_tickers, gainer_tickers):
+    """Fetch and score all dream stock candidates."""
+    log.info("=== Dream Scan: fetching candidates ===")
 
-
-def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidates=None):
-    log.info("=== Dream Scan (Incremental Enriched): started ===")
-
-    existing_map = {c["ticker"]: c for c in (existing_candidates or [])}
-
+    # Gather all unique tickers from all sources
     ark_tickers      = fetch_ark_holdings()
     screener_tickers = fetch_yf_growth_screener()
     sp500_tickers    = fetch_sp500_tickers()
     tsx60_tickers    = fetch_tsx60_tickers()
-    nasdaq100_tickers = fetch_nasdaq100_tickers()
 
     all_tickers = {}
-    for t in watchlist_tickers:                all_tickers[t] = "Watchlist"
+    for t in watchlist_tickers:
+        all_tickers[t] = "Watchlist"
     for t in gainer_tickers:
-        if t not in all_tickers:               all_tickers[t] = "Daily Gainer"
+        if t not in all_tickers:
+            all_tickers[t] = "Daily Gainer"
     for t in ark_tickers:
-        if t not in all_tickers:               all_tickers[t] = "ARK ETF"
+        if t not in all_tickers:
+            all_tickers[t] = "ARK ETF"
     for t in screener_tickers:
-        if t not in all_tickers:               all_tickers[t] = "Screener"
+        if t not in all_tickers:
+            all_tickers[t] = "Screener"
     for t in sp500_tickers:
-        if t not in all_tickers:               all_tickers[t] = "S&P 500"
+        if t not in all_tickers:
+            all_tickers[t] = "S&P 500"
     for t in tsx60_tickers:
-        if t not in all_tickers:               all_tickers[t] = "TSX 60"
-    for t in nasdaq100_tickers:
-        if t not in all_tickers:               all_tickers[t] = "NASDAQ-100"
+        if t not in all_tickers:
+            all_tickers[t] = "TSX 60"
 
     log.info(
-        f"[Dream] total:{len(all_tickers)} watchlist:{len(watchlist_tickers)} "
-        f"gainers:{len(gainer_tickers)} ark:{len(ark_tickers)} screener:{len(screener_tickers)} "
-        f"sp500:{len(sp500_tickers)} tsx60:{len(tsx60_tickers)} nasdaq100:{len(nasdaq100_tickers)} existing:{len(existing_map)}"
+        f"Dream scan total candidates: {len(all_tickers)} | "
+        f"watchlist:{len(watchlist_tickers)} gainers:{len(gainer_tickers)} "
+        f"ark:{len(ark_tickers)} screener:{len(screener_tickers)} "
+        f"sp500:{len(sp500_tickers)} tsx60:{len(tsx60_tickers)}"
     )
 
     candidates = []
-    stats = {"quarterly": 0, "annual": 0, "static": 0, "skip": 0, "fail": 0}
-    now_str = datetime.now(timezone.utc).isoformat()
-
     for ticker, source in all_tickers.items():
-        log.info(f"--- Dream: {ticker} [{source}] ---")
+        log.info(f"--- Dream scoring: {ticker} [{source}] ---")
         try:
-            stock_obj = yf.Ticker(ticker)
-            info = stock_obj.info
-
+            stock = yf.Ticker(ticker)
+            info = stock.info
             if not info.get("regularMarketPrice") and not info.get("currentPrice"):
-                log.warning(f"[Dream] skip (no price): {ticker}")
-                stats["skip"] += 1
+                log.warning(f"Dream skip (no price): {ticker}")
                 continue
+            hist = stock.history(period="60d")
 
-            existing = existing_map.get(ticker, {})
-            enriched = dict(existing.get("enriched") or {})
-
-            # ── TECHNICALS: always refresh ────────────────────────────────────
-            hist = stock_obj.history(period="60d")
-            log.info(f"[Dream Tech] {ticker} | hist rows:{len(hist)}")
-
-            # ── QUARTERLY: only if new period detected ────────────────────────
-            stored_q = _latest_period_date(enriched.get("quarterlyIncome", []))
+            # Get top 3 institutional holders
+            institutions = []
             try:
-                probe_q = extract_periods(stock_obj.quarterly_financials, INCOME_FIELDS, 1)
-                fresh_q = _latest_period_date(probe_q)
-            except Exception:
-                fresh_q = None
-            if fresh_q and fresh_q != stored_q:
-                log.info(f"[Dream] {ticker} new quarter: {stored_q} → {fresh_q}")
-                enriched["quarterlyIncome"]   = extract_periods(stock_obj.quarterly_financials,       INCOME_FIELDS,   8)
-                enriched["quarterlyBalance"]  = extract_periods(stock_obj.quarterly_balance_sheet,    BALANCE_FIELDS,  8)
-                enriched["quarterlyCashflow"] = extract_periods(stock_obj.quarterly_cashflow,         CASHFLOW_FIELDS, 8)
-                enriched["annualIncome"]      = extract_periods(stock_obj.financials,                 INCOME_FIELDS,   3)
-                enriched["annualBalance"]     = extract_periods(stock_obj.balance_sheet,              BALANCE_FIELDS,  3)
-                enriched["annualCashflow"]    = extract_periods(stock_obj.cashflow,                   CASHFLOW_FIELDS, 3)
-                enriched["quarterlyUpdatedAt"] = now_str
-                stats["quarterly"] += 1
-            else:
-                log.info(f"[Dream] {ticker} quarter unchanged ({stored_q}) — skip quarterly fetch")
+                holders = stock.institutional_holders
+                if holders is not None and not holders.empty:
+                    for _, row in holders.head(3).iterrows():
+                        name = str(row.get("Holder", row.get("Name", "Unknown")))
+                        pct = row.get("% Out", row.get("pctHeld", None))
+                        pct_str = f"{round(float(pct)*100,1)}%" if pct is not None else ""
+                        institutions.append({"name": name, "pct": pct_str})
+            except Exception as e:
+                log.warning(f"Institutions FAIL: {ticker} | {e}")
 
-            # ── ANNUAL: only if new period detected ───────────────────────────
-            stored_a = _latest_period_date(enriched.get("annualIncome", []))
-            try:
-                probe_a = extract_periods(stock_obj.financials, INCOME_FIELDS, 1)
-                fresh_a = _latest_period_date(probe_a)
-            except Exception:
-                fresh_a = None
-            if fresh_a and fresh_a != stored_a:
-                log.info(f"[Dream] {ticker} new annual: {stored_a} → {fresh_a}")
-                enriched["annualIncome"]   = extract_periods(stock_obj.financials,    INCOME_FIELDS,   3)
-                enriched["annualBalance"]  = extract_periods(stock_obj.balance_sheet, BALANCE_FIELDS,  3)
-                enriched["annualCashflow"] = extract_periods(stock_obj.cashflow,      CASHFLOW_FIELDS, 3)
-                enriched["annualUpdatedAt"] = now_str
-                stats["annual"] += 1
-            else:
-                log.info(f"[Dream] {ticker} annual unchanged ({stored_a}) — skip annual fetch")
+            score, breakdown, flags_good, flags_warn = score_dream_stock(ticker, info, hist, None)
 
-            # ── STATIC: institutions, insider, short float ────────────────────
-            static_age = _hours_since_iso(enriched.get("staticUpdatedAt"))
-            if static_age > DREAM_STATIC_TTL_HOURS:
-                log.info(f"[Dream] {ticker} static refresh (age:{static_age:.1f}h)")
-                static = _fetch_static_enriched(stock_obj, info, ticker)
-                enriched.update(static)
-                enriched["staticUpdatedAt"] = now_str
-                stats["static"] += 1
-            else:
-                log.info(f"[Dream] {ticker} static OK (age:{static_age:.1f}h) — skip")
-
-            enriched["technicalsUpdatedAt"] = now_str
-
-            # ── SCORE ─────────────────────────────────────────────────────────
-            score, breakdown, flags_good, flags_warn = score_dream_stock(ticker, info, hist, enriched)
-
-            candidate = {
-                **existing,
-                "ticker":      ticker,
-                "source":      source,
-                "score":       score,
-                "name":        info.get("shortName", ticker),
-                "sector":      enriched.get("sector") or info.get("sector", ""),
-                "industry":    enriched.get("industry") or info.get("industry", ""),
-                "price":       info.get("currentPrice") or info.get("regularMarketPrice"),
-                "marketCap":   info.get("marketCap"),
-                "breakdown":   breakdown,
-                "flagsGood":   flags_good,
-                "flagsWarn":   flags_warn,
-                "institutions":enriched.get("institutions", []),
-                "description": enriched.get("description") or (info.get("longBusinessSummary") or "")[:400],
-                "enriched":    enriched,
-                "lastScoredAt":now_str,
-            }
-            candidates.append(candidate)
-            log.info(
-                f"[Dream] scored: {ticker} | score:{score} q:{stored_q} a:{stored_a} "
-                f"insider:{breakdown.get('insiderNet')} short:{breakdown.get('shortFloat')}% "
-                f"static_age:{static_age:.1f}h"
-            )
-
+            candidates.append({
+                "ticker": ticker,
+                "source": source,
+                "score": score,
+                "name": info.get("shortName", ticker),
+                "sector": info.get("sector", ""),
+                "industry": info.get("industry", ""),
+                "price": info.get("currentPrice") or info.get("regularMarketPrice"),
+                "marketCap": info.get("marketCap"),
+                "breakdown": breakdown,
+                "flagsGood": flags_good,
+                "flagsWarn": flags_warn,
+                "institutions": institutions,
+                "description": (info.get("longBusinessSummary") or "")[:300],
+            })
+            log.info(f"Dream scored: {ticker} | score:{score} source:{source}")
         except Exception as e:
-            log.error(f"[Dream] FAIL: {ticker} | {e}", exc_info=True)
-            stats["fail"] += 1
+            log.error(f"Dream candidate FAIL: {ticker} | {e}")
             continue
 
     candidates.sort(key=lambda x: x["score"], reverse=True)
-    log.info(
-        f"=== Dream Scan complete: {len(candidates)} scored | "
-        f"quarterly:{stats['quarterly']} annual:{stats['annual']} "
-        f"static:{stats['static']} skip:{stats['skip']} fail:{stats['fail']} ==="
-    )
+    log.info(f"=== Dream Scan complete: {len(candidates)} scored ===")
     return {"candidates": candidates}
 
 
@@ -1154,18 +974,10 @@ def fetch_trade_detail(ticker):
             log.warning(f"fetch_trade_detail BB FAIL: {ticker} | {e}")
 
         # Price changes
-        change1d = change2d = change3d = change4d = change5d = change7d = change30d = None
+        change1d = change7d = change30d = None
         try:
             if len(hist) >= 2:
                 change1d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2] * 100, 2)
-            if len(hist) >= 3:
-                change2d = round((hist['Close'].iloc[-2] - hist['Close'].iloc[-3]) / hist['Close'].iloc[-3] * 100, 2)
-            if len(hist) >= 4:
-                change3d = round((hist['Close'].iloc[-3] - hist['Close'].iloc[-4]) / hist['Close'].iloc[-4] * 100, 2)
-            if len(hist) >= 5:
-                change4d = round((hist['Close'].iloc[-4] - hist['Close'].iloc[-5]) / hist['Close'].iloc[-5] * 100, 2)
-            if len(hist) >= 6:
-                change5d = round((hist['Close'].iloc[-5] - hist['Close'].iloc[-6]) / hist['Close'].iloc[-6] * 100, 2)
             if len(hist) >= 7:
                 change7d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-7]) / hist['Close'].iloc[-7] * 100, 2)
             if len(hist) >= 30:
@@ -1247,17 +1059,13 @@ def fetch_trade_detail(ticker):
             "ma50": ma50,
             "bbPercent": bb_percent,
             "change1d": change1d,
-            "change2d": change2d,
-            "change3d": change3d,
-            "change4d": change4d,
-            "change5d": change5d,
             "change7d": change7d,
             "change30d": change30d,
             "revenueGrowth": round(revenue_growth * 100, 1) if revenue_growth is not None else None,
             "grossMargin": round(gross_margin * 100, 1) if gross_margin is not None else None,
             "fcf": fcf,
             "peRatio": round(pe_ratio, 1) if pe_ratio and not math.isnan(pe_ratio) else None,
-            "forwardPE": round(float(forward_pe), 1) if forward_pe and str(forward_pe) not in ("Infinity", "NaN", "-Infinity") and not math.isnan(float(forward_pe)) else None,
+            "forwardPE": round(forward_pe, 1) if forward_pe and not math.isnan(forward_pe) else None,
             "eps": eps,
             "debtToEquity": round(debt_to_equity, 1) if debt_to_equity else None,
             "returnOnEquity": round(return_on_equity * 100, 1) if return_on_equity else None,
@@ -1296,27 +1104,6 @@ def fetch_ticker_news(ticker):
 
 # ── TRADEAI: OLLAMA AI ANALYSIS ───────────────────────────────────────────────
 
-def ollama_warmup(ollama_url, ollama_model):
-    """Send a trivial prompt to Ollama on startup so the model is loaded into memory
-    before the first real AI Analyze call, avoiding a cold-start timeout."""
-    try:
-        log.info(f"[Ollama Warmup] pinging {ollama_model} at {ollama_url} ...")
-        resp = requests.post(
-            f"{ollama_url}/api/generate",
-            json={"model": ollama_model, "prompt": "Hi", "stream": False},
-            timeout=180
-        )
-        if resp.ok:
-            log.info(f"[Ollama Warmup] {ollama_model} loaded OK")
-            return True
-        else:
-            log.warning(f"[Ollama Warmup] {ollama_model} returned status {resp.status_code}")
-            return False
-    except Exception as e:
-        log.warning(f"[Ollama Warmup] FAIL: {e}")
-        return False
-
-
 def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model):
     """Send ticker data to Ollama and return AI assessment dict."""
     import requests as req
@@ -1326,38 +1113,23 @@ def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model
     if news_items:
         news_block = "\n".join([
             f"- [{n.get('pubDate','')[:10]}] {n.get('title','')} ({n.get('provider','')})"
-            for n in news_items[:8]
+            for n in news_items[:3]
         ])
     else:
         news_block = "No recent news available."
 
-    # Build macro block — full raw indicators + headlines (no AI summary)
+    # Build macro block
     macro_block = ""
     if macro:
         indicators = macro.get("indicators", {})
         macro_lines = []
-        for k, v in indicators.items():
-            if isinstance(v, dict):
-                val  = v.get("value")
-                chg  = v.get("change")
-                lbl  = v.get("label", k)
-                unit = v.get("unit", "")
-                if val is not None:
-                    chg_str = f" (chg: {chg:+.2f}{unit})" if chg is not None else ""
-                    macro_lines.append(f"- {lbl}: {val}{unit}{chg_str}")
-            else:
-                if v is not None:
-                    macro_lines.append(f"- {k}: {v}")
+        for k, v in list(indicators.items())[:4]:
+            val = v.get("value") if isinstance(v, dict) else v
+            macro_lines.append(f"- {k}: {val}")
         macro_block = "\n".join(macro_lines) if macro_lines else "No macro data."
-        headlines = macro.get("headlines", [])
-        if headlines:
-            macro_block += "\n\nMarket Headlines:\n" + "\n".join(
-                f"- [{h.get('publishedAt','')[:10]}] {h.get('title','')} ({h.get('source','')})"
-                for h in headlines[:5]
-            )
-        fetched_at = macro.get("fetchedAt", "")
-        if fetched_at:
-            macro_block = f"[Macro data as of {fetched_at}]\n" + macro_block
+        macro_summary = macro.get("aiSummary", "")
+        if macro_summary:
+            macro_block += f"\nMacro: {macro_summary[:150]}"
     else:
         macro_block = "No macro data available."
 
@@ -1383,14 +1155,10 @@ Institutional %: {detail.get('institutionalPct')}%
 Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
 """.strip()
 
-    description = (detail.get("description") or "")[:300]
+    description = (detail.get("description") or "")[:150]
 
-    prompt = f"""You are a neutral stock analyst. Evaluate {ticker} objectively and critically.
-- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins
-- Score 50-70 for: mixed signals, moderate growth, some risks
-- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts
-- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage
-Do NOT default to bullish. Be skeptical.
+    prompt = f"""You are a stock analyst evaluating early-stage and growth investment opportunities.
+Analyze {ticker} and provide a concise assessment. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
 
 COMPANY: {detail.get('name', ticker)} ({ticker})
 {description}
@@ -1416,14 +1184,23 @@ REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why t
     try:
         resp = req.post(
             f"{ollama_url}/api/generate",
-            json={"model": ollama_model, "prompt": prompt, "stream": False},
-            timeout=300
+            json={
+                "model": ollama_model,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "num_predict": 300,
+                    "temperature": 0.2,
+                    "num_ctx": 2048
+                }
+            },
+            timeout=180
         )
         raw = resp.json().get("response", "").strip()
         log.info(f"[AI Analyze] {ticker} | raw response length: {len(raw)}")
 
         # Parse structured response
-        result = {"raw": raw, "ticker": ticker, "promptSent": prompt}
+        result = {"raw": raw, "ticker": ticker}
         for line in raw.splitlines():
             line = line.strip()
             if line.startswith("STAGE:"):
