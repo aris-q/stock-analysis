@@ -1,30 +1,30 @@
 {
-  "balance": 29.91,
+  "balance": 5.82,
   "holdings": {
-    "MU": {
-      "shares": 27,
-      "purchasePrice": 724.66,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
-    "BMNR": {
-      "shares": 1012,
-      "purchasePrice": 19.87,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
-    "GCTS": {
-      "shares": 10988,
-      "purchasePrice": 1.83,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
     "VG": {
       "shares": 1413,
       "purchasePrice": 14.23,
       "purchasedAt": "2026-05-16 22:13 EDT"
     },
-    "ASTS": {
-      "shares": 240,
-      "purchasePrice": 83.67,
-      "purchasedAt": "2026-05-16 22:13 EDT"
+    "OLA.TO": {
+      "shares": 1683,
+      "purchasePrice": 15.7,
+      "purchasedAt": "2026-06-04 23:07 EDT"
+    },
+    "TNXP": {
+      "shares": 2224,
+      "purchasePrice": 11.88,
+      "purchasedAt": "2026-06-04 23:07 EDT"
+    },
+    "CRWV": {
+      "shares": 244,
+      "purchasePrice": 108.03,
+      "purchasedAt": "2026-06-04 23:07 EDT"
+    },
+    "POET": {
+      "shares": 1713,
+      "purchasePrice": 15.475,
+      "purchasedAt": "2026-06-04 23:07 EDT"
     }
   },
   "transactions": [
@@ -77,7 +77,87 @@
       "date": "2026-05-16 22:13 EDT",
       "balance": 29.91,
       "reason": "ASTS is rapidly developing its unique space-based cellular network, which has the potential to revolutionize global connectivity. While financials are currently dominated by investment and R&D expenses, the revenue growth rate indicates strong momentum and a clear path to profitability.  Key catalysts include successful satellite deployment and partnerships with mobile operators, though regulatory hurdles and competition in the telecom sector pose risks.  The current valuation reflects uncertainty but the potential rewards for early investors are significant."
+    },
+    {
+      "ticker": "MU",
+      "action": "SELL",
+      "shares": 27,
+      "price": 996.0,
+      "amount": 26892.0,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 26921.91,
+      "reason": "Outside top 5 AI composite score"
+    },
+    {
+      "ticker": "BMNR",
+      "action": "SELL",
+      "shares": 1012,
+      "price": 17.89,
+      "amount": 18104.68,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 45026.59,
+      "reason": "While BMNR exhibits high financial growth metrics like revenue growth (627.8%) and a respectable gross margin (66.6%), its recent performance has been volatile with a negative 30-day change. However, the company's focus on emerging blockchain technologies and its strong institutional ownership (37.3%) suggest a positive trajectory. The high analyst target price and low debt/equity ratio further support a bullish outlook."
+    },
+    {
+      "ticker": "GCTS",
+      "action": "SELL",
+      "shares": 10988,
+      "price": 3.18,
+      "amount": 34941.84,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 79968.43,
+      "reason": "GCTS exhibits strong revenue growth despite negative margins. This indicates rapid expansion from a low base, making it potentially more attractive than established companies.  However, the company is deeply unprofitable and lacks analyst coverage or institutional interest.  Further development of their product line and positive cash flow are crucial catalysts for future success. While the upside potential is enticing, caution is warranted until profitability improves and market recognition increases."
+    },
+    {
+      "ticker": "ASTS",
+      "action": "SELL",
+      "shares": 240,
+      "price": 107.29,
+      "amount": 25749.6,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 105718.03,
+      "reason": "AST SpaceMobile boasts impressive revenue growth, indicating a company rapidly scaling its operations.  While the direct-to-smartphone satellite network is innovative and has the potential to disrupt mobile connectivity, it faces significant technical challenges and regulatory hurdles. The high debt/equity ratio and negative free cash flow raise concerns about financial sustainability. Holding for now allows for further observation of how AST SpaceMobile navigates these challenges and delivers on its ambitious vision."
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "BUY",
+      "shares": 1683,
+      "price": 15.7,
+      "amount": 26423.1,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 79294.93,
+      "reason": "Orla Mining exhibits strong financial performance with impressive revenue growth and profitability.  Its focus on developing the Camino Rojo project in Mexico presents a significant growth catalyst, potentially driving future value creation. While recent market volatility may create short-term headwinds, analysts' positive outlook and high upside potential suggest a compelling investment opportunity for long-term growth."
+    },
+    {
+      "ticker": "TNXP",
+      "action": "BUY",
+      "shares": 2224,
+      "price": 11.88,
+      "amount": 26421.12,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 52873.81,
+      "reason": "TNXP exhibits strong acceleration with impressive revenue growth despite being in the early stages.  The recent analyst target price suggests significant future upside potential. While FCF remains negative, this is typical for a company investing heavily in R&D. The positive news surrounding TONMYA and its applications could drive further growth and warrant consideration as a Strong Buy."
+    },
+    {
+      "ticker": "CRWV",
+      "action": "BUY",
+      "shares": 244,
+      "price": 108.03,
+      "amount": 26359.32,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 26514.49,
+      "reason": "CoreWeave is rapidly gaining traction in the lucrative AI infrastructure market, evidenced by its explosive revenue growth. While financials like FCF and ROE are currently negative due to reinvestment in growth, this suggests a strong commitment to scaling operations. The high analyst target price and institutional ownership indicate confidence in CoreWeave's future potential, making it a compelling buy for investors seeking exposure to the rapidly evolving AI landscape."
+    },
+    {
+      "ticker": "POET",
+      "action": "BUY",
+      "shares": 1713,
+      "price": 15.475,
+      "amount": 26508.67,
+      "date": "2026-06-04 23:07 EDT",
+      "balance": 5.82,
+      "reason": "POET exhibits a rapidly accelerating trajectory with explosive revenue growth. While financials like ROE and Debt/Equity are concerning, the company's focus on innovative semiconductor products positions it well for future gains.  The strong analyst buy recommendation and positive recent price action suggest market confidence despite a lack of recent news.  Further developments and product launches could drive significant value creation."
     }
   ],
-  "lastRecommendAt": "2026-05-16 22:13 EDT"
+  "lastRecommendAt": "2026-06-04 23:07 EDT"
 }

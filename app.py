@@ -57,6 +57,51 @@ def save_watchlist():
 
 watchlist = load_watchlist()
 
+def _sync_watchlist_from_holdings(holding_tickers):
+    """
+    Keep watchlist aligned with TradeAI holdings:
+    - Add any holding ticker not already in watchlist
+    - Remove any ticker that was a previous holding but is no longer held
+      (identified by tradeai_holdings set stored in watchlist.json metadata)
+    - Manual tickers (never held) are left untouched
+    """
+    global watchlist
+    try:
+        prev_holdings = set(load_json(WATCHLIST_PATH + ".holdings", []))
+        current_holdings = set(holding_tickers)
+
+        added, removed = [], []
+
+        for t in current_holdings:
+            if t not in watchlist:
+                watchlist.append(t)
+                added.append(t)
+
+        for t in list(watchlist):
+            if t in prev_holdings and t not in current_holdings:
+                watchlist.remove(t)
+                removed.append(t)
+
+        save_watchlist()
+        # Persist current holding set for next diff
+        save_json(WATCHLIST_PATH + ".holdings", list(current_holdings))
+
+        if added or removed:
+            log.info(f"[WatchlistSync] added:{added} removed:{removed} | watchlist now:{watchlist}")
+        else:
+            log.info(f"[WatchlistSync] no changes | holdings:{list(current_holdings)}")
+    except Exception as e:
+        log.error(f"[WatchlistSync] FAIL: {e}")
+
+
+def _get_holding_tickers():
+    """Return current TradeAI holding tickers."""
+    try:
+        trades = load_json(TRADES_AI_PATH, {})
+        return list(trades.get("holdings", {}).keys())
+    except Exception:
+        return []
+
 fetch_status = {"running": False, "message": "Idle", "operation": None}
 op_timestamps = {"prices": None, "smart": None, "new": None, "all": None}
 last_fetched_tickers = set()
@@ -384,6 +429,13 @@ def status():
         "lastPriceRefresh": out.get("lastPriceRefresh"),
     })
 
+@app.route("/api/holding-tickers")
+def api_holding_tickers():
+    """Returns current TradeAI holding tickers so UI can lock them in watchlist bar."""
+    tickers = _get_holding_tickers()
+    log.info(f"[HoldingTickers] {tickers}")
+    return jsonify({"holdingTickers": tickers})
+
 @app.route("/news/<ticker>")
 def get_news(ticker):
     try:
@@ -693,6 +745,149 @@ def macro_refresh():
     t.start()
     log.info("Macro refresh triggered via UI")
     return jsonify({"status": "started"})
+
+
+# ── MARKET ALERT ──────────────────────────────────────────────────────────────
+MARKET_ALERT_CACHE = {"data": None, "cachedAt": None}
+MARKET_ALERT_TTL   = 300   # seconds (5 min)
+ALERT_THRESHOLD    = -0.02  # -2% S&P 500
+VIX_FEAR_THRESHOLD = 20.0
+
+def _fetch_market_alert_data():
+    """Fetch ^GSPC and ^VIX via yfinance. Returns dict or None on failure."""
+    try:
+        import yfinance as yf
+        spx = yf.Ticker("^GSPC")
+        vix = yf.Ticker("^VIX")
+
+        spx_info = spx.fast_info
+        vix_info = vix.fast_info
+
+        spx_price = getattr(spx_info, "last_price", None)
+        spx_prev  = getattr(spx_info, "previous_close", None)
+        vix_price = getattr(vix_info, "last_price", None)
+
+        if spx_price is None or spx_prev is None:
+            log.warning("[MarketAlert] Could not fetch ^GSPC fast_info — trying history fallback")
+            hist = spx.history(period="2d", interval="1d")
+            if len(hist) >= 2:
+                spx_price = float(hist["Close"].iloc[-1])
+                spx_prev  = float(hist["Close"].iloc[-2])
+            else:
+                log.error("[MarketAlert] ^GSPC history fallback failed")
+                return None
+
+        if vix_price is None:
+            try:
+                vhist = vix.history(period="1d", interval="1m")
+                vix_price = float(vhist["Close"].iloc[-1]) if not vhist.empty else None
+            except Exception as ve:
+                log.warning(f"[MarketAlert] ^VIX fallback failed: {ve}")
+
+        spx_change = (spx_price - spx_prev) / spx_prev if spx_prev else 0.0
+        result = {
+            "spxPrice":  round(float(spx_price), 2),
+            "spxPrev":   round(float(spx_prev), 2),
+            "spxChange": round(spx_change, 5),
+            "vix":       round(float(vix_price), 2) if vix_price else None,
+        }
+        log.info(f"[MarketAlert] fetched | SPX:{result['spxPrice']} chg:{result['spxChange']:.2%} VIX:{result['vix']}")
+        return result
+    except Exception as e:
+        log.error(f"[MarketAlert] fetch FAIL: {e}")
+        return None
+
+
+def _generate_alert_cause(spx_change, vix):
+    """Call Ollama to generate a 1-sentence cause for the market drop."""
+    try:
+        import requests as req
+        chg_pct = f"{spx_change * 100:.1f}%"
+        vix_str = f"VIX at {vix:.1f}" if vix else "VIX unavailable"
+        prompt = (
+            f"The S&P 500 is down {chg_pct} today. {vix_str}. "
+            "In exactly 1 concise sentence (max 20 words), state the most likely cause of today's drop "
+            "based on current macro conditions. No preamble."
+        )
+        resp = req.post(
+            OLLAMA_URL,
+            json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False},
+            timeout=30
+        )
+        cause = resp.json().get("response", "").strip().split("\n")[0]
+        log.info(f"[MarketAlert] AI cause generated: {cause}")
+        return cause
+    except Exception as e:
+        log.warning(f"[MarketAlert] AI cause FAIL (non-critical): {e}")
+        return None
+
+
+@app.route("/api/market-alert")
+def api_market_alert():
+    """
+    Returns market alert status. Caches for MARKET_ALERT_TTL seconds.
+    Only calls Ollama for cause when alert is active.
+    Response: { alert, spxChange, spxPrice, vix, cause, level, checkedAt, cached }
+    """
+    try:
+        import time
+        now_epoch = time.time()
+        cached = MARKET_ALERT_CACHE.get("data")
+        cached_at = MARKET_ALERT_CACHE.get("cachedAt") or 0
+
+        if cached and (now_epoch - cached_at) < MARKET_ALERT_TTL:
+            log.info(f"[MarketAlert] served from cache | age:{int(now_epoch - cached_at)}s")
+            return jsonify({**cached, "cached": True})
+
+        raw = _fetch_market_alert_data()
+        if not raw:
+            log.error("[MarketAlert] route: fetch returned None")
+            if cached:
+                return jsonify({**cached, "cached": True, "stale": True})
+            return jsonify({"alert": False, "error": "fetch_failed", "cached": False}), 200
+
+        spx_change = raw["spxChange"]
+        vix        = raw["vix"]
+        alert      = spx_change <= ALERT_THRESHOLD
+
+        level  = "normal"
+        if spx_change <= -0.03:
+            level = "severe"
+        elif spx_change <= -0.02:
+            level = "warning"
+        elif spx_change <= -0.01:
+            level = "watch"
+
+        cause = None
+        if alert:
+            # Reuse cached cause if alert was already active and cause exists
+            prev_cause = (cached or {}).get("cause")
+            cause = prev_cause if prev_cause else _generate_alert_cause(spx_change, vix)
+
+        vix_fear = vix is not None and vix >= VIX_FEAR_THRESHOLD
+
+        data = {
+            "alert":      alert,
+            "level":      level,
+            "spxChange":  raw["spxChange"],
+            "spxPrice":   raw["spxPrice"],
+            "spxPrev":    raw["spxPrev"],
+            "vix":        vix,
+            "vixFear":    vix_fear,
+            "cause":      cause,
+            "checkedAt":  ts(),
+            "cached":     False,
+        }
+
+        MARKET_ALERT_CACHE["data"]     = data
+        MARKET_ALERT_CACHE["cachedAt"] = now_epoch
+        log.info(f"[MarketAlert] alert:{alert} level:{level} spxChange:{spx_change:.2%} vix:{vix} vixFear:{vix_fear}")
+        return jsonify(data)
+
+    except Exception as e:
+        log.error(f"[MarketAlert] route FAIL: {e}")
+        return jsonify({"alert": False, "error": str(e), "cached": False}), 200
+# ── END MARKET ALERT ───────────────────────────────────────────────────────────
 
 
 @app.route("/macro/ai", methods=["GET","POST"])
@@ -1436,6 +1631,9 @@ def run_tradeai_recommend():
         candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
 
+        # ── Sync watchlist from TradeAI holdings ──────────────────────────────
+        _sync_watchlist_from_holdings(list(holdings.keys()))
+
         fetch_status = {"running": False, "message": f"TradeAI recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
         log.info(f"=== TradeAI Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
     except Exception as e:
@@ -1558,6 +1756,10 @@ def refresh_ticker_news(ticker):
 
 
 # Auto price refresh on startup
+_startup_holdings = _get_holding_tickers()
+if _startup_holdings:
+    _sync_watchlist_from_holdings(_startup_holdings)
+    log.info(f"=== Startup watchlist sync from holdings: {_startup_holdings} ===")
 _startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
 _startup_thread.start()
 log.info("=== Startup price refresh triggered ===")

@@ -54,6 +54,7 @@
     }
     .status-pill.running { border-color: var(--accent); color: var(--accent); animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+    @keyframes tai-flash { 0%,100%{border-color:var(--warn);box-shadow:0 0 0 0 rgba(251,191,36,0)} 50%{border-color:#fde68a;box-shadow:0 0 8px 2px rgba(251,191,36,0.4)} }
     .header-actions { display: flex; gap: 10px; align-items: center; }
     .btn {
       font-family: 'DM Mono', monospace;
@@ -1068,6 +1069,22 @@
   ⚡ UPDATING PRICES — PLEASE WAIT...
 </div>
 
+<!-- MARKET ALERT BANNER -->
+<div id="marketAlertBanner" style="display:none;position:sticky;top:0;z-index:199;padding:10px 32px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.3px;border-bottom:2px solid transparent;transition:all 0.3s;">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;max-width:1400px;margin:0 auto;">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <span id="alertIcon" style="font-size:16px"></span>
+      <span id="alertHeadline" style="font-size:14px;font-weight:800;letter-spacing:-0.3px"></span>
+      <span id="alertVix" style="font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span id="alertCause" style="font-size:11px;font-weight:400;max-width:500px;line-height:1.4;opacity:0.9"></span>
+      <span id="alertCheckedAt" style="font-size:10px;opacity:0.6;white-space:nowrap"></span>
+      <button onclick="dismissMarketAlert()" style="background:rgba(0,0,0,0.2);border:none;color:inherit;cursor:pointer;font-size:14px;padding:2px 8px;border-radius:4px;line-height:1">✕</button>
+    </div>
+  </div>
+</div>
+
 <div class="header">
   <div class="header-left">
     <div class="logo">STOCK<span>.</span>AI</div>
@@ -1095,11 +1112,12 @@
   <div class="log-panel-body" id="logBody">Loading...</div>
 </div>
 
-<div class="watchlist-bar">
+<div class="watchlist-bar" id="watchlistBar">
   {% for ticker in watchlist %}
-  <span class="ticker-tag">
+  <span class="ticker-tag" data-ticker="{{ ticker }}">
     {{ ticker }}
-    <a href="/remove/{{ ticker }}">✕</a>
+    <span class="holding-badge" style="display:none;font-size:9px;color:var(--accent2);margin-left:2px">🤖</span>
+    <a class="remove-link" href="/remove/{{ ticker }}" style="color:var(--down);text-decoration:none;font-size:11px;margin-left:4px">✕</a>
   </span>
   {% endfor %}
   <form class="add-form" method="POST" action="/add">
@@ -1108,15 +1126,38 @@
   </form>
 </div>
 
+<script>
+(function() {
+  function applyHoldingLocks(holdingTickers) {
+    const held = new Set(holdingTickers);
+    document.querySelectorAll('#watchlistBar .ticker-tag').forEach(tag => {
+      const ticker = tag.dataset.ticker;
+      const badge = tag.querySelector('.holding-badge');
+      const removeLink = tag.querySelector('.remove-link');
+      if (held.has(ticker)) {
+        if (badge) badge.style.display = 'inline';
+        if (removeLink) { removeLink.style.display = 'none'; }
+        tag.title = 'Held by TradeAI — cannot remove manually';
+      } else {
+        if (badge) badge.style.display = 'none';
+        if (removeLink) removeLink.style.display = 'inline';
+      }
+    });
+    console.log('[WatchlistBar] holding locks applied | held:', [...held]);
+  }
+
+  fetch('/api/holding-tickers')
+    .then(r => r.json())
+    .then(d => applyHoldingLocks(d.holdingTickers || []))
+    .catch(e => console.error('[WatchlistBar] holding-tickers FAIL:', e));
+})();
+</script>
+
 <div class="tabs" id="mainTabs">
   <div class="tab active" onclick="showTab('watchlist', this)" data-tab="watchlist">WATCHLIST</div>
   <div class="tab" onclick="showTab('macro', this);loadMacro();" data-tab="macro">MACRO</div>
-  <div class="tab" onclick="showTab('gainers', this)" data-tab="gainers">DAILY GAINERS</div>
-  <div class="tab" onclick="showTab('peers', this)" data-tab="peers">PEER RANKINGS</div>
-  <div class="tab" onclick="showTab('recommendations', this)" data-tab="recommendations">BUY RECOMMENDATIONS</div>
   <div class="tab" onclick="showTab('admin', this)" data-tab="admin">ADMIN</div>
   <div class="tab" onclick="showTab('dream', this);loadDream();" data-tab="dream">🌟 DREAM</div>
-  <div class="tab" onclick="showTab('trade', this);loadTrade();" data-tab="trade">💹 TRADE</div>
   <div class="tab" onclick="showTab('tradeai', this);loadTradeAI();" data-tab="tradeai">🤖 TRADEAI</div>
 </div>
 
@@ -1137,28 +1178,12 @@
     <div id="macroContent"><div class="loading">Click the tab to load macro data...</div></div>
   </div>
 
-  <div class="tab-panel" id="tab-gainers">
-    <div id="gainersContent"><div class="loading">Loading gainers...</div></div>
-  </div>
-
-  <div class="tab-panel" id="tab-peers">
-    <div id="peersContent"><div class="loading">Loading peer rankings...</div></div>
-  </div>
-
-  <div class="tab-panel" id="tab-recommendations">
-    <div id="recommendationsContent"><div class="loading">Loading recommendations...</div></div>
-  </div>
-
   <div class="tab-panel" id="tab-admin">
     <div id="adminContent"><div class="loading">Loading admin...</div></div>
   </div>
 
   <div class="tab-panel" id="tab-dream">
     <div id="dreamContent"><div class="loading">Click the 🌟 DREAM tab to run your scan...</div></div>
-  </div>
-
-  <div class="tab-panel" id="tab-trade">
-    <div id="tradeContent"><div class="loading">Click the 💹 TRADE tab to load simulation...</div></div>
   </div>
 
   <div class="tab-panel" id="tab-tradeai">
@@ -2643,24 +2668,11 @@ async function loadData() {
     catch(e) { console.error('[loadData] renderWatchlist CRASH:', e); throw e; }
     document.getElementById('watchlistContent').innerHTML = whtml;
 
-    console.log('[loadData] calling renderGainers');
-    try { document.getElementById('gainersContent').innerHTML = renderGainers(data); } catch(e) { console.error('[loadData] renderGainers CRASH:', e); }
-
-    console.log('[loadData] calling renderPeers');
-    try { document.getElementById('peersContent').innerHTML = renderPeers(data); } catch(e) { console.error('[loadData] renderPeers CRASH:', e); }
-
-    console.log('[loadData] calling renderRecommendations');
-    try { document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data); } catch(e) { console.error('[loadData] renderRecommendations CRASH:', e); }
-
     console.log('[loadData] calling renderAdmin');
     try { document.getElementById('adminContent').innerHTML = renderAdmin(data.opTimestamps); } catch(e) { console.error('[loadData] renderAdmin CRASH:', e); }
 
     console.log('[loadData] calling buildTickerTabs');
     try { buildTickerTabs(stocks, data.opTimestamps); } catch(e) { console.error('[loadData] buildTickerTabs CRASH:', e); throw e; }
-    document.getElementById('gainersContent').innerHTML = renderGainers(data);
-    document.getElementById('peersContent').innerHTML = renderPeers(data);
-    document.getElementById('recommendationsContent').innerHTML = renderRecommendations(data);
-    document.getElementById('adminContent').innerHTML = renderAdmin(data.opTimestamps);
 
     if (data.lastPriceRefresh) {
       const lbl = document.getElementById('lastPriceRefreshLabel');
@@ -3604,6 +3616,29 @@ function renderTradeAI(data) {
     : `<div style="color:var(--muted);padding:16px">No recommendation yet. Complete all steps then click Recommend.</div>`;
 
   return `
+  <!-- TRADEAI TOP CONTROL BAR -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px">
+    ${['identify','fetch','analyze','recommend'].map((op, i) => {
+      const labels  = ['IDENTIFY','FETCH INFO','AI ANALYZE','RECOMMEND'];
+      const ops     = ['identify','fetch','analyze','recommend'];
+      const tsKeys  = ['identifiedAt','detailsFetchedAt','aiAnalyzedAt','lastRecommendAt'];
+      const tsVals  = [data.identifiedAt, data.detailsFetchedAt, data.aiAnalyzedAt, (data.lastRecommend||{}).scoredAt];
+      const lastTs  = tsVals[i] || null;
+      return `
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <button
+          id="tai-btn-${ops[i]}"
+          onclick="runTradeAIOp('${ops[i]}', this)"
+          style="font-family:'DM Mono',monospace;font-size:12px;font-weight:700;padding:10px 0;border-radius:8px;cursor:pointer;border:2px solid var(--warn);background:rgba(251,191,36,0.08);color:var(--warn);letter-spacing:0.5px;transition:all 0.3s;width:100%">
+          ${labels[i]}
+        </button>
+        <div style="font-size:10px;color:var(--muted);text-align:center" id="tai-ts-${ops[i]}">
+          ${lastTs ? '✓ ' + lastTs : '— not run —'}
+        </div>
+      </div>`;
+    }).join('')}
+  </div>
+
   <!-- ACCOUNT SECTION -->
   <div class="trade-section">
     <div class="trade-section-header">
@@ -3617,6 +3652,8 @@ function renderTradeAI(data) {
           ${monthOptions}
         </select>
         <button class="btn" onclick="showAITransactions()">TRANSACTIONS</button>
+        <button class="btn" onclick="showAIReport()">📊 REPORT</button>
+        <button class="btn" style="color:var(--down);border-color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
       </div>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
@@ -3641,16 +3678,12 @@ function renderTradeAI(data) {
     </div>
   </div>
 
-  <!-- IDENTIFY SECTION -->
+  <!-- IDENTIFY / CANDIDATES SECTION -->
   <div class="trade-section">
     <div class="trade-section-header">
       <div>
-        <div class="trade-section-title">IDENTIFY</div>
-        <div class="trade-section-sub">Holdings + top dream scorers · max 15${data.identifiedAt ? ' · ' + data.identifiedAt : ''}</div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn" onclick="runTradeAIOp('identify', this)">IDENTIFY</button>
-        <button class="btn btn-primary" onclick="runTradeAIOp('fetch', this)">FETCH INFO</button>
+        <div class="trade-section-title">CANDIDATES</div>
+        <div class="trade-section-sub">Holdings + top dream scorers · max 15${data.identifiedAt ? ' · last run: ' + data.identifiedAt : ''}</div>
       </div>
     </div>
     ${identifiedHtml}
@@ -3660,10 +3693,9 @@ function renderTradeAI(data) {
   <div class="trade-section">
     <div class="trade-section-header">
       <div>
-        <div class="trade-section-title">AI ANALYZE</div>
-        <div class="trade-section-sub">Ollama gemma2:9b · trajectory, sentiment, stage, conviction score${data.aiAnalyzedAt ? ' · ' + data.aiAnalyzedAt : ''}</div>
+        <div class="trade-section-title">AI ANALYSIS</div>
+        <div class="trade-section-sub">Ollama · trajectory, sentiment, stage, conviction${data.aiAnalyzedAt ? ' · last run: ' + data.aiAnalyzedAt : ''}</div>
       </div>
-      <button class="btn btn-primary" onclick="runTradeAIOp('analyze', this)">AI ANALYZE</button>
     </div>
     ${identified.length === 0 ? '<div style="color:var(--muted);padding:16px">Run Identify + Fetch Info first.</div>' :
       '<div style="color:var(--muted);font-size:11px;padding:8px 0">Expand each ticker above to see AI assessment after analysis runs.</div>'}
@@ -3673,10 +3705,9 @@ function renderTradeAI(data) {
   <div class="trade-section">
     <div class="trade-section-header">
       <div>
-        <div class="trade-section-title">RECOMMEND</div>
-        <div class="trade-section-sub">AI-weighted score · trajectory + sentiment · auto-executes${lastRec ? ' · ' + lastRec.scoredAt : ''}</div>
+        <div class="trade-section-title">LAST RECOMMENDATION</div>
+        <div class="trade-section-sub">AI-weighted score · auto-executes${lastRec ? ' · ' + lastRec.scoredAt : ''}</div>
       </div>
-      <button class="btn btn-primary" onclick="runTradeAIOp('recommend', this)">RECOMMEND</button>
     </div>
     ${recHtml}
   </div>
@@ -3798,16 +3829,22 @@ function renderTradeAIRecommend(rec) {
 async function runTradeAIOp(op, btn) {
   if (btn.disabled) return;
   const orig = btn.textContent;
-  btn.textContent = '⏳';
+
+  // ── Running state: flashing border ──────────────────────────────────────
   btn.disabled = true;
+  btn.textContent = '⏳ ' + orig;
+  btn.style.animation = 'tai-flash 0.8s ease-in-out infinite';
+  btn.style.borderColor = 'var(--warn)';
+  btn.style.color = 'var(--warn)';
+  btn.style.background = 'rgba(251,191,36,0.12)';
+
   console.log('[TradeAI] op started:', op);
   try {
     const res = await fetch('/tradeai/' + op, {method: 'POST'});
     if (!res.ok) {
       const err = await res.json();
       console.error('[TradeAI] op rejected:', op, err);
-      btn.textContent = orig;
-      btn.disabled = false;
+      _resetTradeAIBtn(btn, orig);
       return;
     }
     let attempts = 0;
@@ -3818,23 +3855,39 @@ async function runTradeAIOp(op, btn) {
         console.log('[TradeAI] poll:', op, '| running:', s.running, '| msg:', s.message);
         if (!s.running || attempts > 180) {
           clearInterval(poll);
-          btn.textContent = orig;
+          // ── Done state: grey ─────────────────────────────────────────────
           btn.disabled = false;
+          btn.textContent = orig;
+          btn.style.animation = 'none';
+          btn.style.borderColor = 'var(--border)';
+          btn.style.color = 'var(--muted)';
+          btn.style.background = 'var(--surface2)';
+          // Update timestamp label
+          const now = new Date().toLocaleString('en-CA', {timeZone:'America/Toronto', hour12:false}).replace(',','');
+          const tsEl = document.getElementById('tai-ts-' + op);
+          if (tsEl) tsEl.textContent = '✓ ' + now;
           loadTradeAI(true);
           console.log('[TradeAI] op complete:', op);
         }
       } catch(e) {
         clearInterval(poll);
-        btn.textContent = orig;
-        btn.disabled = false;
+        _resetTradeAIBtn(btn, orig);
         console.error('[TradeAI] poll FAIL:', e);
       }
     }, 3000);
   } catch(e) {
-    btn.textContent = orig;
-    btn.disabled = false;
+    _resetTradeAIBtn(btn, orig);
     console.error('[TradeAI] op FAIL:', op, e);
   }
+}
+
+function _resetTradeAIBtn(btn, orig) {
+  btn.disabled = false;
+  btn.textContent = orig;
+  btn.style.animation = 'none';
+  btn.style.borderColor = 'var(--warn)';
+  btn.style.color = 'var(--warn)';
+  btn.style.background = 'rgba(251,191,36,0.08)';
 }
 
 async function refreshTickerNews(ticker, btn) {
@@ -4096,5 +4149,411 @@ async function resetTradeAISimulation(btn) {
   </div>
 </div>
 
+<script>
+// ── MARKET ALERT POLLING ───────────────────────────────────────────────────
+(function() {
+  const POLL_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
+  const MARKET_OPEN_ET  = { h: 9,  m: 30 };
+  const MARKET_CLOSE_ET = { h: 16, m: 0  };
+  let alertDismissed = false;
+  let pollTimer = null;
+
+  const LEVEL_STYLES = {
+    severe:  { bg: '#7f1d1d', border: '#ef4444', color: '#fecaca', icon: '🚨' },
+    warning: { bg: '#78350f', border: '#f59e0b', color: '#fde68a', icon: '⚠️' },
+    watch:   { bg: '#1e3a5f', border: '#3b82f6', color: '#bfdbfe', icon: '👁️' },
+    normal:  { bg: '#14532d', border: '#22c55e', color: '#bbf7d0', icon: '✅' },
+  };
+
+  function isMarketHours() {
+    const now = new Date();
+    const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const day = et.getDay();
+    if (day === 0 || day === 6) return false;
+    const mins = et.getHours() * 60 + et.getMinutes();
+    const open  = MARKET_OPEN_ET.h  * 60 + MARKET_OPEN_ET.m;
+    const close = MARKET_CLOSE_ET.h * 60 + MARKET_CLOSE_ET.m;
+    return mins >= open && mins < close;
+  }
+
+  function renderBanner(d) {
+    const banner = document.getElementById('marketAlertBanner');
+    if (!banner) return;
+
+    if (!d.alert && d.level !== 'watch') {
+      banner.style.display = 'none';
+      console.log('[MarketAlert] no alert | spxChange:' + (d.spxChange * 100).toFixed(2) + '% | cached:' + d.cached);
+      return;
+    }
+
+    if (alertDismissed && d.level === 'normal') return;
+
+    const style = LEVEL_STYLES[d.level] || LEVEL_STYLES.normal;
+    const chgPct = (d.spxChange * 100).toFixed(2);
+    const sign = d.spxChange >= 0 ? '+' : '';
+
+    banner.style.display = 'block';
+    banner.style.background = style.bg;
+    banner.style.borderBottomColor = style.border;
+    banner.style.color = style.color;
+
+    document.getElementById('alertIcon').textContent = style.icon;
+    document.getElementById('alertHeadline').textContent =
+      `S&P 500 ${sign}${chgPct}% · $${d.spxPrice.toLocaleString()}`;
+
+    const vixEl = document.getElementById('alertVix');
+    if (d.vix) {
+      vixEl.textContent = `VIX ${d.vix.toFixed(1)}${d.vixFear ? ' ⚡ FEAR' : ''}`;
+      vixEl.style.background = d.vixFear ? 'rgba(239,68,68,0.25)' : 'rgba(0,0,0,0.2)';
+    } else {
+      vixEl.textContent = '';
+    }
+
+    document.getElementById('alertCause').textContent = d.cause || '';
+    document.getElementById('alertCheckedAt').textContent = d.checkedAt ? '⏱ ' + d.checkedAt : '';
+
+    console.log('[MarketAlert] banner shown | level:' + d.level + ' spxChange:' + sign + chgPct + '% vix:' + d.vix + ' cause:' + (d.cause ? d.cause.substring(0,60) : 'none') + ' cached:' + d.cached + ' stale:' + (d.stale||false));
+  }
+
+  async function checkMarketAlert() {
+    if (!isMarketHours()) {
+      console.log('[MarketAlert] outside market hours — skip poll');
+      schedulePoll();
+      return;
+    }
+    console.log('[MarketAlert] polling /api/market-alert ...');
+    try {
+      const resp = await fetch('/api/market-alert');
+      if (!resp.ok) {
+        console.warn('[MarketAlert] HTTP ' + resp.status);
+        schedulePoll();
+        return;
+      }
+      const d = await resp.json();
+      if (d.error) {
+        console.error('[MarketAlert] server error: ' + d.error);
+      } else {
+        renderBanner(d);
+      }
+    } catch (e) {
+      console.error('[MarketAlert] fetch FAIL:', e);
+    }
+    schedulePoll();
+  }
+
+  function schedulePoll() {
+    clearTimeout(pollTimer);
+    pollTimer = setTimeout(checkMarketAlert, POLL_INTERVAL_MS);
+  }
+
+  window.dismissMarketAlert = function() {
+    alertDismissed = true;
+    const banner = document.getElementById('marketAlertBanner');
+    if (banner) banner.style.display = 'none';
+    console.log('[MarketAlert] dismissed by user');
+  };
+
+  // Run immediately on load, then every 5 min
+  checkMarketAlert();
+})();
+// ── END MARKET ALERT ───────────────────────────────────────────────────────
+</script>
+
+<!-- TRADEAI REPORT MODAL -->
+<div class="modal-overlay" id="aiReportModal" onclick="if(event.target===this)closeAIReport()">
+  <div class="modal" style="max-width:900px;width:95vw">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">📊 PERFORMANCE REPORT</div>
+        <div class="modal-subtitle" id="aiReportSubtitle">Loading...</div>
+      </div>
+      <button class="modal-close" onclick="closeAIReport()">✕</button>
+    </div>
+    <div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px">
+      <button class="report-period-btn active" onclick="switchReportPeriod('monthly',this)">MONTHLY</button>
+      <button class="report-period-btn" onclick="switchReportPeriod('quarterly',this)">QUARTERLY</button>
+      <button class="report-period-btn" onclick="switchReportPeriod('yearly',this)">YEARLY</button>
+    </div>
+    <div id="aiReportBody" style="max-height:65vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<style>
+.report-period-btn {
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:700;
+  padding:8px 20px;border:none;background:transparent;
+  color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;
+  letter-spacing:0.5px;transition:all 0.2s;
+}
+.report-period-btn.active { color:var(--accent);border-bottom-color:var(--accent); }
+.report-period-btn:hover { color:var(--text); }
+.report-ticker-row {
+  border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden;
+}
+.report-ticker-header {
+  display:grid;grid-template-columns:90px 80px 80px 90px 90px 80px 80px 1fr;
+  gap:8px;padding:10px 14px;background:var(--surface);cursor:pointer;
+  font-size:11px;align-items:center;transition:background 0.15s;
+}
+.report-ticker-header:hover { background:var(--surface2); }
+.report-ticker-detail {
+  display:none;padding:12px 14px;background:var(--surface2);
+  border-top:1px solid var(--border);
+}
+.report-ticker-detail.open { display:block; }
+.report-trade-pair {
+  display:grid;grid-template-columns:110px 80px 80px 80px 80px 80px 1fr;
+  gap:8px;font-size:11px;padding:5px 0;border-bottom:1px solid rgba(42,42,58,0.5);
+  align-items:center;
+}
+.report-trade-pair:last-child { border-bottom:none; }
+.report-summary-row {
+  display:grid;grid-template-columns:90px 80px 80px 90px 90px 80px 80px 1fr;
+  gap:8px;padding:10px 14px;background:rgba(200,241,53,0.04);
+  border:1px solid rgba(200,241,53,0.15);border-radius:8px;
+  font-size:11px;font-weight:700;margin-bottom:12px;
+}
+</style>
+
+<script>
+// ── TRADEAI REPORT ──────────────────────────────────────────────────────────
+let _reportAllTxns = [];
+let _reportPeriod  = 'monthly';
+
+function closeAIReport() {
+  document.getElementById('aiReportModal').classList.remove('visible');
+}
+
+async function showAIReport() {
+  const modal = document.getElementById('aiReportModal');
+  const body  = document.getElementById('aiReportBody');
+  const sub   = document.getElementById('aiReportSubtitle');
+  body.innerHTML = '<div style="color:var(--muted);padding:20px">Loading transactions...</div>';
+  modal.classList.add('visible');
+
+  try {
+    const data = await fetch('/tradeai').then(r => r.json());
+    _reportAllTxns = data.transactions || [];
+    console.log('[Report] loaded | txns:', _reportAllTxns.length);
+    _reportPeriod = 'monthly';
+    document.querySelectorAll('.report-period-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+    _renderReport();
+  } catch(e) {
+    body.innerHTML = '<div style="color:var(--down)">Failed to load transactions.</div>';
+    console.error('[Report] load FAIL:', e);
+  }
+}
+
+function switchReportPeriod(period, btn) {
+  _reportPeriod = period;
+  document.querySelectorAll('.report-period-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  _renderReport();
+  console.log('[Report] period switched to:', period);
+}
+
+function _periodKey(dateStr, period) {
+  if (!dateStr) return 'Unknown';
+  const d = new Date(dateStr);
+  if (isNaN(d)) return 'Unknown';
+  const y = d.getFullYear();
+  const m = d.getMonth() + 1;
+  if (period === 'monthly')   return `${y}-${String(m).padStart(2,'0')}`;
+  if (period === 'quarterly') return `${y}-Q${Math.ceil(m/3)}`;
+  if (period === 'yearly')    return `${y}`;
+  return 'Unknown';
+}
+
+function _buildReportData(txns, period) {
+  // Group transactions by period → ticker
+  // Match BUY→SELL pairs per ticker (FIFO)
+  const periods = {};
+
+  // First pass: collect all buys and sells per ticker globally (FIFO pairing)
+  const buyQueues = {}; // ticker → [{date,shares,price,amount}]
+  const pairs = [];    // [{ticker,buyDate,sellDate,shares,buyPrice,sellPrice,pnl,holdDays}]
+
+  const sorted = [...txns].sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  for (const t of sorted) {
+    if (t.action === 'BUY') {
+      if (!buyQueues[t.ticker]) buyQueues[t.ticker] = [];
+      buyQueues[t.ticker].push({date: t.date, shares: t.shares, price: t.price});
+    } else if (t.action === 'SELL') {
+      const q = buyQueues[t.ticker] || [];
+      if (q.length > 0) {
+        const buy = q.shift();
+        const holdDays = buy.date && t.date
+          ? Math.round((new Date(t.date) - new Date(buy.date)) / 86400000)
+          : null;
+        const pnl = (t.price - buy.price) * t.shares;
+        pairs.push({
+          ticker:    t.ticker,
+          buyDate:   buy.date,
+          sellDate:  t.date,
+          shares:    t.shares,
+          buyPrice:  buy.price,
+          sellPrice: t.price,
+          pnl:       pnl,
+          holdDays:  holdDays,
+          period:    _periodKey(t.sellDate || t.date, period),
+        });
+      }
+    }
+  }
+
+  // Group pairs by period → ticker
+  for (const p of pairs) {
+    const pk = _periodKey(p.sellDate, period);
+    if (!periods[pk]) periods[pk] = {};
+    if (!periods[pk][p.ticker]) periods[pk][p.ticker] = {trades:[], totalPnl:0, totalShares:0, buyPrices:[], sellPrices:[], holdDays:[]};
+    const entry = periods[pk][p.ticker];
+    entry.trades.push(p);
+    entry.totalPnl    += p.pnl;
+    entry.totalShares += p.shares;
+    entry.buyPrices.push(p.buyPrice);
+    entry.sellPrices.push(p.sellPrice);
+    if (p.holdDays !== null) entry.holdDays.push(p.holdDays);
+  }
+
+  // Also track open buys (no matching sell yet) per period
+  for (const ticker in buyQueues) {
+    for (const buy of buyQueues[ticker]) {
+      const pk = _periodKey(buy.date, period);
+      if (!periods[pk]) periods[pk] = {};
+      if (!periods[pk][ticker]) periods[pk][ticker] = {trades:[], totalPnl:0, totalShares:0, buyPrices:[], sellPrices:[], holdDays:[], openBuys:[]};
+      if (!periods[pk][ticker].openBuys) periods[pk][ticker].openBuys = [];
+      periods[pk][ticker].openBuys.push(buy);
+    }
+  }
+
+  return periods;
+}
+
+function _renderReport() {
+  const body = document.getElementById('aiReportBody');
+  const sub  = document.getElementById('aiReportSubtitle');
+  const data = _buildReportData(_reportAllTxns, _reportPeriod);
+  const periodKeys = Object.keys(data).sort().reverse();
+
+  if (!periodKeys.length) {
+    body.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No closed trades to report yet.</div>';
+    sub.textContent = 'No data';
+    console.log('[Report] no data for period:', _reportPeriod);
+    return;
+  }
+
+  const avg = arr => arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : null;
+  const fmtD = n => n != null ? `${n}d` : '—';
+
+  let html = '';
+
+  for (const pk of periodKeys) {
+    const tickers = data[pk];
+    const tickerKeys = Object.keys(tickers).sort();
+    const periodTotal = tickerKeys.reduce((s,t) => s + (tickers[t].totalPnl||0), 0);
+    const periodTrades = tickerKeys.reduce((s,t) => s + (tickers[t].trades||[]).length, 0);
+    const periodColor = periodTotal >= 0 ? 'var(--up)' : 'var(--down)';
+
+    html += `<div style="margin-bottom:24px">`;
+
+    // Period header
+    html += `<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)">
+      <div style="font-family:'Syne',sans-serif;font-size:16px;font-weight:800;letter-spacing:-0.3px">${pk}</div>
+      <div style="display:flex;gap:20px;font-size:11px">
+        <span style="color:var(--muted)">${periodTrades} closed trade${periodTrades!==1?'s':''} · ${tickerKeys.length} ticker${tickerKeys.length!==1?'s':''}</span>
+        <span style="font-weight:700;color:${periodColor}">${periodTotal >= 0 ? '+' : ''}${fmt$(periodTotal)} realized P&L</span>
+      </div>
+    </div>`;
+
+    // Column headers
+    html += `<div style="display:grid;grid-template-columns:90px 60px 80px 80px 90px 80px 80px 1fr;gap:8px;padding:4px 14px;margin-bottom:4px">
+      ${['TICKER','TRADES','AVG BUY','AVG SELL','REALIZED','RETURN','AVG HOLD',''].map(h =>
+        `<div style="font-size:9px;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase">${h}</div>`
+      ).join('')}
+    </div>`;
+
+    // Per-ticker rows
+    for (const ticker of tickerKeys) {
+      const td = tickers[ticker];
+      const trades      = td.trades || [];
+      const openBuys    = td.openBuys || [];
+      const avgBuy      = avg(td.buyPrices);
+      const avgSell     = avg(td.sellPrices);
+      const ret         = avgBuy && avgSell ? ((avgSell - avgBuy) / avgBuy) * 100 : null;
+      const avgHold     = avg(td.holdDays);
+      const pnlColor    = td.totalPnl >= 0 ? 'var(--up)' : 'var(--down)';
+      const retColor    = ret != null ? (ret >= 0 ? 'var(--up)' : 'var(--down)') : 'var(--muted)';
+      const rowId       = `report-detail-${pk}-${ticker}`.replace(/[^a-zA-Z0-9-]/g,'_');
+
+      html += `<div class="report-ticker-row">
+        <div class="report-ticker-header" onclick="toggleReportDetail('${rowId}')">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:14px">${ticker}</div>
+          <div style="color:var(--muted)">${trades.length}${openBuys.length ? `<span style="color:var(--warn);font-size:9px"> +${openBuys.length} open</span>` : ''}</div>
+          <div>${avgBuy != null ? fmt$(avgBuy) : '—'}</div>
+          <div>${avgSell != null ? fmt$(avgSell) : '—'}</div>
+          <div style="color:${pnlColor};font-weight:700">${td.totalPnl >= 0?'+':''}${fmt$(td.totalPnl)}</div>
+          <div style="color:${retColor};font-weight:700">${ret != null ? (ret>=0?'+':'')+ret.toFixed(1)+'%' : '—'}</div>
+          <div style="color:var(--muted)">${fmtD(avgHold ? Math.round(avgHold) : null)}</div>
+          <div style="text-align:right;font-size:10px;color:var(--muted)">▸ detail</div>
+        </div>
+        <div class="report-ticker-detail" id="${rowId}">
+          <div style="font-size:9px;color:var(--muted);letter-spacing:0.8px;margin-bottom:8px">CLOSED TRADE PAIRS</div>
+          <div style="display:grid;grid-template-columns:110px 70px 80px 80px 80px 70px 1fr;gap:8px;padding:4px 0;margin-bottom:4px">
+            ${['BUY DATE','SELL DATE','SHARES','BUY $','SELL $','HOLD','P&L'].map(h =>
+              `<div style="font-size:9px;color:var(--muted);letter-spacing:0.8px">${h}</div>`
+            ).join('')}
+          </div>
+          ${trades.length === 0 ? '<div style="color:var(--muted);font-size:11px;padding:4px 0">No closed pairs this period.</div>' :
+            trades.map(p => {
+              const pc = p.pnl >= 0 ? 'var(--up)' : 'var(--down)';
+              return `<div class="report-trade-pair">
+                <div style="color:var(--muted)">${(p.buyDate||'—').slice(0,10)}</div>
+                <div style="color:var(--muted)">${(p.sellDate||'—').slice(0,10)}</div>
+                <div>${p.shares}</div>
+                <div>${fmt$(p.buyPrice)}</div>
+                <div>${fmt$(p.sellPrice)}</div>
+                <div style="color:var(--muted)">${fmtD(p.holdDays)}</div>
+                <div style="color:${pc};font-weight:700">${p.pnl>=0?'+':''}${fmt$(p.pnl)}</div>
+              </div>`;
+            }).join('')
+          }
+          ${openBuys.length ? `
+            <div style="font-size:9px;color:var(--warn);letter-spacing:0.8px;margin:10px 0 6px">OPEN BUYS (no matching sell yet)</div>
+            ${openBuys.map(b => `
+              <div class="report-trade-pair">
+                <div style="color:var(--warn)">${(b.date||'—').slice(0,10)}</div>
+                <div style="color:var(--muted)">—</div>
+                <div>${b.shares}</div>
+                <div>${fmt$(b.price)}</div>
+                <div style="color:var(--muted)">—</div>
+                <div style="color:var(--muted)">—</div>
+                <div style="color:var(--warn);font-size:10px">OPEN</div>
+              </div>`).join('')}` : ''}
+        </div>
+      </div>`;
+    }
+
+    html += `</div>`;
+  }
+
+  body.innerHTML = html;
+  sub.textContent = `${_reportPeriod.charAt(0).toUpperCase()+_reportPeriod.slice(1)} · ${periodKeys.length} period${periodKeys.length!==1?'s':''} · ${_reportAllTxns.length} total transactions`;
+  console.log('[Report] rendered | period:', _reportPeriod, '| periods:', periodKeys.length, '| txns:', _reportAllTxns.length);
+}
+
+function toggleReportDetail(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.toggle('open');
+  const header = el.previousElementSibling;
+  if (header) {
+    const arrow = header.querySelector('div:last-child');
+    if (arrow) arrow.textContent = el.classList.contains('open') ? '▾ hide' : '▸ detail';
+  }
+  console.log('[Report] ticker detail toggled:', id, '| open:', el.classList.contains('open'));
+}
+// ── END TRADEAI REPORT ──────────────────────────────────────────────────────
+</script>
 </body>
 </html>
