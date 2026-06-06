@@ -1,30 +1,30 @@
 {
-  "balance": 5.82,
+  "balance": 189.87,
   "holdings": {
-    "VG": {
-      "shares": 1413,
-      "purchasePrice": 14.23,
-      "purchasedAt": "2026-05-16 22:13 EDT"
-    },
-    "OLA.TO": {
-      "shares": 1683,
-      "purchasePrice": 15.7,
-      "purchasedAt": "2026-06-04 23:07 EDT"
-    },
-    "TNXP": {
-      "shares": 2224,
-      "purchasePrice": 11.88,
-      "purchasedAt": "2026-06-04 23:07 EDT"
-    },
-    "CRWV": {
-      "shares": 244,
-      "purchasePrice": 108.03,
-      "purchasedAt": "2026-06-04 23:07 EDT"
-    },
     "POET": {
       "shares": 1713,
       "purchasePrice": 15.475,
       "purchasedAt": "2026-06-04 23:07 EDT"
+    },
+    "CRDO": {
+      "shares": 111,
+      "purchasePrice": 206.89,
+      "purchasedAt": "2026-06-06 19:13 EDT"
+    },
+    "ONDS": {
+      "shares": 2223,
+      "purchasePrice": 10.43,
+      "purchasedAt": "2026-06-06 19:13 EDT"
+    },
+    "ARGX": {
+      "shares": 26,
+      "purchasePrice": 891.32,
+      "purchasedAt": "2026-06-06 19:13 EDT"
+    },
+    "NTRA": {
+      "shares": 107,
+      "purchasePrice": 215.31,
+      "purchasedAt": "2026-06-06 19:13 EDT"
     }
   },
   "transactions": [
@@ -157,7 +157,87 @@
       "date": "2026-06-04 23:07 EDT",
       "balance": 5.82,
       "reason": "POET exhibits a rapidly accelerating trajectory with explosive revenue growth. While financials like ROE and Debt/Equity are concerning, the company's focus on innovative semiconductor products positions it well for future gains.  The strong analyst buy recommendation and positive recent price action suggest market confidence despite a lack of recent news.  Further developments and product launches could drive significant value creation."
+    },
+    {
+      "ticker": "VG",
+      "action": "SELL",
+      "shares": 1413,
+      "price": 12.8,
+      "amount": 18086.4,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 18092.22,
+      "reason": "Venture Global is rapidly expanding its LNG production capacity, driving impressive revenue growth.  While the company is currently unprofitable and highly leveraged, its focus on long-term contracts with attractive pricing suggests strong future earnings potential. The favorable macro environment for LNG coupled with analyst buy ratings and a significant institutional ownership stake make this a compelling growth opportunity."
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "SELL",
+      "shares": 1683,
+      "price": 15.06,
+      "amount": 25345.98,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 43438.2,
+      "reason": "Orla Mining exhibits a clear accelerating trajectory with rapid revenue growth and strong margins. The Camino Rojo project has the potential to be a significant gold producer, driven by favorable market conditions and increasing exploration success. While the current price dip presents a buying opportunity, investors should monitor geopolitical risks in Mexico and potential operational challenges during development."
+    },
+    {
+      "ticker": "TNXP",
+      "action": "SELL",
+      "shares": 2224,
+      "price": 11.07,
+      "amount": 24619.68,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 68057.88,
+      "reason": "Tonix shows significant revenue growth despite negative FCF, suggesting rapid expansion. Analyst targets indicate strong belief in future performance, supported by a high institutional ownership percentage and positive RSI. While the stock has declined recently, this could present a buying opportunity given its long-term trajectory and positive macro environment for biotech. Key risks include clinical trial outcomes and competition within the CNS disorder market."
+    },
+    {
+      "ticker": "CRWV",
+      "action": "SELL",
+      "shares": 244,
+      "price": 100.39,
+      "amount": 24495.16,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 92553.04,
+      "reason": "CoreWeave is experiencing rapid revenue growth (111.6%) and enjoys a healthy gross margin (69.4%), indicating strong market demand for its AI infrastructure solutions. While the company is currently unprofitable, this is typical for growth-stage businesses investing heavily in expansion. The high institutional ownership (57.5%) and analyst price targets suggest continued confidence in CoreWeave's long-term potential."
+    },
+    {
+      "ticker": "CRDO",
+      "action": "BUY",
+      "shares": 111,
+      "price": 206.89,
+      "amount": 22964.79,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 69588.25,
+      "reason": "Credo exhibits strong accelerating growth with impressive revenue figures. While lacking consistent FCF, the company demonstrates a high ROI and positive analyst sentiment. The focus on high-speed connectivity within rapidly expanding tech sectors like AI positions Credo for continued success despite macroeconomic headwinds."
+    },
+    {
+      "ticker": "ONDS",
+      "action": "BUY",
+      "shares": 2223,
+      "price": 10.43,
+      "amount": 23185.89,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 46402.36,
+      "reason": "Ondas exhibits strong growth trajectory with impressive revenue figures despite operating at a loss.  Key catalysts include the expanding private wireless market and their innovative drone solutions. While current financials reflect early-stage development, the high analyst target and institutional ownership suggest significant future potential. However, investors should monitor profitability improvements and competition in the evolving tech landscape."
+    },
+    {
+      "ticker": "ARGX",
+      "action": "BUY",
+      "shares": 26,
+      "price": 891.32,
+      "amount": 23174.32,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 23228.04,
+      "reason": "argenx exhibits strong accelerating growth with revenue surging 62.6% and a positive analyst sentiment driving the price upward.  The recent launch of VYVGART HYTRULO for generalized myasthenia gravis (gMG) adds a promising catalyst to future growth. While the company is not yet profitable, its low debt/equity ratio suggests sound financial management. Current valuation might seem high, but the potential for continued strong performance justifies the \"Strong Buy\" rating."
+    },
+    {
+      "ticker": "NTRA",
+      "action": "BUY",
+      "shares": 107,
+      "price": 215.31,
+      "amount": 23038.17,
+      "date": "2026-06-06 19:13 EDT",
+      "balance": 189.87,
+      "reason": "Natera exhibits strong accelerating growth with revenue surging at 38.8%.  While profitability metrics are lagging, this is common in high-growth companies focused on market expansion. The company's personalized ctDNA blood test holds significant promise in the rapidly evolving oncology diagnostics market, driving future revenue and earnings. Despite a high valuation, the strong analyst consensus and institutional ownership suggest continued investor confidence in Natera's long-term potential."
     }
   ],
-  "lastRecommendAt": "2026-06-04 23:07 EDT"
+  "lastRecommendAt": "2026-06-06 19:13 EDT"
 }

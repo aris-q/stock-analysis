@@ -99,26 +99,92 @@ Last Dividend: ${ev.get("lastDividendValue")} on {ev.get("lastDividendDate")}
 """
 
 
-def build_recommendations_prompt(watchlist):
+# def build_recommendations_prompt(watchlist):
+#     context = []
+#     for s in watchlist:
+#         context.append({
+#             "ticker": s.get("ticker"),
+#             "sector": s.get("sector"),
+#             "industry": s.get("industry"),
+#             "annualProfitMargin": s.get("annualProfitMargin"),
+#             "netCash": s.get("netCash"),
+#             "latestFCF": s.get("latestFCF"),
+#             "marketCap": s.get("marketCap"),
+#             "analystSentiment": s.get("aiSummary", {}).get("analystSentiment"),
+#         })
+
+#     return f"""Based on the user's current watchlist below, recommend 5-10 stocks they should consider purchasing from the broader market.
+# Consider diversification, sector exposure, market conditions, and complement their existing holdings.
+# Focus on stocks with strong fundamentals, reasonable valuations, and growth catalysts.
+
+# User's current watchlist context:
+# {json.dumps(context, indent=2)}
+
+# Return a JSON object with EXACTLY this structure:
+# {{
+#   "recommendations": [
+#     {{
+#       "ticker": "TICKER",
+#       "companyName": "Full Company Name",
+#       "reason": "2-3 sentence explanation of why to buy",
+#       "sector": "sector name",
+#       "catalysts": ["catalyst 1", "catalyst 2"],
+#       "riskLevel": "low OR medium OR high",
+#       "timeHorizon": "short-term OR medium-term OR long-term"
+#     }}
+#   ],
+#   "marketContext": "1-2 sentence summary of current market conditions influencing recommendations",
+#   "generatedAt": "today's date"
+# }}"""
+
+def build_recommendations_prompt(watchlist, macro=None, dream_candidates=None):
+    from datetime import date
+    today = date.today().strftime("%Y-%m-%d")
+
     context = []
     for s in watchlist:
         context.append({
             "ticker": s.get("ticker"),
             "sector": s.get("sector"),
             "industry": s.get("industry"),
+            "price": s.get("price"),
+            "rsi14": s.get("rsi14"),
             "annualProfitMargin": s.get("annualProfitMargin"),
             "netCash": s.get("netCash"),
             "latestFCF": s.get("latestFCF"),
             "marketCap": s.get("marketCap"),
             "analystSentiment": s.get("aiSummary", {}).get("analystSentiment"),
+            "change7d": s.get("change7d"),
+            "change30d": s.get("change30d"),
         })
 
-    return f"""Based on the user's current watchlist below, recommend 5-10 stocks they should consider purchasing from the broader market.
-Consider diversification, sector exposure, market conditions, and complement their existing holdings.
-Focus on stocks with strong fundamentals, reasonable valuations, and growth catalysts.
+    macro_block = "No macro data available."
+    if macro:
+        indicators = macro.get("indicators", {})
+        lines = [f"- {k}: {v.get('value') if isinstance(v, dict) else v}" for k, v in list(indicators.items())[:8]]
+        macro_block = "\n".join(lines)
+        if macro.get("aiSummary"):
+            macro_block += f"\nMacro Summary: {macro['aiSummary'][:400]}"
 
-User's current watchlist context:
+    dream_block = "No dream candidates available."
+    if dream_candidates:
+        top = sorted(dream_candidates, key=lambda x: x.get("score", 0), reverse=True)[:10]
+        dream_block = "\n".join([
+            f"- {d['ticker']} | score:{d.get('score')} | rsi:{d.get('rsi14')} | sector:{d.get('sector')} | {d.get('change7d',0):+.1f}% 7d"
+            for d in top
+        ])
+
+    return f"""Today is {today}. You are a portfolio advisor. Based on the user's watchlist, macro environment, and pre-screened dream candidates, recommend 5-10 stocks to consider buying.
+Prioritize strong fundamentals, reasonable valuation, and growth catalysts. Ensure sector diversification relative to existing holdings.
+
+CURRENT WATCHLIST:
 {json.dumps(context, indent=2)}
+
+MACRO ENVIRONMENT:
+{macro_block}
+
+PRE-SCREENED DREAM CANDIDATES (ranked by score):
+{dream_block}
 
 Return a JSON object with EXACTLY this structure:
 {{
@@ -133,10 +199,33 @@ Return a JSON object with EXACTLY this structure:
       "timeHorizon": "short-term OR medium-term OR long-term"
     }}
   ],
-  "marketContext": "1-2 sentence summary of current market conditions influencing recommendations",
-  "generatedAt": "today's date"
+  "marketContext": "1-2 sentence summary of current macro conditions influencing recommendations",
+  "generatedAt": "{today}"
 }}"""
 
+
+def generate_recommendations(watchlist, macro=None, dream_candidates=None):
+    try:
+        log.info(f"AI generating recommendations | macro:{bool(macro)} | dream_candidates:{len(dream_candidates) if dream_candidates else 0}")
+        response = ollama.chat(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": build_recommendations_prompt(watchlist, macro, dream_candidates)}
+            ]
+        )
+        raw = response["message"]["content"].strip()
+        raw = raw.replace("```json", "").replace("```", "").strip()
+        start = raw.find('{')
+        end = raw.rfind('}')
+        if start != -1 and end != -1:
+            raw = raw[start:end+1]
+        result = json.loads(raw)
+        log.info(f"AI recommendations OK: {len(result.get('recommendations', []))} stocks")
+        return result
+    except Exception as e:
+        log.error(f"AI recommendations FAIL: {e}")
+        return {"recommendations": [], "marketContext": "Unavailable", "generatedAt": ""}
 
 def generate_summary(stock):
     ticker = stock.get("ticker")
@@ -168,30 +257,30 @@ def generate_summary(stock):
         return default_summary(ticker)
 
 
-def generate_recommendations(watchlist):
-    try:
-        log.info("AI generating buy recommendations...")
-        response = ollama.chat(
-            model=MODEL,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": build_recommendations_prompt(watchlist)}
-            ]
-        )
-        raw = response["message"]["content"].strip()
-        # Strip markdown code blocks
-        raw = raw.replace("```json", "").replace("```", "").strip()
-        # Find first { and last } to extract just the JSON
-        start = raw.find('{')
-        end = raw.rfind('}')
-        if start != -1 and end != -1:
-            raw = raw[start:end+1]
-        result = json.loads(raw)
-        log.info(f"AI recommendations OK: {len(result.get('recommendations', []))} stocks")
-        return result
-    except Exception as e:
-        log.error(f"AI recommendations FAIL: {e}")
-        return {"recommendations": [], "marketContext": "Unavailable", "generatedAt": ""}
+# def generate_recommendations(watchlist):
+#     try:
+#         log.info("AI generating buy recommendations...")
+#         response = ollama.chat(
+#             model=MODEL,
+#             messages=[
+#                 {"role": "system", "content": SYSTEM_PROMPT},
+#                 {"role": "user", "content": build_recommendations_prompt(watchlist)}
+#             ]
+#         )
+#         raw = response["message"]["content"].strip()
+#         # Strip markdown code blocks
+#         raw = raw.replace("```json", "").replace("```", "").strip()
+#         # Find first { and last } to extract just the JSON
+#         start = raw.find('{')
+#         end = raw.rfind('}')
+#         if start != -1 and end != -1:
+#             raw = raw[start:end+1]
+#         result = json.loads(raw)
+#         log.info(f"AI recommendations OK: {len(result.get('recommendations', []))} stocks")
+#         return result
+#     except Exception as e:
+#         log.error(f"AI recommendations FAIL: {e}")
+#         return {"recommendations": [], "marketContext": "Unavailable", "generatedAt": ""}
 
 def generate_followup(stock, event_name):
     ticker = stock.get("ticker")

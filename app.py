@@ -102,7 +102,8 @@ def _get_holding_tickers():
     except Exception:
         return []
 
-fetch_status = {"running": False, "message": "Idle", "operation": None}
+fetch_status = {"running": False, "message": "Idle", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+stop_flag = False
 op_timestamps = {"prices": None, "smart": None, "new": None, "all": None}
 last_fetched_tickers = set()
 
@@ -428,6 +429,14 @@ def status():
         "opTimestamps": out.get("opTimestamps", {}),
         "lastPriceRefresh": out.get("lastPriceRefresh"),
     })
+
+@app.route("/stop", methods=["POST"])
+def stop_operation():
+    global stop_flag
+    stop_flag = True
+    log.info("[STOP] Stop flag set by user")
+    return jsonify({"status": "stopping"})
+
 
 @app.route("/api/holding-tickers")
 def api_holding_tickers():
@@ -947,24 +956,37 @@ def macro_ai():
 
 
 def run_dream_scan(triggered_by="manual"):
-    global fetch_status
-    fetch_status = {"running": True, "message": "Running Dream Stock Scan...", "operation": "dream"}
+    global fetch_status, stop_flag
+    stop_flag = False
+    fetch_status = {"running": True, "message": "Dream Scan: loading ticker lists...", "operation": "dream", "current": 0, "total": 0, "current_ticker": ""}
     log.info(f"=== Dream Scan Started [{triggered_by}] ===")
+
+    def _progress(current, total, ticker):
+        fetch_status["current"] = current
+        fetch_status["total"] = total
+        fetch_status["current_ticker"] = ticker
+        fetch_status["message"] = f"Dream Scan: {current} of {total} — {ticker}"
+        return stop_flag  # True = stop requested
+
     try:
         existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": [], "dailyGainersCDN": []})
         watchlist_tickers = [s["ticker"] for s in existing.get("watchlist", [])]
         us_gainers  = existing.get("dailyGainers", []) or []
         cdn_gainers = existing.get("dailyGainersCDN", []) or []
         gainer_tickers = [g["ticker"] for g in us_gainers + cdn_gainers if g.get("ticker")]
-        results = fetch_dream_candidates(watchlist_tickers, gainer_tickers)
+        results = fetch_dream_candidates(watchlist_tickers, gainer_tickers, progress_callback=_progress)
+        if stop_flag:
+            log.info("[Dream] Scan stopped by user")
+            fetch_status = {"running": False, "message": f"Dream scan stopped by user at {fetch_status.get('current', 0)} of {fetch_status.get('total', 0)}.", "operation": None, "current": fetch_status.get("current", 0), "total": fetch_status.get("total", 0), "current_ticker": ""}
+            return
         now_ts = ts()
         results["scannedAt"] = now_ts
         save_json(DREAM_PATH, results)
-        fetch_status = {"running": False, "message": f"Dream scan complete: {now_ts}", "operation": None}
+        fetch_status = {"running": False, "message": f"Dream scan complete: {now_ts}", "operation": None, "current": fetch_status["total"], "total": fetch_status["total"], "current_ticker": ""}
         log.info(f"=== Dream Scan Complete: {now_ts} | {len(results.get('candidates',[]))} candidates ===")
     except Exception as e:
         log.error(f"Dream scan FAIL: {e}")
-        fetch_status = {"running": False, "message": f"Dream scan FAIL: {e}", "operation": None}
+        fetch_status = {"running": False, "message": f"Dream scan FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
 
 
 @app.route("/dream")
@@ -980,6 +1002,36 @@ def dream_scan():
     t = threading.Thread(target=run_dream_scan, args=("manual",), daemon=True)
     t.start()
     log.info("Dream scan triggered via UI")
+    return jsonify({"status": "started"})
+
+
+@app.route("/dream/refresh-tickers", methods=["POST"])
+def dream_refresh_tickers():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    def _do_refresh():
+        global fetch_status, stop_flag
+        stop_flag = False
+        fetch_status = {"running": True, "message": "Refreshing ticker lists (S&P 500, TSX 60)...", "operation": "refresh_tickers", "current": 0, "total": 2, "current_ticker": ""}
+        log.info("=== Ticker List Refresh Started ===")
+        try:
+            from fetcher import fetch_sp500_tickers, fetch_tsx60_tickers
+            fetch_status["current"] = 1
+            fetch_status["current_ticker"] = "S&P500"
+            fetch_status["message"] = "Refreshing ticker lists: 1 of 2 — S&P500"
+            sp500 = fetch_sp500_tickers(force=True)
+            fetch_status["current"] = 2
+            fetch_status["current_ticker"] = "TSX60"
+            fetch_status["message"] = "Refreshing ticker lists: 2 of 2 — TSX60"
+            tsx60 = fetch_tsx60_tickers(force=True)
+            log.info(f"=== Ticker Refresh Complete: SP500:{len(sp500)} TSX60:{len(tsx60)} ===")
+            fetch_status = {"running": False, "message": f"Ticker lists refreshed: S&P500={len(sp500)} TSX60={len(tsx60)}", "operation": None, "current": 2, "total": 2, "current_ticker": ""}
+        except Exception as e:
+            log.error(f"Ticker refresh FAIL: {e}", exc_info=True)
+            fetch_status = {"running": False, "message": f"Ticker refresh FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+    t = threading.Thread(target=_do_refresh, daemon=True)
+    t.start()
+    log.info("Ticker refresh triggered via UI")
     return jsonify({"status": "started"})
 
 
@@ -1330,8 +1382,9 @@ def save_trades_ai(data):
 
 
 def run_tradeai_identify():
-    global fetch_status
-    fetch_status = {"running": True, "message": "TradeAI: identifying candidates (3-bucket)...", "operation": "tradeai_identify"}
+    global fetch_status, stop_flag
+    stop_flag = False
+    fetch_status = {"running": True, "message": "TradeAI: identifying candidates (3-bucket)...", "operation": "tradeai_identify", "current": 0, "total": 0, "current_ticker": ""}
     log.info("=== TradeAI Identify Started (3-bucket) ===")
     try:
         trades = load_trades_ai()
@@ -1348,6 +1401,8 @@ def run_tradeai_identify():
         # Always include current holdings first
         for ticker in held_tickers:
             result.append({"ticker": ticker, "reason": "Current holding — evaluate for sell", "source": "Account", "bucket": "Account"})
+
+        CANDIDATE_SLOTS = 15  # max from dream candidates, not counting holdings
 
         # ── BUCKET 1: MOMENTUM (5 slots) ──────────────────────────────────────
         # RSI 45-70 (trending up, not exhausted) + price above MA50
@@ -1369,6 +1424,7 @@ def run_tradeai_identify():
             ]
         momentum_pool.sort(key=lambda c: bd(c, "rsi") or 0, reverse=True)
         for c in momentum_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rsi_val = bd(c, "rsi")
@@ -1388,6 +1444,7 @@ def run_tradeai_identify():
         ]
         reversal_pool.sort(key=lambda c: bd(c, "rsi") or 99)
         for c in reversal_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rsi_val = bd(c, "rsi")
@@ -1411,6 +1468,7 @@ def run_tradeai_identify():
         # Sort by revenue growth — accelerating fundamentals
         smart_pool.sort(key=lambda c: bd(c, "revenueGrowth") or 0, reverse=True)
         for c in smart_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rev = bd(c, "revenueGrowth")
@@ -1420,11 +1478,12 @@ def run_tradeai_identify():
         log.info(f"[TradeAI Identify] Bucket 3 SmartMoney: {[r['ticker'] for r in result if r.get('bucket')=='SmartMoney']}")
 
         # ── FILLER: top dream scorers if any bucket came up short ─────────────
-        if len(result) < 15:
+        candidate_count = len(result) - len(held_tickers)
+        if candidate_count < CANDIDATE_SLOTS:
             filler_pool = [c for c in candidates if c["ticker"] not in seen]
             filler_pool.sort(key=lambda c: c.get("score", 0), reverse=True)
             for c in filler_pool:
-                if len(result) >= 15:
+                if len(result) - len(held_tickers) >= CANDIDATE_SLOTS:
                     break
                 ticker = c["ticker"]
                 seen.add(ticker)
@@ -1432,55 +1491,84 @@ def run_tradeai_identify():
                 result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Dream"})
             log.info(f"[TradeAI Identify] Filler added: {len(result)} total")
 
+        # Clear first so frontend sees empty list, then add one by one
         existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
-        existing["identified"] = result
+        existing["identified"] = []
         existing["identifiedAt"] = ts()
+        existing["details"] = {}
+        existing["aiAssessments"] = {}
         save_json(TRADE_AI_CANDIDATES_PATH, existing)
+        log.info("[TradeAI Identify] Cleared previous candidates, adding incrementally...")
+        for item in result:
+            existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
+            existing["identified"].append(item)
+            existing["identifiedAt"] = ts()
+            save_json(TRADE_AI_CANDIDATES_PATH, existing)
+            log.info(f"[TradeAI Identify] Added: {item['ticker']} ({item['bucket']})")
         buckets = {}
         for r in result:
             b = r.get("bucket", "Dream")
             buckets[b] = buckets.get(b, 0) + 1
-        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(result)} tickers | {buckets}", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(held_tickers)} holdings + {len(result)-len(held_tickers)} candidates | {buckets}", "operation": None, "current": len(result), "total": len(result), "current_ticker": ""}
         log.info(f"=== TradeAI Identify Complete: {len(result)} tickers | buckets:{buckets} ===")
     except Exception as e:
         log.error(f"TradeAI identify FAIL: {e}")
-        fetch_status = {"running": False, "message": f"TradeAI identify FAIL: {e}", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI identify FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
 
 
 def run_tradeai_fetch():
-    global fetch_status
-    fetch_status = {"running": True, "message": "TradeAI: fetching detailed info...", "operation": "tradeai_fetch"}
+    global fetch_status, stop_flag
+    stop_flag = False
+    total = 0
+    fetch_status = {"running": True, "message": "TradeAI: fetching detailed info...", "operation": "tradeai_fetch", "current": 0, "total": 0, "current_ticker": ""}
     log.info("=== TradeAI Fetch Started ===")
     try:
         candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
         identified = candidates_data.get("identified", [])
         if not identified:
-            fetch_status = {"running": False, "message": "TradeAI fetch: no identified tickers. Run Identify first.", "operation": None}
+            fetch_status = {"running": False, "message": "TradeAI fetch: no identified tickers. Run Identify first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
             return
+        total = len(identified)
+        fetch_status["total"] = total
         details = {}
-        for item in identified:
+        for idx, item in enumerate(identified, 1):
+            if stop_flag:
+                log.info(f"[TradeAI Fetch] Stopped by user at {idx}/{total}")
+                candidates_data["details"] = details
+                candidates_data["detailsFetchedAt"] = ts()
+                save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+                fetch_status = {"running": False, "message": f"TradeAI fetch stopped: {len(details)}/{total} fetched", "operation": None, "current": idx, "total": total, "current_ticker": ""}
+                return
             ticker = item["ticker"]
-            log.info(f"--- TradeAI fetch detail: {ticker} ---")
+            fetch_status["current"] = idx
+            fetch_status["current_ticker"] = ticker
+            fetch_status["message"] = f"TradeAI fetch: {idx} of {total} — {ticker}"
+            log.info(f"--- TradeAI fetch detail: {ticker} [{idx}/{total}] ---")
             try:
                 detail = fetch_trade_detail(ticker)
                 if detail:
+                    detail["fetchCompletedAt"] = ts()
                     details[ticker] = detail
+                    candidates_data["details"] = details
+                    save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
                     log.info(f"TradeAI fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
             except Exception as e:
                 log.error(f"TradeAI fetch FAIL: {ticker} | {e}")
         candidates_data["details"] = details
         candidates_data["detailsFetchedAt"] = ts()
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
-        fetch_status = {"running": False, "message": f"TradeAI fetch done: {len(details)} tickers enriched", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI fetch done: {len(details)} tickers enriched", "operation": None, "current": total, "total": total, "current_ticker": ""}
         log.info(f"=== TradeAI Fetch Complete: {len(details)} tickers ===")
     except Exception as e:
         log.error(f"TradeAI fetch runner FAIL: {e}")
-        fetch_status = {"running": False, "message": f"TradeAI fetch FAIL: {e}", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI fetch FAIL: {e}", "operation": None, "current": 0, "total": total, "current_ticker": ""}
 
 
 def run_tradeai_analyze():
-    global fetch_status
-    fetch_status = {"running": True, "message": "TradeAI: running AI analysis...", "operation": "tradeai_analyze"}
+    global fetch_status, stop_flag
+    stop_flag = False
+    total = 0
+    fetch_status = {"running": True, "message": "TradeAI: running AI analysis...", "operation": "tradeai_analyze", "current": 0, "total": 0, "current_ticker": ""}
     log.info("=== TradeAI Analyze Started ===")
     try:
         candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
@@ -1490,18 +1578,29 @@ def run_tradeai_analyze():
         macro = load_json(MACRO_PATH, {}) if MACRO_PATH else {}
 
         if not identified:
-            fetch_status = {"running": False, "message": "TradeAI analyze: run Identify + Fetch Info first.", "operation": None}
+            fetch_status = {"running": False, "message": "TradeAI analyze: run Identify + Fetch Info first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
             return
 
+        eligible = [item for item in identified if details.get(item["ticker"])]
+        total = len(eligible)
+        fetch_status["total"] = total
+
         ai_assessments = {}
-        for item in identified:
+        for idx, item in enumerate(eligible, 1):
+            if stop_flag:
+                log.info(f"[TradeAI Analyze] Stopped by user at {idx}/{total}")
+                candidates_data["aiAssessments"] = ai_assessments
+                candidates_data["aiAnalyzedAt"] = ts()
+                save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+                fetch_status = {"running": False, "message": f"TradeAI analyze stopped: {len(ai_assessments)}/{total} analyzed", "operation": None, "current": idx, "total": total, "current_ticker": ""}
+                return
             ticker = item["ticker"]
             detail = details.get(ticker)
-            if not detail:
-                log.warning(f"TradeAI analyze skip (no detail): {ticker}")
-                continue
+            fetch_status["current"] = idx
+            fetch_status["current_ticker"] = ticker
+            fetch_status["message"] = f"TradeAI analyze: {idx} of {total} — {ticker}"
             news_items = news_db.get(ticker, {}).get("articles", [])
-            log.info(f"--- TradeAI analyze: {ticker} | news:{len(news_items)} articles ---")
+            log.info(f"--- TradeAI analyze: {ticker} [{idx}/{total}] | news:{len(news_items)} articles ---")
             assessment = fetch_ai_analyze(ticker, detail, news_items, macro, OLLAMA_URL, OLLAMA_MODEL)
             ai_assessments[ticker] = assessment
             log.info(f"TradeAI analyze OK: {ticker} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
@@ -1509,11 +1608,11 @@ def run_tradeai_analyze():
         candidates_data["aiAssessments"] = ai_assessments
         candidates_data["aiAnalyzedAt"] = ts()
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
-        fetch_status = {"running": False, "message": f"TradeAI analyze done: {len(ai_assessments)} assessed", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI analyze done: {len(ai_assessments)} assessed", "operation": None, "current": total, "total": total, "current_ticker": ""}
         log.info(f"=== TradeAI Analyze Complete: {len(ai_assessments)} tickers ===")
     except Exception as e:
         log.error(f"TradeAI analyze FAIL: {e}")
-        fetch_status = {"running": False, "message": f"TradeAI analyze FAIL: {e}", "operation": None}
+        fetch_status = {"running": False, "message": f"TradeAI analyze FAIL: {e}", "operation": None, "current": 0, "total": total, "current_ticker": ""}
 
 
 def run_tradeai_recommend():

@@ -1325,14 +1325,77 @@
   "OLA.TO": {
     "sevenDayItems": [
       {
-        "title": "Orla Mining to Report Q1 Earnings: What's in Store for the Stock?",
-        "summary": "ORLA nears Q1 results as earnings estimates surge and gold output jumps, with Musselwhite gains offsetting weaker Camino Rojo performance.",
-        "pubDate": "2026-05-05T16:55:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-mining-report-q1-earnings-165500129.html",
+        "title": "Gold Stocks Are in a Bear Market. The Case for Buying.",
+        "summary": "Gold stocks are way down, and anyone seeking a bargain should at least give them a look.  The VanEck Gold Miners exchange-traded fund\u2014home to some of the largest miners, such as  Newmont  and  Barrick Mining  \u2014has slid 24% from its record high hit in late February.  The stocks are so-called leveraged plays on the commodity\u2014when the price of the commodity falls, the stocks fall harder.",
+        "pubDate": "2026-06-06T00:31:00Z",
+        "url": "https://www.barrons.com/articles/gold-mining-stock-price-buy-b3137aa2?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      },
+      {
+        "title": "Celanese Streamlines Engineered Materials Network Across Asia",
+        "summary": "Celanese will close its Ulsan facility and shift Engineered Materials production to China and India to boost Asia's efficiency.",
+        "pubDate": "2026-06-05T18:10:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celanese-streamlines-engineered-materials-network-181000896.html",
         "provider": "Zacks"
+      },
+      {
+        "title": "Orla Mining (TSX:OLA) Is Down 8.8% After Mexico Rules Camino Rojo Blockade Illegal Has The Bull Case Changed?",
+        "summary": "Orla Mining reported that a recent work stoppage and employee blockade, which had temporarily halted operations at the Camino Rojo mine in Mexico since June 1, was ruled illegal by federal labour authorities and is now expected to be lifted following union commitments to restore normal operations. The ruling clarifies that the dispute over productivity bonus payments falls outside the collective bargaining framework, meaning bonus negotiations will only resume once safe, lawful mining...",
+        "pubDate": "2026-06-05T06:09:34Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-mining-tsx-ola-down-060934955.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Orla Mining (ORLA) is an Incredible Growth Stock: 3 Reasons Why",
+        "summary": "Orla Mining (ORLA) could produce exceptional returns because of its solid growth attributes.",
+        "pubDate": "2026-06-04T16:45:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-mining-orla-incredible-growth-164504259.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Intrepid Potash Increases Share Repurchase Authorization to $50M",
+        "summary": "IPI raises its share repurchase authorization to $50M, backed by stronger operations and a healthier balance sheet.",
+        "pubDate": "2026-06-04T14:03:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/intrepid-potash-increases-share-repurchase-140300030.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "ORLA Trades at a Discount to Industry: Right Time to Buy the Stock?",
+        "summary": "Orla Mining trades below industry peers as strong Q1 growth, rising estimates and the Equinox Gold merger offset cost and mine-halt concerns.",
+        "pubDate": "2026-06-04T13:09:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/orla-trades-discount-industry-time-130900453.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Avient Expands Therma-Tech Portfolio With New Graphite Grades",
+        "summary": "Avient launches eight new natural graphite Therma-Tech grades, targeting lighter, lower-cost thermal management with sustainability benefits.",
+        "pubDate": "2026-06-03T15:14:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/avient-expands-therma-tech-portfolio-151400655.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "FUL Expands Sustainable Packaging Portfolio With VerdaFresh",
+        "summary": "H.B. Fuller invests in VerdaFresh to boost recyclable packaging, helping cut waste and lower material use and carbon impact.",
+        "pubDate": "2026-06-02T13:49:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/ful-expands-sustainable-packaging-portfolio-134900974.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Orla Mining halts Camino Rojo operations amid illegal stoppage",
+        "summary": "The stoppage at Camino Rojo in Mexico followed talks on a productivity bonus and PTU profit-sharing entitlement.",
+        "pubDate": "2026-06-02T08:58:29Z",
+        "url": "https://www.mining-technology.com/news/orla-mining-halts-camino-rojo-operations/",
+        "provider": "Mining Technology"
+      },
+      {
+        "title": "A Look At Orla Mining (TSX:OLA) Valuation After Recent Share Price Weakness",
+        "summary": "Recent share performance and business snapshot Orla Mining (TSX:OLA) has drawn investor attention after its stock fell 7.9% in the latest session, adding to declines of 2.7% over the past week and 5.7% over the past month. Over the past 3 months the share price is down 37.9%. The 1 year total return remains up 13.8% and the 3 year total return is about 1.7x, pointing to a stock that has moved sharply in both directions. The company reports annual revenue of $1,296.091 and net income of...",
+        "pubDate": "2026-06-02T02:12:29Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/look-orla-mining-tsx-ola-021229046.html",
+        "provider": "Simply Wall St."
       }
     ],
-    "sevenDayFetchedAt": "2026-05-06 13:35 EDT",
+    "sevenDayFetchedAt": "2026-06-06 14:17 EDT",
     "sevenDayImpact": {
       "overallSentiment": "bullish",
       "sentimentScore": 7,
@@ -1933,77 +1996,77 @@
   "ALAB": {
     "sevenDayItems": [
       {
-        "title": "Analysts Just Published A Bright New Outlook For Astera Labs, Inc.'s (NASDAQ:ALAB)",
-        "summary": "Celebrations may be in order for Astera Labs, Inc. ( NASDAQ:ALAB ) shareholders, with the analysts delivering a...",
-        "pubDate": "2026-05-10T14:00:16Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/analysts-just-published-bright-outlook-140016572.html",
+        "title": "Why Astera Labs Rocketed Higher in May",
+        "summary": "Astera continued to announce positive news amid the agentic AI buildout.",
+        "pubDate": "2026-06-06T17:05:00Z",
+        "url": "https://www.fool.com/investing/2026/06/06/why-astera-labs-rocketed-higher-in-may/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Top Growth Companies With Insider Ownership In June 2026",
+        "summary": "The United States market remained flat over the last week but has seen a robust 26% increase over the past year, with earnings expected to grow by 16% annually. In such an environment, growth companies with high insider ownership can be particularly attractive as they often indicate strong internal confidence and alignment of interests between management and shareholders.",
+        "pubDate": "2026-06-05T17:35:51Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/top-growth-companies-insider-ownership-173551079.html",
         "provider": "Simply Wall St."
       },
       {
-        "title": "High Insider Ownership Boosts These Growth Stocks In May 2026",
-        "summary": "The United States market has experienced a robust performance, climbing 3.2% in the last week and rising by 31% over the past year, with earnings projected to grow by 16% annually in the coming years. In this thriving environment, growth companies with high insider ownership are particularly noteworthy as they often signal strong confidence from those closest to the business, aligning their interests with shareholders and potentially enhancing long-term value creation.",
-        "pubDate": "2026-05-08T17:36:02Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/high-insider-ownership-boosts-growth-173602371.html",
-        "provider": "Simply Wall St."
-      },
-      {
-        "title": "May 2026's Top Growth Companies With Insider Influence",
-        "summary": "Over the last 7 days, the United States market has risen by 3.2%, contributing to a remarkable 31% increase over the past year, with earnings projected to grow by 16% annually. In such a robust environment, growth companies with high insider ownership often stand out as they can benefit from strong internal alignment and commitment to long-term success.",
-        "pubDate": "2026-05-08T11:36:03Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/may-2026s-top-growth-companies-113603150.html",
-        "provider": "Simply Wall St."
-      },
-      {
-        "title": "3 Growth Stocks Insiders Are Betting On",
-        "summary": "Over the last 7 days, the United States market has risen by 3.2%, contributing to a remarkable 31% increase over the past year, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership often attract attention as they suggest confidence from those closest to the business and potential for sustained performance.",
-        "pubDate": "2026-05-07T17:35:59Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-insiders-betting-173559125.html",
-        "provider": "Simply Wall St."
-      },
-      {
-        "title": "Should Investors Buy, Hold, or Sell ALAB Stock Post Q1 Earnings?",
-        "summary": "Astera Labs benefits from strong AI connectivity demand and Scorpio expansion, but rising costs, competition, and premium valuation may limit upside.",
-        "pubDate": "2026-05-07T17:14:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/investors-buy-hold-sell-alab-171400096.html",
+        "title": "MRVL Surges 363% in a Year: Time to Buy, Sell or Hold the Stock?",
+        "summary": "Marvell Technology soars 363% on booming AI data center demand, but premium valuation and intense competition raise the question of whether to buy, sell or hold the stock.",
+        "pubDate": "2026-06-05T15:16:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/mrvl-surges-363-time-buy-151600160.html",
         "provider": "Zacks"
       },
       {
-        "title": "MRVL Climbs 50% in a Month: Time to Buy, Sell or Hold the Stock?",
-        "summary": "Marvell Technology's AI-driven data center growth and NVIDIA tie-up are fueling gains, but rich valuation and competition may limit upside for MRVL.",
-        "pubDate": "2026-05-07T15:53:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/mrvl-climbs-50-month-time-155300902.html",
-        "provider": "Zacks"
-      },
-      {
-        "title": "May 2026's Top Insider Picks For Growth Companies",
-        "summary": "The United States market has recently experienced a notable upswing, climbing 3.2% in the last week and an impressive 31% over the past year, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership are particularly attractive as they often indicate strong confidence from those closest to the business, aligning well with current market momentum.",
-        "pubDate": "2026-05-07T11:35:49Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/may-2026s-top-insider-picks-113549338.html",
+        "title": "Growth Companies With High Insider Ownership And Up To 30% Return On Equity",
+        "summary": "Over the last 7 days, the United States market has remained flat, yet it is up 26% over the past year with earnings forecasted to grow by 16% annually. In this environment, growth companies with high insider ownership and strong return on equity can be attractive opportunities for investors seeking alignment of interests and robust financial performance.",
+        "pubDate": "2026-06-05T11:36:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/growth-companies-high-insider-ownership-113600964.html",
         "provider": "Simply Wall St."
       },
       {
-        "title": "3 Growth Companies With Insider Ownership Up To 15%",
-        "summary": "Over the last 7 days, the United States market has risen by 1.8%, and over the past 12 months, it has increased by 30%, with earnings forecasted to grow by 16% annually. In this thriving environment, growth companies with high insider ownership can be particularly appealing as they often indicate strong confidence from those closest to the business.",
-        "pubDate": "2026-05-06T17:36:17Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/3-growth-companies-insider-ownership-173617250.html",
-        "provider": "Simply Wall St."
-      },
-      {
-        "title": "Astera Labs Q1 Earnings Beat Estimates, Revenues Increase Y/Y",
-        "summary": "ALAB tops Q1 estimates as revenue nearly doubles, fueled by PCIe 6 demand and AI connectivity growth, with Scorpio set to accelerate.",
-        "pubDate": "2026-05-06T17:29:00Z",
-        "url": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-q1-earnings-beat-172900570.html",
+        "title": "ALAB Soars 203% in Three Months: Should You Hold or Fold the Stock?",
+        "summary": "Astera Labs stock benefits from AI infrastructure demand, portfolio expansion, and a strong Q2 outlook amid rich valuation and rising competition.",
+        "pubDate": "2026-06-04T17:25:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/alab-soars-203-three-months-172500697.html",
         "provider": "Zacks"
       },
       {
-        "title": "5 Signs the Semiconductor Rally Is Getting Silly",
-        "summary": "Artificial intelligence is driving a massive chip stocks rally. Several data points indicate that the rally is getting slightly ridiculous.",
-        "pubDate": "2026-05-06T17:05:00Z",
-        "url": "https://www.barrons.com/articles/semiconductor-rally-ai-chips-021ef0d9?siteid=yhoof2&yptr=yahoo",
-        "provider": "Barrons.com"
+        "title": "Astera Labs, Inc. (ALAB) Up 70% Since Last Earnings Report: Can It Continue?",
+        "summary": "Astera Labs, Inc. (ALAB) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
+        "pubDate": "2026-06-04T15:30:06Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-inc-alab-70-153006464.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "June 2026 Growth Stocks With High Insider Ownership",
+        "summary": "Over the last 7 days, the United States market has remained flat, yet it is up 26% over the past year with earnings forecasted to grow by 17% annually. In this environment, growth companies with high insider ownership can be particularly appealing as they often indicate strong confidence from those closest to the business.",
+        "pubDate": "2026-06-04T11:35:44Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/june-2026-growth-stocks-high-113544698.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Astera Labs Conference: Scorpio Switching Seen as Next AI Growth Engine",
+        "summary": "Astera Labs (NASDAQ:ALAB) executives outlined expectations for continued growth across the company\u2019s connectivity portfolio during an Evercore ISI fireside chat, pointing to expanding opportunities in AI infrastructure switching, retimers, CXL controllers and optical connectivity. Desmond Lynch, ch",
+        "pubDate": "2026-06-03T20:04:10Z",
+        "url": "https://www.marketbeat.com/instant-alerts/astera-labs-conference-scorpio-switching-seen-as-next-ai-growth-engine-2026-06-03/?utm_source=yahoofinance&utm_medium=yahoofinance",
+        "provider": "MarketBeat"
+      },
+      {
+        "title": "Top Growth Companies With Significant Insider Stakes June 2026",
+        "summary": "The United States market has seen a positive trend, rising 1.2% over the last week and 27% over the past year, with earnings projected to grow by 17% annually in the coming years. In this context of robust market performance, growth companies with significant insider ownership often attract attention as they can indicate strong internal confidence and alignment of interests between management and shareholders.",
+        "pubDate": "2026-06-03T17:35:47Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/top-growth-companies-significant-insider-173547850.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Spotlight On AppLovin And 2 More Growth Stocks With Significant Insider Stakes",
+        "summary": "The United States market has shown robust performance, climbing 1.2% in the last week and rising 27% over the past year, with earnings projected to grow by 17% annually in the coming years. In such a thriving environment, growth companies with significant insider ownership often stand out as they align management's interests with shareholders, potentially driving long-term value creation.",
+        "pubDate": "2026-06-03T11:35:49Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/spotlight-applovin-2-more-growth-113549603.html",
+        "provider": "Simply Wall St."
       }
     ],
-    "sevenDayFetchedAt": "2026-05-10 21:07 EDT",
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT",
     "sevenDayImpact": {
       "overallSentiment": "bullish",
       "sentimentScore": 7,
@@ -2653,5 +2716,871 @@
     "sevenDayImpactAt": "2026-05-11 08:37 EDT",
     "todayItems": [],
     "todayFetchedAt": "2026-05-11 08:38 EDT"
+  },
+  "VG": {
+    "sevenDayItems": [
+      {
+        "title": "Sector Update: Energy Stocks Mixed Late Afternoon",
+        "summary": "Energy stocks were mixed late Thursday afternoon, with the NYSE Energy Sector Index increasing 0.2%",
+        "pubDate": "2026-06-04T19:59:03Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/sector-energy-stocks-mixed-afternoon-195903547.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Sector Update: Energy Stocks Gain Monday Afternoon",
+        "summary": "Energy stocks were higher Monday afternoon, with the NYSE Energy Sector Index rising 1.9% and the St",
+        "pubDate": "2026-06-01T17:46:03Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/sector-energy-stocks-gain-monday-174603881.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Sector Update: Energy Stocks Advance Premarket Monday",
+        "summary": "Energy stocks were advancing premarket Monday, with the State Street Energy Select Sector SPDR ETF (",
+        "pubDate": "2026-06-01T13:28:58Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/sector-energy-stocks-advance-premarket-132858215.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday as AI Optimism Overshadows Middle East Risks",
+        "summary": "The broad market exchange-traded fund SPDR S&P 500 ETF Trust (SPY) was up 0.2% and the actively trad",
+        "pubDate": "2026-06-01T13:03:10Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130310190.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:17 EDT"
+  },
+  "CRWV": {
+    "sevenDayItems": [
+      {
+        "title": "The Best Strategy to Use When Buying IPO Stocks",
+        "summary": "A rangebound trading period shortly after a stock\u2019s debut can allow volatility to cool and offer investors a safer way to buy in.",
+        "pubDate": "2026-06-06T14:00:00Z",
+        "url": "https://www.wsj.com/finance/stocks/ipo-stock-buying-strategy-553a52f5?siteid=yhoof2&yptr=yahoo",
+        "provider": "The Wall Street Journal"
+      },
+      {
+        "title": "Prediction: This Artificial Intelligence Semiconductor Stock Will Outperform Nvidia Over the Next 5 Years",
+        "summary": "This Nvidia partner consistently posts higher revenue growth than the chipmaker.",
+        "pubDate": "2026-06-06T10:22:00Z",
+        "url": "https://www.fool.com/investing/2026/06/06/predict-ai-semiconductor-stock-nvda/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Data-Center Stocks Like Corning and Vertiv Are Getting Clobbered",
+        "summary": "The fear of higher rates slowing the debt-fueled AI buildout is battering shares in firms across the data-center supply chain. Companies ranging from construction firms to fiber-optic cable manufacturers to cooling specialists are down:    Contractor Sterling Infrastructure and fiber provider Corning slid more than 10%.",
+        "pubDate": "2026-06-05T19:11:42Z",
+        "url": "https://www.wsj.com/livecoverage/may-jobs-report-stock-market-06-05-2026/card/data-center-stocks-like-corning-and-vertiv-are-getting-clobbered-Pu9C2eUjsycRZVxKISNX?siteid=yhoof2&yptr=yahoo",
+        "provider": "The Wall Street Journal"
+      },
+      {
+        "title": "VanEck CEO Jan Van Eck Warns Of Bubbles In AI, Says He Is Particularly 'Wary About The Memory Stocks'",
+        "summary": "The AI boom may be a long-term trend but there are bubbles in the market and the memory sector may be a prime example, according to VanEck CEO Jan van Eck. \"I would say within the AI ecosystem there are...",
+        "pubDate": "2026-06-05T17:01:13Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/vaneck-ceo-jan-van-eck-170113506.html",
+        "provider": "Benzinga"
+      },
+      {
+        "title": "Is Block, Inc. Stock Underperforming the S&P 500?",
+        "summary": "Block, Inc. has lagged behind the S&P 500 Index over the past year, yet analysts remain highly optimistic about the stock\u2019s growth potential.",
+        "pubDate": "2026-06-05T09:58:12Z",
+        "url": "https://www.barchart.com/story/news/2320847/is-block-inc-stock-underperforming-the-s-p-500",
+        "provider": "Barchart"
+      },
+      {
+        "title": "Wall Street Sees SpaceX\u2019s AI Revenue 100 Times Higher by 2030",
+        "summary": "(Bloomberg) -- Research analysts across Wall Street are telling would-be SpaceX IPO buyers that they\u2019re modeling for the company\u2019s artificial intelligence division to see 100 times revenue growth at the end of the decade, to help justify a targeted $1.8 trillion valuation.Most Read from BloombergSpaceX, Other Mega IPOs Denied Fast Index Entry by S&PGlazer Family Members Study Manchester United Stake SaleSaylor\u2019s Bitcoin Machine Is Misfiring on Every CylinderRepublican-Led House Votes to Stop Ira",
+        "pubDate": "2026-06-04T22:28:16Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/wall-street-sees-spacex-ai-222816264.html",
+        "provider": "Bloomberg"
+      },
+      {
+        "title": "Bitcoin Miners Emerge as 'Power Landlords' of AI Boom\u2014And Revenue Will Surge: Bernstein",
+        "summary": "Bernstein is bullish on Bitcoin miners as they increasingly power the AI boom, assigning \u201cOutperform\u201d ratings to TeraWulf and Cipher Digital.",
+        "pubDate": "2026-06-04T16:32:52Z",
+        "url": "https://decrypt.co/370047/bitcoin-miners-power-landlords-ai-boom-revenue-surge-bernstein",
+        "provider": "decrypt"
+      },
+      {
+        "title": "Elon Musk\u2019s New Role: Why SpaceX Just Became a \u2018Neo Cloud\u2019 for Anthropic",
+        "summary": "Elon Musk spent the last two years pushing Grok and feuding with OpenAI. The host of The AI Daily Brief argues he has quietly changed jobs. SpaceX is now functioning as a \u201cneo cloud\u201d by providing both Colossus-1 and Colossus-2 data centers to Anthropic\u2019s Claude, which has been \u201cseverely compute constrained throughout the year.\u201d The ... Elon Musk\u2019s New Role: Why SpaceX Just Became a \u2018Neo Cloud\u2019 for Anthropic",
+        "pubDate": "2026-06-04T14:19:35Z",
+        "url": "https://247wallst.com/investing/2026/06/04/elon-musks-new-role-why-spacex-just-became-a-neo-cloud-for-anthropic/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "How Are Acquisitions Strengthening Nebius' AI Cloud Platform?",
+        "summary": "NBIS is boosting its AI cloud platform with Tavily, Eigen AI and Clarifai acquisitions, adding inference and agentic search capabilities.",
+        "pubDate": "2026-06-04T14:01:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/acquisitions-strengthening-nebius-ai-cloud-140100500.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "CoreWeave\u2019s Long-Term AI Deals Reframe Growth And Risk For Investors",
+        "summary": "CoreWeave (NasdaqGS:CRWV) expanded multi-year AI infrastructure agreements with Anthropic and Meta Platforms, including a Meta contract that runs to around 2032. The company is set to join the Russell 3000 Index, increasing its visibility with institutional investors. CoreWeave also invested in AI startup Tensormesh, adding to its AI infrastructure capabilities alongside its previously announced Vera Rubin hardware launch. CoreWeave is an AI infrastructure provider focused on high...",
+        "pubDate": "2026-06-04T09:12:38Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/coreweave-long-term-ai-deals-091238303.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:17 EDT"
+  },
+  "POET": {
+    "sevenDayItems": [
+      {
+        "title": "Prediction: Poet\u2019s 220% Surge Sets Up a Potential Correction",
+        "summary": "POET Technologies (NASDAQ:POET) trades at $13.89 as of June 2, 2026. Our 24/7 Wall St. price target for POET is $10.41 over the next 12 months, implying 25% downside from current levels. Our recommendation is sell with moderate confidence of 50%, reflecting mixed signals between bullish analyst sentiment and a stretched price after a sharp ... Prediction: Poet\u2019s 220% Surge Sets Up a Potential Correction",
+        "pubDate": "2026-06-05T19:56:27Z",
+        "url": "https://247wallst.com/investing/2026/06/05/prediction-poets-220-surge-sets-up-a-potential-correction/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "Poet Technologies Rose Today Despite Pressures for AI Stocks -- Is It a Buy Right Now?",
+        "summary": "Poet ended today's trading narrowly in the green. Should investors pile into the photonics stock?",
+        "pubDate": "2026-06-04T22:46:20Z",
+        "url": "https://www.fool.com/investing/2026/06/04/poet-technologies-rose-today-despite-pressures-for/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "POET Technologies (POET) Soars 11%, Mimics Industry Rally",
+        "summary": "POET Technologies Inc. (NASDAQ:POET) is one of the 10 Stocks With Remarkable Resilience. POET Technologies saw its share prices increase by 11.29 percent on Wednesday to close at $15.38 apiece, as investors positioned their portfolios in optical companies, helped by Nvidia Corp.\u2019s highly optimistic outlook for its counterpart. In his onstage appearance at the Computex [\u2026]",
+        "pubDate": "2026-06-04T02:50:08Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/poet-technologies-poet-soars-11-025008002.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "How Lumilens Pact, Capacity Expansion and U.S. Move At POET Technologies (POET) Has Changed Its Investment Story",
+        "summary": "POET Technologies recently announced a supply and technology agreement with Lumilens, featuring an initial US$50 million order that could scale over five years, alongside a direct offering to fund a tenfold capacity expansion and a planned U.S. redomiciling. Together with the hiring of semiconductor veteran Dr. Sandeep Kumar as COO, these moves point to a company shifting from development toward scaled manufacturing for AI and data center customers. With the Lumilens agreement as a key...",
+        "pubDate": "2026-06-02T16:09:34Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/lumilens-pact-capacity-expansion-u-160934910.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Where Will Poet Technologies Stock Be in 5 Years?",
+        "summary": "The photonics company's stock is trading at a highly speculative level.",
+        "pubDate": "2026-06-02T14:35:00Z",
+        "url": "https://www.fool.com/investing/2026/06/02/where-will-poet-technologies-stock-be-in-5-years/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Why Poet Technologies Stock Plummeted This Week",
+        "summary": "Poet stock has been highly volatile in recent months, but it's still up big in 2026.",
+        "pubDate": "2026-05-31T19:03:56Z",
+        "url": "https://www.fool.com/investing/2026/05/31/why-poet-technologies-stock-plummeted-this-week/",
+        "provider": "Motley Fool"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:17 EDT"
+  },
+  "ARGX": {
+    "sevenDayItems": [
+      {
+        "title": "European Equities Traded in the US as American Depositary Receipts Decline in Friday Trading; Rise for Week",
+        "summary": "European equities traded in the US as American depositary receipts were tracking lower late Friday m",
+        "pubDate": "2026-06-05T15:06:40Z",
+        "url": "https://finance.yahoo.com/markets/world-indices/articles/european-equities-traded-us-american-150640688.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "argenx Touts VYVGART Growth, 50,000-Patient Goal at William Blair Conference",
+        "summary": "argenx (NASDAQ:ARGX) Chief Financial Officer Karl Gubitz told investors at the 46th Annual William Blair Growth Stock Conference that the biotechnology company remains focused on revenue growth, profitability and execution as it expands the VYVGART franchise and advances additional pipeline assets.",
+        "pubDate": "2026-06-05T10:02:23Z",
+        "url": "https://www.marketbeat.com/instant-alerts/argenx-touts-vyvgart-growth-50000-patient-goal-at-william-blair-conference-2026-06-05/?utm_source=yahoofinance&utm_medium=yahoofinance",
+        "provider": "MarketBeat"
+      },
+      {
+        "title": "How New ENHANZE Data And Analyst Support At Halozyme Therapeutics (HALO) Has Changed Its Investment Story",
+        "summary": "In recent days, Halozyme Therapeutics\u2019 partner argenx reported positive new data for a therapy using Halozyme\u2019s ENHANZE\u00ae drug delivery technology, while an analyst reaffirmed a positive rating on the company. This combination of external clinical validation and continued analyst support underscores how Halozyme\u2019s business model is closely tied to partner success with its core platform. We\u2019ll now examine how this fresh validation of ENHANZE\u00ae could influence Halozyme\u2019s existing investment...",
+        "pubDate": "2026-06-04T13:15:48Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/enhanze-data-analyst-support-halozyme-131548346.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Why Is Halozyme Therapeutics (HALO) Stock Rocketing Higher Today",
+        "summary": "Shares of biopharmaceutical drug delivery company Halozyme Therapeutics (NASDAQ:HALO) jumped 5.2% in the afternoon session after an analyst reiterated a Buy rating on the stock, and a partner company, argenx, presented positive new data for a drug that utilizes Halozyme's technology.",
+        "pubDate": "2026-06-04T00:15:33Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/why-halozyme-therapeutics-halo-stock-001533252.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "European Equities Traded in the US as American Depositary Receipts Track Lower in Wednesday Trading",
+        "summary": "European equities traded in the US as American depositary receipts were declining late Wednesday mor",
+        "pubDate": "2026-06-03T15:10:58Z",
+        "url": "https://finance.yahoo.com/markets/world-indices/articles/european-equities-traded-us-american-151058095.html",
+        "provider": "MT Newswires"
+      },
+      {
+        "title": "European Equities Traded in the US as American Depositary Receipts Rise in Tuesday Trading",
+        "summary": "European equities traded in the US as American depositary receipts were tracking higher late Tuesday",
+        "pubDate": "2026-06-02T15:08:08Z",
+        "url": "https://finance.yahoo.com/markets/world-indices/articles/european-equities-traded-us-american-150808525.html",
+        "provider": "MT Newswires"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:17 EDT"
+  },
+  "NTRA": {
+    "sevenDayItems": [
+      {
+        "title": "Healthcare Stocks Can Benefit From AI, Too. But That Isn\u2019t the Reason to Buy Them.",
+        "summary": "Eli Lilly and Natera are among the companies that can keep growing after the artificial-intelligence hype fades. Plus, Five Below\u2019s \u201csquishy dumpling\u201d score.",
+        "pubDate": "2026-06-05T14:40:00Z",
+        "url": "https://www.barrons.com/articles/healthcare-stocks-investments-eli-lilly-intuitive-surgical-natera-edwards-lifesciences-medline-dd3fe540?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      },
+      {
+        "title": "Tesla upgraded, Lululemon downgraded: Wall Street's top analyst calls",
+        "summary": "Tesla upgraded, Lululemon downgraded: Wall Street's top analyst calls",
+        "pubDate": "2026-06-05T13:36:13Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/tesla-upgraded-applovin-initiated-wall-135331262.html",
+        "provider": "The Fly"
+      },
+      {
+        "title": "Here's Billionaire Stanley Druckenmiller's Top Holding (Hint: It's Not Alphabet or Nvidia)",
+        "summary": "The famous hedge fund manager seems to have found a hidden gem outside of the market's most popular stock picks.",
+        "pubDate": "2026-06-03T19:56:00Z",
+        "url": "https://www.fool.com/investing/2026/06/03/billionaire-stanley-druckenmiller-top-holding-ntra/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "NTRA & Diakonos Partner to Use Signatera in Refractory Melanoma Trial",
+        "summary": "Natera teams with Diakonos to use Signatera MRD testing in a refractory melanoma immunotherapy trial, tracking ctDNA to gauge response.",
+        "pubDate": "2026-06-01T17:09:00Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/ntra-diakonos-partner-signatera-refractory-170900067.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Natera And 2 Other Companies That May Be Trading Below Their Estimated Value",
+        "summary": "The United States market has experienced a notable upswing, climbing 1.6% in the last week and rising 28% over the past year, with earnings expected to grow by 17% annually. In such an environment, identifying stocks that may be trading below their estimated value can offer potential opportunities for investors seeking to capitalize on undervalued assets.",
+        "pubDate": "2026-06-01T11:38:42Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/natera-2-other-companies-may-113842683.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "EW": {
+    "sevenDayItems": [
+      {
+        "title": "Possible Bearish Signals With Edwards Lifesciences Insiders Disposing Stock",
+        "summary": "Over the past year, many Edwards Lifesciences Corporation ( NYSE:EW ) insiders sold a significant stake in the company...",
+        "pubDate": "2026-06-05T14:00:06Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/possible-bearish-signals-edwards-lifesciences-140006101.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Why Is Veracyte (VCYT) Up 18.2% Since Last Earnings Report?",
+        "summary": "Veracyte (VCYT) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
+        "pubDate": "2026-06-04T15:30:29Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-veracyte-vcyt-18-2-153029552.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is Edwards Lifesciences Stock Underperforming the Nasdaq?",
+        "summary": "Despite trailing the broader Nasdaq Composite over the last 12 months, Edwards Lifesciences continues to earn strong support from analysts.",
+        "pubDate": "2026-06-04T13:03:41Z",
+        "url": "https://www.barchart.com/story/news/2304371/is-edwards-lifesciences-stock-underperforming-the-nasdaq",
+        "provider": "Barchart"
+      },
+      {
+        "title": "Undervalued Asian Small Caps With Insider Action For June 2026",
+        "summary": "As Asian markets navigate a complex landscape shaped by geopolitical developments and regulatory shifts, small-cap stocks in the region present intriguing opportunities for investors seeking growth potential amid broader economic uncertainties. With the backdrop of fluctuating industrial profits in China and Japan's energy-dependent economy responding to Middle East tensions, identifying small-cap companies with strong fundamentals and insider engagement can be key to uncovering value in this...",
+        "pubDate": "2026-06-01T22:38:43Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/undervalued-asian-small-caps-insider-223843105.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "FSLR": {
+    "sevenDayItems": [
+      {
+        "title": "First Solar (FSLR) Dips More Than Broader Market: What You Should Know",
+        "summary": "The latest trading day saw First Solar (FSLR) settling at $279.01, representing a -11.41% change from its previous close.",
+        "pubDate": "2026-06-05T21:45:05Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/first-solar-fslr-dips-more-214505071.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Here is What to Know Beyond Why First Solar, Inc. (FSLR) is a Trending Stock",
+        "summary": "Zacks.com users have recently been watching First Solar (FSLR) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects.",
+        "pubDate": "2026-06-03T13:00:05Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-first-solar-130005972.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Selling US$8.5m Of First Solar Stock Rewarded Insiders",
+        "summary": "While First Solar, Inc. ( NASDAQ:FSLR ) shareholders have enjoyed a good week with stock up 15%, they need remain...",
+        "pubDate": "2026-06-03T11:00:15Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/selling-us-8-5m-first-110015123.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Record Sales Lift First Solar Shares",
+        "summary": "First Solar, Inc. (FSLR) up 47% in a month after big institutional buying.",
+        "pubDate": "2026-06-03T10:59:23Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/record-sales-lift-first-solar-105923732.html",
+        "provider": "FX Empire"
+      },
+      {
+        "title": "Sheikh Ahmed Dalmook Al Maktoum\u2019s Inm\u0101 Emirates Holdings Launches Grant Program To Help Scale Climate Resilience Ventures",
+        "summary": "The grant program will award selected organization over a 12-month period, starting this summer By Exec Edge Editorial Staff Inm\u0101 Emirates Holdings, the Dubai-based holding company founded by Dubai\u2019s Sheikh Ahmed Dalmook Al Maktoum, announced today a new grant program to help founders of existing ventures in the climate resilience space scale their businesses. The [\u2026] The post Sheikh Ahmed Dalmook Al Maktoum\u2019s Inm\u0101 Emirates Holdings Launches Grant Program To Help Scale Climate Resilience Venture",
+        "pubDate": "2026-06-02T14:31:05Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/sheikh-ahmed-dalmook-al-maktoum-143105961.html",
+        "provider": "Exec Edge"
+      },
+      {
+        "title": "MIT bullish on its Initiative for New Manufacturing at the one-year mark",
+        "summary": "The group has been funding research projects, touring factories and piloting workforce development programs. Its three co-directors shared highlights during recent events in Boston and Cambridge.",
+        "pubDate": "2026-06-01T11:17:00Z",
+        "url": "https://www.manufacturingdive.com/news/mit-bullish-on-initiative-for-new-manufacturing-at-one-year-mark/821521/",
+        "provider": "Manufacturing Dive"
+      },
+      {
+        "title": "GLJ Research Upgrades First Solar (FSLR) to Buy",
+        "summary": "First Solar, Inc. (NASDAQ:FSLR) is one of the 10 Best Debt-Free S&P 500 Stocks to Buy Now. On May 27, 2026, GLJ Research analyst Gordon Johnson upgraded First Solar, Inc. (NASDAQ:FSLR) to Buy from Hold with a price target of $315, up from $207.82. Johnson cited resolved cancellation risk and the launch of the company\u2019s [\u2026]",
+        "pubDate": "2026-05-31T08:24:54Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/glj-research-upgrades-first-solar-082454594.html",
+        "provider": "Insider Monkey"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "LYB": {
+    "sevenDayItems": [
+      {
+        "title": "Celanese Streamlines Engineered Materials Network Across Asia",
+        "summary": "Celanese will close its Ulsan facility and shift Engineered Materials production to China and India to boost Asia's efficiency.",
+        "pubDate": "2026-06-05T18:10:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/celanese-streamlines-engineered-materials-network-181000896.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "A Look At LyondellBasell (LYB) Valuation After Recent Share Price Pullback And Recycling Growth Plans",
+        "summary": "Stock performance snapshot and recent context LyondellBasell Industries (LYB) stock has pulled back about 11% over the past month, while still showing a gain of roughly 2% over the past 3 months and about 52% year to date. Over the past year the stock has returned around 29%. However, the 3 year and 5 year total returns show declines of about 11% and 15%. This provides important context for anyone reviewing the recent move. See our latest analysis for LyondellBasell Industries. Recent moves...",
+        "pubDate": "2026-06-04T19:10:13Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/look-lyondellbasell-lyb-valuation-recent-191013695.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Intrepid Potash Increases Share Repurchase Authorization to $50M",
+        "summary": "IPI raises its share repurchase authorization to $50M, backed by stronger operations and a healthier balance sheet.",
+        "pubDate": "2026-06-04T14:03:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/intrepid-potash-increases-share-repurchase-140300030.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Zacks Earnings Trends Highlights: Dow, LyondellBasell Industries, Methanex",
+        "summary": "Dow, LyondellBasell Industries, Methanex have been highlighted in this Earnings Trends article.",
+        "pubDate": "2026-06-04T07:51:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-earnings-trends-highlights-dow-075100853.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Looking Ahead to the 2026 Q2 Earnings Season",
+        "summary": "As we wade closer to the 2026 Q2 earnings season, the overall earnings picture remains strong and broad-based, with the recent 2026 Q1 cycle aligning nicely with the positive trend.",
+        "pubDate": "2026-06-03T23:16:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/looking-ahead-2026-q2-earnings-231600558.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Avient Expands Therma-Tech Portfolio With New Graphite Grades",
+        "summary": "Avient launches eight new natural graphite Therma-Tech grades, targeting lighter, lower-cost thermal management with sustainability benefits.",
+        "pubDate": "2026-06-03T15:14:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/avient-expands-therma-tech-portfolio-151400655.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "FUL Expands Sustainable Packaging Portfolio With VerdaFresh",
+        "summary": "H.B. Fuller invests in VerdaFresh to boost recyclable packaging, helping cut waste and lower material use and carbon impact.",
+        "pubDate": "2026-06-02T13:49:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/ful-expands-sustainable-packaging-portfolio-134900974.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is LyondellBasell Industries (LYB) Stock Undervalued Right Now?",
+        "summary": "Here at Zacks, our focus is on the proven Zacks Rank system, which emphasizes earnings estimates and estimate revisions to find great stocks. Nevertheless, we are always paying attention to the latest value, growth, and momentum trends to underscore strong picks.",
+        "pubDate": "2026-06-02T13:40:02Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/lyondellbasell-industries-lyb-stock-undervalued-134002149.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Are Basic Materials Stocks Lagging  Avino Silver (ASM) This Year?",
+        "summary": "Here is how Avino Silver (ASM) and LyondellBasell (LYB) have performed compared to their sector so far this year.",
+        "pubDate": "2026-06-01T13:40:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/basic-materials-stocks-lagging-avino-134003387.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Zacks.com featured highlights include Nexstar Media Group, Murphy USA, LyondellBasell Industries and Avnet",
+        "summary": "Nexstar Media Group joins a screen of PEG-driven value stocks as investors seek earnings growth and discounted valuations amid 2026 volatility.",
+        "pubDate": "2026-06-01T13:14:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-nexstar-131400147.html",
+        "provider": "Zacks"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "HCA": {
+    "sevenDayItems": [
+      {
+        "title": "HCA Healthcare (HCA) Reports Q1 2026 Financial Growth With $19.1B in Revenue",
+        "summary": "HCA Healthcare Inc. (NYSE:HCA) is one of the most undervalued large cap stocks to buy according to analysts. On April 24, HCA Healthcare reported financial results for Q1 2026, featuring revenues of $19.109 billion, a 4.3% increase over the previous year. Net income rose slightly to $1.620 billion, while diluted EPS grew by 10.9% to [\u2026]",
+        "pubDate": "2026-06-05T21:25:25Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/hca-healthcare-hca-reports-q1-212525957.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Are Options Traders Betting on a Big Move in HCA Healthcare Stock?",
+        "summary": "Investors need to pay close attention to HCA stock based on the movements in the options market lately.",
+        "pubDate": "2026-06-04T12:52:00Z",
+        "url": "https://finance.yahoo.com/markets/options/articles/options-traders-betting-big-move-125200274.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "HCA Healthcare Cigna Pact And Clinic Expansion Reshape Growth And Valuation Story",
+        "summary": "HCA Healthcare and Cigna reached a new agreement that keeps HCA facilities in network for Cigna members after a period of contract uncertainty. HCA Healthcare is acquiring 17 urgent care clinics across the Carolinas, expanding its footprint in outpatient and same day care. The company is opening new facilities, including a satellite fertility clinic in London and a new hospital in Gainesville. For investors tracking NYSE:HCA, the latest news comes against a mixed share performance backdrop...",
+        "pubDate": "2026-06-04T08:13:18Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/hca-healthcare-cigna-pact-clinic-081318442.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "1 Large-Cap Stock Worth Your Attention and 2 We Avoid",
+        "summary": "Large-cap stocks usually command their industries because they have the scale to drive market trends. The flip side though is that their sheer size can limit growth as expanding further becomes an increasingly challenging task.",
+        "pubDate": "2026-06-03T14:39:33Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/1-large-cap-stock-worth-143933695.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "Is HCA Healthcare Stock Underperforming the S&P 500?",
+        "summary": "Despite HCA Healthcare\u2019s underperformance relative to the S&P 500 Index over the past year, analysts are moderately optimistic about the stock\u2019s prospects.",
+        "pubDate": "2026-06-02T13:28:22Z",
+        "url": "https://www.barchart.com/story/news/2259570/is-hca-healthcare-stock-underperforming-the-s-p-500",
+        "provider": "Barchart"
+      },
+      {
+        "title": "3 Beaten-Down Stocks to Buy and Hold Forever",
+        "summary": "Don't wait too long to buy the dip on these stocks.",
+        "pubDate": "2026-06-02T08:35:00Z",
+        "url": "https://www.fool.com/investing/2026/06/02/3-beaten-down-stocks-to-buy-and-hold-forever/",
+        "provider": "Motley Fool"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "MKTX": {
+    "sevenDayItems": [
+      {
+        "title": "SoFi, Fiserv, and MarketAxess Shares Are Falling, What You Need To Know",
+        "summary": "A number of stocks fell in the afternoon session after the May jobs report drove Treasury yields to levels that directly challenge the sector's business model.",
+        "pubDate": "2026-06-06T03:36:14Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/sofi-fiserv-marketaxess-shares-falling-033614244.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "MarketAxess (MKTX) Could Be a Great Choice",
+        "summary": "Dividends are one of the best benefits to being a shareholder, but finding a great dividend stock is no easy task. Does MarketAxess (MKTX) have what it takes? Let's find out.",
+        "pubDate": "2026-06-05T15:45:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/marketaxess-mktx-could-great-choice-154504560.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is MarketAxess (MKTX) Quietly Redefining Its Moat With AI-Powered Bond Trading And New-Issue Tools?",
+        "summary": "On 4 June 2026, MarketAxess Holdings\u2019 CEO Christopher Robert Concannon presented at the Piper Sandler Global Exchange and Fintech Conference in New York, highlighting the company\u2019s recent record first-quarter 2026 revenue and trading volumes driven by its electronic fixed-income platform. The presentation also underscored how MarketAxess is leaning into AI-driven analytics, expanded international reach, and new-issue solutions with partners like DirectBooks to broaden its role in digitizing...",
+        "pubDate": "2026-06-04T17:10:08Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/marketaxess-mktx-quietly-redefining-moat-171008093.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "The Case for Holding MarketAxess Stock: What Investors Need to Know",
+        "summary": "MKTX is boosting growth with higher trading volumes, AI-driven platform upgrades and new partnerships despite rising costs and a 32% YTD slide.",
+        "pubDate": "2026-06-03T16:40:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/case-holding-marketaxess-stock-investors-164000254.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "MarketAxess (MKTX) Q1 2026 Earnings Transcript",
+        "summary": "Christopher Concannon: Good morning, and thank you for joining us to review our very strong financial results for the first quarter 2026.  Record total revenue was underpinned by record total trading ADV, driving record commission revenue.  First, we significantly enhanced the MarketAxess advantage by expanding our global network enhancing our differentiated liquidity and fortifying our high-value proprietary data and analytics by expanding the use of AI.",
+        "pubDate": "2026-06-01T19:56:09Z",
+        "url": "https://www.fool.com/earnings/call-transcripts/2026/06/01/marketaxess-mktx-q1-2026-earnings-transcript/",
+        "provider": "Motley Fool"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "CBOE": {
+    "sevenDayItems": [
+      {
+        "title": "This hot new financial product has Wall Street spooked. What you should know before trying it out.",
+        "summary": "Perpetual futures have finally arrived in the U.S. Not everyone is thrilled.",
+        "pubDate": "2026-06-05T19:40:00Z",
+        "url": "https://www.marketwatch.com/story/this-hot-new-financial-product-has-wall-street-spooked-what-you-should-know-before-trying-it-out-d73c6864",
+        "provider": "MarketWatch"
+      },
+      {
+        "title": "Tesla upgraded, Lululemon downgraded: Wall Street's top analyst calls",
+        "summary": "Tesla upgraded, Lululemon downgraded: Wall Street's top analyst calls",
+        "pubDate": "2026-06-05T13:36:13Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/tesla-upgraded-applovin-initiated-wall-135331262.html",
+        "provider": "The Fly"
+      },
+      {
+        "title": "Memory Chip Prices Will Make or Break DRAM ETF Before Year-End 2026",
+        "summary": "The Roundhill Memory ETF (CBOE:DRAM) is the first U.S.-listed pure-play memory-chip ETF, and it landed in the middle of one of the most violent upcycles the industry has ever seen. DRAM launched on April 2, 2026 with a 0.65% expense ratio, just as Micron Technology (NASDAQ:MU) was approaching a trillion-dollar market cap. Micron is up ... Memory Chip Prices Will Make or Break DRAM ETF Before Year-End 2026",
+        "pubDate": "2026-06-05T11:30:21Z",
+        "url": "https://247wallst.com/investing/2026/06/05/memory-chip-prices-will-make-or-break-dram-etf-before-year-end-2026/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "How The Cboe Global Markets (CBOE) Investment Story Is Evolving Without New Analyst Commentary",
+        "summary": "Cboe Global Markets enters this update cycle with no change in its current price target, leaving existing expectations in place for now. With no fresh analyst commentary to unpack, the focus shifts to how you, as an investor, can keep track of what might influence the next move in that target. Read on to see how to monitor new information and interpret shifts in the evolving analyst story around Cboe Global Markets. Analyst Price Targets don't always capture the full story. Head over to our...",
+        "pubDate": "2026-06-05T11:13:53Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/cboe-global-markets-cboe-investment-111353719.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Vanguard vs. JPMorgan: Which is the Better Small-Cap ETF?",
+        "summary": "Portfolio size and sector mix set these small-cap ETFs apart for investors weighing long-term growth and income potential.",
+        "pubDate": "2026-06-04T19:46:38Z",
+        "url": "https://www.fool.com/coverage/etfs/2026/06/04/vanguard-vs-jpmorgan-chase-which-is-the-better-small-cap-etf/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "This Asset Manager Initiated a $7.7 Million Sprott Position. Is the Precious Metals Rally Just Getting Started?",
+        "summary": "Sprott manages investments in precious metals and critical materials, specializing in gold, silver, uranium, and other commodities.",
+        "pubDate": "2026-06-03T18:07:23Z",
+        "url": "https://www.fool.com/coverage/filings/2026/06/03/this-asset-manager-initiated-a-usd7-7-million-sprott-position-is-the-precious-metals-rally-just-getting-started/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "Exchange Stocks Fall After Perpetual Futures Approval",
+        "summary": "Exchange company stocks sold off Tuesday after the Commodity Futures Trading Commission last week laid out a framework for registered U.S. platforms to launch perpetual futures. Shares of CBOE Global Markets fell 8.",
+        "pubDate": "2026-06-02T20:45:02Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-02-2026/card/exchange-stocks-fall-after-perpetual-futures-approval-h5Sw9R7wdMJtVbNp0KjS?siteid=yhoof2&yptr=yahoo",
+        "provider": "The Wall Street Journal"
+      },
+      {
+        "title": "Coinbase, Kalshi's New Crypto Futures Send These Stocks Sprawling",
+        "summary": "Coinbase, Kalshi launch perpetual futures backed by the CFTC. Cboe, CME, ICE stock tumble on the news.",
+        "pubDate": "2026-06-02T20:15:48Z",
+        "url": "https://www.investors.com/news/coinbase-kalshi-prediction-markets-perpetual-futures-preps-coin-stock-cboe-cme-intercontinental-exchange-ice/?src=A00220&yptr=yahoo",
+        "provider": "Investor's Business Daily"
+      },
+      {
+        "title": "Stocks to Watch: Alphabet, CBOE, Marvell, HPE",
+        "summary": "\u2198\ufe0f Alphabet (GOOGL): The stock was down 3.2% on Tuesday afternoon after the company said it plans to raise $80 billion to help finance artificial-intelligence infrastructure investments. Shares in Berkshire Hathaway (BRK.",
+        "pubDate": "2026-06-02T19:08:13Z",
+        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-06-02-2026/card/stocks-to-watch-alphabet-marvell-hpe-QwCsrwoQ5ruRR3Uoy0FR?siteid=yhoof2&yptr=yahoo",
+        "provider": "The Wall Street Journal"
+      },
+      {
+        "title": "CBOE, CME, ICE, NDAQ Stocks Take A Hit After Kalshi's Bitcoin Perps Approval \u2013 TD Cowen Sees Real Risk, But RBC Says It's \u2018Manageable\u2019",
+        "summary": "While the two firms are divided on how serious the threat actually is, they agree that Cboe Global Markets is most at risk.",
+        "pubDate": "2026-06-02T18:38:45Z",
+        "url": "https://stocktwits.com/news-articles/markets/cryptocurrency/cboe-cme-ice-nasdaq-stocks-hit-kalshi-bitcoin-perps-td-cowen-rbc/cZ00IqrReDg",
+        "provider": "Stocktwits"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "ASTS": {
+    "sevenDayItems": [
+      {
+        "title": "Space Farming Takes Off: Redwire Wins Landmark Mission",
+        "summary": "By Karen Roman Redwire Corp. (NYSE: RDW) said its contract with Astrobiome Space S.\u00e0 r.l. will allow the company to grow strawberries and test Astrobiome Space\u2019s biostimulant inside Redwire\u2019s greenhouse [\u2026]",
+        "pubDate": "2026-06-05T21:17:11Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/space-farming-takes-off-redwire-211711241.html",
+        "provider": "IPO-Edge.com"
+      },
+      {
+        "title": "Jeff Bezos Sees Blue Origin Launching Again This Year. That\u2019s Good News for These Stocks.",
+        "summary": "Jeff Bezos said Blue Origin has a path to resume launches this year after last month\u2019s New Glenn explosion, a positive development for AST SpaceMobile, Amazon and supplier Karman.",
+        "pubDate": "2026-06-05T20:30:00Z",
+        "url": "https://www.barrons.com/articles/blue-origin-launch-return-ast-spacemobile-stock-amazon-fb5274a6?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      },
+      {
+        "title": "Top 5 Stocks That Will Profit From SpaceX\u2019s NASA Launch Monopoly After Blue Origin\u2019s Pad Collapse",
+        "summary": "Blue Origin\u2019s New Glenn pad will take a minimum of a year to rebuild after a hot fire test obliterated the company\u2019s only launch infrastructure for the vehicle, marking the first pad explosion since the Soviet N1 rocket in 1969. NASA\u2019s Artemis lunar rover ride just vaporized, SpaceX inherits the entire federal manifest by default, ... Top 5 Stocks That Will Profit From SpaceX\u2019s NASA Launch Monopoly After Blue Origin\u2019s Pad Collapse",
+        "pubDate": "2026-06-05T13:04:00Z",
+        "url": "https://247wallst.com/investing/2026/06/05/top-5-stocks-that-will-profit-from-spacexs-nasa-launch-monopoly-after-blue-origins-pad-collapse/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "Is It Time To Reassess AST SpaceMobile (ASTS) After Its Recent Price Swings?",
+        "summary": "If you are wondering whether AST SpaceMobile's current share price reflects its true worth, the recent moves in the stock give plenty to think about before making any decisions. The stock closed at US$107.29, has declined 19.4% over the last 7 days, yet is still up 68.0% over 30 days, 28.5% year to date and 247.8% over the past year. It has a very large 3 year return of 7x and a very large 5 year return. Recent attention on AST SpaceMobile has centered on its role in the space based mobile...",
+        "pubDate": "2026-06-05T02:13:19Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/time-reassess-ast-spacemobile-asts-021319599.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "ASTS, RKLB, RDW, SIDU Slip Overnight: Retail Hopes For SpaceX-Fueled S&P 500 Buying Frenzy Take A Hit",
+        "summary": "The drop came after a broad space rally on Thursday, driven by SpaceX's high-profile JPMorgan IPO roadshow.",
+        "pubDate": "2026-06-05T02:02:26Z",
+        "url": "https://stocktwits.com/news-articles/markets/equity/space-stocks-slip-spacex-sp500-retail-hopes-hit/cZ0FPNHRezh",
+        "provider": "Stocktwits"
+      },
+      {
+        "title": "Wall Street Sees SpaceX\u2019s AI Revenue 100 Times Higher by 2030",
+        "summary": "(Bloomberg) -- Research analysts across Wall Street are telling would-be SpaceX IPO buyers that they\u2019re modeling for the company\u2019s artificial intelligence division to see 100 times revenue growth at the end of the decade, to help justify a targeted $1.8 trillion valuation.Most Read from BloombergSpaceX, Other Mega IPOs Denied Fast Index Entry by S&PGlazer Family Members Study Manchester United Stake SaleSaylor\u2019s Bitcoin Machine Is Misfiring on Every CylinderRepublican-Led House Votes to Stop Ira",
+        "pubDate": "2026-06-04T22:28:16Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/wall-street-sees-spacex-ai-222816264.html",
+        "provider": "Bloomberg"
+      },
+      {
+        "title": "Redwire Has a Contract to Grow Strawberries in Space\u2014and Space Stocks Are Soaring Yet Again",
+        "summary": "Four big names started the day off weak, but got a lift from Redwire, which nailed a contract to grow fruit in space. That stock was up 19%.",
+        "pubDate": "2026-06-04T20:30:00Z",
+        "url": "https://www.barrons.com/articles/redwire-stock-price-strawberries-space-1e3fb48b?siteid=yhoof2&yptr=yahoo",
+        "provider": "Barrons.com"
+      },
+      {
+        "title": "ASTS Plagued by Competitive Pressure, Macro Risks: Time to Rethink?",
+        "summary": "AST SpaceMobile faces macro headwinds, rivals like Starlink, and falling estimates, yet a three-satellite Bluebird launch this month could shift the story.",
+        "pubDate": "2026-06-04T15:58:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/asts-plagued-competitive-pressure-macro-155800891.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "ASTS, RKLB, SPCE, RDW Stocks Extend Selloff Overnight \u2014 Analyst Backs 'Betting Against Space' Trade As Jefferies Courts SpaceX Bears",
+        "summary": "Hedge funds seeking bearish bets on SpaceX have reportedly approached Jefferies, which was absent from the IPO's underwriting lineup.",
+        "pubDate": "2026-06-04T01:51:53Z",
+        "url": "https://stocktwits.com/news-articles/markets/equity/asts-rklb-spce-rdw-stocks-selloff-spacex-bear-trade/cZ0mDd6ReUt",
+        "provider": "Stocktwits"
+      },
+      {
+        "title": "AST SpaceMobile (ASTS) Valuation Check After Reaffirmed 2026 Guidance And BlueBird Launch Progress",
+        "summary": "AST SpaceMobile (ASTS) returned to focus after reaffirming its full-year 2026 revenue guidance and confirming three BlueBird satellite launches on Falcon 9 in mid-June, a key operational update for investors. See our latest analysis for AST SpaceMobile. Despite a sharp 1-day share price decline of 8.83% and a 7-day share price return down 16.88% as space stocks cool off, AST SpaceMobile still shows strong momentum with a 57.43% 1-month share price return and a very large 1-year total...",
+        "pubDate": "2026-06-04T00:18:53Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/ast-spacemobile-asts-valuation-check-001853675.html",
+        "provider": "Simply Wall St."
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "ONDS": {
+    "articles": [
+      {
+        "title": "Why Ondas Stock Zoomed 32% Higher in May",
+        "summary": "Investors are getting more bullish on the autonomous drone provider.",
+        "pubDate": "2026-06-05T19:12:18Z",
+        "url": "https://www.fool.com/investing/2026/06/05/why-ondas-stock-zoomed-32-higher-in-may/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop",
+        "summary": "Ondas stock performance snapshot and recent trading context Ondas (ONDS) has drawn fresh attention after a sharp 14.5% single day decline, even though the stock is still up over the past month and past 3 months, prompting investors to reassess recent gains. See our latest analysis for Ondas. Despite the latest 1-day share price drop of 14.5% to US$11.61, Ondas still shows positive momentum, with a 30-day share price return of 19.3% and a very large 1-year total shareholder return that signals...",
+        "pubDate": "2026-06-04T18:08:55Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/look-ondas-onds-valuation-sharp-180855714.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "Ondas (ONDS) Secures More Than $30M in New Orders During May",
+        "summary": "Ondas Inc. (NASDAQ:ONDS) is one of the 15 Most Promising Stocks to Buy Right Now. On May 29, 2026, Ondas Inc. (NASDAQ:ONDS) said it secured more than $30M in new orders during May across its defense, security, and autonomous technology platform. The May order momentum brings Ondas\u2019 Q2-to-date orders to more than $110M. The company [\u2026]",
+        "pubDate": "2026-06-04T16:50:09Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/ondas-onds-secures-more-30m-165009393.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "ONDS' Growing Active Opportunity Pipeline: Multi-Year Growth Secured?",
+        "summary": "Ondas' $4.3B opportunity pipeline across over 45 global program submissions signals strong demand and potential multi-year growth in autonomous defense markets.",
+        "pubDate": "2026-06-04T15:13:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/onds-growing-active-opportunity-pipeline-151300145.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Why Is ONDS Stock Falling Today?",
+        "summary": "Ondas filed a supplement to register 2.1 million shares previously issued to certain investors for potential resale.",
+        "pubDate": "2026-06-03T17:42:07Z",
+        "url": "https://stocktwits.com/news-articles/markets/equity/why-is-onds-stock-falling-today/cZ0jXgQReUW",
+        "provider": "Stocktwits"
+      },
+      {
+        "title": "Ondas Secures $4.8M SOUTHCOM Deal for Maritime ISR Operations",
+        "summary": "ONDS lands a $4.8M SOUTHCOM contract as World View deploys high-altitude balloons for maritime ISR missions targeting illicit activity.",
+        "pubDate": "2026-06-03T13:17:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/ondas-secures-4-8m-southcom-131700137.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "Is It Too Late To Consider Ondas (ONDS) After Its Recent 8x Share Price Surge?",
+        "summary": "Investors may be wondering if Ondas, with a last close of US$13.46, is still worth considering after a strong run, or if the price has moved ahead of the underlying value. The stock has seen sharp swings recently, with returns of 48.6% over the past week, 30.4% over the last month, 22.1% year to date, and a very large gain over the past year of more than 8x. These moves have put Ondas firmly on the radar of investors looking at high momentum stocks and raised fresh questions about how its...",
+        "pubDate": "2026-06-02T19:14:04Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-ondas-onds-recent-191404801.html",
+        "provider": "Simply Wall St."
+      },
+      {
+        "title": "ONDS Stock In The Spotlight After New Navy Contract \u2013 Everything To Know About The Deal",
+        "summary": "Ondas said its unit, World View, has been awarded a $4.8 million contract by the U.S. Naval Forces Southern Command and SMX.",
+        "pubDate": "2026-06-02T13:58:17Z",
+        "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-world-view-navy-contract/cZ00GJ5RewY",
+        "provider": "Stocktwits"
+      },
+      {
+        "title": "ONDS Wins $110M in Q2 Orders: Can Its Defense Strategy Pay Off?",
+        "summary": "Ondas topped $110M in quarter-to-date orders and added $30M+ in May, as rising backlog and diversified defense programs fuel growth.",
+        "pubDate": "2026-06-01T12:57:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/onds-wins-110m-q2-orders-125700581.html",
+        "provider": "Zacks"
+      },
+      {
+        "title": "ONDS Stock Could Have Made You A Millionaire If You Invested $100,000 A Year Ago, Thanks To Drone Defense Boom",
+        "summary": "Ondas Holdings has emerged as one of the biggest winners in the defense sector, fueled by acquisitions, explosive revenue growth, and growing U.S. demand for autonomous military systems.",
+        "pubDate": "2026-06-01T08:25:14Z",
+        "url": "https://stocktwits.com/news-articles/markets/equity/onds-stock-millionaire-100-000-investment-a-year-ago-drone-defense-boom/cZ0gZ7XReuz",
+        "provider": "Stocktwits"
+      }
+    ],
+    "fetchedAt": "2026-06-06 19:24 EDT"
+  },
+  "BMNR": {
+    "sevenDayItems": [
+      {
+        "title": "Weekly Wrap: Bitcoin Hits Two-Year Low Amid Relentless Selling",
+        "summary": "Cryptocurrencies have concluded their worst week since February of this year as the price of Bitcoin (CRYPTO: $BTC)...",
+        "pubDate": "2026-06-05T20:09:00Z",
+        "url": "https://www.cryptoprowl.com/releases/weekly-wrap-bitcoin-hits-two-year-low-amid-relentless-selling-5796",
+        "provider": "CryptoProwl"
+      },
+      {
+        "title": "Tom Lee\u2019s BitMine Prices 9.5% Preferred Shares to Fund Ethereum Strategy",
+        "summary": "BitMine Immersion Technologies Inc. (NYSE: $BMNR) priced an upsized preferred stock offering as Tom Lee's Ether...",
+        "pubDate": "2026-06-05T19:29:00Z",
+        "url": "https://www.cryptoprowl.com/releases/tom-lees-bitmine-prices-95-preferred-shares-to-fund-ethereum-strategy-5793",
+        "provider": "CryptoProwl"
+      },
+      {
+        "title": "Tom Lee's Ethereum Treasury BitMine Prices Preferred Shares With 9.5% Dividend",
+        "summary": "BitMine is borrowing from Strategy\u2019s Bitcoin playbook, debuting its own preferred share in an upsized offering to raise funds to buy Ethereum.",
+        "pubDate": "2026-06-05T17:57:29Z",
+        "url": "https://decrypt.co/370188/tom-lees-ethereum-treasury-bitmine-prices-preferred-shares",
+        "provider": "decrypt"
+      },
+      {
+        "title": "Bitmine Immersion Shares Slip After Expanded $280 Million Preferred Stock Sale (BMNR)",
+        "summary": "Bitmine Immersion Technologies Inc. (AMEX:BMNR) shares fell 5.",
+        "pubDate": "2026-06-05T14:21:39Z",
+        "url": "https://investorshub.advfn.com/market-news/article/29893/bitmine-immersion-shares-slip-after-expanded-280-million-preferred-stock-sale-bmnr",
+        "provider": "InvestorsHub"
+      },
+      {
+        "title": "BitMine Slides 5%, Strategy Falls 4% as Crypto Crash Deepens on Ethereum\u2019s 7% Plunge",
+        "summary": "Shares of Bitmine Immersion Technologies (NYSE:BMNR) are down 5% to $16.91 in early Friday trading, while Strategy (NASDAQ:MSTR) is off 4% to $124.38. The slide tracks a fresh leg lower in crypto. Ethereum (CRYPTO:ETH) is down 7% over the past 24 hours to $1,665, dragging BMNR stock with it as the largest corporate ETH holder. ... BitMine Slides 5%, Strategy Falls 4% as Crypto Crash Deepens on Ethereum\u2019s 7% Plunge",
+        "pubDate": "2026-06-05T13:31:26Z",
+        "url": "https://247wallst.com/investing/2026/06/05/bitmine-slides-5-strategy-falls-4-as-crypto-crash-deepens-on-ethereums-7-plunge/",
+        "provider": "24/7 Wall St."
+      },
+      {
+        "title": "Ethereum News: Bitmine Targets $300 Million in Stock Offering: Is an Ethereum Treasury Strategy Next?",
+        "summary": "Ethereum News: Bitmine Immersion Technologies filed with the US Securities and Exchange Commission on Wednesday to launch a Series A Perpetual Preferred Stock offering, 3 million shares at $100 per share, targeting roughly $300 million in gross proceeds, and the market\u2019s immediate read was not operational financing. It was ETH ...",
+        "pubDate": "2026-06-05T11:43:09Z",
+        "url": "https://www.coinspeaker.com/bitmine-stock-offering-ethereum-news-treasury-strategy/",
+        "provider": "Coinspeaker"
+      },
+      {
+        "title": "Ethereum News Today: BitMine to Raise $300M in Preferred Stock to Buy ETH",
+        "summary": "In Ethereum News today, BitMine Immersion Technologies filed with the SEC on Wednesday to launch a Series A Perpetual Preferred Stock offering, 3 million shares at $100 per share, carrying a 9.5% cumulative annual dividend, with proceeds earmarked explicitly for Ethereum acquisition, ETH staking infrastructure expansion, and ecosystem investment.The offering ...",
+        "pubDate": "2026-06-05T09:12:52Z",
+        "url": "https://cryptonews.com/news/ethereum-news-miners-trading-hashrate-eth-staking-yields/",
+        "provider": "Cryptonews"
+      },
+      {
+        "title": "Tom Lee's Ethereum bet is down $9 billion",
+        "summary": "Bitmine, the largest corporate holder of ether, is sitting on nearly $9 billion in unrealized losses as ETH falls below $1,800. Chairman Tom Lee still predicts a $250,000 price target, but shares of BMNR are down drastically since early May. CoinDesk's Jennifer Sanasie hosts \"CoinDesk Daily.\"",
+        "pubDate": "2026-06-04T16:29:32Z",
+        "url": "http://videos.coindesk.com/previews/zjlGApb1",
+        "provider": "CoinDesk"
+      },
+      {
+        "title": "How Low Can MSTR Stock Go?",
+        "summary": "Holding equities means accepting volatility as the price of long-term compounding. Across the 15 major systemic shocks where Strategy (MSTR) traded, the stock posted an average drawdown of -28%. For context, the S&P 500 averaged a -16% decline during those same periods.",
+        "pubDate": "2026-06-04T13:22:20Z",
+        "url": "https://www.trefis.com/articles/601492/how-low-can-mstr-stock-go/2026-06-04",
+        "provider": "Trefis"
+      },
+      {
+        "title": "Bitmine Offers 9.5% Yield On New Preferred Stock",
+        "summary": "Ethereum (CRYPTO: $ETH) treasury company Bitmine Immersion Technologies (NYSE: $BMNR) is offering investors a 9.5% ...",
+        "pubDate": "2026-06-04T13:10:00Z",
+        "url": "https://www.cryptoprowl.com/releases/bitmine-offers-95-yield-on-new-preferred-stock-5774",
+        "provider": "CryptoProwl"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
+  },
+  "MU": {
+    "sevenDayItems": [
+      {
+        "title": "Chip sell-off rattles markets",
+        "summary": "Yahoo Finance Senior Reporter Ines Ferre joins Market Domination Overtime to break down the chip stock sell-off that sent shockwaves through the market on Friday, June 5.",
+        "pubDate": "2026-06-05T21:02:16Z",
+        "url": "https://finance.yahoo.com/video/chip-sell-off-rattles-markets-210216273.html",
+        "provider": "Yahoo Finance Video"
+      },
+      {
+        "title": "Analyst See More Upside Despite Micron Technology\u2019s (MU) 90% Gains in May",
+        "summary": "Despite Micron Technology, Inc. (NASDAQ:MU)\u2019s impressive 90% gains in May 2026, the Street continues to increase price targets, reflecting continued bullish sentiment on the stock. Micron Technology is also among our Best Performing Stocks in May. \u200bRecently, on June 3, Morgan Stanley raised the firm\u2019s price target on Micron Technology, Inc. (NASDAQ:MU) from $520 to [\u2026]",
+        "pubDate": "2026-06-06T17:17:38Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/analyst-see-more-upside-despite-171738561.html",
+        "provider": "Insider Monkey"
+      },
+      {
+        "title": "Elizabeth Warren Singles Out Micron, Dell And Eli Lilly As Just 3 Of The 3000+ Trades Trump Made: 'Looks Like An Absurd Level Of Corruption'",
+        "summary": "Sen. Elizabeth Warren (D-Mass.) criticized President Donald Trump\u2019s trading activity, arguing that the volume and timing of transactions in his investment portfolio raised questions about potential conflicts of interest and reinforced the need to ban government officials from trading on...",
+        "pubDate": "2026-06-06T16:31:03Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/elizabeth-warren-singles-micron-dell-163103300.html",
+        "provider": "Benzinga"
+      },
+      {
+        "title": "Why did Micron stock fall 13% on Friday and should you buy the dip?",
+        "summary": "Investing.com -- Micron Technology (NASDAQ:MU) stock tumbled more than 13% on Friday, extending a brutal two-session decline that has now erased a portion of the stock's parabolic year-to-date run.",
+        "pubDate": "2026-06-06T11:36:31Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-did-micron-stock-fall-113631895.html",
+        "provider": "Investing.com"
+      },
+      {
+        "title": "Hoping to Ride Micron Stock Higher? Don't Ignore This Red Flag.",
+        "summary": "Micron has emerged as one of the biggest beneficiaries of the AI boom, but investors should look beyond the excitement.",
+        "pubDate": "2026-06-06T10:05:00Z",
+        "url": "https://www.fool.com/investing/2026/06/06/hoping-to-ride-micron-stock-higher-dont-ignore-thi/",
+        "provider": "Motley Fool"
+      },
+      {
+        "title": "AI Dominance Is Turning the S&P 500 into a Collection of Individual Winners, Says Evercore",
+        "summary": "The growing influence of artificial intelligence-related companies is reshaping the U. S.",
+        "pubDate": "2026-06-06T10:00:00Z",
+        "url": "https://investorshub.advfn.com/market-news/article/29909/ai-dominance-is-turning-the-sp-500-into-a-collection-of-individual-winners-says-evercore",
+        "provider": "InvestorsHub"
+      },
+      {
+        "title": "Jensen Huang Commands Seoul Stage With Night of Street Theatre",
+        "summary": "(Bloomberg) -- For one Friday night, Hongdae wasn\u2019t Seoul\u2019s trendiest neighborhood. It was Jensen Huang\u2019s stage.Most Read from BloombergTrump Says He, Not Congress, Is in Charge of Kennedy Center in ReversalBecerra Advances for California Governor as Hilton Fights SteyerNasdaq 100 Sinks 5% in AI-Led Rout as Yields Climb: Markets WrapSpaceX Inks $30 Billion Computing Power Deal With GoogleSpaceX, Other Mega IPOs Denied Fast Index Entry by S&PThe Nvidia Corp. chief executive landed in Seoul and pr",
+        "pubDate": "2026-06-06T07:19:30Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/jensen-huang-commands-seoul-stage-071930094.html",
+        "provider": "Bloomberg"
+      },
+      {
+        "title": "Why Nvidia (NVDA) Shares Are Getting Obliterated Today",
+        "summary": "Shares of leading designer of graphics chips Nvidia (NASDAQ:NVDA) fell 5.9% in the afternoon session after macro pressure and an impending Senate hearing on China chip sales overwhelmed the impressive product updates earlier in the week.",
+        "pubDate": "2026-06-06T05:52:14Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/why-nvidia-nvda-shares-getting-055214383.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "Intel and Micron Shares Plummet, What You Need To Know",
+        "summary": "A number of stocks fell in the morning session after the AVGO earnings overhang and the stronger-than-expected jobs report combined to drive one of the broadest global chip selloff of the year.",
+        "pubDate": "2026-06-05T23:20:14Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/intel-micron-shares-plummet-know-232014978.html",
+        "provider": "StockStory"
+      },
+      {
+        "title": "Tech stocks lead market bloodbath as fears of Fed rate hikes add to worries about the AI-fueled chip boom petering out",
+        "summary": "\"The lack of a reacceleration of wage growth in recent months points to a labor market that is stable, but not hot.\"",
+        "pubDate": "2026-06-05T22:33:23Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/tech-stocks-lead-market-bloodbath-223323218.html",
+        "provider": "Fortune"
+      }
+    ],
+    "sevenDayFetchedAt": "2026-06-06 14:18 EDT"
   }
 }

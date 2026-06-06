@@ -55,6 +55,7 @@
     .status-pill.running { border-color: var(--accent); color: var(--accent); animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
     @keyframes tai-flash { 0%,100%{border-color:var(--warn);box-shadow:0 0 0 0 rgba(251,191,36,0)} 50%{border-color:#fde68a;box-shadow:0 0 8px 2px rgba(251,191,36,0.4)} }
+    @keyframes progressIndeterminate { 0%{opacity:0.3;width:20%} 50%{opacity:1;width:80%} 100%{opacity:0.3;width:20%} }
     .header-actions { display: flex; gap: 10px; align-items: center; }
     .btn {
       font-family: 'DM Mono', monospace;
@@ -1091,6 +1092,13 @@
     <div class="status-pill" id="statusPill">IDLE</div>
     <span class="status-dot" id="statusDot"></span>
     <span id="statusText" style="font-size:11px;color:var(--muted)">{{ status.message }}</span>
+    <div id="statusProgressWrap" style="display:none;align-items:center;gap:8px;margin-left:10px">
+      <div style="width:120px;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden">
+        <div id="statusProgressBar" style="height:100%;background:var(--warn);border-radius:3px;width:0%;transition:width 0.4s ease"></div>
+      </div>
+      <span id="statusProgressLabel" style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap"></span>
+      <button id="statusStopBtn" onclick="stopOperation()" style="display:none;font-size:10px;padding:3px 9px;background:rgba(239,68,68,0.12);border:1px solid var(--down);border-radius:4px;color:var(--down);cursor:pointer;font-family:'DM Mono',monospace;font-weight:700;letter-spacing:0.5px">🛑 STOP</button>
+    </div>
   </div>
   <div class="header-actions">
     <div id="lastUpdated" style="font-size:11px;color:var(--muted);margin-right:6px"></div>
@@ -1942,39 +1950,72 @@ async function loadDream(force) {
   }
 }
 
+async function refreshDreamTickers(btn) {
+  const orig = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ REFRESHING...';
+  console.log('[Dream] ticker refresh triggered');
+  try {
+    const res = await fetch('/dream/refresh-tickers', {method: 'POST'});
+    const data = await res.json();
+    if (data.error) { alert('Error: ' + data.error); btn.textContent = orig; btn.disabled = false; return; }
+    let attempts = 0;
+    const poll = setInterval(async () => {
+      attempts++;
+      try {
+        const s = await fetch('/status');
+        const st = await s.json();
+        if (!st.running || attempts > 60) {
+          clearInterval(poll);
+          btn.textContent = orig;
+          btn.disabled = false;
+          console.log('[Dream] ticker refresh complete:', st.message);
+        }
+      } catch(e) { clearInterval(poll); btn.textContent = orig; btn.disabled = false; }
+    }, 2000);
+  } catch(e) {
+    console.error('[Dream] ticker refresh FAIL:', e);
+    btn.textContent = orig;
+    btn.disabled = false;
+  }
+}
+
 async function runDreamScan(btn) {
   const orig = btn.textContent;
   btn.textContent = '⏳ Scanning...';
   btn.disabled = true;
+  const stopBtn = document.getElementById('dreamStopBtn');
+  if (stopBtn) stopBtn.style.display = 'inline-block';
   const tsEl = document.getElementById('dreamScanTs');
   if (tsEl) tsEl.textContent = '🕐 Running...';
   console.log('[Dream] scan triggered');
+  const _resetDreamBtn = () => {
+    btn.textContent = orig;
+    btn.disabled = false;
+    if (stopBtn) stopBtn.style.display = 'none';
+  };
   try {
     await fetch('/dream/scan', {method: 'POST'});
     const poll = setInterval(async () => {
       try {
         const s = await fetch('/status');
         const sd = await s.json();
-        if (!sd.running && sd.message && sd.message.includes('dream')) {
+        if (!sd.running) {
           clearInterval(poll);
-          btn.textContent = orig;
-          btn.disabled = false;
-          dreamLoaded = false;
-          setTimeout(async () => {
-            await loadDream(true);
-            console.log('[Dream] scan complete, data loaded');
-          }, 500);
-        } else if (!sd.running && !sd.message) {
-          clearInterval(poll);
-          btn.textContent = orig;
-          btn.disabled = false;
+          _resetDreamBtn();
+          if (sd.message && (sd.message.includes('dream') || sd.message.includes('Dream'))) {
+            dreamLoaded = false;
+            setTimeout(async () => {
+              await loadDream(true);
+              console.log('[Dream] scan complete, data loaded');
+            }, 500);
+          }
         }
-      } catch(e) { clearInterval(poll); btn.textContent = orig; btn.disabled = false; }
+      } catch(e) { clearInterval(poll); _resetDreamBtn(); }
     }, 2000);
   } catch(e) {
     console.error('[Dream] scan FAIL:', e);
-    btn.textContent = orig;
-    btn.disabled = false;
+    _resetDreamBtn();
   }
 }
 
@@ -2032,7 +2073,9 @@ function renderDream(data) {
     + '</div>'
     + '<div style="display:flex;gap:8px;align-items:center">'
     + '<button onclick="toggleDreamHelp(this)" style="font-size:12px;padding:8px 14px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:6px;font-weight:700;cursor:pointer;font-family:\'DM Mono\',monospace">❓ HOW IT WORKS</button>'
+    + '<button onclick="refreshDreamTickers(this)" style="font-size:12px;padding:8px 16px;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:6px;font-weight:700;cursor:pointer;font-family:\'DM Mono\',monospace;letter-spacing:0.5px">🔄 REFRESH TICKERS</button>'
     + '<button onclick="runDreamScan(this)" style="font-size:13px;padding:9px 22px;background:var(--warn);color:#0a0a0f;border:none;border-radius:6px;font-weight:800;cursor:pointer;font-family:\'DM Mono\',monospace;letter-spacing:0.5px">⚡ RUN DREAM SCAN</button>'
+    + '<button id="dreamStopBtn" onclick="stopOperation()" style="display:none;font-size:12px;padding:9px 16px;background:rgba(239,68,68,0.12);color:var(--down);border:1px solid var(--down);border-radius:6px;font-weight:700;cursor:pointer;font-family:\\\'DM Mono\\\',monospace;letter-spacing:0.5px">🛑 STOP</button>'
     + '</div>'
     + '</div>'
     + buildDreamHelpHtml();
@@ -2783,6 +2826,19 @@ function buildTickerTabs(stocks, opTs) {
   });
 }
 
+async function stopOperation() {
+  const btn = document.getElementById('statusStopBtn');
+  if (btn) { btn.textContent = '⏳ Stopping...'; btn.disabled = true; }
+  console.log('[Stop] Sending stop signal...');
+  try {
+    await fetch('/stop', {method: 'POST'});
+    console.log('[Stop] Stop signal sent');
+  } catch(e) {
+    console.error('[Stop] FAIL:', e);
+  }
+  if (btn) { btn.disabled = false; }
+}
+
 async function pollStatus() {
   try {
     const res = await fetch('/status');
@@ -2791,6 +2847,31 @@ async function pollStatus() {
     document.getElementById('statusPill').textContent = s.running ? 'RUNNING' : 'IDLE';
     document.getElementById('statusPill').className = 'status-pill' + (s.running ? ' running' : '');
     document.getElementById('statusDot').className = 'status-dot' + (s.running ? ' running' : '');
+
+    // Progress bar in status bar
+    const progressWrap = document.getElementById('statusProgressWrap');
+    const progressBar  = document.getElementById('statusProgressBar');
+    const progressLabel= document.getElementById('statusProgressLabel');
+    const stopBtn      = document.getElementById('statusStopBtn');
+    if (progressWrap && progressBar && progressLabel) {
+      const hasProgress = s.running && s.total > 0;
+      progressWrap.style.display = hasProgress ? 'flex' : 'none';
+      if (stopBtn) stopBtn.style.display = s.running ? 'inline-block' : 'none';
+      if (hasProgress) {
+        const pct = Math.min(100, Math.round((s.current / s.total) * 100));
+        progressBar.style.width = pct + '%';
+        progressLabel.textContent = s.current + ' of ' + s.total + (s.current_ticker ? ' — ' + s.current_ticker : '');
+      } else if (s.running) {
+        // Indeterminate (dream scan which is one opaque call)
+        progressBar.style.width = '100%';
+        progressBar.style.animation = 'progressIndeterminate 1.5s ease-in-out infinite';
+        progressLabel.textContent = 'Processing...';
+      }
+      if (!s.running) {
+        progressBar.style.animation = 'none';
+        if (stopBtn) stopBtn.style.display = 'none';
+      }
+    }
 
     // Price banner: show when prices operation is running
     const isPriceOp = s.running && (s.operation === 'prices' || s.message.toLowerCase().includes('price'));
@@ -3507,7 +3588,7 @@ async function resetTradeSimulation(btn) {
 let tradeAILoaded = false;
 
 async function loadTradeAI(force) {
-  if (tradeAILoaded && !force) return;
+  if (tradeAILoaded && !force) return null;
   const el = document.getElementById('tradeaiContent');
   el.innerHTML = '<div class="loading">Loading TradeAI simulation...</div>';
   try {
@@ -3516,9 +3597,11 @@ async function loadTradeAI(force) {
     el.innerHTML = renderTradeAI(data);
     tradeAILoaded = true;
     console.log('[TradeAI] loaded | balance:' + data.balance + ' holdings:' + (data.holdings||[]).length + ' assessed:' + Object.keys(data.aiAssessments||{}).length);
+    return data;
   } catch(e) {
     el.innerHTML = '<span style="color:var(--down)">Failed to load TradeAI data.</span>';
     console.error('[TradeAI] load FAIL:', e);
+    return null;
   }
 }
 
@@ -3585,6 +3668,7 @@ function renderTradeAI(data) {
         const newsTs = newsTsMap[item.ticker];
         const hasDetail = !!d;
         const hasAI = !!ai;
+        const fetchTs = d ? d.fetchCompletedAt : null;
         return `
         <div class="trade-candidate-row" onclick="toggleTradeDetail('tai-${i}')">
           <div style="min-width:90px">
@@ -3593,13 +3677,15 @@ function renderTradeAI(data) {
               ${hasDetail ? '<span style="font-size:9px;color:var(--accent)">● data</span>' : ''}
               ${hasAI ? '<span style="font-size:9px;color:#a78bfa">● AI</span>' : ''}
             </div>
+            ${fetchTs ? `<div style="font-size:9px;color:var(--accent);margin-top:2px">✓ fetched ${fetchTs.slice(0,16)}</div>` : ''}
           </div>
           <div style="flex:1">
             <div class="trade-candidate-reason">${item.reason || '—'}</div>
             ${hasAI ? `<div style="display:flex;gap:6px;align-items:center;margin-top:4px">${signalBadge(ai.buySignal)}<span style="font-size:10px;color:var(--muted)">${trajectoryIcon(ai.trajectory)} ${ai.trajectory||''} · ${ai.stage||''}</span></div>` : ''}
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
-            ${(()=>{const bkt=item.bucket||'';const bktColors={'Momentum':'#fbbf24','Reversal':'#60a5fa','SmartMoney':'#a78bfa','Account':'#4ade80','Dream':'#6b7280'};const bc=bktColors[bkt]||'#6b7280';return bkt?`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${bkt.toUpperCase()}</span>`:''})()}
+            ${(()=>{const bkt=item.bucket||'';const bktColors={'Momentum':'#fbbf24','Reversal':'#60a5fa','SmartMoney':'#a78bfa','Insider':'#f97316','Account':'#4ade80','Dream':'#6b7280'};const bc=bktColors[bkt]||'#6b7280';return bkt?`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${bkt.toUpperCase()}</span>`:''})()}
+            ${hasAI && ai.aiScore != null ? `<span style="font-size:12px;font-weight:800;color:var(--accent);font-family:'DM Mono',monospace">${ai.aiScore}<span style="font-size:9px;color:var(--muted)">/100</span></span>` : ''}
             <span class="trade-candidate-source">${item.source || ''}</span>
             <button onclick="event.stopPropagation();refreshTickerNews('${item.ticker}', this)" style="font-size:9px;padding:2px 7px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);cursor:pointer;font-family:'DM Mono',monospace">🔄 NEWS</button>
             <span id="news-ts-${item.ticker}" style="font-size:9px;color:var(--muted)">${newsTs ? newsTs.slice(0,16) : 'no news'}</span>
@@ -3607,6 +3693,7 @@ function renderTradeAI(data) {
         </div>
         <div class="trade-detail-expand" id="tai-${i}">
           ${hasDetail ? renderTradeDetailExpand(d) : '<div style="color:var(--muted);font-size:11px;margin-bottom:8px">No detail fetched yet. Run Fetch Info.</div>'}
+          ${hasAI ? `<div style="margin-top:12px;padding:12px 14px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:8px"><div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:6px">📋 PROMPT SENT TO AI</div><pre style="font-size:10px;color:var(--muted);white-space:pre-wrap;line-height:1.5;margin:0;font-family:'DM Mono',monospace">${ai.promptSent ? ai.promptSent.replace(/</g,'&lt;').replace(/>/g,'&gt;') : '(prompt not saved — backend did not return promptSent)'}</pre></div>` : ''}
           ${hasAI ? renderAIAssessment(ai) : '<div style="color:var(--muted);font-size:11px">No AI analysis yet. Run AI Analyze.</div>'}
         </div>`;
       }).join('') + `</div>`;
@@ -3617,7 +3704,7 @@ function renderTradeAI(data) {
 
   return `
   <!-- TRADEAI TOP CONTROL BAR -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr) auto;gap:12px;margin-bottom:28px;align-items:start">
     ${['identify','fetch','analyze','recommend'].map((op, i) => {
       const labels  = ['IDENTIFY','FETCH INFO','AI ANALYZE','RECOMMEND'];
       const ops     = ['identify','fetch','analyze','recommend'];
@@ -3637,6 +3724,10 @@ function renderTradeAI(data) {
         </div>
       </div>`;
     }).join('')}
+    <div style="display:flex;flex-direction:column;gap:6px;justify-content:flex-start">
+      <button id="taiStopBtn" onclick="stopOperation()" style="display:none;font-family:'DM Mono',monospace;font-size:12px;font-weight:700;padding:10px 14px;border-radius:8px;cursor:pointer;border:2px solid var(--down);background:rgba(239,68,68,0.12);color:var(--down);letter-spacing:0.5px;white-space:nowrap">🛑 STOP</button>
+      <div style="font-size:10px;color:var(--muted);text-align:center" id="taiStopLabel"></div>
+    </div>
   </div>
 
   <!-- ACCOUNT SECTION -->
@@ -3689,24 +3780,12 @@ function renderTradeAI(data) {
     ${identifiedHtml}
   </div>
 
-  <!-- AI ANALYZE SECTION -->
+  <!-- RECOMMEND SUMMARY SECTION -->
   <div class="trade-section">
     <div class="trade-section-header">
       <div>
-        <div class="trade-section-title">AI ANALYSIS</div>
-        <div class="trade-section-sub">Ollama · trajectory, sentiment, stage, conviction${data.aiAnalyzedAt ? ' · last run: ' + data.aiAnalyzedAt : ''}</div>
-      </div>
-    </div>
-    ${identified.length === 0 ? '<div style="color:var(--muted);padding:16px">Run Identify + Fetch Info first.</div>' :
-      '<div style="color:var(--muted);font-size:11px;padding:8px 0">Expand each ticker above to see AI assessment after analysis runs.</div>'}
-  </div>
-
-  <!-- RECOMMEND SECTION -->
-  <div class="trade-section">
-    <div class="trade-section-header">
-      <div>
-        <div class="trade-section-title">LAST RECOMMENDATION</div>
-        <div class="trade-section-sub">AI-weighted score · auto-executes${lastRec ? ' · ' + lastRec.scoredAt : ''}</div>
+        <div class="trade-section-title">📋 LAST RECOMMENDATION</div>
+        <div class="trade-section-sub">What was bought and sold — and why${lastRec && lastRec.scoredAt ? ' · ' + lastRec.scoredAt : ''}</div>
       </div>
     </div>
     ${recHtml}
@@ -3759,6 +3838,48 @@ function renderAIAssessment(ai) {
     </div>
     ${ai.reasoning ? `<div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">${ai.reasoning}</div>` : ''}
   </div>`;
+}
+
+function showRecommendSummary(rec) {
+  const buys = rec.buys || [];
+  const sells = rec.sells || [];
+  if (!buys.length && !sells.length) {
+    const modal = document.getElementById('recommendSummaryModal');
+    const body = document.getElementById('recommendSummaryBody');
+    body.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No trades were executed this cycle. All candidates may already be held, scored too low, or balance was insufficient.</div>';
+    modal.classList.add('visible');
+    return;
+  }
+
+  const fmt$ = v => v == null ? '—' : '$' + Number(v).toLocaleString('en-CA', {minimumFractionDigits:2, maximumFractionDigits:2});
+
+  const buyRows = buys.map(b => `
+    <div style="padding:12px 14px;border-radius:8px;background:rgba(74,222,128,0.05);border:1px solid rgba(74,222,128,0.2);margin-bottom:8px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(74,222,128,0.15);color:#4ade80;font-weight:700">BUY</span>
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px">${b.ticker}</span>
+        <span style="font-size:11px;color:var(--muted)">${b.shares} shares @ ${fmt$(b.price)} · Cost: ${fmt$(b.amount)}</span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">${b.reason || '—'}</div>
+    </div>`).join('');
+
+  const sellRows = sells.map(s => `
+    <div style="padding:12px 14px;border-radius:8px;background:rgba(248,113,113,0.05);border:1px solid rgba(248,113,113,0.2);margin-bottom:8px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <span style="font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(248,113,113,0.15);color:#f87171;font-weight:700">SELL</span>
+        <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px">${s.ticker}</span>
+        <span style="font-size:11px;color:var(--muted)">${s.shares} shares @ ${fmt$(s.price)} · Proceeds: ${fmt$(s.amount)}</span>
+      </div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">${s.reason || '—'}</div>
+    </div>`).join('');
+
+  const modal = document.getElementById('recommendSummaryModal');
+  const body = document.getElementById('recommendSummaryBody');
+  body.innerHTML = `
+    ${buys.length ? `<div style="font-size:10px;letter-spacing:1px;color:#4ade80;margin-bottom:10px">✅ BOUGHT (${buys.length})</div>${buyRows}` : '<div style="color:var(--muted);font-size:11px;margin-bottom:16px">No buys executed.</div>'}
+    ${sells.length ? `<div style="font-size:10px;letter-spacing:1px;color:#f87171;margin-top:16px;margin-bottom:10px">🔴 SOLD (${sells.length})</div>${sellRows}` : '<div style="color:var(--muted);font-size:11px">No sells executed.</div>'}
+  `;
+  modal.classList.add('visible');
 }
 
 function renderTradeAIRecommend(rec) {
@@ -3829,6 +3950,8 @@ function renderTradeAIRecommend(rec) {
 async function runTradeAIOp(op, btn) {
   if (btn.disabled) return;
   const orig = btn.textContent;
+  const stopBtn  = document.getElementById('taiStopBtn');
+  const stopLbl  = document.getElementById('taiStopLabel');
 
   // ── Running state: flashing border ──────────────────────────────────────
   btn.disabled = true;
@@ -3837,6 +3960,8 @@ async function runTradeAIOp(op, btn) {
   btn.style.borderColor = 'var(--warn)';
   btn.style.color = 'var(--warn)';
   btn.style.background = 'rgba(251,191,36,0.12)';
+  if (stopBtn) { stopBtn.style.display = 'inline-block'; stopBtn.disabled = false; stopBtn.textContent = '🛑 STOP'; }
+  if (stopLbl) stopLbl.textContent = '';
 
   console.log('[TradeAI] op started:', op);
   try {
@@ -3852,7 +3977,21 @@ async function runTradeAIOp(op, btn) {
       attempts++;
       try {
         const s = await fetch('/status').then(r => r.json());
-        console.log('[TradeAI] poll:', op, '| running:', s.running, '| msg:', s.message);
+        console.log('[TradeAI] poll:', op, '| running:', s.running, '| msg:', s.message, '| progress:', s.current, '/', s.total);
+        // Update inline progress label on the stop button col
+        if (s.running && s.total > 0 && stopLbl) {
+          stopLbl.textContent = s.current + ' / ' + s.total + (s.current_ticker ? ' — ' + s.current_ticker : '');
+        }
+        if (s.running && op === 'identify') { loadTradeAI(true); }
+        if (s.running && op === 'fetch') { loadTradeAI(true); }
+        // analyze: only reload when a new ticker completes (track count changes)
+        if (s.running && op === 'analyze') {
+          const newCount = s.current || 0;
+          if (newCount !== (window._lastAnalyzeCount || 0)) {
+            window._lastAnalyzeCount = newCount;
+            loadTradeAI(true);
+          }
+        }
         if (!s.running || attempts > 180) {
           clearInterval(poll);
           // ── Done state: grey ─────────────────────────────────────────────
@@ -3862,11 +4001,18 @@ async function runTradeAIOp(op, btn) {
           btn.style.borderColor = 'var(--border)';
           btn.style.color = 'var(--muted)';
           btn.style.background = 'var(--surface2)';
+          if (stopBtn) stopBtn.style.display = 'none';
+          if (stopLbl) stopLbl.textContent = '';
           // Update timestamp label
           const now = new Date().toLocaleString('en-CA', {timeZone:'America/Toronto', hour12:false}).replace(',','');
           const tsEl = document.getElementById('tai-ts-' + op);
           if (tsEl) tsEl.textContent = '✓ ' + now;
-          loadTradeAI(true);
+          const reloadedData = await loadTradeAI(true);
+          if (op === 'recommend') {
+            const rec = (reloadedData && reloadedData.lastRecommend) || {};
+            console.log('[TradeAI] recommend summary | buys:', (rec.buys||[]).length, 'sells:', (rec.sells||[]).length);
+            showRecommendSummary(rec);
+          }
           console.log('[TradeAI] op complete:', op);
         }
       } catch(e) {
@@ -3888,6 +4034,10 @@ function _resetTradeAIBtn(btn, orig) {
   btn.style.borderColor = 'var(--warn)';
   btn.style.color = 'var(--warn)';
   btn.style.background = 'rgba(251,191,36,0.08)';
+  const stopBtn = document.getElementById('taiStopBtn');
+  const stopLbl = document.getElementById('taiStopLabel');
+  if (stopBtn) stopBtn.style.display = 'none';
+  if (stopLbl) stopLbl.textContent = '';
 }
 
 async function refreshTickerNews(ticker, btn) {
@@ -3972,6 +4122,19 @@ async function resetTradeAISimulation(btn) {
 
   {%- endraw %}
 </script>
+
+<div class="modal-overlay" id="recommendSummaryModal" onclick="if(event.target===this)this.classList.remove('visible')">
+  <div class="modal" style="width:680px;max-height:80vh;overflow-y:auto">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">RECOMMEND SUMMARY</div>
+        <div class="modal-subtitle">What was bought and sold — and why</div>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('recommendSummaryModal').classList.remove('visible')">✕</button>
+    </div>
+    <div id="recommendSummaryBody" style="padding:0 4px 8px"></div>
+  </div>
+</div>
 
 <div class="modal-overlay" id="followupModal" onclick="if(event.target===this)closeModal()">
   <div class="modal">
