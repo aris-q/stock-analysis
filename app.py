@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, jsonify
+from flask import Flask, render_template, request, redirect, jsonify, make_response
 import json, os, logging, threading
 from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH, OLLAMA_URL, OLLAMA_MODEL
 try:
@@ -541,7 +541,11 @@ def get_cached_news_impact(ticker):
 
 @app.route("/")
 def index():
-    return render_template("index.html", watchlist=watchlist, status=fetch_status)
+    resp = make_response(render_template("index.html", watchlist=watchlist, status=fetch_status))
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
 
 
 @app.route("/add", methods=["POST", "GET"])
@@ -1600,10 +1604,12 @@ def run_tradeai_analyze():
             fetch_status["current_ticker"] = ticker
             fetch_status["message"] = f"TradeAI analyze: {idx} of {total} — {ticker}"
             news_items = news_db.get(ticker, {}).get("articles", [])
-            log.info(f"--- TradeAI analyze: {ticker} [{idx}/{total}] | news:{len(news_items)} articles ---")
-            assessment = fetch_ai_analyze(ticker, detail, news_items, macro, OLLAMA_URL, OLLAMA_MODEL)
+            bucket = item.get("bucket", "Dream")
+            reason = item.get("reason", "")
+            log.info(f"--- TradeAI analyze: {ticker} [{idx}/{total}] | bucket:{bucket} | news:{len(news_items)} articles ---")
+            assessment = fetch_ai_analyze(ticker, detail, news_items, macro, OLLAMA_URL, OLLAMA_MODEL, bucket=bucket, selection_reason=reason)
             ai_assessments[ticker] = assessment
-            log.info(f"TradeAI analyze OK: {ticker} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
+            log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
 
         candidates_data["aiAssessments"] = ai_assessments
         candidates_data["aiAnalyzedAt"] = ts()
@@ -1634,9 +1640,13 @@ def run_tradeai_recommend():
 
         BUY_SIGNALS = {"Strong Buy": 100, "Buy": 75, "Hold": 40, "Avoid": 0, "Unknown": 20}
 
+        # Build candidate lookup for bucket-aware scoring
+        cand_map = {item["ticker"]: item for item in identified}
+
         scored = []
         for item in identified:
             ticker = item["ticker"]
+            bucket = item.get("bucket", "Dream")
             detail = details.get(ticker, {})
             ai = ai_assessments.get(ticker, {})
             d_data = dream_map.get(ticker, {})
@@ -1645,20 +1655,101 @@ def run_tradeai_recommend():
 
             ai_score = ai.get("aiScore") or 0
             signal_score = BUY_SIGNALS.get(ai.get("buySignal", "Unknown"), 20)
-            trajectory_bonus = 15 if ai.get("trajectory") == "Accelerating" else 0
-            stage_bonus = 10 if ai.get("stage") == "Early-Stage" else (5 if ai.get("stage") == "Growth" else 0)
+            trajectory = ai.get("trajectory", "")
+            stage = ai.get("stage", "")
 
-            composite = round((dream_score * 0.25) + (ai_score * 0.40) + (signal_score * 0.25) + trajectory_bonus + stage_bonus, 1)
-            composite = min(100, composite)
+            # ── Shared bonuses ────────────────────────────────────────────────
+            # Volume surge: strong short-window signal regardless of bucket
+            vol_ratio = detail.get("volumeRatio") or 0
+            volume_bonus = 10 if vol_ratio >= 2.0 else (5 if vol_ratio >= 1.5 else 0)
+
+            # Analyst upside bonus
+            upside = detail.get("analystUpside") or 0
+            analyst_bonus = 8 if upside >= 0.20 else (4 if upside >= 0.10 else 0)
+
+            # News sentiment bonus
+            news_sentiment = ai.get("newsSentiment", "")
+            news_bonus = 6 if news_sentiment == "Bullish" else (3 if news_sentiment == "Neutral" else 0)
+
+            # ── Bucket-specific composite formula ────────────────────────────
+            if bucket == "Momentum":
+                # Momentum: trend continuation — weight signal + trajectory heavily
+                # RSI 45-70 means money is moving; reward accelerating price action
+                trajectory_bonus = 20 if trajectory == "Accelerating" else (8 if trajectory == "Stable" else 0)
+                stage_bonus = 8 if stage == "Growth" else (5 if stage == "Mature" else 0)
+                composite = (
+                    (dream_score * 0.15) +
+                    (ai_score    * 0.35) +
+                    (signal_score * 0.30) +
+                    trajectory_bonus + stage_bonus + volume_bonus + news_bonus
+                )
+
+            elif bucket == "Reversal":
+                # Reversal: oversold bounce — AI signal + RSI recovery matter most
+                # Do NOT penalise Decelerating trajectory (that is expected for a reversal)
+                # Reward deep oversold RSI as a catalyst signal
+                rsi = detail.get("rsi14") or 50
+                rsi_recovery_bonus = 20 if rsi < 30 else (12 if rsi < 35 else (6 if rsi < 40 else 0))
+                bb_percent = detail.get("bbPercent")
+                bb_bonus = 10 if (bb_percent is not None and bb_percent < 0.1) else 0  # touching lower Bollinger band
+                composite = (
+                    (dream_score * 0.15) +
+                    (ai_score    * 0.45) +
+                    (signal_score * 0.20) +
+                    rsi_recovery_bonus + bb_bonus + analyst_bonus + news_bonus
+                )
+
+            elif bucket == "SmartMoney":
+                # SmartMoney: fundamental catalyst — dream + AI quality + upcoming catalyst
+                stage_bonus = 15 if stage == "Early-Stage" else (10 if stage == "Growth" else 0)
+                trajectory_bonus = 10 if trajectory == "Accelerating" else 0
+                composite = (
+                    (dream_score * 0.30) +
+                    (ai_score    * 0.40) +
+                    (signal_score * 0.15) +
+                    stage_bonus + trajectory_bonus + analyst_bonus + news_bonus
+                )
+
+            elif bucket == "Account":
+                # Held positions: favour Hold/Buy signals + penalise Avoid strongly
+                # Gives existing positions a slight continuity benefit
+                hold_bonus = 5 if ai.get("buySignal") not in ("Avoid",) else -20
+                trajectory_bonus = 10 if trajectory == "Accelerating" else (5 if trajectory == "Stable" else -5)
+                composite = (
+                    (dream_score * 0.20) +
+                    (ai_score    * 0.40) +
+                    (signal_score * 0.25) +
+                    hold_bonus + trajectory_bonus + volume_bonus + news_bonus
+                )
+
+            else:
+                # Dream / Filler: general quality score
+                trajectory_bonus = 12 if trajectory == "Accelerating" else 0
+                stage_bonus = 8 if stage == "Early-Stage" else (4 if stage == "Growth" else 0)
+                composite = (
+                    (dream_score * 0.25) +
+                    (ai_score    * 0.40) +
+                    (signal_score * 0.25) +
+                    trajectory_bonus + stage_bonus + news_bonus
+                )
+
+            composite = round(min(100, max(0, composite)), 1)
+
+            log.info(
+                f"[Score] {ticker} bucket:{bucket} dream:{dream_score} ai:{ai_score} "
+                f"signal:{signal_score} vol_bonus:{volume_bonus} analyst_bonus:{analyst_bonus} "
+                f"news_bonus:{news_bonus} composite:{composite}"
+            )
 
             scored.append({
                 "ticker": ticker,
+                "bucket": bucket,
                 "price": price,
                 "dreamScore": dream_score,
                 "aiScore": ai_score,
                 "buySignal": ai.get("buySignal", "Unknown"),
-                "trajectory": ai.get("trajectory", "—"),
-                "stage": ai.get("stage", "—"),
+                "trajectory": trajectory,
+                "stage": stage,
                 "sentiment": ai.get("sentiment", "—"),
                 "reasoning": ai.get("reasoning", ""),
                 "composite": composite,
@@ -1670,20 +1761,41 @@ def run_tradeai_recommend():
 
         sells = []
         for ticker, pos in list(holdings.items()):
-            if ticker not in top5:
-                price = next((s["price"] for s in scored if s["ticker"] == ticker), pos.get("purchasePrice"))
+            scored_entry = next((s for s in scored if s["ticker"] == ticker), None)
+            composite = scored_entry["composite"] if scored_entry else 0
+            buy_signal = scored_entry["buySignal"] if scored_entry else "Unknown"
+
+            # Sell triggers (any one is sufficient):
+            # 1. Not in top 5 composite AND composite below 40 (weak conviction)
+            # 2. AI explicitly says Avoid
+            # 3. In top 5 but composite collapsed below 25 (hard floor)
+            hard_sell = buy_signal == "Avoid" or composite < 25
+            soft_sell = ticker not in top5 and composite < 40
+
+            if hard_sell or soft_sell:
+                price = scored_entry["price"] if scored_entry else pos.get("purchasePrice")
+                if not price:
+                    price = pos.get("purchasePrice")
                 if price:
                     proceeds = round(price * pos["shares"], 2)
                     balance += proceeds
-                    ai_reason = ai_assessments.get(ticker, {}).get("reasoning", "Outside top 5 AI composite score")
+                    if hard_sell and buy_signal == "Avoid":
+                        sell_reason = f"AI signal: Avoid — {ai_assessments.get(ticker, {}).get('reasoning', 'deteriorating outlook')}"
+                    elif composite < 25:
+                        sell_reason = f"Composite score collapsed to {composite}/100 — exiting position"
+                    else:
+                        sell_reason = f"Outside top 5 composite (score {composite}/100) — {ai_assessments.get(ticker, {}).get('reasoning', 'better opportunities available')}"
                     sells.append({
                         "ticker": ticker, "action": "SELL", "shares": pos["shares"],
                         "price": price, "amount": proceeds, "date": ts(),
-                        "balance": round(balance, 2), "reason": ai_reason,
+                        "balance": round(balance, 2), "reason": sell_reason,
+                        "composite": composite, "buySignal": buy_signal,
                     })
                     transactions.append(sells[-1])
                     del holdings[ticker]
-                    log.info(f"TradeAI SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds}")
+                    log.info(f"TradeAI SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} | trigger:{'hard' if hard_sell else 'soft'} composite:{composite}")
+            else:
+                log.info(f"TradeAI HOLD: {ticker} | composite:{composite} signal:{buy_signal} — keeping position")
 
         buys = []
         held_count = len(holdings)
@@ -1862,6 +1974,247 @@ if _startup_holdings:
 _startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
 _startup_thread.start()
 log.info("=== Startup price refresh triggered ===")
+
+# ── Signal Forecast ───────────────────────────────────────────────────────────
+SIGNAL_FORECAST_PATH = "output/signal_forecasts.json"
+
+def _rule_forecast(detail):
+    """Generate a price forecast range using technical rules."""
+    price    = detail.get("price") or 0
+    rsi      = detail.get("rsi14") or 50
+    bb       = detail.get("bbPercent")
+    chg1d    = detail.get("change1d") or 0
+    chg7d    = detail.get("change7d") or 0
+    chg30d   = detail.get("change30d") or 0
+    ma50     = detail.get("ma50")
+    vol_rat  = detail.get("volumeRatio") or 1.0
+    short_fl = detail.get("shortFloat") or 0
+    upside   = detail.get("analystUpside") or 0
+
+    if not price:
+        return None
+
+    # ── Volatility estimate ───────────────────────────────────────────────────
+    # Tier 1: actual yesterday→today move (best single-day reference)
+    prev_close   = detail.get("previousClose")
+    actual_1d    = abs(price - prev_close) if prev_close else None
+
+    # Tier 2: 7-day average daily move (captures recent swing size)
+    daily_from_7d = abs(chg7d / 100 * price) / 5 if chg7d else None  # 5 trading days
+
+    # Tier 3: 30-day average (smoothed baseline, last resort)
+    daily_from_30d = abs(chg30d / 100 * price) / 21 if chg30d else price * 0.015
+
+    # Use best available, scaled up to reflect realistic intraday range
+    # Stocks rarely move their exact average — use 1.8x as a realistic daily range factor
+    if actual_1d and actual_1d > 0:
+        daily_vol = max(actual_1d, daily_from_7d or 0, daily_from_30d) * 1.8
+    elif daily_from_7d:
+        daily_vol = daily_from_7d * 2.0
+    else:
+        daily_vol = daily_from_30d * 2.0
+
+    # Floor: at minimum 0.5% of price (very low vol stocks still move something)
+    # Ceiling: cap at 8% of price (avoid absurd ranges on meme stocks)
+    daily_vol = max(daily_vol, price * 0.005)
+    daily_vol = min(daily_vol, price * 0.08)
+
+    # ── Direction bias score (-1 to +1) ──────────────────────────────────────
+    bias = 0.0
+
+    # RSI contribution
+    if rsi < 30:   bias += 0.4   # deeply oversold → bounce likely
+    elif rsi < 40: bias += 0.2
+    elif rsi < 50: bias += 0.05
+    elif rsi < 65: bias += 0.1   # momentum zone
+    elif rsi < 75: bias -= 0.1   # overbought caution
+    else:          bias -= 0.3   # very overbought
+
+    # BB%B contribution
+    if bb is not None:
+        if bb < 0.1:   bias += 0.3   # touching lower band
+        elif bb < 0.2: bias += 0.15
+        elif bb > 0.9: bias -= 0.3   # touching upper band
+        elif bb > 0.8: bias -= 0.15
+
+    # Short-term momentum
+    if chg1d > 1:    bias += 0.1
+    elif chg1d < -1: bias -= 0.1
+    if chg7d > 3:    bias += 0.1
+    elif chg7d < -3: bias -= 0.1
+
+    # MA50 vs price
+    if ma50 and price > ma50 * 1.01:  bias += 0.1
+    elif ma50 and price < ma50 * 0.99: bias -= 0.1
+
+    # Volume surge adds conviction to the current direction
+    if vol_rat >= 2.0:
+        bias = bias * 1.3
+    elif vol_rat >= 1.5:
+        bias = bias * 1.15
+
+    # Short squeeze potential adds upside buffer
+    squeeze_buffer = price * 0.005 * min(short_fl / 10, 2.0) if short_fl > 15 else 0
+
+    # ── Build range ──────────────────────────────────────────────────────────
+    bias = max(-1.0, min(1.0, bias))
+    midpoint = round(price + (bias * daily_vol * 1.2), 2)
+    half_range = round(daily_vol * 1.0, 2)
+
+    low  = round(midpoint - half_range, 2)
+    high = round(midpoint + half_range + squeeze_buffer, 2)
+
+    if bias > 0.2:   direction = "Bullish"
+    elif bias < -0.2: direction = "Bearish"
+    else:             direction = "Neutral"
+
+    return {
+        "currentPrice": round(price, 2),
+        "forecastLow":  low,
+        "forecastMid":  midpoint,
+        "forecastHigh": high,
+        "direction":    direction,
+        "biasScore":    round(bias, 3),
+        "dailyVol":     round(daily_vol, 3),
+    }
+
+
+def _ai_forecast_reason(ticker, detail, forecast, bucket="", OLLAMA_URL=None, OLLAMA_MODEL=None):
+    """Ask AI for a one-sentence reason for tomorrow's price direction."""
+    import requests as req
+    if not OLLAMA_URL or not OLLAMA_MODEL:
+        return "AI unavailable."
+    try:
+        prompt = f"""You are a short-term stock analyst. Given the data below, explain in ONE concise sentence why {ticker}'s price is likely to move {forecast['direction']} tomorrow. Be specific about which signals drive the view.
+
+Ticker: {ticker}
+Current Price: ${forecast['currentPrice']}
+Forecast Range: ${forecast['forecastLow']} – ${forecast['forecastHigh']} (bias: {forecast['direction']}, score: {forecast['biasScore']})
+RSI 14: {detail.get('rsi14')}
+BB%B: {detail.get('bbPercent')}
+MA50: {detail.get('ma50')}
+1d Change: {detail.get('change1d')}%
+7d Change: {detail.get('change7d')}%
+30d Change: {detail.get('change30d')}%
+Volume Ratio: {detail.get('volumeRatio')}
+Short Float: {detail.get('shortFloat')}%
+Analyst Upside: {detail.get('analystUpside')}%
+Strategy Bucket: {bucket}
+
+Reply with exactly one sentence, no preamble."""
+        r = req.post(f"{OLLAMA_URL}/api/generate",
+                     json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False},
+                     timeout=30)
+        return r.json().get("response", "").strip()
+    except Exception as e:
+        log.warning(f"AI forecast reason FAIL {ticker}: {e}")
+        return f"AI unavailable: {e}"
+
+
+# Module-level progress state for signal forecast
+_signal_progress = {"running": False, "current": 0, "total": 0, "ticker": "", "done": 0}
+
+@app.route("/signal/progress")
+def signal_progress():
+    return jsonify(_signal_progress)
+
+@app.route("/signal/forecast", methods=["POST"])
+def signal_forecast():
+    """Generate and save forecasts for all identified candidates."""
+    global _signal_progress
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified      = candidates_data.get("identified", [])
+        details         = candidates_data.get("details", {})
+        cand_map        = {item["ticker"]: item for item in identified}
+
+        forecasts_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        today = datetime.now(TZ).strftime("%Y-%m-%d")
+
+        forecasts_db["snapshots"] = [s for s in forecasts_db["snapshots"] if s.get("date") != today]
+
+        eligible = {t: d for t, d in details.items() if d}
+        total = len(eligible)
+        _signal_progress = {"running": True, "current": 0, "total": total, "ticker": "", "done": 0}
+
+        rows = []
+        for idx, (ticker, detail) in enumerate(eligible.items(), 1):
+            _signal_progress.update({"current": idx, "ticker": ticker})
+            fc = _rule_forecast(detail)
+            if not fc:
+                log.info(f"[Forecast] {idx}/{total} {ticker} — skipped (no price)")
+                continue
+            bucket = cand_map.get(ticker, {}).get("bucket", "Dream")
+            log.info(f"[Forecast] {idx}/{total} {ticker} — running AI reason...")
+            reason = _ai_forecast_reason(ticker, detail, fc, bucket, OLLAMA_URL, OLLAMA_MODEL)
+            rows.append({
+                "ticker":      ticker,
+                "bucket":      bucket,
+                "date":        today,
+                **fc,
+                "aiReason":    reason,
+                "actualPrice": None,
+                "accuracy":    None,
+                "generatedAt": ts(),
+            })
+            _signal_progress["done"] = len(rows)
+            log.info(f"[Forecast] {idx}/{total} {ticker} ✓ | {fc['direction']} | ${fc['forecastLow']}–${fc['forecastHigh']}")
+
+        forecasts_db["snapshots"].append({"date": today, "rows": rows, "generatedAt": ts()})
+        save_json(SIGNAL_FORECAST_PATH, forecasts_db)
+        _signal_progress = {"running": False, "current": total, "total": total, "ticker": "", "done": len(rows)}
+        return jsonify({"status": "ok", "date": today, "count": len(rows), "total": total})
+    except Exception as e:
+        _signal_progress = {"running": False, "current": 0, "total": 0, "ticker": "", "done": 0}
+        log.error(f"Signal forecast FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/signal/actual", methods=["POST"])
+def signal_actual():
+    """Update today's snapshot with actual closing prices and compute accuracy."""
+    try:
+        from fetcher import fetch_price_only
+        forecasts_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        today = datetime.now(TZ).strftime("%Y-%m-%d")
+
+        snap = next((s for s in forecasts_db["snapshots"] if s["date"] == today), None)
+        if not snap:
+            return jsonify({"error": "No forecast found for today"}), 404
+
+        updated = 0
+        for row in snap["rows"]:
+            ticker = row["ticker"]
+            try:
+                actual = fetch_price_only(ticker)
+                if not actual:
+                    continue
+                row["actualPrice"] = round(actual, 2)
+                # Accuracy: hit = within range, else direction of miss
+                if row["forecastLow"] <= actual <= row["forecastHigh"]:
+                    row["accuracy"] = "hit"
+                elif actual > row["forecastHigh"]:
+                    row["accuracy"] = "miss-low"   # we under-forecast
+                else:
+                    row["accuracy"] = "miss-high"  # we over-forecast
+                updated += 1
+                log.info(f"[Actual] {ticker} | forecast ${row['forecastLow']}–${row['forecastHigh']} | actual ${actual} | {row['accuracy']}")
+            except Exception as e:
+                log.warning(f"[Actual] price fetch FAIL {ticker}: {e}")
+
+        snap["updatedAt"] = ts()
+        save_json(SIGNAL_FORECAST_PATH, forecasts_db)
+        return jsonify({"status": "ok", "date": today, "updated": updated})
+    except Exception as e:
+        log.error(f"Signal actual FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/signal/history")
+def signal_history():
+    """Return all forecast snapshots."""
+    data = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+    return jsonify(data)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5050)

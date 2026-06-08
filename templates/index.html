@@ -1167,6 +1167,7 @@
   <div class="tab" onclick="showTab('admin', this)" data-tab="admin">ADMIN</div>
   <div class="tab" onclick="showTab('dream', this);loadDream();" data-tab="dream">🌟 DREAM</div>
   <div class="tab" onclick="showTab('tradeai', this);loadTradeAI();" data-tab="tradeai">🤖 TRADEAI</div>
+  <div class="tab" onclick="showTab('signal', this);loadSignal();" data-tab="signal">📡 SIGNAL</div>
 </div>
 
 <div class="content">
@@ -1196,6 +1197,10 @@
 
   <div class="tab-panel" id="tab-tradeai">
     <div id="tradeaiContent"><div class="loading">Click the 🤖 TRADEAI tab to load AI simulation...</div></div>
+  </div>
+
+  <div class="tab-panel" id="tab-signal">
+    <div id="signalContent"><div class="loading">Click the 📡 SIGNAL tab to load forecasts...</div></div>
   </div>
 
 </div>
@@ -3699,7 +3704,7 @@ function renderTradeAI(data) {
       }).join('') + `</div>`;
 
   const recHtml = lastRec
-    ? renderTradeAIRecommend(lastRec)
+    ? renderTradeAIRecommend(lastRec, identified)
     : `<div style="color:var(--muted);padding:16px">No recommendation yet. Complete all steps then click Recommend.</div>`;
 
   return `
@@ -3882,18 +3887,38 @@ function showRecommendSummary(rec) {
   modal.classList.add('visible');
 }
 
-function renderTradeAIRecommend(rec) {
+function renderTradeAIRecommend(rec, identified) {
   const buys = rec.buys || [];
   const sells = rec.sells || [];
   const scored = rec.scored || [];
+
+  // Build lookup: ticker → {bucket, source} from identified candidates
+  const candMap = {};
+  (identified || []).forEach(item => { candMap[item.ticker] = item; });
+
+  const bktColors = {'Momentum':'#fbbf24','Reversal':'#60a5fa','SmartMoney':'#a78bfa','Insider':'#f97316','Account':'#4ade80','Dream':'#6b7280'};
+  function strategyBadge(ticker) {
+    const cand = candMap[ticker];
+    if (!cand) return '';
+    const parts = [];
+    if (cand.bucket) {
+      const bc = bktColors[cand.bucket] || '#6b7280';
+      parts.push(`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${cand.bucket.toUpperCase()}</span>`);
+    }
+    if (cand.source) {
+      parts.push(`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:rgba(139,92,246,0.15);color:#a78bfa;border:1px solid rgba(139,92,246,0.3)">${cand.source}</span>`);
+    }
+    return parts.join(' ');
+  }
 
   const buyCards = buys.length === 0
     ? `<div style="color:var(--muted);font-size:11px">No buys executed.</div>`
     : buys.map(b => `
       <div class="trade-recommend-card buy">
-        <div style="display:flex;align-items:center;margin-bottom:6px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
           <span class="trade-action-badge buy">BUY</span>
           <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${b.ticker}</span>
+          ${strategyBadge(b.ticker)}
         </div>
         <div style="font-size:12px;color:var(--muted)">${b.shares} shares @ ${fmt$(b.price)} · Cost: ${fmt$(b.amount)} · Balance after: ${fmt$(b.balance)}</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px;font-style:italic">${b.reason}</div>
@@ -3903,9 +3928,10 @@ function renderTradeAIRecommend(rec) {
     ? `<div style="color:var(--muted);font-size:11px">No sells executed.</div>`
     : sells.map(s => `
       <div class="trade-recommend-card sell">
-        <div style="display:flex;align-items:center;margin-bottom:6px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap">
           <span class="trade-action-badge sell">SELL</span>
           <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:16px">${s.ticker}</span>
+          ${strategyBadge(s.ticker)}
         </div>
         <div style="font-size:12px;color:var(--muted)">${s.shares} shares @ ${fmt$(s.price)} · Proceeds: ${fmt$(s.amount)} · Balance after: ${fmt$(s.balance)}</div>
         <div style="font-size:11px;color:var(--muted);margin-top:4px;font-style:italic">${s.reason}</div>
@@ -3914,9 +3940,15 @@ function renderTradeAIRecommend(rec) {
   const sigColors = {'Strong Buy':'#4ade80','Buy':'#86efac','Hold':'#fbbf24','Avoid':'#f87171','Unknown':'#6b7280'};
   const scoreRows = scored.map((s, i) => {
     const c = sigColors[s.buySignal] || '#6b7280';
+    const cand = candMap[s.ticker];
+    const bkt = cand && cand.bucket ? cand.bucket : '—';
+    const src = cand && cand.source ? cand.source : '—';
+    const bc = bktColors[bkt] || '#6b7280';
     return `<tr>
       <td>${i+1}</td>
       <td style="font-family:'Syne',sans-serif;font-weight:700">${s.ticker}</td>
+      <td><span style="font-size:9px;padding:2px 6px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${bkt !== '—' ? bkt.toUpperCase() : '—'}</span></td>
+      <td style="font-size:10px;color:var(--muted)">${src}</td>
       <td>${s.dreamScore}</td>
       <td>${s.aiScore != null ? s.aiScore : '—'}</td>
       <td><span style="color:${c};font-size:10px;font-weight:700">${s.buySignal||'—'}</span></td>
@@ -3941,7 +3973,7 @@ function renderTradeAIRecommend(rec) {
     <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:10px">AI COMPOSITE SCORES</div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
       <table class="trade-txn-table">
-        <thead><tr><th>#</th><th>TICKER</th><th>DREAM</th><th>AI</th><th>SIGNAL</th><th>TRAJECTORY</th><th>STAGE</th><th>COMPOSITE</th><th>STATUS</th></tr></thead>
+        <thead><tr><th>#</th><th>TICKER</th><th>STRATEGY</th><th>SOURCE</th><th>DREAM</th><th>AI</th><th>SIGNAL</th><th>TRAJECTORY</th><th>STAGE</th><th>COMPOSITE</th><th>STATUS</th></tr></thead>
         <tbody>${scoreRows}</tbody>
       </table>
     </div>`;
@@ -4717,6 +4749,296 @@ function toggleReportDetail(id) {
   console.log('[Report] ticker detail toggled:', id, '| open:', el.classList.contains('open'));
 }
 // ── END TRADEAI REPORT ──────────────────────────────────────────────────────
+
+// ── SIGNAL TAB ───────────────────────────────────────────────────────────────
+let signalLoaded = false;
+
+async function loadSignal() {
+  if (signalLoaded) return;
+  signalLoaded = true;
+  renderSignal();
+}
+
+async function renderSignal() {
+  const el = document.getElementById('signalContent');
+  el.innerHTML = '<div class="loading">Loading signal forecasts...</div>';
+  try {
+    const res = await fetch('/signal/history');
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Server returned ${res.status} — ${text.substring(0, 120)}. Make sure the Flask server has been restarted with the updated app.py.`);
+    }
+    const data = await res.json();
+    el.innerHTML = buildSignalHTML(data);
+  } catch(e) {
+    el.innerHTML = `<div style="color:var(--down);padding:20px;line-height:1.8">
+      <div style="font-weight:700;margin-bottom:8px">❌ Failed to load signal data</div>
+      <div style="font-size:11px;color:var(--muted)">${e.message}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">💡 If this is the first time loading, restart your Flask server so it picks up the new /signal/* routes from app.py.</div>
+    </div>`;
+  }
+}
+
+function buildSignalHTML(data) {
+  const snapshots = (data.snapshots || []).slice().reverse(); // newest first
+  const today = snapshots[0] || null;
+  const history = snapshots.slice(1);
+
+  // ── Overall accuracy stats from history ───────────────────────────────────
+  const allRows = history.flatMap(s => s.rows || []);
+  const withActual = allRows.filter(r => r.actualPrice != null);
+  const hits   = withActual.filter(r => r.accuracy === 'hit').length;
+  const total  = withActual.length;
+  const hitPct = total ? Math.round(hits / total * 100) : null;
+
+  // Per-ticker accuracy
+  const tkStats = {};
+  withActual.forEach(r => {
+    if (!tkStats[r.ticker]) tkStats[r.ticker] = { hits: 0, total: 0 };
+    tkStats[r.ticker].total++;
+    if (r.accuracy === 'hit') tkStats[r.ticker].hits++;
+  });
+
+  // Direction accuracy (did bias direction match actual move?)
+  const dirRows = withActual.filter(r => r.direction && r.currentPrice);
+  const dirHits = dirRows.filter(r => {
+    const moved = r.actualPrice - r.currentPrice;
+    return (r.direction === 'Bullish' && moved > 0) ||
+           (r.direction === 'Bearish' && moved < 0) ||
+           (r.direction === 'Neutral' && Math.abs(moved) < r.dailyVol * 0.5);
+  }).length;
+  const dirPct = dirRows.length ? Math.round(dirHits / dirRows.length * 100) : null;
+
+  const bktColors = { Momentum:'#fbbf24', Reversal:'#4ade80', SmartMoney:'#a78bfa', Account:'#60a5fa', Dream:'#6b7280' };
+  const dirColors = { Bullish:'var(--up)', Bearish:'var(--down)', Neutral:'var(--warn)' };
+  const accColors = { hit:'var(--up)', 'miss-low':'#fb923c', 'miss-high':'var(--down)' };
+  const accLabels = { hit:'✓ HIT', 'miss-low':'↑ UNDER', 'miss-high':'↓ OVER' };
+
+  function fmt$(v) { return v != null ? '$' + Number(v).toFixed(2) : '—'; }
+  function fmtPct(v) { return v != null ? (v > 0 ? '+' : '') + Number(v).toFixed(1) + '%' : '—'; }
+  function tkAccBadge(ticker) {
+    const s = tkStats[ticker];
+    if (!s) return '<span style="color:var(--muted);font-size:10px">no history</span>';
+    const pct = Math.round(s.hits / s.total * 100);
+    const c = pct >= 60 ? 'var(--up)' : pct >= 40 ? 'var(--warn)' : 'var(--down)';
+    return `<span style="color:${c};font-size:10px;font-weight:700">${pct}% (${s.hits}/${s.total})</span>`;
+  }
+
+  // ── Forecast table for a snapshot ─────────────────────────────────────────
+  function forecastTable(rows, showActual = false) {
+    if (!rows || !rows.length) return '<div style="color:var(--text);font-size:12px;padding:16px">No forecast data.</div>';
+    const sorted = [...rows].sort((a, b) => (b.biasScore || 0) - (a.biasScore || 0));
+    const thStyle = 'padding:8px 10px;font-size:10px;color:var(--text);letter-spacing:.5px;white-space:nowrap;opacity:0.6';
+    let html = `<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead><tr style="border-bottom:1px solid var(--border)">
+        <th style="text-align:left;${thStyle}">TICKER</th>
+        <th style="${thStyle}">BUCKET</th>
+        <th style="text-align:right;${thStyle}">PRICE</th>
+        <th style="text-align:center;${thStyle}">DIRECTION</th>
+        <th style="text-align:right;${thStyle}">TARGET</th>
+        <th style="text-align:right;${thStyle}">LOW</th>
+        <th style="text-align:right;${thStyle}">HIGH</th>
+        <th style="${thStyle}">BIAS</th>
+        ${showActual ? `<th style="text-align:right;${thStyle}">ACTUAL</th><th style="text-align:right;${thStyle}">MOVE</th><th style="text-align:center;${thStyle}">RESULT</th>` : ''}
+        <th style="${thStyle}">HIST ACCURACY</th>
+        <th style="${thStyle}">AI REASON</th>
+      </tr></thead><tbody>`;
+
+    sorted.forEach((r, i) => {
+      const bc  = bktColors[r.bucket] || '#6b7280';
+      const dc  = dirColors[r.direction] || 'var(--text)';
+      const bias = r.biasScore || 0;
+
+      // Target price aligned with direction and trend
+      let target, targetColor;
+      if (r.direction === 'Bullish') {
+        target = r.forecastHigh;
+        targetColor = 'var(--up)';
+      } else if (r.direction === 'Bearish') {
+        target = r.forecastLow;
+        targetColor = 'var(--down)';
+      } else {
+        target = r.forecastMid;
+        targetColor = 'var(--warn)';
+      }
+
+      // Upside/downside % from current price to target
+      const targetPct = r.currentPrice ? ((target - r.currentPrice) / r.currentPrice * 100) : null;
+      const targetPctStr = targetPct != null ? ` (${targetPct > 0 ? '+' : ''}${targetPct.toFixed(1)}%)` : '';
+
+      const biasBar = `<div style="display:flex;align-items:center;gap:4px">
+        <div style="width:48px;height:5px;border-radius:3px;background:var(--border);overflow:hidden">
+          <div style="width:${Math.round(Math.abs(bias)*100)}%;height:100%;background:${bias>=0?'var(--up)':'var(--down)'};border-radius:3px"></div>
+        </div>
+        <span style="font-size:10px;color:${bias>=0?'var(--up)':'var(--down)'}">${bias>0?'+':''}${bias.toFixed(2)}</span>
+      </div>`;
+
+      let actualCols = '';
+      if (showActual) {
+        const move    = r.actualPrice != null && r.currentPrice ? r.actualPrice - r.currentPrice : null;
+        const movePct = move != null ? (move / r.currentPrice * 100) : null;
+        const ac = r.accuracy ? accColors[r.accuracy] : 'var(--text)';
+        const al = r.accuracy ? accLabels[r.accuracy] : '—';
+        actualCols = `
+          <td style="padding:8px 10px;text-align:right;font-weight:700;color:var(--text)">${fmt$(r.actualPrice)}</td>
+          <td style="padding:8px 10px;text-align:right;color:${move!=null&&move>=0?'var(--up)':'var(--down)'}">${move!=null?(move>0?'+':'')+move.toFixed(2)+' ('+fmtPct(movePct)+')':'—'}</td>
+          <td style="padding:8px 10px;text-align:center"><span style="font-size:10px;font-weight:700;color:${ac}">${al}</span></td>`;
+      }
+
+      html += `<tr style="border-bottom:1px solid var(--border);${i%2===0?'background:rgba(255,255,255,0.02)':''}">
+        <td style="padding:8px 10px;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--text)">${r.ticker}</td>
+        <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${(r.bucket||'').toUpperCase()}</span></td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text)">${fmt$(r.currentPrice)}</td>
+        <td style="padding:8px 10px;text-align:center"><span style="font-size:10px;font-weight:700;color:${dc}">${r.direction||'—'}</span></td>
+        <td style="padding:8px 10px;text-align:right;font-weight:700;color:${targetColor}">${fmt$(target)}<span style="font-size:10px;font-weight:400;color:${targetColor};opacity:0.8">${targetPctStr}</span></td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text);opacity:0.7">${fmt$(r.forecastLow)}</td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text);opacity:0.7">${fmt$(r.forecastHigh)}</td>
+        <td style="padding:8px 10px">${biasBar}</td>
+        ${actualCols}
+        <td style="padding:8px 10px;white-space:nowrap">${tkAccBadge(r.ticker)}</td>
+        <td style="padding:8px 10px;color:var(--text);font-size:11px;font-style:italic;max-width:260px;opacity:0.75">${r.aiReason || '—'}</td>
+      </tr>`;
+    });
+    return html + '</tbody></table></div>';
+  }
+
+  // ── Accuracy summary cards ─────────────────────────────────────────────────
+  function statCard(label, value, sub, color = 'var(--accent)') {
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;min-width:140px">
+      <div style="font-size:10px;color:var(--muted);letter-spacing:.5px;margin-bottom:6px">${label}</div>
+      <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:${color}">${value}</div>
+      ${sub ? `<div style="font-size:10px;color:var(--muted);margin-top:4px">${sub}</div>` : ''}
+    </div>`;
+  }
+
+  // ── History accordion ──────────────────────────────────────────────────────
+  let histHtml = '';
+  if (history.length) {
+    histHtml = history.map((snap, idx) => {
+      const snapHits = (snap.rows||[]).filter(r => r.accuracy === 'hit').length;
+      const snapTotal = (snap.rows||[]).filter(r => r.actualPrice != null).length;
+      const snapPct = snapTotal ? Math.round(snapHits/snapTotal*100) + '%' : 'pending';
+      return `<div style="border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden">
+        <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'"
+          style="padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--surface)">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-family:'Syne',sans-serif;font-weight:700">${snap.date}</span>
+            <span style="font-size:11px;color:var(--muted)">${(snap.rows||[]).length} tickers</span>
+            <span style="font-size:11px;font-weight:700;color:${snapTotal&&snapHits/snapTotal>=.6?'var(--up)':snapTotal&&snapHits/snapTotal>=.4?'var(--warn)':'var(--down)'}">${snapPct} accuracy</span>
+          </div>
+          <span style="color:var(--muted);font-size:12px">▸ expand</span>
+        </div>
+        <div style="display:none;padding:12px">${forecastTable(snap.rows, true)}</div>
+      </div>`;
+    }).join('');
+  } else {
+    histHtml = '<div style="color:var(--muted);font-size:12px">No historical snapshots yet. Run forecasts daily and update actuals at end of day to build history.</div>';
+  }
+
+  return `
+    <!-- Header + actions -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px">📡 Signal Forecast</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">Rules-based price range + AI narrative · updated daily · accuracy tracked over time</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button onclick="runSignalForecast()" style="font-size:12px;padding:9px 18px;background:var(--accent);color:#0a0a0f;border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'DM Mono',monospace">⚡ GENERATE FORECAST</button>
+        <button onclick="runSignalActual()" style="font-size:12px;padding:9px 18px;background:rgba(74,222,128,0.12);color:var(--up);border:1px solid var(--up);border-radius:6px;font-weight:700;cursor:pointer;font-family:'DM Mono',monospace">✓ UPDATE ACTUALS</button>
+      </div>
+    </div>
+
+    <!-- Accuracy summary -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+      ${statCard('RANGE ACCURACY', hitPct != null ? hitPct + '%' : '—', total ? `${hits} hits / ${total} forecasts` : 'Run forecasts to track', hitPct >= 60 ? 'var(--up)' : hitPct >= 40 ? 'var(--warn)' : hitPct != null ? 'var(--down)' : 'var(--muted)')}
+      ${statCard('DIRECTION ACCURACY', dirPct != null ? dirPct + '%' : '—', dirRows.length ? `${dirHits} correct / ${dirRows.length} calls` : 'No data yet', dirPct >= 60 ? 'var(--up)' : dirPct >= 40 ? 'var(--warn)' : dirPct != null ? 'var(--down)' : 'var(--muted)')}
+      ${statCard('SNAPSHOTS', snapshots.length.toString(), `${history.length} with actuals`, 'var(--accent)')}
+      ${statCard('TICKERS TRACKED', Object.keys(tkStats).length.toString(), 'across all history', 'var(--accent2)')}
+    </div>
+
+    <!-- Today's forecast -->
+    <div style="margin-bottom:28px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:12px">TODAY'S FORECAST${today ? ' · ' + today.date : ' · none yet'}</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+        ${today ? forecastTable(today.rows, today.rows.some(r => r.actualPrice != null)) : '<div style="padding:24px;color:var(--muted);font-size:12px">No forecast generated yet today. Click ⚡ GENERATE FORECAST to run.</div>'}
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div style="margin-bottom:28px;padding:16px;background:rgba(124,106,247,0.06);border:1px solid rgba(124,106,247,0.2);border-radius:10px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent2);margin-bottom:10px;font-weight:700">HOW THE FORECAST WORKS</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:11px;color:var(--muted)">
+        <div><span style="color:var(--text);font-weight:700">Bias Score (−1 to +1)</span><br>Combines RSI, BB%B, MA50 position, 1d/7d momentum, volume ratio. Positive = bullish lean, negative = bearish.</div>
+        <div><span style="color:var(--text);font-weight:700">Forecast Range</span><br>Midpoint = price + (bias × 1.5 × daily volatility). Band = ±0.8× daily vol. High adds squeeze buffer if short float > 15%.</div>
+        <div><span style="color:var(--text);font-weight:700">Daily Volatility</span><br>Estimated from 30-day price change ÷ 21 trading days. Captures each stock's natural daily move range.</div>
+        <div><span style="color:var(--text);font-weight:700">Accuracy Tracking</span><br>HIT = actual close lands inside forecast range. UNDER = we forecast too low. OVER = we forecast too high.</div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div>
+      <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:12px">HISTORICAL SNAPSHOTS (${history.length})</div>
+      ${histHtml}
+    </div>
+  `;
+}
+
+async function runSignalForecast() {
+  const el = document.getElementById('signalContent');
+  const msgHtml = `<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(200,241,53,0.08);border:1px solid rgba(200,241,53,0.3);border-radius:6px;font-size:12px;display:flex;align-items:center;gap:12px">
+    <span id="signalMsgText" style="color:var(--accent)">⚡ Starting forecast...</span>
+    <span id="signalMsgBar" style="flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><span id="signalMsgFill" style="display:block;height:100%;width:0%;background:var(--accent);border-radius:2px;transition:width 0.3s"></span></span>
+    <span id="signalMsgCount" style="color:var(--muted);white-space:nowrap;font-family:'DM Mono',monospace">0 / ?</span>
+  </div>`;
+  el.insertAdjacentHTML('afterbegin', msgHtml);
+
+  // Start polling progress while POST runs in background
+  let pollInterval = setInterval(async () => {
+    try {
+      const p = await fetch('/signal/progress').then(r => r.json());
+      const pct = p.total > 0 ? Math.round(p.current / p.total * 100) : 0;
+      const txt = document.getElementById('signalMsgText');
+      const fill = document.getElementById('signalMsgFill');
+      const count = document.getElementById('signalMsgCount');
+      if (txt) txt.textContent = p.ticker ? `⚡ Analyzing ${p.ticker}...` : '⚡ Starting forecast...';
+      if (fill) fill.style.width = pct + '%';
+      if (count) count.textContent = `${p.current} / ${p.total}`;
+    } catch(e) { /* ignore poll errors */ }
+  }, 800);
+
+  try {
+    const r = await fetch('/signal/forecast', { method: 'POST' }).then(r => r.json());
+    clearInterval(pollInterval);
+    if (r.error) throw new Error(r.error);
+    const txt = document.getElementById('signalMsgText');
+    const fill = document.getElementById('signalMsgFill');
+    const count = document.getElementById('signalMsgCount');
+    if (txt) { txt.textContent = `✓ Done — ${r.count} of ${r.total} tickers forecasted (${r.date})`; txt.style.color = 'var(--up)'; }
+    if (fill) fill.style.width = '100%';
+    if (count) count.textContent = `${r.count} / ${r.total}`;
+    signalLoaded = false;
+    await renderSignal();
+  } catch(e) {
+    clearInterval(pollInterval);
+    const txt = document.getElementById('signalMsgText');
+    if (txt) { txt.textContent = '❌ ' + e.message; txt.style.color = 'var(--down)'; }
+  }
+}
+
+async function runSignalActual() {
+  const el = document.getElementById('signalContent');
+  el.insertAdjacentHTML('afterbegin', '<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:6px;color:var(--up);font-size:12px">Fetching actual closing prices...</div>');
+  try {
+    const r = await fetch('/signal/actual', { method: 'POST' }).then(r => r.json());
+    if (r.error) throw new Error(r.error);
+    signalLoaded = false;
+    await renderSignal();
+  } catch(e) {
+    document.getElementById('signalMsg').textContent = '❌ ' + e.message;
+    document.getElementById('signalMsg').style.color = 'var(--down)';
+  }
+}
+// ── END SIGNAL TAB ────────────────────────────────────────────────────────────
 </script>
 </body>
 </html>
