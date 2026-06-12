@@ -1,30 +1,31 @@
 {
-  "balance": 189.87,
+  "balance": 3.15,
   "holdings": {
-    "POET": {
-      "shares": 1713,
-      "purchasePrice": 15.475,
-      "purchasedAt": "2026-06-04 23:07 EDT"
-    },
     "CRDO": {
       "shares": 111,
       "purchasePrice": 206.89,
-      "purchasedAt": "2026-06-06 19:13 EDT"
-    },
-    "ONDS": {
-      "shares": 2223,
-      "purchasePrice": 10.43,
-      "purchasedAt": "2026-06-06 19:13 EDT"
+      "purchasedAt": "2026-06-06 19:13 EDT",
+      "peakPrice": 237.68
     },
     "ARGX": {
       "shares": 26,
       "purchasePrice": 891.32,
       "purchasedAt": "2026-06-06 19:13 EDT"
     },
-    "NTRA": {
-      "shares": 107,
-      "purchasePrice": 215.31,
-      "purchasedAt": "2026-06-06 19:13 EDT"
+    "BMNR": {
+      "shares": 1339,
+      "purchasePrice": 15.64,
+      "purchasedAt": "2026-06-11 09:46 EDT"
+    },
+    "OLA.TO": {
+      "shares": 1536,
+      "purchasePrice": 13.64,
+      "purchasedAt": "2026-06-11 09:46 EDT"
+    },
+    "TNXP": {
+      "shares": 1912,
+      "purchasePrice": 10.96,
+      "purchasedAt": "2026-06-11 09:46 EDT"
     }
   },
   "transactions": [
@@ -237,7 +238,82 @@
       "date": "2026-06-06 19:13 EDT",
       "balance": 189.87,
       "reason": "Natera exhibits strong accelerating growth with revenue surging at 38.8%.  While profitability metrics are lagging, this is common in high-growth companies focused on market expansion. The company's personalized ctDNA blood test holds significant promise in the rapidly evolving oncology diagnostics market, driving future revenue and earnings. Despite a high valuation, the strong analyst consensus and institutional ownership suggest continued investor confidence in Natera's long-term potential."
+    },
+    {
+      "ticker": "POET",
+      "action": "SELL",
+      "shares": 1713,
+      "price": 10.975,
+      "amount": 18800.17,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 18990.04,
+      "reason": "Stop-loss triggered: down 29.1% from purchase $15.47 (hard stop at -8.0%)",
+      "composite": 98.0,
+      "buySignal": "Buy",
+      "pctFromPurchase": -29.08,
+      "pctFromPeak": -29.08,
+      "stopLoss": true
+    },
+    {
+      "ticker": "ONDS",
+      "action": "SELL",
+      "shares": 2223,
+      "price": 9.31,
+      "amount": 20696.13,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 39686.17,
+      "reason": "Stop-loss triggered: down 10.7% from purchase $10.43 (hard stop at -8.0%)",
+      "composite": 3.8,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -10.74,
+      "pctFromPeak": -10.74,
+      "stopLoss": true
+    },
+    {
+      "ticker": "NTRA",
+      "action": "SELL",
+      "shares": 107,
+      "price": 216.5,
+      "amount": 23165.5,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 62851.67,
+      "reason": "Composite score collapsed to 22.4/100 \u2014 exiting position",
+      "composite": 22.4,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.55,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "BMNR",
+      "action": "BUY",
+      "shares": 1339,
+      "price": 15.64,
+      "amount": 20941.96,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 41909.71,
+      "reason": "BMNR exhibits strong revenue growth despite negative FCF, suggesting investment in future expansion. The low Debt/Equity ratio and analyst target price exceeding the current share price indicate potential for significant upside. However, the recent downward price trend and lack of news may warrant a wait-and-see approach before committing to a \"Buy.\" Further developments regarding operational profitability and market adoption are key catalysts to watch."
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "BUY",
+      "shares": 1536,
+      "price": 13.64,
+      "amount": 20951.04,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 20958.67,
+      "reason": "Orla Mining is demonstrating strong revenue growth and high profitability.  The Camino Rojo project has significant potential, with a low current share price suggesting upside based on analyst targets. While macro factors like interest rates and inflation can impact the sector, Orla's trajectory suggests continued expansion and value creation."
+    },
+    {
+      "ticker": "TNXP",
+      "action": "BUY",
+      "shares": 1912,
+      "price": 10.96,
+      "amount": 20955.52,
+      "date": "2026-06-11 09:46 EDT",
+      "balance": 3.15,
+      "reason": "TNXP shows strong revenue growth and a high analyst target price suggesting market optimism.  While the recent price decline is concerning, it presents a potential buying opportunity. Key catalysts include FDA approval for their lead drug candidate TONMYA and further expansion into new therapeutic areas. The risk lies in competition within the CNS drug market and the potential for regulatory hurdles."
     }
   ],
-  "lastRecommendAt": "2026-06-06 19:13 EDT"
+  "lastRecommendAt": "2026-06-11 09:46 EDT"
 }
