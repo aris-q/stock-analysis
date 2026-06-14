@@ -1118,7 +1118,13 @@ SCORING_DEFAULTS = {
     },
     "accountBonuses": {
         "holdContinuity": 5,
-        "avoidPenalty":  -20
+        "avoidPenalty":  -20,
+        "purchasePenaltyMild":   -6,    # down 5-10% from purchase
+        "purchasePenaltyMed":   -12,    # down 10-15% from purchase
+        "purchasePenaltyHard":  -20,    # down 15%+ from purchase
+        "purchasePenaltyMild_threshold":   5.0,
+        "purchasePenaltyMed_threshold":   10.0,
+        "purchasePenaltyHard_threshold":  15.0
     },
     "signalForecast": {
         "enabled": True,
@@ -1670,8 +1676,17 @@ def run_tradeai_fetch():
                     detail["fetchCompletedAt"] = ts()
                     details[ticker] = detail
                     candidates_data["details"] = details
+                    # Store RSI snapshot history for Reversal confirmation (rising RSI check)
+                    rsi_history = candidates_data.get("rsiHistory", {})
+                    if ticker not in rsi_history:
+                        rsi_history[ticker] = []
+                    rsi_val = detail.get("rsi14")
+                    if rsi_val is not None:
+                        rsi_history[ticker].append({"rsi": rsi_val, "ts": ts()})
+                        rsi_history[ticker] = rsi_history[ticker][-5:]  # keep last 5 readings
+                    candidates_data["rsiHistory"] = rsi_history
                     save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
-                    log.info(f"TradeAI fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
+                    log.info(f"TradeAI fetch OK: {ticker} | price:{detail.get('price')} rsi:{rsi_val}")
             except Exception as e:
                 log.error(f"TradeAI fetch FAIL: {ticker} | {e}")
         candidates_data["details"] = details
@@ -1779,6 +1794,9 @@ def run_tradeai_recommend():
             for row in today_snap.get("rows", []):
                 fc_map[row["ticker"]] = row
 
+        # Build previous composite score lookup for sell reason delta
+        prev_scored = {s["ticker"]: s["composite"] for s in (candidates_data.get("lastRecommend") or {}).get("scored", [])}
+
         # Build candidate lookup for bucket-aware scoring
         cand_map = {item["ticker"]: item for item in identified}
 
@@ -1831,8 +1849,23 @@ def run_tradeai_recommend():
 
             elif bucket == "Account":
                 hold_bonus = AB["holdContinuity"] if ai.get("buySignal") != "Avoid" else AB["avoidPenalty"]
+                # Purchase price penalty: penalise underwater positions before stop-loss triggers
+                # This reduces the composite score so the position falls out of top 5 sooner
+                purchase_price_pos = holdings.get(ticker, {}).get("purchasePrice")
+                price_for_penalty  = detail.get("price") or d_data.get("price")
+                purchase_penalty = 0
+                if purchase_price_pos and price_for_penalty and purchase_price_pos > 0:
+                    pct_down = (price_for_penalty - purchase_price_pos) / purchase_price_pos * 100
+                    if pct_down <= -AB.get("purchasePenaltyHard_threshold", 15.0):
+                        purchase_penalty = AB.get("purchasePenaltyHard", -20)
+                    elif pct_down <= -AB.get("purchasePenaltyMed_threshold", 10.0):
+                        purchase_penalty = AB.get("purchasePenaltyMed", -12)
+                    elif pct_down <= -AB.get("purchasePenaltyMild_threshold", 5.0):
+                        purchase_penalty = AB.get("purchasePenaltyMild", -6)
+                    if purchase_penalty < 0:
+                        log.info(f"[PurchasePenalty] {ticker} down {pct_down:.1f}% from purchase -> penalty:{purchase_penalty} pts")
                 composite  = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])
-                              + hold_bonus + trajectory_bonus + volume_bonus + news_bonus)
+                              + hold_bonus + trajectory_bonus + volume_bonus + news_bonus + purchase_penalty)
 
             else:
                 composite  = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])
@@ -1946,7 +1979,12 @@ def run_tradeai_recommend():
                     elif composite < SELL_CFG["hardSellFloor"]:
                         sell_reason = f"Composite score collapsed to {composite}/100 — exiting position"
                     else:
-                        sell_reason = f"Outside top 5 composite (score {composite}/100) — {ai_assessments.get(ticker, {}).get('reasoning', 'better opportunities available')}"
+                        prev_score = prev_scored.get(ticker)
+                        delta_str  = ""
+                        if prev_score is not None:
+                            delta = composite - prev_score
+                            delta_str = f" (was {prev_score}/100, delta {'+' if delta >= 0 else ''}{delta:.1f})"
+                        sell_reason = f"Outside top 5 composite (score {composite}/100{delta_str}) — {ai_assessments.get(ticker, {}).get('reasoning', 'better opportunities available')}"
                     sells.append({
                         "ticker": ticker, "action": "SELL", "shares": pos["shares"],
                         "price": price, "amount": proceeds, "date": ts(),
@@ -1963,6 +2001,9 @@ def run_tradeai_recommend():
             else:
                 log.info(f"TradeAI HOLD: {ticker} | composite:{composite} signal:{buy_signal} pct_purchase:{pct_from_purchase:.1f}% — keeping position")
 
+        # Load RSI history for Reversal entry confirmation
+        rsi_history = candidates_data.get("rsiHistory", {})
+
         buys = []
         held_count = len(holdings)
         max_slots = 5
@@ -1975,6 +2016,20 @@ def run_tradeai_recommend():
             if s.get("buySignal") == "Avoid":
                 log.info(f"TradeAI BUY skip (AI says Avoid): {ticker}")
                 continue
+            # ── Reversal entry confirmation: require RSI rising ───────────────
+            if s.get("bucket") == "Reversal":
+                ticker_rsi_hist = rsi_history.get(ticker, [])
+                if len(ticker_rsi_hist) >= 2:
+                    rsi_today = ticker_rsi_hist[-1]["rsi"]
+                    rsi_prev  = ticker_rsi_hist[-2]["rsi"]
+                    if rsi_today <= rsi_prev:
+                        log.info(f"TradeAI BUY skip Reversal (RSI not yet rising): {ticker} | rsi_today:{rsi_today} rsi_prev:{rsi_prev}")
+                        continue
+                    else:
+                        log.info(f"TradeAI BUY confirm Reversal (RSI rising): {ticker} | rsi_today:{rsi_today} rsi_prev:{rsi_prev}")
+                else:
+                    log.info(f"TradeAI BUY skip Reversal (insufficient RSI history for confirmation): {ticker} | history:{len(ticker_rsi_hist)} readings")
+                    continue
             price = s.get("price")
             if not price or price <= 0:
                 log.warning(f"TradeAI BUY skip (no price): {ticker}")

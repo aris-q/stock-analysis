@@ -5272,6 +5272,12 @@ function buildScoringMatrixHTML(cfg) {
   const accountRows = [
     ['Hold Continuity', 'Held positions that are NOT flagged Avoid get a small bonus. Reduces unnecessary churn.', numInput('accountBonuses.holdContinuity', ab.holdContinuity, 0, 20)],
     ['Avoid Penalty',   'Held positions where AI says Avoid get this penalty (enter as negative). Forces exit.', numInput('accountBonuses.avoidPenalty', ab.avoidPenalty, -50, 0)],
+    ['Purchase Penalty Mild', 'Held position down 5-10% from purchase price gets this penalty. Begins dragging it out of top 5.', numInput('accountBonuses.purchasePenaltyMild', ab.purchasePenaltyMild ?? -6, -30, 0)],
+    ['Purchase Penalty Med', 'Held position down 10-15% from purchase price. Stronger drag on composite score.', numInput('accountBonuses.purchasePenaltyMed', ab.purchasePenaltyMed ?? -12, -40, 0)],
+    ['Purchase Penalty Hard', 'Held position down 15%+ from purchase. Heavy composite penalty — position should be near stop-loss anyway.', numInput('accountBonuses.purchasePenaltyHard', ab.purchasePenaltyHard ?? -20, -50, 0)],
+    ['Mild Threshold %', 'Price drop % that triggers the mild penalty.', `${numInput('accountBonuses.purchasePenaltyMild_threshold', ab.purchasePenaltyMild_threshold ?? 5.0, 1, 20, 0.5)}% drop`],
+    ['Med Threshold %', 'Price drop % that triggers the medium penalty.', `${numInput('accountBonuses.purchasePenaltyMed_threshold', ab.purchasePenaltyMed_threshold ?? 10.0, 1, 30, 0.5)}% drop`],
+    ['Hard Threshold %', 'Price drop % that triggers the hard penalty.', `${numInput('accountBonuses.purchasePenaltyHard_threshold', ab.purchasePenaltyHard_threshold ?? 15.0, 1, 40, 0.5)}% drop`],
   ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
 
   // ── SIGNAL FORECAST ──────────────────────────────────────────────────────

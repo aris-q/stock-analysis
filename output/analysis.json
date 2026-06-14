@@ -1,54 +1,54 @@
 {
   "watchlist": [
     {
-      "ticker": "POET",
-      "price": 11.115,
-      "previousClose": 10.98,
-      "volume": 1901102,
-      "marketCap": 1918397952,
-      "rsi14": 34.3,
-      "bbPercent": 0.199,
-      "priceFetchedAt": "2026-06-11 09:45 EDT"
-    },
-    {
-      "ticker": "ONDS",
-      "price": 9.41,
-      "previousClose": 9.31,
-      "volume": 4592278,
-      "marketCap": 4866828288,
-      "rsi14": 51.2,
-      "bbPercent": 0.289,
-      "priceFetchedAt": "2026-06-11 09:45 EDT"
-    },
-    {
-      "ticker": "NTRA",
-      "price": 213.55,
-      "previousClose": 216.5,
-      "volume": 37871,
-      "marketCap": 30583644160,
-      "rsi14": 56.6,
-      "bbPercent": 0.617,
-      "priceFetchedAt": "2026-06-11 09:45 EDT"
-    },
-    {
       "ticker": "CRDO",
-      "price": 254.92,
-      "previousClose": 237.68,
-      "volume": 1470889,
-      "marketCap": 47075311616,
-      "rsi14": 73.3,
-      "bbPercent": 0.92,
-      "priceFetchedAt": "2026-06-11 09:45 EDT"
+      "price": 250.81,
+      "previousClose": 264.76,
+      "volume": 9004382,
+      "marketCap": 46261886976,
+      "rsi14": 62.4,
+      "bbPercent": 0.824,
+      "priceFetchedAt": "2026-06-13 20:55 EDT"
     },
     {
       "ticker": "ARGX",
-      "price": 882.89,
-      "previousClose": 862.18,
-      "volume": 25550,
-      "marketCap": 55176183808,
-      "rsi14": 65.1,
-      "bbPercent": 0.885,
-      "priceFetchedAt": "2026-06-11 09:45 EDT"
+      "price": 893.52,
+      "previousClose": 898.94,
+      "volume": 272605,
+      "marketCap": 55840505856,
+      "rsi14": 68.7,
+      "bbPercent": 0.886,
+      "priceFetchedAt": "2026-06-13 20:55 EDT"
+    },
+    {
+      "ticker": "TNXP",
+      "price": 11.35,
+      "previousClose": 10.65,
+      "volume": 673515,
+      "marketCap": 180928096,
+      "rsi14": 38.2,
+      "bbPercent": 0.293,
+      "priceFetchedAt": "2026-06-13 20:55 EDT"
+    },
+    {
+      "ticker": "BMNR",
+      "price": 16.11,
+      "previousClose": 16.52,
+      "volume": 24944040,
+      "marketCap": 9175882752,
+      "rsi14": 36.1,
+      "bbPercent": 0.158,
+      "priceFetchedAt": "2026-06-13 20:55 EDT"
+    },
+    {
+      "ticker": "OLA.TO",
+      "price": 14.9,
+      "previousClose": 14.44,
+      "volume": 879686,
+      "marketCap": 5155280896,
+      "rsi14": 35.7,
+      "bbPercent": 0.243,
+      "priceFetchedAt": "2026-06-13 20:55 EDT"
     }
   ],
   "dailyGainers": [
@@ -113,7 +113,7 @@
       "volume": 53414126
     }
   ],
-  "lastPriceRefresh": "2026-06-11 09:45 EDT",
+  "lastPriceRefresh": "2026-06-13 20:55 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "MU.TO",

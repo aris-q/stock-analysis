@@ -992,10 +992,10 @@
           "direction": "Bearish",
           "biasScore": -0.3,
           "dailyVol": 21.181,
-          "aiReason": "CRDO's overbought RSI reading of 75.1 coupled with a significant recent price surge suggests a potential bearish reversal tomorrow.",
+          "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:41 EDT"
+          "generatedAt": "2026-06-11 22:31 EDT"
         },
         {
           "ticker": "ARGX",
@@ -1008,10 +1008,10 @@
           "direction": "Neutral",
           "biasScore": -0.1,
           "dailyVol": 37.935,
-          "aiReason": "ARGX's neutral forecast range and RSI reading above 60 suggest limited directional momentum, indicating a likely neutral price movement tomorrow.",
+          "aiReason": "ARGX's neutral forecast range and overbought RSI (67.5) suggest a potential pause in the recent upward momentum, signaling a likely neutral price movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:42 EDT"
+          "generatedAt": "2026-06-11 22:31 EDT"
         },
         {
           "ticker": "BMNR",
@@ -1024,10 +1024,10 @@
           "direction": "Bullish",
           "biasScore": 0.2,
           "dailyVol": 0.149,
-          "aiReason": "BMNR's bullish forecast range and significant 1-day price increase coupled with a low RSI suggest potential for further upward momentum tomorrow.",
+          "aiReason": "BMNR's bullish forecast range bias (0.2), coupled with a strong 1-day change of 5.63%, suggests potential upward movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:42 EDT"
+          "generatedAt": "2026-06-11 22:32 EDT"
         },
         {
           "ticker": "OLA.TO",
@@ -1040,10 +1040,10 @@
           "direction": "Bullish",
           "biasScore": 0.25,
           "dailyVol": 0.409,
-          "aiReason": "OLA.TO's recent 5.87% price increase and bullish forecast range suggest a potential upward movement tomorrow.",
+          "aiReason": "OLA.TO's price is likely to move Bullish tomorrow due to its strong 1d change of 5.87% coupled with a bullish forecast range and low RSI value, indicating potential for upward momentum.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:43 EDT"
+          "generatedAt": "2026-06-11 22:33 EDT"
         },
         {
           "ticker": "TNXP",
@@ -1056,10 +1056,10 @@
           "direction": "Bullish",
           "biasScore": 0.25,
           "dailyVol": 0.28,
-          "aiReason": "TNXP's oversold RSI (24.5) coupled with a high analyst upside potential of 334.3% suggests a bullish rebound is likely tomorrow.",
+          "aiReason": "TNXP's extremely oversold RSI (24.5) coupled with a high analyst upside potential (334.3%) suggests a bullish reversal is likely tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:43 EDT"
+          "generatedAt": "2026-06-11 22:34 EDT"
         },
         {
           "ticker": "NSP",
@@ -1072,10 +1072,10 @@
           "direction": "Neutral",
           "biasScore": -0.1,
           "dailyVol": 2.137,
-          "aiReason": "NSP's price is likely to move Neutral tomorrow due to the high RSI (72.7) indicating overbought conditions and a neutral forecast range score (-0.1).",
+          "aiReason": "NSP's high RSI reading of 72.7 suggests potential overbought conditions, coupled with a neutral forecast range bias, indicating a likely neutral price movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:44 EDT"
+          "generatedAt": "2026-06-11 22:34 EDT"
         },
         {
           "ticker": "DOL.TO",
@@ -1088,10 +1088,10 @@
           "direction": "Neutral",
           "biasScore": -0.1,
           "dailyVol": 9.248,
-          "aiReason": "DOL.TO's price is likely to move Neutral tomorrow due to the high RSI (71.2) indicating overbought conditions and a neutral forecast range with a low score (-0.1).",
+          "aiReason": "DOL.TO's price is likely to move Neutral tomorrow due to the neutral forecast range and overbought RSI reading, suggesting a potential pause after recent significant upward momentum.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:45 EDT"
+          "generatedAt": "2026-06-11 22:35 EDT"
         },
         {
           "ticker": "AI",
@@ -1104,10 +1104,10 @@
           "direction": "Neutral",
           "biasScore": 0.05,
           "dailyVol": 0.236,
-          "aiReason": "AI's price is likely to move Neutral tomorrow due to the overbought RSI (70.8) and recent strong momentum suggesting potential profit-taking.",
+          "aiReason": "AI's price is likely to move Neutral tomorrow due to the combination of a high RSI reading (70.8) indicating overbought conditions and a neutral forecast range bias.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:45 EDT"
+          "generatedAt": "2026-06-11 22:36 EDT"
         },
         {
           "ticker": "NTRA",
@@ -1120,10 +1120,10 @@
           "direction": "Bullish",
           "biasScore": 0.4,
           "dailyVol": 3.052,
-          "aiReason": "NTRA's bullish forecast range, positive short-term price momentum (1d, 7d, and 30d changes), and  RSI above 50 suggest a potential price increase tomorrow.",
+          "aiReason": "NTRA's bullish forecast range, positive short-term price momentum (1d, 7d, and 30d changes), and high analyst upside suggest a potential price increase tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:46 EDT"
+          "generatedAt": "2026-06-11 22:37 EDT"
         },
         {
           "ticker": "RL",
@@ -1136,10 +1136,10 @@
           "direction": "Bullish",
           "biasScore": 0.25,
           "dailyVol": 14.82,
-          "aiReason": "RL's strong upward momentum, indicated by the positive 1d, 7d, and 30d changes, coupled with a bullish forecast range and  high short float, suggest a potential bullish move tomorrow.",
+          "aiReason": "RL's strong positive price momentum over the past week and month, coupled with a bullish forecast range and RSI below 70, suggest a potential bullish move tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:47 EDT"
+          "generatedAt": "2026-06-11 22:37 EDT"
         },
         {
           "ticker": "LYB",
@@ -1152,10 +1152,10 @@
           "direction": "Bullish",
           "biasScore": 0.25,
           "dailyVol": 1.445,
-          "aiReason": "LYB's oversold RSI reading of 27.3 coupled with a bullish forecast range and analyst upside suggest a potential reversal to the upside tomorrow.",
+          "aiReason": "LYB's low RSI of 27.3 coupled with a bullish forecast range and analyst upside suggest potential for a reversal and price increase tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:47 EDT"
+          "generatedAt": "2026-06-11 22:38 EDT"
         },
         {
           "ticker": "HCA",
@@ -1168,10 +1168,10 @@
           "direction": "Neutral",
           "biasScore": 0.15,
           "dailyVol": 6.374,
-          "aiReason": "HCA's neutral forecast range, coupled with its RSI indicating neither overbought nor oversold conditions and recent volatility, suggests a potential sideways movement tomorrow.",
+          "aiReason": "HCA's neutral forecast range, coupled with a low RSI and short-term upward momentum, suggests a lack of strong directional bias for tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:48 EDT"
+          "generatedAt": "2026-06-11 22:39 EDT"
         },
         {
           "ticker": "MKTX",
@@ -1184,10 +1184,10 @@
           "direction": "Bullish",
           "biasScore": 0.35,
           "dailyVol": 2.517,
-          "aiReason": "MKTX's bullish forecast range, combined with an RSI reading of 8.5 suggesting oversold conditions, points to a potential price rebound tomorrow.",
+          "aiReason": "MKTX's strong analyst upside of 58.6% coupled with a bullish forecast range and low RSI reading suggest a potential price reversal tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:49 EDT"
+          "generatedAt": "2026-06-11 22:40 EDT"
         },
         {
           "ticker": "CBOE",
@@ -1200,10 +1200,10 @@
           "direction": "Bullish",
           "biasScore": 0.3,
           "dailyVol": 4.486,
-          "aiReason": "CBOE's price is likely to move Bullish tomorrow due to the oversold RSI reading of 28.5 and a bullish forecast range.",
+          "aiReason": "CBOE's price is likely to move Bullish tomorrow due to the combination of a bullish forecast bias and a low RSI value suggesting oversold conditions.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:49 EDT"
+          "generatedAt": "2026-06-11 22:40 EDT"
         },
         {
           "ticker": "UHS",
@@ -1216,10 +1216,10 @@
           "direction": "Bullish",
           "biasScore": 0.3,
           "dailyVol": 0.73,
-          "aiReason": "UHS's price is likely to move Bullish tomorrow due to its oversold RSI (28.6) and a bullish forecast range despite recent price declines.",
+          "aiReason": "UHS's RSI of 28.6 and its current price within the bullish forecast range suggest a potential reversal to the upside.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:50 EDT"
+          "generatedAt": "2026-06-11 22:41 EDT"
         },
         {
           "ticker": "ASTS",
@@ -1232,10 +1232,10 @@
           "direction": "Neutral",
           "biasScore": 0.2,
           "dailyVol": 3.684,
-          "aiReason": "ASTS's neutral forecast range, coupled with its RSI at 50.6 and a short-term price fluctuation within a month, suggests a neutral movement tomorrow.",
+          "aiReason": "ASTS's price is likely to move Neutral tomorrow due to the neutral forecast range and balanced RSI signal near 50.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:51 EDT"
+          "generatedAt": "2026-06-11 22:42 EDT"
         },
         {
           "ticker": "ONDS",
@@ -1248,10 +1248,10 @@
           "direction": "Neutral",
           "biasScore": 0.0,
           "dailyVol": 0.603,
-          "aiReason": "ONDS's neutral forecast range and lack of strong directional signals from RSI, BB%B, or recent price changes suggest a likely neutral movement tomorrow.",
+          "aiReason": "ONDS's neutral forecast range, coupled with a lack of strong directional signals from RSI, BB%B, and recent price changes, suggests a likely neutral movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:51 EDT"
+          "generatedAt": "2026-06-11 22:42 EDT"
         },
         {
           "ticker": "POET",
@@ -1264,10 +1264,10 @@
           "direction": "Bullish",
           "biasScore": 0.3,
           "dailyVol": 0.9,
-          "aiReason": "POET's bullish forecast range (0.3 score), strong analyst upside (55.6%), and positive recent price change (2.46%) suggest a potential upward move tomorrow.",
+          "aiReason": "POET's bullish forecast range bias, coupled with a positive short-term price change and significant analyst upside potential, suggests a likely bullish movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:52 EDT"
+          "generatedAt": "2026-06-11 22:43 EDT"
         },
         {
           "ticker": "RFL",
@@ -1280,10 +1280,10 @@
           "direction": "Bearish",
           "biasScore": -0.3,
           "dailyVol": 0.17,
-          "aiReason": "RFL's price is likely to move Bearish tomorrow due to its extremely high RSI (81.6) indicating overbought conditions and a bearish forecast range with a negative score (-0.3).",
+          "aiReason": "RFL's price is likely to move Bearish tomorrow due to the highly overbought RSI (81.6) and significant recent price increases suggesting potential for a correction.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:53 EDT"
+          "generatedAt": "2026-06-11 22:44 EDT"
         },
         {
           "ticker": "CDE",
@@ -1296,13 +1296,13 @@
           "direction": "Neutral",
           "biasScore": -0.05,
           "dailyVol": 0.632,
-          "aiReason": "CDE's neutral forecast range, coupled with a low RSI of 42.3 and a recent price decline over multiple timeframes, suggests limited directional movement tomorrow.",
+          "aiReason": "CDE's neutral forecast range, coupled with the RSI at 42.3 indicating neither overbought nor oversold conditions, suggests a likely Neutral price movement tomorrow.",
           "actualPrice": null,
           "accuracy": null,
-          "generatedAt": "2026-06-11 17:53 EDT"
+          "generatedAt": "2026-06-11 22:45 EDT"
         }
       ],
-      "generatedAt": "2026-06-11 17:53 EDT"
+      "generatedAt": "2026-06-11 22:45 EDT"
     }
   ]
 }

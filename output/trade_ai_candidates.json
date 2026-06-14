@@ -121,36 +121,36 @@
       "bucket": "SmartMoney"
     }
   ],
-  "identifiedAt": "2026-06-11 17:39 EDT",
+  "identifiedAt": "2026-06-11 22:29 EDT",
   "details": {
     "CRDO": {
       "ticker": "CRDO",
       "name": "Credo Technology Group Holding ",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "price": 264.76,
-      "marketCap": 48834965504,
-      "volume": 12937637,
-      "rsi14": 75.1,
-      "ma20": 211.56,
-      "ma50": 182.25,
-      "bbPercent": 0.99,
-      "change1d": 11.39,
-      "change7d": 23.37,
-      "change30d": 52.15,
+      "price": 253.51,
+      "marketCap": 46759903232,
+      "volume": 7243491,
+      "rsi14": 63.7,
+      "ma20": 215.0,
+      "ma50": 185.41,
+      "bbPercent": 0.845,
+      "change1d": -4.25,
+      "change7d": 16.56,
+      "change30d": 37.49,
       "revenueGrowth": 157.0,
       "grossMargin": 68.0,
       "fcf": null,
-      "peRatio": 144.7,
-      "forwardPE": 30.5,
+      "peRatio": 138.5,
+      "forwardPE": 29.2,
       "eps": 1.83,
       "debtToEquity": 1.0,
       "returnOnEquity": 34.4,
-      "week52High": 268.18,
-      "week52Low": 70.78,
-      "priceVs52wHigh": 98.7,
+      "week52High": 270.2117,
+      "week52Low": 72.03,
+      "priceVs52wHigh": 93.8,
       "analystTarget": 256.30304,
-      "analystUpside": -3.2,
+      "analystUpside": 1.1,
       "recommendation": "strong_buy",
       "institutionalPct": 76.6,
       "insiderPct": 11.1,
@@ -159,36 +159,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Credo Technology Group Holding Ltd provides various high-speed connectivity solutions for optical and electrical Ethernet, and PCIe applications in the United States, Taiwan, Mainland China, Hong Kong, and internationally. It provides HiWire active electrical cables solutions, including HiWire CLOS, SPAN, SHIFT, and SWITCH; optical PAM4 digital signal processors; low-power line card PHY; serialize",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "ARGX": {
       "ticker": "ARGX",
       "name": "argenx SE",
       "sector": "Healthcare",
       "industry": "Biotechnology",
-      "price": 898.94,
-      "marketCap": 56179228672,
-      "volume": 308329,
-      "rsi14": 67.5,
-      "ma20": 831.92,
-      "ma50": 809.91,
-      "bbPercent": 0.978,
-      "change1d": 4.26,
-      "change7d": 10.55,
-      "change30d": 15.0,
+      "price": 894.75,
+      "marketCap": 55917371392,
+      "volume": 221559,
+      "rsi14": 69.1,
+      "ma20": 835.55,
+      "ma50": 812.95,
+      "bbPercent": 0.893,
+      "change1d": -0.47,
+      "change7d": 6.23,
+      "change30d": 14.2,
       "revenueGrowth": 62.6,
       "grossMargin": 58.1,
       "fcf": null,
-      "peRatio": 40.0,
-      "forwardPE": 24.5,
-      "eps": 22.5,
+      "peRatio": 39.8,
+      "forwardPE": 24.4,
+      "eps": 22.47,
       "debtToEquity": 0.6,
       "returnOnEquity": null,
       "week52High": 934.62,
       "week52Low": 510.055,
-      "priceVs52wHigh": 96.2,
-      "analystTarget": 1028.4586,
-      "analystUpside": 14.4,
+      "priceVs52wHigh": 95.7,
+      "analystTarget": 1028.8142,
+      "analystUpside": 15.0,
       "recommendation": "strong_buy",
       "institutionalPct": 47.5,
       "insiderPct": 0.0,
@@ -197,36 +197,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "argenx SE, a commercial-stage biopharma company, develops various therapies for the treatment of autoimmune diseases in the United States, Japan, China, the Netherlands, and internationally. The company offers VYVGART for the treatment of gMG and immune thrombocytopenia (ITP), and VYVGART HYTRULO for the treatment of gMG and chronic inflammatory demyelinating polyneuropathy (CIDP). It also develop",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "BMNR": {
       "ticker": "BMNR",
       "name": "BitMine Immersion Technologies,",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 16.52,
-      "marketCap": 9409409024,
-      "volume": 31581100,
-      "rsi14": 35.0,
-      "ma20": 18.32,
-      "ma50": 20.37,
-      "bbPercent": 0.216,
-      "change1d": 5.63,
-      "change7d": -2.25,
-      "change30d": -22.8,
+      "price": 16.185,
+      "marketCap": 9218600960,
+      "volume": 19632646,
+      "rsi14": 36.4,
+      "ma20": 18.03,
+      "ma50": 20.3,
+      "bbPercent": 0.17,
+      "change1d": -2.03,
+      "change7d": -9.53,
+      "change30d": -26.03,
       "revenueGrowth": 627.8,
       "grossMargin": 66.6,
       "fcf": -152525936,
       "peRatio": null,
-      "forwardPE": 17.6,
+      "forwardPE": 17.2,
       "eps": -7.44,
       "debtToEquity": 0.0,
       "returnOnEquity": -175.9,
       "week52High": 161.0,
       "week52Low": 3.92,
-      "priceVs52wHigh": 10.3,
+      "priceVs52wHigh": 10.1,
       "analystTarget": 37.33333,
-      "analystUpside": 126.0,
+      "analystUpside": 130.7,
       "recommendation": "none",
       "institutionalPct": 37.3,
       "insiderPct": 0.8,
@@ -235,36 +235,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "OLA.TO": {
       "ticker": "OLA.TO",
       "name": "ORLA MINING LTD",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 14.44,
-      "marketCap": 4996124160,
-      "volume": 917670,
-      "rsi14": 39.0,
-      "ma20": 16.53,
-      "ma50": 19.3,
-      "bbPercent": 0.165,
-      "change1d": 5.87,
-      "change7d": -7.08,
-      "change30d": -18.78,
+      "price": 14.91,
+      "marketCap": 5158740480,
+      "volume": 534087,
+      "rsi14": 35.7,
+      "ma20": 16.26,
+      "ma50": 19.13,
+      "bbPercent": 0.245,
+      "change1d": 3.25,
+      "change7d": -5.03,
+      "change30d": -17.34,
       "revenueGrowth": 169.3,
       "grossMargin": 68.7,
       "fcf": 548109632,
-      "peRatio": 14.4,
-      "forwardPE": 6.4,
+      "peRatio": 14.9,
+      "forwardPE": 6.6,
       "eps": 1.0,
       "debtToEquity": 42.5,
       "returnOnEquity": 42.0,
       "week52High": 29.99,
       "week52Low": 12.67,
-      "priceVs52wHigh": 48.1,
-      "analystTarget": 31.923561,
-      "analystUpside": 121.1,
+      "priceVs52wHigh": 49.7,
+      "analystTarget": 31.944136,
+      "analystUpside": 114.2,
       "recommendation": "buy",
       "institutionalPct": 70.2,
       "insiderPct": 28.6,
@@ -273,23 +273,23 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Orla Mining Ltd. acquires, explores, develops, and exploits mineral properties. It explores gold, silver, zinc, lead, and copper deposits. The company owns 100% interests in the Camino Rojo project that consists of seven concessions covering an area of 138,636 hectares located in Zacatecas, Mexico; Cerro Quema project totaling an area of 15,000 hectares located in the Azuero Peninsula, Panama; and",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "TNXP": {
       "ticker": "TNXP",
       "name": "Tonix Pharmaceuticals Holding C",
       "sector": "Healthcare",
       "industry": "Biotechnology",
-      "price": 10.65,
-      "marketCap": 169769520,
-      "volume": 1049068,
-      "rsi14": 24.5,
-      "ma20": 12.61,
-      "ma50": 13.09,
-      "bbPercent": 0.144,
-      "change1d": -2.83,
-      "change7d": -6.58,
-      "change30d": -17.63,
+      "price": 11.175,
+      "marketCap": 178138448,
+      "volume": 521184,
+      "rsi14": 36.4,
+      "ma20": 12.46,
+      "ma50": 13.04,
+      "bbPercent": 0.264,
+      "change1d": 4.93,
+      "change7d": -5.93,
+      "change30d": -17.83,
       "revenueGrowth": 183.2,
       "grossMargin": 58.6,
       "fcf": -76727872,
@@ -299,10 +299,10 @@
       "debtToEquity": 0.6,
       "returnOnEquity": -72.3,
       "week52High": 69.97,
-      "week52Low": 10.06,
-      "priceVs52wHigh": 15.2,
+      "week52Low": 10.03,
+      "priceVs52wHigh": 16.0,
       "analystTarget": 46.25,
-      "analystUpside": 334.3,
+      "analystUpside": 313.9,
       "recommendation": "strong_buy",
       "institutionalPct": 41.4,
       "insiderPct": 0.1,
@@ -311,36 +311,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Tonix Pharmaceuticals Holding Corp., a fully integrated biopharmaceutical company, develops and commercializes therapies for central nervous system (CNS) disorders, immunology and immuno-oncology, infectious diseases, and rare diseases in the United States. The company offers TONMYA, a cyclobenzaprine HCl sublingual tablet for the treatment of fibromyalgia. It also markets Zembrace SymTouch and To",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "NSP": {
       "ticker": "NSP",
       "name": "Insperity, Inc.",
       "sector": "Industrials",
       "industry": "Staffing & Employment Services",
-      "price": 37.68,
-      "marketCap": 1438214912,
-      "volume": 398230,
-      "rsi14": 72.7,
-      "ma20": 33.17,
-      "ma50": 31.07,
-      "bbPercent": 0.918,
-      "change1d": 1.84,
-      "change7d": 14.18,
-      "change30d": 7.86,
+      "price": 36.15,
+      "marketCap": 1379816064,
+      "volume": 443375,
+      "rsi14": 64.0,
+      "ma20": 33.56,
+      "ma50": 31.26,
+      "bbPercent": 0.757,
+      "change1d": -4.06,
+      "change7d": 8.01,
+      "change30d": 29.01,
       "revenueGrowth": 1.7,
       "grossMargin": 13.0,
       "fcf": 85000000,
       "peRatio": null,
-      "forwardPE": 13.5,
+      "forwardPE": 12.9,
       "eps": -0.68,
       "debtToEquity": 641.8,
       "returnOnEquity": -26.9,
       "week52High": 63.3,
       "week52Low": 18.57,
-      "priceVs52wHigh": 59.5,
+      "priceVs52wHigh": 57.1,
       "analystTarget": 39.5,
-      "analystUpside": 4.8,
+      "analystUpside": 9.3,
       "recommendation": "hold",
       "institutionalPct": 111.7,
       "insiderPct": 6.2,
@@ -349,36 +349,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Insperity, Inc. engages in the provision of human resources (HR) and business solutions to improve business performance for small and medium-sized businesses primarily in the United States. It offers Insperity HR360 solution, a full-service PEO solution delivering HR technology, compliance, and strategic support for small and midsize businesses; Insperity HRCore, a streamlined HR platform for payr",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "DOL.TO": {
       "ticker": "DOL.TO",
       "name": "DOLLARAMA INC",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "price": 195.76,
-      "marketCap": 53293920256,
-      "volume": 1404133,
-      "rsi14": 71.2,
-      "ma20": 176.96,
-      "ma50": 174.78,
-      "bbPercent": 1.377,
-      "change1d": 9.02,
-      "change7d": 11.81,
-      "change30d": 12.76,
-      "revenueGrowth": 11.7,
-      "grossMargin": 45.0,
-      "fcf": 1162095104,
-      "peRatio": 41.5,
-      "forwardPE": 33.6,
-      "eps": 4.72,
-      "debtToEquity": 370.6,
-      "returnOnEquity": 99.0,
+      "price": 191.33,
+      "marketCap": 51808174080,
+      "volume": 548945,
+      "rsi14": 63.6,
+      "ma20": 177.88,
+      "ma50": 175.18,
+      "bbPercent": 1.044,
+      "change1d": -2.31,
+      "change7d": 8.73,
+      "change30d": 9.9,
+      "revenueGrowth": 21.4,
+      "grossMargin": 45.1,
+      "fcf": 1060685120,
+      "peRatio": 39.4,
+      "forwardPE": 32.8,
+      "eps": 4.85,
+      "debtToEquity": 451.2,
+      "returnOnEquity": 99.5,
       "week52High": 209.96,
       "week52Low": 166.0,
-      "priceVs52wHigh": 93.2,
-      "analystTarget": 197.8125,
-      "analystUpside": 1.0,
+      "priceVs52wHigh": 91.1,
+      "analystTarget": 199.0,
+      "analystUpside": 4.0,
       "recommendation": "buy",
       "institutionalPct": 45.7,
       "insiderPct": 2.0,
@@ -387,36 +387,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Dollarama Inc. operates a chain of stores and provides related logistical and administrative support activities. Its stores offer general merchandise, consumables, and seasonal products. The company operates in Canada, Latin America, Colombia, Peru, Australia, and Mexico. It also sells its products through online store. The company was formerly known as Dollarama Capital Corporation and changed it",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "AI": {
       "ticker": "AI",
       "name": "C3.ai, Inc.",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 11.27,
-      "marketCap": 1637432064,
-      "volume": 6526790,
-      "rsi14": 70.8,
-      "ma20": 10.07,
-      "ma50": 9.42,
-      "bbPercent": 0.819,
-      "change1d": 4.35,
-      "change7d": 5.23,
-      "change30d": 27.63,
+      "price": 10.895,
+      "marketCap": 1582947840,
+      "volume": 5506668,
+      "rsi14": 66.1,
+      "ma20": 10.17,
+      "ma50": 9.47,
+      "bbPercent": 0.698,
+      "change1d": -3.33,
+      "change7d": 2.98,
+      "change30d": 18.94,
       "revenueGrowth": -52.5,
       "grossMargin": 31.4,
       "fcf": -20899750,
       "peRatio": null,
-      "forwardPE": -25.0,
+      "forwardPE": -24.2,
       "eps": -3.35,
       "debtToEquity": 8.3,
       "returnOnEquity": -63.0,
       "week52High": 30.11,
       "week52Low": 7.675,
-      "priceVs52wHigh": 37.4,
+      "priceVs52wHigh": 36.2,
       "analystTarget": 8.81818,
-      "analystUpside": -21.8,
+      "analystUpside": -19.1,
       "recommendation": "hold",
       "institutionalPct": 63.9,
       "insiderPct": 5.2,
@@ -425,37 +425,37 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "C3.ai, Inc. operates as an enterprise artificial intelligence application software company. The company offers C3 agentic AI platform, an application development and runtime environment that enables customers to design, develop, and deploy enterprise AI applications; C3 AI CRM Suite, a customer relationship management solution; C3 Generative AI that enables to locate, retrieve, present information",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "NTRA": {
       "ticker": "NTRA",
       "name": "Natera, Inc.",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "price": 219.23,
-      "marketCap": 31397105664,
-      "volume": 731851,
-      "rsi14": 60.5,
-      "ma20": 208.89,
-      "ma50": 206.46,
-      "bbPercent": 0.74,
-      "change1d": 1.26,
-      "change7d": 3.48,
-      "change30d": 6.34,
+      "price": 212.34,
+      "marketCap": 30410352640,
+      "volume": 530981,
+      "rsi14": 55.7,
+      "ma20": 209.66,
+      "ma50": 206.64,
+      "bbPercent": 0.564,
+      "change1d": -3.14,
+      "change7d": -4.39,
+      "change30d": 2.44,
       "revenueGrowth": 38.8,
       "grossMargin": 65.1,
       "fcf": 136918256,
       "peRatio": null,
-      "forwardPE": -742.1,
+      "forwardPE": -1019.0,
       "eps": -1.62,
       "debtToEquity": 13.5,
       "returnOnEquity": -15.0,
       "week52High": 256.36,
       "week52Low": 131.811,
-      "priceVs52wHigh": 85.5,
-      "analystTarget": 259.26315,
-      "analystUpside": 18.3,
-      "recommendation": "strong_buy",
+      "priceVs52wHigh": 82.8,
+      "analystTarget": 260.05,
+      "analystUpside": 22.5,
+      "recommendation": "buy",
       "institutionalPct": 95.8,
       "insiderPct": 3.0,
       "shortFloat": 2.6,
@@ -463,36 +463,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Natera, Inc., a diagnostics company, engages in the development and commercialization of molecular testing services worldwide. It offers Signatera, a personalized ctDNA blood test for MRD assessment, early recurrence monitoring, and evaluation of treatment response in patients previously diagnosed with cancer; Latitude, a blood-based MRD test for colorectal cancer; Altera, a tissue based comprehen",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "RL": {
       "ticker": "RL",
       "name": "Ralph Lauren Corporation",
       "sector": "Consumer Cyclical",
       "industry": "Apparel Manufacturing",
-      "price": 393.3,
-      "marketCap": 23407777792,
-      "volume": 453884,
-      "rsi14": 59.4,
-      "ma20": 361.91,
-      "ma50": 363.71,
-      "bbPercent": 0.852,
-      "change1d": 4.48,
-      "change7d": 9.42,
-      "change30d": 9.66,
+      "price": 404.97,
+      "marketCap": 24102334464,
+      "volume": 498887,
+      "rsi14": 62.8,
+      "ma20": 365.46,
+      "ma50": 364.75,
+      "bbPercent": 0.925,
+      "change1d": 2.97,
+      "change7d": 10.43,
+      "change30d": 11.81,
       "revenueGrowth": 16.6,
       "grossMargin": 69.9,
       "fcf": 656187520,
-      "peRatio": 26.1,
-      "forwardPE": 19.3,
-      "eps": 15.09,
+      "peRatio": 26.8,
+      "forwardPE": 19.9,
+      "eps": 15.1,
       "debtToEquity": 105.9,
       "returnOnEquity": 34.7,
-      "week52High": 395.155,
+      "week52High": 405.49,
       "week52Low": 258.13,
-      "priceVs52wHigh": 99.5,
-      "analystTarget": 427.0,
-      "analystUpside": 8.6,
+      "priceVs52wHigh": 99.9,
+      "analystTarget": 428.0,
+      "analystUpside": 5.7,
       "recommendation": "buy",
       "institutionalPct": 108.1,
       "insiderPct": 4.1,
@@ -501,36 +501,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ralph Lauren Corporation designs, markets, and distributes lifestyle products in North America, Europe, Asia, and internationally. The company offers apparel, including a range of men's, women's, and children's clothing; footwear and accessories, which comprise casual shoes, dress shoes, boots, sneakers, sandals, eyewear, watches, fashion and fine jewelry, scarves, hats, gloves, and umbrellas, as ",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "LYB": {
       "ticker": "LYB",
       "name": "LyondellBasell Industries NV",
       "sector": "Basic Materials",
       "industry": "Specialty Chemicals",
-      "price": 63.47,
-      "marketCap": 20487149568,
-      "volume": 6427278,
-      "rsi14": 27.3,
-      "ma20": 67.97,
-      "ma50": 70.91,
-      "bbPercent": 0.153,
-      "change1d": -2.58,
-      "change7d": -5.69,
-      "change30d": -14.03,
+      "price": 64.4,
+      "marketCap": 20787339264,
+      "volume": 3767325,
+      "rsi14": 33.0,
+      "ma20": 67.56,
+      "ma50": 70.68,
+      "bbPercent": 0.249,
+      "change1d": 1.47,
+      "change7d": -2.69,
+      "change30d": -13.22,
       "revenueGrowth": -6.3,
       "grossMargin": 9.2,
       "fcf": 987000000,
       "peRatio": null,
-      "forwardPE": 8.4,
+      "forwardPE": 8.6,
       "eps": -2.12,
       "debtToEquity": 141.2,
       "returnOnEquity": -6.0,
       "week52High": 83.94,
       "week52Low": 41.58,
-      "priceVs52wHigh": 75.6,
+      "priceVs52wHigh": 76.7,
       "analystTarget": 79.88235,
-      "analystUpside": 25.9,
+      "analystUpside": 24.0,
       "recommendation": "hold",
       "institutionalPct": 78.1,
       "insiderPct": 20.2,
@@ -539,36 +539,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "LyondellBasell Industries N.V. operates as a chemical company in the United States, Germany, China, Mexico, Italy, Japan, France, Poland, the Netherlands, and internationally. It operates in five segments: Olefins and Polyolefins\u0097Americas; Olefins and Polyolefins\u0097Europe, Asia, International; Intermediates and Derivatives; Advanced Polymer Solutions; and Technology. The company produces and markets",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "HCA": {
       "ticker": "HCA",
       "name": "HCA Healthcare, Inc.",
       "sector": "Healthcare",
       "industry": "Medical Care Facilities",
-      "price": 378.51,
-      "marketCap": 83968589824,
-      "volume": 1298595,
-      "rsi14": 40.7,
-      "ma20": 386.88,
-      "ma50": 431.23,
-      "bbPercent": 0.401,
-      "change1d": 1.38,
-      "change7d": 4.21,
-      "change30d": -12.88,
+      "price": 388.63,
+      "marketCap": 86213607424,
+      "volume": 1041176,
+      "rsi14": 46.8,
+      "ma20": 384.67,
+      "ma50": 429.51,
+      "bbPercent": 0.555,
+      "change1d": 2.67,
+      "change7d": 7.41,
+      "change30d": -10.27,
       "revenueGrowth": 4.3,
       "grossMargin": 41.6,
       "fcf": 5726000128,
-      "peRatio": 13.0,
-      "forwardPE": 11.4,
-      "eps": 29.05,
+      "peRatio": 13.4,
+      "forwardPE": 11.7,
+      "eps": 29.03,
       "debtToEquity": null,
       "returnOnEquity": null,
       "week52High": 556.52,
       "week52Low": 330.0,
-      "priceVs52wHigh": 68.0,
+      "priceVs52wHigh": 69.8,
       "analystTarget": 503.57144,
-      "analystUpside": 33.0,
+      "analystUpside": 29.6,
       "recommendation": "buy",
       "institutionalPct": 78.3,
       "insiderPct": 16.2,
@@ -577,36 +577,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "HCA Healthcare, Inc., through its subsidiaries, provides health care services in the United States. The company owns, manages, and operates hospitals, ASCs, freestanding emergency care facilities, urgent care facilities, walk-in clinics, diagnostic and imaging centers, radiation and oncology therapy centers, as well as rehabilitation and physical therapy centers, physician practices, home health a",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "MKTX": {
       "ticker": "MKTX",
       "name": "MarketAxess Holdings, Inc.",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 116.33,
-      "marketCap": 4134304512,
-      "volume": 807577,
-      "rsi14": 8.5,
-      "ma20": 128.59,
-      "ma50": 148.07,
-      "bbPercent": 0.167,
-      "change1d": 0.19,
-      "change7d": -5.41,
-      "change30d": -25.58,
+      "price": 120.65,
+      "marketCap": 4287834880,
+      "volume": 313749,
+      "rsi14": 20.0,
+      "ma20": 127.64,
+      "ma50": 147.19,
+      "bbPercent": 0.305,
+      "change1d": 3.71,
+      "change7d": 0.02,
+      "change30d": -20.64,
       "revenueGrowth": 11.9,
       "grossMargin": 62.1,
       "fcf": -253787120,
-      "peRatio": 13.8,
-      "forwardPE": 13.0,
+      "peRatio": 14.3,
+      "forwardPE": 13.5,
       "eps": 8.44,
       "debtToEquity": 24.3,
       "returnOnEquity": 24.3,
       "week52High": 228.16,
       "week52Low": 113.29,
-      "priceVs52wHigh": 51.0,
+      "priceVs52wHigh": 52.9,
       "analystTarget": 184.45454,
-      "analystUpside": 58.6,
+      "analystUpside": 52.9,
       "recommendation": "buy",
       "institutionalPct": 112.1,
       "insiderPct": 0.9,
@@ -615,36 +615,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "MarketAxess Holdings Inc., together with its subsidiaries, operates an electronic trading platform for institutional investor and broker-dealer firms in the United States, the United Kingdom, and internationally. The company offers trading technology to access liquidity on its platforms in U.S. high-grade bonds, U.S. high-yield bonds, emerging market debt, eurobonds, municipal bonds, U.S. governme",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "CBOE": {
       "ticker": "CBOE",
       "name": "Cboe Global Markets, Inc.",
       "sector": "Financial Services",
       "industry": "Financial Data & Stock Exchanges",
-      "price": 295.9,
-      "marketCap": 30967054336,
-      "volume": 1245187,
-      "rsi14": 28.5,
-      "ma20": 324.56,
-      "ma50": 317.31,
-      "bbPercent": 0.293,
-      "change1d": -1.72,
-      "change7d": 3.79,
-      "change30d": -1.19,
+      "price": 296.44,
+      "marketCap": 31023568896,
+      "volume": 790747,
+      "rsi14": 25.7,
+      "ma20": 321.49,
+      "ma50": 317.64,
+      "bbPercent": 0.317,
+      "change1d": 0.18,
+      "change7d": 3.64,
+      "change30d": -9.14,
       "revenueGrowth": 6.5,
       "grossMargin": 54.1,
       "fcf": 1003075008,
       "peRatio": 25.3,
       "forwardPE": 20.1,
-      "eps": 11.71,
+      "eps": 11.72,
       "debtToEquity": 29.5,
       "returnOnEquity": 25.1,
       "week52High": 371.18,
-      "week52Low": 222.89,
-      "priceVs52wHigh": 79.7,
-      "analystTarget": 328.0,
-      "analystUpside": 10.8,
+      "week52Low": 223.54,
+      "priceVs52wHigh": 79.9,
+      "analystTarget": 326.92856,
+      "analystUpside": 10.3,
       "recommendation": "hold",
       "institutionalPct": 91.8,
       "insiderPct": 0.3,
@@ -653,36 +653,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Cboe Global Markets, Inc., through its subsidiaries, operates as a derivatives and securities exchange network that delivers cutting-edge trading, clearing, and investment solutions in the United States and internationally. It operates through five segments: Options, North American Equities, Europe and Asia Pacific, Futures, and Global FX. The Options segment includes options on market indices, as",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "UHS": {
       "ticker": "UHS",
       "name": "Universal Health Services, Inc.",
       "sector": "Healthcare",
       "industry": "Medical Care Facilities",
-      "price": 146.05,
-      "marketCap": 8841334784,
-      "volume": 763272,
-      "rsi14": 28.6,
-      "ma20": 153.24,
-      "ma50": 166.5,
-      "bbPercent": 0.322,
-      "change1d": 0.85,
-      "change7d": 0.19,
-      "change30d": -13.09,
+      "price": 147.37,
+      "marketCap": 8921241600,
+      "volume": 322553,
+      "rsi14": 35.2,
+      "ma20": 152.08,
+      "ma50": 165.9,
+      "bbPercent": 0.374,
+      "change1d": 0.9,
+      "change7d": 3.4,
+      "change30d": -11.63,
       "revenueGrowth": 9.6,
       "grossMargin": 44.2,
       "fcf": 650819008,
-      "peRatio": 6.1,
+      "peRatio": 6.2,
       "forwardPE": 5.8,
       "eps": 23.95,
       "debtToEquity": 67.4,
       "returnOnEquity": 21.4,
       "week52High": 246.33,
       "week52Low": 140.08,
-      "priceVs52wHigh": 59.3,
+      "priceVs52wHigh": 59.8,
       "analystTarget": 215.76471,
-      "analystUpside": 47.7,
+      "analystUpside": 46.4,
       "recommendation": "buy",
       "institutionalPct": 101.4,
       "insiderPct": 4.8,
@@ -691,36 +691,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Universal Health Services, Inc., through its subsidiaries, owns and operates acute care hospitals, and outpatient and behavioral health care facilities in the United States. It operates through Acute Care Hospital Services and Behavioral Health Care Services segments. The company's hospitals offer general and specialty surgery, internal medicine, obstetrics, emergency room care, radiology, oncolog",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "ASTS": {
       "ticker": "ASTS",
       "name": "AST SpaceMobile, Inc.",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 97.56,
-      "marketCap": 37865431040,
-      "volume": 23220051,
-      "rsi14": 50.6,
-      "ma20": 101.36,
-      "ma50": 89.27,
-      "bbPercent": 0.438,
-      "change1d": 11.73,
-      "change7d": -9.44,
-      "change30d": 32.02,
+      "price": 83.52,
+      "marketCap": 32416163840,
+      "volume": 46604182,
+      "rsi14": 40.9,
+      "ma20": 101.38,
+      "ma50": 89.26,
+      "bbPercent": 0.206,
+      "change1d": -14.39,
+      "change7d": -22.15,
+      "change30d": 17.82,
       "revenueGrowth": 1952.2,
       "grossMargin": 44.8,
       "fcf": -1412748416,
       "peRatio": null,
-      "forwardPE": -475.4,
+      "forwardPE": -407.0,
       "eps": -1.8,
       "debtToEquity": 112.4,
       "returnOnEquity": -37.8,
       "week52High": 133.86,
-      "week52Low": 35.815,
-      "priceVs52wHigh": 72.9,
+      "week52Low": 36.08,
+      "priceVs52wHigh": 62.4,
       "analystTarget": 81.46667,
-      "analystUpside": -16.5,
+      "analystUpside": -2.5,
       "recommendation": "hold",
       "institutionalPct": 47.0,
       "insiderPct": 7.8,
@@ -729,37 +729,37 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "AST SpaceMobile, Inc., together with its subsidiaries, designs and develops the constellation of BlueBird satellites in the United States. The company provides a cellular broadband network in space to be accessible directly by smartphones for commercial use and other applications, as well as for government use. Its SpaceMobile service provides cellular broadband services to end-users who are out o",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "ONDS": {
       "ticker": "ONDS",
       "name": "Ondas Inc",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 9.83,
-      "marketCap": 5084051456,
-      "volume": 43637581,
-      "rsi14": 53.2,
-      "ma20": 10.77,
-      "ma50": 10.17,
-      "bbPercent": 0.35,
-      "change1d": 5.59,
-      "change7d": -15.33,
-      "change30d": -2.09,
+      "price": 9.3691,
+      "marketCap": 4845675008,
+      "volume": 47739138,
+      "rsi14": 51.5,
+      "ma20": 10.68,
+      "ma50": 10.18,
+      "bbPercent": 0.294,
+      "change1d": -4.69,
+      "change7d": -21.73,
+      "change30d": -9.21,
       "revenueGrowth": 1079.9,
       "grossMargin": 44.8,
       "fcf": -15650777,
-      "peRatio": 109.2,
-      "forwardPE": -196.6,
+      "peRatio": 104.1,
+      "forwardPE": -187.4,
       "eps": 0.09,
       "debtToEquity": 0.7,
       "returnOnEquity": 42.9,
       "week52High": 15.28,
       "week52Low": 1.36,
-      "priceVs52wHigh": 64.3,
+      "priceVs52wHigh": 61.3,
       "analystTarget": 20.125,
-      "analystUpside": 104.7,
-      "recommendation": "strong_buy",
+      "analystUpside": 114.8,
+      "recommendation": "none",
       "institutionalPct": 41.9,
       "insiderPct": 2.0,
       "shortFloat": 32.0,
@@ -767,36 +767,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "POET": {
       "ticker": "POET",
       "name": "POET Technologies Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "price": 11.25,
-      "marketCap": 1941698304,
-      "volume": 27161951,
-      "rsi14": 35.0,
-      "ma20": 13.79,
-      "ma50": 10.77,
-      "bbPercent": 0.211,
-      "change1d": 2.46,
-      "change7d": -26.85,
-      "change30d": 58.01,
+      "price": 12.515,
+      "marketCap": 2160031488,
+      "volume": 28434371,
+      "rsi14": 42.0,
+      "ma20": 13.39,
+      "ma50": 10.91,
+      "bbPercent": 0.357,
+      "change1d": 11.24,
+      "change7d": -19.15,
+      "change30d": 71.2,
       "revenueGrowth": 201.9,
       "grossMargin": 100.0,
       "fcf": -42376272,
       "peRatio": null,
-      "forwardPE": -66.2,
+      "forwardPE": -73.6,
       "eps": -0.84,
       "debtToEquity": 1.6,
       "returnOnEquity": -33.9,
       "week52High": 20.81,
       "week52Low": 3.87,
-      "priceVs52wHigh": 54.1,
+      "priceVs52wHigh": 60.1,
       "analystTarget": 17.5,
-      "analystUpside": 55.6,
+      "analystUpside": 39.8,
       "recommendation": "strong_buy",
       "institutionalPct": 25.5,
       "insiderPct": 0.1,
@@ -805,34 +805,34 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "POET Technologies Inc., together with its subsidiaries, designs, develops, manufactures, and sells semiconductor products and services for commercial applications in the United States, Canada, the rest of North and South America, Europe, Malaysia, Singapore, China, and the rest of Asia. The company offers photonic integrated packaging solutions based on the POET Optical Interposer, a platform that",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "RFL": {
       "ticker": "RFL",
       "name": "Rafael Holdings, Inc.",
       "sector": "Real Estate",
       "industry": "Real Estate Services",
-      "price": 2.12,
-      "marketCap": 110265728,
-      "volume": 559859,
-      "rsi14": 81.6,
-      "ma20": 1.46,
-      "ma50": 1.34,
-      "bbPercent": 1.218,
-      "change1d": 19.1,
-      "change7d": 57.04,
-      "change30d": 66.93,
-      "revenueGrowth": 174.0,
-      "grossMargin": 93.1,
-      "fcf": 184250,
+      "price": 2.3,
+      "marketCap": 119599992,
+      "volume": 851465,
+      "rsi14": 83.8,
+      "ma20": 1.51,
+      "ma50": 1.36,
+      "bbPercent": 1.173,
+      "change1d": 8.49,
+      "change7d": 65.47,
+      "change30d": 85.48,
+      "revenueGrowth": -50.6,
+      "grossMargin": 95.1,
+      "fcf": null,
       "peRatio": null,
       "forwardPE": null,
-      "eps": -0.79,
+      "eps": -0.71,
       "debtToEquity": 0.8,
-      "returnOnEquity": -41.4,
+      "returnOnEquity": -37.6,
       "week52High": 2.649,
       "week52Low": 1.12,
-      "priceVs52wHigh": 80.0,
+      "priceVs52wHigh": 86.8,
       "analystTarget": null,
       "analystUpside": null,
       "recommendation": "none",
@@ -843,36 +843,36 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Rafael Holdings, Inc. primarily engages in holding interests in clinical and early-stage pharmaceutical companies, and medical devices in the United States and Israel. It operates in three segments, Healthcare, Infusion Technology, and Real Estate. The company engages in the development and commercialization of therapies that exploit the metabolic differences between normal cells and cancer cells.",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     },
     "CDE": {
       "ticker": "CDE",
       "name": "Coeur Mining, Inc.",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 16.4,
-      "marketCap": 16900765696,
-      "volume": 30258343,
-      "rsi14": 42.3,
-      "ma20": 17.73,
-      "ma50": 18.51,
-      "bbPercent": 0.213,
-      "change1d": 6.42,
-      "change7d": -9.64,
-      "change30d": -8.63,
+      "price": 17.235,
+      "marketCap": 17761263616,
+      "volume": 22929939,
+      "rsi14": 48.0,
+      "ma20": 17.62,
+      "ma50": 18.48,
+      "bbPercent": 0.412,
+      "change1d": 5.09,
+      "change7d": -6.74,
+      "change30d": -2.24,
       "revenueGrowth": 137.8,
       "grossMargin": 58.4,
       "fcf": 508452640,
-      "peRatio": 13.2,
-      "forwardPE": 7.7,
+      "peRatio": 13.9,
+      "forwardPE": 8.1,
       "eps": 1.24,
       "debtToEquity": 7.4,
       "returnOnEquity": 12.1,
       "week52High": 27.77,
       "week52Low": 8.46,
-      "priceVs52wHigh": 59.1,
+      "priceVs52wHigh": 62.1,
       "analystTarget": 27.25,
-      "analystUpside": 66.2,
+      "analystUpside": 58.1,
       "recommendation": "buy",
       "institutionalPct": 79.6,
       "insiderPct": 0.9,
@@ -881,10 +881,10 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
-      "fetchCompletedAt": "2026-06-11 17:40 EDT"
+      "fetchCompletedAt": "2026-06-12 15:27 EDT"
     }
   },
-  "detailsFetchedAt": "2026-06-11 17:40 EDT",
+  "detailsFetchedAt": "2026-06-12 15:27 EDT",
   "aiAssessments": {
     "CRDO": {
       "ticker": "CRDO",
@@ -893,206 +893,30 @@
       "buySignal": "Unknown"
     },
     "ARGX": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Strong Buy\nREASONING: argenx exhibits strong revenue growth and a promising pipeline focused on autoimmune diseases. VYVGART's success in gMG and ITP positions the company for continued expansion.  While currently expensive,  the forward P/E suggests future growth is priced in, and analyst targets are optimistic.  However, competition in the autoimmune space remains fierce and needs to be monitored.",
+      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 85\nBUY_SIGNAL: Buy\nREASONING: argenx demonstrates strong acceleration with over 62% revenue growth. VYVGART's success in treating gMG and ITP positions the company for continued expansion, supported by a positive analyst outlook and high institutional ownership. While the current valuation is elevated, future drug approvals and market penetration could justify the premium.",
       "ticker": "ARGX",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze ARGX and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: argenx SE (ARGX)\nargenx SE, a commercial-stage biopharma company, develops various therapies for the treatment of autoimmune diseases in the United States, Japan, China, the Netherlands, and internationally. The company offers VYVGART for the treatment of gMG and immune thrombocytopenia (ITP), and VYVGART HYTRULO fo\n\nFINANCIALS:\nPrice: 898.94\nRSI14: 67.5\nMA50: 809.91\n1d Change: 4.26%\n7d Change: 10.55%\n30d Change: 15.0%\nRevenue Growth: 62.6%\nGross Margin: 58.1%\nFCF: None\nP/E: 40.0\nForward P/E: 24.5\nROE: None%\nDebt/Equity: 0.6\nAnalyst Target: 1028.4586 (Upside: 14.4%)\nAnalyst Rec: strong_buy\nInstitutional %: 47.5%\n52w High: 934.62 | Price vs 52w High: 96.2%\nSector: Healthcare | Industry: Biotechnology\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
+      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze ARGX and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: argenx SE (ARGX)\nargenx SE, a commercial-stage biopharma company, develops various therapies for the treatment of autoimmune diseases in the United States, Japan, China, the Netherlands, and internationally. The company offers VYVGART for the treatment of gMG and immune thrombocytopenia (ITP), and VYVGART HYTRULO fo\n\nFINANCIALS:\nPrice: 898.94\nRSI14: 67.5\nMA50: 809.91\n1d Change: 4.26%\n7d Change: 10.55%\n30d Change: 15.0%\nRevenue Growth: 62.6%\nGross Margin: 58.1%\nFCF: None\nP/E: 40.0\nForward P/E: 24.5\nROE: None%\nDebt/Equity: 0.6\nAnalyst Target: 1027.6257 (Upside: 14.3%)\nAnalyst Rec: strong_buy\nInstitutional %: 47.5%\n52w High: 934.62 | Price vs 52w High: 96.2%\nSector: Healthcare | Industry: Biotechnology\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
       "stage": "Growth",
       "trajectory": "Accelerating",
       "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Strong Buy",
-      "reasoning": "argenx exhibits strong revenue growth and a promising pipeline focused on autoimmune diseases. VYVGART's success in gMG and ITP positions the company for continued expansion.  While currently expensive,  the forward P/E suggests future growth is priced in, and analyst targets are optimistic.  However, competition in the autoimmune space remains fierce and needs to be monitored."
+      "aiScore": 85,
+      "buySignal": "Buy",
+      "reasoning": "argenx demonstrates strong acceleration with over 62% revenue growth. VYVGART's success in treating gMG and ITP positions the company for continued expansion, supported by a positive analyst outlook and high institutional ownership. While the current valuation is elevated, future drug approvals and market penetration could justify the premium."
     },
     "BMNR": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 78\nBUY_SIGNAL: Buy\nREASONING: BMNR exhibits a strong accelerating trajectory with explosive revenue growth despite negative FCF.  This suggests the company is rapidly scaling operations and likely reinvesting heavily for future gains. The high analyst target price and low debt/equity ratio indicate strong market confidence and financial stability. While current financials are not perfect, the significant growth potential outweighs short-term concerns.",
       "ticker": "BMNR",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze BMNR and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: BitMine Immersion Technologies, (BMNR)\nBitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party p\n\nFINANCIALS:\nPrice: 16.52\nRSI14: 35.0\nMA50: 20.37\n1d Change: 5.63%\n7d Change: -2.25%\n30d Change: -22.8%\nRevenue Growth: 627.8%\nGross Margin: 66.6%\nFCF: -152525936\nP/E: None\nForward P/E: 17.6\nROE: -175.9%\nDebt/Equity: 0.0\nAnalyst Target: 37.33333 (Upside: 126.0%)\nAnalyst Rec: none\nInstitutional %: 37.3%\n52w High: 161.0 | Price vs 52w High: 10.3%\nSector: Financial Services | Industry: Capital Markets\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 78,
-      "buySignal": "Buy",
-      "reasoning": "BMNR exhibits a strong accelerating trajectory with explosive revenue growth despite negative FCF.  This suggests the company is rapidly scaling operations and likely reinvesting heavily for future gains. The high analyst target price and low debt/equity ratio indicate strong market confidence and financial stability. While current financials are not perfect, the significant growth potential outweighs short-term concerns."
+      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+      "aiScore": null,
+      "buySignal": "Unknown"
     },
     "OLA.TO": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Buy\nREASONING: Orla Mining is demonstrating strong growth with impressive revenue increases and a high ROE.  The Camino Rojo project has the potential to significantly contribute to future earnings, making this company attractive for growth investors. While current market conditions may present some headwinds, the positive analyst sentiment and institutional ownership suggest continued upward momentum.",
       "ticker": "OLA.TO",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze OLA.TO and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: ORLA MINING LTD (OLA.TO)\nOrla Mining Ltd. acquires, explores, develops, and exploits mineral properties. It explores gold, silver, zinc, lead, and copper deposits. The company owns 100% interests in the Camino Rojo project that consists of seven concessions covering an area of 138,636 hectares located in Zacatecas, Mexico; \n\nFINANCIALS:\nPrice: 14.44\nRSI14: 39.0\nMA50: 19.3\n1d Change: 5.87%\n7d Change: -7.08%\n30d Change: -18.78%\nRevenue Growth: 169.3%\nGross Margin: 68.7%\nFCF: 548109632\nP/E: 14.4\nForward P/E: 6.4\nROE: 42.0%\nDebt/Equity: 42.5\nAnalyst Target: 31.923561 (Upside: 121.1%)\nAnalyst Rec: buy\nInstitutional %: 70.2%\n52w High: 29.99 | Price vs 52w High: 48.1%\nSector: Basic Materials | Industry: Gold\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Buy",
-      "reasoning": "Orla Mining is demonstrating strong growth with impressive revenue increases and a high ROE.  The Camino Rojo project has the potential to significantly contribute to future earnings, making this company attractive for growth investors. While current market conditions may present some headwinds, the positive analyst sentiment and institutional ownership suggest continued upward momentum."
-    },
-    "TNXP": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 75\nBUY_SIGNAL: Buy\nREASONING:  Tonix Pharmaceuticals exhibits strong growth with impressive revenue expansion. While financials are still developing, the company has a product on the market and positive analyst sentiment with a significant upside potential. Key catalysts include FDA approvals for additional indications of TONMYA and the progress of their other pipeline drugs. The current price dip might present a buying opportunity for investors with a longer-term horizon.",
-      "ticker": "TNXP",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze TNXP and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Tonix Pharmaceuticals Holding C (TNXP)\nTonix Pharmaceuticals Holding Corp., a fully integrated biopharmaceutical company, develops and commercializes therapies for central nervous system (CNS) disorders, immunology and immuno-oncology, infectious diseases, and rare diseases in the United States. The company offers TONMYA, a cyclobenzapri\n\nFINANCIALS:\nPrice: 10.65\nRSI14: 24.5\nMA50: 13.09\n1d Change: -2.83%\n7d Change: -6.58%\n30d Change: -17.63%\nRevenue Growth: 183.2%\nGross Margin: 58.6%\nFCF: -76727872\nP/E: None\nForward P/E: -1.4\nROE: -72.3%\nDebt/Equity: 0.6\nAnalyst Target: 46.25 (Upside: 334.3%)\nAnalyst Rec: strong_buy\nInstitutional %: 41.4%\n52w High: 69.97 | Price vs 52w High: 15.2%\nSector: Healthcare | Industry: Biotechnology\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 75,
-      "buySignal": "Buy",
-      "reasoning": "Tonix Pharmaceuticals exhibits strong growth with impressive revenue expansion. While financials are still developing, the company has a product on the market and positive analyst sentiment with a significant upside potential. Key catalysts include FDA approvals for additional indications of TONMYA and the progress of their other pipeline drugs. The current price dip might present a buying opportunity for investors with a longer-term horizon."
-    },
-    "NSP": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Neutral\nSCORE: 65\nBUY_SIGNAL: Hold\nREASONING: While Insperity shows strong recent price performance and a positive Analyst Target, the high Debt/Equity ratio and negative ROE raise concerns.  The P/E of 13.5 suggests future growth is priced in, making it less attractive for aggressive buying. Further improvement in financial metrics and clarity on future growth drivers would strengthen the investment case.",
-      "ticker": "NSP",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze NSP and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Insperity, Inc. (NSP)\nInsperity, Inc. engages in the provision of human resources (HR) and business solutions to improve business performance for small and medium-sized businesses primarily in the United States. It offers Insperity HR360 solution, a full-service PEO solution delivering HR technology, compliance, and stra\n\nFINANCIALS:\nPrice: 37.68\nRSI14: 72.7\nMA50: 31.07\n1d Change: 1.84%\n7d Change: 14.18%\n30d Change: 7.86%\nRevenue Growth: 1.7%\nGross Margin: 13.0%\nFCF: 85000000\nP/E: None\nForward P/E: 13.5\nROE: -26.9%\nDebt/Equity: 641.8\nAnalyst Target: 39.5 (Upside: 4.8%)\nAnalyst Rec: hold\nInstitutional %: 111.7%\n52w High: 63.3 | Price vs 52w High: 59.5%\nSector: Industrials | Industry: Staffing & Employment Services\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Neutral",
-      "aiScore": 65,
-      "buySignal": "Hold",
-      "reasoning": "While Insperity shows strong recent price performance and a positive Analyst Target, the high Debt/Equity ratio and negative ROE raise concerns.  The P/E of 13.5 suggests future growth is priced in, making it less attractive for aggressive buying. Further improvement in financial metrics and clarity on future growth drivers would strengthen the investment case."
-    },
-    "DOL.TO": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Buy\nREASONING: Dollararama is experiencing strong revenue growth and expanding into new markets, indicating an accelerating trajectory.  While its valuation is high, the company's low debt/equity ratio and consistently positive FCF suggest sustainable growth.  Risks include inflation impacting consumer spending and increased competition in discount retail. However, Dollarama's value proposition and brand loyalty present a compelling case for continued investment.",
-      "ticker": "DOL.TO",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze DOL.TO and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: DOLLARAMA INC (DOL.TO)\nDollarama Inc. operates a chain of stores and provides related logistical and administrative support activities. Its stores offer general merchandise, consumables, and seasonal products. The company operates in Canada, Latin America, Colombia, Peru, Australia, and Mexico. It also sells its products \n\nFINANCIALS:\nPrice: 195.76\nRSI14: 71.2\nMA50: 174.78\n1d Change: 9.02%\n7d Change: 11.81%\n30d Change: 12.76%\nRevenue Growth: 11.7%\nGross Margin: 45.0%\nFCF: 1162095104\nP/E: 41.5\nForward P/E: 33.6\nROE: 99.0%\nDebt/Equity: 370.6\nAnalyst Target: 197.8125 (Upside: 1.0%)\nAnalyst Rec: buy\nInstitutional %: 45.7%\n52w High: 209.96 | Price vs 52w High: 93.2%\nSector: Consumer Defensive | Industry: Discount Stores\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Buy",
-      "reasoning": "Dollararama is experiencing strong revenue growth and expanding into new markets, indicating an accelerating trajectory.  While its valuation is high, the company's low debt/equity ratio and consistently positive FCF suggest sustainable growth.  Risks include inflation impacting consumer spending and increased competition in discount retail. However, Dollarama's value proposition and brand loyalty present a compelling case for continued investment."
-    },
-    "AI": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Neutral\nSCORE: 62\nBUY_SIGNAL: Hold\nREASONING: While C3.ai is showing positive momentum with recent price increases and analyst upgrades, its financial performance remains concerning with substantial revenue decline and negative FCF. However, the company's focus on enterprise AI applications in a growing market suggests potential for future growth.  Continued improvement in financial metrics and successful adoption of its platform are key catalysts to watch.",
-      "ticker": "AI",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze AI and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: C3.ai, Inc. (AI)\nC3.ai, Inc. operates as an enterprise artificial intelligence application software company. The company offers C3 agentic AI platform, an application development and runtime environment that enables customers to design, develop, and deploy enterprise AI applications; C3 AI CRM Suite, a customer rela\n\nFINANCIALS:\nPrice: 11.27\nRSI14: 70.8\nMA50: 9.42\n1d Change: 4.35%\n7d Change: 5.23%\n30d Change: 27.63%\nRevenue Growth: -52.5%\nGross Margin: 31.4%\nFCF: -20899750\nP/E: None\nForward P/E: -25.0\nROE: -63.0%\nDebt/Equity: 8.3\nAnalyst Target: 8.81818 (Upside: -21.8%)\nAnalyst Rec: hold\nInstitutional %: 63.9%\n52w High: 30.11 | Price vs 52w High: 37.4%\nSector: Technology | Industry: Software - Infrastructure\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Neutral",
-      "aiScore": 62,
-      "buySignal": "Hold",
-      "reasoning": "While C3.ai is showing positive momentum with recent price increases and analyst upgrades, its financial performance remains concerning with substantial revenue decline and negative FCF. However, the company's focus on enterprise AI applications in a growing market suggests potential for future growth.  Continued improvement in financial metrics and successful adoption of its platform are key catalysts to watch."
-    },
-    "NTRA": {
-      "ticker": "NTRA",
       "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
       "aiScore": null,
       "buySignal": "Unknown"
-    },
-    "RL": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Buy\nREASONING: Ralph Lauren demonstrates strong revenue growth and a healthy gross margin, indicating an accelerating trajectory in a favorable consumer cyclical sector.  While the company's debt/equity ratio is high, its recent share price performance and analyst targets suggest continued investor confidence.  The macro environment remains supportive with low unemployment and steady GDP growth.",
-      "ticker": "RL",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze RL and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Ralph Lauren Corporation (RL)\nRalph Lauren Corporation designs, markets, and distributes lifestyle products in North America, Europe, Asia, and internationally. The company offers apparel, including a range of men's, women's, and children's clothing; footwear and accessories, which comprise casual shoes, dress shoes, boots, snea\n\nFINANCIALS:\nPrice: 393.3\nRSI14: 59.4\nMA50: 363.71\n1d Change: 4.48%\n7d Change: 9.42%\n30d Change: 9.66%\nRevenue Growth: 16.6%\nGross Margin: 69.9%\nFCF: 656187520\nP/E: 26.1\nForward P/E: 19.3\nROE: 34.7%\nDebt/Equity: 105.9\nAnalyst Target: 427.0 (Upside: 8.6%)\nAnalyst Rec: buy\nInstitutional %: 108.1%\n52w High: 395.155 | Price vs 52w High: 99.5%\nSector: Consumer Cyclical | Industry: Apparel Manufacturing\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Buy",
-      "reasoning": "Ralph Lauren demonstrates strong revenue growth and a healthy gross margin, indicating an accelerating trajectory in a favorable consumer cyclical sector.  While the company's debt/equity ratio is high, its recent share price performance and analyst targets suggest continued investor confidence.  The macro environment remains supportive with low unemployment and steady GDP growth."
-    },
-    "LYB": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Decelerating\nSENTIMENT: Neutral\nSCORE: 62\nBUY_SIGNAL: Hold\nREASONING: While LYB has a strong financial position with significant FCF, its revenue growth is declining and profitability metrics are weak.  The recent price dip suggests market concerns about the company's future performance. Although analysts maintain a \"Hold\" rating and predict upside potential, the decelerating trajectory and lack of recent positive news warrant caution. A closer look at upcoming earnings reports and strategic initiatives would be needed to justify a stronger buy signal.",
-      "ticker": "LYB",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze LYB and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: LyondellBasell Industries NV (LYB)\nLyondellBasell Industries N.V. operates as a chemical company in the United States, Germany, China, Mexico, Italy, Japan, France, Poland, the Netherlands, and internationally. It operates in five segments: Olefins and Polyolefins\u0097Americas; Olefins and Polyolefins\u0097Europe, Asia, International; Interme\n\nFINANCIALS:\nPrice: 63.47\nRSI14: 27.3\nMA50: 70.91\n1d Change: -2.58%\n7d Change: -5.69%\n30d Change: -14.03%\nRevenue Growth: -6.3%\nGross Margin: 9.2%\nFCF: 987000000\nP/E: None\nForward P/E: 8.4\nROE: -6.0%\nDebt/Equity: 141.2\nAnalyst Target: 79.88235 (Upside: 25.9%)\nAnalyst Rec: hold\nInstitutional %: 78.1%\n52w High: 83.94 | Price vs 52w High: 75.6%\nSector: Basic Materials | Industry: Specialty Chemicals\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Decelerating",
-      "sentiment": "Neutral",
-      "aiScore": 62,
-      "buySignal": "Hold",
-      "reasoning": "While LYB has a strong financial position with significant FCF, its revenue growth is declining and profitability metrics are weak.  The recent price dip suggests market concerns about the company's future performance. Although analysts maintain a \"Hold\" rating and predict upside potential, the decelerating trajectory and lack of recent positive news warrant caution. A closer look at upcoming earnings reports and strategic initiatives would be needed to justify a stronger buy signal."
-    },
-    "HCA": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Buy\nREASONING: HCA Healthcare shows accelerating growth with expanding revenue despite macroeconomic headwinds. The company's focus on cost-efficiency and strategic acquisitions positions it well for continued market share gains.  While the current valuation is elevated, analysts predict significant upside potential, making it a compelling buy for long-term investors.",
-      "ticker": "HCA",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze HCA and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: HCA Healthcare, Inc. (HCA)\nHCA Healthcare, Inc., through its subsidiaries, provides health care services in the United States. The company owns, manages, and operates hospitals, ASCs, freestanding emergency care facilities, urgent care facilities, walk-in clinics, diagnostic and imaging centers, radiation and oncology therapy\n\nFINANCIALS:\nPrice: 378.51\nRSI14: 40.7\nMA50: 431.23\n1d Change: 1.38%\n7d Change: 4.21%\n30d Change: -12.88%\nRevenue Growth: 4.3%\nGross Margin: 41.6%\nFCF: 5726000128\nP/E: 13.0\nForward P/E: 11.4\nROE: None%\nDebt/Equity: None\nAnalyst Target: 503.57144 (Upside: 33.0%)\nAnalyst Rec: buy\nInstitutional %: 78.3%\n52w High: 556.52 | Price vs 52w High: 68.0%\nSector: Healthcare | Industry: Medical Care Facilities\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Buy",
-      "reasoning": "HCA Healthcare shows accelerating growth with expanding revenue despite macroeconomic headwinds. The company's focus on cost-efficiency and strategic acquisitions positions it well for continued market share gains.  While the current valuation is elevated, analysts predict significant upside potential, making it a compelling buy for long-term investors."
-    },
-    "MKTX": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Decelerating\nSENTIMENT: Bullish\nSCORE: 72\nBUY_SIGNAL: Hold\nREASONING: While MarketAxess has a strong track record of revenue growth and profitability, recent performance indicators like the declining share price and negative FCF suggest deceleration.  However, the high analyst target price and institutional ownership indicate continued belief in the company's long-term potential. The current valuation might present a good entry point for investors with a longer time horizon, but further monitoring of the company's financial performance is necessary.",
-      "ticker": "MKTX",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze MKTX and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: MarketAxess Holdings, Inc. (MKTX)\nMarketAxess Holdings Inc., together with its subsidiaries, operates an electronic trading platform for institutional investor and broker-dealer firms in the United States, the United Kingdom, and internationally. The company offers trading technology to access liquidity on its platforms in U.S. high\n\nFINANCIALS:\nPrice: 116.33\nRSI14: 8.5\nMA50: 148.07\n1d Change: 0.19%\n7d Change: -5.41%\n30d Change: -25.58%\nRevenue Growth: 11.9%\nGross Margin: 62.1%\nFCF: -253787120\nP/E: 13.8\nForward P/E: 13.0\nROE: 24.3%\nDebt/Equity: 24.3\nAnalyst Target: 184.45454 (Upside: 58.6%)\nAnalyst Rec: buy\nInstitutional %: 112.1%\n52w High: 228.16 | Price vs 52w High: 51.0%\nSector: Financial Services | Industry: Capital Markets\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Decelerating",
-      "sentiment": "Bullish",
-      "aiScore": 72,
-      "buySignal": "Hold",
-      "reasoning": "While MarketAxess has a strong track record of revenue growth and profitability, recent performance indicators like the declining share price and negative FCF suggest deceleration.  However, the high analyst target price and institutional ownership indicate continued belief in the company's long-term potential. The current valuation might present a good entry point for investors with a longer time horizon, but further monitoring of the company's financial performance is necessary."
-    },
-    "CBOE": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Stable \nSENTIMENT: Neutral\nSCORE: 65\nBUY_SIGNAL: Hold\nREASONING: Cboe exhibits stable performance with consistent revenue growth and strong profitability.  While the company benefits from a growing derivatives market, its valuation appears stretched relative to recent performance. Further catalysts are needed for a stronger upward trajectory before considering a \"Buy\" signal. The current macroeconomic environment with rising interest rates could also pose challenges to growth in the near term.",
-      "ticker": "CBOE",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze CBOE and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Cboe Global Markets, Inc. (CBOE)\nCboe Global Markets, Inc., through its subsidiaries, operates as a derivatives and securities exchange network that delivers cutting-edge trading, clearing, and investment solutions in the United States and internationally. It operates through five segments: Options, North American Equities, Europe \n\nFINANCIALS:\nPrice: 295.9\nRSI14: 28.5\nMA50: 317.31\n1d Change: -1.72%\n7d Change: 3.79%\n30d Change: -1.19%\nRevenue Growth: 6.5%\nGross Margin: 54.1%\nFCF: 1003075008\nP/E: 25.3\nForward P/E: 20.1\nROE: 25.1%\nDebt/Equity: 29.5\nAnalyst Target: 328.0 (Upside: 10.8%)\nAnalyst Rec: hold\nInstitutional %: 91.8%\n52w High: 371.18 | Price vs 52w High: 79.7%\nSector: Financial Services | Industry: Financial Data & Stock Exchanges\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Stable",
-      "sentiment": "Neutral",
-      "aiScore": 65,
-      "buySignal": "Hold",
-      "reasoning": "Cboe exhibits stable performance with consistent revenue growth and strong profitability.  While the company benefits from a growing derivatives market, its valuation appears stretched relative to recent performance. Further catalysts are needed for a stronger upward trajectory before considering a \"Buy\" signal. The current macroeconomic environment with rising interest rates could also pose challenges to growth in the near term."
-    },
-    "UHS": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 78\nBUY_SIGNAL: Buy\nREASONING: UHS demonstrates strong revenue growth (9.6%) and a high ROE (21.4%), indicating its expansion and profitability. While the recent price dip might seem concerning, it presents a potential buying opportunity given the analyst's bullish target price and positive earnings trajectory.  UHS could benefit from continued demand in healthcare services and its focus on outpatient care.",
-      "ticker": "UHS",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze UHS and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Universal Health Services, Inc. (UHS)\nUniversal Health Services, Inc., through its subsidiaries, owns and operates acute care hospitals, and outpatient and behavioral health care facilities in the United States. It operates through Acute Care Hospital Services and Behavioral Health Care Services segments. The company's hospitals offer g\n\nFINANCIALS:\nPrice: 146.05\nRSI14: 28.6\nMA50: 166.5\n1d Change: 0.85%\n7d Change: 0.19%\n30d Change: -13.09%\nRevenue Growth: 9.6%\nGross Margin: 44.2%\nFCF: 650819008\nP/E: 6.1\nForward P/E: 5.8\nROE: 21.4%\nDebt/Equity: 67.4\nAnalyst Target: 215.76471 (Upside: 47.7%)\nAnalyst Rec: buy\nInstitutional %: 101.4%\n52w High: 246.33 | Price vs 52w High: 59.3%\nSector: Healthcare | Industry: Medical Care Facilities\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 78,
-      "buySignal": "Buy",
-      "reasoning": "UHS demonstrates strong revenue growth (9.6%) and a high ROE (21.4%), indicating its expansion and profitability. While the recent price dip might seem concerning, it presents a potential buying opportunity given the analyst's bullish target price and positive earnings trajectory.  UHS could benefit from continued demand in healthcare services and its focus on outpatient care."
-    },
-    "ASTS": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 75\nBUY_SIGNAL: Hold \nREASONING: AST SpaceMobile shows rapid revenue growth and a novel approach to cellular broadband. While the company is still pre-profit, its  BlueBird satellite constellation technology has the potential to disrupt the telecom landscape. However, significant capital expenditure requirements and regulatory hurdles pose risks. Its current valuation appears high, warranting a hold recommendation until further progress is demonstrated and market sentiment shifts more decisively bullish.",
-      "ticker": "ASTS",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze ASTS and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: AST SpaceMobile, Inc. (ASTS)\nAST SpaceMobile, Inc., together with its subsidiaries, designs and develops the constellation of BlueBird satellites in the United States. The company provides a cellular broadband network in space to be accessible directly by smartphones for commercial use and other applications, as well as for gov\n\nFINANCIALS:\nPrice: 97.56\nRSI14: 50.6\nMA50: 89.27\n1d Change: 11.73%\n7d Change: -9.44%\n30d Change: 32.02%\nRevenue Growth: 1952.2%\nGross Margin: 44.8%\nFCF: -1412748416\nP/E: None\nForward P/E: -475.4\nROE: -37.8%\nDebt/Equity: 112.4\nAnalyst Target: 81.46667 (Upside: -16.5%)\nAnalyst Rec: hold\nInstitutional %: 47.0%\n52w High: 133.86 | Price vs 52w High: 72.9%\nSector: Technology | Industry: Communication Equipment\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 75,
-      "buySignal": "Hold",
-      "reasoning": "AST SpaceMobile shows rapid revenue growth and a novel approach to cellular broadband. While the company is still pre-profit, its  BlueBird satellite constellation technology has the potential to disrupt the telecom landscape. However, significant capital expenditure requirements and regulatory hurdles pose risks. Its current valuation appears high, warranting a hold recommendation until further progress is demonstrated and market sentiment shifts more decisively bullish."
-    },
-    "ONDS": {
-      "ticker": "ONDS",
-      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
-      "aiScore": null,
-      "buySignal": "Unknown"
-    },
-    "POET": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 78\nBUY_SIGNAL: Buy\nREASONING: POET demonstrates a strong accelerating trajectory with explosive revenue growth.  While profitability remains a concern, the high gross margin and analyst target suggest strong future potential. The company's focus on niche semiconductor applications could position it for success in a rapidly evolving market. However, investors should monitor cash burn and competition closely before committing significant capital.",
-      "ticker": "POET",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze POET and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: POET Technologies Inc. (POET)\nPOET Technologies Inc., together with its subsidiaries, designs, develops, manufactures, and sells semiconductor products and services for commercial applications in the United States, Canada, the rest of North and South America, Europe, Malaysia, Singapore, China, and the rest of Asia. The company \n\nFINANCIALS:\nPrice: 11.25\nRSI14: 35.0\nMA50: 10.77\n1d Change: 2.46%\n7d Change: -26.85%\n30d Change: 58.01%\nRevenue Growth: 201.9%\nGross Margin: 100.0%\nFCF: -42376272\nP/E: None\nForward P/E: -66.2\nROE: -33.9%\nDebt/Equity: 1.6\nAnalyst Target: 17.5 (Upside: 55.6%)\nAnalyst Rec: strong_buy\nInstitutional %: 25.5%\n52w High: 20.81 | Price vs 52w High: 54.1%\nSector: Technology | Industry: Semiconductors\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 78,
-      "buySignal": "Buy",
-      "reasoning": "POET demonstrates a strong accelerating trajectory with explosive revenue growth.  While profitability remains a concern, the high gross margin and analyst target suggest strong future potential. The company's focus on niche semiconductor applications could position it for success in a rapidly evolving market. However, investors should monitor cash burn and competition closely before committing significant capital."
-    },
-    "RFL": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 72\nBUY_SIGNAL: Buy\nREASONING: RFL exhibits strong accelerating growth with a  174% revenue increase. Despite low current financials and a high RSI, the significant recent price gains and positive news flow suggest investor confidence. While risks like a dependence on early-stage ventures exist, its potential in pharmaceutical and infusion technology could drive future value.",
-      "ticker": "RFL",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze RFL and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Rafael Holdings, Inc. (RFL)\nRafael Holdings, Inc. primarily engages in holding interests in clinical and early-stage pharmaceutical companies, and medical devices in the United States and Israel. It operates in three segments, Healthcare, Infusion Technology, and Real Estate. The company engages in the development and commerci\n\nFINANCIALS:\nPrice: 2.12\nRSI14: 81.6\nMA50: 1.34\n1d Change: 19.1%\n7d Change: 57.04%\n30d Change: 66.93%\nRevenue Growth: 174.0%\nGross Margin: 93.1%\nFCF: 184250\nP/E: None\nForward P/E: None\nROE: -41.4%\nDebt/Equity: 0.8\nAnalyst Target: None (Upside: None%)\nAnalyst Rec: none\nInstitutional %: 7.3%\n52w High: 2.649 | Price vs 52w High: 80.0%\nSector: Real Estate | Industry: Real Estate Services\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 72,
-      "buySignal": "Buy",
-      "reasoning": "RFL exhibits strong accelerating growth with a  174% revenue increase. Despite low current financials and a high RSI, the significant recent price gains and positive news flow suggest investor confidence. While risks like a dependence on early-stage ventures exist, its potential in pharmaceutical and infusion technology could drive future value."
-    },
-    "CDE": {
-      "raw": "STAGE: Growth \nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 82\nBUY_SIGNAL: Buy\nREASONING: Coeur Mining exhibits strong accelerating trajectory with impressive revenue growth and a favorable forward P/E ratio. The company's focus on gold and silver production aligns well with current market conditions and analyst targets suggest substantial upside potential. While its high debt-to-equity ratio warrants monitoring, the overall positive fundamentals and bullish sentiment make it a compelling buy candidate.",
-      "ticker": "CDE",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze CDE and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: Coeur Mining, Inc. (CDE)\nCoeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its \n\nFINANCIALS:\nPrice: 16.4\nRSI14: 42.3\nMA50: 18.51\n1d Change: 6.42%\n7d Change: -9.64%\n30d Change: -8.63%\nRevenue Growth: 137.8%\nGross Margin: 58.4%\nFCF: 508452640\nP/E: 13.2\nForward P/E: 7.7\nROE: 12.1%\nDebt/Equity: 7.4\nAnalyst Target: 27.25 (Upside: 66.2%)\nAnalyst Rec: buy\nInstitutional %: 79.6%\n52w High: 27.77 | Price vs 52w High: 59.1%\nSector: Basic Materials | Industry: Gold\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 82,
-      "buySignal": "Buy",
-      "reasoning": "Coeur Mining exhibits strong accelerating trajectory with impressive revenue growth and a favorable forward P/E ratio. The company's focus on gold and silver production aligns well with current market conditions and analyst targets suggest substantial upside potential. While its high debt-to-equity ratio warrants monitoring, the overall positive fundamentals and bullish sentiment make it a compelling buy candidate."
     }
   },
-  "aiAnalyzedAt": "2026-06-11 21:53 EDT",
+  "aiAnalyzedAt": "2026-06-11 23:06 EDT",
   "lastRecommend": {
     "buys": [
       {
@@ -1537,5 +1361,447 @@
       }
     ]
   },
-  "signalForecastAt": "2026-06-11 17:53 EDT"
+  "signalForecastAt": "2026-06-11 22:45 EDT",
+  "rsiHistory": {
+    "CRDO": [
+      {
+        "rsi": 61.7,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 58.7,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 64.2,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 64.7,
+        "ts": "2026-06-12 13:18 EDT"
+      },
+      {
+        "rsi": 63.7,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "ARGX": [
+      {
+        "rsi": 71.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 71.4,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 71.6,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 71.4,
+        "ts": "2026-06-12 13:18 EDT"
+      },
+      {
+        "rsi": 69.1,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "BMNR": [
+      {
+        "rsi": 36.6,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 36.8,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 37.6,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 36.6,
+        "ts": "2026-06-12 13:18 EDT"
+      },
+      {
+        "rsi": 36.4,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "OLA.TO": [
+      {
+        "rsi": 34.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 32.0,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-12 13:18 EDT"
+      },
+      {
+        "rsi": 35.7,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "TNXP": [
+      {
+        "rsi": 34.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 35.5,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 36.7,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 37.1,
+        "ts": "2026-06-12 13:18 EDT"
+      },
+      {
+        "rsi": 36.4,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "NSP": [
+      {
+        "rsi": 64.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 64.6,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 65.0,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 65.9,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 64.0,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "DOL.TO": [
+      {
+        "rsi": 71.0,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 69.7,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 69.7,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 66.8,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 63.6,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "AI": [
+      {
+        "rsi": 64.1,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 65.3,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 66.8,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 67.1,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 66.1,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "NTRA": [
+      {
+        "rsi": 59.1,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 58.2,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 58.3,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 56.4,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 55.7,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "RL": [
+      {
+        "rsi": 59.8,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 61.3,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 62.2,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 61.9,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 62.8,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "LYB": [
+      {
+        "rsi": 31.7,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 34.9,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 32.6,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 30.9,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 33.0,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "HCA": [
+      {
+        "rsi": 41.9,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 43.8,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 44.6,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 45.6,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 46.8,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "MKTX": [
+      {
+        "rsi": 12.8,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 17.1,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 17.5,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 17.1,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 20.0,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "CBOE": [
+      {
+        "rsi": 24.9,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 25.6,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 26.2,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 25.3,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 25.7,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "UHS": [
+      {
+        "rsi": 32.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 33.7,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 33.0,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 34.8,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 35.2,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "ASTS": [
+      {
+        "rsi": 42.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 41.5,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 41.5,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 41.3,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 40.9,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "ONDS": [
+      {
+        "rsi": 51.7,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 51.4,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 52.0,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 52.4,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 51.5,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "POET": [
+      {
+        "rsi": 41.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 41.3,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 42.8,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 41.5,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "RFL": [
+      {
+        "rsi": 84.2,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 84.7,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 84.2,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 84.0,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 83.8,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ],
+    "CDE": [
+      {
+        "rsi": 46.4,
+        "ts": "2026-06-12 10:07 EDT"
+      },
+      {
+        "rsi": 44.2,
+        "ts": "2026-06-12 10:49 EDT"
+      },
+      {
+        "rsi": 47.1,
+        "ts": "2026-06-12 11:35 EDT"
+      },
+      {
+        "rsi": 48.2,
+        "ts": "2026-06-12 13:19 EDT"
+      },
+      {
+        "rsi": 48.0,
+        "ts": "2026-06-12 15:27 EDT"
+      }
+    ]
+  }
 }
