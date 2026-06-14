@@ -904,59 +904,6 @@ def api_market_alert():
 # ── END MARKET ALERT ───────────────────────────────────────────────────────────
 
 
-@app.route("/macro/ai", methods=["GET","POST"])
-def macro_ai():
-    try:
-        data = load_json(MACRO_PATH, {})
-        if not data:
-            return jsonify({"error": "No macro data. Run a refresh first."})
-        indicators = data.get("indicators", {})
-        headlines  = data.get("headlines", [])
-        fetched_at = data.get("fetchedAt", "unknown")
-
-        # Build prompt for Ollama
-        ind_lines = []
-        for k, v in indicators.items():
-            if v.get("value") is None:
-                continue
-            unit = v.get("unit","")
-            chg  = f" (chg: {v['change']:+.2f}{unit})" if v.get("change") is not None else ""
-            ind_lines.append(f"- {v['label']}: {v['value']}{unit}{chg} as of {v.get('date','?')}")
-
-        headline_lines = [f"- {h['title']} ({h['source']})" for h in headlines[:8]]
-
-        ind_block = "\n".join(ind_lines)
-        hl_block  = "\n".join(headline_lines) if headline_lines else "None available"
-        prompt = (
-            "You are a macro-economic analyst. Based on the following current macro indicators and market headlines, "
-            "provide a concise analysis of the current market environment. "
-            "Focus on: (1) what these indicators signal for equity markets, "
-            "(2) key risks and opportunities, "
-            "(3) sectors likely to benefit or suffer. "
-            "Keep the response under 250 words, structured with short paragraphs."
-            "\n\nMACRO INDICATORS:\n" + ind_block +
-            "\n\nRECENT HEADLINES:\n" + hl_block +
-            "\n\nAnalysis:"
-        )
-
-        import requests as req
-        resp = req.post("http://localhost:11434/api/generate",
-            json={"model": "gemma2:9b", "prompt": prompt, "stream": False},
-            timeout=120
-        )
-        result = resp.json().get("response", "").strip()
-        now_ts = ts()
-
-        # Save AI summary back to macro.json
-        data["aiSummary"] = result
-        data["aiSummaryAt"] = now_ts
-        save_json(MACRO_PATH, data)
-
-        log.info(f"Macro AI summary generated: {now_ts} | {len(result)} chars")
-        return jsonify({"summary": result, "generatedAt": now_ts})
-    except Exception as e:
-        log.error(f"Macro AI FAIL: {e}")
-        return jsonify({"error": str(e)})
 
 
 
@@ -1694,6 +1641,9 @@ def run_tradeai_fetch():
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
         fetch_status = {"running": False, "message": f"TradeAI fetch done: {len(details)} tickers enriched", "operation": None, "current": total, "total": total, "current_ticker": ""}
         log.info(f"=== TradeAI Fetch Complete: {len(details)} tickers ===")
+        # Auto-refresh macro data after fetch completes
+        log.info("=== Auto-triggering Macro Refresh after TradeAI Fetch ===")
+        run_macro_refresh()
     except Exception as e:
         log.error(f"TradeAI fetch runner FAIL: {e}")
         fetch_status = {"running": False, "message": f"TradeAI fetch FAIL: {e}", "operation": None, "current": 0, "total": total, "current_ticker": ""}
@@ -2096,6 +2046,9 @@ def get_tradeai():
             "purchasePrice": purchase_price, "currentPrice": current_price,
             "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
             "purchasedAt": pos.get("purchasedAt"),
+            "change1d": detail.get("change1d"),
+            "change2d": detail.get("change2d"),
+            "change3d": detail.get("change3d"),
         })
 
     # Build news timestamp map for all identified tickers
@@ -2132,6 +2085,7 @@ def get_tradeai():
         "lastRecommend": candidates.get("lastRecommend"),
         "identifiedAt":       candidates.get("identifiedAt"),
         "detailsFetchedAt":   candidates.get("detailsFetchedAt"),
+        "macroFetchedAt":     load_json(MACRO_PATH, {}).get("fetchedAt"),
         "signalForecastAt":   candidates.get("signalForecastAt"),
         "aiAnalyzedAt":       candidates.get("aiAnalyzedAt"),
         "newsTsMap":          news_ts_map,

@@ -1133,10 +1133,14 @@ def fetch_trade_detail(ticker):
             log.warning(f"fetch_trade_detail BB FAIL: {ticker} | {e}")
 
         # Price changes
-        change1d = change7d = change30d = None
+        change1d = change2d = change3d = change7d = change30d = None
         try:
             if len(hist) >= 2:
                 change1d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2] * 100, 2)
+            if len(hist) >= 3:
+                change2d = round((hist['Close'].iloc[-2] - hist['Close'].iloc[-3]) / hist['Close'].iloc[-3] * 100, 2)
+            if len(hist) >= 4:
+                change3d = round((hist['Close'].iloc[-3] - hist['Close'].iloc[-4]) / hist['Close'].iloc[-4] * 100, 2)
             if len(hist) >= 7:
                 change7d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-7]) / hist['Close'].iloc[-7] * 100, 2)
             if len(hist) >= 30:
@@ -1218,6 +1222,8 @@ def fetch_trade_detail(ticker):
             "ma50": ma50,
             "bbPercent": bb_percent,
             "change1d": change1d,
+            "change2d": change2d,
+            "change3d": change3d,
             "change7d": change7d,
             "change30d": change30d,
             "revenueGrowth": round(revenue_growth * 100, 1) if revenue_growth is not None else None,
@@ -1277,18 +1283,33 @@ def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model
     else:
         news_block = "No recent news available."
 
-    # Build macro block
+    # Build macro block — full raw indicators + headlines (no AI summary)
     macro_block = ""
     if macro:
         indicators = macro.get("indicators", {})
         macro_lines = []
-        for k, v in list(indicators.items())[:8]:
-            val = v.get("value") if isinstance(v, dict) else v
-            macro_lines.append(f"- {k}: {val}")
+        for k, v in indicators.items():
+            if isinstance(v, dict):
+                val  = v.get("value")
+                chg  = v.get("change")
+                lbl  = v.get("label", k)
+                unit = v.get("unit", "")
+                if val is not None:
+                    chg_str = f" (chg: {chg:+.2f}{unit})" if chg is not None else ""
+                    macro_lines.append(f"- {lbl}: {val}{unit}{chg_str}")
+            else:
+                if v is not None:
+                    macro_lines.append(f"- {k}: {v}")
         macro_block = "\n".join(macro_lines) if macro_lines else "No macro data."
-        macro_summary = macro.get("aiSummary", "")
-        if macro_summary:
-            macro_block += f"\nMacro AI Summary: {macro_summary[:400]}"
+        headlines = macro.get("headlines", [])
+        if headlines:
+            macro_block += "\n\nMarket Headlines:\n" + "\n".join(
+                f"- [{h.get('publishedAt','')[:10]}] {h.get('title','')} ({h.get('source','')})"
+                for h in headlines[:5]
+            )
+        fetched_at = macro.get("fetchedAt", "")
+        if fetched_at:
+            macro_block = f"[Macro data as of {fetched_at}]\n" + macro_block
     else:
         macro_block = "No macro data available."
 

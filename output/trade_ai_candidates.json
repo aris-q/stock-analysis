@@ -121,36 +121,38 @@
       "bucket": "SmartMoney"
     }
   ],
-  "identifiedAt": "2026-06-11 22:29 EDT",
+  "identifiedAt": "2026-06-14 13:51 EDT",
   "details": {
     "CRDO": {
       "ticker": "CRDO",
       "name": "Credo Technology Group Holding ",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "price": 253.51,
-      "marketCap": 46759903232,
-      "volume": 7243491,
-      "rsi14": 63.7,
-      "ma20": 215.0,
-      "ma50": 185.41,
-      "bbPercent": 0.845,
-      "change1d": -4.25,
-      "change7d": 16.56,
-      "change30d": 37.49,
+      "price": 250.81,
+      "marketCap": 46261886976,
+      "volume": 9028913,
+      "rsi14": 62.4,
+      "ma20": 214.87,
+      "ma50": 185.35,
+      "bbPercent": 0.824,
+      "change1d": -5.27,
+      "change2d": 11.39,
+      "change3d": 1.43,
+      "change7d": 15.31,
+      "change30d": 36.03,
       "revenueGrowth": 157.0,
       "grossMargin": 68.0,
       "fcf": null,
-      "peRatio": 138.5,
-      "forwardPE": 29.2,
+      "peRatio": 137.1,
+      "forwardPE": 28.9,
       "eps": 1.83,
       "debtToEquity": 1.0,
       "returnOnEquity": 34.4,
-      "week52High": 270.2117,
-      "week52Low": 72.03,
-      "priceVs52wHigh": 93.8,
+      "week52High": 270.212,
+      "week52Low": 75.505,
+      "priceVs52wHigh": 92.8,
       "analystTarget": 256.30304,
-      "analystUpside": 1.1,
+      "analystUpside": 2.2,
       "recommendation": "strong_buy",
       "institutionalPct": 76.6,
       "insiderPct": 11.1,
@@ -159,36 +161,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Credo Technology Group Holding Ltd provides various high-speed connectivity solutions for optical and electrical Ethernet, and PCIe applications in the United States, Taiwan, Mainland China, Hong Kong, and internationally. It provides HiWire active electrical cables solutions, including HiWire CLOS, SPAN, SHIFT, and SWITCH; optical PAM4 digital signal processors; low-power line card PHY; serialize",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "ARGX": {
       "ticker": "ARGX",
       "name": "argenx SE",
       "sector": "Healthcare",
       "industry": "Biotechnology",
-      "price": 894.75,
-      "marketCap": 55917371392,
-      "volume": 221559,
-      "rsi14": 69.1,
-      "ma20": 835.55,
-      "ma50": 812.95,
-      "bbPercent": 0.893,
-      "change1d": -0.47,
-      "change7d": 6.23,
-      "change30d": 14.2,
+      "price": 893.52,
+      "marketCap": 55840505856,
+      "volume": 333159,
+      "rsi14": 68.7,
+      "ma20": 835.49,
+      "ma50": 812.92,
+      "bbPercent": 0.886,
+      "change1d": -0.6,
+      "change2d": 4.26,
+      "change3d": -2.47,
+      "change7d": 6.08,
+      "change30d": 14.04,
       "revenueGrowth": 62.6,
       "grossMargin": 58.1,
       "fcf": null,
-      "peRatio": 39.8,
-      "forwardPE": 24.4,
-      "eps": 22.47,
+      "peRatio": 39.7,
+      "forwardPE": 24.3,
+      "eps": 22.51,
       "debtToEquity": 0.6,
       "returnOnEquity": null,
       "week52High": 934.62,
       "week52Low": 510.055,
-      "priceVs52wHigh": 95.7,
-      "analystTarget": 1028.8142,
-      "analystUpside": 15.0,
+      "priceVs52wHigh": 95.6,
+      "analystTarget": 1028.5239,
+      "analystUpside": 15.1,
       "recommendation": "strong_buy",
       "institutionalPct": 47.5,
       "insiderPct": 0.0,
@@ -197,36 +201,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "argenx SE, a commercial-stage biopharma company, develops various therapies for the treatment of autoimmune diseases in the United States, Japan, China, the Netherlands, and internationally. The company offers VYVGART for the treatment of gMG and immune thrombocytopenia (ITP), and VYVGART HYTRULO for the treatment of gMG and chronic inflammatory demyelinating polyneuropathy (CIDP). It also develop",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "BMNR": {
       "ticker": "BMNR",
       "name": "BitMine Immersion Technologies,",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 16.185,
-      "marketCap": 9218600960,
-      "volume": 19632646,
-      "rsi14": 36.4,
-      "ma20": 18.03,
+      "price": 16.11,
+      "marketCap": 9175882752,
+      "volume": 24944040,
+      "rsi14": 36.1,
+      "ma20": 18.02,
       "ma50": 20.3,
-      "bbPercent": 0.17,
-      "change1d": -2.03,
-      "change7d": -9.53,
-      "change30d": -26.03,
+      "bbPercent": 0.158,
+      "change1d": -2.48,
+      "change2d": 5.63,
+      "change3d": -3.46,
+      "change7d": -9.95,
+      "change30d": -26.37,
       "revenueGrowth": 627.8,
       "grossMargin": 66.6,
       "fcf": -152525936,
       "peRatio": null,
-      "forwardPE": 17.2,
+      "forwardPE": 17.1,
       "eps": -7.44,
       "debtToEquity": 0.0,
       "returnOnEquity": -175.9,
       "week52High": 161.0,
       "week52Low": 3.92,
-      "priceVs52wHigh": 10.1,
+      "priceVs52wHigh": 10.0,
       "analystTarget": 37.33333,
-      "analystUpside": 130.7,
+      "analystUpside": 131.7,
       "recommendation": "none",
       "institutionalPct": 37.3,
       "insiderPct": 0.8,
@@ -235,23 +241,25 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "OLA.TO": {
       "ticker": "OLA.TO",
       "name": "ORLA MINING LTD",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 14.91,
-      "marketCap": 5158740480,
-      "volume": 534087,
+      "price": 14.9,
+      "marketCap": 5155280896,
+      "volume": 880912,
       "rsi14": 35.7,
       "ma20": 16.26,
       "ma50": 19.13,
-      "bbPercent": 0.245,
-      "change1d": 3.25,
-      "change7d": -5.03,
-      "change30d": -17.34,
+      "bbPercent": 0.243,
+      "change1d": 3.19,
+      "change2d": 5.87,
+      "change3d": -6.7,
+      "change7d": -5.1,
+      "change30d": -17.4,
       "revenueGrowth": 169.3,
       "grossMargin": 68.7,
       "fcf": 548109632,
@@ -263,8 +271,8 @@
       "week52High": 29.99,
       "week52Low": 12.67,
       "priceVs52wHigh": 49.7,
-      "analystTarget": 31.944136,
-      "analystUpside": 114.2,
+      "analystTarget": 31.980715,
+      "analystUpside": 114.6,
       "recommendation": "buy",
       "institutionalPct": 70.2,
       "insiderPct": 28.6,
@@ -273,36 +281,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Orla Mining Ltd. acquires, explores, develops, and exploits mineral properties. It explores gold, silver, zinc, lead, and copper deposits. The company owns 100% interests in the Camino Rojo project that consists of seven concessions covering an area of 138,636 hectares located in Zacatecas, Mexico; Cerro Quema project totaling an area of 15,000 hectares located in the Azuero Peninsula, Panama; and",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "TNXP": {
       "ticker": "TNXP",
       "name": "Tonix Pharmaceuticals Holding C",
       "sector": "Healthcare",
       "industry": "Biotechnology",
-      "price": 11.175,
-      "marketCap": 178138448,
-      "volume": 521184,
-      "rsi14": 36.4,
-      "ma20": 12.46,
+      "price": 11.35,
+      "marketCap": 180928096,
+      "volume": 677486,
+      "rsi14": 38.2,
+      "ma20": 12.47,
       "ma50": 13.04,
-      "bbPercent": 0.264,
-      "change1d": 4.93,
-      "change7d": -5.93,
-      "change30d": -17.83,
+      "bbPercent": 0.293,
+      "change1d": 6.57,
+      "change2d": -2.83,
+      "change3d": -4.36,
+      "change7d": -4.46,
+      "change30d": -16.54,
       "revenueGrowth": 183.2,
       "grossMargin": 58.6,
       "fcf": -76727872,
       "peRatio": null,
-      "forwardPE": -1.4,
+      "forwardPE": -1.5,
       "eps": -14.66,
       "debtToEquity": 0.6,
       "returnOnEquity": -72.3,
       "week52High": 69.97,
       "week52Low": 10.03,
-      "priceVs52wHigh": 16.0,
+      "priceVs52wHigh": 16.2,
       "analystTarget": 46.25,
-      "analystUpside": 313.9,
+      "analystUpside": 307.5,
       "recommendation": "strong_buy",
       "institutionalPct": 41.4,
       "insiderPct": 0.1,
@@ -311,37 +321,39 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Tonix Pharmaceuticals Holding Corp., a fully integrated biopharmaceutical company, develops and commercializes therapies for central nervous system (CNS) disorders, immunology and immuno-oncology, infectious diseases, and rare diseases in the United States. The company offers TONMYA, a cyclobenzaprine HCl sublingual tablet for the treatment of fibromyalgia. It also markets Zembrace SymTouch and To",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "NSP": {
       "ticker": "NSP",
       "name": "Insperity, Inc.",
       "sector": "Industrials",
       "industry": "Staffing & Employment Services",
-      "price": 36.15,
-      "marketCap": 1379816064,
-      "volume": 443375,
-      "rsi14": 64.0,
-      "ma20": 33.56,
-      "ma50": 31.26,
-      "bbPercent": 0.757,
-      "change1d": -4.06,
-      "change7d": 8.01,
-      "change30d": 29.01,
+      "price": 36.6,
+      "marketCap": 1396992128,
+      "volume": 595331,
+      "rsi14": 65.8,
+      "ma20": 33.58,
+      "ma50": 31.27,
+      "bbPercent": 0.796,
+      "change1d": -2.87,
+      "change2d": 1.84,
+      "change3d": -0.72,
+      "change7d": 9.35,
+      "change30d": 30.62,
       "revenueGrowth": 1.7,
       "grossMargin": 13.0,
       "fcf": 85000000,
       "peRatio": null,
-      "forwardPE": 12.9,
+      "forwardPE": 13.1,
       "eps": -0.68,
       "debtToEquity": 641.8,
       "returnOnEquity": -26.9,
       "week52High": 63.3,
       "week52Low": 18.57,
-      "priceVs52wHigh": 57.1,
+      "priceVs52wHigh": 57.8,
       "analystTarget": 39.5,
-      "analystUpside": 9.3,
-      "recommendation": "hold",
+      "analystUpside": 7.9,
+      "recommendation": "none",
       "institutionalPct": 111.7,
       "insiderPct": 6.2,
       "shortFloat": 13.6,
@@ -349,36 +361,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Insperity, Inc. engages in the provision of human resources (HR) and business solutions to improve business performance for small and medium-sized businesses primarily in the United States. It offers Insperity HR360 solution, a full-service PEO solution delivering HR technology, compliance, and strategic support for small and midsize businesses; Insperity HRCore, a streamlined HR platform for payr",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "DOL.TO": {
       "ticker": "DOL.TO",
       "name": "DOLLARAMA INC",
       "sector": "Consumer Defensive",
       "industry": "Discount Stores",
-      "price": 191.33,
-      "marketCap": 51808174080,
-      "volume": 548945,
-      "rsi14": 63.6,
-      "ma20": 177.88,
+      "price": 190.94,
+      "marketCap": 51702566912,
+      "volume": 850257,
+      "rsi14": 63.2,
+      "ma20": 177.86,
       "ma50": 175.18,
-      "bbPercent": 1.044,
-      "change1d": -2.31,
-      "change7d": 8.73,
-      "change30d": 9.9,
+      "bbPercent": 1.036,
+      "change1d": -2.46,
+      "change2d": 9.02,
+      "change3d": 0.95,
+      "change7d": 8.57,
+      "change30d": 9.74,
       "revenueGrowth": 21.4,
       "grossMargin": 45.1,
       "fcf": 1060685120,
-      "peRatio": 39.4,
+      "peRatio": 39.2,
       "forwardPE": 32.8,
-      "eps": 4.85,
+      "eps": 4.87,
       "debtToEquity": 451.2,
       "returnOnEquity": 99.5,
       "week52High": 209.96,
       "week52Low": 166.0,
-      "priceVs52wHigh": 91.1,
-      "analystTarget": 199.0,
-      "analystUpside": 4.0,
+      "priceVs52wHigh": 90.9,
+      "analystTarget": 209.17647,
+      "analystUpside": 9.6,
       "recommendation": "buy",
       "institutionalPct": 45.7,
       "insiderPct": 2.0,
@@ -387,23 +401,25 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Dollarama Inc. operates a chain of stores and provides related logistical and administrative support activities. Its stores offer general merchandise, consumables, and seasonal products. The company operates in Canada, Latin America, Colombia, Peru, Australia, and Mexico. It also sells its products through online store. The company was formerly known as Dollarama Capital Corporation and changed it",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "AI": {
       "ticker": "AI",
       "name": "C3.ai, Inc.",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 10.895,
-      "marketCap": 1582947840,
-      "volume": 5506668,
+      "price": 10.9,
+      "marketCap": 1583674240,
+      "volume": 7003301,
       "rsi14": 66.1,
       "ma20": 10.17,
       "ma50": 9.47,
-      "bbPercent": 0.698,
-      "change1d": -3.33,
-      "change7d": 2.98,
-      "change30d": 18.94,
+      "bbPercent": 0.699,
+      "change1d": -3.28,
+      "change2d": 4.35,
+      "change3d": 0.09,
+      "change7d": 3.02,
+      "change30d": 19.0,
       "revenueGrowth": -52.5,
       "grossMargin": 31.4,
       "fcf": -20899750,
@@ -425,36 +441,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "C3.ai, Inc. operates as an enterprise artificial intelligence application software company. The company offers C3 agentic AI platform, an application development and runtime environment that enables customers to design, develop, and deploy enterprise AI applications; C3 AI CRM Suite, a customer relationship management solution; C3 Generative AI that enables to locate, retrieve, present information",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "NTRA": {
       "ticker": "NTRA",
       "name": "Natera, Inc.",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "price": 212.34,
-      "marketCap": 30410352640,
-      "volume": 530981,
-      "rsi14": 55.7,
-      "ma20": 209.66,
+      "price": 212.07,
+      "marketCap": 30371686400,
+      "volume": 811714,
+      "rsi14": 55.5,
+      "ma20": 209.65,
       "ma50": 206.64,
-      "bbPercent": 0.564,
-      "change1d": -3.14,
-      "change7d": -4.39,
-      "change30d": 2.44,
+      "bbPercent": 0.558,
+      "change1d": -3.27,
+      "change2d": 1.26,
+      "change3d": -2.84,
+      "change7d": -4.52,
+      "change30d": 2.31,
       "revenueGrowth": 38.8,
       "grossMargin": 65.1,
       "fcf": 136918256,
       "peRatio": null,
-      "forwardPE": -1019.0,
-      "eps": -1.62,
+      "forwardPE": -1017.7,
+      "eps": -1.61,
       "debtToEquity": 13.5,
       "returnOnEquity": -15.0,
       "week52High": 256.36,
       "week52Low": 131.811,
-      "priceVs52wHigh": 82.8,
+      "priceVs52wHigh": 82.7,
       "analystTarget": 260.05,
-      "analystUpside": 22.5,
+      "analystUpside": 22.6,
       "recommendation": "buy",
       "institutionalPct": 95.8,
       "insiderPct": 3.0,
@@ -463,36 +481,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Natera, Inc., a diagnostics company, engages in the development and commercialization of molecular testing services worldwide. It offers Signatera, a personalized ctDNA blood test for MRD assessment, early recurrence monitoring, and evaluation of treatment response in patients previously diagnosed with cancer; Latitude, a blood-based MRD test for colorectal cancer; Altera, a tissue based comprehen",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "RL": {
       "ticker": "RL",
       "name": "Ralph Lauren Corporation",
       "sector": "Consumer Cyclical",
       "industry": "Apparel Manufacturing",
-      "price": 404.97,
-      "marketCap": 24102334464,
-      "volume": 498887,
-      "rsi14": 62.8,
-      "ma20": 365.46,
-      "ma50": 364.75,
-      "bbPercent": 0.925,
-      "change1d": 2.97,
-      "change7d": 10.43,
-      "change30d": 11.81,
+      "price": 403.98,
+      "marketCap": 24043413504,
+      "volume": 667669,
+      "rsi14": 62.4,
+      "ma20": 365.41,
+      "ma50": 364.73,
+      "bbPercent": 0.917,
+      "change1d": 2.72,
+      "change2d": 4.48,
+      "change3d": -3.77,
+      "change7d": 10.16,
+      "change30d": 11.53,
       "revenueGrowth": 16.6,
       "grossMargin": 69.9,
       "fcf": 656187520,
-      "peRatio": 26.8,
-      "forwardPE": 19.9,
-      "eps": 15.1,
+      "peRatio": 26.7,
+      "forwardPE": 19.8,
+      "eps": 15.11,
       "debtToEquity": 105.9,
       "returnOnEquity": 34.7,
       "week52High": 405.49,
-      "week52Low": 258.13,
-      "priceVs52wHigh": 99.9,
+      "week52Low": 259.3,
+      "priceVs52wHigh": 99.6,
       "analystTarget": 428.0,
-      "analystUpside": 5.7,
+      "analystUpside": 5.9,
       "recommendation": "buy",
       "institutionalPct": 108.1,
       "insiderPct": 4.1,
@@ -501,23 +521,25 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ralph Lauren Corporation designs, markets, and distributes lifestyle products in North America, Europe, Asia, and internationally. The company offers apparel, including a range of men's, women's, and children's clothing; footwear and accessories, which comprise casual shoes, dress shoes, boots, sneakers, sandals, eyewear, watches, fashion and fine jewelry, scarves, hats, gloves, and umbrellas, as ",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "LYB": {
       "ticker": "LYB",
       "name": "LyondellBasell Industries NV",
       "sector": "Basic Materials",
       "industry": "Specialty Chemicals",
-      "price": 64.4,
-      "marketCap": 20787339264,
-      "volume": 3767325,
-      "rsi14": 33.0,
-      "ma20": 67.56,
+      "price": 64.58,
+      "marketCap": 20845441024,
+      "volume": 4793887,
+      "rsi14": 33.9,
+      "ma20": 67.57,
       "ma50": 70.68,
-      "bbPercent": 0.249,
-      "change1d": 1.47,
-      "change7d": -2.69,
-      "change30d": -13.22,
+      "bbPercent": 0.262,
+      "change1d": 1.75,
+      "change2d": -2.58,
+      "change3d": 2.37,
+      "change7d": -2.42,
+      "change30d": -12.98,
       "revenueGrowth": -6.3,
       "grossMargin": 9.2,
       "fcf": 987000000,
@@ -528,9 +550,9 @@
       "returnOnEquity": -6.0,
       "week52High": 83.94,
       "week52Low": 41.58,
-      "priceVs52wHigh": 76.7,
+      "priceVs52wHigh": 76.9,
       "analystTarget": 79.88235,
-      "analystUpside": 24.0,
+      "analystUpside": 23.7,
       "recommendation": "hold",
       "institutionalPct": 78.1,
       "insiderPct": 20.2,
@@ -539,36 +561,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "LyondellBasell Industries N.V. operates as a chemical company in the United States, Germany, China, Mexico, Italy, Japan, France, Poland, the Netherlands, and internationally. It operates in five segments: Olefins and Polyolefins\u0097Americas; Olefins and Polyolefins\u0097Europe, Asia, International; Intermediates and Derivatives; Advanced Polymer Solutions; and Technology. The company produces and markets",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "HCA": {
       "ticker": "HCA",
       "name": "HCA Healthcare, Inc.",
       "sector": "Healthcare",
       "industry": "Medical Care Facilities",
-      "price": 388.63,
-      "marketCap": 86213607424,
-      "volume": 1041176,
-      "rsi14": 46.8,
-      "ma20": 384.67,
-      "ma50": 429.51,
-      "bbPercent": 0.555,
-      "change1d": 2.67,
-      "change7d": 7.41,
-      "change30d": -10.27,
+      "price": 387.18,
+      "marketCap": 85891932160,
+      "volume": 1373065,
+      "rsi14": 45.8,
+      "ma20": 384.6,
+      "ma50": 429.48,
+      "bbPercent": 0.536,
+      "change1d": 2.29,
+      "change2d": 1.38,
+      "change3d": -0.42,
+      "change7d": 7.01,
+      "change30d": -10.6,
       "revenueGrowth": 4.3,
       "grossMargin": 41.6,
       "fcf": 5726000128,
-      "peRatio": 13.4,
+      "peRatio": 13.3,
       "forwardPE": 11.7,
-      "eps": 29.03,
+      "eps": 29.04,
       "debtToEquity": null,
       "returnOnEquity": null,
       "week52High": 556.52,
       "week52Low": 330.0,
-      "priceVs52wHigh": 69.8,
+      "priceVs52wHigh": 69.6,
       "analystTarget": 503.57144,
-      "analystUpside": 29.6,
+      "analystUpside": 30.1,
       "recommendation": "buy",
       "institutionalPct": 78.3,
       "insiderPct": 16.2,
@@ -577,36 +601,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "HCA Healthcare, Inc., through its subsidiaries, provides health care services in the United States. The company owns, manages, and operates hospitals, ASCs, freestanding emergency care facilities, urgent care facilities, walk-in clinics, diagnostic and imaging centers, radiation and oncology therapy centers, as well as rehabilitation and physical therapy centers, physician practices, home health a",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "MKTX": {
       "ticker": "MKTX",
       "name": "MarketAxess Holdings, Inc.",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 120.65,
-      "marketCap": 4287834880,
-      "volume": 313749,
-      "rsi14": 20.0,
-      "ma20": 127.64,
+      "price": 120.89,
+      "marketCap": 4296364544,
+      "volume": 682442,
+      "rsi14": 20.7,
+      "ma20": 127.65,
       "ma50": 147.19,
-      "bbPercent": 0.305,
-      "change1d": 3.71,
-      "change7d": 0.02,
-      "change30d": -20.64,
+      "bbPercent": 0.311,
+      "change1d": 3.92,
+      "change2d": 0.19,
+      "change3d": -0.34,
+      "change7d": 0.22,
+      "change30d": -20.48,
       "revenueGrowth": 11.9,
       "grossMargin": 62.1,
       "fcf": -253787120,
       "peRatio": 14.3,
-      "forwardPE": 13.5,
+      "forwardPE": 13.6,
       "eps": 8.44,
       "debtToEquity": 24.3,
       "returnOnEquity": 24.3,
-      "week52High": 228.16,
+      "week52High": 226.64,
       "week52Low": 113.29,
-      "priceVs52wHigh": 52.9,
-      "analystTarget": 184.45454,
-      "analystUpside": 52.9,
+      "priceVs52wHigh": 53.3,
+      "analystTarget": 179.45454,
+      "analystUpside": 48.4,
       "recommendation": "buy",
       "institutionalPct": 112.1,
       "insiderPct": 0.9,
@@ -615,36 +641,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "MarketAxess Holdings Inc., together with its subsidiaries, operates an electronic trading platform for institutional investor and broker-dealer firms in the United States, the United Kingdom, and internationally. The company offers trading technology to access liquidity on its platforms in U.S. high-grade bonds, U.S. high-yield bonds, emerging market debt, eurobonds, municipal bonds, U.S. governme",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "CBOE": {
       "ticker": "CBOE",
       "name": "Cboe Global Markets, Inc.",
       "sector": "Financial Services",
       "industry": "Financial Data & Stock Exchanges",
-      "price": 296.44,
-      "marketCap": 31023568896,
-      "volume": 790747,
-      "rsi14": 25.7,
-      "ma20": 321.49,
-      "ma50": 317.64,
-      "bbPercent": 0.317,
-      "change1d": 0.18,
-      "change7d": 3.64,
-      "change30d": -9.14,
+      "price": 294.91,
+      "marketCap": 30863448064,
+      "volume": 1013394,
+      "rsi14": 25.1,
+      "ma20": 321.41,
+      "ma50": 317.61,
+      "bbPercent": 0.307,
+      "change1d": -0.33,
+      "change2d": -1.72,
+      "change3d": 3.61,
+      "change7d": 3.1,
+      "change30d": -9.61,
       "revenueGrowth": 6.5,
       "grossMargin": 54.1,
       "fcf": 1003075008,
-      "peRatio": 25.3,
-      "forwardPE": 20.1,
-      "eps": 11.72,
+      "peRatio": 25.2,
+      "forwardPE": 20.0,
+      "eps": 11.71,
       "debtToEquity": 29.5,
       "returnOnEquity": 25.1,
       "week52High": 371.18,
       "week52Low": 223.54,
-      "priceVs52wHigh": 79.9,
+      "priceVs52wHigh": 79.5,
       "analystTarget": 326.92856,
-      "analystUpside": 10.3,
+      "analystUpside": 10.9,
       "recommendation": "hold",
       "institutionalPct": 91.8,
       "insiderPct": 0.3,
@@ -653,36 +681,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Cboe Global Markets, Inc., through its subsidiaries, operates as a derivatives and securities exchange network that delivers cutting-edge trading, clearing, and investment solutions in the United States and internationally. It operates through five segments: Options, North American Equities, Europe and Asia Pacific, Futures, and Global FX. The Options segment includes options on market indices, as",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "UHS": {
       "ticker": "UHS",
       "name": "Universal Health Services, Inc.",
       "sector": "Healthcare",
       "industry": "Medical Care Facilities",
-      "price": 147.37,
-      "marketCap": 8921241600,
-      "volume": 322553,
-      "rsi14": 35.2,
-      "ma20": 152.08,
-      "ma50": 165.9,
-      "bbPercent": 0.374,
-      "change1d": 0.9,
-      "change7d": 3.4,
-      "change30d": -11.63,
+      "price": 146.42,
+      "marketCap": 8863732736,
+      "volume": 504071,
+      "rsi14": 33.4,
+      "ma20": 152.04,
+      "ma50": 165.88,
+      "bbPercent": 0.35,
+      "change1d": 0.25,
+      "change2d": 0.85,
+      "change3d": -1.21,
+      "change7d": 2.73,
+      "change30d": -12.2,
       "revenueGrowth": 9.6,
       "grossMargin": 44.2,
       "fcf": 650819008,
-      "peRatio": 6.2,
+      "peRatio": 6.1,
       "forwardPE": 5.8,
       "eps": 23.95,
       "debtToEquity": 67.4,
       "returnOnEquity": 21.4,
       "week52High": 246.33,
       "week52Low": 140.08,
-      "priceVs52wHigh": 59.8,
+      "priceVs52wHigh": 59.4,
       "analystTarget": 215.76471,
-      "analystUpside": 46.4,
+      "analystUpside": 47.4,
       "recommendation": "buy",
       "institutionalPct": 101.4,
       "insiderPct": 4.8,
@@ -691,36 +721,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Universal Health Services, Inc., through its subsidiaries, owns and operates acute care hospitals, and outpatient and behavioral health care facilities in the United States. It operates through Acute Care Hospital Services and Behavioral Health Care Services segments. The company's hospitals offer general and specialty surgery, internal medicine, obstetrics, emergency room care, radiology, oncolog",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "ASTS": {
       "ticker": "ASTS",
       "name": "AST SpaceMobile, Inc.",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 83.52,
-      "marketCap": 32416163840,
-      "volume": 46604182,
-      "rsi14": 40.9,
-      "ma20": 101.38,
-      "ma50": 89.26,
-      "bbPercent": 0.206,
-      "change1d": -14.39,
-      "change7d": -22.15,
-      "change30d": 17.82,
+      "price": 82.41,
+      "marketCap": 31985348608,
+      "volume": 55156322,
+      "rsi14": 40.5,
+      "ma20": 101.33,
+      "ma50": 89.23,
+      "bbPercent": 0.19,
+      "change1d": -15.53,
+      "change2d": 11.73,
+      "change3d": -1.57,
+      "change7d": -23.19,
+      "change30d": 16.25,
       "revenueGrowth": 1952.2,
       "grossMargin": 44.8,
       "fcf": -1412748416,
       "peRatio": null,
-      "forwardPE": -407.0,
+      "forwardPE": -401.6,
       "eps": -1.8,
       "debtToEquity": 112.4,
       "returnOnEquity": -37.8,
       "week52High": 133.86,
       "week52Low": 36.08,
-      "priceVs52wHigh": 62.4,
+      "priceVs52wHigh": 61.6,
       "analystTarget": 81.46667,
-      "analystUpside": -2.5,
+      "analystUpside": -1.1,
       "recommendation": "hold",
       "institutionalPct": 47.0,
       "insiderPct": 7.8,
@@ -729,36 +761,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "AST SpaceMobile, Inc., together with its subsidiaries, designs and develops the constellation of BlueBird satellites in the United States. The company provides a cellular broadband network in space to be accessible directly by smartphones for commercial use and other applications, as well as for government use. Its SpaceMobile service provides cellular broadband services to end-users who are out o",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "ONDS": {
       "ticker": "ONDS",
       "name": "Ondas Inc",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 9.3691,
-      "marketCap": 4845675008,
-      "volume": 47739138,
-      "rsi14": 51.5,
+      "price": 9.33,
+      "marketCap": 4825452544,
+      "volume": 55365320,
+      "rsi14": 51.3,
       "ma20": 10.68,
       "ma50": 10.18,
-      "bbPercent": 0.294,
-      "change1d": -4.69,
-      "change7d": -21.73,
-      "change30d": -9.21,
+      "bbPercent": 0.289,
+      "change1d": -5.09,
+      "change2d": 5.59,
+      "change3d": -3.52,
+      "change7d": -22.06,
+      "change30d": -9.59,
       "revenueGrowth": 1079.9,
       "grossMargin": 44.8,
       "fcf": -15650777,
-      "peRatio": 104.1,
-      "forwardPE": -187.4,
+      "peRatio": 103.7,
+      "forwardPE": -186.6,
       "eps": 0.09,
       "debtToEquity": 0.7,
       "returnOnEquity": 42.9,
       "week52High": 15.28,
       "week52Low": 1.36,
-      "priceVs52wHigh": 61.3,
+      "priceVs52wHigh": 61.1,
       "analystTarget": 20.125,
-      "analystUpside": 114.8,
+      "analystUpside": 115.7,
       "recommendation": "none",
       "institutionalPct": 41.9,
       "insiderPct": 2.0,
@@ -767,36 +801,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "POET": {
       "ticker": "POET",
       "name": "POET Technologies Inc.",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "price": 12.515,
-      "marketCap": 2160031488,
-      "volume": 28434371,
+      "price": 12.53,
+      "marketCap": 2162620416,
+      "volume": 34162850,
       "rsi14": 42.0,
       "ma20": 13.39,
       "ma50": 10.91,
-      "bbPercent": 0.357,
-      "change1d": 11.24,
-      "change7d": -19.15,
-      "change30d": 71.2,
+      "bbPercent": 0.359,
+      "change1d": 11.38,
+      "change2d": 2.46,
+      "change3d": 1.95,
+      "change7d": -19.06,
+      "change30d": 71.41,
       "revenueGrowth": 201.9,
       "grossMargin": 100.0,
       "fcf": -42376272,
       "peRatio": null,
-      "forwardPE": -73.6,
+      "forwardPE": -73.7,
       "eps": -0.84,
       "debtToEquity": 1.6,
       "returnOnEquity": -33.9,
       "week52High": 20.81,
       "week52Low": 3.87,
-      "priceVs52wHigh": 60.1,
+      "priceVs52wHigh": 60.2,
       "analystTarget": 17.5,
-      "analystUpside": 39.8,
+      "analystUpside": 39.7,
       "recommendation": "strong_buy",
       "institutionalPct": 25.5,
       "insiderPct": 0.1,
@@ -805,23 +841,25 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "POET Technologies Inc., together with its subsidiaries, designs, develops, manufactures, and sells semiconductor products and services for commercial applications in the United States, Canada, the rest of North and South America, Europe, Malaysia, Singapore, China, and the rest of Asia. The company offers photonic integrated packaging solutions based on the POET Optical Interposer, a platform that",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "RFL": {
       "ticker": "RFL",
       "name": "Rafael Holdings, Inc.",
       "sector": "Real Estate",
       "industry": "Real Estate Services",
-      "price": 2.3,
-      "marketCap": 119599992,
-      "volume": 851465,
-      "rsi14": 83.8,
+      "price": 2.24,
+      "marketCap": 116479992,
+      "volume": 898933,
+      "rsi14": 83.1,
       "ma20": 1.51,
       "ma50": 1.36,
-      "bbPercent": 1.173,
-      "change1d": 8.49,
-      "change7d": 65.47,
-      "change30d": 85.48,
+      "bbPercent": 1.143,
+      "change1d": 5.66,
+      "change2d": 19.1,
+      "change3d": -7.77,
+      "change7d": 61.15,
+      "change30d": 80.65,
       "revenueGrowth": -50.6,
       "grossMargin": 95.1,
       "fcf": null,
@@ -832,7 +870,7 @@
       "returnOnEquity": -37.6,
       "week52High": 2.649,
       "week52Low": 1.12,
-      "priceVs52wHigh": 86.8,
+      "priceVs52wHigh": 84.6,
       "analystTarget": null,
       "analystUpside": null,
       "recommendation": "none",
@@ -843,36 +881,38 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Rafael Holdings, Inc. primarily engages in holding interests in clinical and early-stage pharmaceutical companies, and medical devices in the United States and Israel. It operates in three segments, Healthcare, Infusion Technology, and Real Estate. The company engages in the development and commercialization of therapies that exploit the metabolic differences between normal cells and cancer cells.",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     },
     "CDE": {
       "ticker": "CDE",
       "name": "Coeur Mining, Inc.",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 17.235,
-      "marketCap": 17761263616,
-      "volume": 22929939,
-      "rsi14": 48.0,
+      "price": 17.2,
+      "marketCap": 17725194240,
+      "volume": 30311522,
+      "rsi14": 47.8,
       "ma20": 17.62,
       "ma50": 18.48,
-      "bbPercent": 0.412,
-      "change1d": 5.09,
-      "change7d": -6.74,
-      "change30d": -2.24,
+      "bbPercent": 0.404,
+      "change1d": 4.88,
+      "change2d": 6.42,
+      "change3d": -4.23,
+      "change7d": -6.93,
+      "change30d": -2.44,
       "revenueGrowth": 137.8,
-      "grossMargin": 58.4,
-      "fcf": 508452640,
+      "grossMargin": 58.6,
+      "fcf": 511841376,
       "peRatio": 13.9,
-      "forwardPE": 8.1,
+      "forwardPE": 8.3,
       "eps": 1.24,
       "debtToEquity": 7.4,
       "returnOnEquity": 12.1,
       "week52High": 27.77,
       "week52Low": 8.46,
-      "priceVs52wHigh": 62.1,
-      "analystTarget": 27.25,
-      "analystUpside": 58.1,
+      "priceVs52wHigh": 61.9,
+      "analystTarget": 27.27273,
+      "analystUpside": 58.6,
       "recommendation": "buy",
       "institutionalPct": 79.6,
       "insiderPct": 0.9,
@@ -881,42 +921,12 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
-      "fetchCompletedAt": "2026-06-12 15:27 EDT"
+      "fetchCompletedAt": "2026-06-14 13:51 EDT"
     }
   },
-  "detailsFetchedAt": "2026-06-12 15:27 EDT",
-  "aiAssessments": {
-    "CRDO": {
-      "ticker": "CRDO",
-      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
-      "aiScore": null,
-      "buySignal": "Unknown"
-    },
-    "ARGX": {
-      "raw": "STAGE: Growth\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nSCORE: 85\nBUY_SIGNAL: Buy\nREASONING: argenx demonstrates strong acceleration with over 62% revenue growth. VYVGART's success in treating gMG and ITP positions the company for continued expansion, supported by a positive analyst outlook and high institutional ownership. While the current valuation is elevated, future drug approvals and market penetration could justify the premium.",
-      "ticker": "ARGX",
-      "promptSent": "You are a stock analyst evaluating early-stage and growth investment opportunities.\nAnalyze ARGX and provide a concise assessment. Focus on TRAJECTORY over current achievement \u2014 a company improving rapidly from a low base is more interesting than one plateauing at a high score.\n\nCOMPANY: argenx SE (ARGX)\nargenx SE, a commercial-stage biopharma company, develops various therapies for the treatment of autoimmune diseases in the United States, Japan, China, the Netherlands, and internationally. The company offers VYVGART for the treatment of gMG and immune thrombocytopenia (ITP), and VYVGART HYTRULO fo\n\nFINANCIALS:\nPrice: 898.94\nRSI14: 67.5\nMA50: 809.91\n1d Change: 4.26%\n7d Change: 10.55%\n30d Change: 15.0%\nRevenue Growth: 62.6%\nGross Margin: 58.1%\nFCF: None\nP/E: 40.0\nForward P/E: 24.5\nROE: None%\nDebt/Equity: 0.6\nAnalyst Target: 1027.6257 (Upside: 14.3%)\nAnalyst Rec: strong_buy\nInstitutional %: 47.5%\n52w High: 934.62 | Price vs 52w High: 96.2%\nSector: Healthcare | Industry: Biotechnology\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n- fed_rate: 3.64\n- cpi: 332.41\n- unemployment: 4.3\n- gdp_growth: 2.0\n- ten_yr_yield: 4.47\n- two_yr_yield: 4.0\n- vix: 17.26\n- dollar_index: 118.04\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n",
-      "stage": "Growth",
-      "trajectory": "Accelerating",
-      "sentiment": "Bullish",
-      "aiScore": 85,
-      "buySignal": "Buy",
-      "reasoning": "argenx demonstrates strong acceleration with over 62% revenue growth. VYVGART's success in treating gMG and ITP positions the company for continued expansion, supported by a positive analyst outlook and high institutional ownership. While the current valuation is elevated, future drug approvals and market penetration could justify the premium."
-    },
-    "BMNR": {
-      "ticker": "BMNR",
-      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
-      "aiScore": null,
-      "buySignal": "Unknown"
-    },
-    "OLA.TO": {
-      "ticker": "OLA.TO",
-      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
-      "aiScore": null,
-      "buySignal": "Unknown"
-    }
-  },
-  "aiAnalyzedAt": "2026-06-11 23:06 EDT",
+  "detailsFetchedAt": "2026-06-14 13:51 EDT",
+  "aiAssessments": {},
+  "aiAnalyzedAt": "2026-06-14 12:51 EDT",
   "lastRecommend": {
     "buys": [
       {
@@ -1361,446 +1371,446 @@
       }
     ]
   },
-  "signalForecastAt": "2026-06-11 22:45 EDT",
+  "signalForecastAt": "2026-06-14 14:09 EDT",
   "rsiHistory": {
     "CRDO": [
       {
-        "rsi": 61.7,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 58.7,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 64.2,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 64.7,
-        "ts": "2026-06-12 13:18 EDT"
-      },
-      {
         "rsi": 63.7,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "ARGX": [
       {
-        "rsi": 71.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 71.4,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 71.6,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 71.4,
-        "ts": "2026-06-12 13:18 EDT"
-      },
-      {
         "rsi": 69.1,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 68.7,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 68.7,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 68.7,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 68.7,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "BMNR": [
       {
-        "rsi": 36.6,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 36.8,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 37.6,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 36.6,
-        "ts": "2026-06-12 13:18 EDT"
-      },
-      {
         "rsi": 36.4,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 36.1,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "OLA.TO": [
       {
-        "rsi": 34.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 32.0,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 36.1,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 36.1,
-        "ts": "2026-06-12 13:18 EDT"
+        "rsi": 35.7,
+        "ts": "2026-06-12 15:27 EDT"
       },
       {
         "rsi": 35.7,
-        "ts": "2026-06-12 15:27 EDT"
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 35.7,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 35.7,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 35.7,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "TNXP": [
       {
-        "rsi": 34.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 35.5,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 36.7,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 37.1,
-        "ts": "2026-06-12 13:18 EDT"
-      },
-      {
         "rsi": 36.4,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "NSP": [
       {
-        "rsi": 64.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 64.6,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 65.0,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 65.9,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 64.0,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 65.8,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 65.8,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 65.8,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 65.8,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "DOL.TO": [
       {
-        "rsi": 71.0,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 69.7,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 69.7,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 66.8,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 63.6,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 63.2,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 63.2,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 63.2,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 63.2,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "AI": [
       {
-        "rsi": 64.1,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 65.3,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 66.8,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 67.1,
-        "ts": "2026-06-12 13:19 EDT"
+        "rsi": 66.1,
+        "ts": "2026-06-12 15:27 EDT"
       },
       {
         "rsi": 66.1,
-        "ts": "2026-06-12 15:27 EDT"
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 66.1,
+        "ts": "2026-06-13 21:57 EDT"
+      },
+      {
+        "rsi": 66.1,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 66.1,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "NTRA": [
       {
-        "rsi": 59.1,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 58.2,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 58.3,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 56.4,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 55.7,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "RL": [
       {
-        "rsi": 59.8,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 61.3,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 62.2,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 61.9,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 62.8,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 62.4,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "LYB": [
       {
-        "rsi": 31.7,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 34.9,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 32.6,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 30.9,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 33.0,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 33.9,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 33.9,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 33.9,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 33.9,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "HCA": [
       {
-        "rsi": 41.9,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 43.8,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 44.6,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 45.6,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 46.8,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 45.8,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 45.8,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 45.8,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 45.8,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "MKTX": [
       {
-        "rsi": 12.8,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 17.1,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 17.5,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 17.1,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 20.0,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 20.7,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 20.7,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 20.7,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 20.7,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "CBOE": [
       {
-        "rsi": 24.9,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 25.6,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 26.2,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 25.3,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 25.7,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 25.1,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 25.1,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 25.1,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 25.1,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "UHS": [
       {
-        "rsi": 32.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 33.7,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 33.0,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 34.8,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 35.2,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 33.4,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 33.4,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 33.4,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 33.4,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "ASTS": [
       {
-        "rsi": 42.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 41.5,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 41.5,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 41.3,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 40.9,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 40.5,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 40.5,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 40.5,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 40.5,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "ONDS": [
       {
-        "rsi": 51.7,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 51.4,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 52.0,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 52.4,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 51.5,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 51.3,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 51.3,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 51.3,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 51.3,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "POET": [
       {
-        "rsi": 41.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 41.3,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 42.8,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 41.5,
-        "ts": "2026-06-12 13:19 EDT"
+        "rsi": 42.0,
+        "ts": "2026-06-12 15:27 EDT"
       },
       {
         "rsi": 42.0,
-        "ts": "2026-06-12 15:27 EDT"
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "RFL": [
       {
-        "rsi": 84.2,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 84.7,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 84.2,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 84.0,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 83.8,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 83.1,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 83.1,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 83.1,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 83.1,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ],
     "CDE": [
       {
-        "rsi": 46.4,
-        "ts": "2026-06-12 10:07 EDT"
-      },
-      {
-        "rsi": 44.2,
-        "ts": "2026-06-12 10:49 EDT"
-      },
-      {
-        "rsi": 47.1,
-        "ts": "2026-06-12 11:35 EDT"
-      },
-      {
-        "rsi": 48.2,
-        "ts": "2026-06-12 13:19 EDT"
-      },
-      {
         "rsi": 48.0,
         "ts": "2026-06-12 15:27 EDT"
+      },
+      {
+        "rsi": 47.8,
+        "ts": "2026-06-13 21:40 EDT"
+      },
+      {
+        "rsi": 47.8,
+        "ts": "2026-06-13 21:58 EDT"
+      },
+      {
+        "rsi": 47.8,
+        "ts": "2026-06-13 22:07 EDT"
+      },
+      {
+        "rsi": 47.8,
+        "ts": "2026-06-14 13:51 EDT"
       }
     ]
   }

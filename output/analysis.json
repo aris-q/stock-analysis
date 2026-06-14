@@ -4,31 +4,31 @@
       "ticker": "CRDO",
       "price": 250.81,
       "previousClose": 264.76,
-      "volume": 9004382,
+      "volume": 9028913,
       "marketCap": 46261886976,
       "rsi14": 62.4,
       "bbPercent": 0.824,
-      "priceFetchedAt": "2026-06-13 20:55 EDT"
+      "priceFetchedAt": "2026-06-14 13:55 EDT"
     },
     {
       "ticker": "ARGX",
       "price": 893.52,
       "previousClose": 898.94,
-      "volume": 272605,
+      "volume": 333159,
       "marketCap": 55840505856,
       "rsi14": 68.7,
       "bbPercent": 0.886,
-      "priceFetchedAt": "2026-06-13 20:55 EDT"
+      "priceFetchedAt": "2026-06-14 13:55 EDT"
     },
     {
       "ticker": "TNXP",
       "price": 11.35,
       "previousClose": 10.65,
-      "volume": 673515,
+      "volume": 677486,
       "marketCap": 180928096,
       "rsi14": 38.2,
       "bbPercent": 0.293,
-      "priceFetchedAt": "2026-06-13 20:55 EDT"
+      "priceFetchedAt": "2026-06-14 13:55 EDT"
     },
     {
       "ticker": "BMNR",
@@ -38,17 +38,17 @@
       "marketCap": 9175882752,
       "rsi14": 36.1,
       "bbPercent": 0.158,
-      "priceFetchedAt": "2026-06-13 20:55 EDT"
+      "priceFetchedAt": "2026-06-14 13:55 EDT"
     },
     {
       "ticker": "OLA.TO",
       "price": 14.9,
       "previousClose": 14.44,
-      "volume": 879686,
+      "volume": 880912,
       "marketCap": 5155280896,
       "rsi14": 35.7,
       "bbPercent": 0.243,
-      "priceFetchedAt": "2026-06-13 20:55 EDT"
+      "priceFetchedAt": "2026-06-14 13:55 EDT"
     }
   ],
   "dailyGainers": [
@@ -113,7 +113,7 @@
       "volume": 53414126
     }
   ],
-  "lastPriceRefresh": "2026-06-13 20:55 EDT",
+  "lastPriceRefresh": "2026-06-14 13:55 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "MU.TO",

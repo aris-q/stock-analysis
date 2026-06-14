@@ -1092,6 +1092,7 @@
     <div class="status-pill" id="statusPill">IDLE</div>
     <span class="status-dot" id="statusDot"></span>
     <span id="statusText" style="font-size:11px;color:var(--muted)">{{ status.message }}</span>
+    <div id="macroStatusBadge" style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;padding:3px 8px;border:1px solid var(--border);border-radius:4px;white-space:nowrap">📊 MACRO: —</div>
     <div id="statusProgressWrap" style="display:none;align-items:center;gap:8px;margin-left:10px">
       <div style="width:120px;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden">
         <div id="statusProgressBar" style="height:100%;background:var(--warn);border-radius:3px;width:0%;transition:width 0.4s ease"></div>
@@ -1774,6 +1775,24 @@ function showTickerTab(ticker) {
 // ── MACRO TAB ─────────────────────────────────────────────────────────────────
 let macroLoaded = false;
 
+async function updateMacroStatusBadge() {
+  try {
+    const data = await fetch('/macro').then(r => r.json());
+    const el = document.getElementById('macroStatusBadge');
+    if (!el) return;
+    const ft = data.fetchedAt;
+    if (ft) {
+      el.textContent = '📊 MACRO: ' + ft.slice(0, 16);
+      el.style.borderColor = 'rgba(74,222,128,0.4)';
+      el.style.color = 'var(--up)';
+    } else {
+      el.textContent = '📊 MACRO: never fetched';
+      el.style.borderColor = 'var(--border)';
+      el.style.color = 'var(--muted)';
+    }
+  } catch(e) {}
+}
+
 async function loadMacro(forceRefresh) {
   const el = document.getElementById('macroContent');
   if (!el) return;
@@ -1920,17 +1939,7 @@ function renderMacro(data) {
     + '<div class="macro-grid">' + (cards || '<span style="color:var(--muted);font-size:12px">No data. Run a refresh.</span>') + '</div>'
 
     + '<div class="macro-section-title">MARKET HEADLINES</div>'
-    + '<div style="margin-bottom:24px">' + newsHtml + '</div>'
-
-    + '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px">'
-    + '<div class="macro-section-title" style="margin-bottom:0">AI MACRO ANALYSIS</div>'
-    + '<button onclick="runMacroAI(this)" style="font-size:12px;padding:6px 18px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer">⚡ Run AI Analysis</button>'
-    + (aiSummary ? '<button id="macroViewAiBtn" onclick="showMacroAI()" style="font-size:12px;padding:6px 18px;background:var(--warn);color:#0a0a0f;border:none;border-radius:5px;font-weight:700;cursor:pointer">📋 View Last AI Summary</button>' : '')
-    + (aiAt ? '<span style="font-size:11px;color:var(--muted)">🕐 ' + aiAt + '</span>' : '')
-    + '</div>'
-    + '<div id="macroAiResult" style="display:' + (aiSummary ? 'none' : 'none') + '">'
-    + (aiSummary ? '<div class="macro-ai-box">' + aiSummary + '</div>' : '')
-    + '</div>';
+    + '<div style="margin-bottom:24px">' + newsHtml + '</div>';
 }
 
 
@@ -3200,6 +3209,7 @@ function showBankGuide(ticker) {
 
 loadData();
 setInterval(pollStatus, 3000);
+updateMacroStatusBadge();
 
 // ── TRADE SIMULATION ──────────────────────────────────────────────────────────
 
@@ -3632,11 +3642,16 @@ function renderTradeAI(data) {
   const monthOptions = months.map(m => `<option value="${m}">${m}</option>`).join('');
 
   const holdingsRows = holdings.length === 0
-    ? `<tr><td colspan="6" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
+    ? `<tr><td colspan="9" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
     : holdings.map(h => {
         const gl = h.gainLoss;
         const glPct = h.gainLossPct;
         const glCls = (gl||0) >= 0 ? 'up' : 'down';
+        function dayPct(val) {
+          if (val == null) return '<td style="color:var(--muted);text-align:right">—</td>';
+          const cls = val >= 0 ? 'var(--up)' : 'var(--down)';
+          return `<td style="color:${cls};text-align:right;font-family:'DM Mono',monospace;font-size:11px">${val >= 0 ? '+' : ''}${val.toFixed(2)}%</td>`;
+        }
         return `<tr>
           <td><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">${h.ticker}</span></td>
           <td>${h.shares}</td>
@@ -3644,6 +3659,9 @@ function renderTradeAI(data) {
           <td>${fmt$(h.currentPrice)}</td>
           <td class="${glCls}">${fmt$(gl)}</td>
           <td class="${glCls}">${fmtPct(glPct)}</td>
+          ${dayPct(h.change3d)}
+          ${dayPct(h.change2d)}
+          ${dayPct(h.change1d)}
         </tr>`;
       }).join('');
 
@@ -3680,17 +3698,32 @@ function renderTradeAI(data) {
         const fetchTs = d ? d.fetchCompletedAt : null;
         const fcDirColors = { Bullish:'var(--up)', Bearish:'var(--down)', Neutral:'var(--warn)' };
         const fcDirColor = fc ? (fcDirColors[fc.direction] || 'var(--muted)') : 'var(--muted)';
+        const recBuys  = (lastRec && lastRec.buys)  ? lastRec.buys.map(b => b.ticker || b)  : [];
+        const recSells = (lastRec && lastRec.sells) ? lastRec.sells.map(s => s.ticker || s) : [];
+        const inAccount = holdings.some(h => h.ticker === item.ticker);
+        const recAction = recBuys.includes(item.ticker) ? 'BUY' : recSells.includes(item.ticker) ? 'SELL' : null;
+        const recColor  = recAction === 'BUY' ? 'var(--up)' : recAction === 'SELL' ? 'var(--down)' : 'var(--muted)';
+        function pipeRow(icon, label, ts, extra) {
+          return `<div style="display:flex;align-items:center;gap:5px;font-size:9px;line-height:1.6">
+            <span style="color:var(--muted);min-width:10px">${icon}</span>
+            <span style="color:var(--muted);min-width:62px;letter-spacing:0.3px">${label}</span>
+            <span style="color:var(--accent);font-family:'DM Mono',monospace">${ts ? ts.slice(0,16) : '—'}</span>
+            ${extra ? `<span style="margin-left:4px">${extra}</span>` : ''}
+          </div>`;
+        }
+        const recExtra = recAction
+          ? `<span style="font-size:9px;font-weight:700;color:${recColor}">${recAction}</span>${inAccount ? ' <span style="font-size:9px;color:var(--up)">★ held</span>' : ''}`
+          : (inAccount ? '<span style="font-size:9px;color:var(--up)">★ held</span>' : '');
         return `
         <div class="trade-candidate-row" onclick="toggleTradeDetail('tai-${i}')">
-          <div style="min-width:90px">
-            <div class="trade-candidate-ticker">${item.ticker}</div>
-            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:3px">
-              ${hasDetail ? '<span style="font-size:9px;color:var(--accent)">● data</span>' : ''}
-              ${hasFc ? `<span style="font-size:9px;color:${fcDirColor}">● signal</span>` : ''}
-              ${hasAI ? '<span style="font-size:9px;color:#a78bfa">● AI</span>' : ''}
-            </div>
-            ${fetchTs ? `<div style="font-size:9px;color:var(--accent);margin-top:2px">✓ fetched ${fetchTs.slice(0,16)}</div>` : ''}
-            ${hasFc ? `<div style="font-size:9px;color:${fcDirColor};margin-top:1px">⚡ ${fc.direction} ${fc.forecastLow != null ? '$'+fc.forecastLow.toFixed(2)+'–$'+fc.forecastHigh.toFixed(2) : ''}</div>` : '<div style="font-size:9px;color:var(--muted);margin-top:1px">⚡ no signal forecast</div>'}
+          <div style="min-width:170px">
+            <div class="trade-candidate-ticker" style="margin-bottom:5px">${item.ticker}</div>
+            ${pipeRow('①','IDENTIFY', data.identifiedAt, '')}
+            ${pipeRow('②','FETCH INFO', data.detailsFetchedAt, '')}
+            ${pipeRow('③','MACRO', data.macroFetchedAt, '')}
+            ${pipeRow('④','SIGNAL', data.signalForecastAt, hasFc ? `<span style="color:${fcDirColor};font-weight:700">${fc.direction}</span>` : '')}
+            ${pipeRow('⑤','AI ANALYZE', data.aiAnalyzedAt, '')}
+            ${pipeRow('⑥','RECOMMEND', lastRec ? lastRec.scoredAt : null, recExtra)}
           </div>
           <div style="flex:1">
             <div class="trade-candidate-reason">${item.reason || '—'}</div>
@@ -3730,12 +3763,12 @@ function renderTradeAI(data) {
 
   return `
   <!-- TRADEAI TOP CONTROL BAR -->
-  <div style="display:grid;grid-template-columns:repeat(5,1fr) auto;gap:12px;margin-bottom:28px;align-items:start">
-    ${['identify','fetch','signal','analyze','recommend'].map((op, i) => {
-      const labels  = ['IDENTIFY','FETCH INFO','SIGNAL FORECAST','AI ANALYZE','RECOMMEND'];
-      const ops     = ['identify','fetch','signal','analyze','recommend'];
-      const tsKeys  = ['identifiedAt','detailsFetchedAt','signalForecastAt','aiAnalyzedAt','lastRecommendAt'];
-      const tsVals  = [data.identifiedAt, data.detailsFetchedAt, data.signalForecastAt, data.aiAnalyzedAt, (data.lastRecommend||{}).scoredAt];
+  <div style="display:grid;grid-template-columns:repeat(6,1fr) auto;gap:12px;margin-bottom:28px;align-items:start">
+    ${['identify','fetch','macro','signal','analyze','recommend'].map((op, i) => {
+      const labels  = ['IDENTIFY','FETCH INFO','REFRESH MACRO','SIGNAL FORECAST','AI ANALYZE','RECOMMEND'];
+      const ops     = ['identify','fetch','macro','signal','analyze','recommend'];
+      const tsKeys  = ['identifiedAt','detailsFetchedAt','macroFetchedAt','signalForecastAt','aiAnalyzedAt','lastRecommendAt'];
+      const tsVals  = [data.identifiedAt, data.detailsFetchedAt, data.macroFetchedAt, data.signalForecastAt, data.aiAnalyzedAt, (data.lastRecommend||{}).scoredAt];
       const lastTs  = tsVals[i] || null;
       return `
       <div style="display:flex;flex-direction:column;gap:6px">
@@ -3793,7 +3826,7 @@ function renderTradeAI(data) {
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
       <table class="trade-account-table">
-        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th></tr></thead>
+        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th><th style="text-align:right">D-2</th><th style="text-align:right">D-1</th><th style="text-align:right">TODAY</th></tr></thead>
         <tbody>${holdingsRows}</tbody>
       </table>
     </div>
@@ -4024,6 +4057,41 @@ async function runTradeAIOp(op, btn) {
   const stopBtn  = document.getElementById('taiStopBtn');
   const stopLbl  = document.getElementById('taiStopLabel');
 
+  // ── Macro refresh — calls /macro/refresh and polls status ───────────────
+  if (op === 'macro') {
+    btn.disabled = true;
+    btn.textContent = '⏳ ' + orig;
+    btn.style.animation = 'tai-flash 0.8s ease-in-out infinite';
+    btn.style.borderColor = 'var(--warn)';
+    btn.style.color = 'var(--warn)';
+    btn.style.background = 'rgba(251,191,36,0.12)';
+    try {
+      await fetch('/macro/refresh', {method: 'POST'});
+      const pollMacro = setInterval(async () => {
+        try {
+          const s = await fetch('/status').then(r => r.json());
+          if (!s.running || s.operation !== 'macro') {
+            clearInterval(pollMacro);
+            btn.disabled = false;
+            btn.textContent = orig;
+            btn.style.animation = 'none';
+            btn.style.borderColor = 'var(--border)';
+            btn.style.color = 'var(--muted)';
+            btn.style.background = 'var(--surface2)';
+            const now = new Date().toLocaleString('en-CA', {timeZone:'America/Toronto', hour12:false}).replace(',','');
+            const tsEl = document.getElementById('tai-ts-macro');
+            if (tsEl) tsEl.textContent = '✓ ' + now;
+            updateMacroStatusBadge();
+          }
+        } catch(e) { clearInterval(pollMacro); _resetTradeAIBtn(btn, orig); }
+      }, 2000);
+    } catch(e) {
+      _resetTradeAIBtn(btn, orig);
+      console.error('[TradeAI] macro refresh FAIL:', e);
+    }
+    return;
+  }
+
   // ── Signal forecast — handled separately (no polling needed) ────────────
   if (op === 'signal') {
     btn.disabled = true;
@@ -4032,11 +4100,12 @@ async function runTradeAIOp(op, btn) {
     btn.style.borderColor = 'var(--warn)';
     btn.style.color = 'var(--warn)';
     btn.style.background = 'rgba(251,191,36,0.12)';
-    // Poll signal/progress while running
+    // Poll signal/progress while running — show in header status area
     const pollSig = setInterval(async () => {
       try {
         const p = await fetch('/signal/progress').then(r => r.json());
-        if (stopLbl) stopLbl.textContent = p.total > 0 ? `${p.current} / ${p.total}${p.ticker ? ' — ' + p.ticker : ''}` : '';
+        const lbl = document.getElementById('statusProgressLabel');
+        if (lbl && p.total > 0) lbl.textContent = `${p.current} / ${p.total}${p.ticker ? ' — ' + p.ticker : ''}`;
       } catch(e) {}
     }, 800);
     try {

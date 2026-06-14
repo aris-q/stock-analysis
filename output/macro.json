@@ -2,18 +2,18 @@
   "indicators": {
     "fed_rate": {
       "label": "Fed Funds Rate",
-      "value": 3.64,
+      "value": 3.63,
       "prev": 3.64,
-      "change": 0.0,
-      "date": "2026-04-01",
+      "change": -0.01,
+      "date": "2026-05-01",
       "unit": "%"
     },
     "cpi": {
       "label": "CPI (YoY)",
-      "value": 332.41,
-      "prev": 330.29,
-      "change": 3.95,
-      "date": "2026-04-01",
+      "value": 333.98,
+      "prev": 332.41,
+      "change": 4.27,
+      "date": "2026-05-01",
       "unit": "%"
     },
     "unemployment": {
@@ -21,134 +21,146 @@
       "value": 4.3,
       "prev": 4.3,
       "change": 0.0,
-      "date": "2026-04-01",
+      "date": "2026-05-01",
       "unit": "%"
     },
     "gdp_growth": {
       "label": "GDP Growth",
-      "value": 2.0,
+      "value": 1.6,
       "prev": 0.5,
-      "change": 1.5,
+      "change": 1.1,
       "date": "2026-01-01",
       "unit": "%"
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.47,
-      "prev": 4.46,
-      "change": 0.01,
-      "date": "2026-05-14",
+      "value": 4.45,
+      "prev": 4.55,
+      "change": -0.1,
+      "date": "2026-06-11",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.0,
-      "prev": 3.98,
-      "change": 0.02,
-      "date": "2026-05-14",
+      "value": 4.05,
+      "prev": 4.13,
+      "change": -0.08,
+      "date": "2026-06-11",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 17.26,
-      "prev": 17.87,
-      "change": -0.61,
-      "date": "2026-05-14",
+      "value": 19.44,
+      "prev": 22.22,
+      "change": -2.78,
+      "date": "2026-06-11",
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 118.04,
-      "prev": 118.01,
-      "change": 0.03,
-      "date": "2026-05-08",
+      "value": 120.08,
+      "prev": 119.36,
+      "change": 0.72,
+      "date": "2026-06-05",
       "unit": ""
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
-      "value": 101.56,
-      "prev": 98.87,
-      "change": 2.69,
-      "date": "2026-05-11",
+      "value": 95.0,
+      "prev": 94.32,
+      "change": 0.68,
+      "date": "2026-06-08",
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7408.5,
-      "prev": 7501.24,
-      "change": -92.74,
-      "date": "2026-05-15",
+      "value": 7431.46,
+      "prev": 7394.3,
+      "change": 37.16,
+      "date": "2026-06-12",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.47,
+      "value": 0.4,
       "unit": "%",
-      "date": "2026-05-14",
+      "date": "2026-06-11",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall amid inflation jitters as oil prices climb; Treasury yields are up as U.S. oil prices trade above $100 a barrel; S&P 500's tech sector under pressure - MarketWatch",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-and-nasdaq-set-to-pull-back-as-treasury-yields-climb",
-      "publishedAt": "2026-05-15T17:31:00Z"
+      "title": "Have S&P 500 Index Funds, Often Touted as the Best Stock Investments, Become Dangerous? There's a Worrisome Development -- and a Possibly Better Alternative.",
+      "source": "Motley Fool",
+      "url": "https://www.fool.com/investing/2026/06/14/have-sp-500-index-funds-often-touted-as-best-voo/",
+      "publishedAt": "2026-06-14T09:20:00Z"
     },
     {
-      "title": "Honda shows off new hybrids for America as it absorbs $9 billion EV loss - Ars Technica",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/cars/2026/05/honda-shows-off-new-hybrids-for-america-as-it-absorbs-9-billion-ev-loss/",
-      "publishedAt": "2026-05-15T15:56:33Z"
+      "title": "Suze Orman to 54-Year-Old With $600,000: Skip the 1.5% Fee and Manage It Yourself",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/06/13/suze-orman-to-54-year-old-with-600000-skip-the-1-5-fee-and-manage-it-yourself/",
+      "publishedAt": "2026-06-13T16:02:52Z"
     },
     {
-      "title": "Trump's Financial Form Shows Purchases Of Paramount, WBD And Netflix - Deadline",
-      "source": "Deadline",
-      "url": "http://deadline.com/2026/05/trump-financial-disclsoure-paramount-warner-bros-1236906103/",
-      "publishedAt": "2026-05-15T15:51:00Z"
+      "title": "S&P 500, Nasdaq, Dow End Higher On SpaceX Strong Debut And US-Iran Peace Signals \u2014 SPCX, SHEL, ROKU, XOM, HOOD In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-higher-on-space-x-strong-debut-and-us-iran-peace-signals-spcx-shel-roku-xom-hood-in-focus/cZKdaEuR75L",
+      "publishedAt": "2026-06-12T21:45:19Z"
     },
     {
-      "title": "Stock Market Today: Dow Falls 400 Points Lower on Oil Price Fears \u2014 Live Updates - WSJ",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-05-15-2026",
-      "publishedAt": "2026-05-15T15:34:00Z"
+      "title": "Stocks Rally on Hopes for a Near-term US-Iran Interim Peace Agreement",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/2447851/stocks-rally-on-hopes-for-a-near-term-us-iran-interim-peace-agreement",
+      "publishedAt": "2026-06-12T20:39:53Z"
     },
     {
-      "title": "Stephen Miran exits the Fed. How he set the stage for Kevin Warsh. - CNBC",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/15/stephen-miran-exits-the-fed-how-he-set-the-stage-for-kevin-warsh.html",
-      "publishedAt": "2026-05-15T15:29:59Z"
+      "title": "Elon Musk May Be a Trillionaire, but Tesla Is Still Down 11% in 2026. Is TSLA Stock Dead Weight Now?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/12/elon-musk-may-be-a-trillionaire-but-tesla-is-still-down-11-in-2026-is-tsla-stock-dead-weight-now/",
+      "publishedAt": "2026-06-12T19:16:20Z"
     },
     {
-      "title": "Bill Ackman has been quietly buying Microsoft since February, when AI fears were dragging the stock - Fortune",
-      "source": "Fortune",
-      "url": "https://fortune.com/2026/05/15/bill-ackman-microsoft-stock-openai-azure-spending/",
-      "publishedAt": "2026-05-15T15:14:00Z"
+      "title": "VOO vs. SPY: Which S&P 500 ETF is The Better Bet?",
+      "source": "Motley Fool",
+      "url": "https://www.fool.com/coverage/etfs/2026/06/12/voo-vs-spy-which-s-and-p-500-etf-is-the-better-bet/",
+      "publishedAt": "2026-06-12T18:48:03Z"
     },
     {
-      "title": "Chip Stocks Slide After U.S.-China Summit Ends Without Major Tech Deals - WSJ",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/tech/chip-stocks-slide-after-u-s-china-summit-ends-without-major-tech-deals-c7c757b8",
-      "publishedAt": "2026-05-15T14:33:00Z"
+      "title": "Leaving Las Vegas: How to Beat the House as the Stock Market Turns Into a Casino",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/2444431/leaving-las-vegas-how-to-beat-the-house-as-the-stock-market-turns-into-a-casino",
+      "publishedAt": "2026-06-12T16:58:17Z"
     },
     {
-      "title": "Starbucks to lay off 300 U.S. employees, shutter some regional support offices - CNBC",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/15/starbucks-to-lay-off-300-us-employees-close-some-regional-offices.html",
-      "publishedAt": "2026-05-15T13:03:00Z"
+      "title": "Stocks See Support from Hopes for a Near-term US-Iran Peace Agreement",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/2443233/stocks-see-support-from-hopes-for-a-near-term-us-iran-peace-agreement",
+      "publishedAt": "2026-06-12T15:51:42Z"
     },
     {
-      "title": "2 Upstate NY metros among top 100 in US for foreclosure rate in first quarter - Syracuse.com",
-      "source": "syracuse.com",
-      "url": "https://www.syracuse.com/data/2026/05/2-upstate-ny-metros-among-top-100-in-us-for-foreclosure-rate-in-first-quarter.html",
-      "publishedAt": "2026-05-15T12:30:00Z"
+      "title": "Energy Refuses to Quit: XLE Up 29% YTD as Oil Stocks Wake Up",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/12/energy-refuses-to-quit-xle-up-29-ytd-as-oil-stocks-wake-up/",
+      "publishedAt": "2026-06-12T15:30:08Z"
     },
     {
-      "title": "North America\u2019s largest commuter rail system faces a potential shutdown - AP News",
-      "source": "Associated Press",
-      "url": "https://apnews.com/article/lirr-new-york-commuter-rail-strike-union-eefab0d1f91470934fb89bd1809d0a94",
-      "publishedAt": "2026-05-15T11:52:00Z"
+      "title": "What Stripping the Weakest Stocks From the S&P 500 Actually Does for Your Portfolio",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/12/how-removing-33-of-the-sps-junk-stocks-can-sharpen-your-portfolio/",
+      "publishedAt": "2026-06-12T15:17:01Z"
+    },
+    {
+      "title": "Stock Market Week Ahead: Keep An Eye On The Little Things",
+      "source": "Investor's Business Daily",
+      "url": "https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-keep-an-eye-on-the-little-things/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-13T13:55:41Z"
+    },
+    {
+      "title": "The Fed Just Triggered a Sharp Tech-Sector Sell-Off: Here Is the 1 Dirt-Cheap Financial Disruptor I\u2019m Buying Hand Over Fist",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/12/the-fed-just-triggered-a-sharp-tech-sector-sell-off-here-is-the-1-dirt-cheap-financial-disruptor-im-buying-hand-over-fist/",
+      "publishedAt": "2026-06-12T21:12:58Z"
     }
   ],
-  "fetchedAt": "2026-05-16 16:54 EDT"
+  "fetchedAt": "2026-06-14 13:52 EDT"
 }
