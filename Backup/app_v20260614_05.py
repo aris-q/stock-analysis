@@ -1,0 +1,2580 @@
+from flask import Flask, render_template, request, redirect, jsonify, make_response
+import json, os, logging, threading
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH, OLLAMA_URL, OLLAMA_MODEL
+try:
+    from config import FRED_API_KEY, NEWSAPI_KEY, MACRO_PATH
+except ImportError:
+    FRED_API_KEY = None
+    NEWSAPI_KEY  = None
+    MACRO_PATH   = "output/macro.json"
+DREAM_PATH = "output/dream.json"
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze
+from compute import process_watchlist
+from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
+from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+os.makedirs("logs", exist_ok=True)
+os.makedirs("output", exist_ok=True)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s - %(message)s",
+    handlers=[
+        logging.FileHandler("logs/app.log", encoding="utf-8"),
+        logging.StreamHandler(stream=open(__import__('sys').stdout.fileno(),
+            mode='w', encoding='utf-8', errors='replace', closefd=False))
+    ]
+)
+
+log = logging.getLogger(__name__)
+app = Flask(__name__)
+
+
+def _sanitize_str(s):
+    if not isinstance(s, str):
+        return s
+    return s.replace('\x00', '').replace('\r', ' ')
+
+def _sanitize_news(items):
+    return [{k: _sanitize_str(v) for k, v in item.items()} for item in items]
+
+
+# watchlist = list(WATCHLIST)
+
+def load_watchlist():
+    try:
+        with open(WATCHLIST_PATH, "r") as f:
+            return json.load(f)
+    except Exception:
+        log.info("No watchlist.json found, using config default")
+        return list(WATCHLIST)
+
+def save_watchlist():
+    with open(WATCHLIST_PATH, "w") as f:
+        json.dump(watchlist, f)
+    log.info(f"Watchlist saved: {watchlist}")
+
+watchlist = load_watchlist()
+
+def _sync_watchlist_from_holdings(holding_tickers):
+    """
+    Keep watchlist aligned with TradeAI holdings:
+    - Add any holding ticker not already in watchlist
+    - Remove any ticker that was a previous holding but is no longer held
+      (identified by tradeai_holdings set stored in watchlist.json metadata)
+    - Manual tickers (never held) are left untouched
+    """
+    global watchlist
+    try:
+        prev_holdings = set(load_json(WATCHLIST_PATH + ".holdings", []))
+        current_holdings = set(holding_tickers)
+
+        added, removed = [], []
+
+        for t in current_holdings:
+            if t not in watchlist:
+                watchlist.append(t)
+                added.append(t)
+
+        for t in list(watchlist):
+            if t in prev_holdings and t not in current_holdings:
+                watchlist.remove(t)
+                removed.append(t)
+
+        save_watchlist()
+        # Persist current holding set for next diff
+        save_json(WATCHLIST_PATH + ".holdings", list(current_holdings))
+
+        if added or removed:
+            log.info(f"[WatchlistSync] added:{added} removed:{removed} | watchlist now:{watchlist}")
+        else:
+            log.info(f"[WatchlistSync] no changes | holdings:{list(current_holdings)}")
+    except Exception as e:
+        log.error(f"[WatchlistSync] FAIL: {e}")
+
+
+def _get_holding_tickers():
+    """Return current TradeAI holding tickers."""
+    try:
+        trades = load_json(TRADES_AI_PATH, {})
+        return list(trades.get("holdings", {}).keys())
+    except Exception:
+        return []
+
+fetch_status = {"running": False, "message": "Idle", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+stop_flag = False
+op_timestamps = {"prices": None, "smart": None, "new": None, "all": None}
+last_fetched_tickers = set()
+
+
+
+TZ = ZoneInfo("America/Toronto")
+
+def ts():
+    return datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
+
+def load_json(path, default):
+    try:
+        with open(path, "r") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+def save_json(path, data):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    tmp = path + f".{os.getpid()}.tmp"
+    with open(tmp, "w") as f:
+        json.dump(data, f, indent=2, allow_nan=False, default=lambda v: None)
+    os.replace(tmp, path)
+
+def sync_watchlist_to_analysis(existing_watchlist, watchlist):
+    """Ensure all tickers in watchlist exist in analysis, never remove existing cards."""
+    existing_map = {s["ticker"]: s for s in existing_watchlist}
+    for ticker in watchlist:
+        if ticker not in existing_map:
+            log.info(f"Adding missing ticker to analysis: {ticker}")
+            existing_map[ticker] = {"ticker": ticker, "fetchedAt": None}
+    return existing_map
+
+
+def run_price_refresh(triggered_by="startup"):
+    global fetch_status, op_timestamps
+    fetch_status = {"running": True, "message": f"⚡ Updating prices for all tickers...", "operation": "prices"}
+    log.info(f"=== Price Refresh Started [{triggered_by}]: {watchlist} ===")
+
+    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    existing_map = {s["ticker"]: s for s in existing.get("watchlist", [])}
+
+    for ticker in watchlist:
+        log.info(f"--- Price refresh: {ticker} ---")
+        try:
+            price_data = fetch_price_only(ticker)
+            if not price_data:
+                log.error(f"Price refresh no data: {ticker}")
+                continue
+            stock = existing_map.get(ticker, {"ticker": ticker})
+            stock.update({
+                "ticker": ticker,
+                "price": price_data.get("price"),
+                "previousClose": price_data.get("previousClose"),
+                "volume": price_data.get("volume"),
+                "marketCap": price_data.get("marketCap"),
+                "rsi14": price_data.get("rsi14"),
+                "bbPercent": price_data.get("bbPercent"),
+                "priceFetchedAt": ts(),
+            })
+            existing_map[ticker] = stock
+            log.info(f"Price refresh OK: {ticker} | price:{price_data.get('price')} prevClose:{price_data.get('previousClose')} rsi:{price_data.get('rsi14')} bb:{price_data.get('bbPercent')}")
+        except Exception as e:
+            log.error(f"Price refresh FAIL: {ticker} | {e}")
+
+    now_ts = ts()
+    op_timestamps["prices"] = now_ts
+
+    results = [existing_map[t] for t in watchlist if t in existing_map]
+    out = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    out["watchlist"] = results
+    out["lastPriceRefresh"] = now_ts
+    save_json(OUTPUT_PATH, out)
+
+    fetch_status = {"running": False, "message": f"Prices updated: {now_ts}", "operation": None}
+    log.info(f"=== Price Refresh Complete [{triggered_by}] ===")
+
+
+def run_ai_summary(ticker):
+    global fetch_status
+    fetch_status = {"running": True, "message": f"⚡ Generating AI summary: {ticker}...", "operation": "ai"}
+    log.info(f"=== AI Summary Started: {ticker} ===")
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        existing_map = {s["ticker"]: s for s in existing.get("watchlist", [])}
+        stock = existing_map.get(ticker)
+        if not stock:
+            log.error(f"AI summary FAIL: {ticker} not found in data")
+            fetch_status = {"running": False, "message": f"AI summary FAIL: {ticker} not found.", "operation": None}
+            return
+        now_ts = ts()
+        stock["aiSummary"] = generate_summary(stock)
+        stock["aiSummaryUpdatedAt"] = now_ts
+        existing_map[ticker] = stock
+        out = load_json(OUTPUT_PATH, {})
+        out["watchlist"] = [existing_map.get(t, s) for t, s in [(s["ticker"], s) for s in existing.get("watchlist", [])]]
+        save_json(OUTPUT_PATH, out)
+        fetch_status = {"running": False, "message": f"AI summary done: {ticker} at {now_ts}", "operation": None}
+        log.info(f"=== AI Summary Complete: {ticker} ===")
+    except Exception as e:
+        log.error(f"AI summary FAIL: {ticker} | {e}")
+        fetch_status = {"running": False, "message": f"AI summary FAIL: {ticker}", "operation": None}
+
+
+def run_fetch(tickers_to_fetch, mode="all"):
+    global fetch_status, last_fetched_tickers, op_timestamps
+    fetch_status = {"running": True, "message": f"[{mode.upper()}] Fetching {len(tickers_to_fetch)} ticker(s)...", "operation": mode}
+    log.info(f"=== Fetch Started [{mode}]: {tickers_to_fetch} ===")
+
+    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    existing_map = reconcile_with_watchlist(
+    {s["ticker"]: s for s in existing.get("watchlist", [])}
+)
+
+    for ticker in tickers_to_fetch:
+        log.info(f"--- Fetching [{mode}]: {ticker} ---")
+        try:
+            yf_data = fetch_yfinance(ticker)
+            if not yf_data:
+                log.error(f"No data returned for {ticker}")
+                continue
+            stock = existing_map.get(ticker, {"ticker": ticker})
+            stock.update({
+                "ticker": ticker,
+                "fetchedAt": ts(),
+                "calendarFetchedAt": ts(),
+                "price": yf_data.get("price"),
+                "volume": yf_data.get("volume"),
+                "marketCap": yf_data.get("marketCap"),
+                "sector": yf_data.get("sector"),
+                "industry": yf_data.get("industry"),
+                "calendar": yf_data.get("calendar", {}),
+                "events": yf_data.get("events", {}),
+                "dividends": yf_data.get("dividends", []),
+                "annualIncome": yf_data.get("annualIncome", []),
+                "quarterlyIncome": yf_data.get("quarterlyIncome", []),
+                "annualBalance": yf_data.get("annualBalance", []),
+                "quarterlyBalance": yf_data.get("quarterlyBalance", []),
+                "annualCashflow": yf_data.get("annualCashflow", []),
+                "quarterlyCashflow": yf_data.get("quarterlyCashflow", []),
+            })
+            existing_map[ticker] = stock
+            last_fetched_tickers.add(ticker)
+        except Exception as e:
+            log.error(f"Fetch FAIL: {ticker} | {e}")
+
+    gainers = fetch_daily_gainers()
+    results = [existing_map[t] for t in watchlist if t in existing_map]
+    results = process_watchlist(results)
+
+    log.info(f"Generating recommendations...")
+    recommendations = generate_recommendations(results)
+    log.info("AI summaries skipped — run per ticker manually.")
+
+    log.info(f"Total before save: {len(results)} | {[r['ticker'] for r in results]}")
+    now_ts = ts()
+    if mode == "all":
+        op_timestamps["all"] = now_ts
+    elif mode == "new":
+        op_timestamps["new"] = now_ts
+    out = load_json(OUTPUT_PATH, {})
+    out.update({
+        "watchlist": results,
+        "dailyGainers": gainers.get("us", []),
+        "dailyGainersCDN": gainers.get("cdn", []),
+        "recommendations": recommendations,
+        "lastUpdated": now_ts,
+        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
+    })
+    save_json(OUTPUT_PATH, out)
+    fetch_status = {"running": False, "message": f"Done! [{mode}] {len(tickers_to_fetch)} ticker(s) updated.", "operation": None}
+    log.info("=== Fetch Complete ===")
+
+
+def run_smart_refresh():
+    global fetch_status, op_timestamps
+    fetch_status = {"running": True, "message": "Smart refresh: checking what needs updating..."}
+    log.info("=== Smart Refresh Started ===")
+
+    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+    existing_map = reconcile_with_watchlist(
+    {s["ticker"]: s for s in existing.get("watchlist", [])}
+)
+
+    tickers_needing_refresh = []
+    refresh_plans = {}
+
+    for ticker in watchlist:
+        stock = existing_map.get(ticker, {"ticker": ticker})
+        plan = check_what_needs_refresh(stock, None)
+        if any([plan["price"], plan["quarterly"], plan["annual"], plan["calendar"]]):
+            tickers_needing_refresh.append(ticker)
+            refresh_plans[ticker] = plan
+
+    if not tickers_needing_refresh:
+        fetch_status = {"running": False, "message": "Smart refresh: everything up to date."}
+        log.info("Smart refresh: nothing to update")
+        return
+
+    fetch_status = {"running": True, "message": f"Smart refresh: updating {len(tickers_needing_refresh)} ticker(s)..."}
+    log.info(f"Smart refresh: {tickers_needing_refresh}")
+
+    for ticker in tickers_needing_refresh:
+        plan = refresh_plans[ticker]
+        stock = existing_map.get(ticker, {"ticker": ticker})
+        try:
+            yf_data = plan.get("_freshData") or fetch_yfinance(ticker)
+            if not yf_data:
+                continue
+            if plan["price"]:
+                stock.update({
+                    "fetchedAt": ts(),
+                    "price": yf_data.get("price"),
+                    "volume": yf_data.get("volume"),
+                    "marketCap": yf_data.get("marketCap"),
+                })
+            if plan["quarterly"]:
+                stock["quarterlyIncome"] = yf_data.get("quarterlyIncome", [])
+                stock["quarterlyBalance"] = yf_data.get("quarterlyBalance", [])
+                stock["quarterlyCashflow"] = yf_data.get("quarterlyCashflow", [])
+            if plan["annual"]:
+                stock["annualIncome"] = yf_data.get("annualIncome", [])
+                stock["annualBalance"] = yf_data.get("annualBalance", [])
+                stock["annualCashflow"] = yf_data.get("annualCashflow", [])
+            if plan["calendar"]:
+                stock["calendar"] = yf_data.get("calendar", {})
+                stock["events"] = yf_data.get("events", {})
+                stock["dividends"] = yf_data.get("dividends", [])
+                stock["calendarFetchedAt"] = ts()
+            existing_map[ticker] = stock
+        except Exception as e:
+            log.error(f"Smart refresh FAIL: {ticker} | {e}")
+
+    results = list(existing_map.values())
+    results = process_watchlist(results)
+
+    gainers = fetch_daily_gainers()
+    recommendations = generate_recommendations(results)
+    log.info("Smart refresh: AI summaries skipped — run per ticker manually.")
+
+    now_ts = ts()
+    op_timestamps["smart"] = now_ts
+    out = load_json(OUTPUT_PATH, {})
+    out.update({
+        "watchlist": results,
+        "dailyGainers": gainers or existing.get("dailyGainers", []),
+        "recommendations": recommendations,
+        "lastUpdated": now_ts,
+        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
+    })
+    save_json(OUTPUT_PATH, out)
+    fetch_status = {"running": False, "message": f"Smart refresh done: {len(tickers_needing_refresh)} ticker(s) updated.", "operation": None}
+    log.info("=== Smart Refresh Complete ===")
+
+def reconcile_with_watchlist(existing_map):
+    """Remove tickers from existing_map that are no longer in watchlist."""
+    removed = [t for t in list(existing_map.keys()) if t not in watchlist]
+    for t in removed:
+        del existing_map[t]
+        log.info(f"Reconcile: removed {t} (no longer in watchlist)")
+    added = [t for t in watchlist if t not in existing_map]
+    for t in added:
+        existing_map[t] = {"ticker": t, "fetchedAt": None}
+        log.info(f"Reconcile: added placeholder for {t}")
+    return existing_map
+
+@app.route("/fetch")
+def trigger_fetch():
+    if not fetch_status["running"]:
+        thread = threading.Thread(target=run_fetch, args=(list(watchlist), "all"))
+        thread.start()
+    return redirect("/")
+
+
+@app.route("/fetch/new")
+def trigger_fetch_new():
+    if not fetch_status["running"]:
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        existing_tickers = {s["ticker"] for s in existing.get("watchlist", [])}
+        new_tickers = [t for t in watchlist if t not in existing_tickers]
+        log.info(f"Fetch New: new={new_tickers}")
+        thread = threading.Thread(target=run_fetch, args=(new_tickers or [], "new"))
+        thread.start()
+    return redirect("/")
+
+
+@app.route("/fetch/prices")
+def trigger_fetch_prices():
+    if not fetch_status["running"]:
+        thread = threading.Thread(target=run_price_refresh, args=("manual",))
+        thread.start()
+    return redirect("/")
+
+
+@app.route("/fetch/smart")
+def trigger_smart_refresh():
+    if not fetch_status["running"]:
+        thread = threading.Thread(target=run_smart_refresh)
+        thread.start()
+    return redirect("/")
+
+
+@app.route("/fetch/ticker/<ticker>")
+def trigger_fetch_ticker(ticker):
+    if not fetch_status["running"] and ticker in watchlist:
+        thread = threading.Thread(target=run_fetch, args=([ticker], "single"))
+        thread.start()
+    # return redirect("/")
+    return "", 204
+
+@app.route("/fetch/ticker/<ticker>/ai")
+def trigger_fetch_ticker_ai(ticker):
+    if not fetch_status["running"] and ticker in watchlist:
+        thread = threading.Thread(target=run_ai_summary, args=(ticker,))
+        thread.start()
+    return redirect("/")
+
+@app.route("/status")
+def status():
+    out = load_json(OUTPUT_PATH, {})
+    return jsonify({
+        **fetch_status,
+        "opTimestamps": out.get("opTimestamps", {}),
+        "lastPriceRefresh": out.get("lastPriceRefresh"),
+    })
+
+@app.route("/stop", methods=["POST"])
+def stop_operation():
+    global stop_flag
+    stop_flag = True
+    log.info("[STOP] Stop flag set by user")
+    return jsonify({"status": "stopping"})
+
+
+@app.route("/api/holding-tickers")
+def api_holding_tickers():
+    """Returns current TradeAI holding tickers so UI can lock them in watchlist bar."""
+    tickers = _get_holding_tickers()
+    log.info(f"[HoldingTickers] {tickers}")
+    return jsonify({"holdingTickers": tickers})
+
+@app.route("/news/<ticker>")
+def get_news(ticker):
+    try:
+        today_only = request.args.get("today") == "1"
+        news_db = load_json(NEWS_PATH, {})
+        news_entry = news_db.get(ticker, {})
+
+        if needs_news_refresh(news_entry, today_only=today_only):
+            all_news = fetch_news(ticker)
+            if today_only:
+                from datetime import date as dt_date
+                today_str = str(dt_date.today())
+                news_items = [n for n in all_news if n.get("pubDate", "").startswith(today_str)]
+                news_entry["todayItems"] = news_items
+                news_entry["todayFetchedAt"] = ts()
+            else:
+                news_entry["sevenDayItems"] = all_news
+                news_entry["sevenDayFetchedAt"] = ts()
+            news_db[ticker] = news_entry
+            save_json(NEWS_PATH, news_db)
+            log.info(f"News saved: {ticker} | today:{today_only}")
+        else:
+            news_items = news_entry.get("todayItems" if today_only else "sevenDayItems", [])
+            log.info(f"News from cache: {ticker} | today:{today_only} | {len(news_items)} articles")
+
+        news_items = news_entry.get("todayItems" if today_only else "sevenDayItems", [])
+        news_items = _sanitize_news(news_items)
+
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        stock = next((s for s in existing.get("watchlist", []) if s["ticker"] == ticker), {})
+        price_context = fetch_price_context(ticker)
+
+        if not news_items:
+            return jsonify({"error": "No news found", "items": [], "impact": None, "priceContext": price_context})
+
+        impact = None
+        try:
+            impact = generate_news_impact(ticker, news_items, stock, price_context)
+        except Exception as e:
+            log.error(f"News impact generation FAIL: {ticker} | {e}")
+            impact = {
+                "overallSentiment": "neutral",
+                "sentimentScore": 0,
+                "marketConfirmation": "UNKNOWN",
+                "summary": "AI analysis unavailable",
+                "priceImpact": "Unknown",
+                "keyThemes": [],
+                "tradingImplication": "N/A",
+                "watchFor": "N/A",
+                "newsItems": []
+            }
+
+        impact_key = "todayImpact" if today_only else "sevenDayImpact"
+        impact_ts_key = "todayImpactAt" if today_only else "sevenDayImpactAt"
+        news_entry[impact_key] = impact
+        news_entry[impact_ts_key] = ts()
+        news_db[ticker] = news_entry
+        save_json(NEWS_PATH, news_db)
+        log.info(f"News impact saved: {ticker} | today:{today_only} | sentiment:{impact.get('overallSentiment')}")
+
+        log.info(f"News route OK: {ticker} | items:{len(news_items)} sentiment:{impact.get('overallSentiment')}")
+        return jsonify({
+            "items": news_items,
+            "impact": impact,
+            "priceContext": price_context,
+            "cached": not needs_news_refresh(news_entry, today_only)
+        })
+    except Exception as e:
+        log.error(f"News route FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e), "items": [], "impact": None, "priceContext": {}})
+
+
+@app.route("/news/cached-impact/<ticker>")
+def get_cached_news_impact(ticker):
+    try:
+        news_db = load_json(NEWS_PATH, {})
+        entry = news_db.get(ticker, {})
+        result = {
+            "sevenDay": {
+                "impact": entry.get("sevenDayImpact"),
+                "fetchedAt": entry.get("sevenDayImpactAt"),
+            },
+            "today": {
+                "impact": entry.get("todayImpact"),
+                "fetchedAt": entry.get("todayImpactAt"),
+            }
+        }
+        log.info(f"Cached impact served: {ticker} | 7d:{bool(result['sevenDay']['impact'])} today:{bool(result['today']['impact'])}")
+        return jsonify(result)
+    except Exception as e:
+        log.error(f"Cached impact FAIL: {ticker} | {e}")
+        return jsonify({"sevenDay": {}, "today": {}})
+
+
+@app.route("/")
+def index():
+    resp = make_response(render_template("index.html", watchlist=watchlist, status=fetch_status))
+    resp.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    resp.headers["Pragma"] = "no-cache"
+    resp.headers["Expires"] = "0"
+    return resp
+
+
+@app.route("/add", methods=["POST", "GET"])
+def add_ticker():
+    ticker = (request.form.get("ticker") or request.args.get("ticker") or "").upper().strip()
+    if not ticker or ticker in watchlist:
+        return redirect("/")
+    try:
+        import yfinance as yf
+        info = yf.Ticker(ticker).info
+        if not info.get("regularMarketPrice") and not info.get("currentPrice"):
+            log.warning(f"Ticker validation FAIL: {ticker} — not found on yfinance")
+            return redirect("/?error=invalid_ticker")
+        watchlist.append(ticker)
+        save_watchlist()
+        log.info(f"Added ticker: {ticker}")
+    except Exception as e:
+        log.error(f"Ticker validation error: {ticker} | {e}")
+    return redirect("/")
+
+
+@app.route("/remove/<ticker>")
+def remove_ticker(ticker):
+    if ticker in watchlist:
+        watchlist.remove(ticker)
+        save_watchlist()
+        log.info(f"Removed ticker: {ticker}")
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+        existing["watchlist"] = [s for s in existing["watchlist"] if s["ticker"] != ticker]
+        save_json(OUTPUT_PATH, existing)
+        log.info(f"Removed {ticker} from analysis.json")
+    except Exception as e:
+        log.error(f"Remove from analysis FAIL: {ticker} | {e}")
+    return redirect("/")
+
+
+@app.route("/logs")
+def view_logs():
+    try:
+        with open("logs/app.log", "r") as f:
+            lines = f.readlines()
+        count = len(lines)
+        last = lines[-500:]
+        return jsonify({"lines": [l.rstrip() for l in last], "total": count})
+    except Exception as e:
+        return jsonify({"lines": [], "total": 0, "error": str(e)})
+
+@app.route("/logs/clear", methods=["POST"])
+def clear_logs():
+    try:
+        with open("logs/app.log", "w") as f:
+            f.write("")
+        log.info("Log file cleared by user")
+        return jsonify({"status": "cleared"})
+    except Exception as e:
+        log.error(f"Log clear FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+@app.route("/data")
+def get_data():
+    try:
+        data = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+        return jsonify(data)
+    except Exception as e:
+        log.error(f"Data load FAIL: {e}")
+        return jsonify({"watchlist": [], "dailyGainers": []})
+    
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, FOLLOWUP_PATH
+
+@app.route("/followup/<ticker>/<event_name>")
+def followup_plan(ticker, event_name):
+    try:
+        force = request.args.get("refresh") == "1"
+        followup_db = load_json(FOLLOWUP_PATH, {})
+        cache_key = f"{ticker}_{event_name}".replace(" ", "_")
+
+        if not force and cache_key in followup_db:
+            log.info(f"Followup from cache: {ticker} | {event_name}")
+            return jsonify({**followup_db[cache_key], "cached": True})
+
+        with open(OUTPUT_PATH, "r") as f:
+            data = json.load(f)
+        stock = next((s for s in data["watchlist"] if s["ticker"] == ticker), None)
+        if not stock:
+            return jsonify({"error": "Ticker not found"})
+
+        plan = generate_followup(stock, event_name)
+        plan["savedAt"] = datetime.now(ZoneInfo("America/Toronto")).strftime("%Y-%m-%d %H:%M %Z")
+        plan["cached"] = False
+
+        followup_db[cache_key] = plan
+        save_json(FOLLOWUP_PATH, followup_db)
+        log.info(f"Followup saved: {ticker} | {event_name}")
+        return jsonify(plan)
+    except Exception as e:
+        log.error(f"Followup FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e)})
+
+@app.route("/followup/check/<ticker>/<event_name>")
+def followup_check(ticker, event_name):
+    followup_db = load_json(FOLLOWUP_PATH, {})
+    cache_key = f"{ticker}_{event_name}".replace(" ", "_")
+    entry = followup_db.get(cache_key)
+    return jsonify({"exists": entry is not None, "savedAt": entry.get("savedAt") if entry else None})
+
+@app.route("/technical/<ticker>")
+def technical_analysis(ticker):
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": []})
+        stock = next((s for s in existing.get("watchlist", []) if s["ticker"] == ticker), {})
+        rsi = stock.get("rsi14")
+        bb = stock.get("bbPercent")
+        log.info(f"Technical analysis: {ticker} | rsi:{rsi} bb:{bb}")
+
+        if rsi is None and bb is None:
+            return jsonify({"error": "No technical data. Run a price refresh first.", "ticker": ticker})
+
+        def rsi_label(v):
+            if v is None: return "Unknown", "neutral"
+            if v < 30: return "Oversold", "bullish"
+            if v > 70: return "Overbought", "bearish"
+            if v < 45: return "Mildly Oversold", "mild-bullish"
+            if v > 55: return "Mildly Overbought", "mild-bearish"
+            return "Neutral", "neutral"
+
+        def bb_label(v):
+            if v is None: return "Unknown", "neutral"
+            if v < 0: return "Below Lower Band", "bullish"
+            if v > 1: return "Above Upper Band", "bearish"
+            if v < 0.2: return "Near Lower Band", "mild-bullish"
+            if v > 0.8: return "Near Upper Band", "mild-bearish"
+            return "Mid-Range", "neutral"
+
+        rsi_text, rsi_signal = rsi_label(rsi)
+        bb_text, bb_signal = bb_label(bb)
+
+        signals = [rsi_signal, bb_signal]
+        bullish = signals.count("bullish") + signals.count("mild-bullish") * 0.5
+        bearish = signals.count("bearish") + signals.count("mild-bearish") * 0.5
+
+        if bullish > bearish:
+            if bullish >= 2:
+                verdict = "STRONG BUY WATCH"
+                action = "Both indicators confirm oversold conditions. This is a potential bounce candidate. Watch for a reversal confirmation candle (e.g. green day on above-average volume) before entering. Set a stop below recent low."
+            else:
+                verdict = "MILD BUY WATCH"
+                action = "One indicator suggests oversold but signals are mixed. Proceed cautiously. Wait for price to stabilize or show momentum before considering entry."
+        elif bearish > bullish:
+            if bearish >= 2:
+                verdict = "CAUTION — OVERBOUGHT"
+                action = "Both indicators confirm overbought conditions. Elevated pullback risk. Avoid chasing the price here. If you hold, consider tightening your stop-loss or taking partial profits."
+            else:
+                verdict = "MILD CAUTION"
+                action = "One indicator suggests overbought. Not an immediate sell signal, but avoid adding to position at current levels. Monitor for signs of weakening momentum."
+        else:
+            verdict = "NEUTRAL"
+            action = "Indicators show no strong directional bias. The stock is trading within normal range. No immediate action required — wait for a clearer signal before committing."
+
+        rsi_str = f"RSI {rsi}" if rsi is not None else "RSI N/A"
+        bb_str = f"BB%B {bb}" if bb is not None else "BB%B N/A"
+
+        return jsonify({
+            "ticker": ticker,
+            "rsi14": rsi,
+            "bbPercent": bb,
+            "rsiLabel": rsi_text,
+            "bbLabel": bb_text,
+            "verdict": verdict,
+            "action": action,
+            "summary": f"{rsi_str} ({rsi_text}) · {bb_str} ({bb_text})",
+        })
+    except Exception as e:
+        log.error(f"Technical analysis FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e), "ticker": ticker})
+
+
+
+def run_macro_refresh():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Fetching macro data...", "operation": "macro"}
+    log.info("=== Macro Refresh Started ===")
+    try:
+        if not FRED_API_KEY or FRED_API_KEY == "your_fred_api_key_here":
+            log.error("Macro refresh FAIL: FRED_API_KEY not set in config.py")
+            fetch_status = {"running": False, "message": "Macro FAIL: FRED_API_KEY not set", "operation": None}
+            return
+        data = fetch_macro_data(FRED_API_KEY, NEWSAPI_KEY)
+        now_ts = ts()
+        data["fetchedAt"] = now_ts
+        save_json(MACRO_PATH, data)
+        fetch_status = {"running": False, "message": f"Macro updated: {now_ts}", "operation": None}
+        log.info(f"=== Macro Refresh Complete: {now_ts} ===")
+    except Exception as e:
+        log.error(f"Macro refresh FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Macro FAIL: {e}", "operation": None}
+
+
+@app.route("/macro")
+def get_macro():
+    data = load_json(MACRO_PATH, {})
+    return jsonify(data)
+
+
+@app.route("/macro/refresh", methods=["GET","POST"])
+def macro_refresh():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_macro_refresh, daemon=True)
+    t.start()
+    log.info("Macro refresh triggered via UI")
+    return jsonify({"status": "started"})
+
+
+# ── MARKET ALERT ──────────────────────────────────────────────────────────────
+MARKET_ALERT_CACHE = {"data": None, "cachedAt": None}
+MARKET_ALERT_TTL   = 300   # seconds (5 min)
+ALERT_THRESHOLD    = -0.02  # -2% S&P 500
+VIX_FEAR_THRESHOLD = 20.0
+
+def _fetch_market_alert_data():
+    """Fetch ^GSPC and ^VIX via yfinance. Returns dict or None on failure."""
+    try:
+        import yfinance as yf
+        spx = yf.Ticker("^GSPC")
+        vix = yf.Ticker("^VIX")
+
+        spx_info = spx.fast_info
+        vix_info = vix.fast_info
+
+        spx_price = getattr(spx_info, "last_price", None)
+        spx_prev  = getattr(spx_info, "previous_close", None)
+        vix_price = getattr(vix_info, "last_price", None)
+
+        if spx_price is None or spx_prev is None:
+            log.warning("[MarketAlert] Could not fetch ^GSPC fast_info — trying history fallback")
+            hist = spx.history(period="2d", interval="1d")
+            if len(hist) >= 2:
+                spx_price = float(hist["Close"].iloc[-1])
+                spx_prev  = float(hist["Close"].iloc[-2])
+            else:
+                log.error("[MarketAlert] ^GSPC history fallback failed")
+                return None
+
+        if vix_price is None:
+            try:
+                vhist = vix.history(period="1d", interval="1m")
+                vix_price = float(vhist["Close"].iloc[-1]) if not vhist.empty else None
+            except Exception as ve:
+                log.warning(f"[MarketAlert] ^VIX fallback failed: {ve}")
+
+        spx_change = (spx_price - spx_prev) / spx_prev if spx_prev else 0.0
+        result = {
+            "spxPrice":  round(float(spx_price), 2),
+            "spxPrev":   round(float(spx_prev), 2),
+            "spxChange": round(spx_change, 5),
+            "vix":       round(float(vix_price), 2) if vix_price else None,
+        }
+        log.info(f"[MarketAlert] fetched | SPX:{result['spxPrice']} chg:{result['spxChange']:.2%} VIX:{result['vix']}")
+        return result
+    except Exception as e:
+        log.error(f"[MarketAlert] fetch FAIL: {e}")
+        return None
+
+
+def _generate_alert_cause(spx_change, vix):
+    """Call Ollama to generate a 1-sentence cause for the market drop."""
+    try:
+        import requests as req
+        chg_pct = f"{spx_change * 100:.1f}%"
+        vix_str = f"VIX at {vix:.1f}" if vix else "VIX unavailable"
+        prompt = (
+            f"The S&P 500 is down {chg_pct} today. {vix_str}. "
+            "In exactly 1 concise sentence (max 20 words), state the most likely cause of today's drop "
+            "based on current macro conditions. No preamble."
+        )
+        resp = req.post(
+            OLLAMA_URL,
+            json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False},
+            timeout=30
+        )
+        cause = resp.json().get("response", "").strip().split("\n")[0]
+        log.info(f"[MarketAlert] AI cause generated: {cause}")
+        return cause
+    except Exception as e:
+        log.warning(f"[MarketAlert] AI cause FAIL (non-critical): {e}")
+        return None
+
+
+@app.route("/api/market-alert")
+def api_market_alert():
+    """
+    Returns market alert status. Caches for MARKET_ALERT_TTL seconds.
+    Only calls Ollama for cause when alert is active.
+    Response: { alert, spxChange, spxPrice, vix, cause, level, checkedAt, cached }
+    """
+    try:
+        import time
+        now_epoch = time.time()
+        cached = MARKET_ALERT_CACHE.get("data")
+        cached_at = MARKET_ALERT_CACHE.get("cachedAt") or 0
+
+        if cached and (now_epoch - cached_at) < MARKET_ALERT_TTL:
+            log.info(f"[MarketAlert] served from cache | age:{int(now_epoch - cached_at)}s")
+            return jsonify({**cached, "cached": True})
+
+        raw = _fetch_market_alert_data()
+        if not raw:
+            log.error("[MarketAlert] route: fetch returned None")
+            if cached:
+                return jsonify({**cached, "cached": True, "stale": True})
+            return jsonify({"alert": False, "error": "fetch_failed", "cached": False}), 200
+
+        spx_change = raw["spxChange"]
+        vix        = raw["vix"]
+        alert      = spx_change <= ALERT_THRESHOLD
+
+        level  = "normal"
+        if spx_change <= -0.03:
+            level = "severe"
+        elif spx_change <= -0.02:
+            level = "warning"
+        elif spx_change <= -0.01:
+            level = "watch"
+
+        cause = None
+        if alert:
+            # Reuse cached cause if alert was already active and cause exists
+            prev_cause = (cached or {}).get("cause")
+            cause = prev_cause if prev_cause else _generate_alert_cause(spx_change, vix)
+
+        vix_fear = vix is not None and vix >= VIX_FEAR_THRESHOLD
+
+        data = {
+            "alert":      alert,
+            "level":      level,
+            "spxChange":  raw["spxChange"],
+            "spxPrice":   raw["spxPrice"],
+            "spxPrev":    raw["spxPrev"],
+            "vix":        vix,
+            "vixFear":    vix_fear,
+            "cause":      cause,
+            "checkedAt":  ts(),
+            "cached":     False,
+        }
+
+        MARKET_ALERT_CACHE["data"]     = data
+        MARKET_ALERT_CACHE["cachedAt"] = now_epoch
+        log.info(f"[MarketAlert] alert:{alert} level:{level} spxChange:{spx_change:.2%} vix:{vix} vixFear:{vix_fear}")
+        return jsonify(data)
+
+    except Exception as e:
+        log.error(f"[MarketAlert] route FAIL: {e}")
+        return jsonify({"alert": False, "error": str(e), "cached": False}), 200
+# ── END MARKET ALERT ───────────────────────────────────────────────────────────
+
+
+@app.route("/macro/ai", methods=["GET","POST"])
+def macro_ai():
+    try:
+        data = load_json(MACRO_PATH, {})
+        if not data:
+            return jsonify({"error": "No macro data. Run a refresh first."})
+        indicators = data.get("indicators", {})
+        headlines  = data.get("headlines", [])
+        fetched_at = data.get("fetchedAt", "unknown")
+
+        # Build prompt for Ollama
+        ind_lines = []
+        for k, v in indicators.items():
+            if v.get("value") is None:
+                continue
+            unit = v.get("unit","")
+            chg  = f" (chg: {v['change']:+.2f}{unit})" if v.get("change") is not None else ""
+            ind_lines.append(f"- {v['label']}: {v['value']}{unit}{chg} as of {v.get('date','?')}")
+
+        headline_lines = [f"- {h['title']} ({h['source']})" for h in headlines[:8]]
+
+        ind_block = "\n".join(ind_lines)
+        hl_block  = "\n".join(headline_lines) if headline_lines else "None available"
+        prompt = (
+            "You are a macro-economic analyst. Based on the following current macro indicators and market headlines, "
+            "provide a concise analysis of the current market environment. "
+            "Focus on: (1) what these indicators signal for equity markets, "
+            "(2) key risks and opportunities, "
+            "(3) sectors likely to benefit or suffer. "
+            "Keep the response under 250 words, structured with short paragraphs."
+            "\n\nMACRO INDICATORS:\n" + ind_block +
+            "\n\nRECENT HEADLINES:\n" + hl_block +
+            "\n\nAnalysis:"
+        )
+
+        import requests as req
+        resp = req.post("http://localhost:11434/api/generate",
+            json={"model": "gemma2:9b", "prompt": prompt, "stream": False},
+            timeout=120
+        )
+        result = resp.json().get("response", "").strip()
+        now_ts = ts()
+
+        # Save AI summary back to macro.json
+        data["aiSummary"] = result
+        data["aiSummaryAt"] = now_ts
+        save_json(MACRO_PATH, data)
+
+        log.info(f"Macro AI summary generated: {now_ts} | {len(result)} chars")
+        return jsonify({"summary": result, "generatedAt": now_ts})
+    except Exception as e:
+        log.error(f"Macro AI FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+
+
+def run_dream_scan(triggered_by="manual"):
+    global fetch_status, stop_flag
+    stop_flag = False
+    fetch_status = {"running": True, "message": "Dream Scan: loading ticker lists...", "operation": "dream", "current": 0, "total": 0, "current_ticker": ""}
+    log.info(f"=== Dream Scan Started [{triggered_by}] ===")
+
+    def _progress(current, total, ticker):
+        fetch_status["current"] = current
+        fetch_status["total"] = total
+        fetch_status["current_ticker"] = ticker
+        fetch_status["message"] = f"Dream Scan: {current} of {total} — {ticker}"
+        return stop_flag  # True = stop requested
+
+    try:
+        existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": [], "dailyGainersCDN": []})
+        watchlist_tickers = [s["ticker"] for s in existing.get("watchlist", [])]
+        us_gainers  = existing.get("dailyGainers", []) or []
+        cdn_gainers = existing.get("dailyGainersCDN", []) or []
+        gainer_tickers = [g["ticker"] for g in us_gainers + cdn_gainers if g.get("ticker")]
+        results = fetch_dream_candidates(watchlist_tickers, gainer_tickers, progress_callback=_progress)
+        if stop_flag:
+            log.info("[Dream] Scan stopped by user")
+            fetch_status = {"running": False, "message": f"Dream scan stopped by user at {fetch_status.get('current', 0)} of {fetch_status.get('total', 0)}.", "operation": None, "current": fetch_status.get("current", 0), "total": fetch_status.get("total", 0), "current_ticker": ""}
+            return
+        now_ts = ts()
+        results["scannedAt"] = now_ts
+        save_json(DREAM_PATH, results)
+        fetch_status = {"running": False, "message": f"Dream scan complete: {now_ts}", "operation": None, "current": fetch_status["total"], "total": fetch_status["total"], "current_ticker": ""}
+        log.info(f"=== Dream Scan Complete: {now_ts} | {len(results.get('candidates',[]))} candidates ===")
+    except Exception as e:
+        log.error(f"Dream scan FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Dream scan FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+
+
+@app.route("/dream")
+def get_dream():
+    data = load_json(DREAM_PATH, {})
+    return jsonify(data)
+
+
+@app.route("/dream/scan", methods=["GET", "POST"])
+def dream_scan():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_dream_scan, args=("manual",), daemon=True)
+    t.start()
+    log.info("Dream scan triggered via UI")
+    return jsonify({"status": "started"})
+
+
+@app.route("/dream/refresh-tickers", methods=["POST"])
+def dream_refresh_tickers():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    def _do_refresh():
+        global fetch_status, stop_flag
+        stop_flag = False
+        fetch_status = {"running": True, "message": "Refreshing ticker lists (S&P 500, TSX 60)...", "operation": "refresh_tickers", "current": 0, "total": 2, "current_ticker": ""}
+        log.info("=== Ticker List Refresh Started ===")
+        try:
+            from fetcher import fetch_sp500_tickers, fetch_tsx60_tickers
+            fetch_status["current"] = 1
+            fetch_status["current_ticker"] = "S&P500"
+            fetch_status["message"] = "Refreshing ticker lists: 1 of 2 — S&P500"
+            sp500 = fetch_sp500_tickers(force=True)
+            fetch_status["current"] = 2
+            fetch_status["current_ticker"] = "TSX60"
+            fetch_status["message"] = "Refreshing ticker lists: 2 of 2 — TSX60"
+            tsx60 = fetch_tsx60_tickers(force=True)
+            log.info(f"=== Ticker Refresh Complete: SP500:{len(sp500)} TSX60:{len(tsx60)} ===")
+            fetch_status = {"running": False, "message": f"Ticker lists refreshed: S&P500={len(sp500)} TSX60={len(tsx60)}", "operation": None, "current": 2, "total": 2, "current_ticker": ""}
+        except Exception as e:
+            log.error(f"Ticker refresh FAIL: {e}", exc_info=True)
+            fetch_status = {"running": False, "message": f"Ticker refresh FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+    t = threading.Thread(target=_do_refresh, daemon=True)
+    t.start()
+    log.info("Ticker refresh triggered via UI")
+    return jsonify({"status": "started"})
+
+
+def _maybe_run_dream_scan():
+    import time
+    time.sleep(60)
+    if fetch_status.get("running"):
+        log.info("Dream auto-scan skipped — another operation running")
+        return
+    dream = load_json(DREAM_PATH, {})
+    scanned_at = dream.get("scannedAt")
+    if scanned_at:
+        try:
+            from datetime import datetime
+            last = datetime.strptime(scanned_at[:16], "%Y-%m-%d %H:%M")
+            diff = (datetime.now() - last).total_seconds() / 3600
+            if diff < 20:
+                log.info(f"Dream auto-scan skipped — last ran {diff:.1f}h ago")
+                return
+        except Exception:
+            pass
+    log.info("Dream auto-scan starting (stale or never run)")
+    run_dream_scan("startup")
+
+
+# ── Scoring Matrix Config ─────────────────────────────────────────────────────
+SCORING_CONFIG_PATH = "output/scoring_config.json"
+
+SCORING_DEFAULTS = {
+    "buySignalMap": {
+        "Strong Buy": 100,
+        "Buy": 75,
+        "Hold": 40,
+        "Avoid": 0,
+        "Unknown": 20
+    },
+    "bucketWeights": {
+        "Momentum":   {"dream": 0.15, "ai": 0.35, "signal": 0.30},
+        "Reversal":   {"dream": 0.15, "ai": 0.45, "signal": 0.20},
+        "SmartMoney": {"dream": 0.30, "ai": 0.40, "signal": 0.15},
+        "Account":    {"dream": 0.20, "ai": 0.40, "signal": 0.25},
+        "Dream":      {"dream": 0.25, "ai": 0.40, "signal": 0.25}
+    },
+    "trajectoryBonus": {
+        "Momentum":   {"Accelerating": 20, "Stable": 8,  "Decelerating": 0},
+        "Reversal":   {"Accelerating": 0,  "Stable": 0,  "Decelerating": 0},
+        "SmartMoney": {"Accelerating": 10, "Stable": 0,  "Decelerating": 0},
+        "Account":    {"Accelerating": 10, "Stable": 5,  "Decelerating": -5},
+        "Dream":      {"Accelerating": 12, "Stable": 0,  "Decelerating": 0}
+    },
+    "stageBonus": {
+        "Momentum":   {"Early-Stage": 0,  "Growth": 8,  "Mature": 5,  "Declining": 0},
+        "Reversal":   {"Early-Stage": 0,  "Growth": 0,  "Mature": 0,  "Declining": 0},
+        "SmartMoney": {"Early-Stage": 15, "Growth": 10, "Mature": 0,  "Declining": 0},
+        "Account":    {"Early-Stage": 0,  "Growth": 0,  "Mature": 0,  "Declining": 0},
+        "Dream":      {"Early-Stage": 8,  "Growth": 4,  "Mature": 0,  "Declining": 0}
+    },
+    "sharedBonuses": {
+        "volumeSurgeHigh":    10,
+        "volumeSurgeMed":     5,
+        "volumeSurgeHigh_threshold": 2.0,
+        "volumeSurgeMed_threshold":  1.5,
+        "analystUpsideHigh":  8,
+        "analystUpsideMed":   4,
+        "analystUpsideHigh_threshold": 0.20,
+        "analystUpsideMed_threshold":  0.10,
+        "newsBullish":        6,
+        "newsNeutral":        3
+    },
+    "reversalBonuses": {
+        "rsiDeep":    20,
+        "rsiMed":     12,
+        "rsiMild":    6,
+        "rsiDeep_threshold":  30,
+        "rsiMed_threshold":   35,
+        "rsiMild_threshold":  40,
+        "bbLowerBand": 10,
+        "bbLowerBand_threshold": 0.10
+    },
+    "accountBonuses": {
+        "holdContinuity": 5,
+        "avoidPenalty":  -20,
+        "purchasePenaltyMild":   -6,    # down 5-10% from purchase
+        "purchasePenaltyMed":   -12,    # down 10-15% from purchase
+        "purchasePenaltyHard":  -20,    # down 15%+ from purchase
+        "purchasePenaltyMild_threshold":   5.0,
+        "purchasePenaltyMed_threshold":   10.0,
+        "purchasePenaltyHard_threshold":  15.0
+    },
+    "signalForecast": {
+        "enabled": True,
+        "returnMultiplier": 3.0,
+        "maxBoost":  20,
+        "maxPenalty": -20,
+        "neutralZone": 1.0
+    },
+    "sellThresholds": {
+        "hardSellFloor":    25,
+        "softSellFloor":    40,
+        "maxPositions":     5,
+        "stopLossHard":     8.0,
+        "stopLossSoft":     6.0,
+        "trailingStopPeak": 10.0
+    },
+    "purchaseMatrix": {
+        "slots":         5,
+        "maxDeployPct":  80
+    }
+}
+
+def load_scoring_config():
+    saved = load_json(SCORING_CONFIG_PATH, {})
+    if not saved:
+        return SCORING_DEFAULTS.copy()
+    import copy
+    cfg = copy.deepcopy(SCORING_DEFAULTS)
+    def deep_merge(base, override):
+        for k, v in override.items():
+            if k in base and isinstance(base[k], dict) and isinstance(v, dict):
+                deep_merge(base[k], v)
+            else:
+                base[k] = v
+    deep_merge(cfg, saved)
+    return cfg
+
+@app.route("/scoring/config", methods=["GET"])
+def get_scoring_config():
+    return jsonify(load_scoring_config())
+
+@app.route("/scoring/config", methods=["POST"])
+def save_scoring_config():
+    try:
+        data = request.get_json()
+        save_json(SCORING_CONFIG_PATH, data)
+        log.info("[ScoringConfig] saved")
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/scoring/reset", methods=["POST"])
+def reset_scoring_config():
+    try:
+        save_json(SCORING_CONFIG_PATH, SCORING_DEFAULTS)
+        log.info("[ScoringConfig] reset to defaults")
+        return jsonify({"status": "ok", "config": SCORING_DEFAULTS})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
+# ── TRADE SIMULATION ──────────────────────────────────────────────────────────
+
+STARTING_BALANCE = 100_000.0
+
+def load_trades():
+    default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
+    return load_json(TRADES_PATH, default)
+
+def save_trades(data):
+    save_json(TRADES_PATH, data)
+
+def run_trade_identify():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: identifying candidates...", "operation": "trade_identify"}
+    log.info("=== Trade Identify Started ===")
+    try:
+        trades = load_trades()
+        held_tickers = list(trades.get("holdings", {}).keys())
+
+        dream = load_json(DREAM_PATH, {})
+        candidates = dream.get("candidates", [])
+
+        # Top dream scorers not already in holdings
+        dream_picks = [c["ticker"] for c in candidates if c["ticker"] not in held_tickers]
+
+        # Build final list: holdings first, then dream top picks, max 15 total
+        slots_remaining = 15 - len(held_tickers)
+        selected_dream = dream_picks[:max(0, slots_remaining)]
+        final_tickers = held_tickers + selected_dream
+
+        # Build reason map from dream data
+        dream_map = {c["ticker"]: c for c in candidates}
+
+        result = []
+        for ticker in final_tickers:
+            if ticker in dream_map:
+                c = dream_map[ticker]
+                reason = f"Dream score {c['score']}/100"
+                if c.get("flagsGood"):
+                    reason += " — " + "; ".join(c["flagsGood"][:2])
+                source = c.get("source", "Dream")
+            else:
+                reason = "Current holding — evaluate for sell"
+                source = "Account"
+            result.append({"ticker": ticker, "reason": reason, "source": source})
+
+        existing = load_json(TRADE_CANDIDATES_PATH, {})
+        existing["identified"] = result
+        existing["identifiedAt"] = ts()
+        save_json(TRADE_CANDIDATES_PATH, existing)
+
+        fetch_status = {"running": False, "message": f"Trade identify done: {len(result)} tickers", "operation": None}
+        log.info(f"=== Trade Identify Complete: {len(result)} tickers ===")
+    except Exception as e:
+        log.error(f"Trade identify FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade identify FAIL: {e}", "operation": None}
+
+
+def run_trade_fetch():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: fetching detailed info...", "operation": "trade_fetch"}
+    log.info("=== Trade Fetch Started ===")
+    try:
+        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        if not identified:
+            fetch_status = {"running": False, "message": "Trade fetch: no identified tickers. Run Identify first.", "operation": None}
+            return
+
+        details = {}
+        for item in identified:
+            ticker = item["ticker"]
+            log.info(f"--- Trade fetch detail: {ticker} ---")
+            try:
+                detail = fetch_trade_detail(ticker)
+                if detail:
+                    details[ticker] = detail
+                    log.info(f"Trade fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
+            except Exception as e:
+                log.error(f"Trade fetch FAIL: {ticker} | {e}")
+
+        candidates_data["details"] = details
+        candidates_data["detailsFetchedAt"] = ts()
+        save_json(TRADE_CANDIDATES_PATH, candidates_data)
+
+        fetch_status = {"running": False, "message": f"Trade fetch done: {len(details)} tickers enriched", "operation": None}
+        log.info(f"=== Trade Fetch Complete: {len(details)} tickers ===")
+    except Exception as e:
+        log.error(f"Trade fetch runner FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade fetch FAIL: {e}", "operation": None}
+
+
+def run_trade_recommend():
+    global fetch_status
+    fetch_status = {"running": True, "message": "Trade: running recommendation engine...", "operation": "trade_recommend"}
+    log.info("=== Trade Recommend Started ===")
+    try:
+        trades = load_trades()
+        balance = trades.get("balance", STARTING_BALANCE)
+        holdings = trades.get("holdings", {})
+        transactions = trades.get("transactions", [])
+
+        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        dream = load_json(DREAM_PATH, {})
+        dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+        # Score each candidate
+        scored = []
+        for item in identified:
+            ticker = item["ticker"]
+            detail = details.get(ticker, {})
+            d_data = dream_map.get(ticker, {})
+            dream_score = d_data.get("score", 0)
+
+            price = detail.get("price") or d_data.get("price")
+            rsi = detail.get("rsi14")
+            ma50 = detail.get("ma50")
+            fcf = detail.get("fcf")
+            revenue_growth = detail.get("revenueGrowth")
+            gross_margin = detail.get("grossMargin")
+
+            # Composite score: 50% dream score + 50% technical signals
+            tech_score = 0
+            if rsi is not None:
+                if 40 <= rsi <= 65: tech_score += 30
+                elif rsi < 40: tech_score += 20
+                elif rsi > 70: tech_score -= 10
+            if price and ma50 and price > ma50: tech_score += 20
+            if revenue_growth and revenue_growth > 0.15: tech_score += 20
+            if gross_margin and gross_margin > 40: tech_score += 15
+            if fcf and fcf > 0: tech_score += 15
+
+            composite = round((dream_score * 0.5) + (min(100, max(0, tech_score)) * 0.5), 1)
+            is_held = ticker in holdings
+
+            scored.append({
+                "ticker": ticker,
+                "price": price,
+                "dreamScore": dream_score,
+                "techScore": tech_score,
+                "composite": composite,
+                "isHeld": is_held,
+                "reason": item.get("reason", ""),
+            })
+
+        scored.sort(key=lambda x: x["composite"], reverse=True)
+
+        # Sell logic: holdings not in top 5 composite → sell
+        top5 = [s["ticker"] for s in scored[:5]]
+        sells = []
+        for ticker, pos in list(holdings.items()):
+            if ticker not in top5:
+                price = next((s["price"] for s in scored if s["ticker"] == ticker), pos.get("purchasePrice"))
+                if price:
+                    proceeds = round(price * pos["shares"], 2)
+                    balance += proceeds
+                    sells.append({
+                        "ticker": ticker,
+                        "action": "SELL",
+                        "shares": pos["shares"],
+                        "price": price,
+                        "amount": proceeds,
+                        "date": ts(),
+                        "balance": round(balance, 2),
+                        "reason": "Outside top 5 composite score",
+                    })
+                    transactions.append(sells[-1])
+                    del holdings[ticker]
+                    log.info(f"Trade SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} balance:{balance}")
+
+        # Buy logic: top 5, not already held, budget = balance / slots available
+        buys = []
+        held_count = len(holdings)
+        max_slots = SELL_CFG.get("maxPositions", 5)
+        for s in scored[:5]:
+            ticker = s["ticker"]
+            if ticker in holdings:
+                continue
+            if held_count >= max_slots:
+                break
+            price = s.get("price")
+            if not price or price <= 0:
+                log.warning(f"Trade BUY skip (no price): {ticker}")
+                continue
+            slots_left = max_slots - held_count
+            budget_per_slot = round(balance / max(1, slots_left), 2)
+            if budget_per_slot < price:
+                log.warning(f"Trade BUY skip (insufficient funds): {ticker} | budget:{budget_per_slot} price:{price}")
+                continue
+            shares = int(budget_per_slot // price)
+            if shares < 1:
+                continue
+            cost = round(shares * price, 2)
+            balance -= cost
+            holdings[ticker] = {
+                "shares": shares,
+                "purchasePrice": price,
+                "purchasedAt": ts(),
+            }
+            buys.append({
+                "ticker": ticker,
+                "action": "BUY",
+                "shares": shares,
+                "price": price,
+                "amount": cost,
+                "date": ts(),
+                "balance": round(balance, 2),
+                "reason": s.get("reason", ""),
+            })
+            transactions.append(buys[-1])
+            held_count += 1
+            log.info(f"Trade BUY: {ticker} | shares:{shares} price:{price} cost:{cost} balance:{balance}")
+
+        trades["balance"] = round(balance, 2)
+        trades["holdings"] = holdings
+        trades["transactions"] = transactions
+        trades["lastRecommendAt"] = ts()
+        save_trades(trades)
+
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
+        save_json(TRADE_CANDIDATES_PATH, candidates_data)
+
+        fetch_status = {"running": False, "message": f"Trade recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
+        log.info(f"=== Trade Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
+    except Exception as e:
+        log.error(f"Trade recommend FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Trade recommend FAIL: {e}", "operation": None}
+
+
+@app.route("/trade")
+def get_trade():
+    trades = load_trades()
+    candidates = load_json(TRADE_CANDIDATES_PATH, {})
+    dream = load_json(DREAM_PATH, {})
+    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+    # Enrich holdings with current price from candidates details
+    details = candidates.get("details", {})
+    holdings_out = []
+    for ticker, pos in trades.get("holdings", {}).items():
+        detail = details.get(ticker, {})
+        d_data = dream_map.get(ticker, {})
+        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        purchase_price = pos.get("purchasePrice", 0)
+        shares = pos.get("shares", 0)
+        gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
+        gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
+        holdings_out.append({
+            "ticker": ticker,
+            "shares": shares,
+            "purchasePrice": purchase_price,
+            "currentPrice": current_price,
+            "gainLoss": gain_loss,
+            "gainLossPct": gain_loss_pct,
+            "purchasedAt": pos.get("purchasedAt"),
+        })
+
+    return jsonify({
+        "balance": trades.get("balance", STARTING_BALANCE),
+        "holdings": holdings_out,
+        "transactions": trades.get("transactions", []),
+        "identified": candidates.get("identified", []),
+        "details": details,
+        "lastRecommend": candidates.get("lastRecommend"),
+        "identifiedAt": candidates.get("identifiedAt"),
+        "detailsFetchedAt": candidates.get("detailsFetchedAt"),
+    })
+
+
+@app.route("/trade/identify", methods=["POST"])
+def trade_identify():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_identify, daemon=True)
+    t.start()
+    log.info("Trade identify triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/fetch", methods=["POST"])
+def trade_fetch():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_fetch, daemon=True)
+    t.start()
+    log.info("Trade fetch triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/recommend", methods=["POST"])
+def trade_recommend():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_trade_recommend, daemon=True)
+    t.start()
+    log.info("Trade recommend triggered")
+    return jsonify({"status": "started"})
+
+
+@app.route("/trade/reset", methods=["POST"])
+def trade_reset():
+    try:
+        save_json(TRADES_PATH, {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []})
+        save_json(TRADE_CANDIDATES_PATH, {})
+        log.info("Trade simulation reset to $100,000")
+        return jsonify({"status": "reset", "balance": STARTING_BALANCE})
+    except Exception as e:
+        log.error(f"Trade reset FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+
+
+# ── TRADEAI SIMULATION ────────────────────────────────────────────────────────
+
+def load_trades_ai():
+    default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
+    return load_json(TRADES_AI_PATH, default)
+
+def save_trades_ai(data):
+    save_json(TRADES_AI_PATH, data)
+
+
+def run_tradeai_identify():
+    global fetch_status, stop_flag
+    stop_flag = False
+    fetch_status = {"running": True, "message": "TradeAI: identifying candidates (3-bucket)...", "operation": "tradeai_identify", "current": 0, "total": 0, "current_ticker": ""}
+    log.info("=== TradeAI Identify Started (3-bucket) ===")
+    try:
+        trades = load_trades_ai()
+        held_tickers = list(trades.get("holdings", {}).keys())
+        dream = load_json(DREAM_PATH, {})
+        candidates = dream.get("candidates", [])
+        seen = set(held_tickers)
+        result = []
+
+        # Helper to safely get breakdown field
+        def bd(c, key):
+            return (c.get("breakdown") or {}).get(key)
+
+        # Always include current holdings first
+        for ticker in held_tickers:
+            result.append({"ticker": ticker, "reason": "Current holding — evaluate for sell", "source": "Account", "bucket": "Account"})
+
+        CANDIDATE_SLOTS = 15  # max from dream candidates, not counting holdings
+
+        # ── BUCKET 1: MOMENTUM (5 slots) ──────────────────────────────────────
+        # RSI 45-70 (trending up, not exhausted) + price above MA50
+        # Fast signal: money already moving, confirm with trend
+        momentum_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "rsi") is not None
+            and 45 <= bd(c, "rsi") <= 70
+            and bd(c, "aboveMa50") is True
+        ]
+        # Fall back to just RSI range if aboveMa50 not available
+        if not momentum_pool:
+            momentum_pool = [
+                c for c in candidates
+                if c["ticker"] not in seen
+                and bd(c, "rsi") is not None
+                and 45 <= bd(c, "rsi") <= 70
+            ]
+        momentum_pool.sort(key=lambda c: bd(c, "rsi") or 0, reverse=True)
+        for c in momentum_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rsi_val = bd(c, "rsi")
+            reason = f"Momentum: RSI {rsi_val} — trending, not overextended"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Momentum"})
+        log.info(f"[TradeAI Identify] Bucket 1 Momentum: {[r['ticker'] for r in result if r.get('bucket')=='Momentum']}")
+
+        # ── BUCKET 2: REVERSAL (5 slots) ──────────────────────────────────────
+        # RSI < 40 (oversold) + dream score 20-60 (not trash, not already priced in)
+        # Goal: catch accumulation before it shows — early-stage signal
+        reversal_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "rsi") is not None
+            and bd(c, "rsi") < 40
+            and 20 <= c.get("score", 0) <= 60
+        ]
+        reversal_pool.sort(key=lambda c: bd(c, "rsi") or 99)
+        for c in reversal_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rsi_val = bd(c, "rsi")
+            score = c.get("score", "?")
+            reason = f"Reversal: RSI {rsi_val} oversold, dream score {score} — early accumulation signal"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Reversal"})
+        log.info(f"[TradeAI Identify] Bucket 2 Reversal: {[r['ticker'] for r in result if r.get('bucket')=='Reversal']}")
+
+        # ── BUCKET 3: SMART MONEY (5 slots) ───────────────────────────────────
+        # High gross margin + revenue growth + score below top tier
+        # Dream score 35-70: fundamentally strong but not yet consensus buy
+        smart_pool = [
+            c for c in candidates
+            if c["ticker"] not in seen
+            and bd(c, "grossMargin") is not None
+            and bd(c, "grossMargin") >= 40
+            and bd(c, "revenueGrowth") is not None
+            and bd(c, "revenueGrowth") >= 15
+            and 35 <= c.get("score", 0) <= 75
+        ]
+        # Sort by revenue growth — accelerating fundamentals
+        smart_pool.sort(key=lambda c: bd(c, "revenueGrowth") or 0, reverse=True)
+        for c in smart_pool[:5]:
+            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+            ticker = c["ticker"]
+            seen.add(ticker)
+            rev = bd(c, "revenueGrowth")
+            gm = bd(c, "grossMargin")
+            reason = f"Smart Money: rev growth {rev}%, margin {gm}% — strong fundamentals, not yet consensus"
+            result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "SmartMoney"})
+        log.info(f"[TradeAI Identify] Bucket 3 SmartMoney: {[r['ticker'] for r in result if r.get('bucket')=='SmartMoney']}")
+
+        # ── FILLER: top dream scorers if any bucket came up short ─────────────
+        candidate_count = len(result) - len(held_tickers)
+        if candidate_count < CANDIDATE_SLOTS:
+            filler_pool = [c for c in candidates if c["ticker"] not in seen]
+            filler_pool.sort(key=lambda c: c.get("score", 0), reverse=True)
+            for c in filler_pool:
+                if len(result) - len(held_tickers) >= CANDIDATE_SLOTS:
+                    break
+                ticker = c["ticker"]
+                seen.add(ticker)
+                reason = f"Dream score {c['score']}/100 (filler)"
+                result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Dream"})
+            log.info(f"[TradeAI Identify] Filler added: {len(result)} total")
+
+        # Clear first so frontend sees empty list, then add one by one
+        existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        existing["identified"] = []
+        existing["identifiedAt"] = ts()
+        existing["details"] = {}
+        existing["aiAssessments"] = {}
+        save_json(TRADE_AI_CANDIDATES_PATH, existing)
+        log.info("[TradeAI Identify] Cleared previous candidates, adding incrementally...")
+        for item in result:
+            existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
+            existing["identified"].append(item)
+            existing["identifiedAt"] = ts()
+            save_json(TRADE_AI_CANDIDATES_PATH, existing)
+            log.info(f"[TradeAI Identify] Added: {item['ticker']} ({item['bucket']})")
+        buckets = {}
+        for r in result:
+            b = r.get("bucket", "Dream")
+            buckets[b] = buckets.get(b, 0) + 1
+        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(held_tickers)} holdings + {len(result)-len(held_tickers)} candidates | {buckets}", "operation": None, "current": len(result), "total": len(result), "current_ticker": ""}
+        log.info(f"=== TradeAI Identify Complete: {len(result)} tickers | buckets:{buckets} ===")
+    except Exception as e:
+        log.error(f"TradeAI identify FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI identify FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+
+
+def run_tradeai_fetch():
+    global fetch_status, stop_flag
+    stop_flag = False
+    total = 0
+    fetch_status = {"running": True, "message": "TradeAI: fetching detailed info...", "operation": "tradeai_fetch", "current": 0, "total": 0, "current_ticker": ""}
+    log.info("=== TradeAI Fetch Started ===")
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        if not identified:
+            fetch_status = {"running": False, "message": "TradeAI fetch: no identified tickers. Run Identify first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+            return
+        total = len(identified)
+        fetch_status["total"] = total
+        details = {}
+        for idx, item in enumerate(identified, 1):
+            if stop_flag:
+                log.info(f"[TradeAI Fetch] Stopped by user at {idx}/{total}")
+                candidates_data["details"] = details
+                candidates_data["detailsFetchedAt"] = ts()
+                save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+                fetch_status = {"running": False, "message": f"TradeAI fetch stopped: {len(details)}/{total} fetched", "operation": None, "current": idx, "total": total, "current_ticker": ""}
+                return
+            ticker = item["ticker"]
+            fetch_status["current"] = idx
+            fetch_status["current_ticker"] = ticker
+            fetch_status["message"] = f"TradeAI fetch: {idx} of {total} — {ticker}"
+            log.info(f"--- TradeAI fetch detail: {ticker} [{idx}/{total}] ---")
+            try:
+                detail = fetch_trade_detail(ticker)
+                if detail:
+                    detail["fetchCompletedAt"] = ts()
+                    details[ticker] = detail
+                    candidates_data["details"] = details
+                    # Store RSI snapshot history for Reversal confirmation (rising RSI check)
+                    rsi_history = candidates_data.get("rsiHistory", {})
+                    if ticker not in rsi_history:
+                        rsi_history[ticker] = []
+                    rsi_val = detail.get("rsi14")
+                    if rsi_val is not None:
+                        rsi_history[ticker].append({"rsi": rsi_val, "ts": ts()})
+                        rsi_history[ticker] = rsi_history[ticker][-5:]  # keep last 5 readings
+                    candidates_data["rsiHistory"] = rsi_history
+                    save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+                    log.info(f"TradeAI fetch OK: {ticker} | price:{detail.get('price')} rsi:{rsi_val}")
+            except Exception as e:
+                log.error(f"TradeAI fetch FAIL: {ticker} | {e}")
+        candidates_data["details"] = details
+        candidates_data["detailsFetchedAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+        fetch_status = {"running": False, "message": f"TradeAI fetch done: {len(details)} tickers enriched", "operation": None, "current": total, "total": total, "current_ticker": ""}
+        log.info(f"=== TradeAI Fetch Complete: {len(details)} tickers ===")
+    except Exception as e:
+        log.error(f"TradeAI fetch runner FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI fetch FAIL: {e}", "operation": None, "current": 0, "total": total, "current_ticker": ""}
+
+
+def run_tradeai_analyze():
+    global fetch_status, stop_flag
+    stop_flag = False
+    total = 0
+    fetch_status = {"running": True, "message": "TradeAI: running AI analysis...", "operation": "tradeai_analyze", "current": 0, "total": 0, "current_ticker": ""}
+    log.info("=== TradeAI Analyze Started ===")
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        news_db = load_json(NEWS_PATH, {})
+        macro = load_json(MACRO_PATH, {}) if MACRO_PATH else {}
+
+        if not identified:
+            fetch_status = {"running": False, "message": "TradeAI analyze: run Identify + Fetch Info first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
+            return
+
+        eligible = [item for item in identified if details.get(item["ticker"])]
+        total = len(eligible)
+        fetch_status["total"] = total
+
+        ai_assessments = {}
+        for idx, item in enumerate(eligible, 1):
+            if stop_flag:
+                log.info(f"[TradeAI Analyze] Stopped by user at {idx}/{total}")
+                candidates_data["aiAssessments"] = ai_assessments
+                candidates_data["aiAnalyzedAt"] = ts()
+                save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+                fetch_status = {"running": False, "message": f"TradeAI analyze stopped: {len(ai_assessments)}/{total} analyzed", "operation": None, "current": idx, "total": total, "current_ticker": ""}
+                return
+            ticker = item["ticker"]
+            detail = details.get(ticker)
+            fetch_status["current"] = idx
+            fetch_status["current_ticker"] = ticker
+            fetch_status["message"] = f"TradeAI analyze: {idx} of {total} — {ticker}"
+            news_items = news_db.get(ticker, {}).get("articles", [])[:5]  # limit to 5 most recent to keep prompt short
+            bucket = item.get("bucket", "Dream")
+            reason = item.get("reason", "")
+            log.info(f"--- TradeAI analyze: {ticker} [{idx}/{total}] | bucket:{bucket} | news:{len(news_items)} articles ---")
+            # Inject bucket context into detail so fetch_ai_analyze prompt sees it
+            detail_with_ctx = dict(detail) if detail else {}
+            detail_with_ctx["_bucket"] = bucket
+            detail_with_ctx["_selectionReason"] = reason
+            assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro, OLLAMA_URL, OLLAMA_MODEL)
+            ai_assessments[ticker] = assessment
+            log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
+
+        candidates_data["aiAssessments"] = ai_assessments
+        candidates_data["aiAnalyzedAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+        fetch_status = {"running": False, "message": f"TradeAI analyze done: {len(ai_assessments)} assessed", "operation": None, "current": total, "total": total, "current_ticker": ""}
+        log.info(f"=== TradeAI Analyze Complete: {len(ai_assessments)} tickers ===")
+    except Exception as e:
+        log.error(f"TradeAI analyze FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI analyze FAIL: {e}", "operation": None, "current": 0, "total": total, "current_ticker": ""}
+
+
+def run_tradeai_recommend():
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: running AI recommendation...", "operation": "tradeai_recommend"}
+    log.info("=== TradeAI Recommend Started ===")
+    try:
+        trades = load_trades_ai()
+        balance = trades.get("balance", STARTING_BALANCE)
+        holdings = trades.get("holdings", {})
+        transactions = trades.get("transactions", [])
+
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified = candidates_data.get("identified", [])
+        details = candidates_data.get("details", {})
+        ai_assessments = candidates_data.get("aiAssessments", {})
+        dream = load_json(DREAM_PATH, {})
+        dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+
+        # ── Load scoring config (user-tweakable weights) ─────────────────────
+        cfg = load_scoring_config()
+        BUY_SIGNAL_MAP  = cfg["buySignalMap"]
+        BKT_WEIGHTS     = cfg["bucketWeights"]
+        TRAJ_BONUS      = cfg["trajectoryBonus"]
+        STAGE_BONUS_CFG = cfg["stageBonus"]
+        SH              = cfg["sharedBonuses"]
+        RB              = cfg["reversalBonuses"]
+        AB              = cfg["accountBonuses"]
+        SF              = cfg["signalForecast"]
+        SELL_CFG        = cfg["sellThresholds"]
+
+        # Load today's signal forecasts for boost calculation
+        today_str = datetime.now(TZ).strftime("%Y-%m-%d")
+        fc_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        today_snap = next((s for s in fc_db.get("snapshots", []) if s.get("date") == today_str), None)
+        fc_map = {}
+        if today_snap:
+            for row in today_snap.get("rows", []):
+                fc_map[row["ticker"]] = row
+
+        # Build previous composite score lookup for sell reason delta
+        prev_scored = {s["ticker"]: s["composite"] for s in (candidates_data.get("lastRecommend") or {}).get("scored", [])}
+
+        # Build candidate lookup for bucket-aware scoring
+        cand_map = {item["ticker"]: item for item in identified}
+
+        scored = []
+        for item in identified:
+            ticker = item["ticker"]
+            bucket = item.get("bucket", "Dream")
+            detail = details.get(ticker, {})
+            ai = ai_assessments.get(ticker, {})
+            d_data = dream_map.get(ticker, {})
+            dream_score = d_data.get("score", 0)
+            price = detail.get("price") or d_data.get("price")
+
+            ai_score    = ai.get("aiScore") or 0
+            signal_score = BUY_SIGNAL_MAP.get(ai.get("buySignal", "Unknown"), 20)
+            trajectory  = ai.get("trajectory", "")
+            stage       = ai.get("stage", "")
+            bkt_key     = bucket if bucket in BKT_WEIGHTS else "Dream"
+            w           = BKT_WEIGHTS[bkt_key]
+
+            # ── Shared bonuses ────────────────────────────────────────────────
+            vol_ratio    = detail.get("volumeRatio") or 0
+            volume_bonus = (SH["volumeSurgeHigh"] if vol_ratio >= SH["volumeSurgeHigh_threshold"]
+                            else SH["volumeSurgeMed"] if vol_ratio >= SH["volumeSurgeMed_threshold"] else 0)
+
+            upside        = detail.get("analystUpside") or 0
+            analyst_bonus = (SH["analystUpsideHigh"] if upside >= SH["analystUpsideHigh_threshold"]
+                             else SH["analystUpsideMed"] if upside >= SH["analystUpsideMed_threshold"] else 0)
+
+            news_sentiment = ai.get("newsSentiment", "")
+            news_bonus     = SH["newsBullish"] if news_sentiment == "Bullish" else (SH["newsNeutral"] if news_sentiment == "Neutral" else 0)
+
+            # ── Trajectory & stage bonuses (bucket-specific) ──────────────────
+            traj_cfg  = TRAJ_BONUS.get(bkt_key, {})
+            trajectory_bonus = traj_cfg.get(trajectory, 0) if trajectory else 0
+
+            stage_cfg  = STAGE_BONUS_CFG.get(bkt_key, {})
+            stage_bonus = stage_cfg.get(stage, 0) if stage else 0
+
+            # ── Bucket-specific base composite ────────────────────────────────
+            if bucket == "Reversal":
+                rsi        = detail.get("rsi14") or 50
+                bb_percent = detail.get("bbPercent")
+                rsi_bonus  = (RB["rsiDeep"] if rsi < RB["rsiDeep_threshold"]
+                              else RB["rsiMed"] if rsi < RB["rsiMed_threshold"]
+                              else RB["rsiMild"] if rsi < RB["rsiMild_threshold"] else 0)
+                bb_bonus   = RB["bbLowerBand"] if (bb_percent is not None and bb_percent < RB["bbLowerBand_threshold"]) else 0
+                composite  = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])
+                              + rsi_bonus + bb_bonus + analyst_bonus + news_bonus)
+
+            elif bucket == "Account":
+                hold_bonus = AB["holdContinuity"] if ai.get("buySignal") != "Avoid" else AB["avoidPenalty"]
+                # Purchase price penalty: penalise underwater positions before stop-loss triggers
+                # This reduces the composite score so the position falls out of top 5 sooner
+                purchase_price_pos = holdings.get(ticker, {}).get("purchasePrice")
+                price_for_penalty  = detail.get("price") or d_data.get("price")
+                purchase_penalty = 0
+                if purchase_price_pos and price_for_penalty and purchase_price_pos > 0:
+                    pct_down = (price_for_penalty - purchase_price_pos) / purchase_price_pos * 100
+                    if pct_down <= -AB.get("purchasePenaltyHard_threshold", 15.0):
+                        purchase_penalty = AB.get("purchasePenaltyHard", -20)
+                    elif pct_down <= -AB.get("purchasePenaltyMed_threshold", 10.0):
+                        purchase_penalty = AB.get("purchasePenaltyMed", -12)
+                    elif pct_down <= -AB.get("purchasePenaltyMild_threshold", 5.0):
+                        purchase_penalty = AB.get("purchasePenaltyMild", -6)
+                    if purchase_penalty < 0:
+                        log.info(f"[PurchasePenalty] {ticker} down {pct_down:.1f}% from purchase -> penalty:{purchase_penalty} pts")
+                composite  = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])
+                              + hold_bonus + trajectory_bonus + volume_bonus + news_bonus + purchase_penalty)
+
+            else:
+                composite  = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])
+                              + trajectory_bonus + stage_bonus + volume_bonus + analyst_bonus + news_bonus)
+
+            # ── Signal Forecast Boost ─────────────────────────────────────────
+            signal_boost = 0
+            signal_fc_direction = ""
+            signal_fc_target = None
+            signal_fc_return = None
+            if SF.get("enabled") and ticker in fc_map and price:
+                fc = fc_map[ticker]
+                direction = fc.get("direction", "")
+                signal_fc_direction = direction
+                if direction == "Bullish":
+                    signal_fc_target = fc.get("forecastHigh")
+                elif direction == "Bearish":
+                    signal_fc_target = fc.get("forecastLow")
+                else:
+                    signal_fc_target = fc.get("forecastMid")
+                if signal_fc_target:
+                    exp_return_pct = (signal_fc_target - price) / price * 100
+                    signal_fc_return = round(exp_return_pct, 2)
+                    neutral_zone = SF.get("neutralZone", 1.0)
+                    if abs(exp_return_pct) > neutral_zone:
+                        raw_boost = exp_return_pct * SF.get("returnMultiplier", 3.0)
+                        signal_boost = round(max(SF["maxPenalty"], min(SF["maxBoost"], raw_boost)), 1)
+
+            composite = round(min(100, max(0, composite + signal_boost)), 1)
+
+            log.info(
+                f"[Score] {ticker} bucket:{bucket} dream:{dream_score} ai:{ai_score} "
+                f"signal:{signal_score} traj:{trajectory_bonus} stage:{stage_bonus} "
+                f"vol:{volume_bonus} analyst:{analyst_bonus} news:{news_bonus} "
+                f"fc_dir:{signal_fc_direction} fc_return:{signal_fc_return}% fc_boost:{signal_boost} "
+                f"composite:{composite}"
+            )
+
+            scored.append({
+                "ticker": ticker,
+                "bucket": bucket,
+                "price": price,
+                "dreamScore": dream_score,
+                "aiScore": ai_score,
+                "buySignal": ai.get("buySignal", "Unknown"),
+                "trajectory": trajectory,
+                "stage": stage,
+                "sentiment": ai.get("sentiment", "—"),
+                "reasoning": ai.get("reasoning", ""),
+                "composite": composite,
+                "signalFcDirection": signal_fc_direction,
+                "signalFcTarget": signal_fc_target,
+                "signalFcReturn": signal_fc_return,
+                "signalFcBoost": signal_boost,
+                "isHeld": ticker in holdings,
+            })
+
+        scored.sort(key=lambda x: x["composite"], reverse=True)
+        top5 = [s["ticker"] for s in scored[:5]]
+
+        sells = []
+        for ticker, pos in list(holdings.items()):
+            scored_entry   = next((s for s in scored if s["ticker"] == ticker), None)
+            composite      = scored_entry["composite"] if scored_entry else 0
+            buy_signal     = scored_entry["buySignal"] if scored_entry else "Unknown"
+            current_price  = (scored_entry["price"] if scored_entry else None) or pos.get("purchasePrice")
+            purchase_price = pos.get("purchasePrice") or current_price or 0
+
+            # ── Peak price tracking ───────────────────────────────────────────
+            peak_price = pos.get("peakPrice") or purchase_price
+            if current_price and current_price > peak_price:
+                peak_price = current_price
+                pos["peakPrice"] = round(peak_price, 4)
+                log.info(f"[Peak] {ticker} new peak: ${peak_price:.2f}")
+
+            pct_from_purchase = ((current_price - purchase_price) / purchase_price * 100) if current_price and purchase_price else 0
+            pct_from_peak     = ((current_price - peak_price) / peak_price * 100) if current_price and peak_price else 0
+
+            # ── Stop-loss checks (price-based, highest priority) ──────────────
+            stop_loss_hard  = SELL_CFG.get("stopLossHard", 8.0)
+            stop_loss_soft  = SELL_CFG.get("stopLossSoft", 6.0)
+            trailing_pct    = SELL_CFG.get("trailingStopPeak", 10.0)
+
+            stop_loss_triggered = False
+            stop_loss_reason    = ""
+            if pct_from_purchase <= -stop_loss_hard:
+                stop_loss_triggered = True
+                stop_loss_reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase ${purchase_price:.2f} (hard stop at -{stop_loss_hard}%)"
+            elif pct_from_purchase <= -stop_loss_soft and composite < 50:
+                stop_loss_triggered = True
+                stop_loss_reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase and composite {composite}/100 below 50"
+            elif pct_from_peak <= -trailing_pct and pct_from_purchase > 0:
+                stop_loss_triggered = True
+                stop_loss_reason = f"Trailing stop triggered: down {abs(pct_from_peak):.1f}% from peak ${peak_price:.2f} — protecting gains"
+
+            # ── Score-based sell checks ───────────────────────────────────────
+            hard_sell = buy_signal == "Avoid" or composite < SELL_CFG["hardSellFloor"]
+            soft_sell = ticker not in top5 and composite < SELL_CFG["softSellFloor"]
+
+            if stop_loss_triggered or hard_sell or soft_sell:
+                price = current_price or pos.get("purchasePrice")
+                if not price:
+                    price = pos.get("purchasePrice")
+                if price:
+                    proceeds = round(price * pos["shares"], 2)
+                    balance += proceeds
+                    if stop_loss_triggered:
+                        sell_reason = stop_loss_reason
+                    elif hard_sell and buy_signal == "Avoid":
+                        sell_reason = f"AI signal: Avoid — {ai_assessments.get(ticker, {}).get('reasoning', 'deteriorating outlook')}"
+                    elif composite < SELL_CFG["hardSellFloor"]:
+                        sell_reason = f"Composite score collapsed to {composite}/100 — exiting position"
+                    else:
+                        prev_score = prev_scored.get(ticker)
+                        delta_str  = ""
+                        if prev_score is not None:
+                            delta = composite - prev_score
+                            delta_str = f" (was {prev_score}/100, delta {'+' if delta >= 0 else ''}{delta:.1f})"
+                        sell_reason = f"Outside top 5 composite (score {composite}/100{delta_str}) — {ai_assessments.get(ticker, {}).get('reasoning', 'better opportunities available')}"
+                    sells.append({
+                        "ticker": ticker, "action": "SELL", "shares": pos["shares"],
+                        "price": price, "amount": proceeds, "date": ts(),
+                        "balance": round(balance, 2), "reason": sell_reason,
+                        "composite": composite, "buySignal": buy_signal,
+                        "pctFromPurchase": round(pct_from_purchase, 2),
+                        "pctFromPeak": round(pct_from_peak, 2),
+                        "stopLoss": stop_loss_triggered,
+                    })
+                    transactions.append(sells[-1])
+                    del holdings[ticker]
+                    trigger = "stop-loss" if stop_loss_triggered else ("hard" if hard_sell else "soft")
+                    log.info(f"TradeAI SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} | trigger:{trigger} pct_purchase:{pct_from_purchase:.1f}% composite:{composite}")
+            else:
+                log.info(f"TradeAI HOLD: {ticker} | composite:{composite} signal:{buy_signal} pct_purchase:{pct_from_purchase:.1f}% — keeping position")
+
+        # Load RSI history for Reversal entry confirmation
+        rsi_history = candidates_data.get("rsiHistory", {})
+
+        # Purchase Matrix config
+        pm           = cfg.get("purchaseMatrix", {})
+        max_slots    = int(pm.get("slots", 5))
+        max_deploy   = float(pm.get("maxDeployPct", 80)) / 100.0
+        deployable   = round(balance * max_deploy, 2)
+        budget_per_slot = round(deployable / max(1, max_slots), 2)
+        log.info(f"TradeAI BUY config | balance:{balance} deployable:{deployable} slots:{max_slots} per_slot:{budget_per_slot}")
+
+        buys = []
+        held_count = len(holdings)
+
+        # ── Step 1: qualify ALL scored candidates ─────────────────────────────
+        qualified = []
+        for s in scored:
+            ticker = s["ticker"]
+            if ticker in holdings:
+                log.info(f"TradeAI QUALIFY skip (already held): {ticker}")
+                continue
+            if s.get("buySignal") == "Avoid":
+                log.info(f"TradeAI QUALIFY skip (AI says Avoid): {ticker}")
+                continue
+            if s.get("bucket") == "Reversal":
+                ticker_rsi_hist = rsi_history.get(ticker, [])
+                if len(ticker_rsi_hist) >= 2:
+                    rsi_today = ticker_rsi_hist[-1]["rsi"]
+                    rsi_prev  = ticker_rsi_hist[-2]["rsi"]
+                    if rsi_today <= rsi_prev:
+                        log.info(f"TradeAI QUALIFY skip Reversal (RSI not rising): {ticker} | rsi:{rsi_prev}\u2192{rsi_today}")
+                        continue
+                    log.info(f"TradeAI QUALIFY confirm Reversal (RSI rising): {ticker} | rsi:{rsi_prev}\u2192{rsi_today}")
+                else:
+                    log.info(f"TradeAI QUALIFY skip Reversal (insufficient RSI history): {ticker} | history:{len(ticker_rsi_hist)}")
+                    continue
+            price = s.get("price")
+            if not price or price <= 0:
+                log.warning(f"TradeAI QUALIFY skip (no price): {ticker}")
+                continue
+            if budget_per_slot < price:
+                log.warning(f"TradeAI QUALIFY skip (price ${price} > per-slot budget ${budget_per_slot}): {ticker}")
+                continue
+            qualified.append(s)
+            log.info(f"TradeAI QUALIFIED: {ticker} | bucket:{s.get('bucket')} composite:{s.get('composite')} signal:{s.get('buySignal')}")
+
+        log.info(f"TradeAI QUALIFY results | {len(qualified)} qualified from {len(scored)} scored | buying top {max(0, max_slots - held_count)}")
+
+        # ── Step 2: buy top N qualifiers by composite score ───────────────────
+        qualified_sorted = sorted(qualified, key=lambda x: x.get("composite", 0), reverse=True)
+        slots_to_fill = max(0, max_slots - held_count)
+        for s in qualified_sorted[:slots_to_fill]:
+            ticker = s["ticker"]
+            price  = s["price"]
+            shares = int(budget_per_slot // price)
+            if shares < 1:
+                continue
+            cost = round(shares * price, 2)
+            balance -= cost
+            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts()}
+            buys.append({
+                "ticker": ticker, "action": "BUY", "shares": shares,
+                "price": price, "amount": cost, "date": ts(),
+                "balance": round(balance, 2), "reason": s.get("reasoning", ""),
+            })
+            transactions.append(buys[-1])
+            held_count += 1
+            log.info(f"TradeAI BUY: {ticker} | shares:{shares} price:{price} cost:{cost} composite:{s.get('composite')} signal:{s.get('buySignal')}")
+
+        trades["balance"] = round(balance, 2)
+        trades["holdings"] = holdings
+        trades["transactions"] = transactions
+        trades["lastRecommendAt"] = ts()
+        save_trades_ai(trades)
+
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
+        save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
+
+        # ── Sync watchlist from TradeAI holdings ──────────────────────────────
+        _sync_watchlist_from_holdings(list(holdings.keys()))
+
+        fetch_status = {"running": False, "message": f"TradeAI recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
+        log.info(f"=== TradeAI Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
+    except Exception as e:
+        log.error(f"TradeAI recommend FAIL: {e}")
+        fetch_status = {"running": False, "message": f"TradeAI recommend FAIL: {e}", "operation": None}
+
+
+@app.route("/tradeai")
+def get_tradeai():
+    trades = load_trades_ai()
+    candidates = load_json(TRADE_AI_CANDIDATES_PATH, {})
+    dream = load_json(DREAM_PATH, {})
+    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+    details = candidates.get("details", {})
+    news_db = load_json(NEWS_PATH, {})
+
+    holdings_out = []
+    for ticker, pos in trades.get("holdings", {}).items():
+        detail = details.get(ticker, {})
+        d_data = dream_map.get(ticker, {})
+        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        purchase_price = pos.get("purchasePrice", 0)
+        shares = pos.get("shares", 0)
+        gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
+        gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
+        holdings_out.append({
+            "ticker": ticker, "shares": shares,
+            "purchasePrice": purchase_price, "currentPrice": current_price,
+            "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
+            "purchasedAt": pos.get("purchasedAt"),
+            "change1d": detail.get("change1d"),
+            "change2d": detail.get("change2d"),
+            "change3d": detail.get("change3d"),
+        })
+
+    # Build news timestamp map for all identified tickers
+    identified = candidates.get("identified", [])
+    news_ts_map = {}
+    for item in identified:
+        ticker = item["ticker"]
+        entry = news_db.get(ticker, {})
+        news_ts_map[ticker] = entry.get("fetchedAt") or entry.get("updatedAt") or None
+
+    # Load today's signal forecasts for per-ticker display
+    today_str = datetime.now(TZ).strftime("%Y-%m-%d")
+    fc_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+    today_snap = next((s for s in fc_db.get("snapshots", []) if s.get("date") == today_str), None)
+    signal_fc_map = {}
+    if today_snap:
+        for row in today_snap.get("rows", []):
+            signal_fc_map[row["ticker"]] = {
+                "direction":    row.get("direction"),
+                "forecastLow":  row.get("forecastLow"),
+                "forecastHigh": row.get("forecastHigh"),
+                "forecastMid":  row.get("forecastMid"),
+                "biasScore":    row.get("biasScore"),
+                "generatedAt":  row.get("generatedAt"),
+            }
+
+    return jsonify({
+        "balance": trades.get("balance", STARTING_BALANCE),
+        "holdings": holdings_out,
+        "transactions": trades.get("transactions", []),
+        "identified": identified,
+        "details": details,
+        "aiAssessments": candidates.get("aiAssessments", {}),
+        "lastRecommend": candidates.get("lastRecommend"),
+        "identifiedAt":       candidates.get("identifiedAt"),
+        "detailsFetchedAt":   candidates.get("detailsFetchedAt"),
+        "signalForecastAt":   candidates.get("signalForecastAt"),
+        "aiAnalyzedAt":       candidates.get("aiAnalyzedAt"),
+        "newsTsMap":          news_ts_map,
+        "signalFcMap":        signal_fc_map,
+    })
+
+
+@app.route("/tradeai/identify", methods=["POST"])
+def tradeai_identify():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_identify, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/fetch", methods=["POST"])
+def tradeai_fetch():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_fetch, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/analyze", methods=["POST"])
+def tradeai_analyze():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_analyze, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/recommend", methods=["POST"])
+def tradeai_recommend():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_recommend, daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/reset", methods=["POST"])
+def tradeai_reset():
+    try:
+        body = request.get_json(silent=True) or {}
+        balance = float(body.get("balance", STARTING_BALANCE))
+        save_json(TRADES_AI_PATH, {"balance": balance, "holdings": {}, "transactions": []})
+        save_json(TRADE_AI_CANDIDATES_PATH, {})
+        log.info(f"TradeAI simulation reset | balance: ${balance:,.2f}")
+        return jsonify({"status": "reset", "balance": balance})
+    except Exception as e:
+        log.error(f"TradeAI reset FAIL: {e}")
+        return jsonify({"error": str(e)})
+
+
+@app.route("/tradeai/delete_transactions", methods=["POST"])
+def tradeai_delete_transactions():
+    try:
+        body = request.get_json(silent=True) or {}
+        month = body.get("month")  # e.g. "2026-06" or "all"
+        trades = load_json(TRADES_AI_PATH, {})
+        txns = trades.get("transactions", [])
+        before = len(txns)
+        if month == "all":
+            trades["transactions"] = []
+        else:
+            trades["transactions"] = [t for t in txns if not (t.get("date") or "").startswith(month)]
+        after = len(trades["transactions"])
+        save_json(TRADES_AI_PATH, trades)
+        log.info(f"TradeAI transactions deleted: month={month} | {before - after} removed, {after} remaining")
+        return jsonify({"status": "ok", "removed": before - after, "remaining": after})
+    except Exception as e:
+        log.error(f"TradeAI delete_transactions FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/tradeai/signal_ts", methods=["POST"])
+def tradeai_signal_ts():
+    """Save signalForecastAt timestamp into candidates file after signal forecast runs."""
+    try:
+        data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        data["signalForecastAt"] = ts()
+        save_json(TRADE_AI_CANDIDATES_PATH, data)
+        return jsonify({"status": "ok"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/tradeai/edit_holding", methods=["POST"])
+def tradeai_edit_holding():
+    try:
+        body = request.get_json()
+        ticker = body.get("ticker")
+        shares = body.get("shares")
+        purchase_price = body.get("purchasePrice")
+        trades = load_json(TRADES_AI_PATH, {})
+        holdings = trades.get("holdings", {})
+        if ticker not in holdings:
+            return jsonify({"error": f"{ticker} not in holdings"}), 404
+        if shares is not None:
+            holdings[ticker]["shares"] = int(shares)
+        if purchase_price is not None:
+            holdings[ticker]["purchasePrice"] = round(float(purchase_price), 4)
+        trades["holdings"] = holdings
+        save_json(TRADES_AI_PATH, trades)
+        log.info(f"TradeAI holding edited: {ticker} | shares:{shares} purchasePrice:{purchase_price}")
+        return jsonify({"status": "ok", "ticker": ticker})
+    except Exception as e:
+        log.error(f"TradeAI edit_holding FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/tradeai/edit_balance", methods=["POST"])
+def tradeai_edit_balance():
+    try:
+        body = request.get_json()
+        new_balance = float(body.get("balance", 0))
+        trades = load_json(TRADES_AI_PATH, {})
+        old = trades.get("balance", 0)
+        trades["balance"] = round(new_balance, 2)
+        save_json(TRADES_AI_PATH, trades)
+        log.info(f"TradeAI balance edited: {old} → {new_balance}")
+        return jsonify({"status": "ok", "balance": trades["balance"]})
+    except Exception as e:
+        log.error(f"TradeAI edit_balance FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/tradeai/edit_transaction", methods=["POST"])
+def tradeai_edit_transaction():
+    try:
+        body = request.get_json()
+        idx = int(body.get("index"))
+        new_price = float(body.get("price"))
+        trades = load_json(TRADES_AI_PATH, {})
+        txns = trades.get("transactions", [])
+        if idx < 0 or idx >= len(txns):
+            return jsonify({"error": "invalid index"}), 400
+        old_price = txns[idx].get("price")
+        shares = txns[idx].get("shares", 0)
+        txns[idx]["price"] = round(new_price, 4)
+        txns[idx]["amount"] = round(new_price * shares, 2)
+        trades["transactions"] = txns
+        save_json(TRADES_AI_PATH, trades)
+        log.info(f"TradeAI transaction edited: idx:{idx} price:{old_price}→{new_price}")
+        return jsonify({"status": "ok", "index": idx})
+    except Exception as e:
+        log.error(f"TradeAI edit_transaction FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/news/refresh/<ticker>", methods=["POST"])
+def refresh_ticker_news(ticker):
+    """On-demand news refresh for any ticker. Saves into shared news.json."""
+    try:
+        news_db = load_json(NEWS_PATH, {})
+        articles = fetch_ticker_news(ticker)
+        news_db[ticker] = {
+            "articles": articles,
+            "fetchedAt": ts(),
+        }
+        save_json(NEWS_PATH, news_db)
+        log.info(f"News refresh OK: {ticker} | {len(articles)} articles")
+        return jsonify({"status": "ok", "ticker": ticker, "count": len(articles), "fetchedAt": news_db[ticker]["fetchedAt"]})
+    except Exception as e:
+        log.error(f"News refresh FAIL: {ticker} | {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+# Auto price refresh on startup
+_startup_holdings = _get_holding_tickers()
+if _startup_holdings:
+    _sync_watchlist_from_holdings(_startup_holdings)
+    log.info(f"=== Startup watchlist sync from holdings: {_startup_holdings} ===")
+_startup_thread = threading.Thread(target=run_price_refresh, args=("startup",), daemon=True)
+_startup_thread.start()
+log.info("=== Startup price refresh triggered ===")
+
+# ── Signal Forecast ───────────────────────────────────────────────────────────
+SIGNAL_FORECAST_PATH = "output/signal_forecasts.json"
+
+def _rule_forecast(detail):
+    """Generate a price forecast range using technical rules."""
+    price    = detail.get("price") or 0
+    rsi      = detail.get("rsi14") or 50
+    bb       = detail.get("bbPercent")
+    chg1d    = detail.get("change1d") or 0
+    chg7d    = detail.get("change7d") or 0
+    chg30d   = detail.get("change30d") or 0
+    ma50     = detail.get("ma50")
+    vol_rat  = detail.get("volumeRatio") or 1.0
+    short_fl = detail.get("shortFloat") or 0
+    upside   = detail.get("analystUpside") or 0
+
+    if not price:
+        return None
+
+    # ── Volatility estimate ───────────────────────────────────────────────────
+    # Tier 1: actual yesterday→today move (best single-day reference)
+    prev_close   = detail.get("previousClose")
+    actual_1d    = abs(price - prev_close) if prev_close else None
+
+    # Tier 2: 7-day average daily move (captures recent swing size)
+    daily_from_7d = abs(chg7d / 100 * price) / 5 if chg7d else None  # 5 trading days
+
+    # Tier 3: 30-day average (smoothed baseline, last resort)
+    daily_from_30d = abs(chg30d / 100 * price) / 21 if chg30d else price * 0.015
+
+    # Use best available, scaled up to reflect realistic intraday range
+    # Stocks rarely move their exact average — use 1.8x as a realistic daily range factor
+    if actual_1d and actual_1d > 0:
+        daily_vol = max(actual_1d, daily_from_7d or 0, daily_from_30d) * 1.8
+    elif daily_from_7d:
+        daily_vol = daily_from_7d * 2.0
+    else:
+        daily_vol = daily_from_30d * 2.0
+
+    # Floor: at minimum 0.5% of price (very low vol stocks still move something)
+    # Ceiling: cap at 8% of price (avoid absurd ranges on meme stocks)
+    daily_vol = max(daily_vol, price * 0.005)
+    daily_vol = min(daily_vol, price * 0.08)
+
+    # ── Direction bias score (-1 to +1) ──────────────────────────────────────
+    bias = 0.0
+
+    # RSI contribution
+    if rsi < 30:   bias += 0.4   # deeply oversold → bounce likely
+    elif rsi < 40: bias += 0.2
+    elif rsi < 50: bias += 0.05
+    elif rsi < 65: bias += 0.1   # momentum zone
+    elif rsi < 75: bias -= 0.1   # overbought caution
+    else:          bias -= 0.3   # very overbought
+
+    # BB%B contribution
+    if bb is not None:
+        if bb < 0.1:   bias += 0.3   # touching lower band
+        elif bb < 0.2: bias += 0.15
+        elif bb > 0.9: bias -= 0.3   # touching upper band
+        elif bb > 0.8: bias -= 0.15
+
+    # Short-term momentum
+    if chg1d > 1:    bias += 0.1
+    elif chg1d < -1: bias -= 0.1
+    if chg7d > 3:    bias += 0.1
+    elif chg7d < -3: bias -= 0.1
+
+    # MA50 vs price
+    if ma50 and price > ma50 * 1.01:  bias += 0.1
+    elif ma50 and price < ma50 * 0.99: bias -= 0.1
+
+    # Volume surge adds conviction to the current direction
+    if vol_rat >= 2.0:
+        bias = bias * 1.3
+    elif vol_rat >= 1.5:
+        bias = bias * 1.15
+
+    # Short squeeze potential adds upside buffer
+    squeeze_buffer = price * 0.005 * min(short_fl / 10, 2.0) if short_fl > 15 else 0
+
+    # ── Build range ──────────────────────────────────────────────────────────
+    bias = max(-1.0, min(1.0, bias))
+    midpoint = round(price + (bias * daily_vol * 1.2), 2)
+    half_range = round(daily_vol * 1.0, 2)
+
+    low  = round(midpoint - half_range, 2)
+    high = round(midpoint + half_range + squeeze_buffer, 2)
+
+    if bias > 0.2:   direction = "Bullish"
+    elif bias < -0.2: direction = "Bearish"
+    else:             direction = "Neutral"
+
+    return {
+        "currentPrice": round(price, 2),
+        "forecastLow":  low,
+        "forecastMid":  midpoint,
+        "forecastHigh": high,
+        "direction":    direction,
+        "biasScore":    round(bias, 3),
+        "dailyVol":     round(daily_vol, 3),
+    }
+
+
+def _ai_forecast_reason(ticker, detail, forecast, bucket="", OLLAMA_URL=None, OLLAMA_MODEL=None):
+    """Ask AI for a one-sentence reason for tomorrow's price direction."""
+    import requests as req
+    if not OLLAMA_URL or not OLLAMA_MODEL:
+        return "AI unavailable."
+    try:
+        prompt = f"""You are a short-term stock analyst. Given the data below, explain in ONE concise sentence why {ticker}'s price is likely to move {forecast['direction']} tomorrow. Be specific about which signals drive the view.
+
+Ticker: {ticker}
+Current Price: ${forecast['currentPrice']}
+Forecast Range: ${forecast['forecastLow']} – ${forecast['forecastHigh']} (bias: {forecast['direction']}, score: {forecast['biasScore']})
+RSI 14: {detail.get('rsi14')}
+BB%B: {detail.get('bbPercent')}
+MA50: {detail.get('ma50')}
+1d Change: {detail.get('change1d')}%
+7d Change: {detail.get('change7d')}%
+30d Change: {detail.get('change30d')}%
+Volume Ratio: {detail.get('volumeRatio')}
+Short Float: {detail.get('shortFloat')}%
+Analyst Upside: {detail.get('analystUpside')}%
+Strategy Bucket: {bucket}
+
+Reply with exactly one sentence, no preamble."""
+        r = req.post(f"{OLLAMA_URL}/api/generate",
+                     json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False},
+                     timeout=60)
+        return r.json().get("response", "").strip()
+    except Exception as e:
+        log.warning(f"AI forecast reason FAIL {ticker}: {e}")
+        return f"AI unavailable: {e}"
+
+
+# Module-level progress state for signal forecast
+_signal_progress = {"running": False, "current": 0, "total": 0, "ticker": "", "done": 0}
+
+@app.route("/signal/progress")
+def signal_progress():
+    return jsonify(_signal_progress)
+
+@app.route("/signal/forecast", methods=["POST"])
+def signal_forecast():
+    """Generate and save forecasts for all identified candidates."""
+    global _signal_progress
+    try:
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        identified      = candidates_data.get("identified", [])
+        details         = candidates_data.get("details", {})
+        cand_map        = {item["ticker"]: item for item in identified}
+
+        forecasts_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        today = datetime.now(TZ).strftime("%Y-%m-%d")
+
+        forecasts_db["snapshots"] = [s for s in forecasts_db["snapshots"] if s.get("date") != today]
+
+        eligible = {t: d for t, d in details.items() if d}
+        total = len(eligible)
+        _signal_progress = {"running": True, "current": 0, "total": total, "ticker": "", "done": 0}
+
+        rows = []
+        for idx, (ticker, detail) in enumerate(eligible.items(), 1):
+            _signal_progress.update({"current": idx, "ticker": ticker})
+            fc = _rule_forecast(detail)
+            if not fc:
+                log.info(f"[Forecast] {idx}/{total} {ticker} — skipped (no price)")
+                continue
+            bucket = cand_map.get(ticker, {}).get("bucket", "Dream")
+            log.info(f"[Forecast] {idx}/{total} {ticker} — running AI reason...")
+            reason = _ai_forecast_reason(ticker, detail, fc, bucket, OLLAMA_URL, OLLAMA_MODEL)
+            rows.append({
+                "ticker":      ticker,
+                "bucket":      bucket,
+                "date":        today,
+                **fc,
+                "aiReason":    reason,
+                "actualPrice": None,
+                "accuracy":    None,
+                "generatedAt": ts(),
+            })
+            _signal_progress["done"] = len(rows)
+            log.info(f"[Forecast] {idx}/{total} {ticker} OK | {fc['direction']} | ${fc['forecastLow']}–${fc['forecastHigh']}")
+
+        forecasts_db["snapshots"].append({"date": today, "rows": rows, "generatedAt": ts()})
+        save_json(SIGNAL_FORECAST_PATH, forecasts_db)
+        _signal_progress = {"running": False, "current": total, "total": total, "ticker": "", "done": len(rows)}
+        return jsonify({"status": "ok", "date": today, "count": len(rows), "total": total})
+    except Exception as e:
+        _signal_progress = {"running": False, "current": 0, "total": 0, "ticker": "", "done": 0}
+        log.error(f"Signal forecast FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/signal/actual", methods=["POST"])
+def signal_actual():
+    """Update today's snapshot with actual closing prices and compute accuracy."""
+    try:
+        from fetcher import fetch_price_only
+        forecasts_db = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        today = datetime.now(TZ).strftime("%Y-%m-%d")
+
+        snap = next((s for s in forecasts_db["snapshots"] if s["date"] == today), None)
+        if not snap:
+            return jsonify({"error": "No forecast found for today"}), 404
+
+        updated = 0
+        for row in snap["rows"]:
+            ticker = row["ticker"]
+            try:
+                actual = fetch_price_only(ticker)
+                if not actual:
+                    continue
+                row["actualPrice"] = round(actual, 2)
+                # Accuracy: hit = within range, else direction of miss
+                if row["forecastLow"] <= actual <= row["forecastHigh"]:
+                    row["accuracy"] = "hit"
+                elif actual > row["forecastHigh"]:
+                    row["accuracy"] = "miss-low"   # we under-forecast
+                else:
+                    row["accuracy"] = "miss-high"  # we over-forecast
+                updated += 1
+                log.info(f"[Actual] {ticker} | forecast ${row['forecastLow']}-${row['forecastHigh']} | actual ${actual} | {row['accuracy']}")
+            except Exception as e:
+                log.warning(f"[Actual] price fetch FAIL {ticker}: {e}")
+
+        snap["updatedAt"] = ts()
+        save_json(SIGNAL_FORECAST_PATH, forecasts_db)
+        return jsonify({"status": "ok", "date": today, "updated": updated})
+    except Exception as e:
+        log.error(f"Signal actual FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/signal/history")
+def signal_history():
+    """Return all forecast snapshots."""
+    data = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+    return jsonify(data)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5050)

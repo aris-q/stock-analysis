@@ -1,0 +1,60 @@
+{
+  "watchlist": [
+    {
+      "ticker": "POET",
+      "price": 13.93,
+      "previousClose": 12.53,
+      "volume": 41720248,
+      "marketCap": 2404254208,
+      "rsi14": 52.2,
+      "bbPercent": 0.613,
+      "priceFetchedAt": "2026-06-15 21:47 EDT"
+    },
+    {
+      "ticker": "CDE",
+      "price": 18.66,
+      "previousClose": 17.2,
+      "volume": 27518608,
+      "marketCap": 19229773824,
+      "rsi14": 51.4,
+      "bbPercent": 0.72,
+      "priceFetchedAt": "2026-06-15 21:47 EDT"
+    },
+    {
+      "ticker": "NTRA",
+      "price": 216.97,
+      "previousClose": 212.07,
+      "volume": 1017036,
+      "marketCap": 31073439744,
+      "rsi14": 59.6,
+      "bbPercent": 0.661,
+      "priceFetchedAt": "2026-06-15 21:47 EDT"
+    },
+    {
+      "ticker": "CRDO",
+      "price": 259.41,
+      "previousClose": 250.81,
+      "volume": 7894164,
+      "marketCap": 47848157184,
+      "rsi14": 63.8,
+      "bbPercent": 0.865,
+      "priceFetchedAt": "2026-06-15 21:47 EDT"
+    },
+    {
+      "ticker": "ONDS",
+      "price": 9.51,
+      "previousClose": 9.33,
+      "volume": 57033596,
+      "marketCap": 4918548480,
+      "rsi14": 48.7,
+      "bbPercent": 0.328,
+      "priceFetchedAt": "2026-06-15 21:47 EDT"
+    },
+    {
+      "ticker": "SPCX",
+      "price": 192.5,
+      "previousClose": 160.95,
+      "volume": 243783175,
+      "marketCap": 2519989485568,
+      "rsi14": null,
+      "bbPercent": 

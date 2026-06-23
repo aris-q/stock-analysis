@@ -15,8 +15,8 @@
           "biasScore": 0.0,
           "dailyVol": 0.106,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 13.08,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:41 EDT"
         },
         {
@@ -31,8 +31,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.752,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:41 EDT"
         },
         {
@@ -47,8 +47,8 @@
           "biasScore": 0.4,
           "dailyVol": 0.55,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 11.35,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:42 EDT"
         },
         {
@@ -63,8 +63,8 @@
           "biasScore": -0.1,
           "dailyVol": 2.429,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 100.55,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:42 EDT"
         },
         {
@@ -79,8 +79,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.501,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.53,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:43 EDT"
         },
         {
@@ -95,8 +95,8 @@
           "biasScore": -0.1,
           "dailyVol": 22.461,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 893.52,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:43 EDT"
         },
         {
@@ -111,8 +111,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.821,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 36.6,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:44 EDT"
         },
         {
@@ -127,8 +127,8 @@
           "biasScore": -0.1,
           "dailyVol": 2.472,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 190.94,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:44 EDT"
         },
         {
@@ -143,8 +143,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.086,
           "aiReason": "AI's price is likely to move Neutral tomorrow due to the RSI indicating overbought conditions and a neutral forecast range score.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.9,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:45 EDT"
         },
         {
@@ -159,8 +159,8 @@
           "biasScore": -0.1,
           "dailyVol": 1.077,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 212.07,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-07 22:45 EDT"
         },
         {
@@ -175,8 +175,8 @@
           "biasScore": 0.4,
           "dailyVol": 1.2,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 64.58,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:46 EDT"
         },
         {
@@ -191,8 +191,8 @@
           "biasScore": 0.3,
           "dailyVol": 4.748,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 387.18,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:46 EDT"
         },
         {
@@ -207,8 +207,8 @@
           "biasScore": 0.4,
           "dailyVol": 5.196,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 120.89,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:47 EDT"
         },
         {
@@ -223,8 +223,8 @@
           "biasScore": 0.4,
           "dailyVol": 20.219,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 294.91,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:47 EDT"
         },
         {
@@ -239,8 +239,8 @@
           "biasScore": 0.45,
           "dailyVol": 1.916,
           "aiReason": "UHS's oversold RSI of 17.8 and bullish forecast range suggest a potential reversal rally tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 146.42,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:48 EDT"
         },
         {
@@ -255,8 +255,8 @@
           "biasScore": 0.0,
           "dailyVol": 7.488,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 82.41,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-07 22:48 EDT"
         },
         {
@@ -271,8 +271,8 @@
           "biasScore": -0.05,
           "dailyVol": 0.834,
           "aiReason": "ONDs's neutral forecast range, coupled with the RSI hovering near 50 and the recent significant price decline, suggest a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 9.33,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-07 22:49 EDT"
         },
         {
@@ -287,8 +287,8 @@
           "biasScore": 0.4,
           "dailyVol": 1.107,
           "aiReason": "BMNR's significantly oversold RSI (29) coupled with a bullish forecast range and high analyst upside suggests a potential rebound tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.11,
+          "accuracy": "hit",
           "generatedAt": "2026-06-07 22:50 EDT"
         },
         {
@@ -303,8 +303,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.071,
           "aiReason": "RFL's extremely high RSI of 76.0 suggests the stock is overbought and likely to experience a correction, driving the price downwards.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.24,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:50 EDT"
         },
         {
@@ -319,12 +319,13 @@
           "biasScore": 0.0,
           "dailyVol": 5.752,
           "aiReason": "CRDO's neutral forecast range and RSI reading near the overbought threshold suggest limited directional momentum for tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 250.81,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-07 22:50 EDT"
         }
       ],
-      "generatedAt": "2026-06-07 22:50 EDT"
+      "generatedAt": "2026-06-07 22:50 EDT",
+      "updatedAt": "2026-06-14 21:51 EDT"
     },
     {
       "date": "2026-06-09",
@@ -341,8 +342,8 @@
           "biasScore": 0.25,
           "dailyVol": 0.862,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.53,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:04 EDT"
         },
         {
@@ -357,8 +358,8 @@
           "biasScore": 0.05,
           "dailyVol": 3.412,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 250.81,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:05 EDT"
         },
         {
@@ -373,8 +374,8 @@
           "biasScore": -0.2,
           "dailyVol": 0.772,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 9.33,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:05 EDT"
         },
         {
@@ -389,8 +390,8 @@
           "biasScore": -0.2,
           "dailyVol": 20.261,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 893.52,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:06 EDT"
         },
         {
@@ -405,8 +406,8 @@
           "biasScore": -0.05,
           "dailyVol": 1.631,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 212.07,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-09 20:06 EDT"
         },
         {
@@ -421,8 +422,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.477,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 36.6,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-09 20:07 EDT"
         },
         {
@@ -437,8 +438,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.889,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 190.94,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:07 EDT"
         },
         {
@@ -453,8 +454,8 @@
           "biasScore": 0.0,
           "dailyVol": 0.353,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:08 EDT"
         },
         {
@@ -469,8 +470,8 @@
           "biasScore": -0.15,
           "dailyVol": 10.608,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 403.98,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:08 EDT"
         },
         {
@@ -485,8 +486,8 @@
           "biasScore": -0.2,
           "dailyVol": 0.513,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 81.5,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-09 20:09 EDT"
         },
         {
@@ -501,8 +502,8 @@
           "biasScore": 0.25,
           "dailyVol": 1.326,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 64.58,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:09 EDT"
         },
         {
@@ -517,8 +518,8 @@
           "biasScore": 0.2,
           "dailyVol": 1.874,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 387.18,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:10 EDT"
         },
         {
@@ -533,8 +534,8 @@
           "biasScore": 0.5,
           "dailyVol": 4.604,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 120.89,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:10 EDT"
         },
         {
@@ -549,8 +550,8 @@
           "biasScore": 0.3,
           "dailyVol": 4.01,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 294.91,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:11 EDT"
         },
         {
@@ -565,8 +566,8 @@
           "biasScore": 0.4,
           "dailyVol": 0.85,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 146.42,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:12 EDT"
         },
         {
@@ -581,8 +582,8 @@
           "biasScore": -0.1,
           "dailyVol": 5.688,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 82.41,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:12 EDT"
         },
         {
@@ -597,8 +598,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.911,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.11,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:13 EDT"
         },
         {
@@ -613,8 +614,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.309,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 11.35,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:13 EDT"
         },
         {
@@ -629,8 +630,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.154,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.24,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-09 20:14 EDT"
         },
         {
@@ -645,12 +646,13 @@
           "biasScore": 0.05,
           "dailyVol": 0.827,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-09 20:14 EDT"
         }
       ],
-      "generatedAt": "2026-06-09 20:14 EDT"
+      "generatedAt": "2026-06-09 20:14 EDT",
+      "updatedAt": "2026-06-14 21:51 EDT"
     },
     {
       "date": "2026-06-10",
@@ -667,8 +669,8 @@
           "biasScore": 0.45,
           "dailyVol": 0.878,
           "aiReason": "POET's bullish forecast range, coupled with a low RSI suggesting oversold conditions and significant analyst upside potential, points to a likely upward price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.53,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:41 EDT"
         },
         {
@@ -683,8 +685,8 @@
           "biasScore": 0.05,
           "dailyVol": 3.603,
           "aiReason": "CRDO's price is likely to move Neutral tomorrow due to the neutral forecast range and its high RSI reading of 71.8 indicating potential overbought conditions.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 250.81,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:42 EDT"
         },
         {
@@ -699,8 +701,8 @@
           "biasScore": -0.25,
           "dailyVol": 0.745,
           "aiReason": "The combination of a strongly bearish forecast range (-0.25 score), significant negative short-term price changes (1d -3.52%, 7d -31.44%), and high short float (32%) signals a likely bearish movement for ONDS tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 9.33,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:43 EDT"
         },
         {
@@ -715,8 +717,8 @@
           "biasScore": 0.2,
           "dailyVol": 25.796,
           "aiReason": "ARGX's neutral forecast range, coupled with an RSI above 60 and a BB%B close to overbought levels, suggest a potential consolidation period tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 893.52,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:44 EDT"
         },
         {
@@ -731,8 +733,8 @@
           "biasScore": 0.1,
           "dailyVol": 1.533,
           "aiReason": "NTRA's neutral forecast range and moderate RSI suggest a likely sideways price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 212.07,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-10 21:44 EDT"
         },
         {
@@ -747,8 +749,8 @@
           "biasScore": -0.2,
           "dailyVol": 0.752,
           "aiReason": "NSP's price is likely to move Bearish tomorrow due to the bearish forecast range bias and overbought RSI reading above 70, suggesting a potential sell-off.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 36.6,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:45 EDT"
         },
         {
@@ -763,8 +765,8 @@
           "biasScore": 0.2,
           "dailyVol": 2.011,
           "aiReason": "DOL.TO's neutral forecast range, RSI around the midpoint, and recent price consolidation suggest a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 190.94,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:45 EDT"
         },
         {
@@ -779,8 +781,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.147,
           "aiReason": "AI's neutral forecast range and RSI reading above 60 suggest a potential pause in momentum after recent strong gains.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:46 EDT"
         },
         {
@@ -795,8 +797,8 @@
           "biasScore": 0.0,
           "dailyVol": 5.345,
           "aiReason": "RL's neutral forecast range, coupled with an overbought RSI (68.7) and a BB%B above 0.7, suggests potential for sideways movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 403.98,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:47 EDT"
         },
         {
@@ -811,8 +813,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.838,
           "aiReason": "GM's neutral forecast range, combined with a recent decline in price and lack of strong bullish or bearish indicators like RSI and BB%B, suggests a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 81.5,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:47 EDT"
         },
         {
@@ -827,8 +829,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.837,
           "aiReason": "LYB's oversold RSI (28.3) and positive short-term price momentum coupled with a bullish forecast range suggest potential for a reversal rally tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 64.58,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-10 21:48 EDT"
         },
         {
@@ -843,8 +845,8 @@
           "biasScore": 0.1,
           "dailyVol": 2.434,
           "aiReason": "HCA's Neutral forecast range, coupled with a low RSI reading of 34.3, suggests limited directional momentum and a potential for sideways price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 387.18,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:49 EDT"
         },
         {
@@ -859,8 +861,8 @@
           "biasScore": 0.35,
           "dailyVol": 2.666,
           "aiReason": "MKTX's low RSI of 7.2 coupled with a bullish forecast range and significant analyst upside suggest potential for a reversal rally tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 120.89,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:49 EDT"
         },
         {
@@ -875,8 +877,8 @@
           "biasScore": 0.5,
           "dailyVol": 11.14,
           "aiReason": "CBOE's oversold RSI (27.7) coupled with a strong recent price performance and bullish forecast suggest a potential rebound tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 294.91,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-10 21:50 EDT"
         },
         {
@@ -891,8 +893,8 @@
           "biasScore": 0.2,
           "dailyVol": 1.002,
           "aiReason": "UHS's RSI at 24.9 suggests oversold conditions and its bullish forecast range combined with a reversal strategy bucket indicates a potential rebound tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 146.42,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:50 EDT"
         },
         {
@@ -907,8 +909,8 @@
           "biasScore": -0.25,
           "dailyVol": 6.986,
           "aiReason": "ASTS's price is likely to move Bearish tomorrow due to the negative bias forecast range (-0.25), coupled with a significant 7-day change of -26.11%.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 82.41,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:51 EDT"
         },
         {
@@ -923,8 +925,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.811,
           "aiReason": "BMNR's oversold RSI (30.5) coupled with a bullish forecast range and high analyst upside suggest potential for a rebound tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.11,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:52 EDT"
         },
         {
@@ -939,8 +941,8 @@
           "biasScore": 0.25,
           "dailyVol": 0.284,
           "aiReason": "TNXP's extremely oversold RSI (23.8) and bullish forecast range suggest a potential bounce tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 11.35,
+          "accuracy": "hit",
           "generatedAt": "2026-06-10 21:52 EDT"
         },
         {
@@ -955,8 +957,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.142,
           "aiReason": "RFL's price is likely to move Bearish tomorrow due to its overbought RSI (71.6) and bearish forecast range (-0.3 score).",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.24,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:53 EDT"
         },
         {
@@ -971,12 +973,13 @@
           "biasScore": 0.2,
           "dailyVol": 0.929,
           "aiReason": "OLA.TO's bullish forecast range and oversold RSI (32.1) suggest a potential rebound tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.9,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-10 21:54 EDT"
         }
       ],
-      "generatedAt": "2026-06-10 21:54 EDT"
+      "generatedAt": "2026-06-10 21:54 EDT",
+      "updatedAt": "2026-06-14 21:51 EDT"
     },
     {
       "date": "2026-06-11",
@@ -993,8 +996,8 @@
           "biasScore": -0.3,
           "dailyVol": 21.181,
           "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 250.81,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:31 EDT"
         },
         {
@@ -1009,8 +1012,8 @@
           "biasScore": -0.1,
           "dailyVol": 37.935,
           "aiReason": "ARGX's neutral forecast range and overbought RSI (67.5) suggest a potential pause in the recent upward momentum, signaling a likely neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 893.52,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:31 EDT"
         },
         {
@@ -1025,8 +1028,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.149,
           "aiReason": "BMNR's bullish forecast range bias (0.2), coupled with a strong 1-day change of 5.63%, suggests potential upward movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.11,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-11 22:32 EDT"
         },
         {
@@ -1041,8 +1044,8 @@
           "biasScore": 0.25,
           "dailyVol": 0.409,
           "aiReason": "OLA.TO's price is likely to move Bullish tomorrow due to its strong 1d change of 5.87% coupled with a bullish forecast range and low RSI value, indicating potential for upward momentum.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:33 EDT"
         },
         {
@@ -1057,8 +1060,8 @@
           "biasScore": 0.25,
           "dailyVol": 0.28,
           "aiReason": "TNXP's extremely oversold RSI (24.5) coupled with a high analyst upside potential (334.3%) suggests a bullish reversal is likely tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 11.35,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:34 EDT"
         },
         {
@@ -1073,8 +1076,8 @@
           "biasScore": -0.1,
           "dailyVol": 2.137,
           "aiReason": "NSP's high RSI reading of 72.7 suggests potential overbought conditions, coupled with a neutral forecast range bias, indicating a likely neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 36.6,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:34 EDT"
         },
         {
@@ -1089,8 +1092,8 @@
           "biasScore": -0.1,
           "dailyVol": 9.248,
           "aiReason": "DOL.TO's price is likely to move Neutral tomorrow due to the neutral forecast range and overbought RSI reading, suggesting a potential pause after recent significant upward momentum.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 190.94,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:35 EDT"
         },
         {
@@ -1105,8 +1108,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.236,
           "aiReason": "AI's price is likely to move Neutral tomorrow due to the combination of a high RSI reading (70.8) indicating overbought conditions and a neutral forecast range bias.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.9,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-11 22:36 EDT"
         },
         {
@@ -1121,8 +1124,8 @@
           "biasScore": 0.4,
           "dailyVol": 3.052,
           "aiReason": "NTRA's bullish forecast range, positive short-term price momentum (1d, 7d, and 30d changes), and high analyst upside suggest a potential price increase tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 212.07,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-11 22:37 EDT"
         },
         {
@@ -1137,8 +1140,8 @@
           "biasScore": 0.25,
           "dailyVol": 14.82,
           "aiReason": "RL's strong positive price momentum over the past week and month, coupled with a bullish forecast range and RSI below 70, suggest a potential bullish move tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 403.98,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:37 EDT"
         },
         {
@@ -1153,8 +1156,8 @@
           "biasScore": 0.25,
           "dailyVol": 1.445,
           "aiReason": "LYB's low RSI of 27.3 coupled with a bullish forecast range and analyst upside suggest potential for a reversal and price increase tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 64.58,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:38 EDT"
         },
         {
@@ -1169,8 +1172,8 @@
           "biasScore": 0.15,
           "dailyVol": 6.374,
           "aiReason": "HCA's neutral forecast range, coupled with a low RSI and short-term upward momentum, suggests a lack of strong directional bias for tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 387.18,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:39 EDT"
         },
         {
@@ -1185,8 +1188,8 @@
           "biasScore": 0.35,
           "dailyVol": 2.517,
           "aiReason": "MKTX's strong analyst upside of 58.6% coupled with a bullish forecast range and low RSI reading suggest a potential price reversal tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 120.89,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:40 EDT"
         },
         {
@@ -1201,8 +1204,8 @@
           "biasScore": 0.3,
           "dailyVol": 4.486,
           "aiReason": "CBOE's price is likely to move Bullish tomorrow due to the combination of a bullish forecast bias and a low RSI value suggesting oversold conditions.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 294.91,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:40 EDT"
         },
         {
@@ -1217,8 +1220,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.73,
           "aiReason": "UHS's RSI of 28.6 and its current price within the bullish forecast range suggest a potential reversal to the upside.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 146.42,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:41 EDT"
         },
         {
@@ -1233,8 +1236,8 @@
           "biasScore": 0.2,
           "dailyVol": 3.684,
           "aiReason": "ASTS's price is likely to move Neutral tomorrow due to the neutral forecast range and balanced RSI signal near 50.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 82.41,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-11 22:42 EDT"
         },
         {
@@ -1249,8 +1252,8 @@
           "biasScore": 0.0,
           "dailyVol": 0.603,
           "aiReason": "ONDS's neutral forecast range, coupled with a lack of strong directional signals from RSI, BB%B, and recent price changes, suggests a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 9.33,
+          "accuracy": "hit",
           "generatedAt": "2026-06-11 22:42 EDT"
         },
         {
@@ -1265,8 +1268,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.9,
           "aiReason": "POET's bullish forecast range bias, coupled with a positive short-term price change and significant analyst upside potential, suggests a likely bullish movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.53,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:43 EDT"
         },
         {
@@ -1281,8 +1284,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.17,
           "aiReason": "RFL's price is likely to move Bearish tomorrow due to the highly overbought RSI (81.6) and significant recent price increases suggesting potential for a correction.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.24,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:44 EDT"
         },
         {
@@ -1297,12 +1300,13 @@
           "biasScore": -0.05,
           "dailyVol": 0.632,
           "aiReason": "CDE's neutral forecast range, coupled with the RSI at 42.3 indicating neither overbought nor oversold conditions, suggests a likely Neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 17.2,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-11 22:45 EDT"
         }
       ],
-      "generatedAt": "2026-06-11 22:45 EDT"
+      "generatedAt": "2026-06-11 22:45 EDT",
+      "updatedAt": "2026-06-14 21:51 EDT"
     },
     {
       "date": "2026-06-13",
@@ -1319,8 +1323,8 @@
           "biasScore": 0.05,
           "dailyVol": 15.36,
           "aiReason": "CRDO's neutral forecast range and RSI at 62.4 suggest a potential consolidation period tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 250.81,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:19 EDT"
         },
         {
@@ -1335,8 +1339,8 @@
           "biasScore": -0.05,
           "dailyVol": 21.73,
           "aiReason": "ARGX's neutral forecast range coupled with the RSI indicating overbought territory suggest a potential pause in upward momentum tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 893.52,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:20 EDT"
         },
         {
@@ -1351,8 +1355,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.641,
           "aiReason": "BMNR's neutral forecast range, coupled with a low RSI and flat BB%B, suggest limited directional momentum for the stock tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.11,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:20 EDT"
         },
         {
@@ -1367,8 +1371,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.304,
           "aiReason": "OLA.TO's neutral forecast range and RSI reading of 35.7, indicating a lack of significant momentum, suggest a likely neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:21 EDT"
         },
         {
@@ -1383,8 +1387,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.202,
           "aiReason": "TNXP's neutral forecast range, coupled with a low RSI and BB%B within the neutral zone, suggest minimal directional price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 11.35,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:22 EDT"
         },
         {
@@ -1399,8 +1403,8 @@
           "biasScore": 0.0,
           "dailyVol": 1.369,
           "aiReason": "NSP's price is likely to move Neutral tomorrow due to the neutral forecast range and the overbought RSI reading of 65.8, indicating potential for a short-term pullback.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 36.6,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:22 EDT"
         },
         {
@@ -1415,8 +1419,8 @@
           "biasScore": -0.1,
           "dailyVol": 6.545,
           "aiReason": "DOL.TO's neutral forecast range and lack of strong directional signals from RSI, BB%B, and recent price changes suggest a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 190.94,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:23 EDT"
         },
         {
@@ -1431,8 +1435,8 @@
           "biasScore": 0.0,
           "dailyVol": 0.132,
           "aiReason": "AI's neutral forecast range coupled with an RSI of 66.1 indicates a potential period of consolidation after recent strong momentum.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.9,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:23 EDT"
         },
         {
@@ -1447,8 +1451,8 @@
           "biasScore": 0.0,
           "dailyVol": 3.834,
           "aiReason": "NTRA's neutral forecast range, combined with the recent negative price movement and lack of strong bullish or bearish signals like RSI divergence or significant volume changes, suggests a likely neutral move tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 212.07,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:24 EDT"
         },
         {
@@ -1463,8 +1467,8 @@
           "biasScore": 0.1,
           "dailyVol": 16.418,
           "aiReason": "RL's price is likely to move Neutral tomorrow due to a neutral forecast range and a slightly overbought RSI reading of 62.4.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 403.98,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:25 EDT"
         },
         {
@@ -1479,8 +1483,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.625,
           "aiReason": "LYB's forecast range bias and positive 1-day change suggest a potential bullish reversal tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 64.58,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:25 EDT"
         },
         {
@@ -1495,8 +1499,8 @@
           "biasScore": 0.15,
           "dailyVol": 10.857,
           "aiReason": "HCA's neutral forecast range, combined with a RSI of 45.8 indicating neither overbought nor oversold conditions, suggests a potential for sideways movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 387.18,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:26 EDT"
         },
         {
@@ -1511,8 +1515,8 @@
           "biasScore": 0.4,
           "dailyVol": 0.604,
           "aiReason": "MKTX's price is likely to move Bullish tomorrow due to the combination of a bullish forecast range score, an oversold RSI reading, and strong analyst upside potential.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 120.89,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:27 EDT"
         },
         {
@@ -1527,8 +1531,8 @@
           "biasScore": 0.4,
           "dailyVol": 3.657,
           "aiReason": "CBOE's oversold RSI (25.1) and bullish forecast range suggest a potential reversal to the upside tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 294.91,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:27 EDT"
         },
         {
@@ -1543,8 +1547,8 @@
           "biasScore": 0.1,
           "dailyVol": 1.599,
           "aiReason": "UHS's neutral forecast range, low RSI suggesting oversold conditions, and recent price decline point to a potential consolidation period.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 146.42,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:28 EDT"
         },
         {
@@ -1559,8 +1563,8 @@
           "biasScore": -0.1,
           "dailyVol": 6.593,
           "aiReason": "ASTS's price is likely to move Neutral tomorrow due to a combination of a neutral forecast range score and an RSI reading indicating neither overbought nor oversold conditions.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 82.41,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:28 EDT"
         },
         {
@@ -1575,8 +1579,8 @@
           "biasScore": -0.2,
           "dailyVol": 0.746,
           "aiReason": "ONDs' neutral forecast range, coupled with a near-neutral RSI and minimal price momentum indicators, suggest a lack of strong directional bias for tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 9.33,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:29 EDT"
         },
         {
@@ -1591,8 +1595,8 @@
           "biasScore": 0.15,
           "dailyVol": 0.955,
           "aiReason": "POET's neutral forecast range, coupled with a low RSI and lack of strong momentum signals, suggests a potential for sideways price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.53,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:30 EDT"
         },
         {
@@ -1607,8 +1611,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.179,
           "aiReason": "RFL's extremely high RSI of 83.1 coupled with significant recent price increases (7d/30d changes of 61.15%/80.65%) strongly suggest an overbought condition, making a bearish move likely.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.24,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:31 EDT"
         },
         {
@@ -1623,12 +1627,13 @@
           "biasScore": -0.05,
           "dailyVol": 0.477,
           "aiReason": "CDE's neutral forecast range and mixed short-term price movements suggest a likely neutral price trajectory tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 17.2,
+          "accuracy": "hit",
           "generatedAt": "2026-06-13 22:31 EDT"
         }
       ],
-      "generatedAt": "2026-06-13 22:31 EDT"
+      "generatedAt": "2026-06-13 22:31 EDT",
+      "updatedAt": "2026-06-14 21:51 EDT"
     },
     {
       "date": "2026-06-14",
@@ -1644,10 +1649,10 @@
           "direction": "Neutral",
           "biasScore": 0.05,
           "dailyVol": 15.36,
-          "aiReason": "CRDO's neutral forecast range coupled with a slightly overbought RSI (62.4) and high BB%B (0.824) suggest a potential pause in the recent upward trend tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:56 EDT"
+          "aiReason": "CRDO's neutral forecast range and recent price decline suggest a likely flat movement tomorrow.",
+          "actualPrice": 271.83,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-14 15:25 EDT"
         },
         {
           "ticker": "ARGX",
@@ -1660,10 +1665,10 @@
           "direction": "Neutral",
           "biasScore": -0.05,
           "dailyVol": 21.73,
-          "aiReason": "ARGX's neutral forecast range and RSI nearing overbought territory suggest a sideways movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:56 EDT"
+          "aiReason": "ARGX's neutral forecast range, coupled with an RSI reading of 68.7 indicating potential overbought conditions, suggests a likely sideways movement tomorrow.",
+          "actualPrice": 877.72,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:26 EDT"
         },
         {
           "ticker": "BMNR",
@@ -1676,10 +1681,10 @@
           "direction": "Neutral",
           "biasScore": 0.05,
           "dailyVol": 0.641,
-          "aiReason": "BMNR's neutral forecast range coupled with a low RSI and recent price decline suggest a sideways trend tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:57 EDT"
+          "aiReason": "BMNR's neutral forecast range, coupled with its oversold RSI and declining price momentum indicated by the negative 1d, 7d, and 30d changes, suggest a likely neutral movement tomorrow.",
+          "actualPrice": 16.14,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:26 EDT"
         },
         {
           "ticker": "OLA.TO",
@@ -1692,10 +1697,10 @@
           "direction": "Neutral",
           "biasScore": 0.1,
           "dailyVol": 0.304,
-          "aiReason": "OLA.TO's neutral forecast range, coupled with its current RSI within the neutral zone and a recent price decrease over multiple timeframes, suggest minimal directional movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:58 EDT"
+          "aiReason": "OLA.TO's neutral forecast range and RSI value of 35.7, indicating neither overbought nor oversold conditions, suggest a likely neutral price movement tomorrow.",
+          "actualPrice": 14.74,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:27 EDT"
         },
         {
           "ticker": "TNXP",
@@ -1708,10 +1713,10 @@
           "direction": "Neutral",
           "biasScore": 0.1,
           "dailyVol": 0.202,
-          "aiReason": "TNXP's neutral forecast range, combined with a low RSI reading and recent price volatility, suggests a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:58 EDT"
+          "aiReason": "TNXP's neutral forecast range, coupled with its RSI indicating a lack of overbought or oversold conditions and recent price volatility suggesting indecision, point to a likely neutral movement tomorrow.",
+          "actualPrice": 12.01,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-14 15:28 EDT"
         },
         {
           "ticker": "NSP",
@@ -1724,10 +1729,10 @@
           "direction": "Neutral",
           "biasScore": 0.0,
           "dailyVol": 1.369,
-          "aiReason": "NSP's Neutral forecast range and overbought RSI reading suggest a potential pause in the recent price momentum, leading to a likely neutral movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 13:59 EDT"
+          "aiReason": "NSP's neutral forecast range and overbought RSI (65.8) suggest a potential pause in momentum after recent strong gains.",
+          "actualPrice": 36.22,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:28 EDT"
         },
         {
           "ticker": "DOL.TO",
@@ -1740,10 +1745,10 @@
           "direction": "Neutral",
           "biasScore": -0.1,
           "dailyVol": 6.545,
-          "aiReason": "DOL.TO's neutral forecast range and lack of strong bullish or bearish signals from the RSI and BB%B suggest a likely neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:00 EDT"
+          "aiReason": "DOL.TO's neutral forecast range, coupled with an RSI of 63.2 indicating neither overbought nor oversold conditions, suggests a likely neutral price movement tomorrow.",
+          "actualPrice": 187.85,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:29 EDT"
         },
         {
           "ticker": "AI",
@@ -1756,10 +1761,10 @@
           "direction": "Neutral",
           "biasScore": 0.0,
           "dailyVol": 0.132,
-          "aiReason": "The neutral forecast range and a slightly overbought RSI (66.1) suggest limited directional momentum for AI's price tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:00 EDT"
+          "aiReason": "AI's neutral forecast range and overbought RSI (66.1) suggest limited price movement tomorrow.",
+          "actualPrice": 10.3,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:29 EDT"
         },
         {
           "ticker": "NTRA",
@@ -1772,10 +1777,10 @@
           "direction": "Neutral",
           "biasScore": 0.0,
           "dailyVol": 3.834,
-          "aiReason": "NTRA's neutral forecast range and recent price declines (-3.27% 1d, -4.52% 7d) coupled with a RSI reading of 55.5 suggest a potential for minimal price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:01 EDT"
+          "aiReason": "NTRA's neutral forecast range, coupled with the RSI at 55.5 indicating neither overbought nor oversold conditions, suggests a likely neutral price movement tomorrow.",
+          "actualPrice": 231.41,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-14 15:30 EDT"
         },
         {
           "ticker": "RL",
@@ -1788,10 +1793,10 @@
           "direction": "Neutral",
           "biasScore": 0.1,
           "dailyVol": 16.418,
-          "aiReason": "RL's neutral forecast range, coupled with a RSI of 62.4 indicating neither overbought nor oversold conditions, suggests a potential for sideways movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:02 EDT"
+          "aiReason": "RL's neutral forecast range and RSI nearing overbought territory suggest a potential consolidation period tomorrow.",
+          "actualPrice": 413.01,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:31 EDT"
         },
         {
           "ticker": "LYB",
@@ -1804,10 +1809,10 @@
           "direction": "Bullish",
           "biasScore": 0.2,
           "dailyVol": 0.625,
-          "aiReason": "LYB's bullish forecast range, coupled with an oversold RSI reading of 33.9 and a potential reversal strategy signal, suggest a likely upward price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:02 EDT"
+          "aiReason": "LYB's bullish forecast range, coupled with a low RSI indicating oversold conditions and significant analyst upside potential, suggests a price increase tomorrow.",
+          "actualPrice": 60.07,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:31 EDT"
         },
         {
           "ticker": "HCA",
@@ -1820,10 +1825,10 @@
           "direction": "Neutral",
           "biasScore": 0.15,
           "dailyVol": 10.857,
-          "aiReason": "HCA's neutral forecast range, coupled with its RSI near the midpoint and recent volatile price movement, suggests a potential for sideways trading tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:03 EDT"
+          "aiReason": "HCA's neutral forecast range, coupled with its RSI near the midpoint and a recent reversal in price direction, suggest a likely neutral movement tomorrow.",
+          "actualPrice": 375.17,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:32 EDT"
         },
         {
           "ticker": "MKTX",
@@ -1836,10 +1841,10 @@
           "direction": "Bullish",
           "biasScore": 0.4,
           "dailyVol": 0.604,
-          "aiReason": "MKTX's price is likely to move bullish tomorrow due to its oversold RSI reading of 20.7 coupled with a significant 3.92% one-day gain indicating a potential reversal in the stock's downtrend.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:04 EDT"
+          "aiReason": "MKTX's price is likely to move Bullish tomorrow due to its low RSI reading of 20.7 suggesting oversold conditions and the bullish forecast range.",
+          "actualPrice": 120.33,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:32 EDT"
         },
         {
           "ticker": "CBOE",
@@ -1852,10 +1857,10 @@
           "direction": "Bullish",
           "biasScore": 0.4,
           "dailyVol": 3.657,
-          "aiReason": "CBOE's bullish forecast range, combined with an oversold RSI reading of 25.1 and a positive 7-day change, suggests potential for a reversal and upward price movement.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:05 EDT"
+          "aiReason": "CBOE's price is likely to move Bullish tomorrow due to the combined signals of a bullish forecast range bias, oversold RSI, and positive short-term price momentum despite recent declines.",
+          "actualPrice": 249.1,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:33 EDT"
         },
         {
           "ticker": "UHS",
@@ -1868,10 +1873,10 @@
           "direction": "Neutral",
           "biasScore": 0.1,
           "dailyVol": 1.599,
-          "aiReason": "The Neutral forecast range coupled with the low RSI and moderate recent price changes suggest a lack of strong directional momentum for UHS tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:05 EDT"
+          "aiReason": "UHS's neutral forecast range, low RSI, and recent price movement within a tight band suggest limited directional momentum, indicating a likely Neutral price shift tomorrow.",
+          "actualPrice": 141.17,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-14 15:34 EDT"
         },
         {
           "ticker": "ASTS",
@@ -1884,10 +1889,10 @@
           "direction": "Neutral",
           "biasScore": -0.1,
           "dailyVol": 6.593,
-          "aiReason": "ASTS's price is likely to move Neutral tomorrow due to the neutral forecast range and RSI indicating neither overbought nor oversold conditions.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:06 EDT"
+          "aiReason": "ASTS's price is likely to move Neutral tomorrow due to the neutral forecast range bias and RSI indicating a lack of strong bullish or bearish momentum.",
+          "actualPrice": 80.66,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:34 EDT"
         },
         {
           "ticker": "ONDS",
@@ -1900,10 +1905,10 @@
           "direction": "Neutral",
           "biasScore": -0.2,
           "dailyVol": 0.746,
-          "aiReason": "ONDS's price is likely to move Neutral tomorrow due to the forecast range indicating a neutral bias and the RSI hovering around 50, suggesting neither overbought nor oversold conditions.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:07 EDT"
+          "aiReason": "ONDS's neutral forecast range coupled with a relatively flat RSI and modest BB%B suggest limited directional momentum in the near term.",
+          "actualPrice": 9.27,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:35 EDT"
         },
         {
           "ticker": "POET",
@@ -1916,10 +1921,10 @@
           "direction": "Neutral",
           "biasScore": 0.15,
           "dailyVol": 0.955,
-          "aiReason": "POET's neutral forecast range and RSI value of 42.0 suggest a lack of strong directional momentum, indicating a potential for a neutral price movement tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:08 EDT"
+          "aiReason": "POET's neutral forecast range and RSI value near the midpoint suggest a lack of strong directional momentum, pointing to a likely neutral movement tomorrow.",
+          "actualPrice": 12.15,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:35 EDT"
         },
         {
           "ticker": "RFL",
@@ -1932,10 +1937,10 @@
           "direction": "Bearish",
           "biasScore": -0.3,
           "dailyVol": 0.179,
-          "aiReason": "RFL's extremely high RSI (83.1) suggests overbought conditions, indicating a potential price reversal to the downside.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:09 EDT"
+          "aiReason": "RFL's extremely high RSI of 83.1 coupled with a strong upward trend over the past week and month suggests potential for an imminent price correction.",
+          "actualPrice": 2.73,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-14 15:36 EDT"
         },
         {
           "ticker": "CDE",
@@ -1948,13 +1953,1648 @@
           "direction": "Neutral",
           "biasScore": -0.05,
           "dailyVol": 0.477,
-          "aiReason": "CDE's neutral forecast range coupled with a near-neutral RSI and relatively flat moving average suggest limited directional momentum for tomorrow.",
-          "actualPrice": null,
-          "accuracy": null,
-          "generatedAt": "2026-06-14 14:09 EDT"
+          "aiReason": "CDE's neutral forecast range, combined with a slightly bearish RSI and recent negative price changes, suggest a potential sideways movement tomorrow.",
+          "actualPrice": 17.51,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-14 15:37 EDT"
         }
       ],
-      "generatedAt": "2026-06-14 14:09 EDT"
+      "generatedAt": "2026-06-14 15:37 EDT",
+      "updatedAt": "2026-06-18 22:56 EDT"
+    },
+    {
+      "date": "2026-06-15",
+      "rows": [
+        {
+          "ticker": "POET",
+          "bucket": "Account",
+          "date": "2026-06-15",
+          "currentPrice": 13.93,
+          "forecastLow": 13.43,
+          "forecastMid": 14.4,
+          "forecastHigh": 15.37,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 0.972,
+          "aiReason": "POET's strong recent price performance, including a significant 30-day change of 95.92%, and bullish analyst outlook suggest a potential for further upward movement tomorrow.",
+          "actualPrice": 12.15,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:26 EDT"
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "Account",
+          "date": "2026-06-15",
+          "currentPrice": 18.66,
+          "forecastLow": 18.12,
+          "forecastMid": 19.16,
+          "forecastHigh": 20.2,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 1.044,
+          "aiReason": "CDE's strong positive price momentum, indicated by its recent 1-day and 7-day changes exceeding 8% and 13%, respectively, suggests a bullish outlook for tomorrow.",
+          "actualPrice": 17.51,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:26 EDT"
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "Account",
+          "date": "2026-06-15",
+          "currentPrice": 9.51,
+          "forecastLow": 9.15,
+          "forecastMid": 9.49,
+          "forecastHigh": 9.93,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.336,
+          "aiReason": "ONDS's neutral forecast range, RSI around the midpoint, and recent price fluctuations suggest a likely sideways movement tomorrow.",
+          "actualPrice": 9.27,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:27 EDT"
+        },
+        {
+          "ticker": "CRDO",
+          "bucket": "Account",
+          "date": "2026-06-15",
+          "currentPrice": 259.41,
+          "forecastLow": 244.89,
+          "forecastMid": 265.64,
+          "forecastHigh": 286.39,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 20.753,
+          "aiReason": "CRDO's strong upward price momentum over the past week and month, coupled with a bullish forecast range bias, suggests a potential for continued bullish movement tomorrow.",
+          "actualPrice": 271.83,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:28 EDT"
+        },
+        {
+          "ticker": "NTRA",
+          "bucket": "Account",
+          "date": "2026-06-15",
+          "currentPrice": 216.97,
+          "forecastLow": 216.28,
+          "forecastMid": 217.36,
+          "forecastHigh": 218.44,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 1.085,
+          "aiReason": "NTRA's bullish forecast range, positive 1-day and 30-day changes, and low short float suggest a potential price increase tomorrow.",
+          "actualPrice": 231.41,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-15 22:28 EDT"
+        },
+        {
+          "ticker": "HST",
+          "bucket": "Momentum",
+          "date": "2026-06-15",
+          "currentPrice": 24.81,
+          "forecastLow": 24.67,
+          "forecastMid": 24.79,
+          "forecastHigh": 24.91,
+          "direction": "Neutral",
+          "biasScore": -0.15,
+          "dailyVol": 0.124,
+          "aiReason": "HST's price is likely to move Neutral tomorrow due to the neutral forecast range and overbought RSI reading (70.0), indicating a potential pause in momentum.",
+          "actualPrice": 25.01,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-15 22:29 EDT"
+        },
+        {
+          "ticker": "MOH",
+          "bucket": "Momentum",
+          "date": "2026-06-15",
+          "currentPrice": 201.87,
+          "forecastLow": 196.93,
+          "forecastMid": 201.59,
+          "forecastHigh": 206.25,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 4.659,
+          "aiReason": "MOH's neutral forecast range coupled with an overbought RSI (69.8) suggests a potential pause in upward momentum tomorrow.",
+          "actualPrice": 195.37,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:29 EDT"
+        },
+        {
+          "ticker": "MAS",
+          "bucket": "Momentum",
+          "date": "2026-06-15",
+          "currentPrice": 74.33,
+          "forecastLow": 71.71,
+          "forecastMid": 73.82,
+          "forecastHigh": 75.93,
+          "direction": "Bearish",
+          "biasScore": -0.2,
+          "dailyVol": 2.108,
+          "aiReason": "MAS's price is likely to move Bearish tomorrow due to the negative forecast bias (-0.2) and overbought RSI (69.8).",
+          "actualPrice": 74.38,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:30 EDT"
+        },
+        {
+          "ticker": "EA",
+          "bucket": "Momentum",
+          "date": "2026-06-15",
+          "currentPrice": 203.12,
+          "forecastLow": 201.98,
+          "forecastMid": 203.0,
+          "forecastHigh": 204.02,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 1.016,
+          "aiReason": "EA's neutral forecast range, coupled with its overbought RSI and proximity to its MA50, suggests a potential consolidation period tomorrow.",
+          "actualPrice": 202.15,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:30 EDT"
+        },
+        {
+          "ticker": "LRCX",
+          "bucket": "Momentum",
+          "date": "2026-06-15",
+          "currentPrice": 388.92,
+          "forecastLow": 354.08,
+          "forecastMid": 385.19,
+          "forecastHigh": 416.3,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 31.114,
+          "aiReason": "LRCX's price is likely to move Neutral tomorrow due to the combination of a neutral forecast range and an overbought RSI reading.",
+          "actualPrice": 389.04,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:31 EDT"
+        },
+        {
+          "ticker": "BSX",
+          "bucket": "Reversal",
+          "date": "2026-06-15",
+          "currentPrice": 46.76,
+          "forecastLow": 46.24,
+          "forecastMid": 46.93,
+          "forecastHigh": 47.62,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 0.69,
+          "aiReason": "BSX's extremely oversold RSI of 11.3 coupled with a bullish forecast range and significant analyst upside potential signal a likely bullish reversal tomorrow.",
+          "actualPrice": 45.29,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:31 EDT"
+        },
+        {
+          "ticker": "PTC",
+          "bucket": "Reversal",
+          "date": "2026-06-15",
+          "currentPrice": 114.85,
+          "forecastLow": 112.77,
+          "forecastMid": 120.2,
+          "forecastHigh": 127.63,
+          "direction": "Bullish",
+          "biasScore": 0.6,
+          "dailyVol": 7.428,
+          "aiReason": "PTC's oversold RSI (18.0) and bullish forecast range suggest a potential rebound tomorrow.",
+          "actualPrice": 114.75,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:32 EDT"
+        },
+        {
+          "ticker": "PBR-A",
+          "bucket": "Reversal",
+          "date": "2026-06-15",
+          "currentPrice": 15.43,
+          "forecastLow": 15.34,
+          "forecastMid": 15.5,
+          "forecastHigh": 15.66,
+          "direction": "Bullish",
+          "biasScore": 0.35,
+          "dailyVol": 0.164,
+          "aiReason": "PBR-A's oversold RSI reading of 20.5 coupled with a bullish forecast range and significant analyst upside suggest a potential reversal to the upside tomorrow.",
+          "actualPrice": 14.99,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:32 EDT"
+        },
+        {
+          "ticker": "FLY",
+          "bucket": "Reversal",
+          "date": "2026-06-15",
+          "currentPrice": 33.36,
+          "forecastLow": 32.9,
+          "forecastMid": 33.91,
+          "forecastHigh": 34.92,
+          "direction": "Bullish",
+          "biasScore": 0.45,
+          "dailyVol": 1.013,
+          "aiReason": "FLY's strong recent price gain coupled with a low RSI reading of 20.8 suggests a potential bullish reversal in the near term.",
+          "actualPrice": 30.95,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:33 EDT"
+        },
+        {
+          "ticker": "EQT",
+          "bucket": "Reversal",
+          "date": "2026-06-15",
+          "currentPrice": 50.75,
+          "forecastLow": 50.16,
+          "forecastMid": 51.29,
+          "forecastHigh": 52.42,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 1.133,
+          "aiReason": "EQT's price is likely to move Bullish tomorrow due to the bullish forecast range bias and its oversold RSI of 21.3 indicating potential for a reversal.",
+          "actualPrice": 50.72,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-15 22:34 EDT"
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "SmartMoney",
+          "date": "2026-06-15",
+          "currentPrice": 260.07,
+          "forecastLow": 249.76,
+          "forecastMid": 264.49,
+          "forecastHigh": 281.82,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 14.73,
+          "aiReason": "NBIS's recent strong price momentum, indicated by a 1d change of 11.93%, a 7d change of 14.16%, and a 30d change of 47.42%, coupled with the bullish forecast range and SmartMoney strategy bucket, suggests a likely bullish move tomorrow.",
+          "actualPrice": 286.69,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-15 22:34 EDT"
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "date": "2026-06-15",
+          "currentPrice": 17.11,
+          "forecastLow": 16.68,
+          "forecastMid": 17.2,
+          "forecastHigh": 17.72,
+          "direction": "Neutral",
+          "biasScore": 0.15,
+          "dailyVol": 0.521,
+          "aiReason": "BMNR's neutral forecast range, coupled with its RSI hovering near the midpoint and lack of significant directional momentum in recent changes, suggests a likely neutral price movement tomorrow.",
+          "actualPrice": 16.14,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:35 EDT"
+        },
+        {
+          "ticker": "XNDU",
+          "bucket": "SmartMoney",
+          "date": "2026-06-15",
+          "currentPrice": 13.94,
+          "forecastLow": 13.65,
+          "forecastMid": 14.1,
+          "forecastHigh": 14.66,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 0.449,
+          "aiReason": "XNDU's strong upward momentum indicated by the 1d and 7d changes, coupled with a bullish forecast range and low RSI, suggest a potential bullish move tomorrow.",
+          "actualPrice": 13.37,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:36 EDT"
+        },
+        {
+          "ticker": "LAES",
+          "bucket": "SmartMoney",
+          "date": "2026-06-15",
+          "currentPrice": 3.37,
+          "forecastLow": 3.33,
+          "forecastMid": 3.4,
+          "forecastHigh": 3.47,
+          "direction": "Bullish",
+          "biasScore": 0.35,
+          "dailyVol": 0.072,
+          "aiReason": "LAES's bullish forecast range, coupled with strong recent price gains and a high analyst upside, suggests a potential for further upward movement tomorrow.",
+          "actualPrice": 3.12,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:36 EDT"
+        },
+        {
+          "ticker": "BTO.TO",
+          "bucket": "SmartMoney",
+          "date": "2026-06-15",
+          "currentPrice": 6.26,
+          "forecastLow": 6.1,
+          "forecastMid": 6.3,
+          "forecastHigh": 6.5,
+          "direction": "Neutral",
+          "biasScore": 0.15,
+          "dailyVol": 0.198,
+          "aiReason": "BTO.TO's neutral forecast range and RSI value of 46.1, indicating neither overbought nor oversold conditions, suggest a likely neutral price movement tomorrow.",
+          "actualPrice": 6.08,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-15 22:37 EDT"
+        }
+      ],
+      "generatedAt": "2026-06-15 22:37 EDT",
+      "updatedAt": "2026-06-18 22:56 EDT"
+    },
+    {
+      "date": "2026-06-16",
+      "rows": [
+        {
+          "ticker": "POET",
+          "bucket": "Account",
+          "date": "2026-06-16",
+          "currentPrice": 12.64,
+          "forecastLow": 12.5,
+          "forecastMid": 12.65,
+          "forecastHigh": 12.8,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.15,
+          "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
+          "actualPrice": 12.15,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:25 EDT"
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "Account",
+          "date": "2026-06-16",
+          "currentPrice": 18.79,
+          "forecastLow": 18.19,
+          "forecastMid": 19.12,
+          "forecastHigh": 20.05,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 0.925,
+          "aiReason": "CDE's bullish forecast range (bias: 0.3), coupled with strong recent price gains of 12.31% over the past week and 9.81% over the past month, suggests a potential upward movement tomorrow.",
+          "actualPrice": 17.51,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:26 EDT"
+        },
+        {
+          "ticker": "CRDO",
+          "bucket": "Account",
+          "date": "2026-06-16",
+          "currentPrice": 239.18,
+          "forecastLow": 233.65,
+          "forecastMid": 240.93,
+          "forecastHigh": 248.21,
+          "direction": "Neutral",
+          "biasScore": 0.2,
+          "dailyVol": 7.281,
+          "aiReason": "CRDO's neutral forecast range and mixed short-term price momentum signals suggest a likely neutral movement tomorrow.",
+          "actualPrice": 271.83,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-16 20:26 EDT"
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "Account",
+          "date": "2026-06-16",
+          "currentPrice": 265.1,
+          "forecastLow": 245.16,
+          "forecastMid": 266.37,
+          "forecastHigh": 290.23,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 21.208,
+          "aiReason": "NBIS's Neutral forecast range and RSI reading above 60 suggest a potential period of consolidation following significant recent price increases.",
+          "actualPrice": 286.69,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:27 EDT"
+        },
+        {
+          "ticker": "XNDU",
+          "bucket": "Account",
+          "date": "2026-06-16",
+          "currentPrice": 13.37,
+          "forecastLow": 13.25,
+          "forecastMid": 13.37,
+          "forecastHigh": 13.59,
+          "direction": "Neutral",
+          "biasScore": 0.0,
+          "dailyVol": 0.123,
+          "aiReason": "XNDU's neutral forecast range, combined with a low RSI of 33.7 indicating oversold conditions and lack of significant price momentum, suggests a neutral price movement tomorrow.",
+          "actualPrice": 13.37,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:28 EDT"
+        },
+        {
+          "ticker": "HST",
+          "bucket": "Momentum",
+          "date": "2026-06-16",
+          "currentPrice": 24.9,
+          "forecastLow": 24.68,
+          "forecastMid": 24.87,
+          "forecastHigh": 25.06,
+          "direction": "Neutral",
+          "biasScore": -0.15,
+          "dailyVol": 0.187,
+          "aiReason": "HST's neutral forecast range, coupled with an overbought RSI (67.8) and a high BB%B (0.822), suggest limited directional movement tomorrow.",
+          "actualPrice": 25.01,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:28 EDT"
+        },
+        {
+          "ticker": "MOH",
+          "bucket": "Momentum",
+          "date": "2026-06-16",
+          "currentPrice": 200.21,
+          "forecastLow": 199.03,
+          "forecastMid": 200.03,
+          "forecastHigh": 201.03,
+          "direction": "Neutral",
+          "biasScore": -0.15,
+          "dailyVol": 1.001,
+          "aiReason": "MOH's neutral forecast range coupled with an RSI reading above 60 suggests a potential for consolidation tomorrow.",
+          "actualPrice": 195.37,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:29 EDT"
+        },
+        {
+          "ticker": "MAS",
+          "bucket": "Momentum",
+          "date": "2026-06-16",
+          "currentPrice": 74.8,
+          "forecastLow": 71.66,
+          "forecastMid": 74.19,
+          "forecastHigh": 76.72,
+          "direction": "Bearish",
+          "biasScore": -0.2,
+          "dailyVol": 2.534,
+          "aiReason": "The bearish forecast range bias coupled with the overbought RSI reading of 68.8 suggests MAS's price is likely to decline tomorrow.",
+          "actualPrice": 74.38,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:30 EDT"
+        },
+        {
+          "ticker": "EA",
+          "bucket": "Momentum",
+          "date": "2026-06-16",
+          "currentPrice": 203.02,
+          "forecastLow": 201.88,
+          "forecastMid": 202.9,
+          "forecastHigh": 203.92,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 1.015,
+          "aiReason": "EA's price is likely to move Neutral tomorrow due to the neutral forecast range and a high RSI suggesting potential overbought conditions.",
+          "actualPrice": 202.15,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:30 EDT"
+        },
+        {
+          "ticker": "LRCX",
+          "bucket": "Momentum",
+          "date": "2026-06-16",
+          "currentPrice": 369.34,
+          "forecastLow": 350.12,
+          "forecastMid": 370.57,
+          "forecastHigh": 391.02,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 20.447,
+          "aiReason": "LRCX's Neutral forecast range and overbought RSI (63.6) suggest a potential pause in the recent upward momentum.",
+          "actualPrice": 389.04,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:31 EDT"
+        },
+        {
+          "ticker": "BSX",
+          "bucket": "Reversal",
+          "date": "2026-06-16",
+          "currentPrice": 46.92,
+          "forecastLow": 46.39,
+          "forecastMid": 47.08,
+          "forecastHigh": 47.77,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 0.687,
+          "aiReason": "BSX's oversold RSI (24.8) and bullish forecast range suggest a potential reversal to the upside tomorrow.",
+          "actualPrice": 45.29,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:32 EDT"
+        },
+        {
+          "ticker": "PTC",
+          "bucket": "Reversal",
+          "date": "2026-06-16",
+          "currentPrice": 118.18,
+          "forecastLow": 116.44,
+          "forecastMid": 122.66,
+          "forecastHigh": 128.88,
+          "direction": "Bullish",
+          "biasScore": 0.6,
+          "dailyVol": 6.216,
+          "aiReason": "PTC's strong bullish forecast range bias (0.6), coupled with an oversold RSI reading (24.7) and a recent price rebound, suggest a potential reversal to the upside tomorrow.",
+          "actualPrice": 114.75,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:32 EDT"
+        },
+        {
+          "ticker": "PBR-A",
+          "bucket": "Reversal",
+          "date": "2026-06-16",
+          "currentPrice": 15.14,
+          "forecastLow": 14.99,
+          "forecastMid": 15.28,
+          "forecastHigh": 15.57,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 0.289,
+          "aiReason": "PBR-A's bullish forecast range, coupled with an oversold RSI reading of 21.0, suggests a potential rebound and price increase tomorrow.",
+          "actualPrice": 14.99,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:33 EDT"
+        },
+        {
+          "ticker": "FLY",
+          "bucket": "Reversal",
+          "date": "2026-06-16",
+          "currentPrice": 30.95,
+          "forecastLow": 29.7,
+          "forecastMid": 31.49,
+          "forecastHigh": 33.28,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 1.79,
+          "aiReason": "FLY's oversold RSI (20.4) coupled with a bullish forecast range and high analyst upside potential suggests a potential reversal and price increase tomorrow.",
+          "actualPrice": 30.95,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:34 EDT"
+        },
+        {
+          "ticker": "EQT",
+          "bucket": "Reversal",
+          "date": "2026-06-16",
+          "currentPrice": 51.37,
+          "forecastLow": 51.09,
+          "forecastMid": 51.71,
+          "forecastHigh": 52.33,
+          "direction": "Bullish",
+          "biasScore": 0.45,
+          "dailyVol": 0.625,
+          "aiReason": "EQT's price is likely to move bullish tomorrow due to its oversold RSI (29.1) and positive analyst upside of 36.3%, suggesting potential for a reversal in the short term.",
+          "actualPrice": 50.72,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:34 EDT"
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "SmartMoney",
+          "date": "2026-06-16",
+          "currentPrice": 9.21,
+          "forecastLow": 8.7,
+          "forecastMid": 9.09,
+          "forecastHigh": 9.57,
+          "direction": "Bearish",
+          "biasScore": -0.25,
+          "dailyVol": 0.39,
+          "aiReason": "ONDS's bearish forecast range, negative price momentum over the past week and short float of 32% suggest a potential price decline tomorrow.",
+          "actualPrice": 9.27,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:35 EDT"
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "date": "2026-06-16",
+          "currentPrice": 16.21,
+          "forecastLow": 15.93,
+          "forecastMid": 16.18,
+          "forecastHigh": 16.43,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 0.246,
+          "aiReason": "BMNR's price is likely to move Neutral tomorrow due to its neutral forecast range and the low RSI reading suggesting neither overbought nor oversold conditions.",
+          "actualPrice": 16.14,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:35 EDT"
+        },
+        {
+          "ticker": "LAES",
+          "bucket": "SmartMoney",
+          "date": "2026-06-16",
+          "currentPrice": 3.07,
+          "forecastLow": 3.01,
+          "forecastMid": 3.07,
+          "forecastHigh": 3.13,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.057,
+          "aiReason": "LAES's price is likely to move Neutral tomorrow due to its neutral forecast range and the lack of strong bullish or bearish signals from technical indicators like RSI and BB%B.",
+          "actualPrice": 3.12,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:36 EDT"
+        },
+        {
+          "ticker": "BTO.TO",
+          "bucket": "SmartMoney",
+          "date": "2026-06-16",
+          "currentPrice": 6.4,
+          "forecastLow": 6.22,
+          "forecastMid": 6.51,
+          "forecastHigh": 6.8,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 0.294,
+          "aiReason": "BTO.TO's bullish price forecast range, coupled with strong recent upward momentum (1d, 7d, and 30d changes), suggests a potential for continued price appreciation.",
+          "actualPrice": 6.08,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-16 20:37 EDT"
+        },
+        {
+          "ticker": "CRWV",
+          "bucket": "SmartMoney",
+          "date": "2026-06-16",
+          "currentPrice": 117.03,
+          "forecastLow": 112.34,
+          "forecastMid": 119.04,
+          "forecastHigh": 126.8,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 6.703,
+          "aiReason": "CRWV's recent strong price performance, demonstrated by a 9.67% 1-day change and a 14.32% 7-day change, coupled with a bullish forecast range, suggests a potential for continued upward movement tomorrow.",
+          "actualPrice": 117.95,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-16 20:37 EDT"
+        }
+      ],
+      "generatedAt": "2026-06-16 20:37 EDT",
+      "updatedAt": "2026-06-18 22:56 EDT"
+    },
+    {
+      "date": "2026-06-17",
+      "rows": [
+        {
+          "ticker": "POET",
+          "bucket": "Account",
+          "date": "2026-06-17",
+          "currentPrice": 11.95,
+          "forecastLow": 11.52,
+          "forecastMid": 12.04,
+          "forecastHigh": 12.56,
+          "direction": "Neutral",
+          "biasScore": 0.15,
+          "dailyVol": 0.524,
+          "aiReason": "POET's neutral forecast range and lack of strong directional signals from RSI, BB%, or moving averages suggest a potential for sideways movement tomorrow.",
+          "actualPrice": 12.15,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:46 EDT"
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "Account",
+          "date": "2026-06-17",
+          "currentPrice": 17.53,
+          "forecastLow": 16.86,
+          "forecastMid": 17.49,
+          "forecastHigh": 18.12,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.628,
+          "aiReason": "CDE's neutral forecast range and lack of strong bullish or bearish signals from technical indicators like RSI and BB%B suggest a potential for a sideways movement tomorrow.",
+          "actualPrice": 17.51,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:46 EDT"
+        },
+        {
+          "ticker": "CRDO",
+          "bucket": "Account",
+          "date": "2026-06-17",
+          "currentPrice": 249.33,
+          "forecastLow": 246.01,
+          "forecastMid": 252.4,
+          "forecastHigh": 258.79,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 6.393,
+          "aiReason": "CRDO's recent strong upward price momentum, indicated by the 1d, 7d, and 30d changes exceeding the forecast range, suggests a bullish outlook for tomorrow.",
+          "actualPrice": 271.83,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-17 21:47 EDT"
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "Account",
+          "date": "2026-06-17",
+          "currentPrice": 280.91,
+          "forecastLow": 255.74,
+          "forecastMid": 278.21,
+          "forecastHigh": 303.49,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 22.473,
+          "aiReason": "The combination of a neutral forecast range and an overbought RSI reading (65.1) suggests NBIS's price is likely to move Neutral tomorrow.",
+          "actualPrice": 286.69,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:48 EDT"
+        },
+        {
+          "ticker": "XNDU",
+          "bucket": "Account",
+          "date": "2026-06-17",
+          "currentPrice": 13.57,
+          "forecastLow": 13.12,
+          "forecastMid": 13.83,
+          "forecastHigh": 14.65,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 0.71,
+          "aiReason": "XNDU's bullish forecast range, coupled with a recent 13.08% gain over the past week and a significantly high Analyst Upside of 224.2%, suggests a potential upward price movement tomorrow.",
+          "actualPrice": 13.37,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:48 EDT"
+        },
+        {
+          "ticker": "HST",
+          "bucket": "Momentum",
+          "date": "2026-06-17",
+          "currentPrice": 24.62,
+          "forecastLow": 24.49,
+          "forecastMid": 24.61,
+          "forecastHigh": 24.73,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 0.123,
+          "aiReason": "HST's Neutral forecast range, coupled with its RSI indicating overbought conditions and lack of significant directional momentum signals, suggests a likely sideways movement tomorrow.",
+          "actualPrice": 25.01,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-17 21:49 EDT"
+        },
+        {
+          "ticker": "MOH",
+          "bucket": "Momentum",
+          "date": "2026-06-17",
+          "currentPrice": 195.53,
+          "forecastLow": 192.63,
+          "forecastMid": 195.53,
+          "forecastHigh": 198.43,
+          "direction": "Neutral",
+          "biasScore": 0.0,
+          "dailyVol": 2.902,
+          "aiReason": "MOH's price is likely to move Neutral tomorrow due to the neutral forecast range and the recent negative price momentum indicated by the 1d and 7d changes.",
+          "actualPrice": 195.37,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:50 EDT"
+        },
+        {
+          "ticker": "MAS",
+          "bucket": "Momentum",
+          "date": "2026-06-17",
+          "currentPrice": 72.62,
+          "forecastLow": 72.3,
+          "forecastMid": 72.66,
+          "forecastHigh": 73.02,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 0.363,
+          "aiReason": "MAS's neutral forecast range, coupled with the recent price decline and lack of strong directional indicators like RSI and BB%B, suggest a potential for sideways movement tomorrow.",
+          "actualPrice": 74.38,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-17 21:50 EDT"
+        },
+        {
+          "ticker": "EA",
+          "bucket": "Momentum",
+          "date": "2026-06-17",
+          "currentPrice": 203.02,
+          "forecastLow": 201.88,
+          "forecastMid": 202.9,
+          "forecastHigh": 203.92,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 1.015,
+          "aiReason": "EA's neutral forecast range and low price change signals coupled with an RSI above 70 suggest a potential for consolidation tomorrow.",
+          "actualPrice": 202.15,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:51 EDT"
+        },
+        {
+          "ticker": "LRCX",
+          "bucket": "Momentum",
+          "date": "2026-06-17",
+          "currentPrice": 374.18,
+          "forecastLow": 359.04,
+          "forecastMid": 380.67,
+          "forecastHigh": 402.3,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 21.628,
+          "aiReason": "LRCX's strong recent price momentum, indicated by the 7d and 30d changes exceeding 14% and 26% respectively, suggests a bullish outlook for tomorrow.",
+          "actualPrice": 389.04,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:52 EDT"
+        },
+        {
+          "ticker": "BSX",
+          "bucket": "Reversal",
+          "date": "2026-06-17",
+          "currentPrice": 44.95,
+          "forecastLow": 43.92,
+          "forecastMid": 45.39,
+          "forecastHigh": 46.86,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 1.473,
+          "aiReason": "BSX's low RSI of 22.8 coupled with a bullish forecast range and high analyst upside suggest potential for a reversal and price increase tomorrow.",
+          "actualPrice": 45.29,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:52 EDT"
+        },
+        {
+          "ticker": "PTC",
+          "bucket": "Reversal",
+          "date": "2026-06-17",
+          "currentPrice": 116.94,
+          "forecastLow": 112.15,
+          "forecastMid": 118.99,
+          "forecastHigh": 125.83,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 6.839,
+          "aiReason": "PTC's RSI of 25.9 indicates oversold conditions coupled with a bullish forecast range and high analyst upside, suggesting a potential price reversal tomorrow.",
+          "actualPrice": 114.75,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:53 EDT"
+        },
+        {
+          "ticker": "PBR-A",
+          "bucket": "Reversal",
+          "date": "2026-06-17",
+          "currentPrice": 15.02,
+          "forecastLow": 14.89,
+          "forecastMid": 15.22,
+          "forecastHigh": 15.55,
+          "direction": "Bullish",
+          "biasScore": 0.5,
+          "dailyVol": 0.332,
+          "aiReason": "PBR-A's oversold RSI of 20.4 and bullish forecast range suggest a potential price reversal tomorrow.",
+          "actualPrice": 14.99,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:53 EDT"
+        },
+        {
+          "ticker": "FLY",
+          "bucket": "Reversal",
+          "date": "2026-06-17",
+          "currentPrice": 31.15,
+          "forecastLow": 30.66,
+          "forecastMid": 31.51,
+          "forecastHigh": 32.36,
+          "direction": "Bullish",
+          "biasScore": 0.35,
+          "dailyVol": 0.855,
+          "aiReason": "FLY's oversold RSI of 25.2 and bullish forecast range suggest a potential reversal and upward price movement.",
+          "actualPrice": 30.95,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:54 EDT"
+        },
+        {
+          "ticker": "EQT",
+          "bucket": "Reversal",
+          "date": "2026-06-17",
+          "currentPrice": 51.13,
+          "forecastLow": 50.85,
+          "forecastMid": 51.46,
+          "forecastHigh": 52.07,
+          "direction": "Bullish",
+          "biasScore": 0.45,
+          "dailyVol": 0.605,
+          "aiReason": "EQT's price is likely to move Bullish tomorrow due to the combination of a bullish forecast range score and an oversold RSI reading.",
+          "actualPrice": 50.72,
+          "accuracy": "miss-high",
+          "generatedAt": "2026-06-17 21:55 EDT"
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "SmartMoney",
+          "date": "2026-06-17",
+          "currentPrice": 9.12,
+          "forecastLow": 8.97,
+          "forecastMid": 9.17,
+          "forecastHigh": 9.46,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 0.2,
+          "aiReason": "ONDS's extremely oversold RSI of 20.4 and bullish forecast range suggest a potential rebound tomorrow.",
+          "actualPrice": 9.27,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:55 EDT"
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "date": "2026-06-17",
+          "currentPrice": 15.7,
+          "forecastLow": 15.52,
+          "forecastMid": 15.71,
+          "forecastHigh": 15.9,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.194,
+          "aiReason": "BMNR's neutral forecast range, coupled with its recent price decline and low RSI reading, suggest a potential for minimal price movement tomorrow.",
+          "actualPrice": 16.14,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-17 21:56 EDT"
+        },
+        {
+          "ticker": "LAES",
+          "bucket": "SmartMoney",
+          "date": "2026-06-17",
+          "currentPrice": 3.01,
+          "forecastLow": 2.99,
+          "forecastMid": 3.02,
+          "forecastHigh": 3.05,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 0.027,
+          "aiReason": "LAES's bullish forecast range, combined with its oversold RSI reading of 35.5, suggests a potential price rebound tomorrow.",
+          "actualPrice": 3.12,
+          "accuracy": "miss-low",
+          "generatedAt": "2026-06-17 21:56 EDT"
+        },
+        {
+          "ticker": "BTO.TO",
+          "bucket": "SmartMoney",
+          "date": "2026-06-17",
+          "currentPrice": 6.24,
+          "forecastLow": 5.93,
+          "forecastMid": 6.22,
+          "forecastHigh": 6.51,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.289,
+          "aiReason": "BTO.TO's neutral forecast range, combined with its RSI indicating a lack of overbought or oversold conditions and recent price decline suggests a neutral movement tomorrow.",
+          "actualPrice": 6.08,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:57 EDT"
+        },
+        {
+          "ticker": "CRWV",
+          "bucket": "SmartMoney",
+          "date": "2026-06-17",
+          "currentPrice": 115.21,
+          "forecastLow": 109.25,
+          "forecastMid": 117.09,
+          "forecastHigh": 125.98,
+          "direction": "Neutral",
+          "biasScore": 0.2,
+          "dailyVol": 7.843,
+          "aiReason": "CRWV's neutral forecast range, coupled with a flat RSI and hovering BB%B indicator near the middle band, suggest a likely sideways movement tomorrow.",
+          "actualPrice": 117.95,
+          "accuracy": "hit",
+          "generatedAt": "2026-06-17 21:58 EDT"
+        }
+      ],
+      "generatedAt": "2026-06-17 21:58 EDT",
+      "updatedAt": "2026-06-18 22:56 EDT"
+    },
+    {
+      "date": "2026-06-18",
+      "rows": [
+        {
+          "ticker": "POET",
+          "bucket": "Account",
+          "date": "2026-06-18",
+          "currentPrice": 12.15,
+          "forecastLow": 11.85,
+          "forecastMid": 12.37,
+          "forecastHigh": 12.89,
+          "direction": "Bullish",
+          "biasScore": 0.35,
+          "dailyVol": 0.518,
+          "aiReason": "POET's significant positive price momentum over the past week and month, coupled with a bullish forecast range and analyst upside potential, suggest a likely bullish move tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:15 EDT"
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "Account",
+          "date": "2026-06-18",
+          "currentPrice": 17.51,
+          "forecastLow": 16.62,
+          "forecastMid": 17.57,
+          "forecastHigh": 18.52,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.955,
+          "aiReason": "CDE's price is likely to move Neutral tomorrow due to the neutral forecast range, balanced RSI near the middle, and a recent period of sideways movement indicated by the 1d and 30d changes.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:15 EDT"
+        },
+        {
+          "ticker": "CRDO",
+          "bucket": "Account",
+          "date": "2026-06-18",
+          "currentPrice": 271.83,
+          "forecastLow": 258.08,
+          "forecastMid": 273.7,
+          "forecastHigh": 289.32,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 15.625,
+          "aiReason": "CRDO's price is likely to move Neutral tomorrow due to a forecast range with a neutral bias and an RSI reading of 60.3, indicating neither overbought nor oversold conditions.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:16 EDT"
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "Account",
+          "date": "2026-06-18",
+          "currentPrice": 286.69,
+          "forecastLow": 261.0,
+          "forecastMid": 283.94,
+          "forecastHigh": 309.75,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 22.935,
+          "aiReason": "NBIS's price is likely to move Neutral tomorrow due to the neutral forecast range and RSI indicating overbought conditions.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:17 EDT"
+        },
+        {
+          "ticker": "XNDU",
+          "bucket": "Account",
+          "date": "2026-06-18",
+          "currentPrice": 13.37,
+          "forecastLow": 12.73,
+          "forecastMid": 13.46,
+          "forecastHigh": 14.29,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 0.732,
+          "aiReason": "XNDU's neutral forecast range, coupled with its RSI indicating neither overbought nor oversold conditions, suggests a potential for minimal price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:17 EDT"
+        },
+        {
+          "ticker": "HST",
+          "bucket": "Momentum",
+          "date": "2026-06-18",
+          "currentPrice": 25.01,
+          "forecastLow": 24.6,
+          "forecastMid": 25.04,
+          "forecastHigh": 25.48,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.443,
+          "aiReason": "HST's price is likely to move Neutral tomorrow due to the combination of a neutral forecast range and an overbought RSI reading, indicating a potential pause in the recent upward momentum.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:18 EDT"
+        },
+        {
+          "ticker": "MOH",
+          "bucket": "Momentum",
+          "date": "2026-06-18",
+          "currentPrice": 195.37,
+          "forecastLow": 194.38,
+          "forecastMid": 195.37,
+          "forecastHigh": 196.36,
+          "direction": "Neutral",
+          "biasScore": 0.0,
+          "dailyVol": 0.992,
+          "aiReason": "MOH's neutral forecast range and slightly oversold RSI suggest a potential for consolidation tomorrow, mitigating upward momentum.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:19 EDT"
+        },
+        {
+          "ticker": "MAS",
+          "bucket": "Momentum",
+          "date": "2026-06-18",
+          "currentPrice": 74.38,
+          "forecastLow": 73.35,
+          "forecastMid": 74.82,
+          "forecastHigh": 76.29,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 1.473,
+          "aiReason": "MAS's strong recent price performance, indicated by positive 1d, 7d, and 30d changes, coupled with a bullish forecast range and momentum strategy bucket, suggests a potential for further upward movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:19 EDT"
+        },
+        {
+          "ticker": "EA",
+          "bucket": "Momentum",
+          "date": "2026-06-18",
+          "currentPrice": 202.15,
+          "forecastLow": 201.26,
+          "forecastMid": 202.27,
+          "forecastHigh": 203.28,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 1.011,
+          "aiReason": "EA's neutral forecast range, lack of significant price momentum indicated by the 1d and 7d changes, and RSI within neutral territory suggest a likely flat movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:20 EDT"
+        },
+        {
+          "ticker": "LRCX",
+          "bucket": "Momentum",
+          "date": "2026-06-18",
+          "currentPrice": 389.04,
+          "forecastLow": 354.19,
+          "forecastMid": 385.31,
+          "forecastHigh": 416.43,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 31.123,
+          "aiReason": "LRCX's strong recent performance, indicated by positive price and volume changes, coupled with an overbought RSI reading, suggests a potential pause in its upward momentum tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:21 EDT"
+        },
+        {
+          "ticker": "BSX",
+          "bucket": "Reversal",
+          "date": "2026-06-18",
+          "currentPrice": 45.29,
+          "forecastLow": 44.42,
+          "forecastMid": 45.56,
+          "forecastHigh": 46.7,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 1.143,
+          "aiReason": "BSX's price is likely to move Bullish tomorrow due to the combination of a bullish forecast range score and an oversold RSI reading at 29.0, suggesting a potential reversal from recent downtrend.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:22 EDT"
+        },
+        {
+          "ticker": "PTC",
+          "bucket": "Reversal",
+          "date": "2026-06-18",
+          "currentPrice": 114.75,
+          "forecastLow": 109.91,
+          "forecastMid": 116.82,
+          "forecastHigh": 123.73,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 6.908,
+          "aiReason": "PTC's oversold RSI (24.7) and bullish forecast range suggest a potential reversal and price increase tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:22 EDT"
+        },
+        {
+          "ticker": "PBR-A",
+          "bucket": "Reversal",
+          "date": "2026-06-18",
+          "currentPrice": 14.99,
+          "forecastLow": 14.83,
+          "forecastMid": 15.24,
+          "forecastHigh": 15.65,
+          "direction": "Bullish",
+          "biasScore": 0.5,
+          "dailyVol": 0.41,
+          "aiReason": "PBR-A's extremely oversold RSI (20.7) coupled with a bullish forecast range and analyst upside suggest a potential reversal and price increase tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:23 EDT"
+        },
+        {
+          "ticker": "FLY",
+          "bucket": "Reversal",
+          "date": "2026-06-18",
+          "currentPrice": 30.95,
+          "forecastLow": 30.26,
+          "forecastMid": 31.17,
+          "forecastHigh": 32.08,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 0.915,
+          "aiReason": "FLY's oversold RSI (27.2) coupled with a bullish forecast range bias suggests a potential reversal and upward price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:24 EDT"
+        },
+        {
+          "ticker": "EQT",
+          "bucket": "Reversal",
+          "date": "2026-06-18",
+          "currentPrice": 50.72,
+          "forecastLow": 50.3,
+          "forecastMid": 51.03,
+          "forecastHigh": 51.76,
+          "direction": "Bullish",
+          "biasScore": 0.35,
+          "dailyVol": 0.728,
+          "aiReason": "EQT's price is likely to move bullish tomorrow due to its oversold RSI (26.9) and strong analyst upside potential of 37.9%, indicating a possible reversal after recent price declines.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:24 EDT"
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "SmartMoney",
+          "date": "2026-06-18",
+          "currentPrice": 9.27,
+          "forecastLow": 9.24,
+          "forecastMid": 9.29,
+          "forecastHigh": 9.43,
+          "direction": "Bullish",
+          "biasScore": 0.4,
+          "dailyVol": 0.046,
+          "aiReason": "ONDS's bullish forecast range, low RSI reading, and significant analyst upside potential suggest a positive price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:25 EDT"
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "date": "2026-06-18",
+          "currentPrice": 16.14,
+          "forecastLow": 16.0,
+          "forecastMid": 16.21,
+          "forecastHigh": 16.42,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 0.207,
+          "aiReason": "BMNR's bullish forecast range, positive short-term price change (1d and 7d), and low RSI suggest a potential upward move tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:26 EDT"
+        },
+        {
+          "ticker": "LAES",
+          "bucket": "SmartMoney",
+          "date": "2026-06-18",
+          "currentPrice": 3.12,
+          "forecastLow": 3.1,
+          "forecastMid": 3.13,
+          "forecastHigh": 3.16,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 0.033,
+          "aiReason": "LAES's bullish forecast range, coupled with a strong recent price performance and high analyst upside potential, suggests a likely price increase tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:26 EDT"
+        },
+        {
+          "ticker": "BTO.TO",
+          "bucket": "SmartMoney",
+          "date": "2026-06-18",
+          "currentPrice": 6.08,
+          "forecastLow": 5.76,
+          "forecastMid": 6.06,
+          "forecastHigh": 6.36,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.296,
+          "aiReason": "BTO.TO's neutral forecast range, coupled with its RSI within the neutral zone and a recent price decline, suggests a neutral movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:27 EDT"
+        },
+        {
+          "ticker": "CRWV",
+          "bucket": "SmartMoney",
+          "date": "2026-06-18",
+          "currentPrice": 117.95,
+          "forecastLow": 111.34,
+          "forecastMid": 120.78,
+          "forecastHigh": 131.29,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 9.436,
+          "aiReason": "CRWV's bullish forecast range, coupled with strong recent price gains and a high analyst upside, suggest a potential upward movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-18 21:28 EDT"
+        }
+      ],
+      "generatedAt": "2026-06-18 21:28 EDT",
+      "updatedAt": "2026-06-18 22:53 EDT"
+    },
+    {
+      "date": "2026-06-22",
+      "rows": [
+        {
+          "ticker": "POET",
+          "bucket": "Account",
+          "date": "2026-06-22",
+          "currentPrice": 12.09,
+          "forecastLow": 11.84,
+          "forecastMid": 12.2,
+          "forecastHigh": 12.56,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 0.361,
+          "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:03 EDT"
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "Account",
+          "date": "2026-06-22",
+          "currentPrice": 17.47,
+          "forecastLow": 17.04,
+          "forecastMid": 17.5,
+          "forecastHigh": 17.96,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.456,
+          "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:04 EDT"
+        },
+        {
+          "ticker": "CRDO",
+          "bucket": "Account",
+          "date": "2026-06-22",
+          "currentPrice": 302.52,
+          "forecastLow": 283.19,
+          "forecastMid": 300.45,
+          "forecastHigh": 317.71,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 17.256,
+          "aiReason": "CRDO's price is likely to move Neutral tomorrow due to its neutral forecast range and overbought RSI (69.6) indicating potential for consolidation after significant recent price gains.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:05 EDT"
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "Account",
+          "date": "2026-06-22",
+          "currentPrice": 283.61,
+          "forecastLow": 262.28,
+          "forecastMid": 284.97,
+          "forecastHigh": 310.5,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 22.689,
+          "aiReason": "NBIS's neutral forecast range and lack of strong directional signals from RSI, BB%B, or MA50 suggest a likely flat price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:06 EDT"
+        },
+        {
+          "ticker": "XNDU",
+          "bucket": "Account",
+          "date": "2026-06-22",
+          "currentPrice": 12.54,
+          "forecastLow": 12.48,
+          "forecastMid": 12.54,
+          "forecastHigh": 12.7,
+          "direction": "Neutral",
+          "biasScore": 0.0,
+          "dailyVol": 0.063,
+          "aiReason": "XNDU's neutral forecast range coupled with a low RSI and lack of significant positive or negative momentum indicators suggest a likely sideways movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:06 EDT"
+        },
+        {
+          "ticker": "HST",
+          "bucket": "Momentum",
+          "date": "2026-06-22",
+          "currentPrice": 25.13,
+          "forecastLow": 24.78,
+          "forecastMid": 25.11,
+          "forecastHigh": 25.44,
+          "direction": "Neutral",
+          "biasScore": -0.05,
+          "dailyVol": 0.327,
+          "aiReason": "AI unavailable: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=60)",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:07 EDT"
+        },
+        {
+          "ticker": "MOH",
+          "bucket": "Momentum",
+          "date": "2026-06-22",
+          "currentPrice": 197.42,
+          "forecastLow": 196.32,
+          "forecastMid": 198.04,
+          "forecastHigh": 199.76,
+          "direction": "Bullish",
+          "biasScore": 0.3,
+          "dailyVol": 1.722,
+          "aiReason": "MOH's bullish forecast range, positive short-term price movement (1d, 7d, and 30d changes), and momentum strategy bucket suggest a potential upward price shift tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:08 EDT"
+        },
+        {
+          "ticker": "MAS",
+          "bucket": "Momentum",
+          "date": "2026-06-22",
+          "currentPrice": 73.58,
+          "forecastLow": 73.25,
+          "forecastMid": 73.62,
+          "forecastHigh": 73.99,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 0.368,
+          "aiReason": "MAS's neutral forecast range, combined with the RSI hovering above 60 and a recent downward trend, suggests a likely sideways move tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:09 EDT"
+        },
+        {
+          "ticker": "EA",
+          "bucket": "Momentum",
+          "date": "2026-06-22",
+          "currentPrice": 202.97,
+          "forecastLow": 202.08,
+          "forecastMid": 203.09,
+          "forecastHigh": 204.1,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 1.015,
+          "aiReason": "EA's neutral forecast range, combined with its slightly overbought RSI and lack of significant price momentum, suggest a neutral movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:10 EDT"
+        },
+        {
+          "ticker": "LRCX",
+          "bucket": "Momentum",
+          "date": "2026-06-22",
+          "currentPrice": 409.54,
+          "forecastLow": 385.59,
+          "forecastMid": 406.97,
+          "forecastHigh": 428.35,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 21.378,
+          "aiReason": "LRCX's price is likely to move Neutral tomorrow due to its overbought RSI of 70.7 and recent strong upward momentum suggesting potential for consolidation.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:10 EDT"
+        },
+        {
+          "ticker": "BSX",
+          "bucket": "Reversal",
+          "date": "2026-06-22",
+          "currentPrice": 44.33,
+          "forecastLow": 43.58,
+          "forecastMid": 44.65,
+          "forecastHigh": 45.72,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 1.067,
+          "aiReason": "BSX's oversold RSI (26.6) coupled with a bullish forecast range and high analyst upside suggest a potential reversal and bullish price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:11 EDT"
+        },
+        {
+          "ticker": "PTC",
+          "bucket": "Reversal",
+          "date": "2026-06-22",
+          "currentPrice": 115.0,
+          "forecastLow": 114.39,
+          "forecastMid": 115.71,
+          "forecastHigh": 117.03,
+          "direction": "Bullish",
+          "biasScore": 0.45,
+          "dailyVol": 1.316,
+          "aiReason": "PTC's extremely low RSI of 13.7 coupled with a bullish forecast range suggests the stock is oversold and poised for a reversal.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:12 EDT"
+        },
+        {
+          "ticker": "PBR-A",
+          "bucket": "Reversal",
+          "date": "2026-06-22",
+          "currentPrice": 15.26,
+          "forecastLow": 15.08,
+          "forecastMid": 15.48,
+          "forecastHigh": 15.88,
+          "direction": "Bullish",
+          "biasScore": 0.45,
+          "dailyVol": 0.403,
+          "aiReason": "PBR-A's oversold RSI reading of 25.5 coupled with a bullish forecast range and analyst upside potential suggest a potential reversal to the upside tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:12 EDT"
+        },
+        {
+          "ticker": "FLY",
+          "bucket": "Reversal",
+          "date": "2026-06-22",
+          "currentPrice": 28.96,
+          "forecastLow": 27.34,
+          "forecastMid": 29.66,
+          "forecastHigh": 31.98,
+          "direction": "Bullish",
+          "biasScore": 0.25,
+          "dailyVol": 2.317,
+          "aiReason": "FLY's oversold RSI (27.4) and significant analyst upside (66.5%) suggest a potential bullish reversal in the short term.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:13 EDT"
+        },
+        {
+          "ticker": "EQT",
+          "bucket": "Reversal",
+          "date": "2026-06-22",
+          "currentPrice": 51.84,
+          "forecastLow": 51.64,
+          "forecastMid": 51.9,
+          "forecastHigh": 52.16,
+          "direction": "Bullish",
+          "biasScore": 0.2,
+          "dailyVol": 0.259,
+          "aiReason": "EQT's bullish forecast range bias (0.2) and significant positive 1-day change (2.21%) suggest a potential price surge tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:14 EDT"
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "SmartMoney",
+          "date": "2026-06-22",
+          "currentPrice": 8.89,
+          "forecastLow": 8.59,
+          "forecastMid": 8.93,
+          "forecastHigh": 9.36,
+          "direction": "Neutral",
+          "biasScore": 0.1,
+          "dailyVol": 0.34,
+          "aiReason": "ONDS's price is likely to move Neutral tomorrow due to the forecast range indicating a neutral bias and the RSI suggesting oversold conditions.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:14 EDT"
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "date": "2026-06-22",
+          "currentPrice": 15.86,
+          "forecastLow": 15.58,
+          "forecastMid": 15.83,
+          "forecastHigh": 16.08,
+          "direction": "Neutral",
+          "biasScore": -0.1,
+          "dailyVol": 0.254,
+          "aiReason": "BMNR's neutral forecast range and low RSI reading suggest a lack of strong directional momentum, pointing towards a potential neutral movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:15 EDT"
+        },
+        {
+          "ticker": "LAES",
+          "bucket": "SmartMoney",
+          "date": "2026-06-22",
+          "currentPrice": 3.1,
+          "forecastLow": 3.06,
+          "forecastMid": 3.1,
+          "forecastHigh": 3.14,
+          "direction": "Neutral",
+          "biasScore": 0.05,
+          "dailyVol": 0.039,
+          "aiReason": "LAES's neutral forecast range, coupled with a low RSI and lack of strong directional momentum signals, suggest a sideways price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:15 EDT"
+        },
+        {
+          "ticker": "BTO.TO",
+          "bucket": "SmartMoney",
+          "date": "2026-06-22",
+          "currentPrice": 5.96,
+          "forecastLow": 5.93,
+          "forecastMid": 5.96,
+          "forecastHigh": 5.99,
+          "direction": "Neutral",
+          "biasScore": 0.0,
+          "dailyVol": 0.03,
+          "aiReason": "BTO.TO's neutral forecast range, combined with a low RSI and minimal price movement over the past week, suggest a likely neutral price shift tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:16 EDT"
+        },
+        {
+          "ticker": "CRWV",
+          "bucket": "SmartMoney",
+          "date": "2026-06-22",
+          "currentPrice": 111.29,
+          "forecastLow": 105.8,
+          "forecastMid": 113.03,
+          "forecastHigh": 121.27,
+          "direction": "Neutral",
+          "biasScore": 0.2,
+          "dailyVol": 7.229,
+          "aiReason": "CRWV's Neutral forecast range coupled with the RSI indicating a non-overbought/oversold condition suggests a likely sideways price movement tomorrow.",
+          "actualPrice": null,
+          "accuracy": null,
+          "generatedAt": "2026-06-22 20:17 EDT"
+        }
+      ],
+      "generatedAt": "2026-06-22 20:17 EDT"
     }
   ]
 }

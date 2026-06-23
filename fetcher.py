@@ -677,6 +677,24 @@ def fetch_tsx60_tickers():
     return tsx60
 
 
+def fetch_nasdaq100_tickers():
+    """Hardcoded NASDAQ-100 components — updated June 2025. No API needed."""
+    nasdaq100 = [
+        "ADBE","ADP","ABNB","ALGN","GOOGL","GOOG","AMZN","AMD","AEP","AMGN",
+        "ADI","ANSS","AAPL","AMAT","ASML","AZN","TEAM","ADSK","BKR","BIIB",
+        "BKNG","AVGO","CDNS","CDW","CHTR","CTAS","CSCO","CTSH","CMCSA","CEG",
+        "CPRT","CSGP","COST","CRWD","CSX","DDOG","DXCM","FANG","DLTR","DASH",
+        "EA","EXC","FAST","FTNT","GEHC","GILD","GFS","HON","ILMN","INTC",
+        "INTU","ISRG","KDP","KLAC","KHC","LRCX","LULU","MAR","MRVL","MELI",
+        "META","MCHP","MU","MSFT","MRNA","MDLZ","MDB","MNST","NFLX","NVDA",
+        "NXPI","ORLY","ON","PCAR","PANW","PAYX","PYPL","PDD","QCOM","REGN",
+        "ROST","CRM","SBUX","SNPS","TTWO","TMUS","TSLA","TXN","TTD","VRSK",
+        "VRTX","WBA","WBD","WDAY","XEL","ZS","ZM"
+    ]
+    log.info(f"NASDAQ-100: {len(nasdaq100)} tickers (hardcoded)")
+    return nasdaq100
+
+
 def _hours_since_iso(ts_str):
     if not ts_str:
         return 9999
@@ -939,6 +957,7 @@ def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidate
     screener_tickers = fetch_yf_growth_screener()
     sp500_tickers    = fetch_sp500_tickers()
     tsx60_tickers    = fetch_tsx60_tickers()
+    nasdaq100_tickers = fetch_nasdaq100_tickers()
 
     all_tickers = {}
     for t in watchlist_tickers:                all_tickers[t] = "Watchlist"
@@ -952,11 +971,13 @@ def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidate
         if t not in all_tickers:               all_tickers[t] = "S&P 500"
     for t in tsx60_tickers:
         if t not in all_tickers:               all_tickers[t] = "TSX 60"
+    for t in nasdaq100_tickers:
+        if t not in all_tickers:               all_tickers[t] = "NASDAQ-100"
 
     log.info(
         f"[Dream] total:{len(all_tickers)} watchlist:{len(watchlist_tickers)} "
         f"gainers:{len(gainer_tickers)} ark:{len(ark_tickers)} screener:{len(screener_tickers)} "
-        f"sp500:{len(sp500_tickers)} tsx60:{len(tsx60_tickers)} existing:{len(existing_map)}"
+        f"sp500:{len(sp500_tickers)} tsx60:{len(tsx60_tickers)} nasdaq100:{len(nasdaq100_tickers)} existing:{len(existing_map)}"
     )
 
     candidates = []
@@ -1133,7 +1154,7 @@ def fetch_trade_detail(ticker):
             log.warning(f"fetch_trade_detail BB FAIL: {ticker} | {e}")
 
         # Price changes
-        change1d = change2d = change3d = change7d = change30d = None
+        change1d = change2d = change3d = change4d = change5d = change7d = change30d = None
         try:
             if len(hist) >= 2:
                 change1d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-2]) / hist['Close'].iloc[-2] * 100, 2)
@@ -1141,6 +1162,10 @@ def fetch_trade_detail(ticker):
                 change2d = round((hist['Close'].iloc[-2] - hist['Close'].iloc[-3]) / hist['Close'].iloc[-3] * 100, 2)
             if len(hist) >= 4:
                 change3d = round((hist['Close'].iloc[-3] - hist['Close'].iloc[-4]) / hist['Close'].iloc[-4] * 100, 2)
+            if len(hist) >= 5:
+                change4d = round((hist['Close'].iloc[-4] - hist['Close'].iloc[-5]) / hist['Close'].iloc[-5] * 100, 2)
+            if len(hist) >= 6:
+                change5d = round((hist['Close'].iloc[-5] - hist['Close'].iloc[-6]) / hist['Close'].iloc[-6] * 100, 2)
             if len(hist) >= 7:
                 change7d = round((hist['Close'].iloc[-1] - hist['Close'].iloc[-7]) / hist['Close'].iloc[-7] * 100, 2)
             if len(hist) >= 30:
@@ -1224,6 +1249,8 @@ def fetch_trade_detail(ticker):
             "change1d": change1d,
             "change2d": change2d,
             "change3d": change3d,
+            "change4d": change4d,
+            "change5d": change5d,
             "change7d": change7d,
             "change30d": change30d,
             "revenueGrowth": round(revenue_growth * 100, 1) if revenue_growth is not None else None,
@@ -1268,6 +1295,27 @@ def fetch_ticker_news(ticker):
 
 
 # ── TRADEAI: OLLAMA AI ANALYSIS ───────────────────────────────────────────────
+
+def ollama_warmup(ollama_url, ollama_model):
+    """Send a trivial prompt to Ollama on startup so the model is loaded into memory
+    before the first real AI Analyze call, avoiding a cold-start timeout."""
+    try:
+        log.info(f"[Ollama Warmup] pinging {ollama_model} at {ollama_url} ...")
+        resp = requests.post(
+            f"{ollama_url}/api/generate",
+            json={"model": ollama_model, "prompt": "Hi", "stream": False},
+            timeout=180
+        )
+        if resp.ok:
+            log.info(f"[Ollama Warmup] {ollama_model} loaded OK")
+            return True
+        else:
+            log.warning(f"[Ollama Warmup] {ollama_model} returned status {resp.status_code}")
+            return False
+    except Exception as e:
+        log.warning(f"[Ollama Warmup] FAIL: {e}")
+        return False
+
 
 def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url, ollama_model):
     """Send ticker data to Ollama and return AI assessment dict."""
@@ -1365,7 +1413,7 @@ REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why t
         resp = req.post(
             f"{ollama_url}/api/generate",
             json={"model": ollama_model, "prompt": prompt, "stream": False},
-            timeout=120
+            timeout=300
         )
         raw = resp.json().get("response", "").strip()
         log.info(f"[AI Analyze] {ticker} | raw response length: {len(raw)}")

@@ -34,133 +34,133 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.45,
-      "prev": 4.55,
-      "change": -0.1,
-      "date": "2026-06-11",
+      "value": 4.46,
+      "prev": 4.49,
+      "change": -0.03,
+      "date": "2026-06-18",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.05,
-      "prev": 4.13,
-      "change": -0.08,
-      "date": "2026-06-11",
+      "value": 4.19,
+      "prev": 4.2,
+      "change": -0.01,
+      "date": "2026-06-18",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 19.44,
-      "prev": 22.22,
-      "change": -2.78,
-      "date": "2026-06-11",
+      "value": 16.78,
+      "prev": 16.4,
+      "change": 0.38,
+      "date": "2026-06-19",
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 120.08,
-      "prev": 119.36,
-      "change": 0.72,
-      "date": "2026-06-05",
+      "value": 120.4,
+      "prev": 119.39,
+      "change": 1.01,
+      "date": "2026-06-18",
       "unit": ""
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
-      "value": 95.0,
-      "prev": 94.32,
-      "change": 0.68,
-      "date": "2026-06-08",
+      "value": 84.65,
+      "prev": 88.62,
+      "change": -3.97,
+      "date": "2026-06-15",
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7431.46,
-      "prev": 7394.3,
-      "change": 37.16,
-      "date": "2026-06-12",
+      "value": 7500.58,
+      "prev": 7420.1,
+      "change": 80.48,
+      "date": "2026-06-18",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.4,
+      "value": 0.27,
       "unit": "%",
-      "date": "2026-06-11",
+      "date": "2026-06-18",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Have S&P 500 Index Funds, Often Touted as the Best Stock Investments, Become Dangerous? There's a Worrisome Development -- and a Possibly Better Alternative.",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/investing/2026/06/14/have-sp-500-index-funds-often-touted-as-best-voo/",
-      "publishedAt": "2026-06-14T09:20:00Z"
+      "title": "ETF Zoo: The Leveraged ETF Frenzy Picks Up Momentum",
+      "source": "etf.com",
+      "url": "http://www.etf.com/sections/podcasts/etf-zoo-leveraged-etf-frenzy-picks-momentum?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-06-22T22:39:52Z"
     },
     {
-      "title": "Suze Orman to 54-Year-Old With $600,000: Skip the 1.5% Fee and Manage It Yourself",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/06/13/suze-orman-to-54-year-old-with-600000-skip-the-1-5-fee-and-manage-it-yourself/",
-      "publishedAt": "2026-06-13T16:02:52Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq, Dow End Higher On SpaceX Strong Debut And US-Iran Peace Signals \u2014 SPCX, SHEL, ROKU, XOM, HOOD In Focus",
+      "title": "S&P 500, Nasdaq Drop As SpaceX, Broader Tech Weakness Outweighs US-Iran Hopes \u2014 SPCX, GOOGL, NFLX, COIN, MU In Focus",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-higher-on-space-x-strong-debut-and-us-iran-peace-signals-spcx-shel-roku-xom-hood-in-focus/cZKdaEuR75L",
-      "publishedAt": "2026-06-12T21:45:19Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-drop-as-space-x-broader-tech-weakness-outweighs-us-iran-hopes-spcx-googl-nflx-coin-mu-in-focus/cZKMJLHR79B",
+      "publishedAt": "2026-06-22T21:37:56Z"
     },
     {
-      "title": "Stocks Rally on Hopes for a Near-term US-Iran Interim Peace Agreement",
-      "source": "Barchart",
-      "url": "https://www.barchart.com/story/news/2447851/stocks-rally-on-hopes-for-a-near-term-us-iran-interim-peace-agreement",
-      "publishedAt": "2026-06-12T20:39:53Z"
-    },
-    {
-      "title": "Elon Musk May Be a Trillionaire, but Tesla Is Still Down 11% in 2026. Is TSLA Stock Dead Weight Now?",
+      "title": "I Make $150,000 a Year, But It Feels Like I\u2019m Just Middle Class in a World Full of Rich People",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/12/elon-musk-may-be-a-trillionaire-but-tesla-is-still-down-11-in-2026-is-tsla-stock-dead-weight-now/",
-      "publishedAt": "2026-06-12T19:16:20Z"
+      "url": "https://247wallst.com/personal-finance/2025/07/16/i-make-150000-a-year-but-it-feels-like-im-just-middle-class-in-a-world-full-of-rich-people/",
+      "publishedAt": "2026-06-22T21:02:10Z"
     },
     {
-      "title": "VOO vs. SPY: Which S&P 500 ETF is The Better Bet?",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/coverage/etfs/2026/06/12/voo-vs-spy-which-s-and-p-500-etf-is-the-better-bet/",
-      "publishedAt": "2026-06-12T18:48:03Z"
-    },
-    {
-      "title": "Leaving Las Vegas: How to Beat the House as the Stock Market Turns Into a Casino",
-      "source": "Barchart",
-      "url": "https://www.barchart.com/story/news/2444431/leaving-las-vegas-how-to-beat-the-house-as-the-stock-market-turns-into-a-casino",
-      "publishedAt": "2026-06-12T16:58:17Z"
-    },
-    {
-      "title": "Stocks See Support from Hopes for a Near-term US-Iran Peace Agreement",
-      "source": "Barchart",
-      "url": "https://www.barchart.com/story/news/2443233/stocks-see-support-from-hopes-for-a-near-term-us-iran-peace-agreement",
-      "publishedAt": "2026-06-12T15:51:42Z"
-    },
-    {
-      "title": "Energy Refuses to Quit: XLE Up 29% YTD as Oil Stocks Wake Up",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/12/energy-refuses-to-quit-xle-up-29-ytd-as-oil-stocks-wake-up/",
-      "publishedAt": "2026-06-12T15:30:08Z"
-    },
-    {
-      "title": "What Stripping the Weakest Stocks From the S&P 500 Actually Does for Your Portfolio",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/12/how-removing-33-of-the-sps-junk-stocks-can-sharpen-your-portfolio/",
-      "publishedAt": "2026-06-12T15:17:01Z"
-    },
-    {
-      "title": "Stock Market Week Ahead: Keep An Eye On The Little Things",
+      "title": "Index Options Are Now Cheap; Here's How To Buy Insurance Using The S&P 500 Tracking Fund SPY",
       "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-keep-an-eye-on-the-little-things/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-06-13T13:55:41Z"
+      "url": "https://www.investors.com/research/options/spy-etf-index-options-cheap-insurance-using-spy/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-06-22T19:04:44Z"
     },
     {
-      "title": "The Fed Just Triggered a Sharp Tech-Sector Sell-Off: Here Is the 1 Dirt-Cheap Financial Disruptor I\u2019m Buying Hand Over Fist",
+      "title": "JPMorgan: 2026 rally entirely earnings-driven, bull case targets 8900 by year-end",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/12/the-fed-just-triggered-a-sharp-tech-sector-sell-off-here-is-the-1-dirt-cheap-financial-disruptor-im-buying-hand-over-fist/",
-      "publishedAt": "2026-06-12T21:12:58Z"
+      "url": "https://247wallst.com/personal-finance/2026/06/22/jpmorgan-2026-rally-entirely-earnings-driven-bull-case-targets-8900-by-year-end/",
+      "publishedAt": "2026-06-22T18:05:24Z"
+    },
+    {
+      "title": "Had You Invested $1,000 in Marvell or Micron a Decade Ago, Here\u2019s What You\u2019d Have Now",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/22/had-you-invested-1000-in-marvell-or-micron-a-decade-ago-heres-what-youd-have-now/",
+      "publishedAt": "2026-06-22T16:55:06Z"
+    },
+    {
+      "title": "US Economy Looking Like Goldilocks: ETF Areas Likely to Gain",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/economy/articles/us-economy-looking-goldilocks-etf-160000675.html",
+      "publishedAt": "2026-06-22T16:00:00Z"
+    },
+    {
+      "title": "ETF Ways to Navigate the 2026 Midterm Election Cycle",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/etf-ways-navigate-2026-midterm-160000370.html",
+      "publishedAt": "2026-06-22T16:00:00Z"
+    },
+    {
+      "title": "Ex-Fed Chair Greenspan Remembered, PCE This Week",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/economy/policy/articles/ex-fed-chair-greenspan-remembered-143000913.html",
+      "publishedAt": "2026-06-22T14:30:00Z"
+    },
+    {
+      "title": "What Happens to a 75 Year Old With a $500,000 IRA Who Takes the RMD in January vs December vs Monthly",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/06/22/what-happens-to-a-75-year-old-with-a-500000-ira-who-takes-the-rmd-in-january-vs-december-vs-monthly/",
+      "publishedAt": "2026-06-22T13:04:22Z"
+    },
+    {
+      "title": "QQQ vs QQQM: Same Nasdaq-100 Index, One Clear Winner for Long-Term Investors",
+      "source": "etf.com",
+      "url": "http://www.etf.com/sections/news/qqq-vs-qqqm-same-nasdaq-100-index-one-clear-winner-long-term-investors?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-06-22T19:42:57Z"
+    },
+    {
+      "title": "Roblox Is Down 42% in 2026: Will the Pain Be Over Soon?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/22/roblox-is-down-42-in-2026-will-the-pain-be-over-soon/",
+      "publishedAt": "2026-06-22T19:15:21Z"
     }
   ],
-  "fetchedAt": "2026-06-14 13:52 EDT"
+  "fetchedAt": "2026-06-22 20:02 EDT"
 }

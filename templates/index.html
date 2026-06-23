@@ -1092,7 +1092,6 @@
     <div class="status-pill" id="statusPill">IDLE</div>
     <span class="status-dot" id="statusDot"></span>
     <span id="statusText" style="font-size:11px;color:var(--muted)">{{ status.message }}</span>
-    <div id="macroStatusBadge" style="font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;padding:3px 8px;border:1px solid var(--border);border-radius:4px;white-space:nowrap">📊 MACRO: —</div>
     <div id="statusProgressWrap" style="display:none;align-items:center;gap:8px;margin-left:10px">
       <div style="width:120px;height:5px;background:var(--surface2);border-radius:3px;overflow:hidden">
         <div id="statusProgressBar" style="height:100%;background:var(--warn);border-radius:3px;width:0%;transition:width 0.4s ease"></div>
@@ -1169,6 +1168,7 @@
   <div class="tab" onclick="showTab('dream', this);loadDream();" data-tab="dream">🌟 DREAM</div>
   <div class="tab" onclick="showTab('tradeai', this);loadTradeAI();" data-tab="tradeai">🤖 TRADEAI</div>
   <div class="tab" onclick="showTab('signal', this);loadSignal();" data-tab="signal">📡 SIGNAL</div>
+  <div class="tab" onclick="showTab('backtest', this);loadBacktest();" data-tab="backtest">📊 BACKTEST</div>
 </div>
 
 <div class="content">
@@ -1202,6 +1202,9 @@
 
   <div class="tab-panel" id="tab-signal">
     <div id="signalContent"><div class="loading">Click the 📡 SIGNAL tab to load forecasts...</div></div>
+  </div>
+  <div class="tab-panel" id="tab-backtest">
+    <div id="backtestContent"><div class="loading">Click the 📊 BACKTEST tab to load analysis...</div></div>
   </div>
 
 </div>
@@ -2628,45 +2631,8 @@ function renderAdmin(opTs) {
     </div>
     <div class="admin-row">
       <div class="admin-row-left">
-        <div class="admin-op-label">⚡ REFRESH ALL PRICES</div>
-        <div class="admin-op-ts" id="admin-ts-prices">Last: ${ts.prices || 'Never'}</div>
-      </div>
-      <a href="/fetch/prices" class="btn" style="border-color:var(--warn);color:var(--warn)">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">+ FETCH NEW TICKERS</div>
-        <div class="admin-op-ts" id="admin-ts-new">Last: ${ts.new || 'Never'}</div>
-      </div>
-      <a href="/fetch/new" class="btn">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">⚡ SMART REFRESH</div>
-        <div class="admin-op-ts" id="admin-ts-smart">Last: ${ts.smart || 'Never'}</div>
-        <div class="admin-op-ts" style="color:var(--warn);margin-top:3px">⚠ AI Summary not included — run per ticker</div>
-      </div>
-      <a href="/fetch/smart" class="btn" style="border-color:var(--warn);color:var(--warn)">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label">↺ FETCH ALL</div>
-        <div class="admin-op-ts" id="admin-ts-all">Last: ${ts.all || 'Never'}</div>
-        <div class="admin-op-ts" style="color:var(--warn);margin-top:3px">⚠ AI Summary not included — run per ticker</div>
-      </div>
-      <a href="/fetch" class="btn btn-primary">RUN</a>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADE SIMULATION</div>
-        <div class="admin-op-ts">Wipes all trades, holdings, resets balance to $100,000. Irreversible.</div>
-      </div>
-      <button class="btn" style="border-color:var(--down);color:var(--down)" onclick="resetTradeSimulation(this)">RESET</button>
-    </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
         <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADEAI SIMULATION</div>
-        <div class="admin-op-ts">Wipes all AI trades, holdings, resets balance to $100,000. Irreversible.</div>
+        <div class="admin-op-ts">Wipes all AI trades, holdings, resets balance. Irreversible.</div>
       </div>
       <button class="btn" style="border-color:var(--down);color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
     </div>
@@ -3642,7 +3608,7 @@ function renderTradeAI(data) {
   const monthOptions = months.map(m => `<option value="${m}">${m}</option>`).join('');
 
   const holdingsRows = holdings.length === 0
-    ? `<tr><td colspan="9" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
+    ? `<tr><td colspan="12" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
     : holdings.map(h => {
         const gl = h.gainLoss;
         const glPct = h.gainLossPct;
@@ -3650,8 +3616,9 @@ function renderTradeAI(data) {
         function dayPct(val) {
           if (val == null) return '<td style="color:var(--muted);text-align:right">—</td>';
           const cls = val >= 0 ? 'var(--up)' : 'var(--down)';
-          return `<td style="color:${cls};text-align:right;font-family:'DM Mono',monospace;font-size:11px">${val >= 0 ? '+' : ''}${val.toFixed(2)}%</td>`;
+          return '<td style="color:' + cls + ';text-align:right;font-family:\'DM Mono\',monospace;font-size:11px">' + (val >= 0 ? '+' : '') + val.toFixed(2) + '%</td>';
         }
+        const tickerSafe = h.ticker.replace(/'/g, "\\'");
         return `<tr>
           <td><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">${h.ticker}</span></td>
           <td>${h.shares}</td>
@@ -3659,9 +3626,8 @@ function renderTradeAI(data) {
           <td>${fmt$(h.currentPrice)}</td>
           <td class="${glCls}">${fmt$(gl)}</td>
           <td class="${glCls}">${fmtPct(glPct)}</td>
-          ${dayPct(h.change3d)}
-          ${dayPct(h.change2d)}
-          ${dayPct(h.change1d)}
+          ` + dayPct(h.change5d) + dayPct(h.change4d) + dayPct(h.change3d) + dayPct(h.change2d) + dayPct(h.change1d) + `
+          <td><button onclick="event.stopPropagation();editHolding('${tickerSafe}',${h.shares},${h.purchasePrice})" style="font-size:10px;padding:2px 7px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);cursor:pointer">✏️</button></td>
         </tr>`;
       }).join('');
 
@@ -3703,27 +3669,28 @@ function renderTradeAI(data) {
         const inAccount = holdings.some(h => h.ticker === item.ticker);
         const recAction = recBuys.includes(item.ticker) ? 'BUY' : recSells.includes(item.ticker) ? 'SELL' : null;
         const recColor  = recAction === 'BUY' ? 'var(--up)' : recAction === 'SELL' ? 'var(--down)' : 'var(--muted)';
-        function pipeRow(icon, label, ts, extra) {
-          return `<div style="display:flex;align-items:center;gap:5px;font-size:9px;line-height:1.6">
-            <span style="color:var(--muted);min-width:10px">${icon}</span>
-            <span style="color:var(--muted);min-width:62px;letter-spacing:0.3px">${label}</span>
-            <span style="color:var(--accent);font-family:'DM Mono',monospace">${ts ? ts.slice(0,16) : '—'}</span>
-            ${extra ? `<span style="margin-left:4px">${extra}</span>` : ''}
-          </div>`;
-        }
+        const fcExtra = hasFc ? '<span style="color:' + fcDirColor + ';font-weight:700;font-size:9px">' + fc.direction + '</span>' : '';
         const recExtra = recAction
-          ? `<span style="font-size:9px;font-weight:700;color:${recColor}">${recAction}</span>${inAccount ? ' <span style="font-size:9px;color:var(--up)">★ held</span>' : ''}`
+          ? '<span style="font-size:9px;font-weight:700;color:' + recColor + '">' + recAction + '</span>' + (inAccount ? ' <span style="font-size:9px;color:var(--up)">★ held</span>' : '')
           : (inAccount ? '<span style="font-size:9px;color:var(--up)">★ held</span>' : '');
+        function pipeRow(icon, label, tsVal, extra) {
+          return '<div style="display:flex;align-items:center;gap:5px;font-size:9px;line-height:1.8">'
+            + '<span style="color:var(--muted);min-width:10px">' + icon + '</span>'
+            + '<span style="color:var(--muted);min-width:62px;letter-spacing:0.3px">' + label + '</span>'
+            + '<span style="color:var(--accent);font-family:\'DM Mono\',monospace">' + (tsVal ? tsVal.slice(0,16) : '—') + '</span>'
+            + (extra ? '<span style="margin-left:4px">' + extra + '</span>' : '')
+            + '</div>';
+        }
         return `
         <div class="trade-candidate-row" onclick="toggleTradeDetail('tai-${i}')">
-          <div style="min-width:170px">
-            <div class="trade-candidate-ticker" style="margin-bottom:5px">${item.ticker}</div>
-            ${pipeRow('①','IDENTIFY', data.identifiedAt, '')}
-            ${pipeRow('②','FETCH INFO', data.detailsFetchedAt, '')}
-            ${pipeRow('③','MACRO', data.macroFetchedAt, '')}
-            ${pipeRow('④','SIGNAL', data.signalForecastAt, hasFc ? `<span style="color:${fcDirColor};font-weight:700">${fc.direction}</span>` : '')}
-            ${pipeRow('⑤','AI ANALYZE', data.aiAnalyzedAt, '')}
-            ${pipeRow('⑥','RECOMMEND', lastRec ? lastRec.scoredAt : null, recExtra)}
+          <div style="min-width:175px">
+            <div class="trade-candidate-ticker" style="margin-bottom:4px">${item.ticker}</div>
+            ` + pipeRow('①','IDENTIFY', data.identifiedAt, '') + `
+            ` + pipeRow('②','FETCH INFO', data.detailsFetchedAt, '') + `
+            ` + pipeRow('③','MACRO', data.macroFetchedAt, '') + `
+            ` + pipeRow('④','SIGNAL', data.signalForecastAt, fcExtra) + `
+            ` + pipeRow('⑤','AI ANALYZE', data.aiAnalyzedAt, '') + `
+            ` + pipeRow('⑥','RECOMMEND', lastRec ? lastRec.scoredAt : null, recExtra) + `
           </div>
           <div style="flex:1">
             <div class="trade-candidate-reason">${item.reason || '—'}</div>
@@ -3821,19 +3788,27 @@ function renderTradeAI(data) {
         </select>
         <button class="btn" onclick="showAITransactions()">TRANSACTIONS</button>
         <button class="btn" onclick="showAIReport()">📊 REPORT</button>
+        <button class="btn" style="color:var(--warn);border-color:var(--warn)" onclick="showReportReset()">🗑 REPORT RESET</button>
         <button class="btn" style="color:var(--down);border-color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
       </div>
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
       <table class="trade-account-table">
-        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th><th style="text-align:right">D-2</th><th style="text-align:right">D-1</th><th style="text-align:right">TODAY</th></tr></thead>
+        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th><th style="text-align:right">D-5</th><th style="text-align:right">D-4</th><th style="text-align:right">D-3</th><th style="text-align:right">D-2</th><th style="text-align:right">D-1</th><th></th></tr></thead>
         <tbody>${holdingsRows}</tbody>
       </table>
     </div>
     <div class="trade-summary-bar">
       <div>
         <div style="font-size:10px;color:var(--muted);margin-bottom:2px">CASH BALANCE</div>
-        <div class="trade-balance-big">${fmt$(balance)}</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div class="trade-balance-big">${fmt$(balance)}</div>
+          <button onclick="editBalance(${balance})" style="font-size:10px;padding:2px 7px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);cursor:pointer">✏️</button>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--muted);margin-bottom:2px">COST BASIS</div>
+        <div class="trade-balance-big">${fmt$(totalCost)}</div>
       </div>
       <div style="text-align:center">
         <div style="font-size:10px;color:var(--muted);margin-bottom:2px">PORTFOLIO VALUE</div>
@@ -3842,6 +3817,7 @@ function renderTradeAI(data) {
       <div style="text-align:right">
         <div style="font-size:10px;color:var(--muted);margin-bottom:2px">TOTAL P&L</div>
         <div class="trade-balance-big ${glClass}">${fmt$(totalGL)}</div>
+        <div style="font-size:11px;color:var(--${glClass});font-family:'DM Mono',monospace;margin-top:2px">${totalValue > 0 ? ((totalGL/totalValue)*100).toFixed(2) + '% of portfolio' : '—'}</div>
       </div>
     </div>
   </div>
@@ -4100,12 +4076,18 @@ async function runTradeAIOp(op, btn) {
     btn.style.borderColor = 'var(--warn)';
     btn.style.color = 'var(--warn)';
     btn.style.background = 'rgba(251,191,36,0.12)';
-    // Poll signal/progress while running — show in header status area
+    // Poll signal/progress while running — show in header status bar
     const pollSig = setInterval(async () => {
       try {
         const p = await fetch('/signal/progress').then(r => r.json());
-        const lbl = document.getElementById('statusProgressLabel');
-        if (lbl && p.total > 0) lbl.textContent = `${p.current} / ${p.total}${p.ticker ? ' — ' + p.ticker : ''}`;
+        const wrap  = document.getElementById('statusProgressWrap');
+        const bar   = document.getElementById('statusProgressBar');
+        const label = document.getElementById('statusProgressLabel');
+        if (p.total > 0) {
+          if (wrap)  wrap.style.display = 'flex';
+          if (label) label.textContent = p.current + ' / ' + p.total + (p.ticker ? ' — ' + p.ticker : '');
+          if (bar)   bar.style.width = Math.round((p.current / p.total) * 100) + '%';
+        }
       } catch(e) {}
     }, 800);
     try {
@@ -4255,9 +4237,13 @@ async function showAITransactions() {
     if (txns.length === 0) {
       body.innerHTML = '<div style="color:var(--muted);padding:20px;text-align:center">No transactions found.</div>';
     } else {
-      const rows = txns.map(t => {
+      const rows = txns.map((t, origIdx) => {
         const isBuy = t.action === 'BUY';
         const cls = isBuy ? 'up' : 'down';
+        const realIdx = (data.transactions || []).length - 1 - origIdx; // reverse index
+        const editBtn = !isBuy
+          ? `<button onclick="editTransaction(${realIdx},'${t.ticker}',${t.price})" style="font-size:9px;padding:1px 6px;background:transparent;border:1px solid var(--border);border-radius:3px;color:var(--muted);cursor:pointer">✏️</button>`
+          : '';
         return `<tr>
           <td>${t.date||'—'}</td>
           <td><span class="trade-action-badge ${isBuy?'buy':'sell'}">${t.action}</span></td>
@@ -4266,11 +4252,12 @@ async function showAITransactions() {
           <td>${fmt$(t.price)}</td>
           <td class="${cls}">${fmt$(t.amount)}</td>
           <td>${fmt$(t.balance)}</td>
+          <td>${editBtn}</td>
         </tr>`;
       }).join('');
       body.innerHTML = `
         <table class="trade-txn-table">
-          <thead><tr><th>DATE</th><th>ACTION</th><th>TICKER</th><th>SHARES</th><th>PRICE</th><th>AMOUNT</th><th>BALANCE</th></tr></thead>
+          <thead><tr><th>DATE</th><th>ACTION</th><th>TICKER</th><th>SHARES</th><th>PRICE</th><th>AMOUNT</th><th>BALANCE</th><th></th></tr></thead>
           <tbody>${rows}</tbody>
         </table>`;
     }
@@ -4282,12 +4269,66 @@ async function showAITransactions() {
   });
 }
 
+async function editHolding(ticker, currentShares, currentPrice) {
+  const shares = prompt(`Edit shares for ${ticker}:`, currentShares);
+  if (shares === null) return;
+  const price = prompt(`Edit purchase price for ${ticker}:`, currentPrice);
+  if (price === null) return;
+  try {
+    const r = await fetch('/tradeai/edit_holding', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ ticker, shares: parseFloat(shares), purchasePrice: parseFloat(price) })
+    });
+    const d = await r.json();
+    if (d.error) { alert('Error: ' + d.error); return; }
+    console.log('[TradeAI] holding edited:', ticker, shares, price);
+    await loadTradeAI(true);
+  } catch(e) { console.error('[TradeAI] editHolding FAIL:', e); }
+}
+
+async function editBalance(currentBalance) {
+  const val = prompt('Set new cash balance:', currentBalance);
+  if (val === null) return;
+  try {
+    const r = await fetch('/tradeai/edit_balance', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ balance: parseFloat(val) })
+    });
+    const d = await r.json();
+    if (d.error) { alert('Error: ' + d.error); return; }
+    console.log('[TradeAI] balance edited:', d.balance);
+    await loadTradeAI(true);
+  } catch(e) { console.error('[TradeAI] editBalance FAIL:', e); }
+}
+
+async function editTransaction(index, ticker, currentPrice) {
+  const val = prompt(`Edit sell price for ${ticker} (transaction #${index}):`, currentPrice);
+  if (val === null) return;
+  try {
+    const r = await fetch('/tradeai/edit_transaction', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ index, price: parseFloat(val) })
+    });
+    const d = await r.json();
+    if (d.error) { alert('Error: ' + d.error); return; }
+    console.log('[TradeAI] transaction edited: idx', index, 'price', val);
+    await showAITransactions();
+  } catch(e) { console.error('[TradeAI] editTransaction FAIL:', e); }
+}
+
 async function resetTradeAISimulation(btn) {
-  if (!confirm('Reset TradeAI simulation? Wipes all AI holdings, trades, resets balance to $100,000.')) return;
+  const balStr = prompt('Reset TradeAI simulation.\n\nEnter starting cash balance:', '100000');
+  if (balStr === null) return;
+  const balance = parseFloat(balStr);
+  if (isNaN(balance) || balance < 0) { alert('Invalid balance amount.'); return; }
+  if (!confirm('This will wipe ALL AI holdings, trades and history. Irreversible. Continue?')) return;
   btn.disabled = true;
   btn.textContent = '⏳';
   try {
-    const res = await fetch('/tradeai/reset', {method: 'POST'});
+    const res = await fetch('/tradeai/reset', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ balance })
+    });
     const data = await res.json();
     console.log('[TradeAI] reset complete | balance:', data.balance);
     btn.textContent = 'RESET';
@@ -4299,6 +4340,272 @@ async function resetTradeAISimulation(btn) {
     console.error('[TradeAI] reset FAIL:', e);
   }
 }
+
+async function showReportReset() {
+  // Build list of available months from transactions
+  let months = [];
+  try {
+    const data = await fetch('/tradeai').then(r => r.json());
+    const txns = data.transactions || [];
+    const monthSet = new Set(txns.map(t => (t.date || '').slice(0, 7)).filter(Boolean));
+    months = [...monthSet].sort().reverse();
+  } catch(e) {}
+
+  const opts = months.map(m => '<option value="' + m + '">' + m + '</option>').join('');
+  const html = '<div style="padding:24px;min-width:340px">'
+    + '<div style="font-family:\'Syne\',sans-serif;font-size:16px;font-weight:700;margin-bottom:16px;color:var(--warn)">🗑 REPORT RESET</div>'
+    + '<div style="font-size:12px;color:var(--muted);margin-bottom:16px">Delete transactions by month or clear all history. Holdings and balance are not affected.</div>'
+    + (months.length === 0 ? '<div style="color:var(--muted);font-size:12px;margin-bottom:16px">No transactions found.</div>' :
+      '<div style="margin-bottom:12px">'
+      + '<label style="font-size:11px;color:var(--muted);display:block;margin-bottom:6px">SELECT MONTH TO DELETE</label>'
+      + '<select id="reportResetMonth" style="width:100%;padding:8px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px">'
+      + opts
+      + '</select></div>'
+      + '<button onclick="doReportReset(false)" style="width:100%;padding:9px;margin-bottom:8px;background:transparent;border:1px solid var(--warn);border-radius:6px;color:var(--warn);font-weight:700;cursor:pointer;font-size:12px">DELETE SELECTED MONTH</button>')
+    + '<button onclick="doReportReset(true)" style="width:100%;padding:9px;margin-bottom:12px;background:transparent;border:1px solid var(--down);border-radius:6px;color:var(--down);font-weight:700;cursor:pointer;font-size:12px">DELETE ALL HISTORY</button>'
+    + '<button onclick="document.getElementById(\'reportResetModal\').remove()" style="width:100%;padding:8px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:12px">CANCEL</button>'
+    + '</div>';
+
+  let modal = document.getElementById('reportResetModal');
+  if (modal) modal.remove();
+  modal = document.createElement('div');
+  modal.id = 'reportResetModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center';
+  modal.innerHTML = '<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden">' + html + '</div>';
+  modal.onclick = e => { if (e.target === modal) modal.remove(); };
+  document.body.appendChild(modal);
+}
+
+async function doReportReset(all) {
+  const month = all ? 'all' : (document.getElementById('reportResetMonth')?.value);
+  if (!month) { alert('No month selected.'); return; }
+  const msg = all ? 'Delete ALL transaction history?' : 'Delete all transactions for ' + month + '?';
+  if (!confirm(msg + ' Holdings and balance are not affected.')) return;
+  try {
+    const r = await fetch('/tradeai/delete_transactions', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ month })
+    });
+    const d = await r.json();
+    if (d.error) { alert('Error: ' + d.error); return; }
+    document.getElementById('reportResetModal')?.remove();
+    alert('Removed ' + d.removed + ' transaction(s). ' + d.remaining + ' remaining.');
+    if (tradeAILoaded) loadTradeAI(true);
+  } catch(e) { console.error('[ReportReset] FAIL:', e); }
+}
+
+// ── BACKTEST TAB ──────────────────────────────────────────────────────────────
+let backtestLoaded = false;
+
+async function loadBacktest(force) {
+  if (backtestLoaded && !force) return;
+  backtestLoaded = true;
+  const el = document.getElementById('backtestContent');
+  el.innerHTML = '<div class="loading">Loading backtest analysis...</div>';
+  try {
+    const [sigData, tradeData] = await Promise.all([
+      fetch('/signal/history').then(r => r.json()),
+      fetch('/tradeai').then(r => r.json())
+    ]);
+    el.innerHTML = buildBacktestHTML(sigData, tradeData);
+  } catch(e) {
+    el.innerHTML = '<span style="color:var(--down)">Failed to load backtest data: ' + e.message + '</span>';
+    backtestLoaded = false;
+  }
+}
+
+function buildBacktestHTML(sigData, tradeData) {
+  const snapshots  = (sigData.snapshots || []).filter(s => s.rows && s.rows.some(r => r.actualPrice != null));
+  const holdings   = (tradeData.holdings || []).map(h => h.ticker);
+  const lastRec    = tradeData.lastRecommend || {};
+  const recBuys    = (lastRec.buys  || []).map(b => b.ticker || b);
+  const recSells   = (lastRec.sells || []).map(s => s.ticker || s);
+  const recommended = [...new Set([...recBuys, ...recSells])];
+
+  if (snapshots.length === 0) return '<div style="padding:24px;color:var(--muted)">No snapshots with actuals yet. Run Update Actuals in the Signal tab first.</div>';
+
+  // ── Build per-ticker stats ─────────────────────────────────────────────────
+  const tickerStats = {};
+  for (const snap of snapshots) {
+    for (const row of snap.rows) {
+      if (!row.actualPrice || row.forecastLow == null || row.forecastHigh == null) continue;
+      const t = row.ticker;
+      if (!tickerStats[t]) tickerStats[t] = { ticker: t, total: 0, hit: 0, missLow: 0, missHigh: 0, bucket: row.bucket || '—', dates: [] };
+      const s = tickerStats[t];
+      s.total++;
+      s.dates.push(snap.date);
+      if (row.accuracy === 'hit')       s.hit++;
+      else if (row.accuracy === 'miss-low')  s.missLow++;
+      else if (row.accuracy === 'miss-high') s.missHigh++;
+      s.bucket = row.bucket || s.bucket;
+    }
+  }
+
+  const tickers = Object.values(tickerStats).sort((a, b) => (b.hit/b.total) - (a.hit/a.total));
+
+  // ── Group summaries ────────────────────────────────────────────────────────
+  function groupSummary(label, color, list) {
+    const group = tickers.filter(t => list.includes(t.ticker));
+    if (!group.length) return '';
+    const total = group.reduce((s, t) => s + t.total, 0);
+    const hits  = group.reduce((s, t) => s + t.hit,   0);
+    const pct   = total > 0 ? (hits/total*100).toFixed(1) : '—';
+    const cls   = parseFloat(pct) >= 50 ? 'var(--up)' : 'var(--down)';
+    return '<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:16px">'
+      + '<div style="font-size:11px;font-weight:700;color:' + color + ';min-width:120px">' + label + '</div>'
+      + '<div style="font-size:22px;font-weight:800;color:' + cls + ';font-family:\'DM Mono\',monospace">' + pct + '%</div>'
+      + '<div style="font-size:11px;color:var(--muted)">' + hits + ' hits / ' + total + ' forecasts across ' + group.length + ' tickers</div>'
+      + '</div>';
+  }
+
+  const allTickers   = tickers.map(t => t.ticker);
+  const identified   = allTickers.filter(t => !holdings.includes(t));
+
+  // ── Ticker table ──────────────────────────────────────────────────────────
+  function hitBar(hit, total) {
+    const pct = total > 0 ? hit/total : 0;
+    const color = pct >= 0.6 ? 'var(--up)' : pct >= 0.4 ? 'var(--warn)' : 'var(--down)';
+    return '<div style="display:flex;align-items:center;gap:6px">'
+      + '<div style="width:60px;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden">'
+      + '<div style="width:' + (pct*100).toFixed(0) + '%;height:100%;background:' + color + ';border-radius:3px"></div></div>'
+      + '<span style="font-size:11px;color:' + color + ';font-family:\'DM Mono\',monospace;font-weight:700">' + (pct*100).toFixed(0) + '%</span>'
+      + '</div>';
+  }
+
+  function groupTag(ticker) {
+    if (holdings.includes(ticker))    return '<span style="font-size:9px;padding:2px 6px;background:rgba(74,222,128,0.15);color:var(--up);border-radius:3px;font-weight:700">HELD</span>';
+    if (recommended.includes(ticker)) return '<span style="font-size:9px;padding:2px 6px;background:rgba(251,191,36,0.15);color:var(--warn);border-radius:3px;font-weight:700">REC</span>';
+    return '<span style="font-size:9px;padding:2px 6px;background:var(--surface2);color:var(--muted);border-radius:3px">IDENTIFIED</span>';
+  }
+
+  const tickerRows = tickers.map(t => {
+    const hitPct = t.total > 0 ? (t.hit/t.total*100).toFixed(0) : '—';
+    return '<tr>'
+      + '<td style="font-family:\'Syne\',sans-serif;font-weight:700">' + t.ticker + '</td>'
+      + '<td>' + groupTag(t.ticker) + '</td>'
+      + '<td style="color:var(--muted);font-size:11px">' + t.bucket + '</td>'
+      + '<td style="text-align:center">' + t.total + '</td>'
+      + '<td>' + hitBar(t.hit, t.total) + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--up)">' + t.hit + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--down)">' + (t.missLow + t.missHigh) + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--muted)">' + t.missLow + ' low / ' + t.missHigh + ' high</td>'
+      + '</tr>';
+  }).join('');
+
+  // ── Daily summary ─────────────────────────────────────────────────────────
+  const dailyRows = snapshots.slice().reverse().map(snap => {
+    const rows = snap.rows.filter(r => r.actualPrice != null);
+    const hits = rows.filter(r => r.accuracy === 'hit').length;
+    const total = rows.length;
+    const pct = total > 0 ? (hits/total*100).toFixed(0) : '—';
+    const cls = parseInt(pct) >= 50 ? 'var(--up)' : 'var(--down)';
+    return '<tr>'
+      + '<td style="font-family:\'DM Mono\',monospace;font-size:11px">' + snap.date + '</td>'
+      + '<td style="text-align:center">' + total + '</td>'
+      + '<td>' + hitBar(hits, total) + '</td>'
+      + '<td style="text-align:center;font-size:12px;font-weight:700;color:' + cls + '">' + pct + '%</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--up)">' + hits + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--down)">' + (total - hits) + '</td>'
+      + '</tr>';
+  }).join('');
+
+  // ── Weekly summary ────────────────────────────────────────────────────────
+  const weekMap = {};
+  for (const snap of snapshots) {
+    const d = new Date(snap.date);
+    const week = snap.date.slice(0,7) + ' W' + Math.ceil(d.getDate()/7);
+    if (!weekMap[week]) weekMap[week] = { hit: 0, total: 0 };
+    for (const r of snap.rows) {
+      if (!r.actualPrice) continue;
+      weekMap[week].total++;
+      if (r.accuracy === 'hit') weekMap[week].hit++;
+    }
+  }
+  const weeklyRows = Object.entries(weekMap).reverse().map(([week, w]) => {
+    const pct = w.total > 0 ? (w.hit/w.total*100).toFixed(0) : '—';
+    const cls = parseInt(pct) >= 50 ? 'var(--up)' : 'var(--down)';
+    return '<tr>'
+      + '<td style="font-family:\'DM Mono\',monospace;font-size:11px">' + week + '</td>'
+      + '<td style="text-align:center">' + w.total + '</td>'
+      + '<td>' + hitBar(w.hit, w.total) + '</td>'
+      + '<td style="text-align:center;font-size:12px;font-weight:700;color:' + cls + '">' + pct + '%</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--up)">' + w.hit + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--down)">' + (w.total - w.hit) + '</td>'
+      + '</tr>';
+  }).join('');
+
+  // ── Monthly summary ───────────────────────────────────────────────────────
+  const monthMap = {};
+  for (const snap of snapshots) {
+    const mo = snap.date.slice(0,7);
+    if (!monthMap[mo]) monthMap[mo] = { hit: 0, total: 0 };
+    for (const r of snap.rows) {
+      if (!r.actualPrice) continue;
+      monthMap[mo].total++;
+      if (r.accuracy === 'hit') monthMap[mo].hit++;
+    }
+  }
+  const monthlyRows = Object.entries(monthMap).reverse().map(([mo, m]) => {
+    const pct = m.total > 0 ? (m.hit/m.total*100).toFixed(0) : '—';
+    const cls = parseInt(pct) >= 50 ? 'var(--up)' : 'var(--down)';
+    return '<tr>'
+      + '<td style="font-family:\'DM Mono\',monospace;font-size:11px">' + mo + '</td>'
+      + '<td style="text-align:center">' + m.total + '</td>'
+      + '<td>' + hitBar(m.hit, m.total) + '</td>'
+      + '<td style="text-align:center;font-size:12px;font-weight:700;color:' + cls + '">' + pct + '%</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--up)">' + m.hit + '</td>'
+      + '<td style="text-align:center;font-size:11px;color:var(--down)">' + (m.total - m.hit) + '</td>'
+      + '</tr>';
+  }).join('');
+
+  function sectionTitle(t) {
+    return '<div style="font-family:\'Syne\',sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;color:var(--muted);margin:24px 0 10px">' + t + '</div>';
+  }
+
+  function table(headers, rows) {
+    return '<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px">'
+      + '<thead><tr>' + headers.map(h => '<th style="text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);color:var(--muted);font-size:10px;letter-spacing:0.5px">' + h + '</th>').join('') + '</tr></thead>'
+      + '<tbody>' + rows + '</tbody></table></div>';
+  }
+
+  const totalHits  = tickers.reduce((s,t) => s+t.hit, 0);
+  const totalForec = tickers.reduce((s,t) => s+t.total, 0);
+  const overallPct = totalForec > 0 ? (totalHits/totalForec*100).toFixed(1) : '—';
+  const overallCls = parseFloat(overallPct) >= 50 ? 'var(--up)' : 'var(--down)';
+
+  return '<div style="padding:20px;max-width:1100px">'
+    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">'
+    + '<div style="font-family:\'Syne\',sans-serif;font-size:20px;font-weight:800">SIGNAL FORECAST BACKTEST</div>'
+    + '<button onclick="backtestLoaded=false;loadBacktest(true)" style="font-size:11px;padding:6px 14px;background:transparent;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer">↺ REFRESH</button>'
+    + '</div>'
+
+    + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:8px">'
+    + '<div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:14px 18px">'
+    + '<div style="font-size:10px;color:var(--muted);margin-bottom:4px">OVERALL HIT RATE</div>'
+    + '<div style="font-size:32px;font-weight:800;color:' + overallCls + ';font-family:\'DM Mono\',monospace">' + overallPct + '%</div>'
+    + '<div style="font-size:11px;color:var(--muted)">' + totalHits + ' hits / ' + totalForec + ' forecasts · ' + snapshots.length + ' snapshots · ' + tickers.length + ' tickers</div>'
+    + '</div>'
+    + '<div style="display:flex;flex-direction:column;gap:8px">'
+    + groupSummary('★ HELD', 'var(--up)', holdings)
+    + groupSummary('🎯 RECOMMENDED', 'var(--warn)', recommended)
+    + groupSummary('📋 IDENTIFIED', 'var(--muted)', identified)
+    + '</div></div>'
+
+    + sectionTitle('TICKER BREAKDOWN')
+    + table(['TICKER','GROUP','BUCKET','FORECASTS','HIT RATE','HITS','MISSES','MISS DETAIL'], tickerRows)
+
+    + sectionTitle('DAILY ACCURACY')
+    + table(['DATE','FORECASTS','HIT RATE','%','HITS','MISSES'], dailyRows)
+
+    + sectionTitle('WEEKLY ACCURACY')
+    + table(['WEEK','FORECASTS','HIT RATE','%','HITS','MISSES'], weeklyRows)
+
+    + sectionTitle('MONTHLY ACCURACY')
+    + table(['MONTH','FORECASTS','HIT RATE','%','HITS','MISSES'], monthlyRows)
+
+    + '</div>';
+}
+// ── END BACKTEST TAB ──────────────────────────────────────────────────────────
 
   {%- endraw %}
 </script>
@@ -4904,7 +5211,16 @@ let signalLoaded = false;
 async function loadSignal() {
   if (signalLoaded) return;
   signalLoaded = true;
-  renderSignal();
+  await renderSignal();
+  // Auto-update actuals silently on load
+  try {
+    const r = await fetch('/signal/actual', { method: 'POST' }).then(r => r.json());
+    if (r.updated > 0) {
+      log.info && log.info('[Signal] auto-updated actuals:', r.updated, 'rows across', r.snapshots, 'snapshots');
+      signalLoaded = false;
+      await renderSignal();
+    }
+  } catch(e) { console.warn('[Signal] auto-update actuals FAIL:', e); }
 }
 
 async function renderSignal() {
@@ -5177,15 +5493,17 @@ async function runSignalForecast() {
 
 async function runSignalActual() {
   const el = document.getElementById('signalContent');
-  el.insertAdjacentHTML('afterbegin', '<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:6px;color:var(--up);font-size:12px">Fetching actual closing prices...</div>');
+  el.insertAdjacentHTML('afterbegin', '<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:6px;color:var(--up);font-size:12px">⏳ Fetching actual closing prices for all past snapshots...</div>');
   try {
     const r = await fetch('/signal/actual', { method: 'POST' }).then(r => r.json());
     if (r.error) throw new Error(r.error);
+    const msg = document.getElementById('signalMsg');
+    if (msg) msg.textContent = `✓ Updated ${r.updated} rows across ${r.snapshots} snapshot(s)`;
     signalLoaded = false;
     await renderSignal();
   } catch(e) {
-    document.getElementById('signalMsg').textContent = '❌ ' + e.message;
-    document.getElementById('signalMsg').style.color = 'var(--down)';
+    const msg = document.getElementById('signalMsg');
+    if (msg) { msg.textContent = '❌ ' + e.message; msg.style.color = 'var(--down)'; }
   }
 }
 // ── SCORING MATRIX ────────────────────────────────────────────────────────────
@@ -5398,6 +5716,23 @@ function buildScoringMatrixHTML(cfg) {
     ${section('ACCOUNT (HELD POSITION) BONUSES (pts)', 'Applied only to currently held stocks. Continuity bonus reduces churn; Avoid penalty forces exit.', accountRows)}
     ${section('SIGNAL FORECAST INTEGRATION', 'Uses today\'s Signal Forecast target price to boost or penalise the composite score. Bullish forecast with high expected return = positive boost. Bearish forecast = negative penalty. Run Signal Forecast step before Recommend for this to apply.', signalFcRows)}
     ${section('SELL THRESHOLDS', 'Controls when held positions are sold. Hard Sell is unconditional. Soft Sell only applies if the stock is also outside the top N positions.', sellRows)}
+    ${(()=>{
+      const pm = cfg.purchaseMatrix || {};
+      const slots = pm.slots ?? 5;
+      const dep   = pm.maxDeployPct ?? 80;
+      return section('PURCHASE MATRIX', 'Controls how funds are deployed when buying. Budget per slot = (Balance × Max Deploy%) ÷ Slots.',
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:420px">'
+        + '<div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">SLOTS (max positions)</div>'
+        + '<input type="number" id="pm-slots" min="1" max="20" step="1" value="' + slots + '" oninput="updatePmPreview()"'
+        + ' style="width:100%;padding:7px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:\'DM Mono\',monospace"></div>'
+        + '<div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">MAX DEPLOY % (of balance)</div>'
+        + '<input type="number" id="pm-deploy" min="10" max="100" step="5" value="' + dep + '" oninput="updatePmPreview()"'
+        + ' style="width:100%;padding:7px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:\'DM Mono\',monospace"></div>'
+        + '</div>'
+        + '<div id="pm-preview" style="margin-top:10px;font-size:11px;color:var(--muted);font-family:\'DM Mono\',monospace">'
+        + 'Example $5k → deploy $' + (5000*dep/100).toFixed(0) + ' → $' + (5000*dep/100/slots).toFixed(0) + '/slot</div>'
+      );
+    })()}
   `;
 }
 
@@ -5420,6 +5755,18 @@ function updateScoringCfgBool(input) {
   if (!_scoringCfg) return;
   _setNestedValue(_scoringCfg, input.dataset.path, input.checked);
   input.nextElementSibling.textContent = input.checked ? 'Enabled' : 'Disabled';
+}
+
+function updatePmPreview() {
+  const slots = parseInt(document.getElementById('pm-slots')?.value) || 5;
+  const pct   = parseFloat(document.getElementById('pm-deploy')?.value) || 80;
+  const prev  = document.getElementById('pm-preview');
+  if (prev) prev.textContent = 'Example $5k → deploy $' + (5000*pct/100).toFixed(0) + ' → $' + (5000*pct/100/slots).toFixed(0) + '/slot';
+  if (_scoringCfg) {
+    if (!_scoringCfg.purchaseMatrix) _scoringCfg.purchaseMatrix = {};
+    _scoringCfg.purchaseMatrix.slots = slots;
+    _scoringCfg.purchaseMatrix.maxDeployPct = pct;
+  }
 }
 
 async function saveScoringMatrix() {
