@@ -20,3 +20,4 @@ TRADE_AI_CANDIDATES_PATH = "output/trade_ai_candidates.json"
 OLLAMA_URL   = "http://localhost:11434"
 # OLLAMA_MODEL = "gemma2:9b"
 OLLAMA_MODEL = "phi3:mini"
+GEMINI_API_KEY  = os.getenv("GEMINI_API_KEY")
