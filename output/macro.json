@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.46,
-      "prev": 4.49,
-      "change": -0.03,
-      "date": "2026-06-18",
+      "value": 4.51,
+      "prev": null,
+      "change": null,
+      "date": "2026-06-22",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.19,
-      "prev": 4.2,
-      "change": -0.01,
-      "date": "2026-06-18",
+      "value": 4.24,
+      "prev": null,
+      "change": null,
+      "date": "2026-06-22",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 16.78,
-      "prev": 16.4,
-      "change": 0.38,
-      "date": "2026-06-19",
+      "value": 17.28,
+      "prev": 16.78,
+      "change": 0.5,
+      "date": "2026-06-22",
       "unit": ""
     },
     "dollar_index": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7500.58,
-      "prev": 7420.1,
-      "change": 80.48,
-      "date": "2026-06-18",
+      "value": 7365.46,
+      "prev": 7472.79,
+      "change": -107.33,
+      "date": "2026-06-23",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
       "value": 0.27,
       "unit": "%",
-      "date": "2026-06-18",
+      "date": "2026-06-22",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "ETF Zoo: The Leveraged ETF Frenzy Picks Up Momentum",
-      "source": "etf.com",
-      "url": "http://www.etf.com/sections/podcasts/etf-zoo-leveraged-etf-frenzy-picks-momentum?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-06-22T22:39:52Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq Drop As SpaceX, Broader Tech Weakness Outweighs US-Iran Hopes \u2014 SPCX, GOOGL, NFLX, COIN, MU In Focus",
+      "title": "Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-drop-as-space-x-broader-tech-weakness-outweighs-us-iran-hopes-spcx-googl-nflx-coin-mu-in-focus/cZKMJLHR79B",
-      "publishedAt": "2026-06-22T21:37:56Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-sp500-nasdaq-futures-cbrs-pltr-blze-mu-fdx-trending/cZKUtabR7OI",
+      "publishedAt": "2026-06-24T01:22:01Z"
     },
     {
-      "title": "I Make $150,000 a Year, But It Feels Like I\u2019m Just Middle Class in a World Full of Rich People",
+      "title": "Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation",
+      "source": "Benzinga",
+      "url": "https://finance.yahoo.com/economy/articles/mark-zandi-says-top-20-003019501.html",
+      "publishedAt": "2026-06-24T00:30:19Z"
+    },
+    {
+      "title": "Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2025/07/16/i-make-150000-a-year-but-it-feels-like-im-just-middle-class-in-a-world-full-of-rich-people/",
-      "publishedAt": "2026-06-22T21:02:10Z"
+      "url": "https://247wallst.com/investing/2026/06/23/why-arkk-investors-paid-premium-fees-for-a-37-88-loss-over-five-years/",
+      "publishedAt": "2026-06-23T22:45:35Z"
     },
     {
-      "title": "Index Options Are Now Cheap; Here's How To Buy Insurance Using The S&P 500 Tracking Fund SPY",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/research/options/spy-etf-index-options-cheap-insurance-using-spy/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-06-22T19:04:44Z"
-    },
-    {
-      "title": "JPMorgan: 2026 rally entirely earnings-driven, bull case targets 8900 by year-end",
+      "title": "JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/06/22/jpmorgan-2026-rally-entirely-earnings-driven-bull-case-targets-8900-by-year-end/",
-      "publishedAt": "2026-06-22T18:05:24Z"
+      "url": "https://247wallst.com/investing/2026/06/23/jepis-0-35-fee-is-a-trap-the-real-cost-is-the-14-48-return-gap-vs-spy/",
+      "publishedAt": "2026-06-23T22:21:50Z"
     },
     {
-      "title": "Had You Invested $1,000 in Marvell or Micron a Decade Ago, Here\u2019s What You\u2019d Have Now",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/22/had-you-invested-1000-in-marvell-or-micron-a-decade-ago-heres-what-youd-have-now/",
-      "publishedAt": "2026-06-22T16:55:06Z"
+      "title": "S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-drop-as-broader-tech-and-ai-selloff-continues/cZKwiu0R7OT",
+      "publishedAt": "2026-06-23T21:47:22Z"
     },
     {
-      "title": "US Economy Looking Like Goldilocks: ETF Areas Likely to Gain",
-      "source": "Zacks",
-      "url": "https://finance.yahoo.com/economy/articles/us-economy-looking-goldilocks-etf-160000675.html",
-      "publishedAt": "2026-06-22T16:00:00Z"
-    },
-    {
-      "title": "ETF Ways to Navigate the 2026 Midterm Election Cycle",
-      "source": "Zacks",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/etf-ways-navigate-2026-midterm-160000370.html",
-      "publishedAt": "2026-06-22T16:00:00Z"
-    },
-    {
-      "title": "Ex-Fed Chair Greenspan Remembered, PCE This Week",
-      "source": "Zacks",
-      "url": "https://finance.yahoo.com/economy/policy/articles/ex-fed-chair-greenspan-remembered-143000913.html",
-      "publishedAt": "2026-06-22T14:30:00Z"
-    },
-    {
-      "title": "What Happens to a 75 Year Old With a $500,000 IRA Who Takes the RMD in January vs December vs Monthly",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/06/22/what-happens-to-a-75-year-old-with-a-500000-ira-who-takes-the-rmd-in-january-vs-december-vs-monthly/",
-      "publishedAt": "2026-06-22T13:04:22Z"
-    },
-    {
-      "title": "QQQ vs QQQM: Same Nasdaq-100 Index, One Clear Winner for Long-Term Investors",
+      "title": "The SpaceX ETF Halted Mere Hours After the Biggest IPO Ever",
       "source": "etf.com",
-      "url": "http://www.etf.com/sections/news/qqq-vs-qqqm-same-nasdaq-100-index-one-clear-winner-long-term-investors?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-06-22T19:42:57Z"
+      "url": "http://www.etf.com/sections/podcasts/spacex-etf-halted-mere-hours-after-biggest-ipo-ever?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-06-23T21:32:23Z"
     },
     {
-      "title": "Roblox Is Down 42% in 2026: Will the Pain Be Over Soon?",
+      "title": "Why Retirees With Over $1 Million Should Hold a 5-Year Cash and Bond Ladder Instead of Cashing Out for Yield",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/22/roblox-is-down-42-in-2026-will-the-pain-be-over-soon/",
-      "publishedAt": "2026-06-22T19:15:21Z"
+      "url": "https://247wallst.com/personal-finance/2026/06/23/why-retirees-with-over-1-million-should-hold-a-5-year-cash-and-bond-ladder-instead-of-cashing-out-for-yield/",
+      "publishedAt": "2026-06-23T20:17:36Z"
+    },
+    {
+      "title": "The $24,500 Trap: Why Most Americans Contribute Just $4,945 to Their 401(k)",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/06/23/the-24500-trap-why-most-americans-contribute-just-4945-to-their-401k/",
+      "publishedAt": "2026-06-23T16:21:31Z"
+    },
+    {
+      "title": "McDonald\u2019s at 52-Week Low: Buy, Sell or Hold?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/23/mcdonalds-at-52-week-low-buy-sell-or-hold/",
+      "publishedAt": "2026-06-23T14:42:33Z"
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Tuesday as AI Spending Concerns Weigh on Technology Shares",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-131921257.html",
+      "publishedAt": "2026-06-23T13:19:21Z"
+    },
+    {
+      "title": "3 Things to Know about the Current Market Environment",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/articles/3-things-know-current-market-233200674.html",
+      "publishedAt": "2026-06-23T23:32:00Z"
+    },
+    {
+      "title": "You\u2019re Probably Paying Twice for NVIDIA, Apple, and Microsoft Without Realizing It",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/23/youre-probably-paying-twice-for-nvidia-apple-and-microsoft-without-realizing-it/",
+      "publishedAt": "2026-06-23T23:02:49Z"
     }
   ],
-  "fetchedAt": "2026-06-22 20:02 EDT"
+  "fetchedAt": "2026-06-23 23:07 EDT"
 }

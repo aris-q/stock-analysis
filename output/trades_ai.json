@@ -1,5 +1,5 @@
 {
-  "balance": 11.22,
+  "balance": 945.76,
   "holdings": {
     "POET": {
       "shares": 86,
@@ -17,7 +17,7 @@
       "shares": 4,
       "purchasePrice": 250.81,
       "purchasedAt": "2026-06-14 23:07 EDT",
-      "peakPrice": 271.83
+      "peakPrice": 302.52
     },
     "NBIS": {
       "shares": 4,
@@ -25,10 +25,10 @@
       "purchasedAt": "2026-06-15 23:18 EDT",
       "peakPrice": 286.69
     },
-    "XNDU": {
-      "shares": 93,
-      "purchasePrice": 13.94,
-      "purchasedAt": "2026-06-15 23:18 EDT"
+    "FLY": {
+      "shares": 8,
+      "purchasePrice": 28.96,
+      "purchasedAt": "2026-06-22 22:47 EDT"
     }
   },
   "transactions": [
@@ -491,7 +491,32 @@
       "date": "2026-06-15 23:18 EDT",
       "balance": 1627.83,
       "reason": ""
+    },
+    {
+      "ticker": "XNDU",
+      "action": "SELL",
+      "shares": 93,
+      "price": 12.54,
+      "amount": 1166.22,
+      "date": "2026-06-22 22:47 EDT",
+      "balance": 1177.44,
+      "reason": "Stop-loss triggered: down 10.0% from purchase $13.94 (hard stop at -8%)",
+      "composite": 63.6,
+      "buySignal": "Buy",
+      "pctFromPurchase": -10.04,
+      "pctFromPeak": -10.04,
+      "stopLoss": true
+    },
+    {
+      "ticker": "FLY",
+      "action": "BUY",
+      "shares": 8,
+      "price": 28.96,
+      "amount": 231.68,
+      "date": "2026-06-22 22:47 EDT",
+      "balance": 945.76,
+      "reason": "Firefly Aerospace shows promising revenue growth despite negative FCF. The sector benefits from increasing private and government space exploration, which should drive demand for their launch services. While debt is a concern, the bullish analyst sentiment and significant upside potential make it a compelling buy candidate for risk-tolerant investors."
     }
   ],
-  "lastRecommendAt": "2026-06-18 22:38 EDT"
+  "lastRecommendAt": "2026-06-22 22:47 EDT"
 }

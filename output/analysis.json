@@ -2,63 +2,63 @@
   "watchlist": [
     {
       "ticker": "POET",
-      "price": 12.09,
-      "previousClose": 12.15,
-      "volume": 16584243,
-      "marketCap": 2086678528,
-      "rsi14": 42.9,
-      "bbPercent": 0.351,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "price": 10.73,
+      "previousClose": 12.09,
+      "volume": 17242893,
+      "marketCap": 1851948672,
+      "rsi14": 38.9,
+      "bbPercent": 0.139,
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     },
     {
       "ticker": "CDE",
-      "price": 17.47,
-      "previousClose": 17.51,
-      "volume": 28744198,
-      "marketCap": 18003437568,
-      "rsi14": 40.7,
-      "bbPercent": 0.437,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "price": 16.32,
+      "previousClose": 17.47,
+      "volume": 38589589,
+      "marketCap": 16818323456,
+      "rsi14": 37.0,
+      "bbPercent": 0.209,
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     },
     {
       "ticker": "CRDO",
-      "price": 302.52,
-      "previousClose": 271.83,
-      "volume": 9349502,
-      "marketCap": 56413294592,
-      "rsi14": 69.6,
-      "bbPercent": 1.198,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "price": 272.005,
+      "previousClose": 302.52,
+      "volume": 10313821,
+      "marketCap": 50722922496,
+      "rsi14": 59.7,
+      "bbPercent": 0.832,
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     },
     {
       "ticker": "SPCX",
-      "price": 154.6,
-      "previousClose": 185.0,
-      "volume": 165553299,
-      "marketCap": 2036729380864,
+      "price": 156.11,
+      "previousClose": 154.6,
+      "volume": 153240080,
+      "marketCap": 2056622309376,
       "rsi14": null,
       "bbPercent": null,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     },
     {
       "ticker": "NBIS",
-      "price": 283.61,
-      "previousClose": 286.69,
-      "volume": 14167192,
-      "marketCap": 72008065024,
-      "rsi14": 56.3,
-      "bbPercent": 0.895,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "price": 275.25,
+      "previousClose": 283.61,
+      "volume": 18422605,
+      "marketCap": 69885476864,
+      "rsi14": 54.7,
+      "bbPercent": 0.785,
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     },
     {
-      "ticker": "XNDU",
-      "price": 12.54,
-      "previousClose": 13.37,
-      "volume": 3658999,
-      "marketCap": 3743332096,
-      "rsi14": 34.7,
-      "bbPercent": 0.274,
-      "priceFetchedAt": "2026-06-22 20:01 EDT"
+      "ticker": "FLY",
+      "price": 27.21,
+      "previousClose": 28.96,
+      "volume": 5154047,
+      "marketCap": 4468839936,
+      "rsi14": 26.7,
+      "bbPercent": 0.181,
+      "priceFetchedAt": "2026-06-23 23:06 EDT"
     }
   ],
   "dailyGainers": [
@@ -123,7 +123,7 @@
       "volume": 53414126
     }
   ],
-  "lastPriceRefresh": "2026-06-22 20:01 EDT",
+  "lastPriceRefresh": "2026-06-23 23:06 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "MU.TO",
