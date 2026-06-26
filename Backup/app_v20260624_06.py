@@ -942,10 +942,7 @@ def run_dream_scan(trigger="manual"):
         watchlist = load_json(WATCHLIST_PATH, [])
         watchlist_tickers = [w["ticker"] for w in watchlist if isinstance(w, dict)] if watchlist and isinstance(watchlist[0], dict) else watchlist
         gainers = fetch_daily_gainers()
-        # fetch_daily_gainers returns {"us": [...], "cdn": [...]}
-        us = gainers.get("us", []) if isinstance(gainers, dict) else []
-        cdn = gainers.get("cdn", []) if isinstance(gainers, dict) else []
-        gainer_tickers = [g.get("ticker", "") for g in us + cdn if isinstance(g, dict)]
+        gainer_tickers = [g.get("ticker") or g.get("symbol", "") for g in gainers] if gainers else []
         existing = load_json(DREAM_PATH, {}).get("candidates", [])
         candidates = fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing)
         from datetime import datetime
@@ -1032,7 +1029,7 @@ SCORING_DEFAULTS = {
         "Buy": 75,
         "Hold": 40,
         "Avoid": 0,
-        "Unknown": 10
+        "Unknown": 20
     },
     "bucketWeights": {
         "Momentum":   {"dream": 0.15, "ai": 0.35, "signal": 0.30},
@@ -1096,7 +1093,7 @@ SCORING_DEFAULTS = {
     },
     "sellThresholds": {
         "hardSellFloor":    25,
-        "softSellFloor":    50,
+        "softSellFloor":    40,
         "maxPositions":     5,
         "stopLossHard":     8.0,
         "stopLossSoft":     6.0,
@@ -1720,10 +1717,6 @@ def run_tradeai_analyze():
             assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro)
             ai_assessments[ticker] = assessment
             log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
-            # Gemini free tier: 5 RPM limit — wait 13s between calls
-            if idx < total:
-                import time
-                time.sleep(20)
 
         candidates_data["aiAssessments"] = ai_assessments
         candidates_data["aiAnalyzedAt"] = ts()
@@ -1989,9 +1982,8 @@ def run_tradeai_recommend():
         max_slots        = int(pm.get("slots", 5))
         max_deploy       = float(pm.get("maxDeployPct", 80)) / 100.0
         min_composite    = float(pm.get("minBuyComposite", 60))
-        deployable       = round(balance * max_deploy, 2)
-        budget_per_slot  = round(deployable / max(1, max_slots), 2)
-        log.info(f"TradeAI BUY config | balance:{balance} deployable:{deployable} slots:{max_slots} per_slot:{budget_per_slot} min_composite:{min_composite}")
+        budget_per_slot  = round(balance * max_deploy / max(1, max_slots), 2)  # estimate for qualify filter only
+        log.info(f"TradeAI BUY config | slots:{max_slots} max_deploy:{max_deploy*100:.0f}% min_composite:{min_composite} est_per_slot:{budget_per_slot}")
 
         buys = []
         held_count = len(holdings)
@@ -2026,7 +2018,7 @@ def run_tradeai_recommend():
                 log.info(f"TradeAI QUALIFY skip (composite {s.get('composite')} < min {min_composite}): {ticker}")
                 continue
             if budget_per_slot < price:
-                log.warning(f"TradeAI QUALIFY skip (price ${price} > per-slot budget ${budget_per_slot}): {ticker}")
+                log.warning(f"TradeAI QUALIFY skip (price ${price} > est per-slot budget ${budget_per_slot}): {ticker}")
                 continue
             qualified.append(s)
             log.info(f"TradeAI QUALIFIED: {ticker} | bucket:{s.get('bucket')} composite:{s.get('composite')} signal:{s.get('buySignal')}")
@@ -2035,13 +2027,14 @@ def run_tradeai_recommend():
         qualified_sorted = sorted(qualified, key=lambda x: x.get("composite", 0), reverse=True)
         actual_buys = qualified_sorted[:slots_to_fill]
 
-        # Equal budget split across actual buys — not wasted across empty slots
+        # Calculate deployable AFTER sells so proceeds are included
         actual_buy_count = len(actual_buys)
+        deployable = round(balance * max_deploy, 2)
         if actual_buy_count > 0:
             equal_budget = round(deployable / actual_buy_count, 2)
         else:
-            equal_budget = budget_per_slot
-        log.info(f"TradeAI QUALIFY results | {len(qualified)} qualified from {len(scored)} scored | buying top {slots_to_fill} | equal_budget:{equal_budget} each")
+            equal_budget = 0
+        log.info(f"TradeAI QUALIFY results | {len(qualified)} qualified from {len(scored)} scored | buying top {slots_to_fill} | balance:{balance} deployable:{deployable} equal_budget:{equal_budget} each")
 
         # ── Step 2: buy top N qualifiers by composite score ───────────────────
         for s in actual_buys:
@@ -2511,10 +2504,6 @@ def signal_forecast():
                 "accuracy":    None,
                 "generatedAt": ts(),
             })
-            # Gemini free tier: 5 RPM — throttle signal forecast calls
-            if idx < total:
-                import time
-                time.sleep(13)
             _signal_progress["done"] = len(rows)
             log.info(f"[Forecast] {idx}/{total} {ticker} OK | {fc['direction']} | ${fc['forecastLow']}–${fc['forecastHigh']}")
 

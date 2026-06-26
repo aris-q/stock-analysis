@@ -1,31 +1,31 @@
 {
   "identified": [
     {
-      "ticker": "POET",
+      "ticker": "ONDS",
       "reason": "Current holding \u2014 evaluate for sell",
       "source": "Account",
       "bucket": "Account"
     },
     {
-      "ticker": "CDE",
+      "ticker": "BMNR",
       "reason": "Current holding \u2014 evaluate for sell",
       "source": "Account",
       "bucket": "Account"
     },
     {
-      "ticker": "CRDO",
+      "ticker": "AGI.TO",
       "reason": "Current holding \u2014 evaluate for sell",
       "source": "Account",
       "bucket": "Account"
     },
     {
-      "ticker": "NBIS",
+      "ticker": "WAT",
       "reason": "Current holding \u2014 evaluate for sell",
       "source": "Account",
       "bucket": "Account"
     },
     {
-      "ticker": "FLY",
+      "ticker": "CRWV",
       "reason": "Current holding \u2014 evaluate for sell",
       "source": "Account",
       "bucket": "Account"
@@ -79,26 +79,20 @@
       "bucket": "Reversal"
     },
     {
+      "ticker": "FLY",
+      "reason": "Reversal: RSI 20.8 oversold, dream score 38 \u2014 early accumulation signal",
+      "source": "Daily Gainer",
+      "bucket": "Reversal"
+    },
+    {
       "ticker": "EQT",
       "reason": "Reversal: RSI 21.3 oversold, dream score 56 \u2014 early accumulation signal",
       "source": "S&P 500",
       "bucket": "Reversal"
     },
     {
-      "ticker": "PBR",
-      "reason": "Reversal: RSI 21.5 oversold, dream score 24 \u2014 early accumulation signal",
-      "source": "Screener",
-      "bucket": "Reversal"
-    },
-    {
-      "ticker": "ONDS",
-      "reason": "Smart Money: rev growth 1079.9%, margin 44.8% \u2014 strong fundamentals, not yet consensus",
-      "source": "Watchlist",
-      "bucket": "SmartMoney"
-    },
-    {
-      "ticker": "BMNR",
-      "reason": "Smart Money: rev growth 627.8%, margin 66.6% \u2014 strong fundamentals, not yet consensus",
+      "ticker": "NBIS",
+      "reason": "Smart Money: rev growth 683.9%, margin 72.1% \u2014 strong fundamentals, not yet consensus",
       "source": "Screener",
       "bucket": "SmartMoney"
     },
@@ -119,239 +113,245 @@
       "reason": "Smart Money: rev growth 117.7%, margin 65.5% \u2014 strong fundamentals, not yet consensus",
       "source": "Daily Gainer",
       "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "NAT",
+      "reason": "Smart Money: rev growth 104.3%, margin 46.9% \u2014 strong fundamentals, not yet consensus",
+      "source": "Screener",
+      "bucket": "SmartMoney"
     }
   ],
-  "identifiedAt": "2026-06-24 00:32 EDT",
+  "identifiedAt": "2026-06-25 09:33 EDT",
   "details": {
-    "POET": {
-      "ticker": "POET",
-      "name": "POET Technologies Inc.",
+    "ONDS": {
+      "ticker": "ONDS",
+      "name": "Ondas Inc",
       "sector": "Technology",
-      "industry": "Semiconductors",
-      "price": 10.73,
-      "marketCap": 1851948672,
-      "volume": 17242893,
-      "rsi14": 38.9,
-      "ma20": 12.7,
-      "ma50": 11.63,
-      "bbPercent": 0.139,
-      "change1d": -11.25,
-      "change2d": -0.49,
-      "change3d": 1.67,
-      "change4d": -5.53,
-      "change5d": -9.19,
-      "change7d": -14.37,
-      "change30d": -22.81,
-      "revenueGrowth": 201.9,
-      "grossMargin": 100.0,
-      "fcf": -42376272,
-      "peRatio": null,
-      "forwardPE": -63.1,
-      "eps": -0.84,
-      "debtToEquity": 1.6,
-      "returnOnEquity": -33.9,
-      "week52High": 20.81,
-      "week52Low": 3.87,
-      "priceVs52wHigh": 51.6,
-      "analystTarget": 17.5,
-      "analystUpside": 63.1,
-      "recommendation": "none",
-      "institutionalPct": 25.6,
-      "insiderPct": 0.1,
-      "shortFloat": 13.5,
+      "industry": "Communication Equipment",
+      "price": 7.735,
+      "marketCap": 4072792832,
+      "volume": 3969716,
+      "rsi14": 15.0,
+      "ma20": 10.29,
+      "ma50": 10.07,
+      "bbPercent": 0.162,
+      "change1d": 0.72,
+      "change2d": -9.96,
+      "change3d": -4.05,
+      "change4d": -4.1,
+      "change5d": 1.64,
+      "change7d": -16.02,
+      "change30d": -12.7,
+      "revenueGrowth": 1079.9,
+      "grossMargin": 44.8,
+      "fcf": -15650777,
+      "peRatio": 85.9,
+      "forwardPE": -154.7,
+      "eps": 0.09,
+      "debtToEquity": 0.7,
+      "returnOnEquity": 42.9,
+      "week52High": 15.28,
+      "week52Low": 1.53,
+      "priceVs52wHigh": 50.6,
+      "analystTarget": 20.125,
+      "analystUpside": 160.2,
+      "recommendation": "strong_buy",
+      "institutionalPct": 41.2,
+      "insiderPct": 2.0,
+      "shortFloat": 32.0,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "POET Technologies Inc., together with its subsidiaries, designs, develops, manufactures, and sells semiconductor products and services for commercial applications in the United States, Canada, the rest of North and South America, Europe, Malaysia, Singapore, China, and the rest of Asia. The company offers photonic integrated packaging solutions based on the POET Optical Interposer, a platform that",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
-    "CDE": {
-      "ticker": "CDE",
-      "name": "Coeur Mining, Inc.",
+    "BMNR": {
+      "ticker": "BMNR",
+      "name": "BitMine Immersion Technologies,",
+      "sector": "Financial Services",
+      "industry": "Capital Markets",
+      "price": 13.9,
+      "marketCap": 7917117952,
+      "volume": 2285568,
+      "rsi14": 31.1,
+      "ma20": 16.57,
+      "ma50": 19.44,
+      "bbPercent": 0.055,
+      "change1d": -0.86,
+      "change2d": -7.34,
+      "change3d": -4.6,
+      "change4d": -1.73,
+      "change5d": 2.8,
+      "change7d": -14.25,
+      "change30d": -34.37,
+      "revenueGrowth": 627.8,
+      "grossMargin": 66.6,
+      "fcf": -152525936,
+      "peRatio": null,
+      "forwardPE": 14.8,
+      "eps": -7.44,
+      "debtToEquity": 0.0,
+      "returnOnEquity": -175.9,
+      "week52High": 161.0,
+      "week52Low": 3.92,
+      "priceVs52wHigh": 8.6,
+      "analystTarget": 37.33333,
+      "analystUpside": 168.6,
+      "recommendation": "none",
+      "institutionalPct": 37.4,
+      "insiderPct": 0.8,
+      "shortFloat": 4.7,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+    },
+    "AGI.TO": {
+      "ticker": "AGI.TO",
+      "name": "ALAMOS GOLD INC CLS A",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 16.32,
-      "marketCap": 16818323456,
-      "volume": 38589589,
-      "rsi14": 37.0,
-      "ma20": 17.69,
-      "ma50": 18.28,
-      "bbPercent": 0.209,
-      "change1d": -6.58,
-      "change2d": -0.23,
-      "change3d": -0.11,
-      "change4d": -6.71,
-      "change5d": 0.7,
-      "change7d": -5.12,
-      "change30d": -17.48,
-      "revenueGrowth": 137.8,
-      "grossMargin": 58.6,
-      "fcf": 511841376,
-      "peRatio": 13.2,
-      "forwardPE": 8.0,
-      "eps": 1.24,
-      "debtToEquity": 7.4,
-      "returnOnEquity": 12.1,
-      "week52High": 27.77,
-      "week52Low": 8.46,
-      "priceVs52wHigh": 58.8,
-      "analystTarget": 27.27273,
-      "analystUpside": 67.1,
-      "recommendation": "buy",
-      "institutionalPct": 79.7,
-      "insiderPct": 0.9,
-      "shortFloat": 3.9,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
-    },
-    "CRDO": {
-      "ticker": "CRDO",
-      "name": "Credo Technology Group Holding ",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "price": 272.005,
-      "marketCap": 50722922496,
-      "volume": 10313821,
-      "rsi14": 59.7,
-      "ma20": 239.97,
-      "ma50": 204.27,
-      "bbPercent": 0.832,
-      "change1d": -10.09,
-      "change2d": 11.29,
-      "change3d": 9.02,
-      "change4d": 4.24,
-      "change5d": -7.8,
-      "change7d": 8.45,
-      "change30d": 29.39,
-      "revenueGrowth": 157.0,
-      "grossMargin": 68.0,
-      "fcf": 250810128,
-      "peRatio": 108.8,
-      "forwardPE": 30.5,
-      "eps": 2.5,
-      "debtToEquity": 1.2,
-      "returnOnEquity": 34.4,
-      "week52High": 308.67,
-      "week52Low": 84.25,
-      "priceVs52wHigh": 88.1,
-      "analystTarget": 269.81342,
-      "analystUpside": -0.8,
-      "recommendation": "strong_buy",
-      "institutionalPct": 75.9,
-      "insiderPct": 10.9,
-      "shortFloat": 6.3,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Credo Technology Group Holding Ltd provides various high-speed connectivity solutions for optical and electrical Ethernet and PCIe applications in the United States, Taiwan, Mainland China, Hong Kong, and other international markets. The company offers ZeroFlap (ZF) active electrical cables and ZF optical transceivers, OmniConnect memory solutions, and a suite of retimers and DSPs for optical and ",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
-    },
-    "NBIS": {
-      "ticker": "NBIS",
-      "name": "Nebius Group N.V.",
-      "sector": "Communication Services",
-      "industry": "Internet Content & Information",
-      "price": 275.25,
-      "marketCap": 69885476864,
-      "volume": 18422605,
-      "rsi14": 54.7,
-      "ma20": 244.71,
-      "ma50": 202.75,
-      "bbPercent": 0.785,
-      "change1d": -2.95,
-      "change2d": -1.07,
-      "change3d": 2.06,
-      "change4d": 5.96,
-      "change5d": 1.93,
-      "change7d": 18.46,
-      "change30d": 47.9,
-      "revenueGrowth": 683.9,
-      "grossMargin": 72.1,
-      "fcf": -6147975168,
-      "peRatio": 106.3,
-      "forwardPE": 762.0,
-      "eps": 2.59,
-      "debtToEquity": 132.4,
-      "returnOnEquity": 14.1,
-      "week52High": 299.86,
-      "week52Low": 43.89,
-      "priceVs52wHigh": 91.8,
-      "analystTarget": 244.07143,
-      "analystUpside": -11.3,
-      "recommendation": "buy",
-      "institutionalPct": 63.3,
-      "insiderPct": 3.7,
-      "shortFloat": 20.3,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Nebius Group N.V., a technology company, engages in building full-stack infrastructure to service the global AI industry in the United States, the United Kingdom, and internationally. It offers Nebius builds full-stack infrastructure for AI, including large-scale GPU clusters, cloud platforms, and tools and services for developers. The company also provides TripleTen, an edtech platform for re-ski",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
-    },
-    "FLY": {
-      "ticker": "FLY",
-      "name": "Firefly Aerospace Inc.",
-      "sector": "Industrials",
-      "industry": "Aerospace & Defense",
-      "price": 27.21,
-      "marketCap": 4468839936,
-      "volume": 5154047,
-      "rsi14": 26.7,
-      "ma20": 38.68,
-      "ma50": 38.79,
-      "bbPercent": 0.181,
-      "change1d": -6.04,
-      "change2d": -6.43,
-      "change3d": -0.64,
-      "change4d": 0.65,
-      "change5d": -7.22,
-      "change7d": -14.62,
-      "change30d": -28.84,
-      "revenueGrowth": 44.8,
-      "grossMargin": 24.8,
-      "fcf": -146637120,
-      "peRatio": null,
-      "forwardPE": -21.1,
-      "eps": -4.93,
+      "price": 43.74,
+      "marketCap": 18369288192,
+      "volume": 40786,
+      "rsi14": 40.8,
+      "ma20": 49.55,
+      "ma50": 54.49,
+      "bbPercent": 0.17,
+      "change1d": 2.2,
+      "change2d": -2.48,
+      "change3d": -2.99,
+      "change4d": 7.87,
+      "change5d": -18.44,
+      "change7d": -17.09,
+      "change30d": -26.59,
+      "revenueGrowth": 79.2,
+      "grossMargin": 70.2,
+      "fcf": 153624992,
+      "peRatio": 12.3,
+      "forwardPE": 8.9,
+      "eps": 3.56,
       "debtToEquity": 4.8,
-      "returnOnEquity": -62.1,
-      "week52High": 73.8,
-      "week52Low": 16.0,
-      "priceVs52wHigh": 36.9,
-      "analystTarget": 48.22222,
-      "analystUpside": 77.2,
-      "recommendation": "buy",
-      "institutionalPct": 57.9,
-      "insiderPct": 20.5,
-      "shortFloat": 12.1,
+      "returnOnEquity": 25.9,
+      "week52High": 75.78,
+      "week52Low": 33.11,
+      "priceVs52wHigh": 57.7,
+      "analystTarget": 75.80466,
+      "analystUpside": 73.3,
+      "recommendation": "strong_buy",
+      "institutionalPct": 70.2,
+      "insiderPct": 0.3,
+      "shortFloat": null,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "Firefly Aerospace Inc. operates as a space and defense technology company and provides mission solutions for national security, government, and commercial customers in United States. The company offers integrated launch and space services technology that is committed to enabling launch, transit, and operations in space. It also provides Launch solutions, such as Alpha, a responsive launch services",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "description": "Alamos Gold Inc. operates as a gold producer in Canada and Mexico. It primarily explores for gold deposits. The company was founded in 2003 and is based in Toronto, Canada.",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+    },
+    "WAT": {
+      "ticker": "WAT",
+      "name": "Waters Corporation",
+      "sector": "Healthcare",
+      "industry": "Diagnostics & Research",
+      "price": 374.91,
+      "marketCap": 36810858496,
+      "volume": 10561,
+      "rsi14": 48.9,
+      "ma20": 366.26,
+      "ma50": 344.04,
+      "bbPercent": 0.744,
+      "change1d": 1.55,
+      "change2d": 3.35,
+      "change3d": -0.29,
+      "change4d": 0.79,
+      "change5d": -0.44,
+      "change7d": 3.99,
+      "change30d": 11.94,
+      "revenueGrowth": 91.4,
+      "grossMargin": 55.2,
+      "fcf": -502370624,
+      "peRatio": 47.7,
+      "forwardPE": 22.8,
+      "eps": 7.86,
+      "debtToEquity": 36.6,
+      "returnOnEquity": 5.2,
+      "week52High": 414.15,
+      "week52Low": 275.05,
+      "priceVs52wHigh": 90.5,
+      "analystTarget": 400.27274,
+      "analystUpside": 6.8,
+      "recommendation": "buy",
+      "institutionalPct": 99.7,
+      "insiderPct": 0.1,
+      "shortFloat": 4.6,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Waters Corporation provides analytical workflow solutions in Asia, the Americas, and Europe. The company operates through two segments, Waters and TA. The company designs, manufactures, sells, and services liquid chromatography, as well as mass spectrometry (MS) technology systems and supports products, including chromatography columns, and other consumable products. It also designs, manufactures,",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+    },
+    "CRWV": {
+      "ticker": "CRWV",
+      "name": "CoreWeave, Inc.",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "price": 104.345,
+      "marketCap": 56927539200,
+      "volume": 1404325,
+      "rsi14": 47.1,
+      "ma20": 107.58,
+      "ma50": 111.39,
+      "bbPercent": 0.401,
+      "change1d": 3.43,
+      "change2d": -4.58,
+      "change3d": -5.0,
+      "change4d": -5.65,
+      "change5d": 2.38,
+      "change7d": -10.84,
+      "change30d": -6.26,
+      "revenueGrowth": 111.6,
+      "grossMargin": 69.4,
+      "fcf": -8560327168,
+      "peRatio": null,
+      "forwardPE": -123.0,
+      "eps": -2.72,
+      "debtToEquity": 738.5,
+      "returnOnEquity": -40.7,
+      "week52High": 173.349,
+      "week52Low": 63.8,
+      "priceVs52wHigh": 60.2,
+      "analystTarget": 140.18182,
+      "analystUpside": 34.3,
+      "recommendation": "buy",
+      "institutionalPct": 57.4,
+      "insiderPct": 18.5,
+      "shortFloat": 18.2,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "CoreWeave, Inc. operates as a cloud infrastructure technology company in the United States. The company offers CoreWeave Cloud platform that comprises proprietary software and cloud services that deliver the automation and efficiency needed to manage complex artificial intelligence (AI) infrastructure at scale. It also offers data and storage solutions, such as Local Object Transport Accelerator; ",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "HST": {
       "ticker": "HST",
       "name": "Host Hotels & Resorts, Inc.",
       "sector": "Real Estate",
       "industry": "REIT - Hotel & Motel",
-      "price": 24.82,
-      "marketCap": 17219278848,
-      "volume": 6321592,
-      "rsi14": 65.0,
-      "ma20": 24.2,
-      "ma50": 22.49,
-      "bbPercent": 0.721,
-      "change1d": -1.23,
-      "change2d": 0.48,
-      "change3d": 1.58,
-      "change4d": -1.12,
-      "change5d": 0.36,
-      "change7d": -0.28,
-      "change30d": 13.96,
+      "price": 24.865,
+      "marketCap": 17250498560,
+      "volume": 100795,
+      "rsi14": 55.7,
+      "ma20": 24.34,
+      "ma50": 22.65,
+      "bbPercent": 0.703,
+      "change1d": 1.16,
+      "change2d": -0.97,
+      "change3d": -1.23,
+      "change4d": 0.48,
+      "change5d": 1.58,
+      "change7d": -0.14,
+      "change30d": 15.33,
       "revenueGrowth": 2.8,
       "grossMargin": 29.0,
       "fcf": 1190875008,
@@ -362,9 +362,9 @@
       "returnOnEquity": 14.9,
       "week52High": 25.41,
       "week52Low": 15.12,
-      "priceVs52wHigh": 97.7,
+      "priceVs52wHigh": 97.9,
       "analystTarget": 24.2375,
-      "analystUpside": -2.3,
+      "analystUpside": -2.5,
       "recommendation": "buy",
       "institutionalPct": 105.7,
       "insiderPct": 1.5,
@@ -373,40 +373,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Host Hotels & Resorts, Inc., herein referred to as we, Host Inc., or the Company, is a self-managed and self-administered real estate investment trust that owns hotel property. We conduct our operations as an umbrella partnership, REIT, through an operating partnership, Host Hotels & Resorts, L.P., of which we are the sole general partner. When distinguishing between Host Inc. and Host LP, the pri",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "MOH": {
       "ticker": "MOH",
       "name": "Molina Healthcare Inc",
       "sector": "Healthcare",
       "industry": "Healthcare Plans",
-      "price": 196.56,
-      "marketCap": 10240776192,
-      "volume": 699624,
-      "rsi14": 65.2,
-      "ma20": 190.85,
-      "ma50": 182.66,
-      "bbPercent": 0.649,
-      "change1d": -0.44,
-      "change2d": 1.05,
-      "change3d": -0.08,
-      "change4d": -2.34,
-      "change5d": -0.82,
-      "change7d": -1.86,
-      "change30d": 6.14,
+      "price": 207.135,
+      "marketCap": 10791733248,
+      "volume": 31859,
+      "rsi14": 63.6,
+      "ma20": 193.58,
+      "ma50": 184.88,
+      "bbPercent": 0.871,
+      "change1d": 2.84,
+      "change2d": 2.47,
+      "change3d": -0.44,
+      "change4d": 1.05,
+      "change5d": -0.08,
+      "change7d": 3.46,
+      "change30d": 7.9,
       "revenueGrowth": -4.3,
       "grossMargin": 8.9,
       "fcf": 757500032,
-      "peRatio": 53.0,
-      "forwardPE": 21.1,
-      "eps": 3.71,
+      "peRatio": 55.5,
+      "forwardPE": 22.2,
+      "eps": 3.73,
       "debtToEquity": 96.7,
       "returnOnEquity": 4.5,
       "week52High": 311.52,
       "week52Low": 121.06,
-      "priceVs52wHigh": 63.1,
+      "priceVs52wHigh": 66.5,
       "analystTarget": 191.76471,
-      "analystUpside": -2.4,
+      "analystUpside": -7.4,
       "recommendation": "none",
       "institutionalPct": 111.8,
       "insiderPct": 1.4,
@@ -415,40 +415,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Molina Healthcare, Inc. provides managed healthcare services to low-income families and individuals under the Medicaid and Medicare programs and through the state insurance marketplaces in the United States. It operates in four segments: Medicaid, Medicare, Marketplace, and Other. The company was founded in 1980 and is headquartered in Long Beach, California.",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "MAS": {
       "ticker": "MAS",
       "name": "Masco Corporation",
       "sector": "Industrials",
       "industry": "Building Products & Equipment",
-      "price": 73.21,
-      "marketCap": 14768977920,
-      "volume": 1517430,
-      "rsi14": 63.3,
-      "ma20": 71.47,
-      "ma50": 69.79,
-      "bbPercent": 0.7,
-      "change1d": -0.5,
-      "change2d": -1.08,
-      "change3d": 2.42,
-      "change4d": -2.91,
-      "change5d": 0.63,
-      "change7d": -1.11,
-      "change30d": 4.21,
+      "price": 78.75,
+      "marketCap": 15886586880,
+      "volume": 26814,
+      "rsi14": 71.7,
+      "ma20": 72.37,
+      "ma50": 70.35,
+      "bbPercent": 1.049,
+      "change1d": 0.9,
+      "change2d": 6.61,
+      "change3d": -0.5,
+      "change4d": -1.08,
+      "change5d": 2.42,
+      "change7d": 5.28,
+      "change30d": 17.26,
       "revenueGrowth": 6.5,
       "grossMargin": 35.7,
       "fcf": 738499968,
-      "peRatio": 18.1,
-      "forwardPE": 15.6,
+      "peRatio": 19.5,
+      "forwardPE": 16.7,
       "eps": 4.04,
       "debtToEquity": 12229.6,
       "returnOnEquity": 8457.1,
       "week52High": 79.19,
       "week52Low": 58.16,
-      "priceVs52wHigh": 92.4,
+      "priceVs52wHigh": 99.4,
       "analystTarget": 81.0,
-      "analystUpside": 10.6,
+      "analystUpside": 2.9,
       "recommendation": "buy",
       "institutionalPct": 105.5,
       "insiderPct": 0.2,
@@ -457,40 +457,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Masco Corporation provides home improvement and building products in North America, Europe, and internationally. The company's Plumbing Products segment offers faucets, showerheads, handheld showers, valves, bath hardware and accessories, bathing units, shower bases and enclosures, shower drains, steam shower systems, water filtration systems, and sinks and kitchen accessories; acrylic tubs, bath ",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "EA": {
       "ticker": "EA",
       "name": "Electronic Arts Inc.",
       "sector": "Communication Services",
       "industry": "Electronic Gaming & Multimedia",
-      "price": 203.52,
-      "marketCap": 51032944640,
-      "volume": 1859721,
-      "rsi14": 62.0,
-      "ma20": 202.53,
-      "ma50": 202.05,
-      "bbPercent": 0.79,
-      "change1d": 0.27,
-      "change2d": 0.41,
-      "change3d": -0.43,
-      "change4d": 0.0,
-      "change5d": -0.05,
-      "change7d": 0.12,
-      "change30d": 1.74,
+      "price": 204.515,
+      "marketCap": 51282440192,
+      "volume": 29627,
+      "rsi14": 59.4,
+      "ma20": 202.9,
+      "ma50": 202.13,
+      "bbPercent": 0.986,
+      "change1d": -0.0,
+      "change2d": 0.49,
+      "change3d": 0.27,
+      "change4d": 0.41,
+      "change5d": -0.43,
+      "change7d": 0.74,
+      "change30d": 2.26,
       "revenueGrowth": 11.9,
       "grossMargin": 79.0,
       "fcf": 2219124992,
       "peRatio": 58.1,
-      "forwardPE": 21.2,
-      "eps": 3.5,
+      "forwardPE": 21.3,
+      "eps": 3.52,
       "debtToEquity": 27.4,
       "returnOnEquity": 13.5,
       "week52High": 204.89,
       "week52Low": 146.97,
-      "priceVs52wHigh": 99.3,
+      "priceVs52wHigh": 99.8,
       "analystTarget": 202.8,
-      "analystUpside": -0.4,
+      "analystUpside": -0.8,
       "recommendation": "hold",
       "institutionalPct": 95.2,
       "insiderPct": 0.2,
@@ -499,40 +499,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Electronic Arts Inc. develops, markets, publishes, and delivers games, content, and services for game consoles, PCs, and mobile phones worldwide. It develops and publishes games and experiences across diverse genres, such as sports, racing, first-person shooter, action, role-playing, and simulation; and live services offerings, including extra content and subscription offerings through its global ",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "LRCX": {
       "ticker": "LRCX",
       "name": "Lam Research Corporation",
       "sector": "Technology",
       "industry": "Semiconductor Equipment & Materials",
-      "price": 371.33,
-      "marketCap": 464374530048,
-      "volume": 15758700,
-      "rsi14": 57.6,
-      "ma20": 345.7,
-      "ma50": 303.14,
-      "bbPercent": 0.71,
-      "change1d": -9.33,
-      "change2d": 5.27,
-      "change3d": 3.97,
-      "change4d": 1.38,
-      "change5d": -5.03,
-      "change7d": 1.3,
-      "change30d": 25.52,
+      "price": 393.0,
+      "marketCap": 491474419712,
+      "volume": 854893,
+      "rsi14": 61.4,
+      "ma20": 352.03,
+      "ma50": 307.71,
+      "bbPercent": 0.827,
+      "change1d": 4.86,
+      "change2d": 0.93,
+      "change3d": -9.33,
+      "change4d": 5.27,
+      "change5d": 3.97,
+      "change7d": 6.48,
+      "change30d": 33.12,
       "revenueGrowth": 23.8,
       "grossMargin": 50.0,
       "fcf": 4352341504,
-      "peRatio": 70.5,
-      "forwardPE": 46.4,
-      "eps": 5.27,
+      "peRatio": 74.4,
+      "forwardPE": 49.1,
+      "eps": 5.28,
       "debtToEquity": 35.3,
       "returnOnEquity": 66.8,
       "week52High": 409.75,
       "week52Low": 90.94,
-      "priceVs52wHigh": 90.6,
+      "priceVs52wHigh": 95.9,
       "analystTarget": 340.58066,
-      "analystUpside": -8.3,
+      "analystUpside": -13.3,
       "recommendation": "buy",
       "institutionalPct": 88.1,
       "insiderPct": 0.3,
@@ -541,40 +541,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Lam Research Corporation designs, manufactures, markets, refurbishes, and services semiconductor processing equipment used in the fabrication of integrated circuits in the United States, China, Korea, Taiwan, Japan, Southeast Asia, and Europe. The company offers ALTUS systems to deposit conformal or selective films for tungsten or molybdenum metallization applications; SABRE electrochemical deposi",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "BSX": {
       "ticker": "BSX",
       "name": "Boston Scientific Corporation",
       "sector": "Healthcare",
       "industry": "Medical Devices",
-      "price": 45.6,
-      "marketCap": 67777794048,
-      "volume": 15006836,
-      "rsi14": 38.2,
-      "ma20": 48.01,
-      "ma50": 54.25,
-      "bbPercent": 0.281,
-      "change1d": 2.86,
-      "change2d": -2.12,
-      "change3d": 0.76,
-      "change4d": -4.2,
-      "change5d": 0.34,
-      "change7d": -2.79,
-      "change30d": -14.56,
+      "price": 44.1,
+      "marketCap": 65548263424,
+      "volume": 620928,
+      "rsi14": 24.0,
+      "ma20": 47.03,
+      "ma50": 53.49,
+      "bbPercent": 0.067,
+      "change1d": -0.73,
+      "change2d": -2.5,
+      "change3d": 2.86,
+      "change4d": -2.12,
+      "change5d": 0.76,
+      "change7d": -5.94,
+      "change30d": -16.82,
       "revenueGrowth": 11.6,
       "grossMargin": 68.9,
       "fcf": 2807124992,
-      "peRatio": 19.1,
-      "forwardPE": 12.2,
+      "peRatio": 18.5,
+      "forwardPE": 11.9,
       "eps": 2.39,
       "debtToEquity": 42.2,
       "returnOnEquity": 14.7,
       "week52High": 109.5,
-      "week52Low": 44.05,
-      "priceVs52wHigh": 41.6,
+      "week52Low": 43.89,
+      "priceVs52wHigh": 40.3,
       "analystTarget": 77.03571,
-      "analystUpside": 68.9,
+      "analystUpside": 74.7,
       "recommendation": "buy",
       "institutionalPct": 95.0,
       "insiderPct": 0.2,
@@ -583,40 +583,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Boston Scientific Corporation develops, manufactures, and markets medical devices for use in various interventional medical specialties worldwide. The company operates in two segments, MedSurg and Cardiovascular. It offers devices to diagnose and treat a range of gastrointestinal conditions, such as resolution clips, biliary stent systems, stents and electrocautery enhanced delivery systems, SpyGl",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "PTC": {
       "ticker": "PTC",
       "name": "PTC Inc.",
       "sector": "Technology",
       "industry": "Software - Application",
-      "price": 112.33,
-      "marketCap": 12974766080,
-      "volume": 1977657,
-      "rsi14": 13.7,
-      "ma20": 129.99,
-      "ma50": 136.24,
-      "bbPercent": 0.146,
-      "change1d": -2.32,
-      "change2d": 0.22,
-      "change3d": -1.87,
-      "change4d": -1.05,
-      "change5d": 2.9,
-      "change7d": -1.19,
-      "change30d": -23.02,
+      "price": 111.9,
+      "marketCap": 12925097984,
+      "volume": 29794,
+      "rsi14": 15.9,
+      "ma20": 126.88,
+      "ma50": 135.38,
+      "bbPercent": 0.202,
+      "change1d": -0.91,
+      "change2d": 0.53,
+      "change3d": -2.32,
+      "change4d": 0.22,
+      "change5d": -1.87,
+      "change7d": -5.31,
+      "change30d": -20.53,
       "revenueGrowth": 21.7,
       "grossMargin": 84.7,
       "fcf": 986047232,
       "peRatio": 10.8,
-      "forwardPE": 13.0,
-      "eps": 10.41,
+      "forwardPE": 12.9,
+      "eps": 10.4,
       "debtToEquity": 35.8,
       "returnOnEquity": 34.4,
       "week52High": 219.69,
       "week52Low": 108.5,
-      "priceVs52wHigh": 51.1,
+      "priceVs52wHigh": 50.9,
       "analystTarget": 180.1,
-      "analystUpside": 60.3,
+      "analystUpside": 60.9,
       "recommendation": "buy",
       "institutionalPct": 104.3,
       "insiderPct": 0.3,
@@ -625,40 +625,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "PTC Inc. operates as software company in the Americas, Europe, and the Asia Pacific. The company provides Windchill, a suite that manages all aspects of the product development lifecycle(PLM) that provides real-time information sharing, dynamic data visualization, collaborate across geographically distributed teams, and enabling manufacturers to elevate product development, manufacturing, field se",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "PBR-A": {
       "ticker": "PBR-A",
       "name": "Petroleo Brasileiro S.A. Petrob",
       "sector": "Energy",
       "industry": "Oil & Gas Integrated",
-      "price": 15.25,
-      "marketCap": 104409341952,
-      "volume": 7268057,
-      "rsi14": 26.3,
-      "ma20": 16.02,
-      "ma50": 17.62,
-      "bbPercent": 0.204,
-      "change1d": -0.07,
-      "change2d": 1.8,
-      "change3d": -0.2,
-      "change4d": -0.79,
-      "change5d": -1.88,
-      "change7d": -6.56,
-      "change30d": -18.75,
+      "price": 14.62,
+      "marketCap": 100096032768,
+      "volume": 406368,
+      "rsi14": 24.8,
+      "ma20": 15.8,
+      "ma50": 17.44,
+      "bbPercent": 0.071,
+      "change1d": -0.81,
+      "change2d": -3.34,
+      "change3d": -0.07,
+      "change4d": 1.8,
+      "change5d": -0.2,
+      "change7d": -3.43,
+      "change30d": -17.02,
       "revenueGrowth": 0.4,
       "grossMargin": 47.4,
       "fcf": 82932752384,
-      "peRatio": 4.8,
-      "forwardPE": 6.2,
+      "peRatio": 4.6,
+      "forwardPE": 5.9,
       "eps": 3.15,
       "debtToEquity": 83.3,
       "returnOnEquity": 25.6,
       "week52High": 20.05,
       "week52Low": 10.76,
-      "priceVs52wHigh": 76.1,
+      "priceVs52wHigh": 72.9,
       "analystTarget": 22.3704,
-      "analystUpside": 46.7,
+      "analystUpside": 53.0,
       "recommendation": "buy",
       "institutionalPct": 9.3,
       "insiderPct": null,
@@ -667,40 +667,82 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Petr\u00f3leo Brasileiro S.A. - Petrobras explores, produces, and sells oil and gas in Brazil, China, the United States, the Americas, Asia, Europe, Singapore, and internationally. It operates through three segments: Exploration and Production; Refining, Transportation & Marketing; and Gas & Low Carbon Energies. The Exploration and Production segment explores, develops, and produces crude oil, natural ",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+    },
+    "FLY": {
+      "ticker": "FLY",
+      "name": "Firefly Aerospace Inc.",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "price": 24.365,
+      "marketCap": 4001591040,
+      "volume": 544690,
+      "rsi14": 23.8,
+      "ma20": 35.34,
+      "ma50": 38.26,
+      "bbPercent": 0.112,
+      "change1d": -2.46,
+      "change2d": -8.2,
+      "change3d": -6.04,
+      "change4d": -6.43,
+      "change5d": -0.64,
+      "change7d": -21.28,
+      "change30d": -38.11,
+      "revenueGrowth": 44.8,
+      "grossMargin": 24.8,
+      "fcf": -146637120,
+      "peRatio": null,
+      "forwardPE": -18.9,
+      "eps": -4.94,
+      "debtToEquity": 4.8,
+      "returnOnEquity": -62.1,
+      "week52High": 73.8,
+      "week52Low": 16.0,
+      "priceVs52wHigh": 33.0,
+      "analystTarget": 48.22222,
+      "analystUpside": 97.9,
+      "recommendation": "buy",
+      "institutionalPct": 57.9,
+      "insiderPct": 20.5,
+      "shortFloat": 12.1,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Firefly Aerospace Inc. operates as a space and defense technology company and provides mission solutions for national security, government, and commercial customers in United States. The company offers integrated launch and space services technology that is committed to enabling launch, transit, and operations in space. It also provides Launch solutions, such as Alpha, a responsive launch services",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "EQT": {
       "ticker": "EQT",
       "name": "EQT Corporation",
       "sector": "Energy",
       "industry": "Oil & Gas E&P",
-      "price": 51.66,
-      "marketCap": 32312195072,
-      "volume": 8389672,
-      "rsi14": 34.1,
-      "ma20": 53.2,
-      "ma50": 55.89,
-      "bbPercent": 0.289,
-      "change1d": -0.35,
-      "change2d": 2.21,
-      "change3d": -0.8,
-      "change4d": -0.47,
-      "change5d": 1.22,
-      "change7d": -0.54,
-      "change30d": -8.49,
+      "price": 51.265,
+      "marketCap": 32065130496,
+      "volume": 113157,
+      "rsi14": 27.8,
+      "ma20": 52.77,
+      "ma50": 55.67,
+      "bbPercent": 0.276,
+      "change1d": -0.42,
+      "change2d": -0.35,
+      "change3d": -0.35,
+      "change4d": 2.21,
+      "change5d": -0.8,
+      "change7d": -0.2,
+      "change30d": -8.34,
       "revenueGrowth": 49.9,
       "grossMargin": 81.0,
       "fcf": 2503225856,
-      "peRatio": 9.8,
-      "forwardPE": 11.2,
+      "peRatio": 9.7,
+      "forwardPE": 11.3,
       "eps": 5.27,
       "debtToEquity": 20.8,
       "returnOnEquity": 13.4,
       "week52High": 68.24,
       "week52Low": 48.47,
-      "priceVs52wHigh": 75.7,
+      "priceVs52wHigh": 75.1,
       "analystTarget": 69.79167,
-      "analystUpside": 35.1,
+      "analystUpside": 36.1,
       "recommendation": "buy",
       "institutionalPct": 93.8,
       "insiderPct": 0.8,
@@ -709,166 +751,82 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "EQT Corporation engages in the exploration, production, gathering, and transmission of hydrocarbons and natural gas. The company sells natural gas, natural gas liquids, and oil to marketers, utilities, and industrial customers located in the Appalachian Basin. It also provides marketing services and contractual pipeline capacity management services, as well as engages in risk management and hedgin",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
-    "PBR": {
-      "ticker": "PBR",
-      "name": "Petroleo Brasileiro S.A. Petrob",
-      "sector": "Energy",
-      "industry": "Oil & Gas Integrated",
-      "price": 17.03,
-      "marketCap": 109747560448,
-      "volume": 9359600,
-      "rsi14": 27.0,
-      "ma20": 17.95,
-      "ma50": 19.57,
-      "bbPercent": 0.193,
-      "change1d": 0.12,
-      "change2d": 1.55,
-      "change3d": -0.24,
-      "change4d": -1.52,
-      "change5d": -1.67,
-      "change7d": -7.34,
-      "change30d": -17.3,
-      "revenueGrowth": 0.4,
-      "grossMargin": 47.4,
-      "fcf": 82932752384,
-      "peRatio": 5.4,
-      "forwardPE": 4.1,
-      "eps": 3.15,
-      "debtToEquity": 83.3,
-      "returnOnEquity": 25.6,
-      "week52High": 22.24,
-      "week52Low": 11.43,
-      "priceVs52wHigh": 76.6,
-      "analystTarget": 23.23877,
-      "analystUpside": 36.5,
+    "NBIS": {
+      "ticker": "NBIS",
+      "name": "Nebius Group N.V.",
+      "sector": "Communication Services",
+      "industry": "Internet Content & Information",
+      "price": 269.625,
+      "marketCap": 68457299968,
+      "volume": 788894,
+      "rsi14": 53.0,
+      "ma20": 250.35,
+      "ma50": 207.0,
+      "bbPercent": 0.699,
+      "change1d": 3.84,
+      "change2d": -5.66,
+      "change3d": -2.95,
+      "change4d": -1.07,
+      "change5d": 2.06,
+      "change7d": 1.71,
+      "change30d": 30.08,
+      "revenueGrowth": 683.9,
+      "grossMargin": 72.1,
+      "fcf": -6147975168,
+      "peRatio": 103.7,
+      "forwardPE": 746.4,
+      "eps": 2.6,
+      "debtToEquity": 132.4,
+      "returnOnEquity": 14.1,
+      "week52High": 299.86,
+      "week52Low": 43.89,
+      "priceVs52wHigh": 89.9,
+      "analystTarget": 244.07143,
+      "analystUpside": -9.5,
       "recommendation": "buy",
-      "institutionalPct": 26.7,
-      "insiderPct": 0.0,
-      "shortFloat": null,
+      "institutionalPct": 63.3,
+      "insiderPct": 3.7,
+      "shortFloat": 20.3,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "Petr\u00f3leo Brasileiro S.A. - Petrobras explores, produces, and sells oil and gas in Brazil, China, the United States, the Americas, Asia, Europe, Singapore, and internationally. It operates through three segments: Exploration and Production; Refining, Transportation & Marketing; and Gas & Low Carbon Energies. The Exploration and Production segment explores, develops, and produces crude oil, natural ",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
-    },
-    "ONDS": {
-      "ticker": "ONDS",
-      "name": "Ondas Inc",
-      "sector": "Technology",
-      "industry": "Communication Equipment",
-      "price": 8.53,
-      "marketCap": 4491392512,
-      "volume": 44685449,
-      "rsi14": 16.2,
-      "ma20": 10.55,
-      "ma50": 10.14,
-      "bbPercent": 0.199,
-      "change1d": -4.05,
-      "change2d": -4.1,
-      "change3d": 1.64,
-      "change4d": -0.98,
-      "change5d": -3.15,
-      "change7d": -8.57,
-      "change30d": -9.45,
-      "revenueGrowth": 1079.9,
-      "grossMargin": 44.8,
-      "fcf": -15650777,
-      "peRatio": 94.8,
-      "forwardPE": -170.6,
-      "eps": 0.09,
-      "debtToEquity": 0.7,
-      "returnOnEquity": 42.9,
-      "week52High": 15.28,
-      "week52Low": 1.53,
-      "priceVs52wHigh": 55.8,
-      "analystTarget": 20.125,
-      "analystUpside": 135.9,
-      "recommendation": "strong_buy",
-      "institutionalPct": 41.7,
-      "insiderPct": 2.0,
-      "shortFloat": 32.0,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
-    },
-    "BMNR": {
-      "ticker": "BMNR",
-      "name": "BitMine Immersion Technologies,",
-      "sector": "Financial Services",
-      "industry": "Capital Markets",
-      "price": 15.13,
-      "marketCap": 8617697280,
-      "volume": 25682489,
-      "rsi14": 37.5,
-      "ma20": 17.08,
-      "ma50": 19.74,
-      "bbPercent": 0.147,
-      "change1d": -4.6,
-      "change2d": -1.73,
-      "change3d": 2.8,
-      "change4d": -3.15,
-      "change5d": -5.26,
-      "change7d": -6.08,
-      "change30d": -34.27,
-      "revenueGrowth": 627.8,
-      "grossMargin": 66.6,
-      "fcf": -152525936,
-      "peRatio": null,
-      "forwardPE": 16.1,
-      "eps": -7.44,
-      "debtToEquity": 0.0,
-      "returnOnEquity": -175.9,
-      "week52High": 161.0,
-      "week52Low": 3.92,
-      "priceVs52wHigh": 9.4,
-      "analystTarget": 37.33333,
-      "analystUpside": 146.8,
-      "recommendation": "none",
-      "institutionalPct": 37.4,
-      "insiderPct": 0.8,
-      "shortFloat": 4.7,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "description": "Nebius Group N.V., a technology company, engages in building full-stack infrastructure to service the global AI industry in the United States, the United Kingdom, and internationally. It offers Nebius builds full-stack infrastructure for AI, including large-scale GPU clusters, cloud platforms, and tools and services for developers. The company also provides TripleTen, an edtech platform for re-ski",
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "XNDU": {
       "ticker": "XNDU",
       "name": "Xanadu Quantum Technologies Lim",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 12.23,
-      "marketCap": 3650793472,
-      "volume": 3234524,
-      "rsi14": 28.9,
-      "ma20": 14.19,
-      "ma50": 18.17,
-      "bbPercent": 0.259,
-      "change1d": -2.47,
-      "change2d": -6.21,
-      "change3d": -1.47,
-      "change4d": 1.5,
-      "change5d": -4.09,
-      "change7d": 3.73,
-      "change30d": -17.25,
+      "price": 11.87,
+      "marketCap": 3543329536,
+      "volume": 87210,
+      "rsi14": 35.9,
+      "ma20": 13.62,
+      "ma50": 18.11,
+      "bbPercent": 0.255,
+      "change1d": 0.59,
+      "change2d": -3.52,
+      "change3d": -2.47,
+      "change4d": -6.21,
+      "change5d": -1.47,
+      "change7d": -11.22,
+      "change30d": -20.28,
       "revenueGrowth": 305.2,
       "grossMargin": 93.7,
       "fcf": null,
       "peRatio": null,
-      "forwardPE": -9.9,
+      "forwardPE": -9.6,
       "eps": -0.19,
       "debtToEquity": 14.5,
       "returnOnEquity": -45.2,
       "week52High": 42.44,
       "week52Low": 6.97,
-      "priceVs52wHigh": 28.8,
+      "priceVs52wHigh": 28.0,
       "analystTarget": 44.0,
-      "analystUpside": 259.8,
+      "analystUpside": 270.7,
       "recommendation": "none",
       "institutionalPct": 30.9,
       "insiderPct": 23.6,
@@ -877,40 +835,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Xanadu Quantum Technologies Limited develops and provides photonic quantum computing technology and related software solutions and applications, including cloud-based access to quantum computers and tools for quantum programming and simulation. The company provides access to photonic quantum computers through x-series devices available via the cloud, supporting programmable quantum gates and photo",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "LAES": {
       "ticker": "LAES",
       "name": "SEALSQ Corp",
       "sector": "Technology",
       "industry": "Semiconductors",
-      "price": 3.34,
-      "marketCap": 744065152,
-      "volume": 36978530,
-      "rsi14": 42.1,
-      "ma20": 3.32,
-      "ma50": 3.07,
-      "bbPercent": 0.518,
-      "change1d": 7.74,
-      "change2d": -0.64,
-      "change3d": 3.65,
-      "change4d": -1.95,
-      "change5d": -8.9,
-      "change7d": 7.74,
-      "change30d": 9.15,
+      "price": 3.3699,
+      "marketCap": 750726080,
+      "volume": 1462234,
+      "rsi14": 43.5,
+      "ma20": 3.3,
+      "ma50": 3.1,
+      "bbPercent": 0.575,
+      "change1d": 4.33,
+      "change2d": -3.29,
+      "change3d": 7.74,
+      "change4d": -0.64,
+      "change5d": 3.65,
+      "change7d": 9.77,
+      "change30d": 13.85,
       "revenueGrowth": 118.2,
       "grossMargin": 50.1,
       "fcf": -10687875,
       "peRatio": null,
-      "forwardPE": -22.3,
-      "eps": -0.26,
+      "forwardPE": -22.5,
+      "eps": -0.24,
       "debtToEquity": 1.7,
       "returnOnEquity": -12.7,
       "week52High": 8.71,
       "week52Low": 1.99,
-      "priceVs52wHigh": 38.3,
+      "priceVs52wHigh": 38.7,
       "analystTarget": 6.0,
-      "analystUpside": 79.6,
+      "analystUpside": 78.0,
       "recommendation": "none",
       "institutionalPct": 11.3,
       "insiderPct": 2.7,
@@ -919,40 +877,40 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "SEALSQ Corp, together with its subsidiaries, designs, develops, and markets semiconductors in North America, Europe, the Middle East, Africa, the Asia Pacific, and Latin America. It offers semiconductors, such as VaultIC secure elements, quantum-resistant RISC-V secure chips, secure ARM platform, and smart card reader chips; custom chip design services; and other PKI services, including personal d",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
     },
     "BTO.TO": {
       "ticker": "BTO.TO",
       "name": "B2GOLD CORP.",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 5.72,
-      "marketCap": 7621428736,
-      "volume": 4331925,
-      "rsi14": 39.1,
-      "ma20": 6.08,
-      "ma50": 6.35,
-      "bbPercent": 0.227,
-      "change1d": -4.03,
-      "change2d": -1.32,
-      "change3d": -0.66,
-      "change4d": -2.56,
-      "change5d": -2.5,
-      "change7d": -8.63,
-      "change30d": -22.11,
+      "price": 5.64,
+      "marketCap": 7514835456,
+      "volume": 223344,
+      "rsi14": 46.6,
+      "ma20": 6.01,
+      "ma50": 6.31,
+      "bbPercent": 0.24,
+      "change1d": 2.36,
+      "change2d": -3.67,
+      "change3d": -4.03,
+      "change4d": -1.32,
+      "change5d": -0.66,
+      "change7d": -9.62,
+      "change30d": -20.83,
       "revenueGrowth": 117.7,
       "grossMargin": 65.5,
       "fcf": 718971520,
-      "peRatio": 10.6,
-      "forwardPE": 3.4,
+      "peRatio": 10.4,
+      "forwardPE": 3.3,
       "eps": 0.54,
       "debtToEquity": 14.0,
       "returnOnEquity": 16.5,
       "week52High": 8.6,
       "week52Low": 4.56,
-      "priceVs52wHigh": 66.5,
-      "analystTarget": 9.960258,
-      "analystUpside": 74.1,
+      "priceVs52wHigh": 65.6,
+      "analystTarget": 9.964323,
+      "analystUpside": 76.7,
       "recommendation": "buy",
       "institutionalPct": 67.0,
       "insiderPct": 0.4,
@@ -961,518 +919,424 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "B2Gold Corp. operates as a gold producer company in Canada. The company operates the Fekola Mine in Mali; the Masbate Mine in the Philippines; the Otjikoto Mine in Namibia; the Goose Mine in Canada. It also owns 100% interest in the Gramalote gold project in Colombia. In addition, the company has a portfolio of other evaluation and exploration assets in Mali, Canada and Finland. The company was in",
-      "fetchCompletedAt": "2026-06-24 00:32 EDT"
+      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+    },
+    "NAT": {
+      "ticker": "NAT",
+      "name": "Nordic American Tankers Limited",
+      "sector": "Energy",
+      "industry": "Oil & Gas Midstream",
+      "price": 6.435,
+      "marketCap": 1362615424,
+      "volume": 400368,
+      "rsi14": 86.3,
+      "ma20": 5.45,
+      "ma50": 5.44,
+      "bbPercent": 0.95,
+      "change1d": -0.54,
+      "change2d": 0.15,
+      "change3d": 4.03,
+      "change4d": 6.15,
+      "change5d": 5.03,
+      "change7d": 16.58,
+      "change30d": 19.87,
+      "revenueGrowth": 104.3,
+      "grossMargin": 46.9,
+      "fcf": -99640000,
+      "peRatio": 24.8,
+      "forwardPE": 21.8,
+      "eps": 0.26,
+      "debtToEquity": 91.1,
+      "returnOnEquity": 11.4,
+      "week52High": 6.7,
+      "week52Low": 2.6,
+      "priceVs52wHigh": 96.0,
+      "analystTarget": 6.0,
+      "analystUpside": -6.8,
+      "recommendation": "none",
+      "institutionalPct": 50.0,
+      "insiderPct": 5.5,
+      "shortFloat": 9.3,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Nordic American Tankers Limited, a tanker company, owns, operates, and charters double-hull tankers in Bermuda and internationally. As of December 31, 2025, the company fleet consisted of 20 Suezmax crude oil tankers. It serves oil companies, oil traders, and other entities requiring crude oil transportation services. The company was formerly known as Nordic American Tanker Shipping Limited and ch",
+      "fetchCompletedAt": "2026-06-25 09:34 EDT"
     }
   },
-  "detailsFetchedAt": "2026-06-24 00:32 EDT",
-  "aiAssessments": {
-    "POET": {
-      "raw": "",
-      "ticker": "POET",
-      "promptSent": "You are a neutral stock analyst. Evaluate POET objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: POET Technologies Inc. (POET)\nPOET Technologies Inc., together with its subsidiaries, designs, develops, manufactures, and sells semiconductor products and services for commercial applications in the United States, Canada, the rest of North and South America, Europe, Malaysia, Singapore, China, and the rest of Asia. The company \n\nFINANCIALS:\nPrice: 10.73\nRSI14: 38.9\nMA50: 11.63\n1d Change: -11.25%\n7d Change: -14.37%\n30d Change: -22.81%\nRevenue Growth: 201.9%\nGross Margin: 100.0%\nFCF: -42376272\nP/E: None\nForward P/E: -63.1\nROE: -33.9%\nDebt/Equity: 1.6\nAnalyst Target: 17.5 (Upside: 63.1%)\nAnalyst Rec: none\nInstitutional %: 25.6%\n52w High: 20.81 | Price vs 52w High: 51.6%\nSector: Technology | Industry: Semiconductors\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "CDE": {
-      "raw": "",
-      "ticker": "CDE",
-      "promptSent": "You are a neutral stock analyst. Evaluate CDE objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Coeur Mining, Inc. (CDE)\nCoeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its \n\nFINANCIALS:\nPrice: 16.32\nRSI14: 37.0\nMA50: 18.28\n1d Change: -6.58%\n7d Change: -5.12%\n30d Change: -17.48%\nRevenue Growth: 137.8%\nGross Margin: 58.6%\nFCF: 511841376\nP/E: 13.2\nForward P/E: 8.0\nROE: 12.1%\nDebt/Equity: 7.4\nAnalyst Target: 27.27273 (Upside: 67.1%)\nAnalyst Rec: buy\nInstitutional %: 79.7%\n52w High: 27.77 | Price vs 52w High: 58.8%\nSector: Basic Materials | Industry: Gold\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "CRDO": {
-      "raw": "",
-      "ticker": "CRDO",
-      "promptSent": "You are a neutral stock analyst. Evaluate CRDO objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Credo Technology Group Holding  (CRDO)\nCredo Technology Group Holding Ltd provides various high-speed connectivity solutions for optical and electrical Ethernet and PCIe applications in the United States, Taiwan, Mainland China, Hong Kong, and other international markets. The company offers ZeroFlap (ZF) active electrical cables and ZF o\n\nFINANCIALS:\nPrice: 272.005\nRSI14: 59.7\nMA50: 204.27\n1d Change: -10.09%\n7d Change: 8.45%\n30d Change: 29.39%\nRevenue Growth: 157.0%\nGross Margin: 68.0%\nFCF: 250810128\nP/E: 108.8\nForward P/E: 30.5\nROE: 34.4%\nDebt/Equity: 1.2\nAnalyst Target: 269.81342 (Upside: -0.8%)\nAnalyst Rec: strong_buy\nInstitutional %: 75.9%\n52w High: 308.67 | Price vs 52w High: 88.1%\nSector: Technology | Industry: Semiconductors\n\nRECENT NEWS (last 7 days):\n- [2026-06-11] Credo Technology (CRDO) Completes Acquisition of DustPhotonics to Expand Optical Connectivity Portfolio (Insider Monkey)\n- [2026-06-11] 3 Top Ranked Stocks Investors Can Buy Right Now (Zacks)\n- [2026-06-11] Credo's Diversification Push: Can It Cut Customer Concentration Risk? (Zacks)\n- [2026-06-11] Is Credo Technology Group Holding Ltd (CRDO) A Good Stock To Buy Now? (Insider Monkey)\n- [2026-06-11] Credo Technology Group Eyes AI Growth With Dust Photonics Silicon Push (Simply Wall St.)\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "NBIS": {
-      "raw": "",
-      "ticker": "NBIS",
-      "promptSent": "You are a neutral stock analyst. Evaluate NBIS objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Nebius Group N.V. (NBIS)\nNebius Group N.V., a technology company, engages in building full-stack infrastructure to service the global AI industry in the United States, the United Kingdom, and internationally. It offers Nebius builds full-stack infrastructure for AI, including large-scale GPU clusters, cloud platforms, and t\n\nFINANCIALS:\nPrice: 275.25\nRSI14: 54.7\nMA50: 202.75\n1d Change: -2.95%\n7d Change: 18.46%\n30d Change: 47.9%\nRevenue Growth: 683.9%\nGross Margin: 72.1%\nFCF: -6147975168\nP/E: 106.3\nForward P/E: 762.0\nROE: 14.1%\nDebt/Equity: 132.4\nAnalyst Target: 244.07143 (Upside: -11.3%)\nAnalyst Rec: buy\nInstitutional %: 63.3%\n52w High: 299.86 | Price vs 52w High: 91.8%\nSector: Communication Services | Industry: Internet Content & Information\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "FLY": {
-      "raw": "",
-      "ticker": "FLY",
-      "promptSent": "You are a neutral stock analyst. Evaluate FLY objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Firefly Aerospace Inc. (FLY)\nFirefly Aerospace Inc. operates as a space and defense technology company and provides mission solutions for national security, government, and commercial customers in United States. The company offers integrated launch and space services technology that is committed to enabling launch, transit, and\n\nFINANCIALS:\nPrice: 27.21\nRSI14: 26.7\nMA50: 38.79\n1d Change: -6.04%\n7d Change: -14.62%\n30d Change: -28.84%\nRevenue Growth: 44.8%\nGross Margin: 24.8%\nFCF: -146637120\nP/E: None\nForward P/E: -21.1\nROE: -62.1%\nDebt/Equity: 4.8\nAnalyst Target: 48.22222 (Upside: 77.2%)\nAnalyst Rec: buy\nInstitutional %: 57.9%\n52w High: 73.8 | Price vs 52w High: 36.9%\nSector: Industrials | Industry: Aerospace & Defense\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "HST": {
-      "raw": "",
-      "ticker": "HST",
-      "promptSent": "You are a neutral stock analyst. Evaluate HST objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Host Hotels & Resorts, Inc. (HST)\nHost Hotels & Resorts, Inc., herein referred to as we, Host Inc., or the Company, is a self-managed and self-administered real estate investment trust that owns hotel property. We conduct our operations as an umbrella partnership, REIT, through an operating partnership, Host Hotels & Resorts, L.P., \n\nFINANCIALS:\nPrice: 24.82\nRSI14: 65.0\nMA50: 22.49\n1d Change: -1.23%\n7d Change: -0.28%\n30d Change: 13.96%\nRevenue Growth: 2.8%\nGross Margin: 29.0%\nFCF: 1190875008\nP/E: 16.9\nForward P/E: 24.8\nROE: 14.9%\nDebt/Equity: 80.5\nAnalyst Target: 24.2375 (Upside: -2.3%)\nAnalyst Rec: buy\nInstitutional %: 105.7%\n52w High: 25.41 | Price vs 52w High: 97.7%\nSector: Real Estate | Industry: REIT - Hotel & Motel\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "MOH": {
-      "raw": "",
-      "ticker": "MOH",
-      "promptSent": "You are a neutral stock analyst. Evaluate MOH objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Molina Healthcare Inc (MOH)\nMolina Healthcare, Inc. provides managed healthcare services to low-income families and individuals under the Medicaid and Medicare programs and through the state insurance marketplaces in the United States. It operates in four segments: Medicaid, Medicare, Marketplace, and Other. The company was fo\n\nFINANCIALS:\nPrice: 196.56\nRSI14: 65.2\nMA50: 182.66\n1d Change: -0.44%\n7d Change: -1.86%\n30d Change: 6.14%\nRevenue Growth: -4.3%\nGross Margin: 8.9%\nFCF: 757500032\nP/E: 53.0\nForward P/E: 21.1\nROE: 4.5%\nDebt/Equity: 96.7\nAnalyst Target: 191.76471 (Upside: -2.4%)\nAnalyst Rec: none\nInstitutional %: 111.8%\n52w High: 311.52 | Price vs 52w High: 63.1%\nSector: Healthcare | Industry: Healthcare Plans\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "MAS": {
-      "raw": "",
-      "ticker": "MAS",
-      "promptSent": "You are a neutral stock analyst. Evaluate MAS objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Masco Corporation (MAS)\nMasco Corporation provides home improvement and building products in North America, Europe, and internationally. The company's Plumbing Products segment offers faucets, showerheads, handheld showers, valves, bath hardware and accessories, bathing units, shower bases and enclosures, shower drains, st\n\nFINANCIALS:\nPrice: 73.21\nRSI14: 63.3\nMA50: 69.79\n1d Change: -0.5%\n7d Change: -1.11%\n30d Change: 4.21%\nRevenue Growth: 6.5%\nGross Margin: 35.7%\nFCF: 738499968\nP/E: 18.1\nForward P/E: 15.6\nROE: 8457.1%\nDebt/Equity: 12229.6\nAnalyst Target: 81.0 (Upside: 10.6%)\nAnalyst Rec: buy\nInstitutional %: 105.5%\n52w High: 79.19 | Price vs 52w High: 92.4%\nSector: Industrials | Industry: Building Products & Equipment\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "EA": {
-      "raw": "",
-      "ticker": "EA",
-      "promptSent": "You are a neutral stock analyst. Evaluate EA objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Electronic Arts Inc. (EA)\nElectronic Arts Inc. develops, markets, publishes, and delivers games, content, and services for game consoles, PCs, and mobile phones worldwide. It develops and publishes games and experiences across diverse genres, such as sports, racing, first-person shooter, action, role-playing, and simulation;\n\nFINANCIALS:\nPrice: 203.52\nRSI14: 62.0\nMA50: 202.05\n1d Change: 0.27%\n7d Change: 0.12%\n30d Change: 1.74%\nRevenue Growth: 11.9%\nGross Margin: 79.0%\nFCF: 2219124992\nP/E: 58.1\nForward P/E: 21.2\nROE: 13.5%\nDebt/Equity: 27.4\nAnalyst Target: 202.8 (Upside: -0.4%)\nAnalyst Rec: hold\nInstitutional %: 95.2%\n52w High: 204.89 | Price vs 52w High: 99.3%\nSector: Communication Services | Industry: Electronic Gaming & Multimedia\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "LRCX": {
-      "raw": "",
-      "ticker": "LRCX",
-      "promptSent": "You are a neutral stock analyst. Evaluate LRCX objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Lam Research Corporation (LRCX)\nLam Research Corporation designs, manufactures, markets, refurbishes, and services semiconductor processing equipment used in the fabrication of integrated circuits in the United States, China, Korea, Taiwan, Japan, Southeast Asia, and Europe. The company offers ALTUS systems to deposit conformal or\n\nFINANCIALS:\nPrice: 371.33\nRSI14: 57.6\nMA50: 303.14\n1d Change: -9.33%\n7d Change: 1.3%\n30d Change: 25.52%\nRevenue Growth: 23.8%\nGross Margin: 50.0%\nFCF: 4352341504\nP/E: 70.5\nForward P/E: 46.4\nROE: 66.8%\nDebt/Equity: 35.3\nAnalyst Target: 340.58066 (Upside: -8.3%)\nAnalyst Rec: buy\nInstitutional %: 88.1%\n52w High: 409.75 | Price vs 52w High: 90.6%\nSector: Technology | Industry: Semiconductor Equipment & Materials\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "BSX": {
-      "raw": "",
-      "ticker": "BSX",
-      "promptSent": "You are a neutral stock analyst. Evaluate BSX objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Boston Scientific Corporation (BSX)\nBoston Scientific Corporation develops, manufactures, and markets medical devices for use in various interventional medical specialties worldwide. The company operates in two segments, MedSurg and Cardiovascular. It offers devices to diagnose and treat a range of gastrointestinal conditions, such as\n\nFINANCIALS:\nPrice: 45.6\nRSI14: 38.2\nMA50: 54.25\n1d Change: 2.86%\n7d Change: -2.79%\n30d Change: -14.56%\nRevenue Growth: 11.6%\nGross Margin: 68.9%\nFCF: 2807124992\nP/E: 19.1\nForward P/E: 12.2\nROE: 14.7%\nDebt/Equity: 42.2\nAnalyst Target: 77.03571 (Upside: 68.9%)\nAnalyst Rec: buy\nInstitutional %: 95.0%\n52w High: 109.5 | Price vs 52w High: 41.6%\nSector: Healthcare | Industry: Medical Devices\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "PTC": {
-      "raw": "",
-      "ticker": "PTC",
-      "promptSent": "You are a neutral stock analyst. Evaluate PTC objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: PTC Inc. (PTC)\nPTC Inc. operates as software company in the Americas, Europe, and the Asia Pacific. The company provides Windchill, a suite that manages all aspects of the product development lifecycle(PLM) that provides real-time information sharing, dynamic data visualization, collaborate across geographically d\n\nFINANCIALS:\nPrice: 112.33\nRSI14: 13.7\nMA50: 136.24\n1d Change: -2.32%\n7d Change: -1.19%\n30d Change: -23.02%\nRevenue Growth: 21.7%\nGross Margin: 84.7%\nFCF: 986047232\nP/E: 10.8\nForward P/E: 13.0\nROE: 34.4%\nDebt/Equity: 35.8\nAnalyst Target: 180.1 (Upside: 60.3%)\nAnalyst Rec: buy\nInstitutional %: 104.3%\n52w High: 219.69 | Price vs 52w High: 51.1%\nSector: Technology | Industry: Software - Application\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "PBR-A": {
-      "raw": "",
-      "ticker": "PBR-A",
-      "promptSent": "You are a neutral stock analyst. Evaluate PBR-A objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Petroleo Brasileiro S.A. Petrob (PBR-A)\nPetr\u00f3leo Brasileiro S.A. - Petrobras explores, produces, and sells oil and gas in Brazil, China, the United States, the Americas, Asia, Europe, Singapore, and internationally. It operates through three segments: Exploration and Production; Refining, Transportation & Marketing; and Gas & Low Carbon E\n\nFINANCIALS:\nPrice: 15.25\nRSI14: 26.3\nMA50: 17.62\n1d Change: -0.07%\n7d Change: -6.56%\n30d Change: -18.75%\nRevenue Growth: 0.4%\nGross Margin: 47.4%\nFCF: 82932752384\nP/E: 4.8\nForward P/E: 6.2\nROE: 25.6%\nDebt/Equity: 83.3\nAnalyst Target: 22.3704 (Upside: 46.7%)\nAnalyst Rec: buy\nInstitutional %: 9.3%\n52w High: 20.05 | Price vs 52w High: 76.1%\nSector: Energy | Industry: Oil & Gas Integrated\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "EQT": {
-      "raw": "",
-      "ticker": "EQT",
-      "promptSent": "You are a neutral stock analyst. Evaluate EQT objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: EQT Corporation (EQT)\nEQT Corporation engages in the exploration, production, gathering, and transmission of hydrocarbons and natural gas. The company sells natural gas, natural gas liquids, and oil to marketers, utilities, and industrial customers located in the Appalachian Basin. It also provides marketing services and\n\nFINANCIALS:\nPrice: 51.66\nRSI14: 34.1\nMA50: 55.89\n1d Change: -0.35%\n7d Change: -0.54%\n30d Change: -8.49%\nRevenue Growth: 49.9%\nGross Margin: 81.0%\nFCF: 2503225856\nP/E: 9.8\nForward P/E: 11.2\nROE: 13.4%\nDebt/Equity: 20.8\nAnalyst Target: 69.79167 (Upside: 35.1%)\nAnalyst Rec: buy\nInstitutional %: 93.8%\n52w High: 68.24 | Price vs 52w High: 75.7%\nSector: Energy | Industry: Oil & Gas E&P\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "PBR": {
-      "raw": "",
-      "ticker": "PBR",
-      "promptSent": "You are a neutral stock analyst. Evaluate PBR objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Petroleo Brasileiro S.A. Petrob (PBR)\nPetr\u00f3leo Brasileiro S.A. - Petrobras explores, produces, and sells oil and gas in Brazil, China, the United States, the Americas, Asia, Europe, Singapore, and internationally. It operates through three segments: Exploration and Production; Refining, Transportation & Marketing; and Gas & Low Carbon E\n\nFINANCIALS:\nPrice: 17.03\nRSI14: 27.0\nMA50: 19.57\n1d Change: 0.12%\n7d Change: -7.34%\n30d Change: -17.3%\nRevenue Growth: 0.4%\nGross Margin: 47.4%\nFCF: 82932752384\nP/E: 5.4\nForward P/E: 4.1\nROE: 25.6%\nDebt/Equity: 83.3\nAnalyst Target: 23.23877 (Upside: 36.5%)\nAnalyst Rec: buy\nInstitutional %: 26.7%\n52w High: 22.24 | Price vs 52w High: 76.6%\nSector: Energy | Industry: Oil & Gas Integrated\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "ONDS": {
-      "raw": "",
-      "ticker": "ONDS",
-      "promptSent": "You are a neutral stock analyst. Evaluate ONDS objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Ondas Inc (ONDS)\nOndas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully au\n\nFINANCIALS:\nPrice: 8.53\nRSI14: 16.2\nMA50: 10.14\n1d Change: -4.05%\n7d Change: -8.57%\n30d Change: -9.45%\nRevenue Growth: 1079.9%\nGross Margin: 44.8%\nFCF: -15650777\nP/E: 94.8\nForward P/E: -170.6\nROE: 42.9%\nDebt/Equity: 0.7\nAnalyst Target: 20.125 (Upside: 135.9%)\nAnalyst Rec: strong_buy\nInstitutional %: 41.7%\n52w High: 15.28 | Price vs 52w High: 55.8%\nSector: Technology | Industry: Communication Equipment\n\nRECENT NEWS (last 7 days):\n- [2026-06-05] Why Ondas Stock Zoomed 32% Higher in May (Motley Fool)\n- [2026-06-04] A Look At Ondas (ONDS) Valuation After A Sharp One Day Share Price Drop (Simply Wall St.)\n- [2026-06-04] Ondas (ONDS) Secures More Than $30M in New Orders During May (Insider Monkey)\n- [2026-06-04] ONDS' Growing Active Opportunity Pipeline: Multi-Year Growth Secured? (Zacks)\n- [2026-06-03] Why Is ONDS Stock Falling Today? (Stocktwits)\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "BMNR": {
-      "raw": "",
-      "ticker": "BMNR",
-      "promptSent": "You are a neutral stock analyst. Evaluate BMNR objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: BitMine Immersion Technologies, (BMNR)\nBitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party p\n\nFINANCIALS:\nPrice: 15.13\nRSI14: 37.5\nMA50: 19.74\n1d Change: -4.6%\n7d Change: -6.08%\n30d Change: -34.27%\nRevenue Growth: 627.8%\nGross Margin: 66.6%\nFCF: -152525936\nP/E: None\nForward P/E: 16.1\nROE: -175.9%\nDebt/Equity: 0.0\nAnalyst Target: 37.33333 (Upside: 146.8%)\nAnalyst Rec: none\nInstitutional %: 37.4%\n52w High: 161.0 | Price vs 52w High: 9.4%\nSector: Financial Services | Industry: Capital Markets\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "XNDU": {
-      "raw": "",
-      "ticker": "XNDU",
-      "promptSent": "You are a neutral stock analyst. Evaluate XNDU objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: Xanadu Quantum Technologies Lim (XNDU)\nXanadu Quantum Technologies Limited develops and provides photonic quantum computing technology and related software solutions and applications, including cloud-based access to quantum computers and tools for quantum programming and simulation. The company provides access to photonic quantum compute\n\nFINANCIALS:\nPrice: 12.23\nRSI14: 28.9\nMA50: 18.17\n1d Change: -2.47%\n7d Change: 3.73%\n30d Change: -17.25%\nRevenue Growth: 305.2%\nGross Margin: 93.7%\nFCF: None\nP/E: None\nForward P/E: -9.9\nROE: -45.2%\nDebt/Equity: 14.5\nAnalyst Target: 44.0 (Upside: 259.8%)\nAnalyst Rec: none\nInstitutional %: 30.9%\n52w High: 42.44 | Price vs 52w High: 28.8%\nSector: Technology | Industry: Software - Infrastructure\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "LAES": {
-      "raw": "",
-      "ticker": "LAES",
-      "promptSent": "You are a neutral stock analyst. Evaluate LAES objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: SEALSQ Corp (LAES)\nSEALSQ Corp, together with its subsidiaries, designs, develops, and markets semiconductors in North America, Europe, the Middle East, Africa, the Asia Pacific, and Latin America. It offers semiconductors, such as VaultIC secure elements, quantum-resistant RISC-V secure chips, secure ARM platform, an\n\nFINANCIALS:\nPrice: 3.34\nRSI14: 42.1\nMA50: 3.07\n1d Change: 7.74%\n7d Change: 7.74%\n30d Change: 9.15%\nRevenue Growth: 118.2%\nGross Margin: 50.1%\nFCF: -10687875\nP/E: None\nForward P/E: -22.3\nROE: -12.7%\nDebt/Equity: 1.7\nAnalyst Target: 6.0 (Upside: 79.6%)\nAnalyst Rec: none\nInstitutional %: 11.3%\n52w High: 8.71 | Price vs 52w High: 38.3%\nSector: Technology | Industry: Semiconductors\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    },
-    "BTO.TO": {
-      "raw": "",
-      "ticker": "BTO.TO",
-      "promptSent": "You are a neutral stock analyst. Evaluate BTO.TO objectively and critically.\n- Score below 50 for: negative FCF, high debt, RSI>75, declining revenue, weak margins\n- Score 50-70 for: mixed signals, moderate growth, some risks\n- Score 70-85 for: strong fundamentals, positive momentum, clear catalysts\n- Score 85-100 only for: exceptional growth, strong FCF, clear competitive advantage\nDo NOT default to bullish. Be skeptical.\n\nCOMPANY: B2GOLD CORP. (BTO.TO)\nB2Gold Corp. operates as a gold producer company in Canada. The company operates the Fekola Mine in Mali; the Masbate Mine in the Philippines; the Otjikoto Mine in Namibia; the Goose Mine in Canada. It also owns 100% interest in the Gramalote gold project in Colombia. In addition, the company has a \n\nFINANCIALS:\nPrice: 5.72\nRSI14: 39.1\nMA50: 6.35\n1d Change: -4.03%\n7d Change: -8.63%\n30d Change: -22.11%\nRevenue Growth: 117.7%\nGross Margin: 65.5%\nFCF: 718971520\nP/E: 10.6\nForward P/E: 3.4\nROE: 16.5%\nDebt/Equity: 14.0\nAnalyst Target: 9.960258 (Upside: 74.1%)\nAnalyst Rec: buy\nInstitutional %: 67.0%\n52w High: 8.6 | Price vs 52w High: 66.5%\nSector: Basic Materials | Industry: Gold\n\nRECENT NEWS (last 7 days):\nNo recent news available.\n\nMACRO CONTEXT:\n[Macro data as of 2026-06-24 00:32 EDT]\n- Fed Funds Rate: 3.63% (chg: -0.01%)\n- CPI (YoY): 333.98% (chg: +4.27%)\n- Unemployment Rate: 4.3% (chg: +0.00%)\n- GDP Growth: 1.6% (chg: +1.10%)\n- 10-Yr Treasury Yield: 4.51%\n- 2-Yr Treasury Yield: 4.24%\n- VIX (Fear Index): 17.28 (chg: +0.50)\n- USD Dollar Index: 120.4 (chg: +1.01)\n- WTI Crude Oil: 84.65$ (chg: -3.97$)\n- S&P 500: 7365.46 (chg: -107.33)\n- Yield Curve (10Y-2Y): 0.27%\n\nMarket Headlines:\n- [2026-06-24] Dow, S&P 500, Nasdaq Futures Rise After Chip Stock Selloff: Why CBRS, PLTR, BLZE, MU, FDX Are Trending (Stocktwits)\n- [2026-06-24] Mark Zandi Says Top 20% Of Americans Now Account For Nearly 60% Of Spending As Bottom 80% Fall Behind Inflation (Benzinga)\n- [2026-06-23] Why ARKK Investors Paid Premium Fees for a 37.88% Loss Over Five Years (24/7 Wall St.)\n- [2026-06-23] JEPI\u2019s 0.35% Fee Is a Trap: The Real Cost Is the 14.48% Return Gap vs. SPY (24/7 Wall St.)\n- [2026-06-23] S&P 500, Nasdaq, Dow Drop As Broader Tech And AI Selloff Continues \u2014 SPCX, BLZE, WMT, WEN, MU In Focus (Stocktwits)\n\nRespond in this exact format:\nSTAGE: [Early-Stage / Growth / Mature / Declining]\nTRAJECTORY: [Accelerating / Stable / Decelerating]\nSENTIMENT: [Bullish / Neutral / Bearish]\nSCORE: [0-100 integer, your conviction score]\nBUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]\nREASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]\n"
-    }
-  },
-  "aiAnalyzedAt": "2026-06-24 00:34 EDT",
+  "detailsFetchedAt": "2026-06-25 09:34 EDT",
+  "aiAssessments": {},
+  "aiAnalyzedAt": "2026-06-24 23:39 EDT",
   "lastRecommend": {
-    "buys": [
-      {
-        "ticker": "FLY",
-        "action": "BUY",
-        "shares": 8,
-        "price": 28.96,
-        "amount": 231.68,
-        "date": "2026-06-22 22:47 EDT",
-        "balance": 945.76,
-        "reason": "Firefly Aerospace shows promising revenue growth despite negative FCF. The sector benefits from increasing private and government space exploration, which should drive demand for their launch services. While debt is a concern, the bullish analyst sentiment and significant upside potential make it a compelling buy candidate for risk-tolerant investors."
-      }
-    ],
-    "sells": [
-      {
-        "ticker": "XNDU",
-        "action": "SELL",
-        "shares": 93,
-        "price": 12.54,
-        "amount": 1166.22,
-        "date": "2026-06-22 22:47 EDT",
-        "balance": 1177.44,
-        "reason": "Stop-loss triggered: down 10.0% from purchase $13.94 (hard stop at -8%)",
-        "composite": 63.6,
-        "buySignal": "Buy",
-        "pctFromPurchase": -10.04,
-        "pctFromPeak": -10.04,
-        "stopLoss": true
-      }
-    ],
-    "scoredAt": "2026-06-22 22:47 EDT",
+    "buys": [],
+    "sells": [],
+    "scoredAt": "2026-06-24 23:30 EDT",
     "scored": [
       {
-        "ticker": "FLY",
-        "bucket": "Reversal",
-        "price": 28.96,
-        "dreamScore": 38,
-        "aiScore": 78,
-        "buySignal": "Buy",
+        "ticker": "AGI.TO",
+        "bucket": "SmartMoney",
+        "price": 42.78,
+        "dreamScore": 66,
+        "aiScore": 85,
+        "buySignal": "Strong Buy",
         "trajectory": "Accelerating",
         "stage": "Growth",
         "sentiment": "Bullish",
-        "reasoning": "Firefly Aerospace shows promising revenue growth despite negative FCF. The sector benefits from increasing private and government space exploration, which should drive demand for their launch services. While debt is a concern, the bullish analyst sentiment and significant upside potential make it a compelling buy candidate for risk-tolerant investors.",
+        "reasoning": "Alamos Gold exhibits strong operational",
         "composite": 100,
         "signalFcDirection": "Bullish",
-        "signalFcTarget": 31.98,
-        "signalFcReturn": 10.43,
+        "signalFcTarget": 47.02,
+        "signalFcReturn": 9.91,
         "signalFcBoost": 20,
-        "isHeld": false
+        "isHeld": true
       },
       {
-        "ticker": "BSX",
-        "bucket": "Reversal",
-        "price": 44.33,
-        "dreamScore": 33,
-        "aiScore": 82,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "BSX demonstrates accelerating growth with strong revenue figures and a promising forward P/E ratio.  Analyst targets point to significant upside potential, and the company's focus on innovative medical devices positions it well for continued expansion in the growing healthcare sector. While debt levels are noteworthy, the bullish sentiment from analysts and institutional investors suggests confidence in BSX's trajectory.",
-        "composite": 99.2,
-        "signalFcDirection": "Bullish",
-        "signalFcTarget": 45.72,
-        "signalFcReturn": 3.14,
-        "signalFcBoost": 9.4,
-        "isHeld": false
-      },
-      {
-        "ticker": "ONDS",
+        "ticker": "WAT",
         "bucket": "SmartMoney",
-        "price": 8.89,
-        "dreamScore": 61,
-        "aiScore": 82,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Ondas exhibits a strong growth trajectory with explosive revenue growth despite early-stage operations. Recent news highlights new orders and a growing opportunity pipeline, suggesting continued momentum. While the negative share price movement warrants caution, analysts remain bullish with a \"Strong Buy\" rating and a significant upside target.  Its focus on emerging markets like Counter-UAS presents a compelling long-term investment opportunity.",
-        "composite": 94.1,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 8.93,
-        "signalFcReturn": 0.45,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "CRWV",
-        "bucket": "SmartMoney",
-        "price": 111.29,
-        "dreamScore": 56,
-        "aiScore": 82,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "CoreWeave's rapid revenue growth (111.6%) indicates strong momentum in a burgeoning AI infrastructure market.  Despite high debt and negative FCF, the company is investing heavily for future scalability. Analyst target price and buy recommendations suggest further upside potential. While current valuation metrics are elevated, CoreWeave's trajectory warrants consideration for growth-oriented investors.",
-        "composite": 93.6,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 113.03,
-        "signalFcReturn": 1.56,
-        "signalFcBoost": 4.7,
-        "isHeld": false
-      },
-      {
-        "ticker": "BTO.TO",
-        "bucket": "SmartMoney",
-        "price": 5.96,
-        "dreamScore": 70,
-        "aiScore": 82,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "B2Gold is demonstrating strong accelerating growth with impressive revenue gains (117.7%) and robust FCF.  While its P/E ratio appears high, the forward P/E suggests future earnings potential. Institutional ownership at 66.9% also indicates confidence in the company's trajectory. However, its high debt-to-equity ratio warrants monitoring as a potential risk factor.",
-        "composite": 93.1,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 5.96,
-        "signalFcReturn": 0.0,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "PBR-A",
-        "bucket": "Reversal",
-        "price": 15.26,
-        "dreamScore": 29,
-        "aiScore": 72,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Petrobras is benefiting from rising oil prices and a focus on low-carbon energy.  While its debt burden remains high, the company's improving financials and strong analyst sentiment suggest it's poised for continued growth. The recent price dip presents a potentially attractive entry point for investors looking for exposure to the energy sector.",
-        "composite": 92.0,
-        "signalFcDirection": "Bullish",
-        "signalFcTarget": 15.88,
-        "signalFcReturn": 4.06,
-        "signalFcBoost": 12.2,
-        "isHeld": false
-      },
-      {
-        "ticker": "MAS",
-        "bucket": "Momentum",
-        "price": 73.58,
-        "dreamScore": 28,
-        "aiScore": 82,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Masco Corporation demonstrates an accelerating trajectory with strong revenue growth and a positive analyst outlook.  The company benefits from the ongoing home improvement trend, while its focus on international expansion further fuels potential growth. While high debt levels warrant monitoring, the bullish market sentiment and promising future earnings suggest this is a worthwhile investment opportunity.",
-        "composite": 91.4,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 73.62,
-        "signalFcReturn": 0.05,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "PTC",
-        "bucket": "Reversal",
-        "price": 115.0,
-        "dreamScore": 38,
-        "aiScore": 82,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "PTC exhibits strong revenue growth (21.7%) and impressive profitability despite a recent pullback in share price. The company's focus on the high-demand PLM software market, coupled with its expanding customer base and strategic acquisitions, suggests continued upward momentum. While valuation appears reasonable, investors should monitor macroeconomic conditions and potential competition in the software sector.",
-        "composite": 90.9,
-        "signalFcDirection": "Bullish",
-        "signalFcTarget": 117.03,
-        "signalFcReturn": 1.77,
-        "signalFcBoost": 5.3,
-        "isHeld": false
-      },
-      {
-        "ticker": "BMNR",
-        "bucket": "SmartMoney",
-        "price": 15.86,
-        "dreamScore": 68,
+        "price": 369.18,
+        "dreamScore": 69,
         "aiScore": 75,
         "buySignal": "Buy",
         "trajectory": "Accelerating",
         "stage": "Growth",
         "sentiment": "Bullish",
-        "reasoning": "BMNR exhibits strong revenue growth and a healthy gross margin despite negative FCF. The significant upside target from analysts suggests market belief in future profitability.  The company's focus on emerging blockchain technologies like ETH treasury operations positions it for potential disruption within the evolving financial landscape. However, its high forward P/E ratio indicates current valuation may be speculative, demanding careful monitoring of future earnings performance.",
-        "composite": 89.7,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 15.83,
-        "signalFcReturn": -0.19,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "POET",
-        "bucket": "Account",
-        "price": 12.09,
-        "dreamScore": 76,
-        "aiScore": 72,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "POET exhibits a compelling trajectory with revenue growth exceeding 200%. While currently unprofitable, the company's core technology in semiconductor products shows promise. A high analyst target price and institutional ownership suggest potential for future success. However, investors should monitor debt levels and profitability improvements before committing significant capital.",
-        "composite": 89.5,
+        "reasoning": "Waters Corporation exhibits an accelerating trajectory driven by",
+        "composite": 95.4,
         "signalFcDirection": "Bullish",
-        "signalFcTarget": 12.56,
-        "signalFcReturn": 3.89,
-        "signalFcBoost": 11.7,
+        "signalFcTarget": 375.87,
+        "signalFcReturn": 1.81,
+        "signalFcBoost": 5.4,
         "isHeld": true
       },
       {
-        "ticker": "LRCX",
-        "bucket": "Momentum",
-        "price": 409.54,
-        "dreamScore": 59,
-        "aiScore": 85,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Lam Research is benefiting from the ongoing surge in semiconductor demand, particularly for its advanced equipment used in chip fabrication. Its strong revenue growth and high profit margins demonstrate this upward trajectory.  While valuation is elevated, the company's commitment to innovation and expanding market share suggest continued strong performance, making it a compelling buy for investors seeking exposure to the semiconductor industry's growth.",
-        "composite": 89.1,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 406.97,
-        "signalFcReturn": -0.63,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "CRDO",
-        "bucket": "Account",
-        "price": 302.52,
-        "dreamScore": 79,
-        "aiScore": 82,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Credo exhibits strong momentum with accelerating revenue growth and positive recent news surrounding acquisitions.  Their focus on high-speed connectivity solutions aligns well with growing demand in data centers and AI, presenting significant long-term potential. While valuation is high, the company's trajectory suggests continued outperformance, making it a compelling investment opportunity.",
-        "composite": 88.6,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 300.45,
-        "signalFcReturn": -0.68,
-        "signalFcBoost": 0,
-        "isHeld": true
-      },
-      {
-        "ticker": "CDE",
-        "bucket": "Account",
-        "price": 17.47,
-        "dreamScore": 77,
-        "aiScore": 82,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "CDE exhibits strong accelerating revenue growth and a promising forward P/E ratio, indicating potential for continued expansion. The high institutional ownership and analyst target price suggesting significant confidence in the company's future performance. While the debt/equity ratio is elevated,  the positive financial indicators and bullish sentiment outweigh this concern, making it a compelling investment opportunity.",
-        "composite": 88.2,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 17.5,
-        "signalFcReturn": 0.17,
-        "signalFcBoost": 0,
-        "isHeld": true
-      },
-      {
-        "ticker": "EA",
-        "bucket": "Momentum",
-        "price": 202.97,
-        "dreamScore": 56,
-        "aiScore": 82,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "EA is demonstrating strong revenue growth and improving profitability.  While its P/E is high, the forward P/E suggests future earnings potential. The company's focus on live services and mobile gaming aligns with industry trends, indicating continued upward momentum. There are risks associated with changing consumer preferences and competition in the gaming market, but EA's established brand and track record make it a compelling investment opportunity.",
-        "composite": 87.6,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 203.09,
-        "signalFcReturn": 0.06,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "EQT",
-        "bucket": "Reversal",
-        "price": 51.84,
-        "dreamScore": 56,
-        "aiScore": 85,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "EQT is rapidly scaling its production in a high-demand market, evidenced by robust revenue growth and strong margins.  While debt levels are elevated, the company's focus on operational efficiency and rising natural gas prices suggest continued upward momentum. The analyst target price significantly above the current share price indicates strong investor confidence in this trajectory.",
-        "composite": 86.7,
-        "signalFcDirection": "Bullish",
-        "signalFcTarget": 52.16,
-        "signalFcReturn": 0.62,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "HST",
-        "bucket": "Momentum",
-        "price": 25.13,
-        "dreamScore": 28,
-        "aiScore": 78,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "HST shows strong momentum with recent price increases and positive analyst sentiment.  While its debt-to-equity ratio is high, the real estate sector's current growth trajectory and the potential for rising travel demand suggest upside.  However, investors should monitor inflation and interest rate trends as these could impact borrowing costs and consumer spending.",
-        "composite": 82.0,
-        "signalFcDirection": "Neutral",
-        "signalFcTarget": 25.11,
-        "signalFcReturn": -0.08,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
-        "ticker": "LAES",
+        "ticker": "CRWV",
         "bucket": "SmartMoney",
-        "price": 3.1,
-        "dreamScore": 69,
+        "price": 100.88,
+        "dreamScore": 56,
+        "aiScore": 85,
+        "buySignal": "Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "sentiment": "Bullish",
+        "reasoning": "CoreWeave exhibits explosive revenue",
+        "composite": 81.5,
+        "signalFcDirection": "Bearish",
+        "signalFcTarget": 98.02,
+        "signalFcReturn": -2.84,
+        "signalFcBoost": -8.5,
+        "isHeld": true
+      },
+      {
+        "ticker": "FLY",
+        "bucket": "Reversal",
+        "price": 24.98,
+        "dreamScore": 38,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 57.7,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 27.58,
+        "signalFcReturn": 10.41,
+        "signalFcBoost": 20,
+        "isHeld": false
+      },
+      {
+        "ticker": "PBR-A",
+        "bucket": "Reversal",
+        "price": 14.74,
+        "dreamScore": 29,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 54.2,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 15.13,
+        "signalFcReturn": 2.65,
+        "signalFcBoost": 7.9,
+        "isHeld": false
+      },
+      {
+        "ticker": "NAT",
+        "bucket": "SmartMoney",
+        "price": 6.47,
+        "dreamScore": 68,
         "aiScore": 65,
         "buySignal": "Hold",
         "trajectory": "Accelerating",
         "stage": "Growth",
         "sentiment": "Neutral",
-        "reasoning": "SEALSQ demonstrates strong revenue growth and a decent gross margin, suggesting accelerating trajectory.  However, significant negative FCF and high debt-to-equity ratio raise concerns. While the analyst target price is bullish, the lack of recent news and broader market volatility warrants caution. Holding for now allows further observation of their financial performance and news developments before considering a buy.",
-        "composite": 80.7,
+        "reasoning": "NAT exhibits strong accelerating revenue growth (1",
+        "composite": 52.4,
+        "signalFcDirection": "Bearish",
+        "signalFcTarget": 5.74,
+        "signalFcReturn": -11.28,
+        "signalFcBoost": -20,
+        "isHeld": false
+      },
+      {
+        "ticker": "BSX",
+        "bucket": "Reversal",
+        "price": 44.46,
+        "dreamScore": 33,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 46.2,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 45.54,
+        "signalFcReturn": 2.43,
+        "signalFcBoost": 7.3,
+        "isHeld": false
+      },
+      {
+        "ticker": "BMNR",
+        "bucket": "Account",
+        "price": 14.02,
+        "dreamScore": 68,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 43.6,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 15.27,
+        "signalFcReturn": 8.92,
+        "signalFcBoost": 20,
+        "isHeld": true
+      },
+      {
+        "ticker": "ONDS",
+        "bucket": "Account",
+        "price": 7.68,
+        "dreamScore": 61,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 42.2,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 8.53,
+        "signalFcReturn": 11.07,
+        "signalFcBoost": 20,
+        "isHeld": true
+      },
+      {
+        "ticker": "PTC",
+        "bucket": "Reversal",
+        "price": 112.93,
+        "dreamScore": 38,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 40.8,
+        "signalFcDirection": "Bullish",
+        "signalFcTarget": 114.09,
+        "signalFcReturn": 1.03,
+        "signalFcBoost": 3.1,
+        "isHeld": false
+      },
+      {
+        "ticker": "EQT",
+        "bucket": "Reversal",
+        "price": 51.48,
+        "dreamScore": 56,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 32.4,
         "signalFcDirection": "Neutral",
-        "signalFcTarget": 3.1,
-        "signalFcReturn": 0.0,
+        "signalFcTarget": 51.52,
+        "signalFcReturn": 0.08,
+        "signalFcBoost": 0,
+        "isHeld": false
+      },
+      {
+        "ticker": "BTO.TO",
+        "bucket": "SmartMoney",
+        "price": 5.51,
+        "dreamScore": 70,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 32.0,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 5.53,
+        "signalFcReturn": 0.36,
         "signalFcBoost": 0,
         "isHeld": false
       },
       {
         "ticker": "NBIS",
         "bucket": "Account",
-        "price": 283.61,
+        "price": 259.66,
         "dreamScore": 71,
-        "aiScore": 78,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Nebius Group exhibits rapid revenue growth and a high gross margin, indicating strong momentum in the AI infrastructure market. While its current valuation is high, this reflects investor optimism about its future potential. The company's focus on building essential infrastructure for the burgeoning AI industry positions it well for continued growth. However, investors should monitor FCF generation and manage the risks associated with its high debt/equity ratio.",
-        "composite": 79.2,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 24.2,
         "signalFcDirection": "Neutral",
-        "signalFcTarget": 284.97,
-        "signalFcReturn": 0.48,
+        "signalFcTarget": 259.82,
+        "signalFcReturn": 0.06,
         "signalFcBoost": 0,
-        "isHeld": true
+        "isHeld": false
       },
       {
-        "ticker": "MOH",
-        "bucket": "Momentum",
-        "price": 197.42,
-        "dreamScore": 29,
-        "aiScore": 68,
-        "buySignal": "Hold",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Neutral",
-        "reasoning": "Molina Healthcare shows signs of accelerating growth despite recent revenue dips. Its focus on Medicaid and Medicare, government-backed sectors with consistent demand, positions it for long-term gains. However, high debt/equity ratio (96.7) and a relatively low ROE (4.5%) raise concerns about financial stability. Current valuation (P/E 21.3) suggests the market is cautiously optimistic, making it wise to hold for now and monitor improvements in key financials before considering a buy.",
-        "composite": 71.8,
-        "signalFcDirection": "Bullish",
-        "signalFcTarget": 199.76,
-        "signalFcReturn": 1.19,
-        "signalFcBoost": 3.6,
+        "ticker": "LAES",
+        "bucket": "Account",
+        "price": 3.23,
+        "dreamScore": 69,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 23.8,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 3.23,
+        "signalFcReturn": 0.0,
+        "signalFcBoost": 0,
         "isHeld": false
       },
       {
         "ticker": "XNDU",
         "bucket": "Account",
-        "price": 12.54,
+        "price": 11.8,
         "dreamScore": 53,
-        "aiScore": 78,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Xanadu exhibits strong revenue growth despite operating losses common in early-stage quantum tech.  The high gross margin indicates solid operational efficiency, and the analyst target price suggests significant upside potential. While high debt/equity ratio is a concern, ongoing advancements in photonic quantum computing and growing institutional investment suggest a trajectory worth watching closely.",
-        "composite": 63.6,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 20.6,
         "signalFcDirection": "Neutral",
-        "signalFcTarget": 12.54,
-        "signalFcReturn": 0.0,
+        "signalFcTarget": 11.71,
+        "signalFcReturn": -0.76,
         "signalFcBoost": 0,
-        "isHeld": true
+        "isHeld": false
+      },
+      {
+        "ticker": "MAS",
+        "bucket": "Momentum",
+        "price": 78.05,
+        "dreamScore": 28,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 18.2,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 77.86,
+        "signalFcReturn": -0.24,
+        "signalFcBoost": 0,
+        "isHeld": false
+      },
+      {
+        "ticker": "LRCX",
+        "bucket": "Momentum",
+        "price": 374.8,
+        "dreamScore": 59,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 14.8,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 375.44,
+        "signalFcReturn": 0.17,
+        "signalFcBoost": 0,
+        "isHeld": false
+      },
+      {
+        "ticker": "EA",
+        "bucket": "Momentum",
+        "price": 204.52,
+        "dreamScore": 56,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 14.4,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 204.4,
+        "signalFcReturn": -0.06,
+        "signalFcBoost": 0,
+        "isHeld": false
+      },
+      {
+        "ticker": "MOH",
+        "bucket": "Momentum",
+        "price": 201.42,
+        "dreamScore": 29,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 10.3,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 201.54,
+        "signalFcReturn": 0.06,
+        "signalFcBoost": 0,
+        "isHeld": false
+      },
+      {
+        "ticker": "HST",
+        "bucket": "Momentum",
+        "price": 24.58,
+        "dreamScore": 28,
+        "aiScore": 0,
+        "buySignal": "Unknown",
+        "trajectory": "",
+        "stage": "",
+        "sentiment": "\u2014",
+        "reasoning": "",
+        "composite": 10.2,
+        "signalFcDirection": "Neutral",
+        "signalFcTarget": 24.61,
+        "signalFcReturn": 0.12,
+        "signalFcBoost": 0,
+        "isHeld": false
       }
     ]
   },
-  "signalForecastAt": "2026-06-24 00:33 EDT",
+  "signalForecastAt": "2026-06-25 09:34 EDT",
   "rsiHistory": {
     "CRDO": [
-      {
-        "rsi": 58.2,
-        "ts": "2026-06-17 21:43 EDT"
-      },
-      {
-        "rsi": 60.3,
-        "ts": "2026-06-18 21:13 EDT"
-      },
       {
         "rsi": 69.6,
         "ts": "2026-06-22 20:01 EDT"
@@ -1484,6 +1348,14 @@
       {
         "rsi": 59.7,
         "ts": "2026-06-24 00:32 EDT"
+      },
+      {
+        "rsi": 63.1,
+        "ts": "2026-06-24 12:07 EDT"
+      },
+      {
+        "rsi": 62.9,
+        "ts": "2026-06-24 22:02 EDT"
       }
     ],
     "ARGX": [
@@ -1510,24 +1382,24 @@
     ],
     "BMNR": [
       {
-        "rsi": 34.2,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 39.1,
+        "ts": "2026-06-24 12:08 EDT"
       },
       {
-        "rsi": 36.6,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 37.4,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 37.0,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 37.4,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 37.5,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 37.4,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 37.5,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 31.1,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "OLA.TO": [
@@ -1818,35 +1690,27 @@
     ],
     "ONDS": [
       {
-        "rsi": 20.4,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 19.8,
+        "ts": "2026-06-24 12:08 EDT"
       },
       {
-        "rsi": 22.1,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 19.1,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 18.4,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 19.1,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 16.2,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 19.1,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 16.2,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 15.0,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "POET": [
-      {
-        "rsi": 45.6,
-        "ts": "2026-06-17 21:43 EDT"
-      },
-      {
-        "rsi": 49.5,
-        "ts": "2026-06-18 21:13 EDT"
-      },
       {
         "rsi": 42.9,
         "ts": "2026-06-22 20:01 EDT"
@@ -1858,6 +1722,14 @@
       {
         "rsi": 38.9,
         "ts": "2026-06-24 00:32 EDT"
+      },
+      {
+        "rsi": 33.4,
+        "ts": "2026-06-24 12:07 EDT"
+      },
+      {
+        "rsi": 31.1,
+        "ts": "2026-06-24 22:02 EDT"
       }
     ],
     "RFL": [
@@ -1884,14 +1756,6 @@
     ],
     "CDE": [
       {
-        "rsi": 45.0,
-        "ts": "2026-06-17 21:43 EDT"
-      },
-      {
-        "rsi": 40.9,
-        "ts": "2026-06-18 21:13 EDT"
-      },
-      {
         "rsi": 40.7,
         "ts": "2026-06-22 20:01 EDT"
       },
@@ -1902,325 +1766,325 @@
       {
         "rsi": 37.0,
         "ts": "2026-06-24 00:32 EDT"
+      },
+      {
+        "rsi": 37.9,
+        "ts": "2026-06-24 12:07 EDT"
+      },
+      {
+        "rsi": 37.6,
+        "ts": "2026-06-24 22:02 EDT"
       }
     ],
     "HST": [
       {
-        "rsi": 66.5,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 58.1,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 74.5,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 59.2,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 74.0,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 59.2,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 65.0,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 59.2,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 65.0,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 55.7,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "MOH": [
       {
-        "rsi": 62.6,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 62.9,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 66.7,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 65.1,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 62.3,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 65.1,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 65.2,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 65.1,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 65.2,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 63.6,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "MAS": [
       {
-        "rsi": 56.6,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 70.8,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 63.0,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 71.2,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 64.9,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 71.2,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 63.3,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 71.2,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 63.3,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 71.7,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "EA": [
       {
-        "rsi": 69.0,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 64.7,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 54.1,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 64.2,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 58.4,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 64.2,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 62.0,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 64.2,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 62.0,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 59.4,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "LRCX": [
       {
-        "rsi": 64.9,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 55.5,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 67.4,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 56.6,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 70.7,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 56.6,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 57.6,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 56.6,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 57.6,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 61.4,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "BSX": [
       {
-        "rsi": 22.8,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 35.4,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 29.0,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 33.7,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 26.6,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 33.7,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 38.2,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 33.7,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 38.2,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 24.0,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "PTC": [
       {
-        "rsi": 25.9,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 18.5,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 24.7,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 15.9,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 13.7,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 15.9,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 13.7,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 15.9,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 13.7,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 15.9,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "PBR-A": [
       {
-        "rsi": 20.4,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 24.9,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 20.7,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 25.1,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 25.5,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 25.1,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 26.3,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 25.1,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 26.3,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 24.8,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "FLY": [
       {
-        "rsi": 25.2,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 28.1,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 27.2,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 27.8,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 27.4,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 27.8,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 26.7,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 27.8,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 26.7,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 23.8,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "EQT": [
       {
-        "rsi": 26.9,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 34.8,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 26.9,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 34.2,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 32.8,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 34.2,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 34.1,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 34.2,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 34.1,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 27.8,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "NBIS": [
       {
-        "rsi": 65.1,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 52.1,
+        "ts": "2026-06-24 12:07 EDT"
       },
       {
-        "rsi": 65.3,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 52.5,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 56.3,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 52.5,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 54.7,
-        "ts": "2026-06-23 23:06 EDT"
+        "rsi": 52.5,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 54.7,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 53.0,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "XNDU": [
       {
         "rsi": 34.2,
-        "ts": "2026-06-17 21:43 EDT"
+        "ts": "2026-06-24 12:08 EDT"
       },
       {
-        "rsi": 37.2,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 34.1,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 34.7,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 34.1,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 28.9,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 34.1,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 28.9,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 35.9,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "LAES": [
       {
-        "rsi": 35.5,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 43.9,
+        "ts": "2026-06-24 12:08 EDT"
       },
       {
-        "rsi": 42.2,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 44.8,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 40.1,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 44.8,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 42.1,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 44.8,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 42.1,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 43.5,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "BTO.TO": [
       {
-        "rsi": 48.0,
-        "ts": "2026-06-17 21:43 EDT"
+        "rsi": 34.3,
+        "ts": "2026-06-24 12:08 EDT"
       },
       {
-        "rsi": 40.9,
-        "ts": "2026-06-18 21:13 EDT"
+        "rsi": 34.9,
+        "ts": "2026-06-24 22:02 EDT"
       },
       {
-        "rsi": 39.7,
-        "ts": "2026-06-22 20:01 EDT"
+        "rsi": 34.9,
+        "ts": "2026-06-24 22:04 EDT"
       },
       {
-        "rsi": 39.1,
-        "ts": "2026-06-23 23:07 EDT"
+        "rsi": 34.9,
+        "ts": "2026-06-24 23:02 EDT"
       },
       {
-        "rsi": 39.1,
-        "ts": "2026-06-24 00:32 EDT"
+        "rsi": 46.6,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "CRWV": [
-      {
-        "rsi": 58.5,
-        "ts": "2026-06-16 20:21 EDT"
-      },
-      {
-        "rsi": 55.6,
-        "ts": "2026-06-17 21:43 EDT"
-      },
       {
         "rsi": 55.7,
         "ts": "2026-06-18 21:13 EDT"
@@ -2228,6 +2092,18 @@
       {
         "rsi": 39.7,
         "ts": "2026-06-22 20:01 EDT"
+      },
+      {
+        "rsi": 41.9,
+        "ts": "2026-06-24 22:04 EDT"
+      },
+      {
+        "rsi": 41.9,
+        "ts": "2026-06-24 23:02 EDT"
+      },
+      {
+        "rsi": 47.1,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ],
     "PBR": [
@@ -2238,6 +2114,56 @@
       {
         "rsi": 27.0,
         "ts": "2026-06-24 00:32 EDT"
+      },
+      {
+        "rsi": 24.8,
+        "ts": "2026-06-24 12:07 EDT"
+      },
+      {
+        "rsi": 25.6,
+        "ts": "2026-06-24 22:02 EDT"
+      }
+    ],
+    "NAT": [
+      {
+        "rsi": 88.2,
+        "ts": "2026-06-24 22:04 EDT"
+      },
+      {
+        "rsi": 88.2,
+        "ts": "2026-06-24 23:02 EDT"
+      },
+      {
+        "rsi": 86.3,
+        "ts": "2026-06-25 09:34 EDT"
+      }
+    ],
+    "WAT": [
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-24 22:04 EDT"
+      },
+      {
+        "rsi": 42.0,
+        "ts": "2026-06-24 23:02 EDT"
+      },
+      {
+        "rsi": 48.9,
+        "ts": "2026-06-25 09:33 EDT"
+      }
+    ],
+    "AGI.TO": [
+      {
+        "rsi": 34.2,
+        "ts": "2026-06-24 22:04 EDT"
+      },
+      {
+        "rsi": 34.2,
+        "ts": "2026-06-24 23:02 EDT"
+      },
+      {
+        "rsi": 40.8,
+        "ts": "2026-06-25 09:33 EDT"
       }
     ]
   }

@@ -1297,29 +1297,30 @@ def fetch_ticker_news(ticker):
 # ── TRADEAI: GEMINI AI ANALYSIS ───────────────────────────────────────────────
 
 def _call_gemini_fetcher(prompt, system=None, max_tokens=2048):
-    """Shared Gemini call helper for fetcher.py with 429 retry."""
-    import os, time
+    """Shared Gemini call helper for fetcher.py."""
+    import os
     from google import genai
     from google.genai import types as gtypes
     api_key = os.environ.get("GEMINI_API_KEY", "")
     if not api_key:
         raise ValueError("GEMINI_API_KEY env var not set")
     client = genai.Client(api_key=api_key)
-    cfg = gtypes.GenerateContentConfig(temperature=0.3, max_output_tokens=max_tokens)
+    cfg = gtypes.GenerateContentConfig(
+        temperature=0.3,
+        max_output_tokens=max_tokens,
+    )
     if system:
-        cfg = gtypes.GenerateContentConfig(system_instruction=system, temperature=0.3, max_output_tokens=max_tokens)
-    for attempt in range(3):
-        try:
-            response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt, config=cfg)
-            return response.text.strip()
-        except Exception as e:
-            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
-                wait = 20 * (attempt + 1)
-                log.warning(f"[Gemini] 429 rate limit — retrying in {wait}s (attempt {attempt+1}/3)")
-                time.sleep(wait)
-            else:
-                raise
-    raise Exception("Gemini rate limit exceeded after 3 retries")
+        cfg = gtypes.GenerateContentConfig(
+            system_instruction=system,
+            temperature=0.3,
+            max_output_tokens=max_tokens,
+        )
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt,
+        config=cfg,
+    )
+    return response.text.strip()
 
 
 def gemini_warmup():

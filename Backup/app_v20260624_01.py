@@ -932,31 +932,6 @@ def get_dream():
     return jsonify(data)
 
 
-def run_dream_scan(trigger="manual"):
-    """Run dream candidate scan and save results to DREAM_PATH."""
-    global fetch_status, stop_flag
-    stop_flag = False
-    fetch_status = {"running": True, "message": "Dream scan running...", "operation": "dream_scan", "current": 0, "total": 0, "current_ticker": ""}
-    log.info(f"=== Dream Scan Started (trigger={trigger}) ===")
-    try:
-        watchlist = load_json(WATCHLIST_PATH, [])
-        watchlist_tickers = [w["ticker"] for w in watchlist if isinstance(w, dict)] if watchlist and isinstance(watchlist[0], dict) else watchlist
-        gainers = fetch_daily_gainers()
-        # fetch_daily_gainers returns {"us": [...], "cdn": [...]}
-        us = gainers.get("us", []) if isinstance(gainers, dict) else []
-        cdn = gainers.get("cdn", []) if isinstance(gainers, dict) else []
-        gainer_tickers = [g.get("ticker", "") for g in us + cdn if isinstance(g, dict)]
-        existing = load_json(DREAM_PATH, {}).get("candidates", [])
-        candidates = fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing)
-        from datetime import datetime
-        save_json(DREAM_PATH, {"candidates": candidates, "scannedAt": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "trigger": trigger})
-        log.info(f"=== Dream Scan Complete: {len(candidates)} candidates ===")
-        fetch_status = {"running": False, "message": f"Dream scan complete: {len(candidates)} candidates", "operation": None, "current": len(candidates), "total": len(candidates), "current_ticker": ""}
-    except Exception as e:
-        log.error(f"Dream scan FAIL: {e}", exc_info=True)
-        fetch_status = {"running": False, "message": f"Dream scan FAIL: {e}", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
-
-
 @app.route("/dream/scan", methods=["GET", "POST"])
 def dream_scan():
     if fetch_status.get("running"):
@@ -1032,7 +1007,7 @@ SCORING_DEFAULTS = {
         "Buy": 75,
         "Hold": 40,
         "Avoid": 0,
-        "Unknown": 10
+        "Unknown": 20
     },
     "bucketWeights": {
         "Momentum":   {"dream": 0.15, "ai": 0.35, "signal": 0.30},
@@ -1096,7 +1071,7 @@ SCORING_DEFAULTS = {
     },
     "sellThresholds": {
         "hardSellFloor":    25,
-        "softSellFloor":    50,
+        "softSellFloor":    40,
         "maxPositions":     5,
         "stopLossHard":     8.0,
         "stopLossSoft":     6.0,
@@ -1104,8 +1079,7 @@ SCORING_DEFAULTS = {
     },
     "purchaseMatrix": {
         "slots":         5,
-        "maxDeployPct":  80,
-        "minBuyComposite": 60
+        "maxDeployPct":  80
     }
 }
 
@@ -1122,15 +1096,6 @@ def load_scoring_config():
             else:
                 base[k] = v
     deep_merge(cfg, saved)
-    # Fill any missing keys in saved sub-dicts with defaults (forward migration)
-    def fill_missing(base, saved_ref):
-        for k, v in base.items():
-            if k not in saved_ref:
-                saved_ref[k] = v
-                log.info(f"[ScoringConfig] migrated missing key: {k} = {v}")
-            elif isinstance(v, dict) and isinstance(saved_ref.get(k), dict):
-                fill_missing(v, saved_ref[k])
-    fill_missing(SCORING_DEFAULTS, cfg)
     return cfg
 
 @app.route("/scoring/config", methods=["GET"])
@@ -1720,10 +1685,6 @@ def run_tradeai_analyze():
             assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro)
             ai_assessments[ticker] = assessment
             log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
-            # Gemini free tier: 5 RPM limit — wait 13s between calls
-            if idx < total:
-                import time
-                time.sleep(20)
 
         candidates_data["aiAssessments"] = ai_assessments
         candidates_data["aiAnalyzedAt"] = ts()
@@ -1985,13 +1946,12 @@ def run_tradeai_recommend():
         rsi_history = candidates_data.get("rsiHistory", {})
 
         # Purchase Matrix config
-        pm               = cfg.get("purchaseMatrix", {})
-        max_slots        = int(pm.get("slots", 5))
-        max_deploy       = float(pm.get("maxDeployPct", 80)) / 100.0
-        min_composite    = float(pm.get("minBuyComposite", 60))
-        deployable       = round(balance * max_deploy, 2)
-        budget_per_slot  = round(deployable / max(1, max_slots), 2)
-        log.info(f"TradeAI BUY config | balance:{balance} deployable:{deployable} slots:{max_slots} per_slot:{budget_per_slot} min_composite:{min_composite}")
+        pm           = cfg.get("purchaseMatrix", {})
+        max_slots    = int(pm.get("slots", 5))
+        max_deploy   = float(pm.get("maxDeployPct", 80)) / 100.0
+        deployable   = round(balance * max_deploy, 2)
+        budget_per_slot = round(deployable / max(1, max_slots), 2)
+        log.info(f"TradeAI BUY config | balance:{balance} deployable:{deployable} slots:{max_slots} per_slot:{budget_per_slot}")
 
         buys = []
         held_count = len(holdings)
@@ -2022,32 +1982,21 @@ def run_tradeai_recommend():
             if not price or price <= 0:
                 log.warning(f"TradeAI QUALIFY skip (no price): {ticker}")
                 continue
-            if s.get("composite", 0) < min_composite:
-                log.info(f"TradeAI QUALIFY skip (composite {s.get('composite')} < min {min_composite}): {ticker}")
-                continue
             if budget_per_slot < price:
                 log.warning(f"TradeAI QUALIFY skip (price ${price} > per-slot budget ${budget_per_slot}): {ticker}")
                 continue
             qualified.append(s)
             log.info(f"TradeAI QUALIFIED: {ticker} | bucket:{s.get('bucket')} composite:{s.get('composite')} signal:{s.get('buySignal')}")
 
-        slots_to_fill = max(0, max_slots - held_count)
-        qualified_sorted = sorted(qualified, key=lambda x: x.get("composite", 0), reverse=True)
-        actual_buys = qualified_sorted[:slots_to_fill]
-
-        # Equal budget split across actual buys — not wasted across empty slots
-        actual_buy_count = len(actual_buys)
-        if actual_buy_count > 0:
-            equal_budget = round(deployable / actual_buy_count, 2)
-        else:
-            equal_budget = budget_per_slot
-        log.info(f"TradeAI QUALIFY results | {len(qualified)} qualified from {len(scored)} scored | buying top {slots_to_fill} | equal_budget:{equal_budget} each")
+        log.info(f"TradeAI QUALIFY results | {len(qualified)} qualified from {len(scored)} scored | buying top {max(0, max_slots - held_count)}")
 
         # ── Step 2: buy top N qualifiers by composite score ───────────────────
-        for s in actual_buys:
+        qualified_sorted = sorted(qualified, key=lambda x: x.get("composite", 0), reverse=True)
+        slots_to_fill = max(0, max_slots - held_count)
+        for s in qualified_sorted[:slots_to_fill]:
             ticker = s["ticker"]
             price  = s["price"]
-            shares = int(equal_budget // price)
+            shares = int(budget_per_slot // price)
             if shares < 1:
                 continue
             cost = round(shares * price, 2)
@@ -2500,7 +2449,7 @@ def signal_forecast():
                 continue
             bucket = cand_map.get(ticker, {}).get("bucket", "Dream")
             log.info(f"[Forecast] {idx}/{total} {ticker} — running AI reason...")
-            reason = _ai_forecast_reason(ticker, detail, fc, bucket)
+            reason = _ai_forecast_reason(ticker, detail, fc, bucket, OLLAMA_URL, OLLAMA_MODEL)
             rows.append({
                 "ticker":      ticker,
                 "bucket":      bucket,
@@ -2511,10 +2460,6 @@ def signal_forecast():
                 "accuracy":    None,
                 "generatedAt": ts(),
             })
-            # Gemini free tier: 5 RPM — throttle signal forecast calls
-            if idx < total:
-                import time
-                time.sleep(13)
             _signal_progress["done"] = len(rows)
             log.info(f"[Forecast] {idx}/{total} {ticker} OK | {fc['direction']} | ${fc['forecastLow']}–${fc['forecastHigh']}")
 

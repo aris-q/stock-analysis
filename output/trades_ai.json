@@ -1,34 +1,30 @@
 {
-  "balance": 945.76,
+  "balance": 1250.76,
   "holdings": {
-    "POET": {
-      "shares": 86,
-      "purchasePrice": 12.53,
-      "purchasedAt": "2026-06-14 22:17 EDT",
-      "peakPrice": 13.93
+    "ONDS": {
+      "shares": 105,
+      "purchasePrice": 7.9277,
+      "purchasedAt": "2026-06-24 12:09 EDT"
     },
-    "CDE": {
-      "shares": 63,
-      "purchasePrice": 17.2,
-      "purchasedAt": "2026-06-14 22:17 EDT",
-      "peakPrice": 18.66
+    "BMNR": {
+      "shares": 23,
+      "purchasePrice": 14.02,
+      "purchasedAt": "2026-06-24 22:06 EDT"
     },
-    "CRDO": {
-      "shares": 4,
-      "purchasePrice": 250.81,
-      "purchasedAt": "2026-06-14 23:07 EDT",
-      "peakPrice": 302.52
+    "AGI.TO": {
+      "shares": 25,
+      "purchasePrice": 42.78,
+      "purchasedAt": "2026-06-24 23:09 EDT"
     },
-    "NBIS": {
-      "shares": 4,
-      "purchasePrice": 260.07,
-      "purchasedAt": "2026-06-15 23:18 EDT",
-      "peakPrice": 286.69
+    "WAT": {
+      "shares": 2,
+      "purchasePrice": 369.18,
+      "purchasedAt": "2026-06-24 23:09 EDT"
     },
-    "FLY": {
-      "shares": 8,
-      "purchasePrice": 28.96,
-      "purchasedAt": "2026-06-22 22:47 EDT"
+    "CRWV": {
+      "shares": 10,
+      "purchasePrice": 100.88,
+      "purchasedAt": "2026-06-24 23:09 EDT"
     }
   },
   "transactions": [
@@ -516,7 +512,207 @@
       "date": "2026-06-22 22:47 EDT",
       "balance": 945.76,
       "reason": "Firefly Aerospace shows promising revenue growth despite negative FCF. The sector benefits from increasing private and government space exploration, which should drive demand for their launch services. While debt is a concern, the bullish analyst sentiment and significant upside potential make it a compelling buy candidate for risk-tolerant investors."
+    },
+    {
+      "ticker": "POET",
+      "action": "SELL",
+      "shares": 86,
+      "price": 11.13,
+      "amount": 957.18,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 1902.94,
+      "reason": "Stop-loss triggered: down 11.2% from purchase $12.53 (hard stop at -8%)",
+      "composite": 3.5,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -11.17,
+      "pctFromPeak": -20.1,
+      "stopLoss": true
+    },
+    {
+      "ticker": "CDE",
+      "action": "SELL",
+      "shares": 63,
+      "price": 15.55,
+      "amount": 979.65,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 2882.59,
+      "reason": "Stop-loss triggered: down 9.6% from purchase $17.20 (hard stop at -8%)",
+      "composite": 33.5,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -9.59,
+      "pctFromPeak": -16.67,
+      "stopLoss": true
+    },
+    {
+      "ticker": "CRDO",
+      "action": "SELL",
+      "shares": 4,
+      "price": 269.8662,
+      "amount": 1079.46,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 3962.05,
+      "reason": "Trailing stop triggered: down 10.8% from peak $302.52 \u2014 protecting gains",
+      "composite": 25.8,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 7.6,
+      "pctFromPeak": -10.79,
+      "stopLoss": true
+    },
+    {
+      "ticker": "FLY",
+      "action": "SELL",
+      "shares": 8,
+      "price": 25.37,
+      "amount": 202.96,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 4165.01,
+      "reason": "Stop-loss triggered: down 12.4% from purchase $28.96 (hard stop at -8%)",
+      "composite": 25.6,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -12.4,
+      "pctFromPeak": -12.4,
+      "stopLoss": true
+    },
+    {
+      "ticker": "LAES",
+      "action": "BUY",
+      "shares": 261,
+      "price": 3.185,
+      "amount": 831.28,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 3333.73,
+      "reason": ""
+    },
+    {
+      "ticker": "ONDS",
+      "action": "BUY",
+      "shares": 105,
+      "price": 7.9277,
+      "amount": 832.41,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 2501.32,
+      "reason": ""
+    },
+    {
+      "ticker": "XNDU",
+      "action": "BUY",
+      "shares": 70,
+      "price": 11.8101,
+      "amount": 826.71,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 1674.61,
+      "reason": ""
+    },
+    {
+      "ticker": "BTO.TO",
+      "action": "BUY",
+      "shares": 152,
+      "price": 5.46,
+      "amount": 829.92,
+      "date": "2026-06-24 12:09 EDT",
+      "balance": 844.69,
+      "reason": ""
+    },
+    {
+      "ticker": "BTO.TO",
+      "action": "SELL",
+      "shares": 152,
+      "price": 5.51,
+      "amount": 837.52,
+      "date": "2026-06-24 22:06 EDT",
+      "balance": 1682.21,
+      "reason": "Outside top 5 composite (score 34.3/100 (was 45.2/100, delta -10.9)) \u2014 better opportunities available",
+      "composite": 34.3,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.92,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "BMNR",
+      "action": "BUY",
+      "shares": 23,
+      "price": 14.02,
+      "amount": 322.46,
+      "date": "2026-06-24 22:06 EDT",
+      "balance": 1359.75,
+      "reason": ""
+    },
+    {
+      "ticker": "NBIS",
+      "action": "SELL",
+      "shares": 4,
+      "price": 259.66,
+      "amount": 1038.64,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 2398.39,
+      "reason": "Composite score collapsed to 24.2/100 \u2014 exiting position",
+      "composite": 24.2,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -0.16,
+      "pctFromPeak": -9.43,
+      "stopLoss": false
+    },
+    {
+      "ticker": "LAES",
+      "action": "SELL",
+      "shares": 261,
+      "price": 3.23,
+      "amount": 843.03,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 3241.42,
+      "reason": "Composite score collapsed to 23.8/100 \u2014 exiting position",
+      "composite": 23.8,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 1.41,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "XNDU",
+      "action": "SELL",
+      "shares": 70,
+      "price": 11.8,
+      "amount": 826.0,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 4067.42,
+      "reason": "Composite score collapsed to 20.6/100 \u2014 exiting position",
+      "composite": 20.6,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -0.09,
+      "pctFromPeak": -0.09,
+      "stopLoss": false
+    },
+    {
+      "ticker": "AGI.TO",
+      "action": "BUY",
+      "shares": 25,
+      "price": 42.78,
+      "amount": 1069.5,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 2997.92,
+      "reason": "Alamos Gold exhibits strong operational"
+    },
+    {
+      "ticker": "WAT",
+      "action": "BUY",
+      "shares": 2,
+      "price": 369.18,
+      "amount": 738.36,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 2259.56,
+      "reason": "Waters Corporation exhibits an accelerating trajectory driven by"
+    },
+    {
+      "ticker": "CRWV",
+      "action": "BUY",
+      "shares": 10,
+      "price": 100.88,
+      "amount": 1008.8,
+      "date": "2026-06-24 23:09 EDT",
+      "balance": 1250.76,
+      "reason": "CoreWeave exhibits explosive revenue"
     }
   ],
-  "lastRecommendAt": "2026-06-22 22:47 EDT"
+  "lastRecommendAt": "2026-06-24 23:30 EDT"
 }

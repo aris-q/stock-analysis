@@ -1314,7 +1314,7 @@ def _call_gemini_fetcher(prompt, system=None, max_tokens=2048):
             return response.text.strip()
         except Exception as e:
             if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
-                wait = 20 * (attempt + 1)
+                wait = 15 * (attempt + 1)
                 log.warning(f"[Gemini] 429 rate limit — retrying in {wait}s (attempt {attempt+1}/3)")
                 time.sleep(wait)
             else:
