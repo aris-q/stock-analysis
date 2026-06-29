@@ -31,87 +31,81 @@
       "bucket": "Account"
     },
     {
-      "ticker": "HST",
+      "ticker": "IP",
       "reason": "Momentum: RSI 70.0 \u2014 trending, not overextended",
-      "source": "Screener",
+      "source": "S&P 500",
       "bucket": "Momentum"
     },
     {
-      "ticker": "MOH",
+      "ticker": "PH",
+      "reason": "Momentum: RSI 69.9 \u2014 trending, not overextended",
+      "source": "S&P 500",
+      "bucket": "Momentum"
+    },
+    {
+      "ticker": "MMM",
       "reason": "Momentum: RSI 69.8 \u2014 trending, not overextended",
       "source": "S&P 500",
       "bucket": "Momentum"
     },
     {
-      "ticker": "MAS",
-      "reason": "Momentum: RSI 69.8 \u2014 trending, not overextended",
-      "source": "S&P 500",
-      "bucket": "Momentum"
-    },
-    {
-      "ticker": "EA",
-      "reason": "Momentum: RSI 69.7 \u2014 trending, not overextended",
-      "source": "S&P 500",
-      "bucket": "Momentum"
-    },
-    {
-      "ticker": "LRCX",
+      "ticker": "DASH",
       "reason": "Momentum: RSI 69.6 \u2014 trending, not overextended",
-      "source": "S&P 500",
+      "source": "NASDAQ-100",
       "bucket": "Momentum"
     },
     {
-      "ticker": "BSX",
-      "reason": "Reversal: RSI 11.3 oversold, dream score 33 \u2014 early accumulation signal",
-      "source": "S&P 500",
-      "bucket": "Reversal"
-    },
-    {
-      "ticker": "PTC",
-      "reason": "Reversal: RSI 18.0 oversold, dream score 38 \u2014 early accumulation signal",
-      "source": "S&P 500",
-      "bucket": "Reversal"
-    },
-    {
-      "ticker": "PBR-A",
-      "reason": "Reversal: RSI 20.5 oversold, dream score 29 \u2014 early accumulation signal",
+      "ticker": "OPK",
+      "reason": "Momentum: RSI 69.6 \u2014 trending, not overextended",
       "source": "Screener",
+      "bucket": "Momentum"
+    },
+    {
+      "ticker": "AKAM",
+      "reason": "Reversal: RSI 10.2 oversold, dream score 21 \u2014 early accumulation signal",
+      "source": "S&P 500",
       "bucket": "Reversal"
     },
     {
-      "ticker": "FLY",
-      "reason": "Reversal: RSI 20.8 oversold, dream score 38 \u2014 early accumulation signal",
+      "ticker": "ORCL",
+      "reason": "Reversal: RSI 11.1 oversold, dream score 36 \u2014 early accumulation signal",
+      "source": "S&P 500",
+      "bucket": "Reversal"
+    },
+    {
+      "ticker": "CTSH",
+      "reason": "Reversal: RSI 14.1 oversold, dream score 21 \u2014 early accumulation signal",
+      "source": "S&P 500",
+      "bucket": "Reversal"
+    },
+    {
+      "ticker": "ACN",
+      "reason": "Reversal: RSI 14.8 oversold, dream score 21 \u2014 early accumulation signal",
+      "source": "S&P 500",
+      "bucket": "Reversal"
+    },
+    {
+      "ticker": "SU.TO",
+      "reason": "Reversal: RSI 18.5 oversold, dream score 24 \u2014 early accumulation signal",
+      "source": "TSX 60",
+      "bucket": "Reversal"
+    },
+    {
+      "ticker": "IBRX",
+      "reason": "Smart Money: rev growth 167.6%, margin 99.3% \u2014 strong fundamentals, not yet consensus",
       "source": "Daily Gainer",
-      "bucket": "Reversal"
+      "bucket": "SmartMoney"
     },
     {
-      "ticker": "EQT",
-      "reason": "Reversal: RSI 21.3 oversold, dream score 56 \u2014 early accumulation signal",
-      "source": "S&P 500",
-      "bucket": "Reversal"
-    },
-    {
-      "ticker": "NBIS",
-      "reason": "Smart Money: rev growth 683.9%, margin 72.1% \u2014 strong fundamentals, not yet consensus",
+      "ticker": "IRWD",
+      "reason": "Smart Money: rev growth 158.9%, margin 75.2% \u2014 strong fundamentals, not yet consensus",
       "source": "Screener",
       "bucket": "SmartMoney"
     },
     {
-      "ticker": "XNDU",
-      "reason": "Smart Money: rev growth 305.2%, margin 93.7% \u2014 strong fundamentals, not yet consensus",
+      "ticker": "CDE",
+      "reason": "Smart Money: rev growth 137.8%, margin 58.6% \u2014 strong fundamentals, not yet consensus",
       "source": "Screener",
-      "bucket": "SmartMoney"
-    },
-    {
-      "ticker": "LAES",
-      "reason": "Smart Money: rev growth 118.2%, margin 50.1% \u2014 strong fundamentals, not yet consensus",
-      "source": "Screener",
-      "bucket": "SmartMoney"
-    },
-    {
-      "ticker": "BTO.TO",
-      "reason": "Smart Money: rev growth 117.7%, margin 65.5% \u2014 strong fundamentals, not yet consensus",
-      "source": "Daily Gainer",
       "bucket": "SmartMoney"
     },
     {
@@ -119,126 +113,135 @@
       "reason": "Smart Money: rev growth 104.3%, margin 46.9% \u2014 strong fundamentals, not yet consensus",
       "source": "Screener",
       "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "HL",
+      "reason": "Smart Money: rev growth 100.4%, margin 59.6% \u2014 strong fundamentals, not yet consensus",
+      "source": "Screener",
+      "bucket": "SmartMoney"
     }
   ],
-  "identifiedAt": "2026-06-25 09:33 EDT",
+  "identifiedAt": "2026-06-28 15:37 EDT",
   "details": {
     "ONDS": {
       "ticker": "ONDS",
       "name": "Ondas Inc",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 7.735,
-      "marketCap": 4072792832,
-      "volume": 3969716,
-      "rsi14": 15.0,
-      "ma20": 10.29,
-      "ma50": 10.07,
-      "bbPercent": 0.162,
-      "change1d": 0.72,
-      "change2d": -9.96,
-      "change3d": -4.05,
-      "change4d": -4.1,
-      "change5d": 1.64,
-      "change7d": -16.02,
-      "change30d": -12.7,
+      "price": 7.83,
+      "marketCap": 4122814208,
+      "volume": 77711172,
+      "volumeRatio": 1.66,
+      "rsi14": 21.8,
+      "ma20": 10.02,
+      "ma50": 10.03,
+      "bbPercent": 0.202,
+      "change1d": 2.02,
+      "change2d": -0.07,
+      "change3d": -9.96,
+      "change4d": -4.05,
+      "change5d": -4.1,
+      "change7d": -14.14,
+      "change30d": -30.15,
       "revenueGrowth": 1079.9,
       "grossMargin": 44.8,
       "fcf": -15650777,
-      "peRatio": 85.9,
-      "forwardPE": -154.7,
+      "peRatio": 87.0,
+      "forwardPE": -156.6,
       "eps": 0.09,
       "debtToEquity": 0.7,
       "returnOnEquity": 42.9,
       "week52High": 15.28,
-      "week52Low": 1.53,
-      "priceVs52wHigh": 50.6,
+      "week52Low": 1.71,
+      "priceVs52wHigh": 51.2,
       "analystTarget": 20.125,
-      "analystUpside": 160.2,
+      "analystUpside": 157.0,
       "recommendation": "strong_buy",
       "institutionalPct": 41.2,
       "insiderPct": 2.0,
-      "shortFloat": 32.0,
+      "shortFloat": 32.4,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
     "BMNR": {
       "ticker": "BMNR",
       "name": "BitMine Immersion Technologies,",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 13.9,
-      "marketCap": 7917117952,
-      "volume": 2285568,
-      "rsi14": 31.1,
-      "ma20": 16.57,
-      "ma50": 19.44,
-      "bbPercent": 0.055,
-      "change1d": -0.86,
-      "change2d": -7.34,
-      "change3d": -4.6,
-      "change4d": -1.73,
-      "change5d": 2.8,
-      "change7d": -14.25,
-      "change30d": -34.37,
+      "price": 13.56,
+      "marketCap": 7723462144,
+      "volume": 66337087,
+      "volumeRatio": 1.63,
+      "rsi14": 37.5,
+      "ma20": 16.26,
+      "ma50": 19.25,
+      "bbPercent": 0.067,
+      "change1d": 1.8,
+      "change2d": -4.99,
+      "change3d": -7.34,
+      "change4d": -4.6,
+      "change5d": -1.73,
+      "change7d": -13.63,
+      "change30d": -38.36,
       "revenueGrowth": 627.8,
       "grossMargin": 66.6,
       "fcf": -152525936,
       "peRatio": null,
-      "forwardPE": 14.8,
+      "forwardPE": 14.4,
       "eps": -7.44,
       "debtToEquity": 0.0,
       "returnOnEquity": -175.9,
       "week52High": 161.0,
-      "week52Low": 3.92,
-      "priceVs52wHigh": 8.6,
+      "week52Low": 12.38,
+      "priceVs52wHigh": 8.4,
       "analystTarget": 37.33333,
-      "analystUpside": 168.6,
+      "analystUpside": 175.3,
       "recommendation": "none",
       "institutionalPct": 37.4,
       "insiderPct": 0.8,
-      "shortFloat": 4.7,
+      "shortFloat": 6.2,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
     "AGI.TO": {
       "ticker": "AGI.TO",
       "name": "ALAMOS GOLD INC CLS A",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 43.74,
-      "marketCap": 18369288192,
-      "volume": 40786,
-      "rsi14": 40.8,
-      "ma20": 49.55,
-      "ma50": 54.49,
-      "bbPercent": 0.17,
-      "change1d": 2.2,
-      "change2d": -2.48,
-      "change3d": -2.99,
-      "change4d": 7.87,
-      "change5d": -18.44,
-      "change7d": -17.09,
-      "change30d": -26.59,
+      "price": 44.35,
+      "marketCap": 18625464320,
+      "volume": 1528191,
+      "volumeRatio": 0.86,
+      "rsi14": 41.1,
+      "ma20": 48.97,
+      "ma50": 54.05,
+      "bbPercent": 0.227,
+      "change1d": 0.57,
+      "change2d": 3.09,
+      "change3d": -2.48,
+      "change4d": -2.99,
+      "change5d": 7.87,
+      "change7d": -13.72,
+      "change30d": -19.73,
       "revenueGrowth": 79.2,
       "grossMargin": 70.2,
       "fcf": 153624992,
-      "peRatio": 12.3,
-      "forwardPE": 8.9,
-      "eps": 3.56,
+      "peRatio": 12.4,
+      "forwardPE": 9.1,
+      "eps": 3.57,
       "debtToEquity": 4.8,
       "returnOnEquity": 25.9,
       "week52High": 75.78,
       "week52Low": 33.11,
-      "priceVs52wHigh": 57.7,
-      "analystTarget": 75.80466,
-      "analystUpside": 73.3,
+      "priceVs52wHigh": 58.5,
+      "analystTarget": 75.55447,
+      "analystUpside": 70.4,
       "recommendation": "strong_buy",
       "institutionalPct": 70.2,
       "insiderPct": 0.3,
@@ -247,40 +250,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Alamos Gold Inc. operates as a gold producer in Canada and Mexico. It primarily explores for gold deposits. The company was founded in 2003 and is based in Toronto, Canada.",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
     "WAT": {
       "ticker": "WAT",
       "name": "Waters Corporation",
       "sector": "Healthcare",
       "industry": "Diagnostics & Research",
-      "price": 374.91,
-      "marketCap": 36810858496,
-      "volume": 10561,
-      "rsi14": 48.9,
-      "ma20": 366.26,
-      "ma50": 344.04,
-      "bbPercent": 0.744,
-      "change1d": 1.55,
-      "change2d": 3.35,
-      "change3d": -0.29,
-      "change4d": 0.79,
-      "change5d": -0.44,
-      "change7d": 3.99,
-      "change30d": 11.94,
+      "price": 374.41,
+      "marketCap": 36761767936,
+      "volume": 790913,
+      "volumeRatio": 1.95,
+      "rsi14": 57.3,
+      "ma20": 366.74,
+      "ma50": 345.04,
+      "bbPercent": 0.709,
+      "change1d": -0.66,
+      "change2d": 2.09,
+      "change3d": 3.35,
+      "change4d": -0.29,
+      "change5d": 0.79,
+      "change7d": 4.88,
+      "change30d": 12.36,
       "revenueGrowth": 91.4,
       "grossMargin": 55.2,
       "fcf": -502370624,
-      "peRatio": 47.7,
-      "forwardPE": 22.8,
+      "peRatio": 47.6,
+      "forwardPE": 22.7,
       "eps": 7.86,
       "debtToEquity": 36.6,
       "returnOnEquity": 5.2,
       "week52High": 414.15,
       "week52Low": 275.05,
-      "priceVs52wHigh": 90.5,
-      "analystTarget": 400.27274,
-      "analystUpside": 6.8,
+      "priceVs52wHigh": 90.4,
+      "analystTarget": 401.78262,
+      "analystUpside": 7.3,
       "recommendation": "buy",
       "institutionalPct": 99.7,
       "insiderPct": 0.1,
@@ -289,682 +293,698 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Waters Corporation provides analytical workflow solutions in Asia, the Americas, and Europe. The company operates through two segments, Waters and TA. The company designs, manufactures, sells, and services liquid chromatography, as well as mass spectrometry (MS) technology systems and supports products, including chromatography columns, and other consumable products. It also designs, manufactures,",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
     "CRWV": {
       "ticker": "CRWV",
       "name": "CoreWeave, Inc.",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 104.345,
-      "marketCap": 56927539200,
-      "volume": 1404325,
-      "rsi14": 47.1,
-      "ma20": 107.58,
-      "ma50": 111.39,
-      "bbPercent": 0.401,
-      "change1d": 3.43,
-      "change2d": -4.58,
-      "change3d": -5.0,
-      "change4d": -5.65,
-      "change5d": 2.38,
-      "change7d": -10.84,
-      "change30d": -6.26,
+      "price": 96.58,
+      "marketCap": 52691185664,
+      "volume": 47706035,
+      "volumeRatio": 1.55,
+      "rsi14": 46.6,
+      "ma20": 106.79,
+      "ma50": 110.84,
+      "bbPercent": 0.208,
+      "change1d": -2.21,
+      "change2d": -2.1,
+      "change3d": -4.58,
+      "change4d": -5.0,
+      "change5d": -5.65,
+      "change7d": -16.17,
+      "change30d": -15.44,
       "revenueGrowth": 111.6,
       "grossMargin": 69.4,
       "fcf": -8560327168,
       "peRatio": null,
-      "forwardPE": -123.0,
+      "forwardPE": -113.8,
       "eps": -2.72,
       "debtToEquity": 738.5,
       "returnOnEquity": -40.7,
       "week52High": 173.349,
       "week52Low": 63.8,
-      "priceVs52wHigh": 60.2,
-      "analystTarget": 140.18182,
-      "analystUpside": 34.3,
+      "priceVs52wHigh": 55.7,
+      "analystTarget": 143.41176,
+      "analystUpside": 48.5,
       "recommendation": "buy",
       "institutionalPct": 57.4,
       "insiderPct": 18.5,
-      "shortFloat": 18.2,
+      "shortFloat": 23.0,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "CoreWeave, Inc. operates as a cloud infrastructure technology company in the United States. The company offers CoreWeave Cloud platform that comprises proprietary software and cloud services that deliver the automation and efficiency needed to manage complex artificial intelligence (AI) infrastructure at scale. It also offers data and storage solutions, such as Local Object Transport Accelerator; ",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
-    "HST": {
-      "ticker": "HST",
-      "name": "Host Hotels & Resorts, Inc.",
-      "sector": "Real Estate",
-      "industry": "REIT - Hotel & Motel",
-      "price": 24.865,
-      "marketCap": 17250498560,
-      "volume": 100795,
-      "rsi14": 55.7,
-      "ma20": 24.34,
-      "ma50": 22.65,
-      "bbPercent": 0.703,
-      "change1d": 1.16,
-      "change2d": -0.97,
-      "change3d": -1.23,
-      "change4d": 0.48,
-      "change5d": 1.58,
-      "change7d": -0.14,
-      "change30d": 15.33,
-      "revenueGrowth": 2.8,
-      "grossMargin": 29.0,
-      "fcf": 1190875008,
-      "peRatio": 16.9,
-      "forwardPE": 24.8,
-      "eps": 1.47,
-      "debtToEquity": 80.5,
-      "returnOnEquity": 14.9,
-      "week52High": 25.41,
-      "week52Low": 15.12,
-      "priceVs52wHigh": 97.9,
-      "analystTarget": 24.2375,
-      "analystUpside": -2.5,
-      "recommendation": "buy",
-      "institutionalPct": 105.7,
-      "insiderPct": 1.5,
-      "shortFloat": 7.5,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Host Hotels & Resorts, Inc., herein referred to as we, Host Inc., or the Company, is a self-managed and self-administered real estate investment trust that owns hotel property. We conduct our operations as an umbrella partnership, REIT, through an operating partnership, Host Hotels & Resorts, L.P., of which we are the sole general partner. When distinguishing between Host Inc. and Host LP, the pri",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "MOH": {
-      "ticker": "MOH",
-      "name": "Molina Healthcare Inc",
-      "sector": "Healthcare",
-      "industry": "Healthcare Plans",
-      "price": 207.135,
-      "marketCap": 10791733248,
-      "volume": 31859,
-      "rsi14": 63.6,
-      "ma20": 193.58,
-      "ma50": 184.88,
-      "bbPercent": 0.871,
-      "change1d": 2.84,
-      "change2d": 2.47,
-      "change3d": -0.44,
-      "change4d": 1.05,
-      "change5d": -0.08,
-      "change7d": 3.46,
-      "change30d": 7.9,
-      "revenueGrowth": -4.3,
-      "grossMargin": 8.9,
-      "fcf": 757500032,
-      "peRatio": 55.5,
-      "forwardPE": 22.2,
-      "eps": 3.73,
-      "debtToEquity": 96.7,
-      "returnOnEquity": 4.5,
-      "week52High": 311.52,
-      "week52Low": 121.06,
-      "priceVs52wHigh": 66.5,
-      "analystTarget": 191.76471,
-      "analystUpside": -7.4,
-      "recommendation": "none",
-      "institutionalPct": 111.8,
-      "insiderPct": 1.4,
-      "shortFloat": 5.7,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Molina Healthcare, Inc. provides managed healthcare services to low-income families and individuals under the Medicaid and Medicare programs and through the state insurance marketplaces in the United States. It operates in four segments: Medicaid, Medicare, Marketplace, and Other. The company was founded in 1980 and is headquartered in Long Beach, California.",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "MAS": {
-      "ticker": "MAS",
-      "name": "Masco Corporation",
-      "sector": "Industrials",
-      "industry": "Building Products & Equipment",
-      "price": 78.75,
-      "marketCap": 15886586880,
-      "volume": 26814,
-      "rsi14": 71.7,
-      "ma20": 72.37,
-      "ma50": 70.35,
-      "bbPercent": 1.049,
-      "change1d": 0.9,
-      "change2d": 6.61,
-      "change3d": -0.5,
-      "change4d": -1.08,
-      "change5d": 2.42,
-      "change7d": 5.28,
-      "change30d": 17.26,
-      "revenueGrowth": 6.5,
-      "grossMargin": 35.7,
-      "fcf": 738499968,
-      "peRatio": 19.5,
-      "forwardPE": 16.7,
-      "eps": 4.04,
-      "debtToEquity": 12229.6,
-      "returnOnEquity": 8457.1,
-      "week52High": 79.19,
-      "week52Low": 58.16,
-      "priceVs52wHigh": 99.4,
-      "analystTarget": 81.0,
-      "analystUpside": 2.9,
-      "recommendation": "buy",
-      "institutionalPct": 105.5,
-      "insiderPct": 0.2,
-      "shortFloat": 6.9,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Masco Corporation provides home improvement and building products in North America, Europe, and internationally. The company's Plumbing Products segment offers faucets, showerheads, handheld showers, valves, bath hardware and accessories, bathing units, shower bases and enclosures, shower drains, steam shower systems, water filtration systems, and sinks and kitchen accessories; acrylic tubs, bath ",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "EA": {
-      "ticker": "EA",
-      "name": "Electronic Arts Inc.",
-      "sector": "Communication Services",
-      "industry": "Electronic Gaming & Multimedia",
-      "price": 204.515,
-      "marketCap": 51282440192,
-      "volume": 29627,
-      "rsi14": 59.4,
-      "ma20": 202.9,
-      "ma50": 202.13,
-      "bbPercent": 0.986,
-      "change1d": -0.0,
-      "change2d": 0.49,
-      "change3d": 0.27,
-      "change4d": 0.41,
-      "change5d": -0.43,
-      "change7d": 0.74,
-      "change30d": 2.26,
-      "revenueGrowth": 11.9,
-      "grossMargin": 79.0,
-      "fcf": 2219124992,
-      "peRatio": 58.1,
-      "forwardPE": 21.3,
-      "eps": 3.52,
-      "debtToEquity": 27.4,
-      "returnOnEquity": 13.5,
-      "week52High": 204.89,
-      "week52Low": 146.97,
-      "priceVs52wHigh": 99.8,
-      "analystTarget": 202.8,
-      "analystUpside": -0.8,
-      "recommendation": "hold",
-      "institutionalPct": 95.2,
-      "insiderPct": 0.2,
-      "shortFloat": 4.4,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Electronic Arts Inc. develops, markets, publishes, and delivers games, content, and services for game consoles, PCs, and mobile phones worldwide. It develops and publishes games and experiences across diverse genres, such as sports, racing, first-person shooter, action, role-playing, and simulation; and live services offerings, including extra content and subscription offerings through its global ",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "LRCX": {
-      "ticker": "LRCX",
-      "name": "Lam Research Corporation",
-      "sector": "Technology",
-      "industry": "Semiconductor Equipment & Materials",
-      "price": 393.0,
-      "marketCap": 491474419712,
-      "volume": 854893,
-      "rsi14": 61.4,
-      "ma20": 352.03,
-      "ma50": 307.71,
-      "bbPercent": 0.827,
-      "change1d": 4.86,
-      "change2d": 0.93,
-      "change3d": -9.33,
-      "change4d": 5.27,
-      "change5d": 3.97,
-      "change7d": 6.48,
-      "change30d": 33.12,
-      "revenueGrowth": 23.8,
-      "grossMargin": 50.0,
-      "fcf": 4352341504,
-      "peRatio": 74.4,
-      "forwardPE": 49.1,
-      "eps": 5.28,
-      "debtToEquity": 35.3,
-      "returnOnEquity": 66.8,
-      "week52High": 409.75,
-      "week52Low": 90.94,
-      "priceVs52wHigh": 95.9,
-      "analystTarget": 340.58066,
-      "analystUpside": -13.3,
-      "recommendation": "buy",
-      "institutionalPct": 88.1,
-      "insiderPct": 0.3,
-      "shortFloat": 2.9,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Lam Research Corporation designs, manufactures, markets, refurbishes, and services semiconductor processing equipment used in the fabrication of integrated circuits in the United States, China, Korea, Taiwan, Japan, Southeast Asia, and Europe. The company offers ALTUS systems to deposit conformal or selective films for tungsten or molybdenum metallization applications; SABRE electrochemical deposi",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "BSX": {
-      "ticker": "BSX",
-      "name": "Boston Scientific Corporation",
-      "sector": "Healthcare",
-      "industry": "Medical Devices",
-      "price": 44.1,
-      "marketCap": 65548263424,
-      "volume": 620928,
-      "rsi14": 24.0,
-      "ma20": 47.03,
-      "ma50": 53.49,
-      "bbPercent": 0.067,
-      "change1d": -0.73,
-      "change2d": -2.5,
-      "change3d": 2.86,
-      "change4d": -2.12,
-      "change5d": 0.76,
-      "change7d": -5.94,
-      "change30d": -16.82,
-      "revenueGrowth": 11.6,
-      "grossMargin": 68.9,
-      "fcf": 2807124992,
-      "peRatio": 18.5,
-      "forwardPE": 11.9,
-      "eps": 2.39,
-      "debtToEquity": 42.2,
-      "returnOnEquity": 14.7,
-      "week52High": 109.5,
-      "week52Low": 43.89,
-      "priceVs52wHigh": 40.3,
-      "analystTarget": 77.03571,
-      "analystUpside": 74.7,
-      "recommendation": "buy",
-      "institutionalPct": 95.0,
-      "insiderPct": 0.2,
-      "shortFloat": 3.9,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Boston Scientific Corporation develops, manufactures, and markets medical devices for use in various interventional medical specialties worldwide. The company operates in two segments, MedSurg and Cardiovascular. It offers devices to diagnose and treat a range of gastrointestinal conditions, such as resolution clips, biliary stent systems, stents and electrocautery enhanced delivery systems, SpyGl",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "PTC": {
-      "ticker": "PTC",
-      "name": "PTC Inc.",
-      "sector": "Technology",
-      "industry": "Software - Application",
-      "price": 111.9,
-      "marketCap": 12925097984,
-      "volume": 29794,
-      "rsi14": 15.9,
-      "ma20": 126.88,
-      "ma50": 135.38,
-      "bbPercent": 0.202,
-      "change1d": -0.91,
-      "change2d": 0.53,
-      "change3d": -2.32,
-      "change4d": 0.22,
-      "change5d": -1.87,
-      "change7d": -5.31,
-      "change30d": -20.53,
-      "revenueGrowth": 21.7,
-      "grossMargin": 84.7,
-      "fcf": 986047232,
-      "peRatio": 10.8,
-      "forwardPE": 12.9,
-      "eps": 10.4,
-      "debtToEquity": 35.8,
-      "returnOnEquity": 34.4,
-      "week52High": 219.69,
-      "week52Low": 108.5,
-      "priceVs52wHigh": 50.9,
-      "analystTarget": 180.1,
-      "analystUpside": 60.9,
-      "recommendation": "buy",
-      "institutionalPct": 104.3,
-      "insiderPct": 0.3,
-      "shortFloat": 6.7,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "PTC Inc. operates as software company in the Americas, Europe, and the Asia Pacific. The company provides Windchill, a suite that manages all aspects of the product development lifecycle(PLM) that provides real-time information sharing, dynamic data visualization, collaborate across geographically distributed teams, and enabling manufacturers to elevate product development, manufacturing, field se",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "PBR-A": {
-      "ticker": "PBR-A",
-      "name": "Petroleo Brasileiro S.A. Petrob",
-      "sector": "Energy",
-      "industry": "Oil & Gas Integrated",
-      "price": 14.62,
-      "marketCap": 100096032768,
-      "volume": 406368,
-      "rsi14": 24.8,
-      "ma20": 15.8,
-      "ma50": 17.44,
-      "bbPercent": 0.071,
-      "change1d": -0.81,
-      "change2d": -3.34,
-      "change3d": -0.07,
-      "change4d": 1.8,
-      "change5d": -0.2,
-      "change7d": -3.43,
-      "change30d": -17.02,
-      "revenueGrowth": 0.4,
-      "grossMargin": 47.4,
-      "fcf": 82932752384,
-      "peRatio": 4.6,
-      "forwardPE": 5.9,
-      "eps": 3.15,
-      "debtToEquity": 83.3,
-      "returnOnEquity": 25.6,
-      "week52High": 20.05,
-      "week52Low": 10.76,
-      "priceVs52wHigh": 72.9,
-      "analystTarget": 22.3704,
-      "analystUpside": 53.0,
-      "recommendation": "buy",
-      "institutionalPct": 9.3,
-      "insiderPct": null,
-      "shortFloat": 2.0,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Petr\u00f3leo Brasileiro S.A. - Petrobras explores, produces, and sells oil and gas in Brazil, China, the United States, the Americas, Asia, Europe, Singapore, and internationally. It operates through three segments: Exploration and Production; Refining, Transportation & Marketing; and Gas & Low Carbon Energies. The Exploration and Production segment explores, develops, and produces crude oil, natural ",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "FLY": {
-      "ticker": "FLY",
-      "name": "Firefly Aerospace Inc.",
-      "sector": "Industrials",
-      "industry": "Aerospace & Defense",
-      "price": 24.365,
-      "marketCap": 4001591040,
-      "volume": 544690,
-      "rsi14": 23.8,
+    "IP": {
+      "ticker": "IP",
+      "name": "International Paper Company",
+      "sector": "Consumer Cyclical",
+      "industry": "Packaging & Containers",
+      "price": 38.76,
+      "marketCap": 20524077056,
+      "volume": 4732824,
+      "volumeRatio": 0.74,
+      "rsi14": 70.0,
       "ma20": 35.34,
-      "ma50": 38.26,
-      "bbPercent": 0.112,
-      "change1d": -2.46,
-      "change2d": -8.2,
-      "change3d": -6.04,
-      "change4d": -6.43,
-      "change5d": -0.64,
-      "change7d": -21.28,
-      "change30d": -38.11,
-      "revenueGrowth": 44.8,
-      "grossMargin": 24.8,
-      "fcf": -146637120,
+      "ma50": 33.5,
+      "bbPercent": 0.915,
+      "change1d": -0.67,
+      "change2d": 1.88,
+      "change3d": 4.76,
+      "change4d": -0.89,
+      "change5d": 0.19,
+      "change7d": 7.19,
+      "change30d": 24.49,
+      "revenueGrowth": 13.4,
+      "grossMargin": 29.7,
+      "fcf": 1711250048,
       "peRatio": null,
-      "forwardPE": -18.9,
-      "eps": -4.94,
-      "debtToEquity": 4.8,
-      "returnOnEquity": -62.1,
-      "week52High": 73.8,
-      "week52Low": 16.0,
-      "priceVs52wHigh": 33.0,
-      "analystTarget": 48.22222,
-      "analystUpside": 97.9,
+      "forwardPE": 14.5,
+      "eps": -5.19,
+      "debtToEquity": 65.9,
+      "returnOnEquity": -16.0,
+      "week52High": 56.13,
+      "week52Low": 29.26,
+      "priceVs52wHigh": 69.1,
+      "analystTarget": 39.36364,
+      "analystUpside": 1.6,
       "recommendation": "buy",
-      "institutionalPct": 57.9,
-      "insiderPct": 20.5,
-      "shortFloat": 12.1,
+      "institutionalPct": 99.4,
+      "insiderPct": 0.2,
+      "shortFloat": 17.1,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "Firefly Aerospace Inc. operates as a space and defense technology company and provides mission solutions for national security, government, and commercial customers in United States. The company offers integrated launch and space services technology that is committed to enabling launch, transit, and operations in space. It also provides Launch solutions, such as Alpha, a responsive launch services",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "description": "International Paper Company produces and sells renewable fiber-based packaging in North America, Latin America, Europe, South America, and North Africa. It operates through two segments, Packaging Solutions North America and Packaging Solutions EMEA. The company offers linerboard, medium, whitetop, and saturating kraft; and converts containerboard into corrugated boxes, bulk bins, shipping contain",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
-    "EQT": {
-      "ticker": "EQT",
-      "name": "EQT Corporation",
-      "sector": "Energy",
-      "industry": "Oil & Gas E&P",
-      "price": 51.265,
-      "marketCap": 32065130496,
-      "volume": 113157,
-      "rsi14": 27.8,
-      "ma20": 52.77,
-      "ma50": 55.67,
-      "bbPercent": 0.276,
-      "change1d": -0.42,
-      "change2d": -0.35,
-      "change3d": -0.35,
-      "change4d": 2.21,
+    "PH": {
+      "ticker": "PH",
+      "name": "Parker-Hannifin Corporation",
+      "sector": "Industrials",
+      "industry": "Specialty Industrial Machinery",
+      "price": 968.92,
+      "marketCap": 122167623680,
+      "volume": 1229673,
+      "volumeRatio": 1.52,
+      "rsi14": 69.9,
+      "ma20": 908.3,
+      "ma50": 905.9,
+      "bbPercent": 0.81,
+      "change1d": -2.12,
+      "change2d": 3.0,
+      "change3d": 1.43,
+      "change4d": -1.51,
+      "change5d": 0.93,
+      "change7d": 2.43,
+      "change30d": 10.05,
+      "revenueGrowth": 10.6,
+      "grossMargin": 37.4,
+      "fcf": 2774481920,
+      "peRatio": 35.7,
+      "forwardPE": 28.4,
+      "eps": 27.13,
+      "debtToEquity": 65.6,
+      "returnOnEquity": 24.8,
+      "week52High": 1034.96,
+      "week52Low": 691.47,
+      "priceVs52wHigh": 93.6,
+      "analystTarget": 1035.3914,
+      "analystUpside": 6.9,
+      "recommendation": "buy",
+      "institutionalPct": 91.4,
+      "insiderPct": 0.2,
+      "shortFloat": 1.2,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Parker-Hannifin Corporation manufactures and sells motion and control technologies and systems for aerospace and defense, in-plant and industrial equipment, transportation, off-highway, energy, and HVAC and refrigeration markets in North America, Europe, Asia Pacific, and Latin America. The company operates through two segments: Diversified Industrial and Aerospace Systems. It offers various motio",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "MMM": {
+      "ticker": "MMM",
+      "name": "3M Company",
+      "sector": "Industrials",
+      "industry": "Conglomerates",
+      "price": 164.01,
+      "marketCap": 85542240256,
+      "volume": 6324606,
+      "volumeRatio": 1.58,
+      "rsi14": 69.8,
+      "ma20": 158.06,
+      "ma50": 151.37,
+      "bbPercent": 0.8,
+      "change1d": -2.36,
+      "change2d": 1.24,
+      "change3d": 2.51,
+      "change4d": -0.85,
+      "change5d": 1.63,
+      "change7d": 3.0,
+      "change30d": 13.6,
+      "revenueGrowth": 1.3,
+      "grossMargin": 39.7,
+      "fcf": 2322374912,
+      "peRatio": 31.7,
+      "forwardPE": 17.3,
+      "eps": 5.18,
+      "debtToEquity": 396.5,
+      "returnOnEquity": 71.5,
+      "week52High": 177.41,
+      "week52Low": 139.34,
+      "priceVs52wHigh": 92.4,
+      "analystTarget": 170.49353,
+      "analystUpside": 4.0,
+      "recommendation": "buy",
+      "institutionalPct": 77.5,
+      "insiderPct": 0.1,
+      "shortFloat": 2.2,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "3M Company provides diversified technology services in the America, the Asia Pacific, Europe, the Middle East, Africa, and internationally. It operates through three segments: Safety and Industrial, Transportation and Electronics, and Consumer. The Safety and Industrial segment provides industrial abrasives and finishing for metalworking applications; autobody repair solutions; industrial specialt",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "DASH": {
+      "ticker": "DASH",
+      "name": "DoorDash, Inc.",
+      "sector": "Consumer Cyclical",
+      "industry": "Internet Retail",
+      "price": 183.09,
+      "marketCap": 79775735808,
+      "volume": 7399183,
+      "volumeRatio": 1.43,
+      "rsi14": 69.6,
+      "ma20": 163.78,
+      "ma50": 165.78,
+      "bbPercent": 0.988,
+      "change1d": 3.49,
+      "change2d": -0.57,
+      "change3d": 3.74,
+      "change4d": -0.33,
       "change5d": -0.8,
-      "change7d": -0.2,
-      "change30d": -8.34,
-      "revenueGrowth": 49.9,
-      "grossMargin": 81.0,
-      "fcf": 2503225856,
-      "peRatio": 9.7,
-      "forwardPE": 11.3,
-      "eps": 5.27,
-      "debtToEquity": 20.8,
-      "returnOnEquity": 13.4,
-      "week52High": 68.24,
-      "week52Low": 48.47,
-      "priceVs52wHigh": 75.1,
-      "analystTarget": 69.79167,
-      "analystUpside": 36.1,
+      "change7d": 10.52,
+      "change30d": 19.12,
+      "revenueGrowth": 33.1,
+      "grossMargin": 51.8,
+      "fcf": 2295624960,
+      "peRatio": 86.8,
+      "forwardPE": 23.4,
+      "eps": 2.11,
+      "debtToEquity": 32.2,
+      "returnOnEquity": 9.9,
+      "week52High": 285.5,
+      "week52Low": 143.3,
+      "priceVs52wHigh": 64.1,
+      "analystTarget": 244.6762,
+      "analystUpside": 33.6,
       "recommendation": "buy",
-      "institutionalPct": 93.8,
-      "insiderPct": 0.8,
-      "shortFloat": 3.9,
+      "institutionalPct": 97.1,
+      "insiderPct": 0.7,
+      "shortFloat": 4.7,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "EQT Corporation engages in the exploration, production, gathering, and transmission of hydrocarbons and natural gas. The company sells natural gas, natural gas liquids, and oil to marketers, utilities, and industrial customers located in the Appalachian Basin. It also provides marketing services and contractual pipeline capacity management services, as well as engages in risk management and hedgin",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "description": "DoorDash, Inc., together with its subsidiaries, operates a commerce platform that connects merchants, consumers, and dashers in the United States and internationally. The company operates DoorDash Marketplace, Wolt Marketplace, and Deliveroo Marketplace, which provide various services, such as customer acquisition, demand generation, order fulfillment, merchandising, payment processing, and custom",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
-    "NBIS": {
-      "ticker": "NBIS",
-      "name": "Nebius Group N.V.",
-      "sector": "Communication Services",
-      "industry": "Internet Content & Information",
-      "price": 269.625,
-      "marketCap": 68457299968,
-      "volume": 788894,
-      "rsi14": 53.0,
-      "ma20": 250.35,
-      "ma50": 207.0,
-      "bbPercent": 0.699,
-      "change1d": 3.84,
-      "change2d": -5.66,
-      "change3d": -2.95,
-      "change4d": -1.07,
-      "change5d": 2.06,
-      "change7d": 1.71,
-      "change30d": 30.08,
-      "revenueGrowth": 683.9,
-      "grossMargin": 72.1,
-      "fcf": -6147975168,
-      "peRatio": 103.7,
-      "forwardPE": 746.4,
-      "eps": 2.6,
-      "debtToEquity": 132.4,
-      "returnOnEquity": 14.1,
-      "week52High": 299.86,
-      "week52Low": 43.89,
-      "priceVs52wHigh": 89.9,
-      "analystTarget": 244.07143,
-      "analystUpside": -9.5,
+    "OPK": {
+      "ticker": "OPK",
+      "name": "Opko Health, Inc.",
+      "sector": "Healthcare",
+      "industry": "Diagnostics & Research",
+      "price": 1.53,
+      "marketCap": 1155291136,
+      "volume": 8415322,
+      "volumeRatio": 2.85,
+      "rsi14": 69.6,
+      "ma20": 1.44,
+      "ma50": 1.29,
+      "bbPercent": 1.091,
+      "change1d": 1.32,
+      "change2d": 1.34,
+      "change3d": 2.05,
+      "change4d": 2.1,
+      "change5d": 0.7,
+      "change7d": 8.51,
+      "change30d": 39.09,
+      "revenueGrowth": -17.2,
+      "grossMargin": 14.9,
+      "fcf": -36094624,
+      "peRatio": null,
+      "forwardPE": -4.8,
+      "eps": -0.27,
+      "debtToEquity": 33.0,
+      "returnOnEquity": -16.9,
+      "week52High": 1.61,
+      "week52Low": 0.98,
+      "priceVs52wHigh": 95.0,
+      "analystTarget": 4.375,
+      "analystUpside": 185.9,
       "recommendation": "buy",
-      "institutionalPct": 63.3,
-      "insiderPct": 3.7,
-      "shortFloat": 20.3,
+      "institutionalPct": 27.2,
+      "insiderPct": 49.5,
+      "shortFloat": 7.7,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "Nebius Group N.V., a technology company, engages in building full-stack infrastructure to service the global AI industry in the United States, the United Kingdom, and internationally. It offers Nebius builds full-stack infrastructure for AI, including large-scale GPU clusters, cloud platforms, and tools and services for developers. The company also provides TripleTen, an edtech platform for re-ski",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "description": "OPKO Health, Inc. operates as a healthcare company, in the United States, Ireland, Chile, Spain, Israel, Mexico, and internationally. The company operates in two segments, Pharmaceutical and Diagnostics. The Pharmaceutical segment develops MDX2001, a tetra-specific antibody targeting several types of solid tumors in Phase 1 clinical trials; MDX2003, a tetra-specific antibody targeting two antigens",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
-    "XNDU": {
-      "ticker": "XNDU",
-      "name": "Xanadu Quantum Technologies Lim",
+    "AKAM": {
+      "ticker": "AKAM",
+      "name": "Akamai Technologies, Inc.",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 11.87,
-      "marketCap": 3543329536,
-      "volume": 87210,
-      "rsi14": 35.9,
-      "ma20": 13.62,
-      "ma50": 18.11,
-      "bbPercent": 0.255,
-      "change1d": 0.59,
-      "change2d": -3.52,
-      "change3d": -2.47,
-      "change4d": -6.21,
-      "change5d": -1.47,
-      "change7d": -11.22,
-      "change30d": -20.28,
-      "revenueGrowth": 305.2,
-      "grossMargin": 93.7,
-      "fcf": null,
-      "peRatio": null,
-      "forwardPE": -9.6,
-      "eps": -0.19,
-      "debtToEquity": 14.5,
-      "returnOnEquity": -45.2,
-      "week52High": 42.44,
-      "week52Low": 6.97,
-      "priceVs52wHigh": 28.0,
-      "analystTarget": 44.0,
-      "analystUpside": 270.7,
-      "recommendation": "none",
-      "institutionalPct": 30.9,
-      "insiderPct": 23.6,
-      "shortFloat": 15.7,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "Xanadu Quantum Technologies Limited develops and provides photonic quantum computing technology and related software solutions and applications, including cloud-based access to quantum computers and tools for quantum programming and simulation. The company provides access to photonic quantum computers through x-series devices available via the cloud, supporting programmable quantum gates and photo",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "LAES": {
-      "ticker": "LAES",
-      "name": "SEALSQ Corp",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "price": 3.3699,
-      "marketCap": 750726080,
-      "volume": 1462234,
-      "rsi14": 43.5,
-      "ma20": 3.3,
-      "ma50": 3.1,
-      "bbPercent": 0.575,
-      "change1d": 4.33,
-      "change2d": -3.29,
-      "change3d": 7.74,
-      "change4d": -0.64,
-      "change5d": 3.65,
-      "change7d": 9.77,
-      "change30d": 13.85,
-      "revenueGrowth": 118.2,
-      "grossMargin": 50.1,
-      "fcf": -10687875,
-      "peRatio": null,
-      "forwardPE": -22.5,
-      "eps": -0.24,
-      "debtToEquity": 1.7,
-      "returnOnEquity": -12.7,
-      "week52High": 8.71,
-      "week52Low": 1.99,
-      "priceVs52wHigh": 38.7,
-      "analystTarget": 6.0,
-      "analystUpside": 78.0,
-      "recommendation": "none",
-      "institutionalPct": 11.3,
-      "insiderPct": 2.7,
-      "shortFloat": 11.1,
-      "insiderNet": null,
-      "insiderBuys90d": 0,
-      "insiderSells90d": 0,
-      "description": "SEALSQ Corp, together with its subsidiaries, designs, develops, and markets semiconductors in North America, Europe, the Middle East, Africa, the Asia Pacific, and Latin America. It offers semiconductors, such as VaultIC secure elements, quantum-resistant RISC-V secure chips, secure ARM platform, and smart card reader chips; custom chip design services; and other PKI services, including personal d",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
-    },
-    "BTO.TO": {
-      "ticker": "BTO.TO",
-      "name": "B2GOLD CORP.",
-      "sector": "Basic Materials",
-      "industry": "Gold",
-      "price": 5.64,
-      "marketCap": 7514835456,
-      "volume": 223344,
-      "rsi14": 46.6,
-      "ma20": 6.01,
-      "ma50": 6.31,
-      "bbPercent": 0.24,
-      "change1d": 2.36,
-      "change2d": -3.67,
-      "change3d": -4.03,
-      "change4d": -1.32,
-      "change5d": -0.66,
-      "change7d": -9.62,
-      "change30d": -20.83,
-      "revenueGrowth": 117.7,
-      "grossMargin": 65.5,
-      "fcf": 718971520,
-      "peRatio": 10.4,
-      "forwardPE": 3.3,
-      "eps": 0.54,
-      "debtToEquity": 14.0,
-      "returnOnEquity": 16.5,
-      "week52High": 8.6,
-      "week52Low": 4.56,
-      "priceVs52wHigh": 65.6,
-      "analystTarget": 9.964323,
-      "analystUpside": 76.7,
+      "price": 113.29,
+      "marketCap": 16470718464,
+      "volume": 4427407,
+      "volumeRatio": 1.05,
+      "rsi14": 10.2,
+      "ma20": 135.68,
+      "ma50": 128.68,
+      "bbPercent": 0.137,
+      "change1d": 0.35,
+      "change2d": -5.52,
+      "change3d": -0.33,
+      "change4d": -0.72,
+      "change5d": -3.34,
+      "change7d": -11.4,
+      "change30d": -27.22,
+      "revenueGrowth": 5.8,
+      "grossMargin": 58.3,
+      "fcf": 700723392,
+      "peRatio": 38.3,
+      "forwardPE": 15.9,
+      "eps": 2.96,
+      "debtToEquity": 119.5,
+      "returnOnEquity": 9.2,
+      "week52High": 165.45,
+      "week52Low": 69.78,
+      "priceVs52wHigh": 68.5,
+      "analystTarget": 159.30043,
+      "analystUpside": 40.6,
       "recommendation": "buy",
-      "institutionalPct": 67.0,
-      "insiderPct": 0.4,
+      "institutionalPct": 111.6,
+      "insiderPct": 2.1,
+      "shortFloat": 16.2,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Akamai Technologies, Inc. engages in the provision of security, delivery, and cloud computing solutions in the United States and internationally. It offers security solutions that include web application and application programming interfaces (API) protection solutions, which protect web, API, and mobile app traffic from attacks; Bot & Abuse portfolio, which provides solutions to help customers pr",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "ORCL": {
+      "ticker": "ORCL",
+      "name": "Oracle Corporation",
+      "sector": "Technology",
+      "industry": "Software - Infrastructure",
+      "price": 148.53,
+      "marketCap": 427836375040,
+      "volume": 27310401,
+      "volumeRatio": 1.18,
+      "rsi14": 11.1,
+      "ma20": 196.68,
+      "ma50": 189.07,
+      "bbPercent": 0.099,
+      "change1d": -2.58,
+      "change2d": -3.22,
+      "change3d": -4.62,
+      "change4d": -5.66,
+      "change5d": -5.0,
+      "change7d": -19.07,
+      "change30d": -24.07,
+      "revenueGrowth": 20.6,
+      "grossMargin": 65.8,
+      "fcf": -24536750080,
+      "peRatio": 25.4,
+      "forwardPE": 13.6,
+      "eps": 5.84,
+      "debtToEquity": 388.9,
+      "returnOnEquity": 53.4,
+      "week52High": 345.72,
+      "week52Low": 134.57,
+      "priceVs52wHigh": 43.0,
+      "analystTarget": 252.6405,
+      "analystUpside": 70.1,
+      "recommendation": "buy",
+      "institutionalPct": 43.9,
+      "insiderPct": 40.5,
+      "shortFloat": 2.2,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Oracle Corporation offers products and services that build, run and support enterprise information technology frameworks worldwide. Its Oracle cloud software as a service offering includes various cloud software applications, including Oracle Fusion cloud enterprise resource planning ERP, Oracle Fusion cloud enterprise performance management EPM, Oracle Fusion cloud supply chain and manufacturing ",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "CTSH": {
+      "ticker": "CTSH",
+      "name": "Cognizant Technology Solutions ",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "price": 40.03,
+      "marketCap": 18934190080,
+      "volume": 14052464,
+      "volumeRatio": 1.0,
+      "rsi14": 14.1,
+      "ma20": 49.35,
+      "ma50": 51.45,
+      "bbPercent": 0.1,
+      "change1d": 2.25,
+      "change2d": -5.53,
+      "change3d": 1.2,
+      "change4d": -2.1,
+      "change5d": -4.28,
+      "change7d": -18.0,
+      "change30d": -12.46,
+      "revenueGrowth": 5.8,
+      "grossMargin": 33.5,
+      "fcf": 1908875008,
+      "peRatio": 8.7,
+      "forwardPE": 6.5,
+      "eps": 4.61,
+      "debtToEquity": 7.2,
+      "returnOnEquity": 14.9,
+      "week52High": 87.03,
+      "week52Low": 38.97,
+      "priceVs52wHigh": 46.0,
+      "analystTarget": 68.782,
+      "analystUpside": 71.8,
+      "recommendation": "buy",
+      "institutionalPct": 108.7,
+      "insiderPct": 0.1,
+      "shortFloat": 12.7,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Health Sciences; Products and Resources; and Communications, Media and Technology. The company provides services including artificial intelligence (AI) and othe",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "ACN": {
+      "ticker": "ACN",
+      "name": "Accenture plc",
+      "sector": "Technology",
+      "industry": "Information Technology Services",
+      "price": 128.98,
+      "marketCap": 78928289792,
+      "volume": 14064833,
+      "volumeRatio": 1.37,
+      "rsi14": 14.8,
+      "ma20": 160.56,
+      "ma50": 171.68,
+      "bbPercent": 0.171,
+      "change1d": 2.51,
+      "change2d": -2.58,
+      "change3d": 1.68,
+      "change4d": 1.75,
+      "change5d": -2.46,
+      "change7d": -17.33,
+      "change30d": -21.35,
+      "revenueGrowth": 5.6,
+      "grossMargin": 32.0,
+      "fcf": 12089380864,
+      "peRatio": 10.3,
+      "forwardPE": 8.8,
+      "eps": 12.52,
+      "debtToEquity": 25.0,
+      "returnOnEquity": 24.4,
+      "week52High": 307.77,
+      "week52Low": 118.15,
+      "priceVs52wHigh": 41.9,
+      "analystTarget": 179.2908,
+      "analystUpside": 39.0,
+      "recommendation": "buy",
+      "institutionalPct": 85.5,
+      "insiderPct": 0.0,
+      "shortFloat": 5.1,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "SU.TO": {
+      "ticker": "SU.TO",
+      "name": "SUNCOR ENERGY INC.",
+      "sector": "Energy",
+      "industry": "Oil & Gas Integrated",
+      "price": 76.43,
+      "marketCap": 90244358144,
+      "volume": 8951036,
+      "volumeRatio": 1.02,
+      "rsi14": 18.5,
+      "ma20": 83.49,
+      "ma50": 86.96,
+      "bbPercent": 0.138,
+      "change1d": -0.87,
+      "change2d": -0.58,
+      "change3d": -3.4,
+      "change4d": 1.02,
+      "change5d": 1.47,
+      "change7d": -2.24,
+      "change30d": -18.14,
+      "revenueGrowth": 17.5,
+      "grossMargin": 58.8,
+      "fcf": 6675874816,
+      "peRatio": 14.5,
+      "forwardPE": 9.9,
+      "eps": 5.26,
+      "debtToEquity": 32.4,
+      "returnOnEquity": 14.0,
+      "week52High": 96.53,
+      "week52Low": 50.97,
+      "priceVs52wHigh": 79.2,
+      "analystTarget": 100.21053,
+      "analystUpside": 31.1,
+      "recommendation": "buy",
+      "institutionalPct": 75.1,
+      "insiderPct": 0.0,
       "shortFloat": null,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
-      "description": "B2Gold Corp. operates as a gold producer company in Canada. The company operates the Fekola Mine in Mali; the Masbate Mine in the Philippines; the Otjikoto Mine in Namibia; the Goose Mine in Canada. It also owns 100% interest in the Gramalote gold project in Colombia. In addition, the company has a portfolio of other evaluation and exploration assets in Mali, Canada and Finland. The company was in",
-      "fetchCompletedAt": "2026-06-25 09:33 EDT"
+      "description": "Suncor Energy Inc. operates as an integrated energy company in Canada, the United States, and internationally. The company operates through Oil Sands; Exploration and Production; and Refining and Marketing segments. The Oil Sands segment produces bitumen; and markets, supplies, and transports and manages crude oil, power, and byproducts. The Exploration and Production segment is involved in the of",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "IBRX": {
+      "ticker": "IBRX",
+      "name": "ImmunityBio, Inc.",
+      "sector": "Healthcare",
+      "industry": "Biotechnology",
+      "price": 8.71,
+      "marketCap": 9122453504,
+      "volume": 41198290,
+      "volumeRatio": 3.4,
+      "rsi14": 74.5,
+      "ma20": 7.31,
+      "ma50": 7.58,
+      "bbPercent": 1.338,
+      "change1d": 11.81,
+      "change2d": -0.13,
+      "change3d": 6.56,
+      "change4d": 1.39,
+      "change5d": -1.9,
+      "change7d": 24.61,
+      "change30d": 6.87,
+      "revenueGrowth": 167.6,
+      "grossMargin": 99.3,
+      "fcf": -193704624,
+      "peRatio": null,
+      "forwardPE": 145.2,
+      "eps": -0.85,
+      "debtToEquity": null,
+      "returnOnEquity": null,
+      "week52High": 12.43,
+      "week52Low": 1.95,
+      "priceVs52wHigh": 70.1,
+      "analystTarget": 13.0,
+      "analystUpside": 49.3,
+      "recommendation": "none",
+      "institutionalPct": 17.6,
+      "insiderPct": 62.5,
+      "shortFloat": 34.8,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "ImmunityBio, Inc., a biotechnology company, focuses on innovating, developing, and commercializing next-generation immunotherapies designed to activate the patient's immune system and deliver durable protection against cancer and infectious diseases. Its platforms for the development of biologic products and product candidates that include cytokine fusion proteins, DNA and vaccine vectors, and cel",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "IRWD": {
+      "ticker": "IRWD",
+      "name": "Ironwood Pharmaceuticals, Inc.",
+      "sector": "Healthcare",
+      "industry": "Drug Manufacturers - Specialty & Generic",
+      "price": 4.13,
+      "marketCap": 679853376,
+      "volume": 7108527,
+      "volumeRatio": 3.44,
+      "rsi14": 77.7,
+      "ma20": 3.57,
+      "ma50": 3.86,
+      "bbPercent": 1.05,
+      "change1d": 7.55,
+      "change2d": -1.79,
+      "change3d": 1.3,
+      "change4d": 1.05,
+      "change5d": 7.91,
+      "change7d": 17.33,
+      "change30d": 12.53,
+      "revenueGrowth": 158.9,
+      "grossMargin": 75.2,
+      "fcf": 51157624,
+      "peRatio": 6.7,
+      "forwardPE": 2.9,
+      "eps": 0.62,
+      "debtToEquity": null,
+      "returnOnEquity": null,
+      "week52High": 5.78,
+      "week52Low": 0.67,
+      "priceVs52wHigh": 71.5,
+      "analystTarget": 6.1,
+      "analystUpside": 47.7,
+      "recommendation": "none",
+      "institutionalPct": 98.9,
+      "insiderPct": 3.2,
+      "shortFloat": 10.6,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Ironwood Pharmaceuticals, Inc., a biotechnology company, focuses on the development and commercialization of therapies for gastrointestinal (GI) and rare diseases in the United States and internationally. It sells linaclotide, a guanylate cyclase type-C (GC-C) agonist for the treatment of adults suffering from irritable bowel syndrome with constipation or chronic idiopathic constipation, as well a",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "CDE": {
+      "ticker": "CDE",
+      "name": "Coeur Mining, Inc.",
+      "sector": "Basic Materials",
+      "industry": "Gold",
+      "price": 16.02,
+      "marketCap": 16509163520,
+      "volume": 168564077,
+      "volumeRatio": 4.16,
+      "rsi14": 48.0,
+      "ma20": 17.32,
+      "ma50": 18.01,
+      "bbPercent": 0.252,
+      "change1d": 0.19,
+      "change2d": 3.36,
+      "change3d": -5.21,
+      "change4d": -6.58,
+      "change5d": -0.23,
+      "change7d": -8.61,
+      "change30d": -17.33,
+      "revenueGrowth": 137.8,
+      "grossMargin": 58.6,
+      "fcf": 511841376,
+      "peRatio": 12.9,
+      "forwardPE": 7.9,
+      "eps": 1.24,
+      "debtToEquity": 7.4,
+      "returnOnEquity": 12.1,
+      "week52High": 27.77,
+      "week52Low": 8.57,
+      "priceVs52wHigh": 57.7,
+      "analystTarget": 27.27273,
+      "analystUpside": 70.2,
+      "recommendation": "buy",
+      "institutionalPct": 79.7,
+      "insiderPct": 0.9,
+      "shortFloat": 4.6,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     },
     "NAT": {
       "ticker": "NAT",
       "name": "Nordic American Tankers Limited",
       "sector": "Energy",
       "industry": "Oil & Gas Midstream",
-      "price": 6.435,
-      "marketCap": 1362615424,
-      "volume": 400368,
-      "rsi14": 86.3,
-      "ma20": 5.45,
+      "price": 5.85,
+      "marketCap": 1238741376,
+      "volume": 6532528,
+      "volumeRatio": 1.84,
+      "rsi14": 64.4,
+      "ma20": 5.5,
       "ma50": 5.44,
-      "bbPercent": 0.95,
-      "change1d": -0.54,
-      "change2d": 0.15,
-      "change3d": 4.03,
-      "change4d": 6.15,
-      "change5d": 5.03,
-      "change7d": 16.58,
-      "change30d": 19.87,
+      "bbPercent": 0.671,
+      "change1d": -6.55,
+      "change2d": -3.25,
+      "change3d": 0.15,
+      "change4d": 4.03,
+      "change5d": 6.15,
+      "change7d": 5.03,
+      "change30d": 10.75,
       "revenueGrowth": 104.3,
       "grossMargin": 46.9,
       "fcf": -99640000,
-      "peRatio": 24.8,
-      "forwardPE": 21.8,
+      "peRatio": 22.5,
+      "forwardPE": 19.8,
       "eps": 0.26,
       "debtToEquity": 91.1,
       "returnOnEquity": 11.4,
       "week52High": 6.7,
       "week52Low": 2.6,
-      "priceVs52wHigh": 96.0,
+      "priceVs52wHigh": 87.3,
       "analystTarget": 6.0,
-      "analystUpside": -6.8,
+      "analystUpside": 2.6,
       "recommendation": "none",
       "institutionalPct": 50.0,
       "insiderPct": 5.5,
-      "shortFloat": 9.3,
+      "shortFloat": 10.9,
       "insiderNet": null,
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Nordic American Tankers Limited, a tanker company, owns, operates, and charters double-hull tankers in Bermuda and internationally. As of December 31, 2025, the company fleet consisted of 20 Suezmax crude oil tankers. It serves oil companies, oil traders, and other entities requiring crude oil transportation services. The company was formerly known as Nordic American Tanker Shipping Limited and ch",
-      "fetchCompletedAt": "2026-06-25 09:34 EDT"
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+    },
+    "HL": {
+      "ticker": "HL",
+      "name": "Hecla Mining Company",
+      "sector": "Basic Materials",
+      "industry": "Other Precious Metals & Mining",
+      "price": 15.54,
+      "marketCap": 10422870016,
+      "volume": 110144666,
+      "volumeRatio": 4.43,
+      "rsi14": 55.5,
+      "ma20": 15.84,
+      "ma50": 17.3,
+      "bbPercent": 0.434,
+      "change1d": 2.57,
+      "change2d": 4.34,
+      "change3d": -3.65,
+      "change4d": -5.69,
+      "change5d": 0.13,
+      "change7d": -3.24,
+      "change30d": -20.08,
+      "revenueGrowth": 100.4,
+      "grossMargin": 59.6,
+      "fcf": 277069760,
+      "peRatio": 22.5,
+      "forwardPE": 13.1,
+      "eps": 0.69,
+      "debtToEquity": 11.1,
+      "returnOnEquity": 19.9,
+      "week52High": 34.17,
+      "week52Low": 5.48,
+      "priceVs52wHigh": 45.5,
+      "analystTarget": 25.19444,
+      "analystUpside": 62.1,
+      "recommendation": "buy",
+      "institutionalPct": 76.6,
+      "insiderPct": 0.6,
+      "shortFloat": null,
+      "insiderNet": null,
+      "insiderBuys90d": 0,
+      "insiderSells90d": 0,
+      "description": "Hecla Mining Company, together with its subsidiaries, provides precious and base metals in the United States, Canada, Japan, Korea, China, and internationally. The company mines for silver, gold, lead, and zinc concentrates, as well as carbon material containing silver and gold for custom smelters, metal traders, and third-party processors; and unrefined dor\u00e9 containing silver and gold. The compan",
+      "fetchCompletedAt": "2026-06-28 21:38 EDT"
     }
   },
-  "detailsFetchedAt": "2026-06-25 09:34 EDT",
+  "detailsFetchedAt": "2026-06-28 21:38 EDT",
   "aiAssessments": {},
   "aiAnalyzedAt": "2026-06-24 23:39 EDT",
   "lastRecommend": {
@@ -1382,24 +1402,24 @@
     ],
     "BMNR": [
       {
-        "rsi": 39.1,
-        "ts": "2026-06-24 12:08 EDT"
-      },
-      {
-        "rsi": 37.4,
-        "ts": "2026-06-24 22:02 EDT"
-      },
-      {
-        "rsi": 37.4,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 37.4,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 31.1,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 29.4,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 29.4,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 37.5,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 37.5,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "OLA.TO": [
@@ -1690,24 +1710,24 @@
     ],
     "ONDS": [
       {
-        "rsi": 19.8,
-        "ts": "2026-06-24 12:08 EDT"
-      },
-      {
-        "rsi": 19.1,
-        "ts": "2026-06-24 22:02 EDT"
-      },
-      {
-        "rsi": 19.1,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 19.1,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 15.0,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 14.2,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 14.2,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 21.8,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 21.8,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "POET": [
@@ -1756,14 +1776,6 @@
     ],
     "CDE": [
       {
-        "rsi": 40.7,
-        "ts": "2026-06-22 20:01 EDT"
-      },
-      {
-        "rsi": 37.0,
-        "ts": "2026-06-23 23:06 EDT"
-      },
-      {
         "rsi": 37.0,
         "ts": "2026-06-24 00:32 EDT"
       },
@@ -1774,17 +1786,17 @@
       {
         "rsi": 37.6,
         "ts": "2026-06-24 22:02 EDT"
+      },
+      {
+        "rsi": 48.0,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 48.0,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "HST": [
-      {
-        "rsi": 58.1,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 59.2,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 59.2,
         "ts": "2026-06-24 22:04 EDT"
@@ -1796,17 +1808,17 @@
       {
         "rsi": 55.7,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 57.1,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 57.1,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "MOH": [
-      {
-        "rsi": 62.9,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 65.1,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 65.1,
         "ts": "2026-06-24 22:04 EDT"
@@ -1818,17 +1830,17 @@
       {
         "rsi": 63.6,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 68.9,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 68.9,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "MAS": [
-      {
-        "rsi": 70.8,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 71.2,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 71.2,
         "ts": "2026-06-24 22:04 EDT"
@@ -1840,17 +1852,17 @@
       {
         "rsi": 71.7,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 73.0,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 73.0,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "EA": [
-      {
-        "rsi": 64.7,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 64.2,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 64.2,
         "ts": "2026-06-24 22:04 EDT"
@@ -1862,17 +1874,17 @@
       {
         "rsi": 59.4,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 60.9,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 60.9,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "LRCX": [
-      {
-        "rsi": 55.5,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 56.6,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 56.6,
         "ts": "2026-06-24 22:04 EDT"
@@ -1884,17 +1896,17 @@
       {
         "rsi": 61.4,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 62.7,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 62.7,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "BSX": [
-      {
-        "rsi": 35.4,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 33.7,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 33.7,
         "ts": "2026-06-24 22:04 EDT"
@@ -1906,17 +1918,17 @@
       {
         "rsi": 24.0,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 24.2,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 24.2,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "PTC": [
-      {
-        "rsi": 18.5,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 15.9,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 15.9,
         "ts": "2026-06-24 22:04 EDT"
@@ -1928,17 +1940,17 @@
       {
         "rsi": 15.9,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 16.1,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 16.1,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "PBR-A": [
-      {
-        "rsi": 24.9,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 25.1,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 25.1,
         "ts": "2026-06-24 22:04 EDT"
@@ -1950,17 +1962,17 @@
       {
         "rsi": 24.8,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 29.2,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 29.2,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "FLY": [
-      {
-        "rsi": 28.1,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 27.8,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 27.8,
         "ts": "2026-06-24 22:04 EDT"
@@ -1972,17 +1984,17 @@
       {
         "rsi": 23.8,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 24.0,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 24.0,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "EQT": [
-      {
-        "rsi": 34.8,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 34.2,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 34.2,
         "ts": "2026-06-24 22:04 EDT"
@@ -1994,17 +2006,17 @@
       {
         "rsi": 27.8,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 29.8,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 29.8,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "NBIS": [
-      {
-        "rsi": 52.1,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
-        "rsi": 52.5,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 52.5,
         "ts": "2026-06-24 22:04 EDT"
@@ -2016,17 +2028,17 @@
       {
         "rsi": 53.0,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 49.0,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 49.0,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "XNDU": [
-      {
-        "rsi": 34.2,
-        "ts": "2026-06-24 12:08 EDT"
-      },
-      {
-        "rsi": 34.1,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 34.1,
         "ts": "2026-06-24 22:04 EDT"
@@ -2038,17 +2050,17 @@
       {
         "rsi": 35.9,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 38.2,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "LAES": [
-      {
-        "rsi": 43.9,
-        "ts": "2026-06-24 12:08 EDT"
-      },
-      {
-        "rsi": 44.8,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 44.8,
         "ts": "2026-06-24 22:04 EDT"
@@ -2060,17 +2072,17 @@
       {
         "rsi": 43.5,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 38.5,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 38.5,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "BTO.TO": [
-      {
-        "rsi": 34.3,
-        "ts": "2026-06-24 12:08 EDT"
-      },
-      {
-        "rsi": 34.9,
-        "ts": "2026-06-24 22:02 EDT"
-      },
       {
         "rsi": 34.9,
         "ts": "2026-06-24 22:04 EDT"
@@ -2082,28 +2094,36 @@
       {
         "rsi": 46.6,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 47.1,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 47.1,
+        "ts": "2026-06-26 08:55 EDT"
       }
     ],
     "CRWV": [
       {
-        "rsi": 55.7,
-        "ts": "2026-06-18 21:13 EDT"
-      },
-      {
-        "rsi": 39.7,
-        "ts": "2026-06-22 20:01 EDT"
-      },
-      {
-        "rsi": 41.9,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 41.9,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 47.1,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 42.5,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 42.5,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 46.6,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 46.6,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "PBR": [
@@ -2126,44 +2146,198 @@
     ],
     "NAT": [
       {
-        "rsi": 88.2,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 88.2,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 86.3,
         "ts": "2026-06-25 09:34 EDT"
+      },
+      {
+        "rsi": 79.1,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 79.1,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 64.4,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 64.4,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "WAT": [
       {
-        "rsi": 42.0,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 42.0,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 48.9,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 50.3,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 50.3,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 57.3,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 57.3,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ],
     "AGI.TO": [
       {
-        "rsi": 34.2,
-        "ts": "2026-06-24 22:04 EDT"
-      },
-      {
-        "rsi": 34.2,
-        "ts": "2026-06-24 23:02 EDT"
-      },
-      {
         "rsi": 40.8,
         "ts": "2026-06-25 09:33 EDT"
+      },
+      {
+        "rsi": 41.5,
+        "ts": "2026-06-25 21:44 EDT"
+      },
+      {
+        "rsi": 41.5,
+        "ts": "2026-06-26 08:55 EDT"
+      },
+      {
+        "rsi": 41.1,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 41.1,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "IP": [
+      {
+        "rsi": 70.0,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 70.0,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "PH": [
+      {
+        "rsi": 69.9,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 69.9,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "MMM": [
+      {
+        "rsi": 69.8,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 69.8,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "DASH": [
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "OPK": [
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "AKAM": [
+      {
+        "rsi": 10.2,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 10.2,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "ORCL": [
+      {
+        "rsi": 11.1,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 11.1,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "CTSH": [
+      {
+        "rsi": 14.1,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 14.1,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "ACN": [
+      {
+        "rsi": 14.8,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 14.8,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "SU.TO": [
+      {
+        "rsi": 18.5,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 18.5,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "IBRX": [
+      {
+        "rsi": 74.5,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 74.5,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "IRWD": [
+      {
+        "rsi": 77.7,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 77.7,
+        "ts": "2026-06-28 21:38 EDT"
+      }
+    ],
+    "HL": [
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-28 15:37 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-28 21:38 EDT"
       }
     ]
   }

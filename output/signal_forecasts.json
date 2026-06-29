@@ -3939,8 +3939,8 @@
           "biasScore": 0.1,
           "dailyVol": 1.298,
           "aiReason": "NBIS is likely",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 256.63,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -3955,8 +3955,8 @@
           "biasScore": -0.05,
           "dailyVol": 0.054,
           "aiReason": "LAES",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 3.17,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -3971,8 +3971,8 @@
           "biasScore": 0.25,
           "dailyVol": 0.591,
           "aiReason": "ONDS is",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 7.67,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -3987,8 +3987,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.725,
           "aiReason": "XNDU",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.21,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4003,8 +4003,8 @@
           "biasScore": 0.2,
           "dailyVol": 1.013,
           "aiReason": "BMNR is",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 13.32,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4019,8 +4019,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.123,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 8.984977332s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 24.98,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4035,8 +4035,8 @@
           "biasScore": 0.1,
           "dailyVol": 1.007,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 7.88817467s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 216.04,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4051,8 +4051,8 @@
           "biasScore": -0.1,
           "dailyVol": 1.561,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 6.789174292s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 79.72,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4067,8 +4067,8 @@
           "biasScore": -0.1,
           "dailyVol": 1.023,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 5.589341454s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '5s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 204.73,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4083,8 +4083,8 @@
           "biasScore": 0.1,
           "dailyVol": 5.337,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 4.531672034s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '4s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 401.82,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4099,8 +4099,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.875,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 3.494101319s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '3s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 44.2,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4115,8 +4115,8 @@
           "biasScore": 0.45,
           "dailyVol": 0.754,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 2.432339654s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 112.55,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4131,8 +4131,8 @@
           "biasScore": 0.4,
           "dailyVol": 0.264,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 1.375355763s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.88,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4147,8 +4147,8 @@
           "biasScore": 0.25,
           "dailyVol": 1.998,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 338.4214ms.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '0s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 24.61,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:07 EDT"
         },
         {
@@ -4163,8 +4163,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.297,
           "aiReason": "EQT's",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 51.65,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:08 EDT"
         },
         {
@@ -4179,8 +4179,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.307,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 57.248568169s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '57s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 5.66,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:08 EDT"
         },
         {
@@ -4195,8 +4195,8 @@
           "biasScore": -0.25,
           "dailyVol": 2.203,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 56.173635874s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 98.76,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:08 EDT"
         },
         {
@@ -4211,8 +4211,8 @@
           "biasScore": -0.4,
           "dailyVol": 0.49,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 55.083573919s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '55s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 6.26,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:08 EDT"
         },
         {
@@ -4227,8 +4227,8 @@
           "biasScore": 0.35,
           "dailyVol": 4.711,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 53.975213039s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 376.89,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-24 23:08 EDT"
         },
         {
@@ -4243,12 +4243,13 @@
           "biasScore": 0.2,
           "dailyVol": 3.422,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 52.823154557s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '52s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 44.1,
+          "accuracy": "hit",
           "generatedAt": "2026-06-24 23:08 EDT"
         }
       ],
-      "generatedAt": "2026-06-24 23:08 EDT"
+      "generatedAt": "2026-06-24 23:08 EDT",
+      "updatedAt": "2026-06-26 08:58 EDT"
     },
     {
       "date": "2026-06-25",
@@ -4265,8 +4266,8 @@
           "biasScore": 0.35,
           "dailyVol": 0.496,
           "aiReason": "ON",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 7.67,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4281,8 +4282,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.792,
           "aiReason": "BMNR is likely",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 13.32,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4297,8 +4298,8 @@
           "biasScore": 0.1,
           "dailyVol": 2.99,
           "aiReason": "AG",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 44.1,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4313,8 +4314,8 @@
           "biasScore": 0.35,
           "dailyVol": 5.984,
           "aiReason": "WAT is likely to",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 376.89,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4329,8 +4330,8 @@
           "biasScore": -0.05,
           "dailyVol": 4.524,
           "aiReason": "CRWV",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 98.76,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4345,8 +4346,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.124,
           "aiReason": "HST is likely to",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 24.98,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4361,8 +4362,8 @@
           "biasScore": 0.25,
           "dailyVol": 2.867,
           "aiReason": "MOH is",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 216.04,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4377,8 +4378,8 @@
           "biasScore": -0.2,
           "dailyVol": 1.663,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 24.838817435s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 79.72,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4393,8 +4394,8 @@
           "biasScore": -0.1,
           "dailyVol": 1.023,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 23.644207144s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 204.73,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4409,8 +4410,8 @@
           "biasScore": 0.25,
           "dailyVol": 10.187,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 22.467511535s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '22s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 401.82,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4425,8 +4426,8 @@
           "biasScore": 0.5,
           "dailyVol": 1.048,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 21.216776318s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 44.2,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4441,8 +4442,8 @@
           "biasScore": 0.2,
           "dailyVol": 2.377,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 19.976757672s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 112.55,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4457,8 +4458,8 @@
           "biasScore": 0.5,
           "dailyVol": 0.201,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 18.789547487s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.88,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4473,8 +4474,8 @@
           "biasScore": 0.25,
           "dailyVol": 1.949,
           "aiReason": "FLY is likely",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 24.61,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4489,8 +4490,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.256,
           "aiReason": "AI unavailable: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 5, model: gemini-2.5-flash\\nPlease retry in 15.647147586s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '5'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 51.65,
+          "accuracy": "miss-low",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4505,8 +4506,8 @@
           "biasScore": 0.3,
           "dailyVol": 1.844,
           "aiReason": "NBIS is",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 256.63,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4521,8 +4522,8 @@
           "biasScore": 0.0,
           "dailyVol": 0.533,
           "aiReason": "X",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 12.21,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4537,8 +4538,8 @@
           "biasScore": 0.35,
           "dailyVol": 0.132,
           "aiReason": "LAES is likely",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 3.17,
+          "accuracy": "miss-high",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4553,8 +4554,8 @@
           "biasScore": -0.05,
           "dailyVol": 0.217,
           "aiReason": "BTO.TO",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 5.66,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         },
         {
@@ -4569,12 +4570,13 @@
           "biasScore": -0.4,
           "dailyVol": 0.427,
           "aiReason": "NAT is likely to",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 6.26,
+          "accuracy": "hit",
           "generatedAt": "2026-06-25 09:34 EDT"
         }
       ],
-      "generatedAt": "2026-06-25 09:34 EDT"
+      "generatedAt": "2026-06-25 09:34 EDT",
+      "updatedAt": "2026-06-26 08:58 EDT"
     }
   ]
 }

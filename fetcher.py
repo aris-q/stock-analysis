@@ -2,6 +2,7 @@ import requests
 import yfinance as yf
 import logging
 import math
+import time
 from datetime import datetime, timezone, timedelta
 
 log = logging.getLogger(__name__)
@@ -946,9 +947,31 @@ def score_dream_stock(ticker, info, hist, financials):
 
 
 DREAM_STATIC_TTL_HOURS = 7 * 24
+DREAM_REQUEST_DELAY_SEC = 1.5   # baseline pause between tickers to avoid Yahoo rate limits
+DREAM_MAX_RETRIES = 3           # extra attempts specifically for rate-limit errors
+DREAM_RETRY_BASE_SEC = 20       # backoff base; attempt N waits DREAM_RETRY_BASE_SEC * N seconds
 
 
-def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidates=None):
+def _is_rate_limit_error(e):
+    msg = str(e)
+    return "Too Many Requests" in msg or "Rate limited" in msg or "YFRateLimitError" in type(e).__name__
+
+
+def _fetch_info_with_retry(stock_obj, ticker):
+    """Fetch .info, retrying with backoff if Yahoo rate-limits us. Re-raises non-rate-limit errors immediately."""
+    for attempt in range(DREAM_MAX_RETRIES + 1):
+        try:
+            return stock_obj.info
+        except Exception as e:
+            if _is_rate_limit_error(e) and attempt < DREAM_MAX_RETRIES:
+                wait = DREAM_RETRY_BASE_SEC * (attempt + 1)
+                log.warning(f"[Dream] {ticker} rate-limited — retrying in {wait}s (attempt {attempt+1}/{DREAM_MAX_RETRIES})")
+                time.sleep(wait)
+                continue
+            raise
+
+
+def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidates=None, progress_callback=None):
     log.info("=== Dream Scan (Incremental Enriched): started ===")
 
     existing_map = {c["ticker"]: c for c in (existing_candidates or [])}
@@ -981,18 +1004,31 @@ def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidate
     )
 
     candidates = []
-    stats = {"quarterly": 0, "annual": 0, "static": 0, "skip": 0, "fail": 0}
+    stats = {"quarterly": 0, "annual": 0, "static": 0, "skip": 0, "fail": 0, "recovered": 0}
     now_str = datetime.now(timezone.utc).isoformat()
+    total_tickers = len(all_tickers)
 
-    for ticker, source in all_tickers.items():
+    for idx, (ticker, source) in enumerate(all_tickers.items(), start=1):
         log.info(f"--- Dream: {ticker} [{source}] ---")
+        if progress_callback:
+            try:
+                progress_callback(idx, total_tickers, ticker)
+            except Exception as cb_err:
+                log.warning(f"[Dream] progress_callback FAIL: {cb_err}")
+        time.sleep(DREAM_REQUEST_DELAY_SEC)  # pace requests to avoid Yahoo rate limits
         try:
             stock_obj = yf.Ticker(ticker)
-            info = stock_obj.info
+            info = _fetch_info_with_retry(stock_obj, ticker)
 
             if not info.get("regularMarketPrice") and not info.get("currentPrice"):
-                log.warning(f"[Dream] skip (no price): {ticker}")
                 stats["skip"] += 1
+                prior = existing_map.get(ticker)
+                if prior:
+                    log.warning(f"[Dream] no price (likely rate-limited) — keeping prior data: {ticker}")
+                    candidates.append(prior)
+                    stats["recovered"] += 1
+                else:
+                    log.warning(f"[Dream] skip (no price, no prior data): {ticker}")
                 continue
 
             existing = existing_map.get(ticker, {})
@@ -1081,15 +1117,21 @@ def fetch_dream_candidates(watchlist_tickers, gainer_tickers, existing_candidate
             )
 
         except Exception as e:
-            log.error(f"[Dream] FAIL: {ticker} | {e}", exc_info=True)
+            log.error(f"[Dream] FAIL: {ticker} | {e}")
             stats["fail"] += 1
+            prior = existing_map.get(ticker)
+            if prior:
+                log.warning(f"[Dream] FAIL — keeping prior data: {ticker}")
+                candidates.append(prior)
+                stats["recovered"] += 1
             continue
 
     candidates.sort(key=lambda x: x["score"], reverse=True)
     log.info(
         f"=== Dream Scan complete: {len(candidates)} scored | "
         f"quarterly:{stats['quarterly']} annual:{stats['annual']} "
-        f"static:{stats['static']} skip:{stats['skip']} fail:{stats['fail']} ==="
+        f"static:{stats['static']} skip:{stats['skip']} fail:{stats['fail']} "
+        f"recovered:{stats['recovered']} ==="
     )
     return {"candidates": candidates}
 
@@ -1152,6 +1194,18 @@ def fetch_trade_detail(ticker):
                 bb_percent = round(float((close.iloc[-1] - bb_lower.iloc[-1]) / band_width), 3)
         except Exception as e:
             log.warning(f"fetch_trade_detail BB FAIL: {ticker} | {e}")
+
+        # Volume ratio — today's volume vs 20-day average (surge/breakout signal)
+        volume_ratio = None
+        try:
+            if 'Volume' in hist.columns and len(hist) >= 2:
+                vol_today = float(hist['Volume'].iloc[-1])
+                avg_window = hist['Volume'].iloc[-21:-1] if len(hist) >= 21 else hist['Volume'].iloc[:-1]
+                vol_avg = float(avg_window.mean()) if len(avg_window) > 0 else None
+                if vol_avg and vol_avg > 0:
+                    volume_ratio = round(vol_today / vol_avg, 2)
+        except Exception as e:
+            log.warning(f"fetch_trade_detail volumeRatio FAIL: {ticker} | {e}")
 
         # Price changes
         change1d = change2d = change3d = change4d = change5d = change7d = change30d = None
@@ -1242,6 +1296,7 @@ def fetch_trade_detail(ticker):
             "price": current_price,
             "marketCap": info.get("marketCap"),
             "volume": info.get("volume"),
+            "volumeRatio": volume_ratio,
             "rsi14": rsi,
             "ma20": ma20,
             "ma50": ma50,
@@ -1278,7 +1333,7 @@ def fetch_trade_detail(ticker):
 
         log.info(
             f"fetch_trade_detail OK: {ticker} | price:{current_price} rsi:{rsi} "
-            f"ma50:{ma50} insider:{insider_net} short:{short_float} inst:{inst_pct}"
+            f"ma50:{ma50} volRatio:{volume_ratio} insider:{insider_net} short:{short_float} inst:{inst_pct}"
         )
         return result
 
@@ -1310,7 +1365,7 @@ def _call_gemini_fetcher(prompt, system=None, max_tokens=2048):
         cfg = gtypes.GenerateContentConfig(system_instruction=system, temperature=0.3, max_output_tokens=max_tokens)
     for attempt in range(3):
         try:
-            response = client.models.generate_content(model="gemini-2.5-flash", contents=prompt, config=cfg)
+            response = client.models.generate_content(model="gemini-2.0-flash", contents=prompt, config=cfg)
             return response.text.strip()
         except Exception as e:
             if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
@@ -1320,18 +1375,6 @@ def _call_gemini_fetcher(prompt, system=None, max_tokens=2048):
             else:
                 raise
     raise Exception("Gemini rate limit exceeded after 3 retries")
-
-
-def gemini_warmup():
-    """Ping Gemini on startup to verify API key and connectivity."""
-    try:
-        log.info("[Gemini Warmup] pinging gemini-2.5-flash ...")
-        result = _call_gemini_fetcher("Reply with OK only.", max_tokens=10)
-        log.info(f"[Gemini Warmup] OK: {result[:20]}")
-        return True
-    except Exception as e:
-        log.warning(f"[Gemini Warmup] FAIL: {e}")
-        return False
 
 
 def fetch_ai_analyze(ticker, detail, news_items, macro, ollama_url=None, ollama_model=None):
@@ -1420,9 +1463,11 @@ Respond in this exact format:
 STAGE: [Early-Stage / Growth / Mature / Declining]
 TRAJECTORY: [Accelerating / Stable / Decelerating]
 SENTIMENT: [Bullish / Neutral / Bearish]
+NEWS_SENTIMENT: [Bullish / Neutral / Bearish — based only on the recent news above, not overall outlook]
 SCORE: [0-100 integer, your conviction score]
 BUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]
 REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]
+FORECAST_REASON: [1 sentence explaining the most likely price direction tomorrow based on RSI, BB%, momentum, and macro]
 """
 
     try:
@@ -1437,6 +1482,8 @@ REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why t
                 result["stage"] = line.split(":", 1)[1].strip()
             elif line.startswith("TRAJECTORY:"):
                 result["trajectory"] = line.split(":", 1)[1].strip()
+            elif line.startswith("NEWS_SENTIMENT:"):
+                result["newsSentiment"] = line.split(":", 1)[1].strip()
             elif line.startswith("SENTIMENT:"):
                 result["sentiment"] = line.split(":", 1)[1].strip()
             elif line.startswith("SCORE:"):
@@ -1448,6 +1495,8 @@ REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why t
                 result["buySignal"] = line.split(":", 1)[1].strip()
             elif line.startswith("REASONING:"):
                 result["reasoning"] = line.split(":", 1)[1].strip()
+            elif line.startswith("FORECAST_REASON:"):
+                result["forecastReason"] = line.split(":", 1)[1].strip()
 
         return result
 

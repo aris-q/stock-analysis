@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.5,
-      "prev": 4.51,
+      "value": 4.4,
+      "prev": 4.41,
       "change": -0.01,
-      "date": "2026-06-23",
+      "date": "2026-06-25",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.16,
-      "prev": 4.24,
-      "change": -0.08,
-      "date": "2026-06-23",
+      "value": 4.09,
+      "prev": 4.11,
+      "change": -0.02,
+      "date": "2026-06-25",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 19.49,
-      "prev": 17.28,
-      "change": 2.21,
-      "date": "2026-06-23",
+      "value": 18.89,
+      "prev": 18.63,
+      "change": 0.26,
+      "date": "2026-06-25",
       "unit": ""
     },
     "dollar_index": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7365.46,
-      "prev": 7472.79,
-      "change": -107.33,
-      "date": "2026-06-23",
+      "value": 7354.02,
+      "prev": 7357.49,
+      "change": -3.47,
+      "date": "2026-06-26",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.34,
+      "value": 0.31,
       "unit": "%",
-      "date": "2026-06-23",
+      "date": "2026-06-25",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Dow Rises After Key Inflation, Surprise GDP Data; Micron Rockets On Earnings (Live Coverage)",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-inflation-data-micron-stock-mu/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-06-25T13:15:02Z"
-    },
-    {
-      "title": "So You Want To Sell 0DTE Options: 3 ETFs That Make It Possible",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/25/so-you-want-to-sell-0dte-options-3-etfs-that-make-it-possible/",
-      "publishedAt": "2026-06-25T12:50:24Z"
-    },
-    {
-      "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Thursday as Investors Embrace AI Growth Themes, Reduced Middle East Risks",
-      "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-123158533.html",
-      "publishedAt": "2026-06-25T12:31:58Z"
-    },
-    {
-      "title": "Cost Conscious? Vanguard S&P 500 ETF Tops SPDR Rival",
+      "title": "VOO vs. SPY: Which Popular S&P 500 ETF Is the Better Buy?",
       "source": "Motley Fool",
-      "url": "https://www.fool.com/coverage/etfs/2026/06/25/cost-conscious-vanguard-s-and-p-500-etf-tops-spdr-rival/",
-      "publishedAt": "2026-06-25T12:05:01Z"
+      "url": "https://www.fool.com/coverage/etfs/2026/06/28/voo-vs-spy-which-popular-s-and-p-500-etf-is-the-better-buy/",
+      "publishedAt": "2026-06-28T17:23:01Z"
     },
     {
-      "title": "Small-Cap ETFs Beat S&P 500 in 2026: Can the Rally Last?",
-      "source": "Zacks",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/small-cap-etfs-beat-p-120000613.html",
-      "publishedAt": "2026-06-25T12:00:00Z"
+      "title": "5 AI Hardware Stocks Create a New \u2018MANIA\u2019 Trade That Replaces the Magnificent 7. Hedge Your Bets on the Hot Tickers with These 2 Leveraged ETFs.",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/3023086/5-ai-hardware-stocks-create-a-new-mania-trade-that-replaces-the-magnificent-7-hedge-your-bets-on-the-hot-tickers-with-these-2-leveraged-etfs",
+      "publishedAt": "2026-06-28T13:00:02Z"
     },
     {
-      "title": "Three Index ETFs Where You Can Sell Your Own 0DTE Covered Calls for Daily Premium Income",
+      "title": "Forget the AI Chipmakers. For 0.47% This Fund Owns the Companies Building the Data Centers",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/25/three-index-etfs-where-you-can-sell-your-own-0dte-covered-calls-for-daily-premium-income/",
-      "publishedAt": "2026-06-25T10:30:51Z"
+      "url": "https://247wallst.com/investing/2026/06/27/forget-the-ai-chipmakers-for-0-47-this-fund-owns-the-companies-building-the-data-centers/",
+      "publishedAt": "2026-06-27T13:23:45Z"
     },
     {
-      "title": "Nasdaq, S&P 500 Futures Jump As Micron, Qualcomm Reignite AI Rally, All Eyes On PCE Data: Why SPCX, BABA, BB, FRMI, WEN, ADTX Are In Focus",
+      "title": "Scott Bessent Defends Tariff Reboot, Unveils \u20183 Through 3\u2019 Plan To Beat \u2018Structural Inflation\u2019",
+      "source": "Benzinga",
+      "url": "https://finance.yahoo.com/economy/policy/articles/scott-bessent-defends-tariff-reboot-033101799.html",
+      "publishedAt": "2026-06-27T03:31:01Z"
+    },
+    {
+      "title": "S&P 500, Nasdaq End Week Lower As Investors Rotate Out Of Tech, AI Plays \u2014 ON, AAPL, SLS, INFQ, NKE in Focus",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-mu-qualcomm-ai-rally-pce-inflation-bb-frmi-wen-adtx-stocks/cZ1G9x1R7QN",
-      "publishedAt": "2026-06-25T08:32:18Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-week-lower-as-investors-rotate-out-of-tech-ai-plays-on-aapl-sls-infq-nke-in-focus/cZ12ck9R7W9",
+      "publishedAt": "2026-06-26T22:34:47Z"
     },
     {
-      "title": "Nasdaq, S&P 500, Dow Futures Rise As Micron, Qualcomm Calm AI Jitters: Why WEN, SPCX, NVDA Stocks Are Also In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-dow-futures-rise-as-micron-qualcomm-calm-ai-jitters/cZ1GGWuR7Q7",
-      "publishedAt": "2026-06-25T01:59:07Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq Close Lower On Tech Weakness But Recover After-Hours On Strong Micron Earnings \u2014 MU, AVGO, GOOGL In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-close-lower-on-tech-weakness-but-recover-after-hours-on-strong-micron-earnings-mu-avgo-googl-in-focus/cZKyokcR7QP",
-      "publishedAt": "2026-06-24T22:45:54Z"
-    },
-    {
-      "title": "1 High-Yielding Industrial Juggernaut to Buy and Never Sell",
+      "title": "VOO Became the First ETF to Hit $1 Trillion, but Nearly 40% of It Is Now Tech",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/24/1-high-yielding-industrial-juggernaut-to-buy-and-never-sell/",
-      "publishedAt": "2026-06-24T20:27:32Z"
+      "url": "https://247wallst.com/investing/2026/06/26/voo-became-the-first-etf-to-hit-1-trillion-but-nearly-40-of-it-is-now-tech/",
+      "publishedAt": "2026-06-26T19:00:23Z"
     },
     {
-      "title": "This ETF Has More Than Doubled the S&P 500's Returns Over the Past Decade. Is It a Buy for the Next Decade?",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/investing/2026/06/25/this-etf-has-more-than-doubled-the-sp-500s-returns/",
-      "publishedAt": "2026-06-25T05:50:00Z"
-    },
-    {
-      "title": "Can You Sell Covered Calls on Leveraged ETFs for Income? Yes, But The Yield Is Risky",
+      "title": "The \u201cBALI\u201d Bull Run: Is BlackRock\u2019s 7.7% Yield Strategy Too Good to Be True?",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/24/can-you-sell-covered-calls-on-leveraged-etfs-for-income-yes-but-the-yield-is-risky/",
-      "publishedAt": "2026-06-24T19:35:12Z"
+      "url": "https://247wallst.com/investing/2026/06/26/the-bali-bull-run-is-blackrocks-7-7-yield-strategy-too-good-to-be-true/",
+      "publishedAt": "2026-06-26T18:47:22Z"
+    },
+    {
+      "title": "This Strategist Thinks the S&P 500 Could Smash Through 8,000 \u2018In the Near Term\u2019",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/26/this-strategist-thinks-the-sp-500-could-smash-through-8000-in-the-near-term/",
+      "publishedAt": "2026-06-26T17:15:06Z"
+    },
+    {
+      "title": "Corporate America Is Quietly Buying Back Its Own Stock at a Record Pace, and It\u2019s Not Just the Mag 7",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/26/corporate-america-is-quietly-buying-back-its-own-stock-at-a-record-pace-and-its-not-just-the-mag-7/",
+      "publishedAt": "2026-06-26T16:45:03Z"
+    },
+    {
+      "title": "$30 Billion in Stocks Are About to Hit the Market in 2 Days, and One Strategist Says: Buy It",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/26/30-billion-in-stocks-are-about-to-hit-the-market-in-2-days-and-one-strategist-says-buy-it/",
+      "publishedAt": "2026-06-26T16:30:01Z"
+    },
+    {
+      "title": "SpaceX rises modestly ahead of Russell rebalance, Nasdaq entry next",
+      "source": "Reuters",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-rises-marginally-ahead-russell-205428459.html",
+      "publishedAt": "2026-06-27T01:40:47Z"
+    },
+    {
+      "title": "25% Yield!? Why Robinhood Traders Are Piling Into This FANG Income ETF Like There\u2019s No Tomorrow",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/26/25-yield-why-robinhood-traders-are-piling-into-this-fang-income-etf-like-theres-no-tomorrow/",
+      "publishedAt": "2026-06-26T18:04:15Z"
     }
   ],
-  "fetchedAt": "2026-06-25 09:34 EDT"
+  "fetchedAt": "2026-06-28 15:37 EDT"
 }

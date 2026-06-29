@@ -2,246 +2,727 @@
   "watchlist": [
     {
       "ticker": "SPCX",
-      "price": 155.13,
-      "previousClose": 154.54,
-      "volume": 11474962,
-      "marketCap": 2045094920192,
+      "price": 153.23,
+      "previousClose": 153.0,
+      "volume": 126932861,
+      "marketCap": 2018680635392,
       "rsi14": null,
       "bbPercent": null,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "fetchedAt": "2026-06-28 14:19 EDT",
+      "calendarFetchedAt": "2026-06-28 14:19 EDT",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+      "calendar": {
+        "earningsDateStart": null,
+        "earningsDateEnd": null,
+        "earningsEPSHigh": -0.11,
+        "earningsEPSLow": -0.2,
+        "earningsEPSAvg": -0.1575,
+        "revenueEstimateHigh": 8025000000,
+        "revenueEstimateLow": 5300000000,
+        "revenueEstimateAvg": 6726000000,
+        "exDividendDate": null,
+        "dividendPayDate": null
+      },
+      "events": {
+        "dividendRate": null,
+        "dividendYield": null,
+        "trailingAnnualDividendRate": 0.0,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": null,
+        "lastDividendDate": null,
+        "exDividendDate": null,
+        "dividendDate": null,
+        "earningsTimestamp": null,
+        "earningsCallStart": null,
+        "earningsCallEnd": null,
+        "isEarningsDateEstimate": null,
+        "earningsGrowthYoY": null,
+        "earningsQuarterlyGrowth": null,
+        "lastSplitFactor": null,
+        "lastSplitDate": null
+      },
+      "dividends": [],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 18674000000,
+          "Gross Profit": 9223000000,
+          "Operating Income": -2064000000,
+          "EBITDA": 4427000000,
+          "Net Income": -4937000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1945000000,
+          "Tax Provision": 718000000,
+          "Operating Expense": 11287000000,
+          "Research And Development": 8643000000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 14015000000,
+          "Gross Profit": 6019000000,
+          "Operating Income": 742000000,
+          "EBITDA": 5646000000,
+          "Net Income": 791000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1580000000,
+          "Tax Provision": -549000000,
+          "Operating Expense": 5277000000,
+          "Research And Development": 3464000000
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 10387000000,
+          "Gross Profit": 4277000000,
+          "Operating Income": 507000000,
+          "EBITDA": -663000000,
+          "Net Income": -4628000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1693000000,
+          "Tax Provision": -363000000,
+          "Operating Expense": 3770000000,
+          "Research And Development": 2105000000
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2026-03-31",
+          "Total Revenue": 4694000000,
+          "Gross Profit": 2306000000,
+          "Operating Income": -1954000000,
+          "EBITDA": -1164000000,
+          "Net Income": -4276000000,
+          "Basic EPS": 0,
+          "Interest Expense": 664000000,
+          "Tax Provision": 6000000,
+          "Operating Expense": 4260000000,
+          "Research And Development": 3514000000
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 4067000000,
+          "Gross Profit": 2105000000,
+          "Operating Income": 55000000,
+          "EBITDA": 1376000000,
+          "Net Income": -528000000,
+          "Basic EPS": 0,
+          "Interest Expense": 447000000,
+          "Tax Provision": 14000000,
+          "Operating Expense": 2050000000,
+          "Research And Development": 1557000000
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 24747000000,
+          "Total Debt": 23318000000,
+          "Total Assets": 92079000000,
+          "Total Liabilities Net Minority Interest": 50754000000,
+          "Stockholders Equity": 41325000000,
+          "Working Capital": 9552000000,
+          "Current Assets": 30952000000,
+          "Current Liabilities": 21400000000,
+          "Long Term Debt": 21968000000,
+          "Retained Earnings": -37035000000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 11385000000,
+          "Total Debt": 14175000000,
+          "Total Assets": 57062000000,
+          "Total Liabilities Net Minority Interest": 31258000000,
+          "Stockholders Equity": 25804000000,
+          "Working Capital": 4317000000,
+          "Current Assets": 16108000000,
+          "Current Liabilities": 11791000000,
+          "Long Term Debt": 13421000000,
+          "Retained Earnings": -32098000000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2026-03-31",
+          "Cash And Cash Equivalents": 15852000000,
+          "Total Debt": 30603000000,
+          "Total Assets": 102094000000,
+          "Total Liabilities Net Minority Interest": 60512000000,
+          "Stockholders Equity": 41582000000,
+          "Working Capital": 5296000000,
+          "Current Assets": 29732000000,
+          "Current Liabilities": 24436000000,
+          "Long Term Debt": 28727000000,
+          "Retained Earnings": -41311000000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 6785000000,
+          "Capital Expenditure": -20906000000,
+          "Free Cash Flow": -14121000000,
+          "Investing Cash Flow": -19575000000,
+          "Financing Cash Flow": 26350000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1125000000,
+          "Issuance Of Debt": 16055000000,
+          "Repayment Of Debt": -7153000000,
+          "Depreciation And Amortization": 6701000000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 5776000000,
+          "Capital Expenditure": -11163000000,
+          "Free Cash Flow": -5387000000,
+          "Investing Cash Flow": -10796000000,
+          "Financing Cash Flow": 11830000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1021000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -231000000,
+          "Depreciation And Amortization": 3824000000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 4520000000,
+          "Capital Expenditure": -4415000000,
+          "Free Cash Flow": 105000000,
+          "Investing Cash Flow": -4867000000,
+          "Financing Cash Flow": 422000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -170000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -112000000,
+          "Depreciation And Amortization": 2635000000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2026-03-31",
+          "Operating Cash Flow": 1047000000,
+          "Capital Expenditure": -10114000000,
+          "Free Cash Flow": -9067000000,
+          "Investing Cash Flow": -16724000000,
+          "Financing Cash Flow": 7125000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -4346000000,
+          "Issuance Of Debt": 22694000000,
+          "Repayment Of Debt": -18377000000,
+          "Depreciation And Amortization": 2442000000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 727000000,
+          "Capital Expenditure": -4140000000,
+          "Free Cash Flow": -3413000000,
+          "Investing Cash Flow": -4170000000,
+          "Financing Cash Flow": 354000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -508000000,
+          "Issuance Of Debt": 4744000000,
+          "Repayment Of Debt": -4811000000,
+          "Depreciation And Amortization": 1443000000
+        }
+      ],
+      "annualProfitMargin": -0.2644,
+      "quarterlyProfitMargin": -0.911,
+      "netCash": 1429000000,
+      "latestFCF": -9067000000,
+      "latestCapex": -10114000000,
+      "latestOCF": 1047000000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.1542,
+        "revenue_yoy": null,
+        "netIncome_qoq": -7.0985,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": 0.0955,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": -36.5273,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": -1.6566,
+        "fcf_yoy": null,
+        "ocf_qoq": 0.4402,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.3324,
+        "revenue_yoy_2": 0.3493,
+        "netIncome_yoy_1": -7.2415,
+        "netIncome_yoy_2": 1.1709,
+        "grossProfit_yoy_1": 0.5323,
+        "grossProfit_yoy_2": 0.4073,
+        "operatingIncome_yoy_1": -3.7817,
+        "operatingIncome_yoy_2": 0.4635,
+        "fcf_yoy_1": -1.6213,
+        "fcf_yoy_2": -52.3048,
+        "capex_yoy_1": -0.8728,
+        "capex_yoy_2": -1.5284,
+        "totalDebt_yoy_1": 0.645,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marginRank": 1,
+      "netCashRank": 1,
+      "marketCapRank": 1,
+      "fcfRank": 1
     },
     {
       "ticker": "ONDS",
-      "price": 7.565,
+      "price": 7.83,
       "previousClose": 7.68,
-      "volume": 7672037,
-      "marketCap": 3983280896,
-      "rsi14": 13.9,
-      "bbPercent": 0.143,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "volume": 77711172,
+      "marketCap": 4122814208,
+      "rsi14": 21.8,
+      "bbPercent": 0.202,
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 6
     },
     {
       "ticker": "BMNR",
-      "price": 13.43,
-      "previousClose": 14.02,
-      "volume": 6160100,
-      "marketCap": 7649417216,
-      "rsi14": 29.7,
-      "bbPercent": -0.004,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "price": 13.56,
+      "previousClose": 13.32,
+      "volume": 66337087,
+      "marketCap": 7723462144,
+      "rsi14": 37.5,
+      "bbPercent": 0.067,
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 5
     },
     {
       "ticker": "CRWV",
-      "price": 101.59,
-      "previousClose": 100.88,
-      "volume": 2577463,
-      "marketCap": 55424491520,
-      "rsi14": 44.6,
-      "bbPercent": 0.323,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "price": 96.58,
+      "previousClose": 98.76,
+      "volume": 47706035,
+      "marketCap": 52691185664,
+      "rsi14": 46.6,
+      "bbPercent": 0.208,
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 2
     },
     {
       "ticker": "AGI.TO",
-      "price": 43.4,
-      "previousClose": 42.78,
-      "volume": 127624,
-      "marketCap": 18226499584,
-      "rsi14": 40.2,
-      "bbPercent": 0.154,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "price": 44.35,
+      "previousClose": 44.1,
+      "volume": 1528191,
+      "marketCap": 18625464320,
+      "rsi14": 41.1,
+      "bbPercent": 0.227,
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 4
     },
     {
       "ticker": "WAT",
-      "price": 374.24,
-      "previousClose": 369.18,
-      "volume": 61774,
-      "marketCap": 36745072640,
-      "rsi14": 48.3,
-      "bbPercent": 0.727,
-      "priceFetchedAt": "2026-06-25 09:48 EDT"
+      "price": 374.41,
+      "previousClose": 376.89,
+      "volume": 790913,
+      "marketCap": 36761767936,
+      "rsi14": 57.3,
+      "bbPercent": 0.709,
+      "priceFetchedAt": "2026-06-28 21:35 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 3
     }
   ],
   "dailyGainers": [
     {
-      "ticker": "INOD",
-      "percentGain": 85.75,
-      "price": 84.85,
-      "volume": 19182368
+      "ticker": "SLS",
+      "percentGain": 17.66,
+      "price": 12.39,
+      "volume": 21005639
     },
     {
-      "ticker": "RKLB",
-      "percentGain": 34.44,
-      "price": 105.545,
-      "volume": 79927310
+      "ticker": "LCID",
+      "percentGain": 15.63,
+      "price": 5.92,
+      "volume": 35518974
     },
     {
-      "ticker": "FLNC",
-      "percentGain": 27.36,
-      "price": 24.16,
-      "volume": 41472189
+      "ticker": "MRNA",
+      "percentGain": 12.59,
+      "price": 67.27,
+      "volume": 14456655
     },
     {
-      "ticker": "AKAM",
-      "percentGain": 26.58,
-      "price": 147.71,
-      "volume": 21492867
+      "ticker": "IBRX",
+      "percentGain": 11.81,
+      "price": 8.71,
+      "volume": 41198290
     },
     {
-      "ticker": "EOSE",
-      "percentGain": 25.94,
-      "price": 8.01,
-      "volume": 53900107
+      "ticker": "CCC",
+      "percentGain": 11.58,
+      "price": 5.01,
+      "volume": 13884556
+    },
+    {
+      "ticker": "DKNG",
+      "percentGain": 11.26,
+      "price": 25.7,
+      "volume": 16724429
+    },
+    {
+      "ticker": "CHYM",
+      "percentGain": 11.22,
+      "price": 20.32,
+      "volume": 22016052
     },
     {
       "ticker": "FROG",
-      "percentGain": 23.73,
-      "price": 70.55,
-      "volume": 9196270
+      "percentGain": 11.14,
+      "price": 87.58,
+      "volume": 26093692
     },
     {
-      "ticker": "FLY",
-      "percentGain": 22.62,
-      "price": 39.68,
-      "volume": 11917290
+      "ticker": "FDS",
+      "percentGain": 10.97,
+      "price": 231.74,
+      "volume": 1134472
     },
     {
-      "ticker": "MXL",
-      "percentGain": 21.2,
-      "price": 99.83,
-      "volume": 7816173
-    },
-    {
-      "ticker": "WSC",
-      "percentGain": 20.6,
-      "price": 28.1,
-      "volume": 13336249
-    },
-    {
-      "ticker": "RDW",
-      "percentGain": 20.33,
-      "price": 11.07,
-      "volume": 53414126
+      "ticker": "BFLY",
+      "percentGain": 10.85,
+      "price": 8.89,
+      "volume": 17027009
     }
   ],
-  "lastPriceRefresh": "2026-06-25 09:48 EDT",
+  "lastPriceRefresh": "2026-06-28 21:35 EDT",
   "dailyGainersCDN": [
     {
-      "ticker": "MU.TO",
-      "percentGain": 15.29,
-      "price": 33.03,
-      "volume": 2172888
-    },
-    {
-      "ticker": "EXE.TO",
-      "percentGain": 10.73,
-      "price": 33.44,
-      "volume": 1214859
-    },
-    {
-      "ticker": "FT.TO",
-      "percentGain": 9.68,
-      "price": 0.17,
-      "volume": 1162791
-    },
-    {
-      "ticker": "LGD.TO",
-      "percentGain": 7.91,
-      "price": 1.5,
-      "volume": 1470834
-    },
-    {
-      "ticker": "BTO.TO",
-      "percentGain": 7.25,
-      "price": 7.25,
-      "volume": 7993443
-    },
-    {
-      "ticker": "OCG.TO",
-      "percentGain": 7.25,
-      "price": 0.37,
-      "volume": 1282014
-    },
-    {
-      "ticker": "RIO.TO",
-      "percentGain": 6.78,
-      "price": 3.15,
-      "volume": 1214743
-    },
-    {
-      "ticker": "FM.TO",
-      "percentGain": 6.0,
-      "price": 35,
-      "volume": 4213306
+      "ticker": "FF.TO",
+      "percentGain": 15.25,
+      "price": 0.68,
+      "volume": 7713331
     },
     {
       "ticker": "BB.TO",
-      "percentGain": 5.77,
-      "price": 8.8,
-      "volume": 8460292
+      "percentGain": 10.33,
+      "price": 16.13,
+      "volume": 9812753
     },
     {
-      "ticker": "IVN.TO",
-      "percentGain": 5.64,
-      "price": 11.8,
-      "volume": 3629972
+      "ticker": "DSV.TO",
+      "percentGain": 8.81,
+      "price": 8.4,
+      "volume": 2386852
+    },
+    {
+      "ticker": "AYA.TO",
+      "percentGain": 8.61,
+      "price": 28.13,
+      "volume": 1256995
+    },
+    {
+      "ticker": "MAU.TO",
+      "percentGain": 7.64,
+      "price": 15.93,
+      "volume": 1061514
+    },
+    {
+      "ticker": "FVL.TO",
+      "percentGain": 6.38,
+      "price": 1,
+      "volume": 1820067
+    },
+    {
+      "ticker": "HIVE.TO",
+      "percentGain": 6.16,
+      "price": 5.69,
+      "volume": 5993588
+    },
+    {
+      "ticker": "FLT.TO",
+      "percentGain": 5.45,
+      "price": 0.58,
+      "volume": 1342550
+    },
+    {
+      "ticker": "GGD.TO",
+      "percentGain": 5.32,
+      "price": 3.17,
+      "volume": 980386
+    },
+    {
+      "ticker": "MSFT.TO",
+      "percentGain": 5.03,
+      "price": 26.1,
+      "volume": 1615483
     }
   ],
   "recommendations": {
     "recommendations": [
       {
-        "ticker": "ALAB",
-        "companyName": "Alamos Gold Inc.",
-        "reason": "Strong fundamentals with a high profit margin and consistent FCF. Benefiting from rising gold prices and expansion projects in production capacity.",
-        "sector": "Basic Materials",
+        "ticker": "AGI.TO",
+        "companyName": "Agnico Eagle Mines Limited",
+        "reason": "A leading senior gold producer with a strong operational track record and attractive development pipeline. Offers exposure to gold as a traditional safe-haven asset and potential inflation hedge in uncertain times.",
+        "sector": "Materials",
         "catalysts": [
-          "Rising gold prices",
-          "Successful expansion of existing mines"
-        ],
-        "riskLevel": "medium",
-        "timeHorizon": "medium-term"
-      },
-      {
-        "ticker": "TER",
-        "companyName": "Teradyne Inc.",
-        "reason": "Leader in the semiconductor test equipment market with a solid track record of growth and innovation. Benefiting from increasing demand for semiconductors across various industries.",
-        "sector": "Technology",
-        "catalysts": [
-          "Growth in global semiconductor demand",
-          "New product launches and acquisitions"
+          "Sustained higher gold prices",
+          "Successful execution of project expansions",
+          "Strong free cash flow generation and dividend policy"
         ],
         "riskLevel": "medium",
         "timeHorizon": "long-term"
       },
       {
-        "ticker": "PAAS",
-        "companyName": "Pan American Silver Corp.",
-        "reason": "Profitable silver mining company with a diversified portfolio of assets and strong operational performance. Benefiting from rising precious metal prices and increasing demand for industrial applications.",
-        "sector": "Basic Materials",
+        "ticker": "FCX",
+        "companyName": "Freeport-McMoRan Inc.",
+        "reason": "A premier copper producer, well-positioned to benefit from global electrification trends and infrastructure spending driving demand for industrial metals. Its significant reserves provide long-term production visibility.",
+        "sector": "Materials",
         "catalysts": [
-          "Continued growth in silver demand",
-          "Exploration success and resource expansion"
+          "Increasing global copper demand from EVs and renewable energy",
+          "Potential for higher copper prices due to supply constraints",
+          "Operational efficiencies and debt reduction initiatives"
+        ],
+        "riskLevel": "medium",
+        "timeHorizon": "long-term"
+      },
+      {
+        "ticker": "ALB",
+        "companyName": "Albemarle Corporation",
+        "reason": "The global leader in lithium production, essential for electric vehicle batteries and renewable energy storage. Its strong market position and expansion plans align with the accelerating adoption of EVs worldwide.",
+        "sector": "Materials",
+        "catalysts": [
+          "Accelerating electric vehicle demand globally",
+          "New supply agreements and strategic partnerships",
+          "Expansion of production capacity to meet future demand"
+        ],
+        "riskLevel": "medium",
+        "timeHorizon": "long-term"
+      },
+      {
+        "ticker": "MOS",
+        "companyName": "The Mosaic Company",
+        "reason": "A leading producer of potash and phosphates, critical inputs for global food production. Benefits from increasing global population, demand for higher crop yields, and ongoing food security concerns.",
+        "sector": "Materials",
+        "catalysts": [
+          "Strong agricultural commodity prices and farmer profitability",
+          "Global food security concerns driving fertilizer demand",
+          "Potential for supply chain disruptions supporting pricing power"
         ],
         "riskLevel": "medium",
         "timeHorizon": "medium-term"
       },
       {
-        "ticker": "TE",
-        "companyName": "Te Connectivity Ltd.",
-        "reason": "Global leader in connectivity solutions with a wide range of products serving diverse industries. Expected to benefit from increasing demand for electronic components and industrial automation.",
-        "sector": "Industrials",
+        "ticker": "RIO",
+        "companyName": "Rio Tinto Group",
+        "reason": "One of the world's largest diversified mining companies, with significant exposure to iron ore, aluminum, and copper. Offers broad commodity exposure, strong operational cash flow, and a history of attractive shareholder returns.",
+        "sector": "Materials",
         "catalysts": [
-          "Growth in global manufacturing",
-          "Expansion into new markets"
+          "Global infrastructure stimulus and industrial growth",
+          "Disciplined capital allocation and cost management",
+          "Potential for new project development in key commodities"
         ],
-        "riskLevel": "low",
-        "timeHorizon": "medium-term"
+        "riskLevel": "medium",
+        "timeHorizon": "long-term"
       }
     ],
-    "marketContext": "Current market conditions are characterized by rising inflation and interest rates, which may impact growth and valuations. However, opportunities exist in sectors with strong fundamentals and growth catalysts.",
-    "generatedAt": "2023-10-27"
+    "marketContext": "Despite a lack of specific macro data, the current environment suggests continued robust demand for essential commodities driven by global growth initiatives, electrification trends, and ongoing supply chain considerations, making select resource companies attractive.",
+    "generatedAt": "2026-06-28"
   },
-  "lastUpdated": "2026-05-11 08:40 EDT",
+  "lastUpdated": "2026-06-28 14:19 EDT",
   "opTimestamps": {
-    "prices": "2026-05-11 08:26 EDT"
+    "prices": "2026-06-28 12:22 EDT"
   }
 }

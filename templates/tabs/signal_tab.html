@@ -1,0 +1,598 @@
+<script>
+{%- raw %}
+// ── SIGNAL TAB ───────────────────────────────────────────────────────────────
+let signalLoaded = false;
+
+async function loadSignal() {
+  if (signalLoaded) return;
+  signalLoaded = true;
+  await renderSignal();
+  // Auto-update actuals silently on load
+  try {
+    const r = await fetch('/signal/actual', { method: 'POST' }).then(r => r.json());
+    if (r.updated > 0) {
+      log.info && log.info('[Signal] auto-updated actuals:', r.updated, 'rows across', r.snapshots, 'snapshots');
+      signalLoaded = false;
+      await renderSignal();
+    }
+  } catch(e) { console.warn('[Signal] auto-update actuals FAIL:', e); }
+}
+
+async function renderSignal() {
+  const el = document.getElementById('signalContent');
+  el.innerHTML = '<div class="loading">Loading signal forecasts...</div>';
+  try {
+    const res = await fetch('/signal/history');
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(`Server returned ${res.status} — ${text.substring(0, 120)}. Make sure the Flask server has been restarted with the updated app.py.`);
+    }
+    const data = await res.json();
+    el.innerHTML = buildSignalHTML(data);
+  } catch(e) {
+    el.innerHTML = `<div style="color:var(--down);padding:20px;line-height:1.8">
+      <div style="font-weight:700;margin-bottom:8px">❌ Failed to load signal data</div>
+      <div style="font-size:11px;color:var(--muted)">${e.message}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">💡 If this is the first time loading, restart your Flask server so it picks up the new /signal/* routes from app.py.</div>
+    </div>`;
+  }
+}
+
+function buildSignalHTML(data) {
+  const snapshots = (data.snapshots || []).slice().reverse(); // newest first
+  const today = snapshots[0] || null;
+  const history = snapshots.slice(1);
+
+  // ── Overall accuracy stats from history ───────────────────────────────────
+  const allRows = history.flatMap(s => s.rows || []);
+  const withActual = allRows.filter(r => r.actualPrice != null);
+  const hits   = withActual.filter(r => r.accuracy === 'hit').length;
+  const total  = withActual.length;
+  const hitPct = total ? Math.round(hits / total * 100) : null;
+
+  // Per-ticker accuracy
+  const tkStats = {};
+  withActual.forEach(r => {
+    if (!tkStats[r.ticker]) tkStats[r.ticker] = { hits: 0, total: 0 };
+    tkStats[r.ticker].total++;
+    if (r.accuracy === 'hit') tkStats[r.ticker].hits++;
+  });
+
+  // Direction accuracy (did bias direction match actual move?)
+  const dirRows = withActual.filter(r => r.direction && r.currentPrice);
+  const dirHits = dirRows.filter(r => {
+    const moved = r.actualPrice - r.currentPrice;
+    return (r.direction === 'Bullish' && moved > 0) ||
+           (r.direction === 'Bearish' && moved < 0) ||
+           (r.direction === 'Neutral' && Math.abs(moved) < r.dailyVol * 0.5);
+  }).length;
+  const dirPct = dirRows.length ? Math.round(dirHits / dirRows.length * 100) : null;
+
+  const bktColors = { Momentum:'#fbbf24', Reversal:'#4ade80', SmartMoney:'#a78bfa', Account:'#60a5fa', Dream:'#6b7280' };
+  const dirColors = { Bullish:'var(--up)', Bearish:'var(--down)', Neutral:'var(--warn)' };
+  const accColors = { hit:'var(--up)', 'miss-low':'#fb923c', 'miss-high':'var(--down)' };
+  const accLabels = { hit:'✓ HIT', 'miss-low':'↑ UNDER', 'miss-high':'↓ OVER' };
+
+  function fmt$(v) { return v != null ? '$' + Number(v).toFixed(2) : '—'; }
+  function fmtPct(v) { return v != null ? (v > 0 ? '+' : '') + Number(v).toFixed(1) + '%' : '—'; }
+  function tkAccBadge(ticker) {
+    const s = tkStats[ticker];
+    if (!s) return '<span style="color:var(--muted);font-size:10px">no history</span>';
+    const pct = Math.round(s.hits / s.total * 100);
+    const c = pct >= 60 ? 'var(--up)' : pct >= 40 ? 'var(--warn)' : 'var(--down)';
+    return `<span style="color:${c};font-size:10px;font-weight:700">${pct}% (${s.hits}/${s.total})</span>`;
+  }
+
+  // ── Forecast table for a snapshot ─────────────────────────────────────────
+  function forecastTable(rows, showActual = false) {
+    if (!rows || !rows.length) return '<div style="color:var(--text);font-size:12px;padding:16px">No forecast data.</div>';
+    const sorted = [...rows].sort((a, b) => (b.biasScore || 0) - (a.biasScore || 0));
+    const thStyle = 'padding:8px 10px;font-size:10px;color:var(--text);letter-spacing:.5px;white-space:nowrap;opacity:0.6';
+    let html = `<div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px">
+      <thead><tr style="border-bottom:1px solid var(--border)">
+        <th style="text-align:left;${thStyle}">TICKER</th>
+        <th style="${thStyle}">BUCKET</th>
+        <th style="text-align:right;${thStyle}">PRICE</th>
+        <th style="text-align:center;${thStyle}">DIRECTION</th>
+        <th style="text-align:right;${thStyle}">TARGET</th>
+        <th style="text-align:right;${thStyle}">LOW</th>
+        <th style="text-align:right;${thStyle}">HIGH</th>
+        <th style="${thStyle}">BIAS</th>
+        ${showActual ? `<th style="text-align:right;${thStyle}">ACTUAL</th><th style="text-align:right;${thStyle}">MOVE</th><th style="text-align:center;${thStyle}">RESULT</th>` : ''}
+        <th style="${thStyle}">HIST ACCURACY</th>
+        <th style="${thStyle}">AI REASON</th>
+      </tr></thead><tbody>`;
+
+    sorted.forEach((r, i) => {
+      const bc  = bktColors[r.bucket] || '#6b7280';
+      const dc  = dirColors[r.direction] || 'var(--text)';
+      const bias = r.biasScore || 0;
+
+      // Target price aligned with direction and trend
+      let target, targetColor;
+      if (r.direction === 'Bullish') {
+        target = r.forecastHigh;
+        targetColor = 'var(--up)';
+      } else if (r.direction === 'Bearish') {
+        target = r.forecastLow;
+        targetColor = 'var(--down)';
+      } else {
+        target = r.forecastMid;
+        targetColor = 'var(--warn)';
+      }
+
+      // Upside/downside % from current price to target
+      const targetPct = r.currentPrice ? ((target - r.currentPrice) / r.currentPrice * 100) : null;
+      const targetPctStr = targetPct != null ? ` (${targetPct > 0 ? '+' : ''}${targetPct.toFixed(1)}%)` : '';
+
+      const biasBar = `<div style="display:flex;align-items:center;gap:4px">
+        <div style="width:48px;height:5px;border-radius:3px;background:var(--border);overflow:hidden">
+          <div style="width:${Math.round(Math.abs(bias)*100)}%;height:100%;background:${bias>=0?'var(--up)':'var(--down)'};border-radius:3px"></div>
+        </div>
+        <span style="font-size:10px;color:${bias>=0?'var(--up)':'var(--down)'}">${bias>0?'+':''}${bias.toFixed(2)}</span>
+      </div>`;
+
+      let actualCols = '';
+      if (showActual) {
+        const move    = r.actualPrice != null && r.currentPrice ? r.actualPrice - r.currentPrice : null;
+        const movePct = move != null ? (move / r.currentPrice * 100) : null;
+        const ac = r.accuracy ? accColors[r.accuracy] : 'var(--text)';
+        const al = r.accuracy ? accLabels[r.accuracy] : '—';
+        actualCols = `
+          <td style="padding:8px 10px;text-align:right;font-weight:700;color:var(--text)">${fmt$(r.actualPrice)}</td>
+          <td style="padding:8px 10px;text-align:right;color:${move!=null&&move>=0?'var(--up)':'var(--down)'}">${move!=null?(move>0?'+':'')+move.toFixed(2)+' ('+fmtPct(movePct)+')':'—'}</td>
+          <td style="padding:8px 10px;text-align:center"><span style="font-size:10px;font-weight:700;color:${ac}">${al}</span></td>`;
+      }
+
+      html += `<tr style="border-bottom:1px solid var(--border);${i%2===0?'background:rgba(255,255,255,0.02)':''}">
+        <td style="padding:8px 10px;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--text)">${r.ticker}</td>
+        <td style="padding:8px 10px"><span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${(r.bucket||'').toUpperCase()}</span></td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text)">${fmt$(r.currentPrice)}</td>
+        <td style="padding:8px 10px;text-align:center"><span style="font-size:10px;font-weight:700;color:${dc}">${r.direction||'—'}</span></td>
+        <td style="padding:8px 10px;text-align:right;font-weight:700;color:${targetColor}">${fmt$(target)}<span style="font-size:10px;font-weight:400;color:${targetColor};opacity:0.8">${targetPctStr}</span></td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text);opacity:0.7">${fmt$(r.forecastLow)}</td>
+        <td style="padding:8px 10px;text-align:right;color:var(--text);opacity:0.7">${fmt$(r.forecastHigh)}</td>
+        <td style="padding:8px 10px">${biasBar}</td>
+        ${actualCols}
+        <td style="padding:8px 10px;white-space:nowrap">${tkAccBadge(r.ticker)}</td>
+        <td style="padding:8px 10px;color:var(--text);font-size:11px;font-style:italic;max-width:260px;opacity:0.75">${r.aiReason || '—'}</td>
+      </tr>`;
+    });
+    return html + '</tbody></table></div>';
+  }
+
+  // ── Accuracy summary cards ─────────────────────────────────────────────────
+  function statCard(label, value, sub, color = 'var(--accent)') {
+    return `<div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;min-width:140px">
+      <div style="font-size:10px;color:var(--muted);letter-spacing:.5px;margin-bottom:6px">${label}</div>
+      <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:${color}">${value}</div>
+      ${sub ? `<div style="font-size:10px;color:var(--muted);margin-top:4px">${sub}</div>` : ''}
+    </div>`;
+  }
+
+  // ── History accordion ──────────────────────────────────────────────────────
+  let histHtml = '';
+  if (history.length) {
+    histHtml = history.map((snap, idx) => {
+      const snapHits = (snap.rows||[]).filter(r => r.accuracy === 'hit').length;
+      const snapTotal = (snap.rows||[]).filter(r => r.actualPrice != null).length;
+      const snapPct = snapTotal ? Math.round(snapHits/snapTotal*100) + '%' : 'pending';
+      return `<div style="border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden">
+        <div onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none'"
+          style="padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;background:var(--surface)">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font-family:'Syne',sans-serif;font-weight:700">${snap.date}</span>
+            <span style="font-size:11px;color:var(--muted)">${(snap.rows||[]).length} tickers</span>
+            <span style="font-size:11px;font-weight:700;color:${snapTotal&&snapHits/snapTotal>=.6?'var(--up)':snapTotal&&snapHits/snapTotal>=.4?'var(--warn)':'var(--down)'}">${snapPct} accuracy</span>
+          </div>
+          <span style="color:var(--muted);font-size:12px">▸ expand</span>
+        </div>
+        <div style="display:none;padding:12px">${forecastTable(snap.rows, true)}</div>
+      </div>`;
+    }).join('');
+  } else {
+    histHtml = '<div style="color:var(--muted);font-size:12px">No historical snapshots yet. Run forecasts daily and update actuals at end of day to build history.</div>';
+  }
+
+  return `
+    <!-- Header + actions -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px">📡 Signal Forecast</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:2px">Rules-based price range + AI narrative · updated daily · accuracy tracked over time</div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button onclick="runSignalForecast()" style="font-size:12px;padding:9px 18px;background:var(--accent);color:#0a0a0f;border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'DM Mono',monospace">⚡ GENERATE FORECAST</button>
+        <button onclick="runSignalActual()" style="font-size:12px;padding:9px 18px;background:rgba(74,222,128,0.12);color:var(--up);border:1px solid var(--up);border-radius:6px;font-weight:700;cursor:pointer;font-family:'DM Mono',monospace">✓ UPDATE ACTUALS</button>
+      </div>
+    </div>
+
+    <!-- Accuracy summary -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+      ${statCard('RANGE ACCURACY', hitPct != null ? hitPct + '%' : '—', total ? `${hits} hits / ${total} forecasts` : 'Run forecasts to track', hitPct >= 60 ? 'var(--up)' : hitPct >= 40 ? 'var(--warn)' : hitPct != null ? 'var(--down)' : 'var(--muted)')}
+      ${statCard('DIRECTION ACCURACY', dirPct != null ? dirPct + '%' : '—', dirRows.length ? `${dirHits} correct / ${dirRows.length} calls` : 'No data yet', dirPct >= 60 ? 'var(--up)' : dirPct >= 40 ? 'var(--warn)' : dirPct != null ? 'var(--down)' : 'var(--muted)')}
+      ${statCard('SNAPSHOTS', snapshots.length.toString(), `${history.length} with actuals`, 'var(--accent)')}
+      ${statCard('TICKERS TRACKED', Object.keys(tkStats).length.toString(), 'across all history', 'var(--accent2)')}
+    </div>
+
+    <!-- Today's forecast -->
+    <div style="margin-bottom:28px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:12px">TODAY'S FORECAST${today ? ' · ' + today.date : ' · none yet'}</div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
+        ${today ? forecastTable(today.rows, today.rows.some(r => r.actualPrice != null)) : '<div style="padding:24px;color:var(--muted);font-size:12px">No forecast generated yet today. Click ⚡ GENERATE FORECAST to run.</div>'}
+      </div>
+    </div>
+
+    <!-- How it works -->
+    <div style="margin-bottom:28px;padding:16px;background:rgba(124,106,247,0.06);border:1px solid rgba(124,106,247,0.2);border-radius:10px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent2);margin-bottom:10px;font-weight:700">HOW THE FORECAST WORKS</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:11px;color:var(--muted)">
+        <div><span style="color:var(--text);font-weight:700">Bias Score (−1 to +1)</span><br>Combines RSI, BB%B, MA50 position, 1d/7d momentum, volume ratio. Positive = bullish lean, negative = bearish.</div>
+        <div><span style="color:var(--text);font-weight:700">Forecast Range</span><br>Midpoint = price + (bias × 1.5 × daily volatility). Band = ±0.8× daily vol. High adds squeeze buffer if short float > 15%.</div>
+        <div><span style="color:var(--text);font-weight:700">Daily Volatility</span><br>Estimated from 30-day price change ÷ 21 trading days. Captures each stock's natural daily move range.</div>
+        <div><span style="color:var(--text);font-weight:700">Accuracy Tracking</span><br>HIT = actual close lands inside forecast range. UNDER = we forecast too low. OVER = we forecast too high.</div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div>
+      <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:12px">HISTORICAL SNAPSHOTS (${history.length})</div>
+      ${histHtml}
+    </div>
+  `;
+}
+
+async function runSignalForecast() {
+  const el = document.getElementById('signalContent');
+  const msgHtml = `<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(200,241,53,0.08);border:1px solid rgba(200,241,53,0.3);border-radius:6px;font-size:12px;display:flex;align-items:center;gap:12px">
+    <span id="signalMsgText" style="color:var(--accent)">⚡ Starting forecast...</span>
+    <span id="signalMsgBar" style="flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden"><span id="signalMsgFill" style="display:block;height:100%;width:0%;background:var(--accent);border-radius:2px;transition:width 0.3s"></span></span>
+    <span id="signalMsgCount" style="color:var(--muted);white-space:nowrap;font-family:'DM Mono',monospace">0 / ?</span>
+  </div>`;
+  el.insertAdjacentHTML('afterbegin', msgHtml);
+
+  // Start polling progress while POST runs in background
+  let pollInterval = setInterval(async () => {
+    try {
+      const p = await fetch('/signal/progress').then(r => r.json());
+      const pct = p.total > 0 ? Math.round(p.current / p.total * 100) : 0;
+      const txt = document.getElementById('signalMsgText');
+      const fill = document.getElementById('signalMsgFill');
+      const count = document.getElementById('signalMsgCount');
+      if (txt) txt.textContent = p.ticker ? `⚡ Analyzing ${p.ticker}...` : '⚡ Starting forecast...';
+      if (fill) fill.style.width = pct + '%';
+      if (count) count.textContent = `${p.current} / ${p.total}`;
+    } catch(e) { /* ignore poll errors */ }
+  }, 800);
+
+  try {
+    const r = await fetch('/signal/forecast', { method: 'POST' }).then(r => r.json());
+    clearInterval(pollInterval);
+    if (r.error) throw new Error(r.error);
+    const txt = document.getElementById('signalMsgText');
+    const fill = document.getElementById('signalMsgFill');
+    const count = document.getElementById('signalMsgCount');
+    if (txt) { txt.textContent = `✓ Done — ${r.count} of ${r.total} tickers forecasted (${r.date})`; txt.style.color = 'var(--up)'; }
+    if (fill) fill.style.width = '100%';
+    if (count) count.textContent = `${r.count} / ${r.total}`;
+    await fetch('/tradeai/signal_ts', { method: 'POST' }); // keep signalForecastAt timestamp in sync
+    tradeAILoaded = false; // force TradeAI tab to show updated timestamp next visit
+    signalLoaded = false;
+    await renderSignal();
+  } catch(e) {
+    clearInterval(pollInterval);
+    const txt = document.getElementById('signalMsgText');
+    if (txt) { txt.textContent = '❌ ' + e.message; txt.style.color = 'var(--down)'; }
+  }
+}
+
+async function runSignalActual() {
+  const el = document.getElementById('signalContent');
+  el.insertAdjacentHTML('afterbegin', '<div id="signalMsg" style="padding:10px 14px;margin-bottom:12px;background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:6px;color:var(--up);font-size:12px">⏳ Fetching actual closing prices for all past snapshots...</div>');
+  try {
+    const r = await fetch('/signal/actual', { method: 'POST' }).then(r => r.json());
+    if (r.error) throw new Error(r.error);
+    const msg = document.getElementById('signalMsg');
+    if (msg) msg.textContent = `✓ Updated ${r.updated} rows across ${r.snapshots} snapshot(s)`;
+    signalLoaded = false;
+    await renderSignal();
+  } catch(e) {
+    const msg = document.getElementById('signalMsg');
+    if (msg) { msg.textContent = '❌ ' + e.message; msg.style.color = 'var(--down)'; }
+  }
+}
+// ── SCORING MATRIX ────────────────────────────────────────────────────────────
+let _scoringCfg = null;
+
+async function toggleScoringMatrix() {
+  const body  = document.getElementById('scoringMatrixBody');
+  const arrow = document.getElementById('scoringMatrixArrow');
+  if (!body) return;
+  const isOpen = body.style.display !== 'none';
+  body.style.display = isOpen ? 'none' : 'block';
+  if (arrow) arrow.textContent = isOpen ? '▸ expand' : '▾ collapse';
+  if (!isOpen && !_scoringCfg) await loadScoringMatrix();
+}
+
+async function loadScoringMatrix() {
+  const body = document.getElementById('scoringMatrixBody');
+  try {
+    _scoringCfg = await fetch('/scoring/config').then(r => r.json());
+    body.innerHTML = buildScoringMatrixHTML(_scoringCfg);
+  } catch(e) {
+    body.innerHTML = `<div style="color:var(--down)">Failed to load scoring config: ${e.message}</div>`;
+  }
+}
+
+function buildScoringMatrixHTML(cfg) {
+  const buckets = ['Momentum','Reversal','SmartMoney','Account','Dream'];
+  const bktColors = { Momentum:'#fbbf24', Reversal:'#4ade80', SmartMoney:'#a78bfa', Account:'#60a5fa', Dream:'#6b7280' };
+  const stages = ['Early-Stage','Growth','Mature','Declining'];
+  const trajs  = ['Accelerating','Stable','Decelerating'];
+
+  function section(title, desc, content) {
+    return `<div style="margin-bottom:24px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent);font-weight:700;margin-bottom:4px">${title}</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:12px">${desc}</div>
+      ${content}
+    </div>`;
+  }
+
+  function row(label, desc, inputHTML) {
+    return `<div style="display:grid;grid-template-columns:200px 1fr auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div>
+        <div style="font-size:12px;font-weight:600;color:var(--text)">${label}</div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px">${desc}</div>
+      </div>
+      <div></div>
+      <div>${inputHTML}</div>
+    </div>`;
+  }
+
+  function numInput(path, val, min=0, max=100, step=1) {
+    return `<input type="number" min="${min}" max="${max}" step="${step}"
+      value="${val}"
+      data-path="${path}"
+      onchange="updateScoringCfg(this)"
+      style="width:72px;padding:4px 8px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;font-family:'DM Mono',monospace;text-align:right">`;
+  }
+
+  function pctInput(path, val) {
+    return `<input type="number" min="0" max="1" step="0.01"
+      value="${val}"
+      data-path="${path}"
+      onchange="updateScoringCfg(this)"
+      style="width:72px;padding:4px 8px;background:var(--surface);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;font-family:'DM Mono',monospace;text-align:right">`;
+  }
+
+  function toggle(path, val) {
+    return `<label style="display:flex;align-items:center;gap:6px;cursor:pointer">
+      <input type="checkbox" ${val ? 'checked' : ''} data-path="${path}" onchange="updateScoringCfgBool(this)"
+        style="width:16px;height:16px;accent-color:var(--accent)">
+      <span style="font-size:11px;color:var(--muted)">${val ? 'Enabled' : 'Disabled'}</span>
+    </label>`;
+  }
+
+  // ── BUY SIGNAL MAP ───────────────────────────────────────────────────────
+  const signalRows = Object.entries(cfg.buySignalMap).map(([sig, val]) =>
+    row(sig, `AI returns "${sig}" → converted to this score (0–100)`, numInput(`buySignalMap.${sig}`, val))
+  ).join('');
+
+  // ── BUCKET WEIGHTS ───────────────────────────────────────────────────────
+  const weightRows = buckets.map(bkt => {
+    const w = cfg.bucketWeights[bkt] || {};
+    const bc = bktColors[bkt] || '#6b7280';
+    return `<div style="margin-bottom:16px">
+      <div style="font-size:11px;font-weight:700;color:${bc};margin-bottom:8px;padding:4px 10px;background:${bc}18;border-radius:4px;display:inline-block">${bkt.toUpperCase()}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        ${['dream','ai','signal'].map(k => `<div style="background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:10px">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:6px">${k.toUpperCase()} SCORE WEIGHT</div>
+          <div style="font-size:10px;color:var(--muted);margin-bottom:8px">${
+            k==='dream'?'Fundamental quality from dream scanner (0–100)':
+            k==='ai'?'AI model quality score from Analyze step (0–100)':
+            'Buy signal converted to score (Strong Buy=100 down to Avoid=0)'
+          }</div>
+          ${pctInput(`bucketWeights.${bkt}.${k}`, w[k] ?? 0)}
+          <span style="font-size:10px;color:var(--muted);margin-left:4px">× score</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  // ── TRAJECTORY BONUSES ───────────────────────────────────────────────────
+  const trajRows = buckets.map(bkt => {
+    const t = cfg.trajectoryBonus[bkt] || {};
+    const bc = bktColors[bkt] || '#6b7280';
+    return `<div style="display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:11px;font-weight:700;color:${bc}">${bkt}</div>
+      <div style="display:flex;gap:16px">
+        ${trajs.map(tr => `<div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:10px;color:var(--muted);width:80px">${tr}</span>
+          ${numInput(`trajectoryBonus.${bkt}.${tr}`, t[tr] ?? 0, -30, 30)}
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  // ── STAGE BONUSES ────────────────────────────────────────────────────────
+  const stageRows = buckets.map(bkt => {
+    const s = cfg.stageBonus[bkt] || {};
+    const bc = bktColors[bkt] || '#6b7280';
+    return `<div style="display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:11px;font-weight:700;color:${bc}">${bkt}</div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        ${stages.map(st => `<div style="display:flex;align-items:center;gap:6px">
+          <span style="font-size:10px;color:var(--muted);width:72px">${st}</span>
+          ${numInput(`stageBonus.${bkt}.${st}`, s[st] ?? 0, -20, 30)}
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+
+  // ── SHARED BONUSES ───────────────────────────────────────────────────────
+  const sh = cfg.sharedBonuses;
+  const sharedRows = [
+    ['Volume Surge High', 'volumeRatio ≥ threshold → add this bonus. High volume confirms conviction in the move.', `${numInput('sharedBonuses.volumeSurgeHigh', sh.volumeSurgeHigh)} pts when vol ratio ≥ ${pctInput('sharedBonuses.volumeSurgeHigh_threshold', sh.volumeSurgeHigh_threshold)}`],
+    ['Volume Surge Med',  'volumeRatio ≥ medium threshold → smaller bonus.', `${numInput('sharedBonuses.volumeSurgeMed', sh.volumeSurgeMed)} pts when vol ratio ≥ ${pctInput('sharedBonuses.volumeSurgeMed_threshold', sh.volumeSurgeMed_threshold)}`],
+    ['Analyst Upside High','Analyst target upside ≥ threshold → bonus. Independent price target confirmation.', `${numInput('sharedBonuses.analystUpsideHigh', sh.analystUpsideHigh)} pts when upside ≥ ${pctInput('sharedBonuses.analystUpsideHigh_threshold', sh.analystUpsideHigh_threshold)}`],
+    ['Analyst Upside Med', 'Analyst target upside ≥ medium threshold.', `${numInput('sharedBonuses.analystUpsideMed', sh.analystUpsideMed)} pts when upside ≥ ${pctInput('sharedBonuses.analystUpsideMed_threshold', sh.analystUpsideMed_threshold)}`],
+    ['News Bullish',      'AI Analyze returns Bullish news sentiment → bonus.', `${numInput('sharedBonuses.newsBullish', sh.newsBullish)} pts`],
+    ['News Neutral',      'AI Analyze returns Neutral news sentiment → smaller bonus.', `${numInput('sharedBonuses.newsNeutral', sh.newsNeutral)} pts`],
+  ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
+
+  // ── REVERSAL BONUSES ─────────────────────────────────────────────────────
+  const rb = cfg.reversalBonuses;
+  const reversalRows = [
+    ['RSI Deep Oversold', 'RSI below threshold → strong bounce potential. Reversal bucket only.', `${numInput('reversalBonuses.rsiDeep', rb.rsiDeep)} pts when RSI < ${numInput('reversalBonuses.rsiDeep_threshold', rb.rsiDeep_threshold, 1, 50)}`],
+    ['RSI Med Oversold',  'RSI between deep and mild thresholds.', `${numInput('reversalBonuses.rsiMed', rb.rsiMed)} pts when RSI < ${numInput('reversalBonuses.rsiMed_threshold', rb.rsiMed_threshold, 1, 50)}`],
+    ['RSI Mild Oversold', 'RSI below mild threshold.', `${numInput('reversalBonuses.rsiMild', rb.rsiMild)} pts when RSI < ${numInput('reversalBonuses.rsiMild_threshold', rb.rsiMild_threshold, 1, 60)}`],
+    ['Bollinger Band Low','Price touching or below lower Bollinger Band (BB%B < threshold). Classic technical reversal entry.', `${numInput('reversalBonuses.bbLowerBand', rb.bbLowerBand)} pts when BB%B < ${pctInput('reversalBonuses.bbLowerBand_threshold', rb.bbLowerBand_threshold)}`],
+  ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
+
+  // ── ACCOUNT BONUSES ──────────────────────────────────────────────────────
+  const ab = cfg.accountBonuses;
+  const accountRows = [
+    ['Hold Continuity', 'Held positions that are NOT flagged Avoid get a small bonus. Reduces unnecessary churn.', numInput('accountBonuses.holdContinuity', ab.holdContinuity, 0, 20)],
+    ['Avoid Penalty',   'Held positions where AI says Avoid get this penalty (enter as negative). Forces exit.', numInput('accountBonuses.avoidPenalty', ab.avoidPenalty, -50, 0)],
+    ['Purchase Penalty Mild', 'Held position down 5-10% from purchase price gets this penalty. Begins dragging it out of top 5.', numInput('accountBonuses.purchasePenaltyMild', ab.purchasePenaltyMild ?? -6, -30, 0)],
+    ['Purchase Penalty Med', 'Held position down 10-15% from purchase price. Stronger drag on composite score.', numInput('accountBonuses.purchasePenaltyMed', ab.purchasePenaltyMed ?? -12, -40, 0)],
+    ['Purchase Penalty Hard', 'Held position down 15%+ from purchase. Heavy composite penalty — position should be near stop-loss anyway.', numInput('accountBonuses.purchasePenaltyHard', ab.purchasePenaltyHard ?? -20, -50, 0)],
+    ['Mild Threshold %', 'Price drop % that triggers the mild penalty.', `${numInput('accountBonuses.purchasePenaltyMild_threshold', ab.purchasePenaltyMild_threshold ?? 5.0, 1, 20, 0.5)}% drop`],
+    ['Med Threshold %', 'Price drop % that triggers the medium penalty.', `${numInput('accountBonuses.purchasePenaltyMed_threshold', ab.purchasePenaltyMed_threshold ?? 10.0, 1, 30, 0.5)}% drop`],
+    ['Hard Threshold %', 'Price drop % that triggers the hard penalty.', `${numInput('accountBonuses.purchasePenaltyHard_threshold', ab.purchasePenaltyHard_threshold ?? 15.0, 1, 40, 0.5)}% drop`],
+  ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
+
+  // ── SIGNAL FORECAST ──────────────────────────────────────────────────────
+  const sf = cfg.signalForecast;
+  const signalFcRows = [
+    ['Enable Signal Forecast', 'Toggle whether Signal Forecast target return affects the composite score.', toggle('signalForecast.enabled', sf.enabled)],
+    ['Return Multiplier', 'Expected return % to target × this multiplier = bonus/penalty pts. E.g. +6% return × 3.0 = +18 pts.', `${numInput('signalForecast.returnMultiplier', sf.returnMultiplier, 0, 10, 0.5)} × return%`],
+    ['Max Boost',    'Maximum positive bonus from signal forecast (caps upside from a bullish target).', numInput('signalForecast.maxBoost', sf.maxBoost, 0, 40)],
+    ['Max Penalty',  'Maximum negative penalty from signal forecast (enter as negative). Floors downside from a bearish target.', numInput('signalForecast.maxPenalty', sf.maxPenalty, -50, 0)],
+    ['Neutral Zone', 'Ignore signal forecast if expected return is within ±this %. Avoids noise from tiny moves.', `±${numInput('signalForecast.neutralZone', sf.neutralZone, 0, 5, 0.5)}%`],
+  ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
+
+  // ── SELL THRESHOLDS ──────────────────────────────────────────────────────
+  const st = cfg.sellThresholds;
+  const sellRows = [
+    ['Hard Sell Floor',     'Composite score below this → always sell regardless of position in top 5. No exceptions.', numInput('sellThresholds.hardSellFloor', st.hardSellFloor, 0, 60)],
+    ['Soft Sell Floor',     'If NOT in top N AND composite below this → sell. Removes weak candidates not in focus.', numInput('sellThresholds.softSellFloor', st.softSellFloor, 0, 70)],
+    ['Max Positions',       'Maximum number of positions held simultaneously. Buys stop once this is reached.', numInput('sellThresholds.maxPositions', st.maxPositions, 1, 20)],
+    ['Hard Stop-Loss %',    'Sell immediately if price drops this % below purchase price. No exceptions — protects capital. O\'Neil rule: 8%.', `${numInput('sellThresholds.stopLossHard', st.stopLossHard ?? 8.0, 1, 30, 0.5)}%`],
+    ['Soft Stop-Loss %',    'Sell if price drops this % below purchase AND composite is below 50. Both conditions required.', `${numInput('sellThresholds.stopLossSoft', st.stopLossSoft ?? 6.0, 1, 20, 0.5)}%`],
+    ['Trailing Stop %',     'Sell if price drops this % below the peak price reached since purchase — but only if the position was profitable at peak. Protects locked-in gains.', `${numInput('sellThresholds.trailingStopPeak', st.trailingStopPeak ?? 10.0, 1, 30, 0.5)}% from peak`],
+  ].map(([label, desc, inp]) => row(label, desc, inp)).join('');
+
+  // ── BUY SIGNAL MAP ───────────────────────────────────────────────────────
+  const sigRows = Object.entries(cfg.buySignalMap).map(([sig, val]) => {
+    const descs = {
+      'Strong Buy': 'AI is highly confident in upward move — maximum signal score.',
+      'Buy': 'AI recommends buying — solid conviction.',
+      'Hold': 'AI sees no strong direction — moderate score, no strong buy trigger.',
+      'Avoid': 'AI sees risk — score of 0 blocks purchase and triggers sell review.',
+      'Unknown': 'AI response could not be parsed — treated as uncertain.'
+    };
+    return row(sig, descs[sig] || '', numInput(`buySignalMap.${sig}`, val, 0, 100));
+  }).join('');
+
+  return `
+    <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:20px">
+      <button onclick="saveScoringMatrix()" style="font-size:12px;padding:7px 16px;background:var(--accent);color:#0a0a0f;border:none;border-radius:6px;font-weight:700;cursor:pointer;font-family:'DM Mono',monospace">💾 SAVE CHANGES</button>
+      <button onclick="resetScoringMatrix()" style="font-size:12px;padding:7px 16px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:6px;cursor:pointer;font-family:'DM Mono',monospace">↺ RESET DEFAULTS</button>
+      <span id="scoringMatrixStatus" style="font-size:11px;color:var(--up);align-self:center"></span>
+    </div>
+
+    ${section('BUY SIGNAL SCORE MAP', 'Converts the AI Analyze buySignal label into a numeric score used in the composite formula.', sigRows)}
+    ${section('BUCKET WEIGHTS', 'Each bucket uses a weighted combination of Dream Score, AI Score, and Signal Score. Values are multiplied by the raw score (0–100). Weights do not need to sum to 1.0 exactly but should be balanced.', weightRows)}
+    ${section('TRAJECTORY BONUSES (pts)', 'Points added to composite based on AI-assessed business trajectory. Reversal bucket intentionally ignores trajectory — decelerating is expected at a bottom.', trajRows)}
+    ${section('STAGE BONUSES (pts)', 'Points added based on the AI-assessed business lifecycle stage.', stageRows)}
+    ${section('SHARED BONUSES (pts, all buckets)', 'These bonuses apply to every bucket regardless of strategy.', sharedRows)}
+    ${section('REVERSAL-SPECIFIC BONUSES (pts)', 'Only applied to Reversal bucket candidates. Reward oversold technical conditions — the deeper the oversold, the stronger the expected bounce.', reversalRows)}
+    ${section('ACCOUNT (HELD POSITION) BONUSES (pts)', 'Applied only to currently held stocks. Continuity bonus reduces churn; Avoid penalty forces exit.', accountRows)}
+    ${section('SIGNAL FORECAST INTEGRATION', 'Uses today\'s Signal Forecast target price to boost or penalise the composite score. Bullish forecast with high expected return = positive boost. Bearish forecast = negative penalty. Run AI Analyze before Signal Forecast — Signal Forecast now reads the AI reason from AI Analyze.', signalFcRows)}
+    ${section('SELL THRESHOLDS', 'Controls when held positions are sold. Hard Sell is unconditional. Soft Sell only applies if the stock is also outside the top N positions.', sellRows)}
+    ${(()=>{
+      const pm = cfg.purchaseMatrix || {};
+      const slots = pm.slots ?? 5;
+      const dep   = pm.maxDeployPct ?? 80;
+      return section('PURCHASE MATRIX', 'Controls how funds are deployed when buying. Budget per slot = (Balance × Max Deploy%) ÷ Slots.',
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:420px">'
+        + '<div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">SLOTS (max positions)</div>'
+        + '<input type="number" id="pm-slots" min="1" max="20" step="1" value="' + slots + '" oninput="updatePmPreview()"'
+        + ' style="width:100%;padding:7px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:\'DM Mono\',monospace"></div>'
+        + '<div><div style="font-size:10px;color:var(--muted);margin-bottom:6px">MAX DEPLOY % (of balance)</div>'
+        + '<input type="number" id="pm-deploy" min="10" max="100" step="5" value="' + dep + '" oninput="updatePmPreview()"'
+        + ' style="width:100%;padding:7px 10px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:\'DM Mono\',monospace"></div>'
+        + '</div>'
+        + '<div id="pm-preview" style="margin-top:10px;font-size:11px;color:var(--muted);font-family:\'DM Mono\',monospace">'
+        + 'Example $5k → deploy $' + (5000*dep/100).toFixed(0) + ' → $' + (5000*dep/100/slots).toFixed(0) + '/slot</div>'
+      );
+    })()}
+  `;
+}
+
+function _setNestedValue(obj, path, value) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (!cur[parts[i]]) cur[parts[i]] = {};
+    cur = cur[parts[i]];
+  }
+  cur[parts[parts.length - 1]] = value;
+}
+
+function updateScoringCfg(input) {
+  if (!_scoringCfg) return;
+  _setNestedValue(_scoringCfg, input.dataset.path, parseFloat(input.value));
+}
+
+function updateScoringCfgBool(input) {
+  if (!_scoringCfg) return;
+  _setNestedValue(_scoringCfg, input.dataset.path, input.checked);
+  input.nextElementSibling.textContent = input.checked ? 'Enabled' : 'Disabled';
+}
+
+function updatePmPreview() {
+  const slots = parseInt(document.getElementById('pm-slots')?.value) || 5;
+  const pct   = parseFloat(document.getElementById('pm-deploy')?.value) || 80;
+  const prev  = document.getElementById('pm-preview');
+  if (prev) prev.textContent = 'Example $5k → deploy $' + (5000*pct/100).toFixed(0) + ' → $' + (5000*pct/100/slots).toFixed(0) + '/slot';
+  if (_scoringCfg) {
+    if (!_scoringCfg.purchaseMatrix) _scoringCfg.purchaseMatrix = {};
+    _scoringCfg.purchaseMatrix.slots = slots;
+    _scoringCfg.purchaseMatrix.maxDeployPct = pct;
+  }
+}
+
+async function saveScoringMatrix() {
+  const status = document.getElementById('scoringMatrixStatus');
+  try {
+    const r = await fetch('/scoring/config', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(_scoringCfg)
+    }).then(r => r.json());
+    if (r.error) throw new Error(r.error);
+    if (status) { status.textContent = '✓ Saved'; status.style.color = 'var(--up)'; setTimeout(() => { if(status) status.textContent = ''; }, 3000); }
+  } catch(e) {
+    if (status) { status.textContent = '❌ ' + e.message; status.style.color = 'var(--down)'; }
+  }
+}
+
+async function resetScoringMatrix() {
+  if (!confirm('Reset all scoring weights to defaults?')) return;
+  const status = document.getElementById('scoringMatrixStatus');
+  try {
+    const r = await fetch('/scoring/reset', { method: 'POST' }).then(r => r.json());
+    _scoringCfg = r.config;
+    document.getElementById('scoringMatrixBody').innerHTML = buildScoringMatrixHTML(_scoringCfg);
+    if (status) { status.textContent = '✓ Reset to defaults'; setTimeout(() => { if(status) status.textContent=''; }, 3000); }
+  } catch(e) {
+    if (status) { status.textContent = '❌ ' + e.message; status.style.color = 'var(--down)'; }
+  }
+}
+// ── END SCORING MATRIX ────────────────────────────────────────────────────────
+
+// ── END SIGNAL TAB ────────────────────────────────────────────────────────────
+{%- endraw %}
+</script>
