@@ -1746,6 +1746,10 @@ def run_tradeai_analyze():
             assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro)
             ai_assessments[ticker] = assessment
             log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
+            # Gemini free tier: 5 RPM limit — wait 13s between calls
+            if idx < total:
+                import time
+                time.sleep(20)
 
         candidates_data["aiAssessments"] = ai_assessments
         candidates_data["aiAnalyzedAt"] = ts()

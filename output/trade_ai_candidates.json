@@ -121,7 +121,7 @@
       "bucket": "SmartMoney"
     }
   ],
-  "identifiedAt": "2026-06-28 15:37 EDT",
+  "identifiedAt": "2026-06-29 09:14 EDT",
   "details": {
     "ONDS": {
       "ticker": "ONDS",
@@ -164,7 +164,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "BMNR": {
       "ticker": "BMNR",
@@ -207,7 +207,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "AGI.TO": {
       "ticker": "AGI.TO",
@@ -233,15 +233,15 @@
       "grossMargin": 70.2,
       "fcf": 153624992,
       "peRatio": 12.4,
-      "forwardPE": 9.1,
+      "forwardPE": 9.2,
       "eps": 3.57,
       "debtToEquity": 4.8,
       "returnOnEquity": 25.9,
       "week52High": 75.78,
       "week52Low": 33.11,
       "priceVs52wHigh": 58.5,
-      "analystTarget": 75.55447,
-      "analystUpside": 70.4,
+      "analystTarget": 75.642334,
+      "analystUpside": 70.6,
       "recommendation": "strong_buy",
       "institutionalPct": 70.2,
       "insiderPct": 0.3,
@@ -250,7 +250,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Alamos Gold Inc. operates as a gold producer in Canada and Mexico. It primarily explores for gold deposits. The company was founded in 2003 and is based in Toronto, Canada.",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "WAT": {
       "ticker": "WAT",
@@ -293,7 +293,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Waters Corporation provides analytical workflow solutions in Asia, the Americas, and Europe. The company operates through two segments, Waters and TA. The company designs, manufactures, sells, and services liquid chromatography, as well as mass spectrometry (MS) technology systems and supports products, including chromatography columns, and other consumable products. It also designs, manufactures,",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "CRWV": {
       "ticker": "CRWV",
@@ -319,7 +319,7 @@
       "grossMargin": 69.4,
       "fcf": -8560327168,
       "peRatio": null,
-      "forwardPE": -113.8,
+      "forwardPE": -99.1,
       "eps": -2.72,
       "debtToEquity": 738.5,
       "returnOnEquity": -40.7,
@@ -336,7 +336,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "CoreWeave, Inc. operates as a cloud infrastructure technology company in the United States. The company offers CoreWeave Cloud platform that comprises proprietary software and cloud services that deliver the automation and efficiency needed to manage complex artificial intelligence (AI) infrastructure at scale. It also offers data and storage solutions, such as Local Object Transport Accelerator; ",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "IP": {
       "ticker": "IP",
@@ -379,7 +379,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "International Paper Company produces and sells renewable fiber-based packaging in North America, Latin America, Europe, South America, and North Africa. It operates through two segments, Packaging Solutions North America and Packaging Solutions EMEA. The company offers linerboard, medium, whitetop, and saturating kraft; and converts containerboard into corrugated boxes, bulk bins, shipping contain",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "PH": {
       "ticker": "PH",
@@ -422,7 +422,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Parker-Hannifin Corporation manufactures and sells motion and control technologies and systems for aerospace and defense, in-plant and industrial equipment, transportation, off-highway, energy, and HVAC and refrigeration markets in North America, Europe, Asia Pacific, and Latin America. The company operates through two segments: Diversified Industrial and Aerospace Systems. It offers various motio",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "MMM": {
       "ticker": "MMM",
@@ -465,7 +465,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "3M Company provides diversified technology services in the America, the Asia Pacific, Europe, the Middle East, Africa, and internationally. It operates through three segments: Safety and Industrial, Transportation and Electronics, and Consumer. The Safety and Industrial segment provides industrial abrasives and finishing for metalworking applications; autobody repair solutions; industrial specialt",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "DASH": {
       "ticker": "DASH",
@@ -508,7 +508,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "DoorDash, Inc., together with its subsidiaries, operates a commerce platform that connects merchants, consumers, and dashers in the United States and internationally. The company operates DoorDash Marketplace, Wolt Marketplace, and Deliveroo Marketplace, which provide various services, such as customer acquisition, demand generation, order fulfillment, merchandising, payment processing, and custom",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "OPK": {
       "ticker": "OPK",
@@ -551,7 +551,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "OPKO Health, Inc. operates as a healthcare company, in the United States, Ireland, Chile, Spain, Israel, Mexico, and internationally. The company operates in two segments, Pharmaceutical and Diagnostics. The Pharmaceutical segment develops MDX2001, a tetra-specific antibody targeting several types of solid tumors in Phase 1 clinical trials; MDX2003, a tetra-specific antibody targeting two antigens",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "AKAM": {
       "ticker": "AKAM",
@@ -594,7 +594,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Akamai Technologies, Inc. engages in the provision of security, delivery, and cloud computing solutions in the United States and internationally. It offers security solutions that include web application and application programming interfaces (API) protection solutions, which protect web, API, and mobile app traffic from attacks; Bot & Abuse portfolio, which provides solutions to help customers pr",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "ORCL": {
       "ticker": "ORCL",
@@ -637,7 +637,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Oracle Corporation offers products and services that build, run and support enterprise information technology frameworks worldwide. Its Oracle cloud software as a service offering includes various cloud software applications, including Oracle Fusion cloud enterprise resource planning ERP, Oracle Fusion cloud enterprise performance management EPM, Oracle Fusion cloud supply chain and manufacturing ",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "CTSH": {
       "ticker": "CTSH",
@@ -680,7 +680,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Cognizant Technology Solutions Corporation, a professional services company, provides consulting and technology, and outsourcing services in North America, Europe, and internationally. It operates through four segments: Financial Services; Health Sciences; Products and Resources; and Communications, Media and Technology. The company provides services including artificial intelligence (AI) and othe",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "ACN": {
       "ticker": "ACN",
@@ -723,7 +723,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Accenture plc provides strategy and consulting, industry X, song, and technology and operation services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It offers systems integration and application management; security; intelligent platform; infrastructure; software engineering; data, AI, cloud; and automation and global delivery services. The company also operates business",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "SU.TO": {
       "ticker": "SU.TO",
@@ -749,7 +749,7 @@
       "grossMargin": 58.8,
       "fcf": 6675874816,
       "peRatio": 14.5,
-      "forwardPE": 9.9,
+      "forwardPE": 10.0,
       "eps": 5.26,
       "debtToEquity": 32.4,
       "returnOnEquity": 14.0,
@@ -766,7 +766,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Suncor Energy Inc. operates as an integrated energy company in Canada, the United States, and internationally. The company operates through Oil Sands; Exploration and Production; and Refining and Marketing segments. The Oil Sands segment produces bitumen; and markets, supplies, and transports and manages crude oil, power, and byproducts. The Exploration and Production segment is involved in the of",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "IBRX": {
       "ticker": "IBRX",
@@ -809,7 +809,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "ImmunityBio, Inc., a biotechnology company, focuses on innovating, developing, and commercializing next-generation immunotherapies designed to activate the patient's immune system and deliver durable protection against cancer and infectious diseases. Its platforms for the development of biologic products and product candidates that include cytokine fusion proteins, DNA and vaccine vectors, and cel",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "IRWD": {
       "ticker": "IRWD",
@@ -852,7 +852,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ironwood Pharmaceuticals, Inc., a biotechnology company, focuses on the development and commercialization of therapies for gastrointestinal (GI) and rare diseases in the United States and internationally. It sells linaclotide, a guanylate cyclase type-C (GC-C) agonist for the treatment of adults suffering from irritable bowel syndrome with constipation or chronic idiopathic constipation, as well a",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "CDE": {
       "ticker": "CDE",
@@ -895,7 +895,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "NAT": {
       "ticker": "NAT",
@@ -938,7 +938,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Nordic American Tankers Limited, a tanker company, owns, operates, and charters double-hull tankers in Bermuda and internationally. As of December 31, 2025, the company fleet consisted of 20 Suezmax crude oil tankers. It serves oil companies, oil traders, and other entities requiring crude oil transportation services. The company was formerly known as Nordic American Tanker Shipping Limited and ch",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     },
     "HL": {
       "ticker": "HL",
@@ -981,10 +981,10 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Hecla Mining Company, together with its subsidiaries, provides precious and base metals in the United States, Canada, Japan, Korea, China, and internationally. The company mines for silver, gold, lead, and zinc concentrates, as well as carbon material containing silver and gold for custom smelters, metal traders, and third-party processors; and unrefined dor\u00e9 containing silver and gold. The compan",
-      "fetchCompletedAt": "2026-06-28 21:38 EDT"
+      "fetchCompletedAt": "2026-06-29 09:14 EDT"
     }
   },
-  "detailsFetchedAt": "2026-06-28 21:38 EDT",
+  "detailsFetchedAt": "2026-06-29 09:14 EDT",
   "aiAssessments": {},
   "aiAnalyzedAt": "2026-06-24 23:39 EDT",
   "lastRecommend": {
@@ -1402,14 +1402,6 @@
     ],
     "BMNR": [
       {
-        "rsi": 31.1,
-        "ts": "2026-06-25 09:33 EDT"
-      },
-      {
-        "rsi": 29.4,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 29.4,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -1420,6 +1412,14 @@
       {
         "rsi": 37.5,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 37.5,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 37.5,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "OLA.TO": [
@@ -1710,14 +1710,6 @@
     ],
     "ONDS": [
       {
-        "rsi": 15.0,
-        "ts": "2026-06-25 09:33 EDT"
-      },
-      {
-        "rsi": 14.2,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 14.2,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -1728,6 +1720,14 @@
       {
         "rsi": 21.8,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 21.8,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 21.8,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "POET": [
@@ -1776,14 +1776,6 @@
     ],
     "CDE": [
       {
-        "rsi": 37.0,
-        "ts": "2026-06-24 00:32 EDT"
-      },
-      {
-        "rsi": 37.9,
-        "ts": "2026-06-24 12:07 EDT"
-      },
-      {
         "rsi": 37.6,
         "ts": "2026-06-24 22:02 EDT"
       },
@@ -1794,6 +1786,14 @@
       {
         "rsi": 48.0,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 48.0,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 48.0,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "HST": [
@@ -2106,14 +2106,6 @@
     ],
     "CRWV": [
       {
-        "rsi": 47.1,
-        "ts": "2026-06-25 09:33 EDT"
-      },
-      {
-        "rsi": 42.5,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 42.5,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -2124,6 +2116,14 @@
       {
         "rsi": 46.6,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 46.6,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 46.6,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "PBR": [
@@ -2146,14 +2146,6 @@
     ],
     "NAT": [
       {
-        "rsi": 86.3,
-        "ts": "2026-06-25 09:34 EDT"
-      },
-      {
-        "rsi": 79.1,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 79.1,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -2164,18 +2156,18 @@
       {
         "rsi": 64.4,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 64.4,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 64.4,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "WAT": [
       {
-        "rsi": 48.9,
-        "ts": "2026-06-25 09:33 EDT"
-      },
-      {
-        "rsi": 50.3,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 50.3,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -2186,18 +2178,18 @@
       {
         "rsi": 57.3,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 57.3,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 57.3,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "AGI.TO": [
       {
-        "rsi": 40.8,
-        "ts": "2026-06-25 09:33 EDT"
-      },
-      {
-        "rsi": 41.5,
-        "ts": "2026-06-25 21:44 EDT"
-      },
-      {
         "rsi": 41.5,
         "ts": "2026-06-26 08:55 EDT"
       },
@@ -2208,6 +2200,14 @@
       {
         "rsi": 41.1,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 41.1,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 41.1,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "IP": [
@@ -2218,6 +2218,14 @@
       {
         "rsi": 70.0,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 70.0,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 70.0,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "PH": [
@@ -2228,6 +2236,14 @@
       {
         "rsi": 69.9,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 69.9,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 69.9,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "MMM": [
@@ -2238,6 +2254,14 @@
       {
         "rsi": 69.8,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 69.8,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 69.8,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "DASH": [
@@ -2248,6 +2272,14 @@
       {
         "rsi": 69.6,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "OPK": [
@@ -2258,6 +2290,14 @@
       {
         "rsi": 69.6,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 69.6,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "AKAM": [
@@ -2268,6 +2308,14 @@
       {
         "rsi": 10.2,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 10.2,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 10.2,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "ORCL": [
@@ -2278,6 +2326,14 @@
       {
         "rsi": 11.1,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 11.1,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 11.1,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "CTSH": [
@@ -2288,6 +2344,14 @@
       {
         "rsi": 14.1,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 14.1,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 14.1,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "ACN": [
@@ -2298,6 +2362,14 @@
       {
         "rsi": 14.8,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 14.8,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 14.8,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "SU.TO": [
@@ -2308,6 +2380,14 @@
       {
         "rsi": 18.5,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 18.5,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 18.5,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "IBRX": [
@@ -2318,6 +2398,14 @@
       {
         "rsi": 74.5,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 74.5,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 74.5,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "IRWD": [
@@ -2328,6 +2416,14 @@
       {
         "rsi": 77.7,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 77.7,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 77.7,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ],
     "HL": [
@@ -2338,6 +2434,14 @@
       {
         "rsi": 55.5,
         "ts": "2026-06-28 21:38 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-28 22:49 EDT"
+      },
+      {
+        "rsi": 55.5,
+        "ts": "2026-06-29 09:14 EDT"
       }
     ]
   }
