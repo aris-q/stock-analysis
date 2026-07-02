@@ -1129,8 +1129,8 @@ SCORING_DEFAULTS = {
         "penalty": -15
     },
     "purchaseMatrix": {
-        "slots":         5,
-        "maxDeployPct":  80,
+        "slots":         6,
+        "maxDeployPct":  100,
         "minBuyComposite": 60
     }
 }
@@ -1518,20 +1518,16 @@ def run_tradeai_identify():
         held_tickers = list(trades.get("holdings", {}).keys())
         dream = load_json(DREAM_PATH, {})
         candidates = dream.get("candidates", [])
-        seen = set(held_tickers)
+        seen = set(held_tickers)  # still exclude already-held tickers from new picks
         result = []
 
         # Helper to safely get breakdown field
         def bd(c, key):
             return (c.get("breakdown") or {}).get(key)
 
-        # Always include current holdings first
-        for ticker in held_tickers:
-            result.append({"ticker": ticker, "reason": "Current holding — evaluate for sell", "source": "Account", "bucket": "Account"})
+        CANDIDATE_SLOTS = 20  # flat cap, holdings no longer force-included
 
-        CANDIDATE_SLOTS = 15  # max from dream candidates, not counting holdings
-
-        # ── BUCKET 1: MOMENTUM (5 slots) ──────────────────────────────────────
+        # ── BUCKET 1: MOMENTUM (7 slots) ──────────────────────────────────────
         # RSI 45-70 (trending up, not exhausted) + price above MA50
         # Fast signal: money already moving, confirm with trend
         momentum_pool = [
@@ -1550,8 +1546,8 @@ def run_tradeai_identify():
                 and 45 <= bd(c, "rsi") <= 70
             ]
         momentum_pool.sort(key=lambda c: bd(c, "rsi") or 0, reverse=True)
-        for c in momentum_pool[:5]:
-            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+        for c in momentum_pool[:7]:
+            if len(result) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rsi_val = bd(c, "rsi")
@@ -1559,7 +1555,7 @@ def run_tradeai_identify():
             result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Momentum"})
         log.info(f"[TradeAI Identify] Bucket 1 Momentum: {[r['ticker'] for r in result if r.get('bucket')=='Momentum']}")
 
-        # ── BUCKET 2: REVERSAL (5 slots) ──────────────────────────────────────
+        # ── BUCKET 2: REVERSAL (7 slots) ──────────────────────────────────────
         # RSI < 40 (oversold) + dream score 20-60 (not trash, not already priced in)
         # Goal: catch accumulation before it shows — early-stage signal
         reversal_pool = [
@@ -1570,8 +1566,8 @@ def run_tradeai_identify():
             and 20 <= c.get("score", 0) <= 60
         ]
         reversal_pool.sort(key=lambda c: bd(c, "rsi") or 99)
-        for c in reversal_pool[:5]:
-            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+        for c in reversal_pool[:7]:
+            if len(result) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rsi_val = bd(c, "rsi")
@@ -1580,7 +1576,7 @@ def run_tradeai_identify():
             result.append({"ticker": ticker, "reason": reason, "source": c.get("source", "Dream"), "bucket": "Reversal"})
         log.info(f"[TradeAI Identify] Bucket 2 Reversal: {[r['ticker'] for r in result if r.get('bucket')=='Reversal']}")
 
-        # ── BUCKET 3: SMART MONEY (5 slots) ───────────────────────────────────
+        # ── BUCKET 3: SMART MONEY (6 slots) ───────────────────────────────────
         # High gross margin + revenue growth + score below top tier
         # Dream score 35-70: fundamentally strong but not yet consensus buy
         smart_pool = [
@@ -1594,8 +1590,8 @@ def run_tradeai_identify():
         ]
         # Sort by revenue growth — accelerating fundamentals
         smart_pool.sort(key=lambda c: bd(c, "revenueGrowth") or 0, reverse=True)
-        for c in smart_pool[:5]:
-            if len(result) - len(held_tickers) >= CANDIDATE_SLOTS: break
+        for c in smart_pool[:6]:
+            if len(result) >= CANDIDATE_SLOTS: break
             ticker = c["ticker"]
             seen.add(ticker)
             rev = bd(c, "revenueGrowth")
@@ -1605,12 +1601,12 @@ def run_tradeai_identify():
         log.info(f"[TradeAI Identify] Bucket 3 SmartMoney: {[r['ticker'] for r in result if r.get('bucket')=='SmartMoney']}")
 
         # ── FILLER: top dream scorers if any bucket came up short ─────────────
-        candidate_count = len(result) - len(held_tickers)
+        candidate_count = len(result)
         if candidate_count < CANDIDATE_SLOTS:
             filler_pool = [c for c in candidates if c["ticker"] not in seen]
             filler_pool.sort(key=lambda c: c.get("score", 0), reverse=True)
             for c in filler_pool:
-                if len(result) - len(held_tickers) >= CANDIDATE_SLOTS:
+                if len(result) >= CANDIDATE_SLOTS:
                     break
                 ticker = c["ticker"]
                 seen.add(ticker)
@@ -1636,7 +1632,7 @@ def run_tradeai_identify():
         for r in result:
             b = r.get("bucket", "Dream")
             buckets[b] = buckets.get(b, 0) + 1
-        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(held_tickers)} holdings + {len(result)-len(held_tickers)} candidates | {buckets}", "operation": None, "current": len(result), "total": len(result), "current_ticker": ""}
+        fetch_status = {"running": False, "message": f"TradeAI identify done: {len(result)} candidates | {buckets}", "operation": None, "current": len(result), "total": len(result), "current_ticker": ""}
         log.info(f"=== TradeAI Identify Complete: {len(result)} tickers | buckets:{buckets} ===")
     except Exception as e:
         log.error(f"TradeAI identify FAIL: {e}")
@@ -2057,13 +2053,16 @@ def run_tradeai_recommend():
 
         # ── Step 1: qualify ALL scored candidates ─────────────────────────────
         qualified = []
+        skip_reasons = []
         for s in scored:
             ticker = s["ticker"]
             if ticker in holdings:
                 log.info(f"TradeAI QUALIFY skip (already held): {ticker}")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "Already held in portfolio"})
                 continue
             if s.get("buySignal") == "Avoid":
                 log.info(f"TradeAI QUALIFY skip (AI says Avoid): {ticker}")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "AI buy signal is Avoid"})
                 continue
             if s.get("bucket") == "Reversal":
                 ticker_rsi_hist = rsi_history.get(ticker, [])
@@ -2072,20 +2071,25 @@ def run_tradeai_recommend():
                     rsi_prev  = ticker_rsi_hist[-2]["rsi"]
                     if rsi_today <= rsi_prev:
                         log.info(f"TradeAI QUALIFY skip Reversal (RSI not rising): {ticker} | rsi:{rsi_prev}\u2192{rsi_today}")
+                        skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Reversal RSI not yet rising ({rsi_prev}\u2192{rsi_today})"})
                         continue
                     log.info(f"TradeAI QUALIFY confirm Reversal (RSI rising): {ticker} | rsi:{rsi_prev}\u2192{rsi_today}")
                 else:
                     log.info(f"TradeAI QUALIFY skip Reversal (insufficient RSI history): {ticker} | history:{len(ticker_rsi_hist)}")
+                    skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "Insufficient RSI history for Reversal confirmation"})
                     continue
             price = s.get("price")
             if not price or price <= 0:
                 log.warning(f"TradeAI QUALIFY skip (no price): {ticker}")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "No valid price data"})
                 continue
             if s.get("composite", 0) < min_composite:
                 log.info(f"TradeAI QUALIFY skip (composite {s.get('composite')} < min {min_composite}): {ticker}")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Composite score {s.get('composite')} below minimum {min_composite}"})
                 continue
             if budget_per_slot < price:
                 log.warning(f"TradeAI QUALIFY skip (price ${price} > per-slot budget ${budget_per_slot}): {ticker}")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Price ${price} exceeds per-slot budget ${budget_per_slot}"})
                 continue
             qualified.append(s)
             log.info(f"TradeAI QUALIFIED: {ticker} | bucket:{s.get('bucket')} composite:{s.get('composite')} signal:{s.get('buySignal')}")
@@ -2127,7 +2131,7 @@ def run_tradeai_recommend():
         trades["lastRecommendAt"] = ts()
         save_trades_ai(trades)
 
-        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored, "skipReasons": skip_reasons}
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
 
         # ── Sync watchlist from TradeAI holdings ──────────────────────────────

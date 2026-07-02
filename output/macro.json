@@ -34,34 +34,34 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.4,
-      "prev": 4.41,
-      "change": -0.01,
-      "date": "2026-06-25",
+      "value": 4.38,
+      "prev": 4.38,
+      "change": 0.0,
+      "date": "2026-06-29",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.09,
-      "prev": 4.11,
-      "change": -0.02,
-      "date": "2026-06-25",
+      "value": 4.1,
+      "prev": 4.07,
+      "change": 0.03,
+      "date": "2026-06-29",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 18.89,
-      "prev": 18.63,
-      "change": 0.26,
-      "date": "2026-06-25",
+      "value": 17.65,
+      "prev": 18.41,
+      "change": -0.76,
+      "date": "2026-06-29",
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 120.4,
-      "prev": 119.39,
-      "change": 1.01,
-      "date": "2026-06-18",
+      "value": 120.89,
+      "prev": 121.06,
+      "change": -0.17,
+      "date": "2026-06-26",
       "unit": ""
     },
     "oil_wti": {
@@ -74,32 +74,74 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7354.02,
-      "prev": 7357.49,
-      "change": -3.47,
-      "date": "2026-06-26",
+      "value": 7440.43,
+      "prev": 7354.02,
+      "change": 86.41,
+      "date": "2026-06-29",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.31,
+      "value": 0.28,
       "unit": "%",
-      "date": "2026-06-25",
+      "date": "2026-06-29",
       "change": null
     }
   },
   "headlines": [
     {
+      "title": "Exchange-Traded Funds Mixed, Equity Futures Lower Pre-Bell Ahead of Key Economic Reports",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-mixed-equity-130043691.html",
+      "publishedAt": "2026-06-30T13:00:43Z"
+    },
+    {
+      "title": "S&P 500, Nasdaq, Dow Futures Retreat Ahead Of High-Stakes US-Iran Talks: SLS, QS, NKE, JACK In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-dow-futures-retreat-ahead-of-high-stakes-us-iran-talks-sls-qs-nke-jack-in-focus/cZ1fCDmR7Ls",
+      "publishedAt": "2026-06-30T01:50:13Z"
+    },
+    {
+      "title": "S&P 500, Nasdaq End Higher To Record Best Quarter Since 2020, While Alphabet Debut Drives Dow \u2014 VZ, CMCSA, RKLB, SMCI, BATL, GOOGL In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-higher-to-record-best-quarter-since-2020-alphabet-debut-dow/cZ19VC2R7LN",
+      "publishedAt": "2026-06-29T21:57:41Z"
+    },
+    {
+      "title": "The Tool Giving Independent Advisors an Edge Over Big Banks",
+      "source": "etf.com",
+      "url": "http://www.etf.com/sections/conferences/tool-giving-independent-advisors-edge-over-big-banks?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-06-29T21:22:19Z"
+    },
+    {
+      "title": "Wall Street Has Entirely Abandoned This Absolute $11 Billion Dividend King\u2014Here Is the 1 Aggressive Bargain I Am Accumulating on Repeat",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/06/29/wall-street-has-entirely-abandoned-this-absolute-11-billion-dividend-king-here-is-the-1-aggressive-bargain-i-am-accumulating-on-repeat/",
+      "publishedAt": "2026-06-29T20:16:34Z"
+    },
+    {
+      "title": "3 Emerging Long-Term Headwinds for the S&P 500",
+      "source": "Motley Fool",
+      "url": "https://www.fool.com/investing/2026/06/29/3-emerging-long-term-headwinds-for-the-sp-500/",
+      "publishedAt": "2026-06-29T14:50:00Z"
+    },
+    {
+      "title": "Looking Forward to Holiday-Shortened \"Jobs Week\"",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/economy/articles/looking-forward-holiday-shortened-jobs-142300132.html",
+      "publishedAt": "2026-06-29T14:23:00Z"
+    },
+    {
+      "title": "Nasdaq-100 ETFs Keep Sizzling: Can the Rally Last?",
+      "source": "Zacks",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-100-etfs-keep-sizzling-134200838.html",
+      "publishedAt": "2026-06-29T13:42:00Z"
+    },
+    {
       "title": "Exchange-Traded Funds, Equity Futures Higher Pre-Bell Monday Amid Hopes for Renewed US-Iran Diplomacy",
       "source": "MT Newswires",
       "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-125624922.html",
       "publishedAt": "2026-06-29T12:56:24Z"
-    },
-    {
-      "title": "Stock Market Today: Dow Rises On U.S.-Iran News; SpaceX Rallies On Addition To Nasdaq-100 Index (Live Coverage)",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-spacex-spcx-stock-nasdaq-100/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-06-29T12:06:34Z"
     },
     {
       "title": "\u201cYou\u2019re Gonna Get That $200,000 Back in Tax-Free Growth So Freaking Fast\u201d: Ramsey Host Explains Why Paying Taxes Now Can Leave More for Your Kids",
@@ -108,59 +150,17 @@
       "publishedAt": "2026-06-29T02:40:36Z"
     },
     {
-      "title": "S&P 500, Dow, Nasdaq Futures Climb As US, Iran Reportedly Agree To Pause Further Escalation: SLS, WEN, MSTR, WDC Stocks In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/sp500-dow-nasdaq-futures-climb-as-us-iran-reportedly-agree-to-pause-further-escalation/cZ1BsV6R7WD",
-      "publishedAt": "2026-06-29T01:45:45Z"
+      "title": "Binance Expands bStocks Offering and Adds Microsoft, Meta and More",
+      "source": "BeInCrypto",
+      "url": "https://beincrypto.com/binance-bstocks-microsoft-meta-palantir-tokenized-stocks/",
+      "publishedAt": "2026-06-30T20:40:08Z"
     },
     {
-      "title": "VOO vs. SPY: Which Popular S&P 500 ETF Is the Better Buy?",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/coverage/etfs/2026/06/28/voo-vs-spy-which-popular-s-and-p-500-etf-is-the-better-buy/",
-      "publishedAt": "2026-06-28T17:23:01Z"
-    },
-    {
-      "title": "5 AI Hardware Stocks Create a New \u2018MANIA\u2019 Trade That Replaces the Magnificent 7. Hedge Your Bets on the Hot Tickers with These 2 Leveraged ETFs.",
-      "source": "Barchart",
-      "url": "https://www.barchart.com/story/news/3023086/5-ai-hardware-stocks-create-a-new-mania-trade-that-replaces-the-magnificent-7-hedge-your-bets-on-the-hot-tickers-with-these-2-leveraged-etfs",
-      "publishedAt": "2026-06-28T13:00:02Z"
-    },
-    {
-      "title": "Forget the AI Chipmakers. For 0.47% This Fund Owns the Companies Building the Data Centers",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/27/forget-the-ai-chipmakers-for-0-47-this-fund-owns-the-companies-building-the-data-centers/",
-      "publishedAt": "2026-06-27T13:23:45Z"
-    },
-    {
-      "title": "Scott Bessent Defends Tariff Reboot, Unveils \u20183 Through 3\u2019 Plan To Beat \u2018Structural Inflation\u2019",
-      "source": "Benzinga",
-      "url": "https://finance.yahoo.com/economy/policy/articles/scott-bessent-defends-tariff-reboot-033101799.html",
-      "publishedAt": "2026-06-27T03:31:01Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq End Week Lower As Investors Rotate Out Of Tech, AI Plays \u2014 ON, AAPL, SLS, INFQ, NKE in Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-week-lower-as-investors-rotate-out-of-tech-ai-plays-on-aapl-sls-infq-nke-in-focus/cZ12ck9R7W9",
-      "publishedAt": "2026-06-26T22:34:47Z"
-    },
-    {
-      "title": "VOO Became the First ETF to Hit $1 Trillion, but Nearly 40% of It Is Now Tech",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/06/26/voo-became-the-first-etf-to-hit-1-trillion-but-nearly-40-of-it-is-now-tech/",
-      "publishedAt": "2026-06-26T19:00:23Z"
-    },
-    {
-      "title": "SpaceX Is Joining Another Big Index: It's Headed to the Nasdaq 100",
-      "source": "Investopedia",
-      "url": "https://www.investopedia.com/spcx-12008041",
-      "publishedAt": "2026-06-29T09:54:16Z"
-    },
-    {
-      "title": "GOOGL Stock Falls Out Of Favor In June \u2013 Analysts See More Upside In These Big Tech",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/googl-stock-falls-out-of-favor-in-june-analysts-see-more-upside-in-these-big-tech/cZ19Pj3R7hi",
-      "publishedAt": "2026-06-29T09:10:01Z"
+      "title": "Exchange-Traded Funds Point Higher as US Equities Advance After Midday",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-point-higher-170817834.html",
+      "publishedAt": "2026-06-30T17:08:17Z"
     }
   ],
-  "fetchedAt": "2026-06-29 09:14 EDT"
+  "fetchedAt": "2026-06-30 17:16 EDT"
 }

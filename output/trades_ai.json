@@ -1,30 +1,39 @@
 {
-  "balance": 1250.76,
+  "balance": 1.76,
   "holdings": {
     "ONDS": {
       "shares": 105,
       "purchasePrice": 7.9277,
-      "purchasedAt": "2026-06-24 12:09 EDT"
-    },
-    "BMNR": {
-      "shares": 23,
-      "purchasePrice": 14.02,
-      "purchasedAt": "2026-06-24 22:06 EDT"
+      "purchasedAt": "2026-06-24 12:09 EDT",
+      "peakPrice": 8.585
     },
     "AGI.TO": {
       "shares": 25,
       "purchasePrice": 42.78,
-      "purchasedAt": "2026-06-24 23:09 EDT"
+      "purchasedAt": "2026-06-24 23:09 EDT",
+      "peakPrice": 44.35
     },
     "WAT": {
       "shares": 2,
       "purchasePrice": 369.18,
-      "purchasedAt": "2026-06-24 23:09 EDT"
+      "purchasedAt": "2026-06-24 23:09 EDT",
+      "peakPrice": 374.41
     },
     "CRWV": {
       "shares": 10,
       "purchasePrice": 100.88,
       "purchasedAt": "2026-06-24 23:09 EDT"
+    },
+    "DASH": {
+      "shares": 6,
+      "purchasePrice": 183.09,
+      "purchasedAt": "2026-06-29 23:09 EDT",
+      "peakPrice": 186.33
+    },
+    "IBRX": {
+      "shares": 52,
+      "purchasePrice": 8.765,
+      "purchasedAt": "2026-06-30 10:19 EDT"
     }
   },
   "transactions": [
@@ -712,7 +721,42 @@
       "date": "2026-06-24 23:09 EDT",
       "balance": 1250.76,
       "reason": "CoreWeave exhibits explosive revenue"
+    },
+    {
+      "ticker": "DASH",
+      "action": "BUY",
+      "shares": 6,
+      "price": 183.09,
+      "amount": 1098.54,
+      "date": "2026-06-29 23:09 EDT",
+      "balance": 152.22,
+      "reason": "DoorDash exhibits an accelerating trajectory driven by robust 33.1% revenue growth, strong free cash flow generation, and significant implied future earnings improvement (P/E vs. Fwd P/E). Key catalysts include continued international expansion through Wolt and Deliveroo, alongside platform diversification. Despite a high current P/E, the company's strong momentum, institutional backing, and clear path to enhanced profitability make it an attractive growth investment."
+    },
+    {
+      "ticker": "BMNR",
+      "action": "SELL",
+      "shares": 23,
+      "price": 13.275,
+      "amount": 305.32,
+      "date": "2026-06-30 10:19 EDT",
+      "balance": 457.54,
+      "reason": "AI signal: Avoid \u2014 BMNR exhibits impressive 627.8% revenue growth and healthy gross margins, indicating strong business acceleration from a low base in the blockchain technology sector. However, this rapid expansion is accompanied by massive negative Free Cash Flow, suggesting significant cash burn requiring continuous funding, likely through dilutive equity raises. The extreme hyperinflationary macro environment (333% CPI) presents severe operational and funding challenges, making future profitability and sustainable growth highly uncertain. Despite the high top-line growth, the substantial cash burn, combined with a hostile macro backdrop and significant stock price decline, makes BMNR a high-risk, speculative investment. Therefore, it is not recommended for new investment at this time.",
+      "composite": 26.6,
+      "buySignal": "Avoid",
+      "pctFromPurchase": -5.31,
+      "pctFromPeak": -5.31,
+      "stopLoss": false
+    },
+    {
+      "ticker": "IBRX",
+      "action": "BUY",
+      "shares": 52,
+      "price": 8.765,
+      "amount": 455.78,
+      "date": "2026-06-30 10:19 EDT",
+      "balance": 1.76,
+      "reason": "ImmunityBio exhibits an accelerating trajectory, evidenced by its impressive 167.6% revenue growth and near-perfect 99.3% gross margin, signaling strong product potential and early market traction. The company's focus on next-generation immunotherapies positions it in a high-growth, high-impact sector with significant future milestone potential. However, as an early-stage biotech, it carries inherent risks including negative free cash flow, a high forward valuation, and the binary nature of clinical trial outcomes. Despite these risks, its rapid improvement from a low base and substantial analyst upside suggest it's a compelling growth opportunity for investors with a high-risk tolerance looking for disruptive potential."
     }
   ],
-  "lastRecommendAt": "2026-06-24 23:30 EDT"
+  "lastRecommendAt": "2026-06-30 10:19 EDT"
 }

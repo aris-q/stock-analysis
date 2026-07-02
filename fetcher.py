@@ -7,12 +7,13 @@ from datetime import datetime, timezone, timedelta
 
 log = logging.getLogger(__name__)
 
+# Daily Gainer including Canada and US stocks. Returns a dict with keys "us" and "cdn", each containing a list of top gainers.
 def fetch_daily_gainers():
     us_gainers = fetch_us_gainers()
     cdn_gainers = fetch_cdn_gainers()
     return {"us": us_gainers, "cdn": cdn_gainers}
 
-
+# US gainers via yfinance screener. Returns a list of top gainers without .TO suffix.
 def fetch_us_gainers():
     try:
         screener = yf.screen("day_gainers")
@@ -32,7 +33,7 @@ def fetch_us_gainers():
         log.error(f"US gainers FAIL: {e}")
         return []
 
-
+# Canadian gainers via TMX Money GraphQL API. Returns a list of top gainers with .TO suffix. This is a workaround since yfinance does not provide a Canadian screener. Add TO to indicate Toronto Stock Exchange.
 def fetch_cdn_gainers():
     try:
         r = requests.post(
