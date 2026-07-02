@@ -1046,11 +1046,11 @@ SCORING_DEFAULTS = {
         "Unknown": 10
     },
     "bucketWeights": {
-        "Momentum":   {"dream": 0.15, "ai": 0.35, "signal": 0.30},
-        "Reversal":   {"dream": 0.15, "ai": 0.45, "signal": 0.20},
-        "SmartMoney": {"dream": 0.30, "ai": 0.40, "signal": 0.15},
-        "Account":    {"dream": 0.20, "ai": 0.40, "signal": 0.25},
-        "Dream":      {"dream": 0.25, "ai": 0.40, "signal": 0.25}
+        "Momentum":   {"dream": 0.15, "ai": 0.65},
+        "Reversal":   {"dream": 0.15, "ai": 0.65},
+        "SmartMoney": {"dream": 0.30, "ai": 0.55},
+        "Account":    {"dream": 0.20, "ai": 0.65},
+        "Dream":      {"dream": 0.25, "ai": 0.65}
     },
     "trajectoryBonus": {
         "Momentum":   {"Accelerating": 20, "Stable": 8,  "Decelerating": 0},
@@ -1773,7 +1773,6 @@ def run_tradeai_recommend():
 
         # ── Load scoring config (user-tweakable weights) ─────────────────────
         cfg = load_scoring_config()
-        BUY_SIGNAL_MAP  = cfg["buySignalMap"]
         BKT_WEIGHTS     = cfg["bucketWeights"]
         TRAJ_BONUS      = cfg["trajectoryBonus"]
         STAGE_BONUS_CFG = cfg["stageBonus"]
@@ -1818,7 +1817,6 @@ def run_tradeai_recommend():
             price = detail.get("price") or d_data.get("price")
 
             ai_score    = ai.get("aiScore") or 0
-            signal_score = BUY_SIGNAL_MAP.get(ai.get("buySignal", "Unknown"), 20)
             trajectory  = ai.get("trajectory", "")
             stage       = ai.get("stage", "")
             bkt_key     = bucket if bucket in BKT_WEIGHTS else "Dream"
@@ -1875,7 +1873,7 @@ def run_tradeai_recommend():
                               else RB["rsiMed"] if rsi < RB["rsiMed_threshold"]
                               else RB["rsiMild"] if rsi < RB["rsiMild_threshold"] else 0)
                 bb_bonus   = RB["bbLowerBand"] if (bb_percent is not None and bb_percent < RB["bbLowerBand_threshold"]) else 0
-                base       = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])) * 0.70
+                base       = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
                 composite  = base + rsi_bonus + bb_bonus + analyst_bonus + news_bonus
 
             elif bucket == "Account":
@@ -1893,11 +1891,11 @@ def run_tradeai_recommend():
                         purchase_penalty = AB.get("purchasePenaltyMild", -6)
                     if purchase_penalty < 0:
                         log.info(f"[PurchasePenalty] {ticker} down {pct_down:.1f}% from purchase -> penalty:{purchase_penalty} pts")
-                base      = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])) * 0.70
+                base      = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
                 composite = base + hold_bonus + trajectory_bonus + volume_bonus + news_bonus + purchase_penalty
 
             else:
-                base      = ((dream_score * w["dream"]) + (ai_score * w["ai"]) + (signal_score * w["signal"])) * 0.70
+                base      = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
                 composite = base + trajectory_bonus + stage_bonus + volume_bonus + analyst_bonus + news_bonus
 
             # ── Breakout score + sector penalty (all buckets) ─────────────────
@@ -1930,7 +1928,7 @@ def run_tradeai_recommend():
 
             log.info(
                 f"[Score] {ticker} bucket:{bucket} dream:{dream_score} ai:{ai_score} "
-                f"signal:{signal_score} traj:{trajectory_bonus} stage:{stage_bonus} "
+                f"traj:{trajectory_bonus} stage:{stage_bonus} "
                 f"vol:{volume_bonus} analyst:{analyst_bonus} news:{news_bonus} "
                 f"breakout:{breakout_score} sector_pen:{sector_penalty} "
                 f"fc_dir:{signal_fc_direction} fc_return:{signal_fc_return}% fc_boost:{signal_boost} "

@@ -1,39 +1,35 @@
 {
-  "balance": 1.76,
+  "balance": 470.01,
   "holdings": {
-    "ONDS": {
-      "shares": 105,
-      "purchasePrice": 7.9277,
-      "purchasedAt": "2026-06-24 12:09 EDT",
-      "peakPrice": 8.585
+    "ORCL": {
+      "shares": 5,
+      "purchasePrice": 146.53,
+      "purchasedAt": "2026-07-02 09:38 EDT"
     },
-    "AGI.TO": {
-      "shares": 25,
-      "purchasePrice": 42.78,
-      "purchasedAt": "2026-06-24 23:09 EDT",
-      "peakPrice": 44.35
+    "NVDA": {
+      "shares": 4,
+      "purchasePrice": 198.425,
+      "purchasedAt": "2026-07-02 09:38 EDT"
     },
-    "WAT": {
-      "shares": 2,
-      "purchasePrice": 369.18,
-      "purchasedAt": "2026-06-24 23:09 EDT",
-      "peakPrice": 374.41
-    },
-    "CRWV": {
-      "shares": 10,
-      "purchasePrice": 100.88,
-      "purchasedAt": "2026-06-24 23:09 EDT"
-    },
-    "DASH": {
+    "ACN": {
       "shares": 6,
-      "purchasePrice": 183.09,
-      "purchasedAt": "2026-06-29 23:09 EDT",
-      "peakPrice": 186.33
+      "purchasePrice": 135.37,
+      "purchasedAt": "2026-07-02 09:38 EDT"
     },
-    "IBRX": {
-      "shares": 52,
-      "purchasePrice": 8.765,
-      "purchasedAt": "2026-06-30 10:19 EDT"
+    "IRWD": {
+      "shares": 207,
+      "purchasePrice": 4.185,
+      "purchasedAt": "2026-07-02 09:38 EDT"
+    },
+    "SU.TO": {
+      "shares": 11,
+      "purchasePrice": 76.485,
+      "purchasedAt": "2026-07-02 09:38 EDT"
+    },
+    "WELL": {
+      "shares": 3,
+      "purchasePrice": 229.645,
+      "purchasedAt": "2026-07-02 09:38 EDT"
     }
   },
   "transactions": [
@@ -756,7 +752,157 @@
       "date": "2026-06-30 10:19 EDT",
       "balance": 1.76,
       "reason": "ImmunityBio exhibits an accelerating trajectory, evidenced by its impressive 167.6% revenue growth and near-perfect 99.3% gross margin, signaling strong product potential and early market traction. The company's focus on next-generation immunotherapies positions it in a high-growth, high-impact sector with significant future milestone potential. However, as an early-stage biotech, it carries inherent risks including negative free cash flow, a high forward valuation, and the binary nature of clinical trial outcomes. Despite these risks, its rapid improvement from a low base and substantial analyst upside suggest it's a compelling growth opportunity for investors with a high-risk tolerance looking for disruptive potential."
+    },
+    {
+      "ticker": "ONDS",
+      "action": "SELL",
+      "shares": 105,
+      "price": 7.9277,
+      "amount": 832.41,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 834.17,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": -7.66,
+      "stopLoss": false
+    },
+    {
+      "ticker": "AGI.TO",
+      "action": "SELL",
+      "shares": 25,
+      "price": 42.78,
+      "amount": 1069.5,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 1903.67,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": -3.54,
+      "stopLoss": false
+    },
+    {
+      "ticker": "WAT",
+      "action": "SELL",
+      "shares": 2,
+      "price": 369.18,
+      "amount": 738.36,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 2642.03,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": -1.4,
+      "stopLoss": false
+    },
+    {
+      "ticker": "CRWV",
+      "action": "SELL",
+      "shares": 10,
+      "price": 100.88,
+      "amount": 1008.8,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 3650.83,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "DASH",
+      "action": "SELL",
+      "shares": 6,
+      "price": 183.09,
+      "amount": 1098.54,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 4749.37,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": -1.74,
+      "stopLoss": false
+    },
+    {
+      "ticker": "IBRX",
+      "action": "SELL",
+      "shares": 52,
+      "price": 8.765,
+      "amount": 455.78,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 5205.15,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "ORCL",
+      "action": "BUY",
+      "shares": 5,
+      "price": 146.53,
+      "amount": 732.65,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 4472.5,
+      "reason": "Oracle demonstrates an accelerating business trajectory with robust 20.6% revenue growth, driven by its strategic cloud transition, despite recent stock price deceleration. The stock is currently at an extremely low base (RSI 12, 41.2% of 52w high), presenting a compelling contrarian opportunity for a company improving rapidly. While the substantial negative Free Cash Flow (-$24.5B) is a significant risk requiring further clarity (likely strategic cloud CapEx), the attractive forward P/E of 13.1 and strong analyst buy recommendation with 77.5% upside suggest a high potential for rebound. This aligns with seeking companies improving from a low base."
+    },
+    {
+      "ticker": "NVDA",
+      "action": "BUY",
+      "shares": 4,
+      "price": 198.425,
+      "amount": 793.7,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 3678.8,
+      "reason": "NVIDIA exhibits an accelerating trajectory, driven by its indispensable role in the rapidly expanding AI infrastructure market, evidenced by 85.2% revenue growth and exceptional gross margins. Despite its current high valuation, the forward P/E of 15.5 signals substantial earnings acceleration, indicating the company is improving rapidly relative to its future potential. Its market leadership and strong institutional backing position it for continued outperformance, making the recent pullback an attractive entry point."
+    },
+    {
+      "ticker": "ACN",
+      "action": "BUY",
+      "shares": 6,
+      "price": 135.37,
+      "amount": 812.22,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 2866.58,
+      "reason": "Accenture, a mature leader in IT services, is currently trading at a significant discount, nearly 60% below its 52-week high, despite exhibiting stable revenue growth (5.6%) and excellent profitability (24.4% ROE, strong FCF). Its P/E of 10.5 and Forward P/E of 8.9 suggest deep undervaluation, especially for a tech sector company. The stock's trajectory is poised for an acceleration from this low price base, as indicated by the extremely oversold RSI and recent positive price movements after a sharp"
+    },
+    {
+      "ticker": "IRWD",
+      "action": "BUY",
+      "shares": 207,
+      "price": 4.185,
+      "amount": 866.29,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 2000.29,
+      "reason": "Ironwood exhibits an accelerating trajectory, driven by exceptional 158.9% revenue growth and robust 75.2% gross margins, alongside positive free cash flow. Its extremely low P/E (6.6) and forward P/E (2.9) suggest significant undervaluation, especially for a company with such growth and 99% institutional ownership. Continued sales expansion of linaclotide and pipeline advancements in GI/rare diseases are key catalysts for a market re-rating, making it a compelling buy despite the recent price run-up."
+    },
+    {
+      "ticker": "SU.TO",
+      "action": "BUY",
+      "shares": 11,
+      "price": 76.485,
+      "amount": 841.34,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 1158.95,
+      "reason": "While Suncor is a mature energy company, its underlying business trajectory is accelerating, evidenced by robust 17.5% revenue growth and a significantly lower forward P/E of 9.8, indicating expected earnings improvement. The stock is currently trading from a deeply oversold \"low base\" (RSI 14.4, down 17.68% in 30 days), presenting a compelling rebound opportunity. Strong analyst conviction with a 31.5% upside target and high institutional ownership further bolster the case. This combination of strong fundamentals and an extremely oversold technical setup makes SU.TO attractive."
+    },
+    {
+      "ticker": "WELL",
+      "action": "BUY",
+      "shares": 3,
+      "price": 229.645,
+      "amount": 688.94,
+      "date": "2026-07-02 09:38 EDT",
+      "balance": 470.01,
+      "reason": "WELL demonstrates an accelerating operational trajectory, evidenced by robust 38.3% revenue growth, exceptional for a mature S&P 500 REIT. This strong performance is driven by its strategic positioning within the expanding \"silver economy\" and the long-term demographic tailwind of an aging population. While current valuation (P/E 111.2) and an overbought RSI (74.5) suggest potential for short-term consolidation, its strong growth and market leadership make it an attractive long-term investment."
     }
   ],
-  "lastRecommendAt": "2026-06-30 10:19 EDT"
+  "lastRecommendAt": "2026-07-02 09:38 EDT"
 }

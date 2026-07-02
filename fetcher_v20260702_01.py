@@ -1447,9 +1447,14 @@ TRAJECTORY: [Accelerating / Stable / Decelerating]
 SENTIMENT: [Bullish / Neutral / Bearish]
 NEWS_SENTIMENT: [Bullish / Neutral / Bearish — based only on the recent news above, not overall outlook]
 SCORE: [0-100 integer, your conviction score]
+CONFIDENCE: [High / Medium / Low — how much reliable data supports this score]
 BUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]
 REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]
 FORECAST_REASON: [1 sentence explaining the most likely price direction tomorrow based on RSI, BB%, momentum, and macro]
+
+Rules:
+- SCORE and BUY_SIGNAL must be consistent: Strong Buy>=80, Buy 60-79, Hold 40-59, Avoid<40. If your instinct disagrees, adjust SCORE, not BUY_SIGNAL.
+- If data is thin or contradictory, say so in CONFIDENCE and REASONING rather than guessing.
 """
 
     try:
@@ -1473,12 +1478,28 @@ FORECAST_REASON: [1 sentence explaining the most likely price direction tomorrow
                     result["aiScore"] = int(line.split(":", 1)[1].strip())
                 except Exception:
                     result["aiScore"] = None
+            elif line.startswith("CONFIDENCE:"):
+                result["confidence"] = line.split(":", 1)[1].strip()
             elif line.startswith("BUY_SIGNAL:"):
                 result["buySignal"] = line.split(":", 1)[1].strip()
             elif line.startswith("REASONING:"):
                 result["reasoning"] = line.split(":", 1)[1].strip()
             elif line.startswith("FORECAST_REASON:"):
                 result["forecastReason"] = line.split(":", 1)[1].strip()
+
+        # ── Validation: SCORE/BUY_SIGNAL band consistency ─────────────────
+        score = result.get("aiScore")
+        signal = result.get("buySignal")
+        band_map = {"Strong Buy": (80, 100), "Buy": (60, 79), "Hold": (40, 59), "Avoid": (0, 39)}
+        result["scoreSignalMismatch"] = False
+        if score is not None and signal in band_map:
+            lo, hi = band_map[signal]
+            if not (lo <= score <= hi):
+                result["scoreSignalMismatch"] = True
+                log.warning(f"[AI Analyze] {ticker} | SCORE/BUY_SIGNAL mismatch: score={score} signal={signal}")
+
+        if score is None or signal not in band_map:
+            log.warning(f"[AI Analyze] {ticker} | invalid/missing output: score={score} signal={signal}")
 
         return result
 
