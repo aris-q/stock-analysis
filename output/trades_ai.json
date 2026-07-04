@@ -1,35 +1,35 @@
 {
-  "balance": 470.01,
+  "balance": 185.42,
   "holdings": {
-    "ORCL": {
-      "shares": 5,
-      "purchasePrice": 146.53,
-      "purchasedAt": "2026-07-02 09:38 EDT"
-    },
-    "NVDA": {
+    "BKNG": {
       "shares": 4,
-      "purchasePrice": 198.425,
-      "purchasedAt": "2026-07-02 09:38 EDT"
+      "purchasePrice": 184.56,
+      "purchasedAt": "2026-07-03 09:46 EDT"
     },
-    "ACN": {
-      "shares": 6,
-      "purchasePrice": 135.37,
-      "purchasedAt": "2026-07-02 09:38 EDT"
+    "AUGO": {
+      "shares": 13,
+      "purchasePrice": 65.46,
+      "purchasedAt": "2026-07-03 09:46 EDT"
     },
-    "IRWD": {
-      "shares": 207,
-      "purchasePrice": 4.185,
-      "purchasedAt": "2026-07-02 09:38 EDT"
+    "RCI-B.TO": {
+      "shares": 19,
+      "purchasePrice": 44.85,
+      "purchasedAt": "2026-07-03 09:46 EDT"
     },
-    "SU.TO": {
-      "shares": 11,
-      "purchasePrice": 76.485,
-      "purchasedAt": "2026-07-02 09:38 EDT"
+    "CDE": {
+      "shares": 50,
+      "purchasePrice": 17.3,
+      "purchasedAt": "2026-07-03 09:46 EDT"
     },
-    "WELL": {
-      "shares": 3,
-      "purchasePrice": 229.645,
-      "purchasedAt": "2026-07-02 09:38 EDT"
+    "CMG": {
+      "shares": 24,
+      "purchasePrice": 35.39,
+      "purchasedAt": "2026-07-03 09:46 EDT"
+    },
+    "ARIS": {
+      "shares": 54,
+      "purchasePrice": 16.0,
+      "purchasedAt": "2026-07-03 09:46 EDT"
     }
   },
   "transactions": [
@@ -902,7 +902,157 @@
       "date": "2026-07-02 09:38 EDT",
       "balance": 470.01,
       "reason": "WELL demonstrates an accelerating operational trajectory, evidenced by robust 38.3% revenue growth, exceptional for a mature S&P 500 REIT. This strong performance is driven by its strategic positioning within the expanding \"silver economy\" and the long-term demographic tailwind of an aging population. While current valuation (P/E 111.2) and an overbought RSI (74.5) suggest potential for short-term consolidation, its strong growth and market leadership make it an attractive long-term investment."
+    },
+    {
+      "ticker": "ORCL",
+      "action": "SELL",
+      "shares": 5,
+      "price": 146.53,
+      "amount": 732.65,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 1202.66,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "NVDA",
+      "action": "SELL",
+      "shares": 4,
+      "price": 198.425,
+      "amount": 793.7,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 1996.36,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "ACN",
+      "action": "SELL",
+      "shares": 6,
+      "price": 135.37,
+      "amount": 812.22,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 2808.58,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "IRWD",
+      "action": "SELL",
+      "shares": 207,
+      "price": 4.185,
+      "amount": 866.29,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 3674.87,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "SU.TO",
+      "action": "SELL",
+      "shares": 11,
+      "price": 76.485,
+      "amount": 841.34,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 4516.21,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "WELL",
+      "action": "SELL",
+      "shares": 3,
+      "price": 229.645,
+      "amount": 688.94,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 5205.15,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "BKNG",
+      "action": "BUY",
+      "shares": 4,
+      "price": 184.56,
+      "amount": 738.24,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 4466.91,
+      "reason": "Booking Holdings demonstrates an accelerating trajectory, driven by robust 16.2% revenue growth and strong recent price momentum (17.89% in 30 days). The significant drop from current to forward P/E (24.3 to 15.0) signals strong expected earnings growth, indicating improving fundamentals. While elevated inflation (assuming a data typo for the extreme CPI value) poses a potential long-term risk to discretionary spending, BKNG's strong brand portfolio, high gross margin, and institutional confidence make it an attractive growth opportunity. The stock is currently trading below its 52-week high, offering further upside potential."
+    },
+    {
+      "ticker": "AUGO",
+      "action": "BUY",
+      "shares": 13,
+      "price": 65.46,
+      "amount": 850.98,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 3615.93,
+      "reason": "Aura Minerals demonstrates an accelerating trajectory, driven by exceptional 136.5% revenue growth and a dramatic forward P/E of 4.6, signaling massive expected earnings expansion. Strong profitability metrics like a 60% gross margin, 40.3% ROE, and robust FCF underpin its operational strength. While debt/equity is high, the compelling growth prospects, strong analyst conviction (61.2% upside, strong buy), and recent positive price momentum make AUGO a highly attractive growth investment."
+    },
+    {
+      "ticker": "RCI-B.TO",
+      "action": "BUY",
+      "shares": 19,
+      "price": 44.85,
+      "amount": 852.15,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 2763.78,
+      "reason": "Rogers Communications, a mature telecom, is currently experiencing a significant market downturn, with its stock price decelerating sharply and trading at an extremely oversold level (RSI 14.8). Despite this recent price action, the company exhibits robust revenue growth of 10.2% and a very low P/E of 3.4, suggesting a deep undervaluation relative to its operational performance. The high debt-to-equity ratio (184.2) is a notable risk, yet substantial free cash flow and strong analyst conviction for a 34.8% upside make it a compelling \"Buy\" for investors seeking a rebound from a low valuation base."
+    },
+    {
+      "ticker": "CDE",
+      "action": "BUY",
+      "shares": 50,
+      "price": 17.3,
+      "amount": 865.0,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 1898.78,
+      "reason": "CDE exhibits an accelerating trajectory, driven by exceptional 137.8% revenue growth and robust free cash flow generation. The attractive forward P/E of 8.5 and significant analyst upside (57.6%) suggest continued earnings expansion and market recognition. Its extremely low Debt/Equity of 7.4 provides financial flexibility for future growth. The company is improving rapidly from a lower base (62.3% of 52w high) with strong recent momentum, making it a compelling growth investment."
+    },
+    {
+      "ticker": "CMG",
+      "action": "BUY",
+      "shares": 24,
+      "price": 35.39,
+      "amount": 849.36,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 1049.42,
+      "reason": "CMG exhibits an accelerating trajectory, with strong recent price momentum and a significant recovery from its 52-week high. Key catalysts include robust free cash flow, exceptional ROE, and expected earnings growth reflected in a lower forward P/E. While the reported CPI figure is an extreme outlier and likely a data error, assuming a more normalized macro environment, the company's established brand and operational efficiency support continued growth. Risks include its high Debt/Equity and sensitivity to consumer spending, but current momentum suggests it's a strong buy for growth investors."
+    },
+    {
+      "ticker": "ARIS",
+      "action": "BUY",
+      "shares": 54,
+      "price": 16.0,
+      "amount": 864.0,
+      "date": "2026-07-03 09:46 EDT",
+      "balance": 185.42,
+      "reason": "Aris Mining demonstrates an accelerating trajectory with robust revenue growth of 136.5% and a significantly lower forward P/E of 4.3, indicating strong future earnings expansion. Excellent gross margins (58.8%) and substantial free cash flow ($200M) provide a solid financial foundation for continued operational growth. High institutional ownership (72%) and a 131% analyst upside target further validate its potential, making the recent price dip an attractive entry point."
     }
   ],
-  "lastRecommendAt": "2026-07-02 09:38 EDT"
+  "lastRecommendAt": "2026-07-03 09:46 EDT"
 }

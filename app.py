@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, jsonify, make_response
 import json, os, logging, threading
-from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH
 try:
     from config import FRED_API_KEY, NEWSAPI_KEY, MACRO_PATH
 except ImportError:
@@ -626,7 +626,7 @@ def get_data():
         log.error(f"Data load FAIL: {e}")
         return jsonify({"watchlist": [], "dailyGainers": []})
     
-from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_PATH, TRADE_CANDIDATES_PATH, FOLLOWUP_PATH
+from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, FOLLOWUP_PATH
 
 @app.route("/followup/<ticker>/<event_name>")
 def followup_plan(ticker, event_name):
@@ -1049,21 +1049,18 @@ SCORING_DEFAULTS = {
         "Momentum":   {"dream": 0.15, "ai": 0.65},
         "Reversal":   {"dream": 0.15, "ai": 0.65},
         "SmartMoney": {"dream": 0.30, "ai": 0.55},
-        "Account":    {"dream": 0.20, "ai": 0.65},
         "Dream":      {"dream": 0.25, "ai": 0.65}
     },
     "trajectoryBonus": {
         "Momentum":   {"Accelerating": 20, "Stable": 8,  "Decelerating": 0},
         "Reversal":   {"Accelerating": 0,  "Stable": 0,  "Decelerating": 0},
         "SmartMoney": {"Accelerating": 10, "Stable": 0,  "Decelerating": 0},
-        "Account":    {"Accelerating": 10, "Stable": 5,  "Decelerating": -5},
         "Dream":      {"Accelerating": 12, "Stable": 0,  "Decelerating": 0}
     },
     "stageBonus": {
         "Momentum":   {"Early-Stage": 0,  "Growth": 8,  "Mature": 5,  "Declining": 0},
         "Reversal":   {"Early-Stage": 0,  "Growth": 0,  "Mature": 0,  "Declining": 0},
         "SmartMoney": {"Early-Stage": 15, "Growth": 10, "Mature": 0,  "Declining": 0},
-        "Account":    {"Early-Stage": 0,  "Growth": 0,  "Mature": 0,  "Declining": 0},
         "Dream":      {"Early-Stage": 8,  "Growth": 4,  "Mature": 0,  "Declining": 0}
     },
     "sharedBonuses": {
@@ -1087,16 +1084,6 @@ SCORING_DEFAULTS = {
         "rsiMild_threshold":  40,
         "bbLowerBand": 10,
         "bbLowerBand_threshold": 0.10
-    },
-    "accountBonuses": {
-        "holdContinuity": 5,
-        "avoidPenalty":  -20,
-        "purchasePenaltyMild":   -6,    # down 5-10% from purchase
-        "purchasePenaltyMed":   -12,    # down 10-15% from purchase
-        "purchasePenaltyHard":  -20,    # down 15%+ from purchase
-        "purchasePenaltyMild_threshold":   5.0,
-        "purchasePenaltyMed_threshold":   10.0,
-        "purchasePenaltyHard_threshold":  15.0
     },
     "signalForecast": {
         "enabled": True,
@@ -1184,321 +1171,10 @@ def reset_scoring_config():
 
 
 
-# ── TRADE SIMULATION ──────────────────────────────────────────────────────────
-
-STARTING_BALANCE = 100_000.0
-
-def load_trades():
-    default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
-    return load_json(TRADES_PATH, default)
-
-def save_trades(data):
-    save_json(TRADES_PATH, data)
-
-def run_trade_identify():
-    global fetch_status
-    fetch_status = {"running": True, "message": "Trade: identifying candidates...", "operation": "trade_identify"}
-    log.info("=== Trade Identify Started ===")
-    try:
-        trades = load_trades()
-        held_tickers = list(trades.get("holdings", {}).keys())
-
-        dream = load_json(DREAM_PATH, {})
-        candidates = dream.get("candidates", [])
-
-        # Top dream scorers not already in holdings
-        dream_picks = [c["ticker"] for c in candidates if c["ticker"] not in held_tickers]
-
-        # Build final list: holdings first, then dream top picks, max 15 total
-        slots_remaining = 15 - len(held_tickers)
-        selected_dream = dream_picks[:max(0, slots_remaining)]
-        final_tickers = held_tickers + selected_dream
-
-        # Build reason map from dream data
-        dream_map = {c["ticker"]: c for c in candidates}
-
-        result = []
-        for ticker in final_tickers:
-            if ticker in dream_map:
-                c = dream_map[ticker]
-                reason = f"Dream score {c['score']}/100"
-                if c.get("flagsGood"):
-                    reason += " — " + "; ".join(c["flagsGood"][:2])
-                source = c.get("source", "Dream")
-            else:
-                reason = "Current holding — evaluate for sell"
-                source = "Account"
-            result.append({"ticker": ticker, "reason": reason, "source": source})
-
-        existing = load_json(TRADE_CANDIDATES_PATH, {})
-        existing["identified"] = result
-        existing["identifiedAt"] = ts()
-        save_json(TRADE_CANDIDATES_PATH, existing)
-
-        fetch_status = {"running": False, "message": f"Trade identify done: {len(result)} tickers", "operation": None}
-        log.info(f"=== Trade Identify Complete: {len(result)} tickers ===")
-    except Exception as e:
-        log.error(f"Trade identify FAIL: {e}")
-        fetch_status = {"running": False, "message": f"Trade identify FAIL: {e}", "operation": None}
-
-
-def run_trade_fetch():
-    global fetch_status
-    fetch_status = {"running": True, "message": "Trade: fetching detailed info...", "operation": "trade_fetch"}
-    log.info("=== Trade Fetch Started ===")
-    try:
-        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
-        identified = candidates_data.get("identified", [])
-        if not identified:
-            fetch_status = {"running": False, "message": "Trade fetch: no identified tickers. Run Identify first.", "operation": None}
-            return
-
-        details = {}
-        for item in identified:
-            ticker = item["ticker"]
-            log.info(f"--- Trade fetch detail: {ticker} ---")
-            try:
-                detail = fetch_trade_detail(ticker)
-                if detail:
-                    details[ticker] = detail
-                    log.info(f"Trade fetch OK: {ticker} | price:{detail.get('price')} rsi:{detail.get('rsi14')}")
-            except Exception as e:
-                log.error(f"Trade fetch FAIL: {ticker} | {e}")
-
-        candidates_data["details"] = details
-        candidates_data["detailsFetchedAt"] = ts()
-        save_json(TRADE_CANDIDATES_PATH, candidates_data)
-
-        fetch_status = {"running": False, "message": f"Trade fetch done: {len(details)} tickers enriched", "operation": None}
-        log.info(f"=== Trade Fetch Complete: {len(details)} tickers ===")
-    except Exception as e:
-        log.error(f"Trade fetch runner FAIL: {e}")
-        fetch_status = {"running": False, "message": f"Trade fetch FAIL: {e}", "operation": None}
-
-
-def run_trade_recommend():
-    global fetch_status
-    fetch_status = {"running": True, "message": "Trade: running recommendation engine...", "operation": "trade_recommend"}
-    log.info("=== Trade Recommend Started ===")
-    try:
-        trades = load_trades()
-        balance = trades.get("balance", STARTING_BALANCE)
-        holdings = trades.get("holdings", {})
-        transactions = trades.get("transactions", [])
-
-        candidates_data = load_json(TRADE_CANDIDATES_PATH, {})
-        identified = candidates_data.get("identified", [])
-        details = candidates_data.get("details", {})
-        dream = load_json(DREAM_PATH, {})
-        dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
-
-        # Score each candidate
-        scored = []
-        for item in identified:
-            ticker = item["ticker"]
-            detail = details.get(ticker, {})
-            d_data = dream_map.get(ticker, {})
-            dream_score = d_data.get("score", 0)
-
-            price = detail.get("price") or d_data.get("price")
-            rsi = detail.get("rsi14")
-            ma50 = detail.get("ma50")
-            fcf = detail.get("fcf")
-            revenue_growth = detail.get("revenueGrowth")
-            gross_margin = detail.get("grossMargin")
-
-            # Composite score: 50% dream score + 50% technical signals
-            tech_score = 0
-            if rsi is not None:
-                if 40 <= rsi <= 65: tech_score += 30
-                elif rsi < 40: tech_score += 20
-                elif rsi > 70: tech_score -= 10
-            if price and ma50 and price > ma50: tech_score += 20
-            if revenue_growth and revenue_growth > 0.15: tech_score += 20
-            if gross_margin and gross_margin > 40: tech_score += 15
-            if fcf and fcf > 0: tech_score += 15
-
-            composite = round((dream_score * 0.5) + (min(100, max(0, tech_score)) * 0.5), 1)
-            is_held = ticker in holdings
-
-            scored.append({
-                "ticker": ticker,
-                "price": price,
-                "dreamScore": dream_score,
-                "techScore": tech_score,
-                "composite": composite,
-                "isHeld": is_held,
-                "reason": item.get("reason", ""),
-            })
-
-        scored.sort(key=lambda x: x["composite"], reverse=True)
-
-        # Sell logic: holdings not in top 5 composite → sell
-        top5 = [s["ticker"] for s in scored[:5]]
-        sells = []
-        for ticker, pos in list(holdings.items()):
-            if ticker not in top5:
-                price = next((s["price"] for s in scored if s["ticker"] == ticker), pos.get("purchasePrice"))
-                if price:
-                    proceeds = round(price * pos["shares"], 2)
-                    balance += proceeds
-                    sells.append({
-                        "ticker": ticker,
-                        "action": "SELL",
-                        "shares": pos["shares"],
-                        "price": price,
-                        "amount": proceeds,
-                        "date": ts(),
-                        "balance": round(balance, 2),
-                        "reason": "Outside top 5 composite score",
-                    })
-                    transactions.append(sells[-1])
-                    del holdings[ticker]
-                    log.info(f"Trade SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} balance:{balance}")
-
-        # Buy logic: top 5, not already held, budget = balance / slots available
-        buys = []
-        held_count = len(holdings)
-        max_slots = SELL_CFG.get("maxPositions", 5)
-        for s in scored[:5]:
-            ticker = s["ticker"]
-            if ticker in holdings:
-                continue
-            if held_count >= max_slots:
-                break
-            price = s.get("price")
-            if not price or price <= 0:
-                log.warning(f"Trade BUY skip (no price): {ticker}")
-                continue
-            slots_left = max_slots - held_count
-            budget_per_slot = round(balance / max(1, slots_left), 2)
-            if budget_per_slot < price:
-                log.warning(f"Trade BUY skip (insufficient funds): {ticker} | budget:{budget_per_slot} price:{price}")
-                continue
-            shares = int(budget_per_slot // price)
-            if shares < 1:
-                continue
-            cost = round(shares * price, 2)
-            balance -= cost
-            holdings[ticker] = {
-                "shares": shares,
-                "purchasePrice": price,
-                "purchasedAt": ts(),
-            }
-            buys.append({
-                "ticker": ticker,
-                "action": "BUY",
-                "shares": shares,
-                "price": price,
-                "amount": cost,
-                "date": ts(),
-                "balance": round(balance, 2),
-                "reason": s.get("reason", ""),
-            })
-            transactions.append(buys[-1])
-            held_count += 1
-            log.info(f"Trade BUY: {ticker} | shares:{shares} price:{price} cost:{cost} balance:{balance}")
-
-        trades["balance"] = round(balance, 2)
-        trades["holdings"] = holdings
-        trades["transactions"] = transactions
-        trades["lastRecommendAt"] = ts()
-        save_trades(trades)
-
-        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored}
-        save_json(TRADE_CANDIDATES_PATH, candidates_data)
-
-        fetch_status = {"running": False, "message": f"Trade recommend done: {len(buys)} buys, {len(sells)} sells", "operation": None}
-        log.info(f"=== Trade Recommend Complete: {len(buys)} buys {len(sells)} sells | balance:{balance} ===")
-    except Exception as e:
-        log.error(f"Trade recommend FAIL: {e}")
-        fetch_status = {"running": False, "message": f"Trade recommend FAIL: {e}", "operation": None}
-
-
-@app.route("/trade")
-def get_trade():
-    trades = load_trades()
-    candidates = load_json(TRADE_CANDIDATES_PATH, {})
-    dream = load_json(DREAM_PATH, {})
-    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
-
-    # Enrich holdings with current price from candidates details
-    details = candidates.get("details", {})
-    holdings_out = []
-    for ticker, pos in trades.get("holdings", {}).items():
-        detail = details.get(ticker, {})
-        d_data = dream_map.get(ticker, {})
-        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
-        purchase_price = pos.get("purchasePrice", 0)
-        shares = pos.get("shares", 0)
-        gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
-        gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
-        holdings_out.append({
-            "ticker": ticker,
-            "shares": shares,
-            "purchasePrice": purchase_price,
-            "currentPrice": current_price,
-            "gainLoss": gain_loss,
-            "gainLossPct": gain_loss_pct,
-            "purchasedAt": pos.get("purchasedAt"),
-        })
-
-    return jsonify({
-        "balance": trades.get("balance", STARTING_BALANCE),
-        "holdings": holdings_out,
-        "transactions": trades.get("transactions", []),
-        "identified": candidates.get("identified", []),
-        "details": details,
-        "lastRecommend": candidates.get("lastRecommend"),
-        "identifiedAt": candidates.get("identifiedAt"),
-        "detailsFetchedAt": candidates.get("detailsFetchedAt"),
-    })
-
-
-@app.route("/trade/identify", methods=["POST"])
-def trade_identify():
-    if fetch_status.get("running"):
-        return jsonify({"error": "Another operation is running"}), 409
-    t = threading.Thread(target=run_trade_identify, daemon=True)
-    t.start()
-    log.info("Trade identify triggered")
-    return jsonify({"status": "started"})
-
-
-@app.route("/trade/fetch", methods=["POST"])
-def trade_fetch():
-    if fetch_status.get("running"):
-        return jsonify({"error": "Another operation is running"}), 409
-    t = threading.Thread(target=run_trade_fetch, daemon=True)
-    t.start()
-    log.info("Trade fetch triggered")
-    return jsonify({"status": "started"})
-
-
-@app.route("/trade/recommend", methods=["POST"])
-def trade_recommend():
-    if fetch_status.get("running"):
-        return jsonify({"error": "Another operation is running"}), 409
-    t = threading.Thread(target=run_trade_recommend, daemon=True)
-    t.start()
-    log.info("Trade recommend triggered")
-    return jsonify({"status": "started"})
-
-
-@app.route("/trade/reset", methods=["POST"])
-def trade_reset():
-    try:
-        save_json(TRADES_PATH, {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []})
-        save_json(TRADE_CANDIDATES_PATH, {})
-        log.info("Trade simulation reset to $100,000")
-        return jsonify({"status": "reset", "balance": STARTING_BALANCE})
-    except Exception as e:
-        log.error(f"Trade reset FAIL: {e}")
-        return jsonify({"error": str(e)})
-
-
 
 # ── TRADEAI SIMULATION ────────────────────────────────────────────────────────
+
+STARTING_BALANCE = 100_000.0
 
 def load_trades_ai():
     default = {"balance": STARTING_BALANCE, "holdings": {}, "transactions": []}
@@ -1618,7 +1294,6 @@ def run_tradeai_identify():
         existing = load_json(TRADE_AI_CANDIDATES_PATH, {})
         existing["identified"] = []
         existing["identifiedAt"] = ts()
-        existing["details"] = {}
         existing["aiAssessments"] = {}
         save_json(TRADE_AI_CANDIDATES_PATH, existing)
         log.info("[TradeAI Identify] Cleared previous candidates, adding incrementally...")
@@ -1651,10 +1326,14 @@ def run_tradeai_fetch():
         if not identified:
             fetch_status = {"running": False, "message": "TradeAI fetch: no identified tickers. Run Identify first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
             return
-        total = len(identified)
+        trades = load_trades_ai()
+        held_tickers = list(trades.get("holdings", {}).keys())
+        identified_tickers = {item["ticker"] for item in identified}
+        fetch_list = list(identified) + [{"ticker": t, "bucket": "Holding"} for t in held_tickers if t not in identified_tickers]
+        total = len(fetch_list)
         fetch_status["total"] = total
-        details = {}
-        for idx, item in enumerate(identified, 1):
+        details = candidates_data.get("details", {})
+        for idx, item in enumerate(fetch_list, 1):
             if stop_flag:
                 log.info(f"[TradeAI Fetch] Stopped by user at {idx}/{total}")
                 candidates_data["details"] = details
@@ -1741,6 +1420,9 @@ def run_tradeai_analyze():
             detail_with_ctx["_selectionReason"] = reason
             assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro)
             ai_assessments[ticker] = assessment
+            candidates_data["aiAssessments"] = ai_assessments
+            candidates_data["aiAnalyzedAt"] = ts()
+            save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
             log.info(f"TradeAI analyze OK: {ticker} | bucket:{bucket} | signal:{assessment.get('buySignal')} score:{assessment.get('aiScore')} trajectory:{assessment.get('trajectory')}")
 
         candidates_data["aiAssessments"] = ai_assessments
@@ -1778,7 +1460,6 @@ def run_tradeai_recommend():
         STAGE_BONUS_CFG = cfg["stageBonus"]
         SH              = cfg["sharedBonuses"]
         RB              = cfg["reversalBonuses"]
-        AB              = cfg["accountBonuses"]
         SF              = cfg["signalForecast"]
         SELL_CFG        = cfg["sellThresholds"]
         BKT_SC          = cfg.get("breakoutScore", {})
@@ -1875,24 +1556,6 @@ def run_tradeai_recommend():
                 bb_bonus   = RB["bbLowerBand"] if (bb_percent is not None and bb_percent < RB["bbLowerBand_threshold"]) else 0
                 base       = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
                 composite  = base + rsi_bonus + bb_bonus + analyst_bonus + news_bonus
-
-            elif bucket == "Account":
-                hold_bonus = AB["holdContinuity"] if ai.get("buySignal") != "Avoid" else AB["avoidPenalty"]
-                purchase_price_pos = holdings.get(ticker, {}).get("purchasePrice")
-                price_for_penalty  = detail.get("price") or d_data.get("price")
-                purchase_penalty = 0
-                if purchase_price_pos and price_for_penalty and purchase_price_pos > 0:
-                    pct_down = (price_for_penalty - purchase_price_pos) / purchase_price_pos * 100
-                    if pct_down <= -AB.get("purchasePenaltyHard_threshold", 15.0):
-                        purchase_penalty = AB.get("purchasePenaltyHard", -20)
-                    elif pct_down <= -AB.get("purchasePenaltyMed_threshold", 10.0):
-                        purchase_penalty = AB.get("purchasePenaltyMed", -12)
-                    elif pct_down <= -AB.get("purchasePenaltyMild_threshold", 5.0):
-                        purchase_penalty = AB.get("purchasePenaltyMild", -6)
-                    if purchase_penalty < 0:
-                        log.info(f"[PurchasePenalty] {ticker} down {pct_down:.1f}% from purchase -> penalty:{purchase_penalty} pts")
-                base      = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
-                composite = base + hold_bonus + trajectory_bonus + volume_bonus + news_bonus + purchase_penalty
 
             else:
                 base      = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70

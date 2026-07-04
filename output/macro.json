@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.44,
-      "prev": 4.38,
-      "change": 0.06,
-      "date": "2026-06-30",
+      "value": 4.48,
+      "prev": 4.44,
+      "change": 0.04,
+      "date": "2026-07-01",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.14,
-      "prev": 4.1,
-      "change": 0.04,
-      "date": "2026-06-30",
+      "value": 4.17,
+      "prev": 4.14,
+      "change": 0.03,
+      "date": "2026-07-01",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 16.45,
-      "prev": 17.65,
-      "change": -1.2,
-      "date": "2026-06-30",
+      "value": 16.59,
+      "prev": 16.45,
+      "change": 0.14,
+      "date": "2026-07-01",
       "unit": ""
     },
     "dollar_index": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7483.23,
-      "prev": 7499.36,
-      "change": -16.13,
-      "date": "2026-07-01",
+      "value": 7483.24,
+      "prev": 7483.23,
+      "change": 0.01,
+      "date": "2026-07-02",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.3,
+      "value": 0.31,
       "unit": "%",
-      "date": "2026-06-30",
+      "date": "2026-07-01",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Dow Climbs After Surprise Jobs Report; Tesla Rallies On Delivery Numbers (Live Coverage)",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-jobs-report-tesla-deliveries-tsla-stock/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-07-02T13:19:31Z"
-    },
-    {
-      "title": "Goldman\u2019s Top Strategist Says Europe Is Quietly Keeping Pace With the S&P 500. Here\u2019s the AI Spillover Nobody\u2019s Watching",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/02/goldmans-top-strategist-says-europe-is-quietly-keeping-pace-with-the-sp-500-heres-the-ai-spillover-nobodys-watching/",
-      "publishedAt": "2026-07-02T13:00:29Z"
-    },
-    {
-      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Thursday Amid Latest Economic Reports",
-      "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-125735076.html",
-      "publishedAt": "2026-07-02T12:57:35Z"
-    },
-    {
-      "title": "6 S&P 500 Stocks Turn $100,000 Into $3.5 Million In 6 Months",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/etfs-and-funds/sectors/sp-500-stocks-turn-100000-to-millions-in-6-months/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-07-02T11:47:59Z"
-    },
-    {
-      "title": "Nasdaq, S&P 500, Dow Futures Subdued Ahead Of June Jobs Report: Why TSLA, MU, NBIS, NVDA, SMCI, IREN Are In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/stock-market-today-dow-nasdaq-sp500-futures-jobs-report-tsla-mu-nbis-smci-iren/cZmegFDR7Sd",
-      "publishedAt": "2026-07-02T08:52:59Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq Futures Climb While Dow Futures Fall Ahead Of Key Jobs Report: META, MU, JACK, CEG Stocks In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/sp500-nasdaq-futures-climb-while-dow-futures-fall-ahead-of-key-jobs-report/cZme21AR71V",
-      "publishedAt": "2026-07-02T01:54:38Z"
-    },
-    {
-      "title": "\u2018How\u2019s Your 401(k)?\u2019: Trump Shrugs Off His Billion-Dollar Crypto Haul as Just a Rising Market",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/01/hows-your-401k-trump-shrugs-off-his-billion-dollar-crypto-haul-as-just-a-rising-market/",
-      "publishedAt": "2026-07-02T00:03:42Z"
-    },
-    {
-      "title": "S&P 500, Nasdaq End Lower As Investors Continue Rotation Out Of Tech And Chipmakers \u2014  WMT, META, GM, KR, QCOM In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-lower-as-investors-continue-rotation-out-of-tech-and-chipmakers/cZm3qaER71K",
-      "publishedAt": "2026-07-01T21:51:06Z"
-    },
-    {
-      "title": "ETF League Tables: SPDR Sheds $8.4B",
-      "source": "etf.com",
-      "url": "http://www.etf.com/sections/etf-league-tables/etf-league-tables-spdr-sheds-84b?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-07-01T21:00:05Z"
-    },
-    {
-      "title": "The $95-a-Year Fee Nobody Notices: Why SPXL Underperforms Its Own Math",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/01/the-95-a-year-fee-nobody-notices-why-spxl-underperforms-its-own-math/",
-      "publishedAt": "2026-07-01T20:36:26Z"
-    },
-    {
-      "title": "With the SpaceX IPO Reshaping the Nasdaq, Is QQQ Still a Smart Investment Right Now?",
+      "title": "The Rise of Active ETFs: Can Fund Managers Outperform Passive Investing?",
       "source": "Motley Fool",
-      "url": "https://www.fool.com/investing/2026/07/02/spacex-ipo-reshaping-nasdaq-qqq-smart-invest/",
-      "publishedAt": "2026-07-02T11:52:00Z"
+      "url": "https://www.fool.com/investing/2026/07/03/the-rise-of-active-etfs-can-fund-managers-outperfo/",
+      "publishedAt": "2026-07-04T03:20:00Z"
     },
     {
-      "title": "Best Performing ETFs of 2026",
+      "title": "JEPI Investors Missed 13.21% in Gains While Paying Hidden Taxes on \u2018Monthly\u2019 Income",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/03/jepi-investors-missed-13-21-in-gains-while-paying-hidden-taxes-on-monthly-income/",
+      "publishedAt": "2026-07-03T20:09:02Z"
+    },
+    {
+      "title": "Trump Accounts Auto-Buy SPYM on July 4. Here\u2019s the ETF Nobody\u2019s Heard Of",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/07/03/trump-accounts-auto-buy-spym-on-july-4-heres-the-etf-nobodys-heard-of/",
+      "publishedAt": "2026-07-03T19:06:20Z"
+    },
+    {
+      "title": "What Actually Drove IWD Over The Past Year",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/605699/what-actually-drove-iwd-over-the-past-year/2026-07-03",
+      "publishedAt": "2026-07-03T12:55:34Z"
+    },
+    {
+      "title": "EWY's Dip Looks Familiar, But Is It A Trap?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/605701/ewys-dip-looks-familiar-but-is-it-a-trap/2026-07-03",
+      "publishedAt": "2026-07-03T12:55:05Z"
+    },
+    {
+      "title": "ETF Zoo: Mid-Year Check-In  the AI Trade That Won\u2019t Quit",
       "source": "etf.com",
-      "url": "http://www.etf.com/sections/features/best-performing-etfs-2026-0?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-07-01T21:50:22Z"
+      "url": "http://www.etf.com/sections/podcasts/etf-zoo-mid-year-check-ai-trade-wont-quit?utm_source=yahoo-financeutm_medium=rssutm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-07-03T01:16:46Z"
+    },
+    {
+      "title": "SPYI\u2019s 0.68% Fee Could Cost You Thousands Over 20 Years\u2014Here\u2019s Why",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/02/spyis-0-68-fee-could-cost-you-thousands-over-20-years-heres-why/",
+      "publishedAt": "2026-07-02T22:17:23Z"
+    },
+    {
+      "title": "The 41-Day Dividend Trap That Quietly Erodes SPY Returns Every Quarter",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/02/the-41-day-dividend-trap-that-quietly-erodes-spy-returns-every-quarter/",
+      "publishedAt": "2026-07-02T20:06:46Z"
+    },
+    {
+      "title": "\u201cDiversification Means Always Having to Say You\u2019re Sorry\"",
+      "source": "etf.com",
+      "url": "http://www.etf.com/sections/conferences/diversification-means-always-having-say-youre-sorry?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
+      "publishedAt": "2026-07-02T19:49:04Z"
+    },
+    {
+      "title": "Stocks Soaring, Gas Falling: Inside the July 4th Economy Everyone\u2019s Arguing About",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/02/stocks-soaring-gas-falling-inside-the-july-4th-economy-everyones-arguing-about/",
+      "publishedAt": "2026-07-02T19:24:32Z"
+    },
+    {
+      "title": "The Monthly Income Trap: How JEPQ Investors Gave Up $18,000 Per $10,000 Invested Since Inception",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/04/the-monthly-income-trap-how-jepq-investors-gave-up-18000-per-10000-invested-since-inception/",
+      "publishedAt": "2026-07-04T20:14:44Z"
+    },
+    {
+      "title": "FEPI\u2019s 25% Yield Masks a Painful Truth About Call-Writing Income",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/etf/2026/07/04/fepis-25-yield-masks-a-painful-truth-about-call-writing-income/",
+      "publishedAt": "2026-07-04T18:34:23Z"
     }
   ],
-  "fetchedAt": "2026-07-02 09:37 EDT"
+  "fetchedAt": "2026-07-04 18:28 EDT"
 }

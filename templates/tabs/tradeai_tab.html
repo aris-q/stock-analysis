@@ -711,6 +711,14 @@ function renderAIAssessment(ai) {
         <div class="tdm-label">SENTIMENT</div>
         <div class="tdm-value">${ai.sentiment||'—'}</div>
       </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">NEWS SENTIMENT</div>
+        <div class="tdm-value">${ai.newsSentiment||'—'}</div>
+      </div>
+      <div class="trade-detail-metric" style="flex:none">
+        <div class="tdm-label">CONFIDENCE</div>
+        <div class="tdm-value">${ai.confidence||'—'}</div>
+      </div>
     </div>
     ${ai.reasoning ? `<div style="font-size:11px;color:var(--muted);line-height:1.6;font-style:italic">${ai.reasoning}</div>` : ''}
   </div>`;

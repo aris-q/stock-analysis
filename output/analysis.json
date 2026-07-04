@@ -2,13 +2,13 @@
   "watchlist": [
     {
       "ticker": "SPCX",
-      "price": 158.6201,
+      "price": 162.0,
       "previousClose": 157.54,
-      "volume": 23251046,
-      "marketCap": 2089690857472,
+      "volume": 60289936,
+      "marketCap": 2134218244096,
       "rsi14": null,
       "bbPercent": null,
-      "priceFetchedAt": "2026-07-02 11:52 EDT",
+      "priceFetchedAt": "2026-07-04 18:56 EDT",
       "fetchedAt": "2026-06-28 14:19 EDT",
       "calendarFetchedAt": "2026-06-28 14:19 EDT",
       "sector": "Industrials",
@@ -270,64 +270,64 @@
       "fcfRank": 1
     },
     {
-      "ticker": "ACN",
-      "price": 135.965,
-      "previousClose": 131.13,
-      "volume": 3274656,
-      "marketCap": 83202703360,
-      "rsi14": 29.1,
-      "bbPercent": 0.353,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "CDE",
+      "price": 17.3,
+      "previousClose": 16.54,
+      "volume": 34793074,
+      "marketCap": 17828247552,
+      "rsi14": 56.0,
+      "bbPercent": 0.614,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     },
     {
-      "ticker": "ORCL",
-      "price": 140.76,
-      "previousClose": 142.5,
-      "volume": 17290470,
-      "marketCap": 405455077376,
-      "rsi14": 15.0,
-      "bbPercent": 0.159,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "CMG",
+      "price": 35.39,
+      "previousClose": 35.0,
+      "volume": 14885956,
+      "marketCap": 45395955712,
+      "rsi14": 69.7,
+      "bbPercent": 0.972,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     },
     {
-      "ticker": "SU.TO",
-      "price": 76.97,
-      "previousClose": 76.3,
-      "volume": 1251892,
-      "marketCap": 90881957888,
-      "rsi14": 18.6,
-      "bbPercent": 0.254,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "ARIS",
+      "price": 16.0,
+      "previousClose": 14.62,
+      "volume": 1812982,
+      "marketCap": 3302400000,
+      "rsi14": 56.2,
+      "bbPercent": 0.576,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     },
     {
-      "ticker": "WELL",
-      "price": 234.015,
-      "previousClose": 230.19,
-      "volume": 517104,
-      "marketCap": 165194563584,
-      "rsi14": 78.1,
-      "bbPercent": 0.959,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "BKNG",
+      "price": 184.56,
+      "previousClose": 182.64,
+      "volume": 13471584,
+      "marketCap": 143011561472,
+      "rsi14": 69.4,
+      "bbPercent": 0.896,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     },
     {
-      "ticker": "NVDA",
-      "price": 194.49,
-      "previousClose": 197.58,
-      "volume": 51671004,
-      "marketCap": 4710742360064,
-      "rsi14": 40.2,
-      "bbPercent": 0.172,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "AUGO",
+      "price": 65.46,
+      "previousClose": 60.5,
+      "volume": 1370039,
+      "marketCap": 5465909760,
+      "rsi14": 62.2,
+      "bbPercent": 0.734,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     },
     {
-      "ticker": "IRWD",
-      "price": 4.325,
-      "previousClose": 4.12,
-      "volume": 951043,
-      "marketCap": 711952960,
-      "rsi14": 72.6,
-      "bbPercent": 0.923,
-      "priceFetchedAt": "2026-07-02 11:52 EDT"
+      "ticker": "RCI-B.TO",
+      "price": 45.08,
+      "previousClose": 44.85,
+      "volume": 679484,
+      "marketCap": 24353355776,
+      "rsi14": 16.3,
+      "bbPercent": -0.006,
+      "priceFetchedAt": "2026-07-04 18:56 EDT"
     }
   ],
   "dailyGainers": [
@@ -392,7 +392,7 @@
       "volume": 17027009
     }
   ],
-  "lastPriceRefresh": "2026-07-02 11:52 EDT",
+  "lastPriceRefresh": "2026-07-04 18:56 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "FF.TO",
