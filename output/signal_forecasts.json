@@ -5590,8 +5590,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.199,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 37.92,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5606,8 +5606,8 @@
           "biasScore": 0.0,
           "dailyVol": 4.814,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 957.51,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5622,8 +5622,8 @@
           "biasScore": 0.1,
           "dailyVol": 2.118,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 158.01,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5638,8 +5638,8 @@
           "biasScore": -0.3,
           "dailyVol": 6.075,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 195.72,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5654,8 +5654,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.012,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 1.49,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5670,8 +5670,8 @@
           "biasScore": 0.1,
           "dailyVol": 4.865,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 328.69,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5686,8 +5686,8 @@
           "biasScore": -0.4,
           "dailyVol": 45.795,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 1295.59,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5702,8 +5702,8 @@
           "biasScore": 0.2,
           "dailyVol": 2.39,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 114.37,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5718,8 +5718,8 @@
           "biasScore": 0.4,
           "dailyVol": 0.223,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 43.94,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5734,8 +5734,8 @@
           "biasScore": 0.2,
           "dailyVol": 10.353,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 221.54,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5750,8 +5750,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.282,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 57.74,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5766,8 +5766,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.386,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 28.72,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5782,8 +5782,8 @@
           "biasScore": -0.05,
           "dailyVol": 0.013,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.48,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5798,8 +5798,8 @@
           "biasScore": 0.55,
           "dailyVol": 0.038,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 7.35,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5814,8 +5814,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.14,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 14.8,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5830,8 +5830,8 @@
           "biasScore": -0.3,
           "dailyVol": 0.755,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 8.76,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5846,8 +5846,8 @@
           "biasScore": -0.05,
           "dailyVol": 0.438,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 16.04,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5862,8 +5862,8 @@
           "biasScore": 0.25,
           "dailyVol": 4.497,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 83.53,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5878,8 +5878,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.064,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 5.89,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5894,8 +5894,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.815,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 15.56,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5910,8 +5910,8 @@
           "biasScore": 0.45,
           "dailyVol": 4.007,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 141.6,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5926,8 +5926,8 @@
           "biasScore": 0.0,
           "dailyVol": 1.637,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 196.93,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5942,8 +5942,8 @@
           "biasScore": 0.3,
           "dailyVol": 3.489,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 142.14,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5958,8 +5958,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.272,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 4.47,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5974,8 +5974,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.389,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 80.49,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -5990,8 +5990,8 @@
           "biasScore": -0.3,
           "dailyVol": 6.241,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 237.59,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6006,8 +6006,8 @@
           "biasScore": -0.1,
           "dailyVol": 18.344,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 507.84,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6022,8 +6022,8 @@
           "biasScore": -0.1,
           "dailyVol": 2.936,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 81.83,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6038,8 +6038,8 @@
           "biasScore": -0.2,
           "dailyVol": 10.959,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 423.11,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6054,8 +6054,8 @@
           "biasScore": -0.2,
           "dailyVol": 5.244,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 167.49,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6070,8 +6070,8 @@
           "biasScore": 0.05,
           "dailyVol": 0.836,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 34.35,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6086,8 +6086,8 @@
           "biasScore": -0.1,
           "dailyVol": 2.128,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 181.95,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6102,8 +6102,8 @@
           "biasScore": -0.15,
           "dailyVol": 0.177,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 4.12,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6118,8 +6118,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.637,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 46.42,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6134,8 +6134,8 @@
           "biasScore": 0.35,
           "dailyVol": 1.37,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 54.47,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6150,8 +6150,8 @@
           "biasScore": 0.2,
           "dailyVol": 0.038,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 2.21,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6166,8 +6166,8 @@
           "biasScore": 0.45,
           "dailyVol": 1.21,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 46.15,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6182,8 +6182,8 @@
           "biasScore": 0.4,
           "dailyVol": 1.138,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 215.51,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6198,8 +6198,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.258,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 17.85,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6214,8 +6214,8 @@
           "biasScore": 0.3,
           "dailyVol": 0.188,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 10.77,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6230,8 +6230,8 @@
           "biasScore": 0.05,
           "dailyVol": 2.379,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 63.37,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6246,8 +6246,8 @@
           "biasScore": 0.1,
           "dailyVol": 0.431,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 15.2,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6262,8 +6262,8 @@
           "biasScore": -0.15,
           "dailyVol": 0.062,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 5.58,
+          "accuracy": "miss-high",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6278,8 +6278,8 @@
           "biasScore": -0.1,
           "dailyVol": 0.17,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 37.92,
+          "accuracy": "miss-low",
           "generatedAt": "2026-07-06 10:41 EDT"
         },
         {
@@ -6294,12 +6294,13 @@
           "biasScore": -0.2,
           "dailyVol": 1.611,
           "aiReason": "",
-          "actualPrice": null,
-          "accuracy": null,
+          "actualPrice": 26.78,
+          "accuracy": "hit",
           "generatedAt": "2026-07-06 10:41 EDT"
         }
       ],
-      "generatedAt": "2026-07-06 10:41 EDT"
+      "generatedAt": "2026-07-06 10:41 EDT",
+      "updatedAt": "2026-07-07 20:29 EDT"
     }
   ]
 }

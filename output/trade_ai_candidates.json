@@ -128,34 +128,34 @@
       "name": "International Paper Company",
       "sector": "Consumer Cyclical",
       "industry": "Packaging & Containers",
-      "price": 38.385,
-      "marketCap": 20325507072,
-      "volume": 635099,
-      "volumeRatio": 0.1,
-      "rsi14": 67.2,
-      "ma20": 36.77,
-      "ma50": 33.92,
-      "bbPercent": 0.698,
-      "change1d": -0.51,
+      "price": 37.92,
+      "marketCap": 20079282176,
+      "volume": 4433111,
+      "volumeRatio": 0.72,
+      "rsi14": 62.2,
+      "ma20": 36.75,
+      "ma50": 33.91,
+      "bbPercent": 0.645,
+      "change1d": -1.71,
       "change2d": -0.54,
       "change3d": 1.17,
       "change4d": 0.63,
       "change5d": -0.34,
-      "change7d": -0.97,
-      "change30d": 22.67,
+      "change7d": -2.17,
+      "change30d": 21.19,
       "revenueGrowth": 13.4,
       "grossMargin": 29.7,
       "fcf": 1711250048,
       "peRatio": null,
-      "forwardPE": 14.2,
+      "forwardPE": 14.1,
       "eps": -5.19,
       "debtToEquity": 65.9,
       "returnOnEquity": -16.0,
       "week52High": 56.13,
       "week52Low": 29.26,
-      "priceVs52wHigh": 68.4,
+      "priceVs52wHigh": 67.6,
       "analystTarget": 39.36364,
-      "analystUpside": 2.5,
+      "analystUpside": 3.8,
       "recommendation": "buy",
       "institutionalPct": 99.4,
       "insiderPct": 0.2,
@@ -164,7 +164,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "International Paper Company produces and sells renewable fiber-based packaging in North America, Latin America, Europe, South America, and North Africa. It operates through two segments, Packaging Solutions North America and Packaging Solutions EMEA. The company offers linerboard, medium, whitetop, and saturating kraft; and converts containerboard into corrugated boxes, bulk bins, shipping contain",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "PH": {
       "ticker": "PH",
@@ -687,34 +687,34 @@
       "name": "Ondas Inc",
       "sector": "Technology",
       "industry": "Communication Equipment",
-      "price": 7.385,
-      "marketCap": 3912768512,
-      "volume": 15026559,
-      "volumeRatio": 0.24,
-      "rsi14": 25.7,
-      "ma20": 8.65,
-      "ma50": 9.7,
-      "bbPercent": 0.148,
-      "change1d": -5.56,
+      "price": 7.35,
+      "marketCap": 4188313600,
+      "volume": 59596985,
+      "volumeRatio": 0.93,
+      "rsi14": 25.5,
+      "ma20": 8.64,
+      "ma50": 9.69,
+      "bbPercent": 0.14,
+      "change1d": -6.01,
       "change2d": 5.53,
       "change3d": -6.44,
       "change4d": -3.88,
       "change5d": 2.74,
-      "change7d": -5.68,
-      "change30d": -18.49,
+      "change7d": -6.13,
+      "change30d": -18.87,
       "revenueGrowth": 1079.9,
       "grossMargin": 44.8,
       "fcf": -15650777,
-      "peRatio": 82.1,
-      "forwardPE": -246.2,
+      "peRatio": 81.7,
+      "forwardPE": -245.0,
       "eps": 0.09,
       "debtToEquity": 0.7,
       "returnOnEquity": 42.9,
       "week52High": 15.28,
       "week52Low": 1.71,
-      "priceVs52wHigh": 48.3,
+      "priceVs52wHigh": 48.1,
       "analystTarget": 20.125,
-      "analystUpside": 172.5,
+      "analystUpside": 173.8,
       "recommendation": "strong_buy",
       "institutionalPct": 40.9,
       "insiderPct": 1.9,
@@ -723,41 +723,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ondas Inc. provides private wireless, drone, and automated data solutions in the United States and internationally. It operates through the Ondas Networks and Ondas Autonomous Systems segments. The company offers Counter-UAS (CUAS) and site protection systems, including iron drone raider, a fully autonomous interceptor drone system for neutralizing small hostile drones; sentrycs CoRF, Cyber/RF-bas",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "BMNR": {
       "ticker": "BMNR",
       "name": "BitMine Immersion Technologies,",
       "sector": "Financial Services",
       "industry": "Capital Markets",
-      "price": 15.03,
-      "marketCap": 8560739840,
-      "volume": 8475131,
-      "volumeRatio": 0.2,
-      "rsi14": 37.6,
-      "ma20": 15.23,
+      "price": 14.8,
+      "marketCap": 8429737472,
+      "volume": 32355552,
+      "volumeRatio": 0.78,
+      "rsi14": 36.6,
+      "ma20": 15.22,
       "ma50": 18.27,
-      "bbPercent": 0.459,
-      "change1d": -3.34,
+      "bbPercent": 0.414,
+      "change1d": -4.82,
       "change2d": 8.29,
       "change3d": 1.48,
       "change4d": 6.31,
       "change5d": -3.55,
-      "change7d": 10.84,
-      "change30d": -20.39,
+      "change7d": 9.14,
+      "change30d": -21.61,
       "revenueGrowth": 627.8,
       "grossMargin": 66.6,
       "fcf": -152525936,
       "peRatio": null,
-      "forwardPE": 16.0,
+      "forwardPE": 15.7,
       "eps": -7.44,
       "debtToEquity": 0.0,
       "returnOnEquity": -175.9,
       "week52High": 134.48,
       "week52Low": 12.8,
-      "priceVs52wHigh": 11.2,
+      "priceVs52wHigh": 11.0,
       "analystTarget": 34.43333,
-      "analystUpside": 129.1,
+      "analystUpside": 132.7,
       "recommendation": "strong_buy",
       "institutionalPct": 37.3,
       "insiderPct": 0.8,
@@ -766,7 +766,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Bitmine Immersion Technologies, Inc. operates as a blockchain technology company primarily in the United States. The company engages in ETH treasury operations; BTC ecosystem services, including consulting and advisory engagements and equipment leasing; facilitation and optimization of third-party power and hosting arrangements; and disciplined BTC treasury management while winding down proprietar",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "IBRX": {
       "ticker": "IBRX",
@@ -816,34 +816,34 @@
       "name": "Coeur Mining, Inc.",
       "sector": "Basic Materials",
       "industry": "Gold",
-      "price": 15.91,
-      "marketCap": 16395804672,
-      "volume": 3501529,
-      "volumeRatio": 0.07,
-      "rsi14": 29.4,
-      "ma20": 16.75,
+      "price": 16.04,
+      "marketCap": 16529774592,
+      "volume": 21432867,
+      "volumeRatio": 0.44,
+      "rsi14": 30.0,
+      "ma20": 16.76,
       "ma50": 17.67,
-      "bbPercent": 0.275,
-      "change1d": -6.36,
+      "bbPercent": 0.307,
+      "change1d": -5.59,
       "change2d": -1.79,
       "change3d": 4.59,
       "change4d": 1.35,
       "change5d": -0.06,
-      "change7d": -0.69,
-      "change30d": -9.76,
+      "change7d": 0.12,
+      "change30d": -9.02,
       "revenueGrowth": 137.8,
       "grossMargin": 58.6,
       "fcf": 511841376,
-      "peRatio": 12.8,
+      "peRatio": 12.9,
       "forwardPE": 7.8,
       "eps": 1.24,
       "debtToEquity": 7.4,
       "returnOnEquity": 12.1,
       "week52High": 27.77,
       "week52Low": 8.57,
-      "priceVs52wHigh": 57.3,
+      "priceVs52wHigh": 57.8,
       "analystTarget": 27.27273,
-      "analystUpside": 71.4,
+      "analystUpside": 70.0,
       "recommendation": "buy",
       "institutionalPct": 79.8,
       "insiderPct": 0.6,
@@ -852,41 +852,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Coeur Mining, Inc. operates as a gold and silver producer in the United States, Canada, and Mexico. The company operates through Palmarejo, Rochester, Kensington, Wharf, Silvertip, and Las Chispas segments. It explores for gold, silver, zinc, lead, and other related metals. It markets and sells its concentrates to third-party customers, including refiners and smelters, under off-take agreements. T",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "CRWV": {
       "ticker": "CRWV",
       "name": "CoreWeave, Inc.",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 79.97,
-      "marketCap": 43629264896,
-      "volume": 7232266,
-      "volumeRatio": 0.23,
-      "rsi14": 31.0,
-      "ma20": 99.59,
-      "ma50": 107.24,
-      "bbPercent": 0.05,
-      "change1d": -7.46,
+      "price": 83.53,
+      "marketCap": 45571493888,
+      "volume": 23273817,
+      "volumeRatio": 0.75,
+      "rsi14": 32.6,
+      "ma20": 99.77,
+      "ma50": 107.31,
+      "bbPercent": 0.116,
+      "change1d": -3.39,
       "change2d": 5.77,
       "change3d": -4.6,
       "change4d": -13.92,
       "change5d": 4.22,
-      "change7d": -17.16,
-      "change30d": -24.15,
+      "change7d": -13.51,
+      "change30d": -20.82,
       "revenueGrowth": 111.6,
       "grossMargin": 69.4,
       "fcf": -8560327168,
       "peRatio": null,
-      "forwardPE": -68.5,
+      "forwardPE": -71.5,
       "eps": -2.72,
       "debtToEquity": 738.5,
       "returnOnEquity": -40.7,
       "week52High": 160.42,
       "week52Low": 63.8,
-      "priceVs52wHigh": 49.9,
+      "priceVs52wHigh": 52.1,
       "analystTarget": 142.29411,
-      "analystUpside": 77.9,
+      "analystUpside": 70.4,
       "recommendation": "buy",
       "institutionalPct": 57.2,
       "insiderPct": 18.5,
@@ -895,41 +895,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "CoreWeave, Inc. operates as a cloud infrastructure technology company in the United States. The company offers CoreWeave Cloud platform that comprises proprietary software and cloud services that deliver the automation and efficiency needed to manage complex artificial intelligence (AI) infrastructure at scale. It also offers data and storage solutions, such as Local Object Transport Accelerator; ",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "NAT": {
       "ticker": "NAT",
       "name": "Nordic American Tankers Limited",
       "sector": "Energy",
       "industry": "Oil & Gas Midstream",
-      "price": 5.815,
-      "marketCap": 1231330048,
-      "volume": 292632,
-      "volumeRatio": 0.06,
-      "rsi14": 58.3,
-      "ma20": 5.7,
+      "price": 5.89,
+      "marketCap": 1247211392,
+      "volume": 2274465,
+      "volumeRatio": 0.43,
+      "rsi14": 59.7,
+      "ma20": 5.71,
       "ma50": 5.46,
-      "bbPercent": 0.567,
-      "change1d": -0.26,
+      "bbPercent": 0.61,
+      "change1d": 1.03,
       "change2d": 0.34,
       "change3d": 4.5,
       "change4d": 0.36,
       "change5d": -4.15,
-      "change7d": -0.6,
-      "change30d": 12.33,
+      "change7d": 0.68,
+      "change30d": 13.78,
       "revenueGrowth": 104.3,
       "grossMargin": 46.9,
       "fcf": -99640000,
-      "peRatio": 22.4,
-      "forwardPE": 19.7,
+      "peRatio": 22.7,
+      "forwardPE": 20.0,
       "eps": 0.26,
       "debtToEquity": 91.1,
       "returnOnEquity": 11.4,
       "week52High": 6.7,
       "week52Low": 2.63,
-      "priceVs52wHigh": 86.8,
+      "priceVs52wHigh": 87.9,
       "analystTarget": 6.0,
-      "analystUpside": 3.2,
+      "analystUpside": 1.9,
       "recommendation": "none",
       "institutionalPct": 49.9,
       "insiderPct": 5.5,
@@ -938,7 +938,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Nordic American Tankers Limited, a tanker company, owns, operates, and charters double-hull tankers in Bermuda and internationally. As of December 31, 2025, the company fleet consisted of 20 Suezmax crude oil tankers. It serves oil companies, oil traders, and other entities requiring crude oil transportation services. The company was formerly known as Nordic American Tanker Shipping Limited and ch",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "HL": {
       "ticker": "HL",
@@ -988,34 +988,34 @@
       "name": "Oracle Corporation",
       "sector": "Technology",
       "industry": "Software - Infrastructure",
-      "price": 138.725,
-      "marketCap": 399593373696,
-      "volume": 11522516,
-      "volumeRatio": 0.35,
-      "rsi14": 6.8,
-      "ma20": 169.71,
-      "ma50": 184.75,
-      "bbPercent": 0.178,
-      "change1d": -3.5,
+      "price": 141.6,
+      "marketCap": 407874732032,
+      "volume": 42797656,
+      "volumeRatio": 1.29,
+      "rsi14": 7.1,
+      "ma20": 169.86,
+      "ma50": 184.8,
+      "bbPercent": 0.204,
+      "change1d": -1.5,
       "change2d": 2.49,
       "change3d": -1.56,
       "change4d": -2.76,
       "change5d": -0.82,
-      "change7d": -6.6,
-      "change30d": -27.78,
+      "change7d": -4.67,
+      "change30d": -26.28,
       "revenueGrowth": 20.6,
       "grossMargin": 65.8,
       "fcf": -24536750080,
-      "peRatio": 23.8,
-      "forwardPE": 12.7,
+      "peRatio": 24.2,
+      "forwardPE": 13.0,
       "eps": 5.84,
       "debtToEquity": 388.9,
       "returnOnEquity": 53.4,
       "week52High": 345.72,
       "week52Low": 134.57,
-      "priceVs52wHigh": 40.1,
+      "priceVs52wHigh": 41.0,
       "analystTarget": 251.8495,
-      "analystUpside": 81.5,
+      "analystUpside": 77.9,
       "recommendation": "buy",
       "institutionalPct": 43.9,
       "insiderPct": 40.5,
@@ -1024,7 +1024,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Oracle Corporation offers products and services that build, run and support enterprise information technology frameworks worldwide. Its Oracle cloud software as a service offering includes various cloud software applications, including Oracle Fusion cloud enterprise resource planning ERP, Oracle Fusion cloud enterprise performance management EPM, Oracle Fusion cloud supply chain and manufacturing ",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "NVDA": {
       "ticker": "NVDA",
@@ -1117,34 +1117,34 @@
       "name": "Ironwood Pharmaceuticals, Inc.",
       "sector": "Healthcare",
       "industry": "Drug Manufacturers - Specialty & Generic",
-      "price": 4.5023,
-      "marketCap": 741138880,
-      "volume": 825228,
-      "volumeRatio": 0.33,
-      "rsi14": 74.6,
+      "price": 4.47,
+      "marketCap": 735821888,
+      "volume": 3392024,
+      "volumeRatio": 1.37,
+      "rsi14": 74.1,
       "ma20": 3.85,
       "ma50": 3.88,
-      "bbPercent": 0.931,
-      "change1d": 2.79,
+      "bbPercent": 0.914,
+      "change1d": 2.05,
       "change2d": 1.15,
       "change3d": 5.1,
       "change4d": -2.14,
       "change5d": -2.09,
-      "change7d": 9.01,
-      "change30d": 14.85,
+      "change7d": 8.23,
+      "change30d": 14.03,
       "revenueGrowth": 158.9,
       "grossMargin": 75.2,
       "fcf": 51157624,
-      "peRatio": 7.3,
+      "peRatio": 7.2,
       "forwardPE": 3.1,
       "eps": 0.62,
       "debtToEquity": null,
       "returnOnEquity": null,
       "week52High": 5.78,
       "week52Low": 0.67,
-      "priceVs52wHigh": 77.9,
+      "priceVs52wHigh": 77.3,
       "analystTarget": 6.1,
-      "analystUpside": 35.5,
+      "analystUpside": 36.5,
       "recommendation": "none",
       "institutionalPct": 99.0,
       "insiderPct": 3.2,
@@ -1153,7 +1153,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ironwood Pharmaceuticals, Inc., a biotechnology company, focuses on the development and commercialization of therapies for gastrointestinal (GI) and rare diseases in the United States and internationally. It sells linaclotide, a guanylate cyclase type-C (GC-C) agonist for the treatment of adults suffering from irritable bowel syndrome with constipation or chronic idiopathic constipation, as well a",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "SU.TO": {
       "ticker": "SU.TO",
@@ -1547,34 +1547,34 @@
       "name": "SLB Limited",
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
-      "price": 46.27,
-      "marketCap": 69176320000,
-      "volume": 1595562,
-      "volumeRatio": 0.09,
-      "rsi14": 18.0,
+      "price": 46.42,
+      "marketCap": 69400576000,
+      "volume": 10313952,
+      "volumeRatio": 0.6,
+      "rsi14": 19.1,
       "ma20": 49.86,
-      "ma50": 53.49,
-      "bbPercent": 0.291,
-      "change1d": 1.2,
+      "ma50": 53.5,
+      "bbPercent": 0.299,
+      "change1d": 1.53,
       "change2d": 1.31,
       "change3d": 0.09,
       "change4d": -3.01,
       "change5d": 0.24,
-      "change7d": -1.55,
-      "change30d": -19.22,
+      "change7d": -1.23,
+      "change30d": -18.96,
       "revenueGrowth": 2.7,
       "grossMargin": 17.8,
       "fcf": 3043124992,
       "peRatio": 20.4,
-      "forwardPE": 13.9,
+      "forwardPE": 14.0,
       "eps": 2.27,
       "debtToEquity": 42.5,
       "returnOnEquity": 14.1,
       "week52High": 58.82,
       "week52Low": 31.64,
-      "priceVs52wHigh": 78.7,
+      "priceVs52wHigh": 78.9,
       "analystTarget": 61.82143,
-      "analystUpside": 33.6,
+      "analystUpside": 33.2,
       "recommendation": "buy",
       "institutionalPct": 92.7,
       "insiderPct": 0.2,
@@ -1583,41 +1583,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "SLB N.V. engages in the provision of technology for the energy industry worldwide. The company operates through four divisions: Digital & Integration, Reservoir Performance, Well Construction, and Production Systems. The company provides field development and hydrocarbon production, carbon management, and integration of adjacent energy systems; reservoir interpretation and data processing services",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "BKR": {
       "ticker": "BKR",
       "name": "Baker Hughes Company",
       "sector": "Energy",
       "industry": "Oil & Gas Equipment & Services",
-      "price": 54.45,
-      "marketCap": 54018138112,
-      "volume": 1391153,
-      "volumeRatio": 0.15,
-      "rsi14": 21.3,
+      "price": 54.47,
+      "marketCap": 54037983232,
+      "volume": 7717765,
+      "volumeRatio": 0.85,
+      "rsi14": 21.4,
       "ma20": 58.72,
       "ma50": 62.99,
-      "bbPercent": 0.223,
-      "change1d": 2.25,
+      "bbPercent": 0.225,
+      "change1d": 2.29,
       "change2d": 0.89,
       "change3d": -1.93,
       "change4d": -3.03,
       "change5d": -1.44,
-      "change7d": -3.73,
-      "change30d": -17.57,
+      "change7d": -3.7,
+      "change30d": -17.54,
       "revenueGrowth": 2.5,
       "grossMargin": 23.6,
       "fcf": 3151249920,
       "peRatio": 17.4,
-      "forwardPE": 19.6,
+      "forwardPE": 19.4,
       "eps": 3.13,
       "debtToEquity": 82.9,
       "returnOnEquity": 17.2,
       "week52High": 70.41,
       "week52Low": 38.37,
-      "priceVs52wHigh": 77.3,
-      "analystTarget": 71.2381,
-      "analystUpside": 30.8,
+      "priceVs52wHigh": 77.4,
+      "analystTarget": 71.28571,
+      "analystUpside": 30.9,
       "recommendation": "buy",
       "institutionalPct": 99.8,
       "insiderPct": 0.2,
@@ -1626,7 +1626,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Baker Hughes Company provides a portfolio of technologies and services to energy and industrial value chain. Its Oilfield Services & Equipment segment designs and manufactures exploration, appraisal, development, production, rejuvenation, and decommissioning products and related services for onshore and offshore oilfield operations. This segment also provides drilling services, drill bits, and dri",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "KOS": {
       "ticker": "KOS",
@@ -1719,34 +1719,34 @@
       "name": "Old Dominion Freight Line, Inc.",
       "sector": "Industrials",
       "industry": "Trucking",
-      "price": 216.82,
-      "marketCap": 45091684352,
-      "volume": 121920,
-      "volumeRatio": 0.06,
-      "rsi14": 21.6,
-      "ma20": 226.69,
-      "ma50": 217.73,
-      "bbPercent": 0.298,
-      "change1d": 0.18,
+      "price": 215.51,
+      "marketCap": 44819243008,
+      "volume": 1042353,
+      "volumeRatio": 0.53,
+      "rsi14": 20.3,
+      "ma20": 226.63,
+      "ma50": 217.71,
+      "bbPercent": 0.274,
+      "change1d": -0.43,
       "change2d": -0.56,
       "change3d": -0.14,
       "change4d": 0.63,
       "change5d": -1.41,
-      "change7d": -0.9,
-      "change30d": 3.02,
+      "change7d": -1.5,
+      "change30d": 2.39,
       "revenueGrowth": -2.9,
       "grossMargin": 38.9,
       "fcf": 861986240,
-      "peRatio": 45.4,
-      "forwardPE": 33.9,
+      "peRatio": 45.1,
+      "forwardPE": 33.6,
       "eps": 4.78,
       "debtToEquity": 0.9,
       "returnOnEquity": 23.3,
       "week52High": 252.03,
       "week52Low": 126.01,
-      "priceVs52wHigh": 86.0,
+      "priceVs52wHigh": 85.5,
       "analystTarget": 224.40909,
-      "analystUpside": 3.5,
+      "analystUpside": 4.1,
       "recommendation": "hold",
       "institutionalPct": 82.5,
       "insiderPct": 8.2,
@@ -1755,7 +1755,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Old Dominion Freight Line, Inc. operates as a less-than-truckload motor carrier in the United States and North America. The company offers regional, inter-regional, and national less-than-truckload services, as well as expedited transportation services. It also provides various value-added services, including container drayage, truckload brokerage, and supply chain consulting. In addition, the com",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "LUNR": {
       "ticker": "LUNR",
@@ -2321,34 +2321,34 @@
       "name": "Albemarle Corporation",
       "sector": "Basic Materials",
       "industry": "Specialty Chemicals",
-      "price": 127.72,
-      "marketCap": 15062612992,
-      "volume": 348795,
-      "volumeRatio": 0.13,
-      "rsi14": 12.4,
-      "ma20": 148.34,
-      "ma50": 169.41,
-      "bbPercent": 0.128,
-      "change1d": -4.54,
+      "price": 129.02,
+      "marketCap": 15215928320,
+      "volume": 2179249,
+      "volumeRatio": 0.81,
+      "rsi14": 12.7,
+      "ma20": 148.41,
+      "ma50": 169.44,
+      "bbPercent": 0.147,
+      "change1d": -3.57,
       "change2d": -1.3,
       "change3d": -0.38,
       "change4d": 0.78,
       "change5d": 4.09,
-      "change7d": -4.47,
-      "change30d": -25.37,
+      "change7d": -3.5,
+      "change30d": -24.61,
       "revenueGrowth": 32.7,
       "grossMargin": 18.5,
       "fcf": 716711744,
       "peRatio": null,
-      "forwardPE": 9.8,
+      "forwardPE": 9.9,
       "eps": -3.43,
       "debtToEquity": 19.8,
       "returnOnEquity": -1.8,
       "week52High": 221.0,
       "week52Low": 64.95,
-      "priceVs52wHigh": 57.8,
-      "analystTarget": 209.714,
-      "analystUpside": 64.2,
+      "priceVs52wHigh": 58.4,
+      "analystTarget": 204.464,
+      "analystUpside": 58.5,
       "recommendation": "buy",
       "institutionalPct": 96.3,
       "insiderPct": 0.2,
@@ -2357,7 +2357,7 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Albemarle Corporation provides energy storage solutions worldwide. It operates through three segments: Energy Storage, Specialties, and Ketjen. The Energy Storage segment offers lithium compounds, including lithium carbonate, lithium hydroxide, and lithium chloride for use in lithium batteries used in consumer electronics and electric vehicles; power grids and solar panels; high-performance grease",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "OXY": {
       "ticker": "OXY",
@@ -2450,34 +2450,34 @@
       "name": "JP Morgan Chase & Co.",
       "sector": "Financial Services",
       "industry": "Banks - Diversified",
-      "price": 340.21,
-      "marketCap": 911596519424,
-      "volume": 1483195,
-      "volumeRatio": 0.14,
-      "rsi14": 69.8,
-      "ma20": 325.83,
-      "ma50": 312.33,
-      "bbPercent": 0.873,
-      "change1d": 0.74,
+      "price": 339.22,
+      "marketCap": 908943818752,
+      "volume": 6792391,
+      "volumeRatio": 0.66,
+      "rsi14": 69.2,
+      "ma20": 325.78,
+      "ma50": 312.31,
+      "bbPercent": 0.852,
+      "change1d": 0.44,
       "change2d": 1.43,
       "change3d": 0.12,
       "change4d": 2.06,
       "change5d": -0.63,
-      "change7d": 3.86,
-      "change30d": 11.54,
+      "change7d": 3.56,
+      "change30d": 11.22,
       "revenueGrowth": 12.7,
       "grossMargin": 0.0,
       "fcf": null,
-      "peRatio": 16.3,
-      "forwardPE": 14.3,
+      "peRatio": 16.2,
+      "forwardPE": 14.2,
       "eps": 20.9,
       "debtToEquity": null,
       "returnOnEquity": 16.5,
       "week52High": 343.45,
       "week52Low": 279.1,
-      "priceVs52wHigh": 99.1,
-      "analystTarget": 344.7143,
-      "analystUpside": 1.3,
+      "priceVs52wHigh": 98.8,
+      "analystTarget": 352.42856,
+      "analystUpside": 3.9,
       "recommendation": "buy",
       "institutionalPct": 75.6,
       "insiderPct": 0.4,
@@ -2486,41 +2486,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "JPMorgan Chase & Co. operates as a bank and financial holding company in the United States, rest of North America, Europe, the Middle East, Africa, the Asia Pacific, Latin America, and the Caribbean. It operates in three segments: Consumer & Community Banking, Commercial & Investment Bank, and Asset & Wealth Management. The company offers deposit, investment and lending products, and cash manageme",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "XYL": {
       "ticker": "XYL",
       "name": "Xylem Inc.",
       "sector": "Industrials",
       "industry": "Specialty Industrial Machinery",
-      "price": 118.39,
-      "marketCap": 28140531712,
-      "volume": 215291,
-      "volumeRatio": 0.11,
-      "rsi14": 69.9,
-      "ma20": 113.36,
-      "ma50": 112.57,
-      "bbPercent": 0.827,
-      "change1d": -0.86,
+      "price": 120.65,
+      "marketCap": 28677720064,
+      "volume": 2168928,
+      "volumeRatio": 1.1,
+      "rsi14": 75.6,
+      "ma20": 113.47,
+      "ma50": 112.61,
+      "bbPercent": 0.946,
+      "change1d": 1.03,
       "change2d": 1.1,
       "change3d": 0.72,
       "change4d": -0.8,
       "change5d": 1.27,
-      "change7d": 1.67,
-      "change30d": 7.77,
+      "change7d": 3.61,
+      "change30d": 9.83,
       "revenueGrowth": 2.7,
       "grossMargin": 38.6,
       "fcf": 959124992,
-      "peRatio": 29.5,
-      "forwardPE": 19.4,
+      "peRatio": 30.0,
+      "forwardPE": 19.8,
       "eps": 4.02,
       "debtToEquity": 18.4,
       "returnOnEquity": 8.7,
       "week52High": 154.27,
       "week52Low": 105.29,
-      "priceVs52wHigh": 76.7,
-      "analystTarget": 150.88235,
-      "analystUpside": 27.4,
+      "priceVs52wHigh": 78.2,
+      "analystTarget": 150.64706,
+      "analystUpside": 24.9,
       "recommendation": "buy",
       "institutionalPct": 97.8,
       "insiderPct": 0.3,
@@ -2529,28 +2529,28 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Xylem Inc., together with its subsidiaries, engages in the design, manufacture, and servicing of engineered products and solutions for utility, industrial, and residential and commercial building services settings worldwide. It operates through Water Infrastructure; Applied Water; Measurement and Control Solutions; and Water Solutions and Services segments. The company offers water, wastewater, an",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "LCID": {
       "ticker": "LCID",
       "name": "Lucid Group, Inc.",
       "sector": "Consumer Cyclical",
       "industry": "Auto Manufacturers",
-      "price": 6.025,
-      "marketCap": 2351297280,
-      "volume": 4382951,
-      "volumeRatio": 0.27,
-      "rsi14": 59.1,
+      "price": 5.995,
+      "marketCap": 2339589376,
+      "volume": 12544127,
+      "volumeRatio": 0.78,
+      "rsi14": 58.7,
       "ma20": 5.56,
       "ma50": 5.87,
-      "bbPercent": 0.681,
-      "change1d": -9.53,
+      "bbPercent": 0.67,
+      "change1d": -9.98,
       "change2d": 9.54,
       "change3d": -8.3,
       "change4d": -0.9,
       "change5d": 2.76,
-      "change7d": 1.77,
-      "change30d": 3.17,
+      "change7d": 1.27,
+      "change30d": 2.65,
       "revenueGrowth": 20.2,
       "grossMargin": -95.6,
       "fcf": -3035099648,
@@ -2561,9 +2561,9 @@
       "returnOnEquity": -97.6,
       "week52High": 33.7,
       "week52Low": 4.47,
-      "priceVs52wHigh": 17.9,
+      "priceVs52wHigh": 17.8,
       "analystTarget": 8.4,
-      "analystUpside": 39.4,
+      "analystUpside": 40.1,
       "recommendation": "hold",
       "institutionalPct": 61.9,
       "insiderPct": 10.4,
@@ -2572,41 +2572,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Lucid Group, Inc., a technology company, designs, develops, manufactures, and sells electric vehicles (EV), EV powertrains, and battery systems. The company provides Lucid Air sedan and Lucid Gravity SUV. It also designs and develops proprietary software in-house for Lucid vehicles. The company sells vehicles directly to consumers through its retail sales network and direct online sales, including",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "APD": {
       "ticker": "APD",
       "name": "Air Products and Chemicals, Inc",
       "sector": "Basic Materials",
       "industry": "Specialty Chemicals",
-      "price": 309.72,
-      "marketCap": 68968660992,
-      "volume": 90858,
-      "volumeRatio": 0.05,
-      "rsi14": 69.5,
-      "ma20": 284.97,
-      "ma50": 289.11,
-      "bbPercent": 0.961,
-      "change1d": 0.28,
+      "price": 305.05,
+      "marketCap": 67928739840,
+      "volume": 911773,
+      "volumeRatio": 0.54,
+      "rsi14": 65.7,
+      "ma20": 284.74,
+      "ma50": 289.02,
+      "bbPercent": 0.89,
+      "change1d": -1.23,
       "change2d": -1.7,
       "change3d": 2.54,
       "change4d": 5.16,
       "change5d": 8.04,
-      "change7d": 12.19,
-      "change30d": 7.66,
+      "change7d": 10.5,
+      "change30d": 6.04,
       "revenueGrowth": 8.8,
       "grossMargin": 32.0,
       "fcf": -3519237376,
-      "peRatio": 32.7,
-      "forwardPE": 21.8,
+      "peRatio": 32.2,
+      "forwardPE": 21.4,
       "eps": 9.48,
       "debtToEquity": 101.6,
       "returnOnEquity": 12.4,
       "week52High": 314.87,
       "week52Low": 229.11,
-      "priceVs52wHigh": 98.4,
-      "analystTarget": 327.85666,
-      "analystUpside": 5.9,
+      "priceVs52wHigh": 96.9,
+      "analystTarget": 331.1995,
+      "analystUpside": 8.6,
       "recommendation": "buy",
       "institutionalPct": 93.4,
       "insiderPct": 1.9,
@@ -2615,41 +2615,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Air Products and Chemicals, Inc. provides atmospheric gases, process and specialty gases, equipment, and related services in the Americas, Asia, Europe, the Middle East, India, and internationally. The company produces atmospheric gases, including oxygen, nitrogen, and argon; process gases, such as hydrogen, helium, carbon dioxide, carbon monoxide, and syngas; and specialty gases for customers in ",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "WRB": {
       "ticker": "WRB",
       "name": "W.R. Berkley Corporation",
       "sector": "Financial Services",
       "industry": "Insurance - Property & Casualty",
-      "price": 72.8,
-      "marketCap": 27101747200,
-      "volume": 135631,
-      "volumeRatio": 0.06,
-      "rsi14": 70.5,
-      "ma20": 68.91,
-      "ma50": 67.06,
-      "bbPercent": 0.965,
-      "change1d": 2.65,
+      "price": 71.54,
+      "marketCap": 26632677376,
+      "volume": 1476171,
+      "volumeRatio": 0.7,
+      "rsi14": 67.3,
+      "ma20": 68.85,
+      "ma50": 67.04,
+      "bbPercent": 0.839,
+      "change1d": 0.87,
       "change2d": -1.61,
       "change3d": 2.01,
       "change4d": 0.18,
       "change5d": -0.68,
-      "change7d": 2.15,
-      "change30d": 8.76,
+      "change7d": 0.38,
+      "change30d": 6.88,
       "revenueGrowth": 4.0,
       "grossMargin": 43.7,
       "fcf": 3222230528,
-      "peRatio": 15.4,
-      "forwardPE": 15.2,
+      "peRatio": 15.2,
+      "forwardPE": 14.9,
       "eps": 4.72,
       "debtToEquity": 31.8,
       "returnOnEquity": 20.2,
       "week52High": 78.96,
       "week52Low": 62.87,
-      "priceVs52wHigh": 92.2,
-      "analystTarget": 66.76471,
-      "analystUpside": -8.3,
+      "priceVs52wHigh": 90.6,
+      "analystTarget": 66.94118,
+      "analystUpside": -6.4,
       "recommendation": "hold",
       "institutionalPct": 78.0,
       "insiderPct": 26.3,
@@ -2658,41 +2658,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "W. R. Berkley Corporation, an insurance holding company, operates as a commercial line writer worldwide. The company operates through Insurance and Reinsurance & Monoline Excess segments. The Insurance segment underwrites commercial insurance business, including excess and surplus lines, admitted lines, and specialty personal lines. This segment also provides accident and health insurance and rein",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "IBM": {
       "ticker": "IBM",
       "name": "International Business Machines",
       "sector": "Technology",
       "industry": "Information Technology Services",
-      "price": 302.5,
-      "marketCap": 284315320320,
-      "volume": 1876462,
-      "volumeRatio": 0.22,
-      "rsi14": 68.7,
-      "ma20": 273.79,
-      "ma50": 257.39,
-      "bbPercent": 1.014,
-      "change1d": 0.99,
+      "price": 306.13,
+      "marketCap": 287727091712,
+      "volume": 8511487,
+      "volumeRatio": 1.02,
+      "rsi14": 69.9,
+      "ma20": 273.97,
+      "ma50": 257.46,
+      "bbPercent": 1.059,
+      "change1d": 2.21,
       "change2d": 3.45,
       "change3d": 1.14,
       "change4d": 1.79,
       "change5d": 1.15,
-      "change7d": 11.36,
-      "change30d": 19.17,
+      "change7d": 12.7,
+      "change30d": 20.6,
       "revenueGrowth": 9.5,
       "grossMargin": 58.4,
       "fcf": 13080750080,
-      "peRatio": 26.8,
-      "forwardPE": 22.5,
+      "peRatio": 27.1,
+      "forwardPE": 22.7,
       "eps": 11.29,
       "debtToEquity": 211.2,
       "returnOnEquity": 35.8,
       "week52High": 332.46,
       "week52Low": 212.34,
-      "priceVs52wHigh": 91.0,
+      "priceVs52wHigh": 92.1,
       "analystTarget": 293.8857,
-      "analystUpside": -2.8,
+      "analystUpside": -4.0,
       "recommendation": "buy",
       "institutionalPct": 65.5,
       "insiderPct": 0.1,
@@ -2701,41 +2701,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "International Business Machines Corporation, together with its subsidiaries, provides integrated solutions and services in the Americas, Europe, the Middle East, Africa, and the Asia Pacific. It operates through Software, Consulting, Infrastructure, and Financing segments. The Software segment offers hybrid cloud and AI platforms that allow clients to realize their digital and AI transformations a",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "FCX": {
       "ticker": "FCX",
       "name": "Freeport-McMoRan, Inc.",
       "sector": "Basic Materials",
       "industry": "Copper",
-      "price": 58.42,
-      "marketCap": 83982237696,
-      "volume": 2383516,
-      "volumeRatio": 0.15,
-      "rsi14": 17.8,
-      "ma20": 64.46,
-      "ma50": 63.39,
-      "bbPercent": 0.085,
-      "change1d": -4.23,
+      "price": 59.33,
+      "marketCap": 85290426368,
+      "volume": 14373935,
+      "volumeRatio": 0.93,
+      "rsi14": 18.8,
+      "ma20": 64.5,
+      "ma50": 63.41,
+      "bbPercent": 0.137,
+      "change1d": -2.74,
       "change2d": 0.05,
       "change3d": 0.73,
       "change4d": -3.75,
       "change5d": 2.06,
-      "change7d": -6.45,
-      "change30d": -5.76,
+      "change7d": -5.0,
+      "change30d": -4.29,
       "revenueGrowth": 8.8,
       "grossMargin": 38.6,
       "fcf": 1709874944,
-      "peRatio": 30.9,
-      "forwardPE": 14.8,
+      "peRatio": 31.4,
+      "forwardPE": 15.1,
       "eps": 1.89,
       "debtToEquity": 33.0,
       "returnOnEquity": 15.6,
       "week52High": 72.28,
       "week52Low": 35.15,
-      "priceVs52wHigh": 80.8,
+      "priceVs52wHigh": 82.1,
       "analystTarget": 70.67727,
-      "analystUpside": 21.0,
+      "analystUpside": 19.1,
       "recommendation": "buy",
       "institutionalPct": 88.4,
       "insiderPct": 0.7,
@@ -2744,41 +2744,41 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Freeport-McMoRan Inc. engages in the mining of mineral properties in North America, South America, and Indonesia. The company primarily explores for copper, gold, molybdenum, silver, and other metals. Its assets include the Grasberg minerals district in Indonesia; Morenci, Bagdad, Safford, Sierrita, and Miami in Arizona; Chino and Tyrone in New Mexico; and Henderson and Climax in Colorado, North A",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     },
     "ECVT": {
       "ticker": "ECVT",
       "name": "Ecovyst Inc.",
       "sector": "Basic Materials",
       "industry": "Specialty Chemicals",
-      "price": 11.6278,
-      "marketCap": 1272703232,
-      "volume": 97886,
-      "volumeRatio": 0.05,
-      "rsi14": 19.5,
-      "ma20": 12.53,
+      "price": 11.81,
+      "marketCap": 1292645760,
+      "volume": 1418724,
+      "volumeRatio": 0.73,
+      "rsi14": 21.3,
+      "ma20": 12.54,
       "ma50": 13.39,
-      "bbPercent": 0.001,
-      "change1d": -1.54,
+      "bbPercent": 0.081,
+      "change1d": 0.0,
       "change2d": -0.17,
       "change3d": -1.42,
       "change4d": -3.61,
       "change5d": 1.3,
-      "change7d": -4.61,
-      "change30d": -15.8,
+      "change7d": -3.12,
+      "change30d": -14.48,
       "revenueGrowth": 50.2,
       "grossMargin": 22.1,
       "fcf": 109468496,
-      "peRatio": 68.4,
-      "forwardPE": 13.2,
+      "peRatio": 69.5,
+      "forwardPE": 13.4,
       "eps": 0.17,
       "debtToEquity": 75.9,
       "returnOnEquity": 3.2,
       "week52High": 15.085,
       "week52Low": 7.41,
-      "priceVs52wHigh": 77.1,
+      "priceVs52wHigh": 78.3,
       "analystTarget": 15.75,
-      "analystUpside": 35.5,
+      "analystUpside": 33.4,
       "recommendation": "strong_buy",
       "institutionalPct": 105.5,
       "insiderPct": 1.8,
@@ -2787,10 +2787,10 @@
       "insiderBuys90d": 0,
       "insiderSells90d": 0,
       "description": "Ecovyst Inc. offers virgin and regenerated sulfuric acid products and services in the United States and internationally. It offers end-to-end logistics for production of alkylate for refineries mining, water treatment, and industrial applications. The company was formerly known as PQ Group Holdings Inc. and changed its name to Ecovyst Inc. in August 2021. Ecovyst Inc. was founded in 1831 and is he",
-      "fetchCompletedAt": "2026-07-07 10:36 EDT"
+      "fetchCompletedAt": "2026-07-07 20:27 EDT"
     }
   },
-  "detailsFetchedAt": "2026-07-07 10:36 EDT",
+  "detailsFetchedAt": "2026-07-07 20:27 EDT",
   "aiAssessments": {
     "JPM": {
       "raw": "STAGE: Mature\nTRAJECTORY: Accelerating\nSENTIMENT: Bullish\nNEWS_SENTIMENT: Neutral\nSCORE: 75\nCONFIDENCE: High\nBUY_SIGNAL: Buy\nREASONING: JPMorgan Chase, while a mature financial giant, exhibits an accelerating trajectory driven by solid 12.7% revenue growth and strong recent price momentum (11.43% in 30 days). Favorable macro conditions, including higher interest rates and low unemployment, provide a strong tailwind for bank profitability. Despite nearing its 52-week high and having a high RSI, the robust fundamentals and institutional confidence suggest continued strength, making it a strong performer rather than a high-growth speculative play.\nFORECAST_REASON: Given the high RSI (69.6) and proximity to its 52-week high (99.0%), JPM is likely to experience consolidation or a slight pullback tomorrow, despite strong underlying momentum.",
@@ -3670,10 +3670,6 @@
     ],
     "BMNR": [
       {
-        "rsi": 46.8,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 47.9,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -3688,6 +3684,10 @@
       {
         "rsi": 37.6,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 36.6,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "OLA.TO": [
@@ -3978,10 +3978,6 @@
     ],
     "ONDS": [
       {
-        "rsi": 29.4,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 30.3,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -3996,6 +3992,10 @@
       {
         "rsi": 25.7,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 25.5,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "POET": [
@@ -4045,10 +4045,6 @@
     "CDE": [
       {
         "rsi": 49.1,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
-        "rsi": 49.1,
         "ts": "2026-07-06 15:46 EDT"
       },
       {
@@ -4062,6 +4058,10 @@
       {
         "rsi": 29.4,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 30.0,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "HST": [
@@ -4374,10 +4374,6 @@
     ],
     "CRWV": [
       {
-        "rsi": 39.8,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 40.1,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -4392,6 +4388,10 @@
       {
         "rsi": 31.0,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 32.6,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "PBR": [
@@ -4418,10 +4418,6 @@
     ],
     "NAT": [
       {
-        "rsi": 57.9,
-        "ts": "2026-07-06 13:23 EDT"
-      },
-      {
         "rsi": 57.5,
         "ts": "2026-07-06 13:50 EDT"
       },
@@ -4436,6 +4432,10 @@
       {
         "rsi": 58.3,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 59.7,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "WAT": [
@@ -4485,10 +4485,6 @@
     "IP": [
       {
         "rsi": 78.2,
-        "ts": "2026-07-02 21:06 EDT"
-      },
-      {
-        "rsi": 78.2,
         "ts": "2026-07-02 21:09 EDT"
       },
       {
@@ -4502,6 +4498,10 @@
       {
         "rsi": 67.2,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 62.2,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "PH": [
@@ -4617,10 +4617,6 @@
     "ORCL": [
       {
         "rsi": 19.9,
-        "ts": "2026-07-06 13:23 EDT"
-      },
-      {
-        "rsi": 19.9,
         "ts": "2026-07-06 13:50 EDT"
       },
       {
@@ -4634,6 +4630,10 @@
       {
         "rsi": 6.8,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 7.1,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "CTSH": [
@@ -4726,10 +4726,6 @@
     ],
     "IRWD": [
       {
-        "rsi": 73.5,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 73.6,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -4744,6 +4740,10 @@
       {
         "rsi": 74.6,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 74.1,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "HL": [
@@ -5078,10 +5078,6 @@
     ],
     "SLB": [
       {
-        "rsi": 12.2,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 12.1,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -5096,13 +5092,13 @@
       {
         "rsi": 18.0,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 19.1,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "BKR": [
-      {
-        "rsi": 17.7,
-        "ts": "2026-07-06 14:34 EDT"
-      },
       {
         "rsi": 17.9,
         "ts": "2026-07-06 15:46 EDT"
@@ -5118,6 +5114,10 @@
       {
         "rsi": 21.3,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 21.4,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "KOS": [
@@ -5166,10 +5166,6 @@
     ],
     "ODFL": [
       {
-        "rsi": 17.5,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 17.1,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -5184,6 +5180,10 @@
       {
         "rsi": 21.6,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 20.3,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "LUNR": [
@@ -5362,10 +5362,6 @@
     ],
     "ALB": [
       {
-        "rsi": 13.6,
-        "ts": "2026-07-06 14:34 EDT"
-      },
-      {
         "rsi": 13.4,
         "ts": "2026-07-06 15:46 EDT"
       },
@@ -5380,6 +5376,10 @@
       {
         "rsi": 12.4,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 12.7,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "OXY": [
@@ -5414,6 +5414,10 @@
       {
         "rsi": 69.8,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 69.2,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "XYL": [
@@ -5428,6 +5432,10 @@
       {
         "rsi": 69.9,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 75.6,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "LCID": [
@@ -5442,6 +5450,10 @@
       {
         "rsi": 59.1,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 58.7,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "APD": [
@@ -5456,6 +5468,10 @@
       {
         "rsi": 69.5,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 65.7,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "WRB": [
@@ -5470,6 +5486,10 @@
       {
         "rsi": 70.5,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 67.3,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "IBM": [
@@ -5484,6 +5504,10 @@
       {
         "rsi": 68.7,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 69.9,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "FCX": [
@@ -5498,6 +5522,10 @@
       {
         "rsi": 17.8,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 18.8,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ],
     "ECVT": [
@@ -5512,6 +5540,10 @@
       {
         "rsi": 19.5,
         "ts": "2026-07-07 10:36 EDT"
+      },
+      {
+        "rsi": 21.3,
+        "ts": "2026-07-07 20:27 EDT"
       }
     ]
   }

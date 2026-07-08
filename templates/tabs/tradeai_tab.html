@@ -611,6 +611,7 @@ function renderTradeAI(data) {
         </select>
         <button class="btn" onclick="showAITransactions()">TRANSACTIONS</button>
         <button class="btn" onclick="showAIReport()">📊 REPORT</button>
+        <button class="btn" onclick="showAIInsights()">🧠 INSIGHTS</button>
         <button class="btn" style="color:var(--warn);border-color:var(--warn)" onclick="showReportReset()">🗑 REPORT RESET</button>
         <button class="btn" style="color:var(--down);border-color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
       </div>
@@ -1547,6 +1548,128 @@ async function doReportReset(all) {
 {%- endraw %}
 </script>
 
+
+<!-- TRADEAI INSIGHTS MODAL -->
+<div class="modal-overlay" id="aiInsightsModal" onclick="if(event.target===this)document.getElementById('aiInsightsModal').classList.remove('visible')">
+  <div class="modal" style="max-width:900px;width:95vw">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">🧠 SCORING INSIGHTS</div>
+        <div class="modal-subtitle" id="aiInsightsSubtitle">Which factors actually predict wins</div>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('aiInsightsModal').classList.remove('visible')">✕</button>
+    </div>
+    <div id="aiInsightsBody" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<script>
+{%- raw %}
+// ── TRADEAI SCORING INSIGHTS ────────────────────────────────────────────────
+async function showAIInsights() {
+  const modal = document.getElementById('aiInsightsModal');
+  const body  = document.getElementById('aiInsightsBody');
+  body.innerHTML = '<div style="color:var(--muted);padding:20px">Loading outcome stats...</div>';
+  modal.classList.add('visible');
+  try {
+    const d = await fetch('/tradeai/stats').then(r => r.json());
+    body.innerHTML = _renderInsights(d);
+    document.getElementById('aiInsightsSubtitle').textContent =
+      `${d.outcomesLogged} closed trades logged · ${d.outcomesWithFactors} with factor data`;
+  } catch(e) {
+    body.innerHTML = '<div style="color:var(--down)">Failed to load stats.</div>';
+    console.error('[Insights] load FAIL:', e);
+  }
+}
+
+function _insightStatCell(label, val, color) {
+  return `<div style="text-align:center"><div style="font-size:9px;color:var(--muted);letter-spacing:0.5px">${label}</div>
+    <div style="font-size:14px;font-weight:700;font-family:'DM Mono',monospace;${color?'color:'+color:''}">${val != null ? val : '—'}</div></div>`;
+}
+
+function _insightGroupTable(title, groups) {
+  const keys = Object.keys(groups || {});
+  if (!keys.length) return '';
+  const rows = keys.map(k => {
+    const s = groups[k];
+    if (!s) return '';
+    const expColor = s.expectancyPct > 0 ? 'var(--up)' : (s.expectancyPct < 0 ? 'var(--down)' : 'var(--muted)');
+    return `<tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:6px 10px;font-weight:700">${k}</td>
+      <td style="padding:6px 10px;text-align:right">${s.n}</td>
+      <td style="padding:6px 10px;text-align:right">${s.winRate != null ? s.winRate + '%' : '—'}</td>
+      <td style="padding:6px 10px;text-align:right;color:var(--up)">${s.avgWinPct != null ? '+' + s.avgWinPct + '%' : '—'}</td>
+      <td style="padding:6px 10px;text-align:right;color:var(--down)">${s.avgLossPct != null ? s.avgLossPct + '%' : '—'}</td>
+      <td style="padding:6px 10px;text-align:right;font-weight:700;color:${expColor}">${s.expectancyPct != null ? (s.expectancyPct > 0 ? '+' : '') + s.expectancyPct + '%' : '—'}</td>
+      <td style="padding:6px 10px;text-align:right">${s.avgDaysHeld != null ? s.avgDaysHeld + 'd' : '—'}</td>
+    </tr>`;
+  }).join('');
+  return `<div style="margin-bottom:18px">
+    <div style="font-size:10px;letter-spacing:1px;color:var(--accent);margin-bottom:6px">${title}</div>
+    <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'DM Mono',monospace;background:var(--surface);border:1px solid var(--border);border-radius:8px">
+      <thead><tr style="color:var(--muted);border-bottom:1px solid var(--border)">
+        <th style="padding:6px 10px;text-align:left">GROUP</th><th style="padding:6px 10px;text-align:right">N</th>
+        <th style="padding:6px 10px;text-align:right">WIN%</th><th style="padding:6px 10px;text-align:right">AVG WIN</th>
+        <th style="padding:6px 10px;text-align:right">AVG LOSS</th><th style="padding:6px 10px;text-align:right">EXPECT/TRADE</th>
+        <th style="padding:6px 10px;text-align:right">HELD</th>
+      </tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function _renderInsights(d) {
+  let html = '';
+  // Suggestions first — this is the feedback loop
+  if (d.suggestions && d.suggestions.length) {
+    html += `<div style="margin-bottom:18px">
+      <div style="font-size:10px;letter-spacing:1px;color:#a78bfa;margin-bottom:6px">💡 TUNING SUGGESTIONS</div>` +
+      d.suggestions.map(s => `<div style="padding:9px 12px;margin-bottom:6px;background:rgba(139,92,246,0.06);border:1px solid rgba(139,92,246,0.25);border-radius:8px;font-size:12px;line-height:1.5">${s}</div>`).join('') +
+      `</div>`;
+  }
+  const o = d.overall;
+  if (o) {
+    const expColor = o.expectancyPct > 0 ? 'var(--up)' : 'var(--down)';
+    html += `<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:18px">` +
+      _insightStatCell('TRADES', o.n) +
+      _insightStatCell('WIN RATE', o.winRate != null ? o.winRate + '%' : null) +
+      _insightStatCell('AVG WIN', o.avgWinPct != null ? '+' + o.avgWinPct + '%' : null, 'var(--up)') +
+      _insightStatCell('AVG LOSS', o.avgLossPct != null ? o.avgLossPct + '%' : null, 'var(--down)') +
+      _insightStatCell('EXPECT/TRADE', o.expectancyPct != null ? (o.expectancyPct > 0 ? '+' : '') + o.expectancyPct + '%' : null, expColor) +
+      _insightStatCell('PROFIT FACTOR', o.profitFactor) +
+      `</div>`;
+  } else {
+    html += '<div style="color:var(--muted);padding:10px 0 20px">No closed trades logged yet. Outcomes are recorded automatically on every TradeAI sell from now on.</div>';
+  }
+  html += _insightGroupTable('BY BUCKET', d.byBucket);
+  html += _insightGroupTable('BY COMPOSITE SCORE AT BUY', d.byCompositeBand);
+  html += _insightGroupTable('BY AI BUY SIGNAL', d.byBuySignal);
+  html += _insightGroupTable('BY EXIT TRIGGER', d.byTrigger);
+  html += _insightGroupTable('BY TRAJECTORY', d.byTrajectory);
+  // Factor discrimination table
+  const fc = d.factorComparison || {};
+  const fkeys = Object.keys(fc);
+  if (fkeys.length) {
+    const rows = fkeys.map(f => {
+      const c = fc[f];
+      const discriminates = c.winnersAvg != null && c.losersAvg != null && c.winnersAvg > c.losersAvg;
+      return `<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:6px 10px;font-weight:700">${f}</td>
+        <td style="padding:6px 10px;text-align:right;color:var(--up)">${c.winnersAvg != null ? c.winnersAvg : '—'} (n=${c.winnersN})</td>
+        <td style="padding:6px 10px;text-align:right;color:var(--down)">${c.losersAvg != null ? c.losersAvg : '—'} (n=${c.losersN})</td>
+        <td style="padding:6px 10px;text-align:right">${c.winnersAvg == null || c.losersAvg == null ? '—' : (discriminates ? '<span style="color:var(--up)">✓ predictive</span>' : '<span style="color:var(--warn)">✗ not predictive</span>')}</td>
+      </tr>`;
+    }).join('');
+    html += `<div style="margin-bottom:18px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent);margin-bottom:6px">FACTOR DISCRIMINATION — AVG VALUE AT BUY TIME</div>
+      <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'DM Mono',monospace;background:var(--surface);border:1px solid var(--border);border-radius:8px">
+        <thead><tr style="color:var(--muted);border-bottom:1px solid var(--border)">
+          <th style="padding:6px 10px;text-align:left">FACTOR</th><th style="padding:6px 10px;text-align:right">IN WINNERS</th>
+          <th style="padding:6px 10px;text-align:right">IN LOSERS</th><th style="padding:6px 10px;text-align:right">VERDICT</th>
+        </tr></thead><tbody>${rows}</tbody></table>
+      <div style="font-size:10px;color:var(--muted);margin-top:6px">A factor is only useful if its average is meaningfully higher in winning trades than losing ones.</div></div>`;
+  }
+  return html;
+}
+{%- endraw %}
+</script>
 
 <!-- TRADEAI REPORT MODAL -->
 <div class="modal-overlay" id="aiReportModal" onclick="if(event.target===this)closeAIReport()">

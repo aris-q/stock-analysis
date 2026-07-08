@@ -8,6 +8,7 @@ except ImportError:
     NEWSAPI_KEY  = None
     MACRO_PATH   = "output/macro.json"
 DREAM_PATH = "output/dream.json"
+TRADE_OUTCOMES_PATH = "output/trade_outcomes.json"
 from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze, fetch_live_prices
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
@@ -1725,8 +1726,29 @@ def run_tradeai_recommend():
                         "daysHeld": round(days_held, 1) if days_held is not None else None,
                     })
                     transactions.append(sells[-1])
-                    del holdings[ticker]
                     trigger = "stop-loss" if stop_loss_triggered else ("hard" if hard_sell else "soft")
+                    # Log closed-trade outcome with buy-time factors for scoring feedback
+                    try:
+                        outcomes_db = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+                        outcomes_db["outcomes"].append({
+                            "ticker": ticker,
+                            "buyDate": pos.get("purchasedAt"),
+                            "sellDate": ts(),
+                            "daysHeld": round(days_held, 1) if days_held is not None else None,
+                            "shares": pos["shares"],
+                            "buyPrice": purchase_price,
+                            "sellPrice": price,
+                            "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
+                            "gainLossPct": round((price - purchase_price) / purchase_price * 100, 2) if purchase_price else None,
+                            "trigger": trigger,
+                            "sellReason": sell_reason,
+                            "sellComposite": composite,
+                            "factors": pos.get("factors"),
+                        })
+                        save_json(TRADE_OUTCOMES_PATH, outcomes_db)
+                    except Exception as oe:
+                        log.error(f"[TradeOutcome] log FAIL: {ticker} | {oe}")
+                    del holdings[ticker]
                     log.info(f"TradeAI SELL: {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} | trigger:{trigger} pct_purchase:{pct_from_purchase:.1f}% composite:{composite}")
             else:
                 log.info(f"TradeAI HOLD: {ticker} | composite:{composite} signal:{buy_signal} pct_purchase:{pct_from_purchase:.1f}% — keeping position")
@@ -1814,11 +1836,26 @@ def run_tradeai_recommend():
                 continue
             cost = round(shares * price, 2)
             balance -= cost
-            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts()}
+            # Snapshot the score breakdown at buy time so closed trades can be
+            # attributed back to the factors that recommended them.
+            factors = {
+                "bucket":        s.get("bucket"),
+                "composite":     s.get("composite"),
+                "aiScore":       s.get("aiScore"),
+                "dreamScore":    s.get("dreamScore"),
+                "breakoutScore": s.get("breakoutScore"),
+                "buySignal":     s.get("buySignal"),
+                "trajectory":    s.get("trajectory"),
+                "stage":         s.get("stage"),
+                "signalFcBoost": s.get("signalFcBoost"),
+                "sectorPenalty": s.get("sectorPenalty"),
+            }
+            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts(), "factors": factors}
             buys.append({
                 "ticker": ticker, "action": "BUY", "shares": shares,
                 "price": price, "amount": cost, "date": ts(),
                 "balance": round(balance, 2), "reason": s.get("reasoning", ""),
+                "composite": s.get("composite"), "bucket": s.get("bucket"),
             })
             transactions.append(buys[-1])
             held_count += 1
@@ -1950,6 +1987,117 @@ def tradeai_recommend():
     t = threading.Thread(target=run_tradeai_recommend, daemon=True)
     t.start()
     return jsonify({"status": "started"})
+
+
+def _outcome_stats(rows):
+    """Aggregate win/loss stats for a list of outcome records."""
+    n = len(rows)
+    if n == 0:
+        return None
+    pnl_pcts = [r["gainLossPct"] for r in rows if r.get("gainLossPct") is not None]
+    wins   = [p for p in pnl_pcts if p > 0]
+    losses = [p for p in pnl_pcts if p <= 0]
+    total_gl = sum(r.get("gainLoss") or 0 for r in rows)
+    gross_win  = sum(max(0, r.get("gainLoss") or 0) for r in rows)
+    gross_loss = abs(sum(min(0, r.get("gainLoss") or 0) for r in rows))
+    return {
+        "n": n,
+        "winRate": round(len(wins) / len(pnl_pcts) * 100, 1) if pnl_pcts else None,
+        "avgWinPct": round(sum(wins) / len(wins), 2) if wins else None,
+        "avgLossPct": round(sum(losses) / len(losses), 2) if losses else None,
+        "expectancyPct": round(sum(pnl_pcts) / len(pnl_pcts), 2) if pnl_pcts else None,
+        "totalGainLoss": round(total_gl, 2),
+        "profitFactor": round(gross_win / gross_loss, 2) if gross_loss > 0 else None,
+        "avgDaysHeld": round(sum(r["daysHeld"] for r in rows if r.get("daysHeld") is not None) /
+                             max(1, len([r for r in rows if r.get("daysHeld") is not None])), 1),
+    }
+
+
+def _composite_band(c):
+    if c is None: return "unknown"
+    if c >= 90: return "90+"
+    if c >= 80: return "80-89"
+    if c >= 70: return "70-79"
+    if c >= 60: return "60-69"
+    return "<60"
+
+
+@app.route("/tradeai/stats")
+def tradeai_stats():
+    """Scoring feedback: closed-trade outcomes attributed to buy-time factors,
+    plus rule-based tuning suggestions for the scoring matrix."""
+    db = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+    outcomes = db.get("outcomes", [])
+    with_factors = [o for o in outcomes if o.get("factors")]
+
+    def group_by(rows, key_fn):
+        groups = {}
+        for r in rows:
+            groups.setdefault(key_fn(r) or "unknown", []).append(r)
+        return {k: _outcome_stats(v) for k, v in sorted(groups.items())}
+
+    by_bucket    = group_by(with_factors, lambda r: r["factors"].get("bucket"))
+    by_band      = group_by(with_factors, lambda r: _composite_band(r["factors"].get("composite")))
+    by_signal    = group_by(with_factors, lambda r: r["factors"].get("buySignal"))
+    by_trigger   = group_by(outcomes, lambda r: r.get("trigger"))
+    by_trajectory = group_by(with_factors, lambda r: r["factors"].get("trajectory"))
+
+    # Factor discrimination: mean of each numeric factor in winners vs losers.
+    # A factor whose mean is the same in both groups isn't predicting anything.
+    numeric_factors = ["composite", "aiScore", "dreamScore", "breakoutScore", "signalFcBoost"]
+    winners = [o for o in with_factors if (o.get("gainLossPct") or 0) > 0]
+    losers  = [o for o in with_factors if (o.get("gainLossPct") or 0) <= 0]
+    factor_comparison = {}
+    for f in numeric_factors:
+        w_vals = [o["factors"][f] for o in winners if o["factors"].get(f) is not None]
+        l_vals = [o["factors"][f] for o in losers if o["factors"].get(f) is not None]
+        if w_vals or l_vals:
+            factor_comparison[f] = {
+                "winnersAvg": round(sum(w_vals) / len(w_vals), 1) if w_vals else None,
+                "losersAvg": round(sum(l_vals) / len(l_vals), 1) if l_vals else None,
+                "winnersN": len(w_vals), "losersN": len(l_vals),
+            }
+
+    # ── Rule-based tuning suggestions (min sample sizes to avoid noise) ──────
+    suggestions = []
+    MIN_N = 5
+    overall = _outcome_stats(outcomes)
+    if overall and overall["n"] < MIN_N:
+        suggestions.append(f"Only {overall['n']} closed trades with outcome data so far — suggestions unlock at {MIN_N}+. Keep trading; every sell now logs its buy-time factors.")
+    else:
+        if overall and overall["expectancyPct"] is not None and overall["expectancyPct"] < 0:
+            suggestions.append(f"Overall expectancy is {overall['expectancyPct']}% per trade — the system is losing on average. Prioritize cutting the worst factor groups below before tuning anything else.")
+        for bucket, s in by_bucket.items():
+            if s and s["n"] >= MIN_N and s["expectancyPct"] is not None and s["expectancyPct"] < 0:
+                suggestions.append(f"Bucket '{bucket}': {s['winRate']}% win rate, {s['expectancyPct']}% avg per trade over {s['n']} trades — consider lowering its bucketWeights or excluding it from Identify.")
+        band_low, band_high = by_band.get("60-69"), by_band.get("80-89") or by_band.get("90+")
+        if band_low and band_low["n"] >= MIN_N and band_low["expectancyPct"] is not None and band_low["expectancyPct"] < 0:
+            suggestions.append(f"Composite 60-69 trades average {band_low['expectancyPct']}% — consider raising purchaseMatrix.minBuyComposite to 70.")
+        if band_high and band_low and band_high["expectancyPct"] is not None and band_low["expectancyPct"] is not None and band_high["expectancyPct"] <= band_low["expectancyPct"] and band_high["n"] >= MIN_N:
+            suggestions.append("Higher composite scores are NOT outperforming lower ones — the scoring matrix isn't ranking predictively. Check factorComparison to see which components aren't discriminating.")
+        for f, cmpv in factor_comparison.items():
+            if cmpv["winnersN"] >= MIN_N and cmpv["losersN"] >= MIN_N and cmpv["winnersAvg"] is not None and cmpv["losersAvg"] is not None:
+                if cmpv["winnersAvg"] <= cmpv["losersAvg"]:
+                    suggestions.append(f"Factor '{f}' averages {cmpv['winnersAvg']} in winners vs {cmpv['losersAvg']} in losers — it is not separating good trades from bad. Consider reducing its weight/bonus in the scoring config.")
+        sl = by_trigger.get("stop-loss")
+        if sl and sl["n"] >= MIN_N and overall and overall["n"] > 0 and sl["n"] / overall["n"] > 0.5:
+            suggestions.append(f"{sl['n']}/{overall['n']} exits were stop-losses — entries are frequently wrong. Tighten entry criteria (raise minBuyComposite) rather than widening stops.")
+        soft = by_trigger.get("soft")
+        if soft and soft["n"] >= MIN_N and soft["expectancyPct"] is not None and soft["expectancyPct"] > 0 and soft["avgDaysHeld"] is not None and soft["avgDaysHeld"] <= float(load_scoring_config()["sellThresholds"].get("minHoldDays", 3)) + 1:
+            suggestions.append(f"Rotation (soft) sells exit at +{soft['expectancyPct']}% avg after only {soft['avgDaysHeld']} days — winners may be cut early. Consider raising sellThresholds.minHoldDays.")
+
+    return jsonify({
+        "overall": overall,
+        "byBucket": by_bucket,
+        "byCompositeBand": by_band,
+        "byBuySignal": by_signal,
+        "byTrigger": by_trigger,
+        "byTrajectory": by_trajectory,
+        "factorComparison": factor_comparison,
+        "suggestions": suggestions,
+        "outcomesLogged": len(outcomes),
+        "outcomesWithFactors": len(with_factors),
+    })
 
 
 @app.route("/tradeai/reset", methods=["POST"])
