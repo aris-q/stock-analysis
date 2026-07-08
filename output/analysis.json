@@ -8,7 +8,7 @@
       "marketCap": 1969145774080,
       "rsi14": 33.3,
       "bbPercent": null,
-      "priceFetchedAt": "2026-07-07 21:09 EDT",
+      "priceFetchedAt": "2026-07-07 21:28 EDT",
       "fetchedAt": "2026-06-28 14:19 EDT",
       "calendarFetchedAt": "2026-06-28 14:19 EDT",
       "sector": "Industrials",
@@ -277,7 +277,7 @@
       "marketCap": 45571493888,
       "rsi14": 32.6,
       "bbPercent": 0.116,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     },
     {
       "ticker": "BKR",
@@ -287,7 +287,7 @@
       "marketCap": 54037983232,
       "rsi14": 21.4,
       "bbPercent": 0.225,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     },
     {
       "ticker": "ONDS",
@@ -297,7 +297,7 @@
       "marketCap": 4188313600,
       "rsi14": 25.5,
       "bbPercent": 0.14,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     },
     {
       "ticker": "IRWD",
@@ -307,7 +307,7 @@
       "marketCap": 735821888,
       "rsi14": 74.1,
       "bbPercent": 0.914,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     },
     {
       "ticker": "SLB",
@@ -317,7 +317,7 @@
       "marketCap": 69400576000,
       "rsi14": 19.1,
       "bbPercent": 0.299,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     },
     {
       "ticker": "BMNR",
@@ -327,7 +327,7 @@
       "marketCap": 8429737472,
       "rsi14": 36.6,
       "bbPercent": 0.414,
-      "priceFetchedAt": "2026-07-07 21:09 EDT"
+      "priceFetchedAt": "2026-07-07 21:28 EDT"
     }
   ],
   "dailyGainers": [
@@ -392,7 +392,7 @@
       "volume": 17027009
     }
   ],
-  "lastPriceRefresh": "2026-07-07 21:09 EDT",
+  "lastPriceRefresh": "2026-07-07 21:28 EDT",
   "dailyGainersCDN": [
     {
       "ticker": "FF.TO",

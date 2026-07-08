@@ -1,0 +1,311 @@
+{
+  "versions": [
+    {
+      "version": 1,
+      "date": "2026-05-16",
+      "label": "Baseline",
+      "changes": [
+        "Original scoring matrix; daily top-5 rotation",
+        "KNOWN FLAWS: traded on stale cached prices (Norton TLS bug), no slippage, no hold-time minimum, signal forecast boost \u00b120 active",
+        "Note: rollback restores config only \u2014 the data-integrity code fixes (live prices etc.) are permanent"
+      ],
+      "configSnapshot": {
+        "buySignalMap": {
+          "Strong Buy": 100,
+          "Buy": 75,
+          "Hold": 40,
+          "Avoid": 0,
+          "Unknown": 10
+        },
+        "bucketWeights": {
+          "Momentum": {
+            "dream": 0.15,
+            "ai": 0.65
+          },
+          "Reversal": {
+            "dream": 0.15,
+            "ai": 0.65
+          },
+          "SmartMoney": {
+            "dream": 0.3,
+            "ai": 0.55
+          },
+          "Dream": {
+            "dream": 0.25,
+            "ai": 0.65
+          }
+        },
+        "trajectoryBonus": {
+          "Momentum": {
+            "Accelerating": 20,
+            "Stable": 8,
+            "Decelerating": 0
+          },
+          "Reversal": {
+            "Accelerating": 0,
+            "Stable": 0,
+            "Decelerating": 0
+          },
+          "SmartMoney": {
+            "Accelerating": 10,
+            "Stable": 0,
+            "Decelerating": 0
+          },
+          "Dream": {
+            "Accelerating": 12,
+            "Stable": 0,
+            "Decelerating": 0
+          }
+        },
+        "stageBonus": {
+          "Momentum": {
+            "Early-Stage": 0,
+            "Growth": 8,
+            "Mature": 5,
+            "Declining": 0
+          },
+          "Reversal": {
+            "Early-Stage": 0,
+            "Growth": 0,
+            "Mature": 0,
+            "Declining": 0
+          },
+          "SmartMoney": {
+            "Early-Stage": 15,
+            "Growth": 10,
+            "Mature": 0,
+            "Declining": 0
+          },
+          "Dream": {
+            "Early-Stage": 8,
+            "Growth": 4,
+            "Mature": 0,
+            "Declining": 0
+          }
+        },
+        "sharedBonuses": {
+          "volumeSurgeHigh": 10,
+          "volumeSurgeMed": 5,
+          "volumeSurgeHigh_threshold": 2.0,
+          "volumeSurgeMed_threshold": 1.5,
+          "analystUpsideHigh": 8,
+          "analystUpsideMed": 4,
+          "analystUpsideHigh_threshold": 20.0,
+          "analystUpsideMed_threshold": 10.0,
+          "newsBullish": 6,
+          "newsNeutral": 3
+        },
+        "reversalBonuses": {
+          "rsiDeep": 20,
+          "rsiMed": 12,
+          "rsiMild": 6,
+          "rsiDeep_threshold": 30,
+          "rsiMed_threshold": 35,
+          "rsiMild_threshold": 40,
+          "bbLowerBand": 10,
+          "bbLowerBand_threshold": 0.1
+        },
+        "signalForecast": {
+          "enabled": true,
+          "returnMultiplier": 3.0,
+          "maxBoost": 20,
+          "maxPenalty": -20,
+          "neutralZone": 1.0
+        },
+        "sellThresholds": {
+          "hardSellFloor": 25,
+          "softSellFloor": 50,
+          "maxPositions": 5,
+          "stopLossHard": 8.0,
+          "stopLossSoft": 6.0,
+          "trailingStopPeak": 10.0,
+          "minHoldDays": 0
+        },
+        "execution": {
+          "slippagePct": 0.0
+        },
+        "selfLearning": {
+          "autoRollback": true,
+          "minTrades": 10,
+          "rollbackThresholdPct": 1.0
+        },
+        "breakoutScore": {
+          "rsiTurning": 8,
+          "bbSqueeze": 8,
+          "shortSqueeze": 5,
+          "volumeBuilding": 4,
+          "rsiTurning_low": 25,
+          "rsiTurning_high": 42,
+          "bbSqueeze_threshold": 0.2,
+          "shortSqueeze_threshold": 15.0,
+          "volumeBuilding_low": 1.2,
+          "volumeBuilding_high": 1.9
+        },
+        "sectorDiversity": {
+          "penalty": -15
+        },
+        "purchaseMatrix": {
+          "slots": 6,
+          "maxDeployPct": 100,
+          "minBuyComposite": 60
+        }
+      },
+      "configHash": "3674ee0dbebb"
+    },
+    {
+      "version": 2,
+      "date": "2026-07-07",
+      "label": "Data-integrity overhaul",
+      "changes": [
+        "Live prices required for every buy/sell (no trading on cached data)",
+        "0.2% slippage per side on fills",
+        "minHoldDays=3 hysteresis on rotation sells",
+        "Signal forecast boost disabled (measured: 49% direction accuracy = coin flip)",
+        "Gemini prompt recalibrated: batch-relative scoring, full 0-100 range, max 1-2 Strong Buys",
+        "Outcome logging with buy-time factors (this validation system)"
+      ],
+      "configSnapshot": {
+        "buySignalMap": {
+          "Strong Buy": 100,
+          "Buy": 75,
+          "Hold": 40,
+          "Avoid": 0,
+          "Unknown": 10
+        },
+        "bucketWeights": {
+          "Momentum": {
+            "dream": 0.15,
+            "ai": 0.65
+          },
+          "Reversal": {
+            "dream": 0.15,
+            "ai": 0.65
+          },
+          "SmartMoney": {
+            "dream": 0.3,
+            "ai": 0.55
+          },
+          "Dream": {
+            "dream": 0.25,
+            "ai": 0.65
+          }
+        },
+        "trajectoryBonus": {
+          "Momentum": {
+            "Accelerating": 20,
+            "Stable": 8,
+            "Decelerating": 0
+          },
+          "Reversal": {
+            "Accelerating": 0,
+            "Stable": 0,
+            "Decelerating": 0
+          },
+          "SmartMoney": {
+            "Accelerating": 10,
+            "Stable": 0,
+            "Decelerating": 0
+          },
+          "Dream": {
+            "Accelerating": 12,
+            "Stable": 0,
+            "Decelerating": 0
+          }
+        },
+        "stageBonus": {
+          "Momentum": {
+            "Early-Stage": 0,
+            "Growth": 8,
+            "Mature": 5,
+            "Declining": 0
+          },
+          "Reversal": {
+            "Early-Stage": 0,
+            "Growth": 0,
+            "Mature": 0,
+            "Declining": 0
+          },
+          "SmartMoney": {
+            "Early-Stage": 15,
+            "Growth": 10,
+            "Mature": 0,
+            "Declining": 0
+          },
+          "Dream": {
+            "Early-Stage": 8,
+            "Growth": 4,
+            "Mature": 0,
+            "Declining": 0
+          }
+        },
+        "sharedBonuses": {
+          "volumeSurgeHigh": 10,
+          "volumeSurgeMed": 5,
+          "volumeSurgeHigh_threshold": 2.0,
+          "volumeSurgeMed_threshold": 1.5,
+          "analystUpsideHigh": 8,
+          "analystUpsideMed": 4,
+          "analystUpsideHigh_threshold": 20.0,
+          "analystUpsideMed_threshold": 10.0,
+          "newsBullish": 6,
+          "newsNeutral": 3
+        },
+        "reversalBonuses": {
+          "rsiDeep": 20,
+          "rsiMed": 12,
+          "rsiMild": 6,
+          "rsiDeep_threshold": 30,
+          "rsiMed_threshold": 35,
+          "rsiMild_threshold": 40,
+          "bbLowerBand": 10,
+          "bbLowerBand_threshold": 0.1
+        },
+        "signalForecast": {
+          "enabled": false,
+          "returnMultiplier": 3.0,
+          "maxBoost": 20,
+          "maxPenalty": -20,
+          "neutralZone": 1.0
+        },
+        "sellThresholds": {
+          "hardSellFloor": 25,
+          "softSellFloor": 50,
+          "maxPositions": 5,
+          "stopLossHard": 8.0,
+          "stopLossSoft": 6.0,
+          "trailingStopPeak": 10.0,
+          "minHoldDays": 3
+        },
+        "execution": {
+          "slippagePct": 0.2
+        },
+        "selfLearning": {
+          "autoRollback": true,
+          "minTrades": 10,
+          "rollbackThresholdPct": 1.0
+        },
+        "breakoutScore": {
+          "rsiTurning": 8,
+          "bbSqueeze": 8,
+          "shortSqueeze": 5,
+          "volumeBuilding": 4,
+          "rsiTurning_low": 25,
+          "rsiTurning_high": 42,
+          "bbSqueeze_threshold": 0.2,
+          "shortSqueeze_threshold": 15.0,
+          "volumeBuilding_low": 1.2,
+          "volumeBuilding_high": 1.9
+        },
+        "sectorDiversity": {
+          "penalty": -15
+        },
+        "purchaseMatrix": {
+          "slots": 6,
+          "maxDeployPct": 100,
+          "minBuyComposite": 60
+        }
+      },
+      "configHash": "b3fd448f4381"
+    }
+  ]
+}

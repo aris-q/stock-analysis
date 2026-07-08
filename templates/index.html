@@ -1170,7 +1170,6 @@
   <div class="tab" onclick="showTab('dream', this);loadDream();" data-tab="dream">🌟 DREAM</div>
   <div class="tab" onclick="showTab('tradeai', this);loadTradeAI();" data-tab="tradeai">🤖 TRADEAI</div>
   <div class="tab" onclick="showTab('signal', this);loadSignal();" data-tab="signal">✅ VALIDATION</div>
-  <div class="tab" onclick="showTab('backtest', this);loadBacktest();" data-tab="backtest">📊 BACKTEST</div>
 </div>
 
 <div class="content">
@@ -1205,9 +1204,6 @@
   <div class="tab-panel" id="tab-signal">
     <div id="signalContent"><div class="loading">Click the ✅ VALIDATION tab to load recommendation outcomes...</div></div>
   </div>
-  <div class="tab-panel" id="tab-backtest">
-    <div id="backtestContent"><div class="loading">Click the 📊 BACKTEST tab to load analysis...</div></div>
-  </div>
 
 </div>
 
@@ -1226,7 +1222,6 @@
 {% include 'tabs/dream_tab.html' %}
 {% include 'tabs/admin_tab.html' %}
 {% include 'tabs/tradeai_tab.html' %}
-{% include 'tabs/backtest_tab.html' %}
 {% include 'tabs/signal_tab.html' %}
 
 </body>

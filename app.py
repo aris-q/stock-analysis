@@ -141,6 +141,152 @@ def save_json(path, data):
         json.dump(_sanitize(data), f, indent=2, allow_nan=False, default=lambda v: None)
     os.replace(tmp, path)
 
+RECOMMEND_VERSIONS_PATH = "output/recommend_versions.json"
+
+def _cfg_hash(cfg):
+    import hashlib
+    return hashlib.md5(json.dumps(cfg, sort_keys=True, default=str).encode()).hexdigest()[:12]
+
+def load_recommend_versions():
+    """Version log of the Recommend engine. Every buy is stamped with the
+    version active at purchase so the Validation tab can compare versions.
+    Each version stores its FULL scoring config so any version can be
+    restored (rollback = new forward version with an old config — the log
+    is append-only and history is never rewritten).
+    Seeds v1 (baseline) and v2 (2026-07-07 overhaul) on first use."""
+    db = load_json(RECOMMEND_VERSIONS_PATH, None)
+    if db and db.get("versions"):
+        # Forward-migrate old entries missing config snapshots
+        changed = False
+        for v in db["versions"]:
+            if "configSnapshot" not in v:
+                v["configSnapshot"] = None
+                changed = True
+        if changed:
+            save_json(RECOMMEND_VERSIONS_PATH, db)
+        return db
+    import copy
+    v1_cfg = copy.deepcopy(SCORING_DEFAULTS)
+    v1_cfg["signalForecast"]["enabled"] = True
+    v1_cfg["sellThresholds"]["minHoldDays"] = 0
+    v1_cfg["execution"]["slippagePct"] = 0.0
+    v2_cfg = copy.deepcopy(SCORING_DEFAULTS)
+    db = {"versions": [
+        {
+            "version": 1,
+            "date": "2026-05-16",
+            "label": "Baseline",
+            "changes": [
+                "Original scoring matrix; daily top-5 rotation",
+                "KNOWN FLAWS: traded on stale cached prices (Norton TLS bug), no slippage, no hold-time minimum, signal forecast boost ±20 active",
+                "Note: rollback restores config only — the data-integrity code fixes (live prices etc.) are permanent",
+            ],
+            "configSnapshot": v1_cfg,
+            "configHash": _cfg_hash(v1_cfg),
+        },
+        {
+            "version": 2,
+            "date": "2026-07-07",
+            "label": "Data-integrity overhaul",
+            "changes": [
+                "Live prices required for every buy/sell (no trading on cached data)",
+                "0.2% slippage per side on fills",
+                "minHoldDays=3 hysteresis on rotation sells",
+                "Signal forecast boost disabled (measured: 49% direction accuracy = coin flip)",
+                "Gemini prompt recalibrated: batch-relative scoring, full 0-100 range, max 1-2 Strong Buys",
+                "Outcome logging with buy-time factors (this validation system)",
+            ],
+            "configSnapshot": v2_cfg,
+            "configHash": _cfg_hash(v2_cfg),
+        },
+    ]}
+    save_json(RECOMMEND_VERSIONS_PATH, db)
+    return db
+
+def current_recommend_version():
+    return load_recommend_versions()["versions"][-1]["version"]
+
+def bump_recommend_version(changes, label="", config_snapshot=None, based_on=None):
+    db = load_recommend_versions()
+    new_v = db["versions"][-1]["version"] + 1
+    if config_snapshot is None:
+        config_snapshot = load_scoring_config()
+    entry = {
+        "version": new_v,
+        "date": datetime.now(TZ).strftime("%Y-%m-%d"),
+        "label": label or "Config change",
+        "changes": changes,
+        "configSnapshot": config_snapshot,
+        "configHash": _cfg_hash(config_snapshot),
+    }
+    if based_on:
+        entry["basedOn"] = based_on
+    # Don't-repeat-mistakes guard: flag if this exact config already existed
+    dup = next((v for v in db["versions"] if v.get("configHash") == entry["configHash"]), None)
+    if dup and not based_on:
+        entry["warning"] = f"Config identical to v{dup['version']} — check its results before expecting different ones"
+    db["versions"].append(entry)
+    save_json(RECOMMEND_VERSIONS_PATH, db)
+    log.info(f"[RecVersion] bumped to v{new_v} ({label}): {changes}")
+    return new_v
+
+def _version_stats_map():
+    """Outcome stats grouped by the recommend version that made each trade."""
+    outcomes = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []}).get("outcomes", [])
+    grouped = {}
+    for o in outcomes:
+        grouped.setdefault(o.get("recVersion", 1), []).append(o)
+    return {v: _outcome_stats(rows) for v, rows in grouped.items()}
+
+def _auto_rollback_if_underperforming(sl_cfg):
+    """Champion/challenger ratchet: once the current version has enough closed
+    trades, compare it to the best-proven prior version (the champion). If it
+    underperforms by more than the threshold, restore the champion's config as
+    a NEW version. The champion is only ever replaced by a version that beats
+    it on sufficient data — the ratchet moves up, never back and forth."""
+    min_n  = int(sl_cfg.get("minTrades", 10))
+    thresh = float(sl_cfg.get("rollbackThresholdPct", 1.0))
+    db = load_recommend_versions()
+    cur = db["versions"][-1]
+    stats_map = _version_stats_map()
+    cur_s = stats_map.get(cur["version"])
+    if not cur_s or cur_s["n"] < min_n or cur_s["expectancyPct"] is None:
+        return None  # still testing — not enough evidence to judge
+    prior = [v for v in db["versions"][:-1]
+             if v.get("configSnapshot")
+             and stats_map.get(v["version"])
+             and stats_map[v["version"]]["n"] >= min_n
+             and stats_map[v["version"]]["expectancyPct"] is not None]
+    if not prior:
+        return None
+    champ = max(prior, key=lambda v: stats_map[v["version"]]["expectancyPct"])
+    champ_s = stats_map[champ["version"]]
+    gap = champ_s["expectancyPct"] - cur_s["expectancyPct"]
+    if gap > thresh:
+        save_json(SCORING_CONFIG_PATH, champ["configSnapshot"])
+        new_v = bump_recommend_version(
+            [f"AUTO-ROLLBACK: v{cur['version']} averaged {cur_s['expectancyPct']}%/trade over {cur_s['n']} trades "
+             f"vs champion v{champ['version']} at {champ_s['expectancyPct']}%/trade — gap {round(gap,2)}% exceeds threshold {thresh}%",
+             f"Restored v{champ['version']} config"],
+            label=f"Auto-rollback to v{champ['version']} config",
+            config_snapshot=champ["configSnapshot"],
+            based_on=champ["version"],
+        )
+        log.warning(f"[SelfLearning] AUTO-ROLLBACK v{cur['version']} → v{new_v} (config of v{champ['version']})")
+        return {"action": "rollback", "newVersion": new_v, "restoredFrom": champ["version"],
+                "reason": f"v{cur['version']} expectancy {cur_s['expectancyPct']}% vs champion {champ_s['expectancyPct']}%"}
+    return None
+
+def _flatten_cfg(d, prefix=""):
+    out = {}
+    for k, v in (d or {}).items():
+        key = f"{prefix}.{k}" if prefix else k
+        if isinstance(v, dict):
+            out.update(_flatten_cfg(v, key))
+        else:
+            out[key] = v
+    return out
+
 def sync_watchlist_to_analysis(existing_watchlist, watchlist):
     """Ensure all tickers in watchlist exist in analysis, never remove existing cards."""
     existing_map = {s["ticker"]: s for s in existing_watchlist}
@@ -1107,6 +1253,11 @@ SCORING_DEFAULTS = {
     "execution": {
         "slippagePct": 0.2
     },
+    "selfLearning": {
+        "autoRollback": True,
+        "minTrades": 10,
+        "rollbackThresholdPct": 1.0
+    },
     "breakoutScore": {
         "rsiTurning":      8,
         "bbSqueeze":       8,
@@ -1161,9 +1312,20 @@ def get_scoring_config():
 def save_scoring_config():
     try:
         data = request.get_json()
+        # Auto-bump recommend version when scoring parameters actually change,
+        # so the Validation tab can attribute performance to each config.
+        old_flat = _flatten_cfg(load_scoring_config())
+        new_flat = _flatten_cfg(data)
+        diffs = [f"{k}: {old_flat.get(k)} → {new_flat[k]}"
+                 for k in new_flat if k in old_flat and old_flat.get(k) != new_flat[k]]
         save_json(SCORING_CONFIG_PATH, data)
-        log.info("[ScoringConfig] saved")
-        return jsonify({"status": "ok"})
+        warning = None
+        if diffs:
+            new_v = bump_recommend_version(diffs, label="Scoring config change", config_snapshot=data)
+            db = load_recommend_versions()
+            warning = db["versions"][-1].get("warning")
+        log.info(f"[ScoringConfig] saved | {len(diffs)} changed keys")
+        return jsonify({"status": "ok", "changed": diffs, "warning": warning})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
@@ -1509,6 +1671,8 @@ def run_tradeai_recommend():
 
         scoring_pool = list(identified) + [{"ticker": t, "bucket": "Dream"} for t in holdings if t not in cand_map]
 
+        rec_version = current_recommend_version()
+
         # ── Fetch fresh market prices — never trade on cached detail prices ──
         fetch_status["message"] = "TradeAI: fetching live prices..."
         live_prices = fetch_live_prices([item["ticker"] for item in scoring_pool])
@@ -1759,6 +1923,7 @@ def run_tradeai_recommend():
                             "sellReason": sell_reason,
                             "sellComposite": composite,
                             "factors": pos.get("factors"),
+                            "recVersion": pos.get("recVersion", 1),
                         })
                         save_json(TRADE_OUTCOMES_PATH, outcomes_db)
                     except Exception as oe:
@@ -1865,7 +2030,8 @@ def run_tradeai_recommend():
                 "signalFcBoost": s.get("signalFcBoost"),
                 "sectorPenalty": s.get("sectorPenalty"),
             }
-            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts(), "factors": factors}
+            holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts(), "factors": factors,
+                                "recVersion": rec_version}
             buys.append({
                 "ticker": ticker, "action": "BUY", "shares": shares,
                 "price": price, "amount": cost, "date": ts(),
@@ -1882,7 +2048,17 @@ def run_tradeai_recommend():
         trades["lastRecommendAt"] = ts()
         save_trades_ai(trades)
 
-        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored, "skipReasons": skip_reasons}
+        # ── Self-learning check: does the current version still deserve to run? ──
+        self_learning_action = None
+        try:
+            sl_cfg = cfg.get("selfLearning", {})
+            if sl_cfg.get("autoRollback", True):
+                self_learning_action = _auto_rollback_if_underperforming(sl_cfg)
+        except Exception as sle:
+            log.error(f"[SelfLearning] check FAIL: {sle}")
+
+        candidates_data["lastRecommend"] = {"buys": buys, "sells": sells, "scoredAt": ts(), "scored": scored, "skipReasons": skip_reasons,
+                                            "selfLearning": self_learning_action}
         save_json(TRADE_AI_CANDIDATES_PATH, candidates_data)
 
         # ── Sync watchlist from TradeAI holdings ──────────────────────────────
@@ -2052,6 +2228,47 @@ def tradeai_stats():
             groups.setdefault(key_fn(r) or "unknown", []).append(r)
         return {k: _outcome_stats(v) for k, v in sorted(groups.items())}
 
+    # ── Per-version performance: is each Recommend version an improvement? ──
+    versions_db = load_recommend_versions()
+    by_version_rows = {}
+    for o in outcomes:
+        by_version_rows.setdefault(o.get("recVersion", 1), []).append(o)
+    version_report = []
+    prev_stats = None
+    for v in versions_db["versions"]:
+        vstats = _outcome_stats(by_version_rows.get(v["version"], []))
+        entry = dict(v)
+        entry["hasConfig"] = bool(entry.pop("configSnapshot", None))
+        entry["stats"] = vstats
+        entry["current"] = (v["version"] == versions_db["versions"][-1]["version"])
+        if vstats and prev_stats and vstats["expectancyPct"] is not None and prev_stats["expectancyPct"] is not None:
+            entry["improvement"] = {
+                "expectancyDelta": round(vstats["expectancyPct"] - prev_stats["expectancyPct"], 2),
+                "winRateDelta": round((vstats["winRate"] or 0) - (prev_stats["winRate"] or 0), 1),
+                "vsVersion": prev_stats_version,
+                "reliable": vstats["n"] >= 10 and prev_stats["n"] >= 10,
+            }
+        if vstats:
+            prev_stats = vstats
+            prev_stats_version = v["version"]
+        version_report.append(entry)
+
+    # Champion = best expectancy among versions with enough trades; the ratchet
+    sl_cfg = load_scoring_config().get("selfLearning", {})
+    sl_min_n = int(sl_cfg.get("minTrades", 10))
+    proven = [e for e in version_report
+              if e["stats"] and e["stats"]["n"] >= sl_min_n and e["stats"]["expectancyPct"] is not None]
+    champion_v = max(proven, key=lambda e: e["stats"]["expectancyPct"])["version"] if proven else None
+    for e in version_report:
+        if champion_v is not None and e["version"] == champion_v:
+            e["status"] = "champion"
+        elif e["current"]:
+            e["status"] = "testing"
+        elif e["stats"] and e["stats"]["n"] >= sl_min_n:
+            e["status"] = "retired"
+        else:
+            e["status"] = "insufficient-data"
+
     by_bucket    = group_by(with_factors, lambda r: r["factors"].get("bucket"))
     by_band      = group_by(with_factors, lambda r: _composite_band(r["factors"].get("composite")))
     by_signal    = group_by(with_factors, lambda r: r["factors"].get("buySignal"))
@@ -2114,7 +2331,39 @@ def tradeai_stats():
         "outcomesLogged": len(outcomes),
         "outcomesWithFactors": len(with_factors),
         "recent": list(reversed(outcomes[-100:])),
+        "versions": version_report,
+        "currentVersion": versions_db["versions"][-1]["version"],
+        "championVersion": champion_v,
+        "selfLearning": {
+            "autoRollback": bool(sl_cfg.get("autoRollback", True)),
+            "minTrades": sl_min_n,
+            "rollbackThresholdPct": float(sl_cfg.get("rollbackThresholdPct", 1.0)),
+        },
     })
+
+
+@app.route("/tradeai/version/rollback", methods=["POST"])
+def tradeai_version_rollback():
+    """Restore an earlier version's config as a new forward version."""
+    try:
+        body = request.get_json(silent=True) or {}
+        target = int(body.get("toVersion", 0))
+        db = load_recommend_versions()
+        v = next((x for x in db["versions"] if x["version"] == target), None)
+        if not v:
+            return jsonify({"error": f"version v{target} not found"}), 400
+        if not v.get("configSnapshot"):
+            return jsonify({"error": f"v{target} has no saved config snapshot — cannot restore"}), 400
+        save_json(SCORING_CONFIG_PATH, v["configSnapshot"])
+        new_v = bump_recommend_version(
+            [f"Manual rollback: restored v{target} config"],
+            label=f"Rollback to v{target} config",
+            config_snapshot=v["configSnapshot"], based_on=target)
+        log.info(f"[RecVersion] manual rollback to v{target} config as v{new_v}")
+        return jsonify({"status": "ok", "newVersion": new_v, "restoredFrom": target})
+    except Exception as e:
+        log.error(f"[RecVersion] rollback FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route("/tradeai/reset", methods=["POST"])

@@ -27,6 +27,22 @@ async function renderValidation() {
   }
 }
 
+async function rollbackToVersion(v, btn) {
+  if (!confirm(`Restore the scoring config of v${v}? This creates a new version with that config — history is kept.`)) return;
+  btn.disabled = true; btn.textContent = '⏳';
+  try {
+    const r = await fetch('/tradeai/version/rollback', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({toVersion: v}),
+    }).then(r => r.json());
+    if (r.error) { alert('Rollback failed: ' + r.error); btn.disabled = false; btn.textContent = '⏪ ROLLBACK TO THIS CONFIG'; return; }
+    await renderValidation();
+  } catch(e) {
+    alert('Rollback failed: ' + e.message);
+    btn.disabled = false; btn.textContent = '⏪ ROLLBACK TO THIS CONFIG';
+  }
+}
+
 function buildValidationHTML(stats, trade) {
   const fmtPct = v => v != null ? (v > 0 ? '+' : '') + Number(v).toFixed(2) + '%' : '—';
   const pctColor = v => v > 0 ? 'var(--up)' : (v < 0 ? 'var(--down)' : 'var(--muted)');
@@ -38,6 +54,74 @@ function buildValidationHTML(stats, trade) {
     <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px">✅ RECOMMENDATION VALIDATION</div>
     <div style="font-size:11px;color:var(--muted);margin-top:2px">Every buy carries its score breakdown; every sell logs the outcome. This page grades the Recommend engine against reality.</div>
   </div>`;
+
+  // ── VERSION HISTORY — what changed, and did it help? ──────────────────────
+  const versions = (stats.versions || []).slice().reverse(); // newest first
+  if (versions.length) {
+    const vCards = versions.map(v => {
+      const s = v.stats;
+      const imp = v.improvement;
+      const statLine = s
+        ? `<div style="display:flex;gap:18px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:11px;margin-top:8px">
+            <span>trades: <b>${s.n}</b></span>
+            <span>win rate: <b>${s.winRate != null ? s.winRate + '%' : '—'}</b></span>
+            <span>expectancy: <b style="color:${pctColor(s.expectancyPct)}">${fmtPct(s.expectancyPct)}</b>/trade</span>
+            <span>total P&amp;L: <b style="color:${pctColor(s.totalGainLoss)}">$${(s.totalGainLoss||0).toFixed(2)}</b></span>
+          </div>`
+        : `<div style="font-size:11px;color:var(--muted);margin-top:8px">No closed trades under this version yet.</div>`;
+      let impLine = '';
+      if (imp) {
+        const better = imp.expectancyDelta > 0;
+        const arrow = better ? '▲' : (imp.expectancyDelta < 0 ? '▼' : '＝');
+        const col = better ? 'var(--up)' : (imp.expectancyDelta < 0 ? 'var(--down)' : 'var(--muted)');
+        impLine = `<div style="margin-top:8px;padding:8px 12px;border-radius:6px;background:${better?'rgba(74,222,128,0.08)':'rgba(239,68,68,0.08)'};border:1px solid ${col};font-size:11px">
+          <span style="color:${col};font-weight:700">${arrow} vs v${imp.vsVersion}: ${imp.expectancyDelta > 0 ? '+' : ''}${imp.expectancyDelta}% expectancy per trade, ${imp.winRateDelta > 0 ? '+' : ''}${imp.winRateDelta}pt win rate</span>
+          ${imp.reliable ? '' : '<span style="color:var(--warn);margin-left:8px">⚠ small sample — needs 10+ trades on both versions to be trusted</span>'}
+        </div>`;
+      }
+      const statusChips = {
+        'champion':          '<span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(251,191,36,0.15);color:#fbbf24;font-weight:700">🏆 CHAMPION</span>',
+        'testing':           '<span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(96,165,250,0.15);color:#60a5fa;font-weight:700">🧪 TESTING</span>',
+        'retired':           '<span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(107,114,128,0.15);color:#9ca3af;font-weight:700">RETIRED</span>',
+        'insufficient-data': '<span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(107,114,128,0.15);color:#6b7280;font-weight:700">NO DATA</span>',
+      };
+      const rollbackBtn = (!v.current && v.hasConfig)
+        ? `<button onclick="rollbackToVersion(${v.version}, this)" style="margin-left:auto;font-size:10px;padding:3px 10px;background:transparent;border:1px solid var(--warn);border-radius:5px;color:var(--warn);cursor:pointer;font-family:'DM Mono',monospace;font-weight:700">⏪ ROLLBACK TO THIS CONFIG</button>`
+        : (!v.current && !v.hasConfig ? '<span style="margin-left:auto;font-size:9px;color:var(--muted)">no config saved</span>' : '');
+      const warnLine = v.warning
+        ? `<div style="margin-top:6px;font-size:10px;color:var(--warn)">⚠ ${v.warning}</div>` : '';
+      return `<div style="border:1px solid ${v.status === 'champion' ? '#fbbf24' : (v.current ? 'var(--accent)' : 'var(--border)')};border-radius:10px;padding:14px 16px;margin-bottom:10px;background:var(--surface)">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'DM Mono',monospace;font-weight:800;font-size:14px;color:${v.current ? 'var(--accent)' : 'var(--text)'}">v${v.version}</span>
+          <span style="font-weight:700;font-size:12px">${v.label || ''}</span>
+          <span style="font-size:10px;color:var(--muted)">${v.date || ''}</span>
+          ${v.basedOn ? '<span style="font-size:9px;color:var(--muted)">↩ config of v' + v.basedOn + '</span>' : ''}
+          ${v.current ? '<span style="font-size:9px;padding:2px 8px;border-radius:4px;background:rgba(200,241,53,0.15);color:var(--accent);font-weight:700">CURRENT</span>' : ''}
+          ${statusChips[v.status] || ''}
+          ${rollbackBtn}
+        </div>
+        <ul style="margin:8px 0 0 16px;padding:0;font-size:11px;color:var(--muted);line-height:1.7">
+          ${(v.changes || []).map(ch => '<li>' + ch + '</li>').join('')}
+        </ul>
+        ${warnLine}
+        ${statLine}
+        ${impLine}
+      </div>`;
+    }).join('');
+    const sl = stats.selfLearning || {};
+    const champLine = stats.championVersion != null
+      ? `Champion: <b style="color:#fbbf24">v${stats.championVersion}</b> — the best proven config. `
+      : `No champion yet — a version needs ${sl.minTrades || 10}+ closed trades to be judged. `;
+    html += `<div style="margin-bottom:22px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent);margin-bottom:6px">RECOMMEND ENGINE — VERSION HISTORY (currently v${stats.currentVersion})</div>
+      <div style="padding:10px 14px;margin-bottom:10px;background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.25);border-radius:8px;font-size:11px;line-height:1.6">
+        <b>🔒 SELF-LEARNING POLICY:</b> ${champLine}
+        After <b>${sl.minTrades || 10}</b> closed trades, the current version is compared to the champion; if it underperforms by more than <b>${sl.rollbackThresholdPct || 1}%</b> per trade, its config ${sl.autoRollback ? 'is <b>automatically rolled back</b>' : 'should be rolled back (auto-rollback is OFF)'} to the champion's. The champion only changes when beaten on equal evidence — the ratchet moves up, never back and forth. The version log is append-only: rollbacks create a new version, so every experiment stays on record.
+      </div>
+      ${vCards}
+      <div style="font-size:10px;color:var(--muted);margin-top:4px">A new version is logged automatically whenever the Scoring Matrix is changed; each version stores its full config. Each closed trade is credited to the version that bought it.</div>
+    </div>`;
+  }
 
   // ── OPEN POSITIONS — recommendations currently being tested ──────────────
   const holdings = trade.holdings || [];
