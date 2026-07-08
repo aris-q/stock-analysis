@@ -3,6 +3,31 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+def _setup_ca_bundle():
+    """Norton Antivirus MITM-proxies HTTPS and re-signs certs with its own CA,
+    which Python/curl don't trust — every yfinance/requests call fails with
+    CERTIFICATE_VERIFY_FAILED. Build a bundle of certifi + Norton CA and point
+    all HTTP clients at it."""
+    norton_ca = r"C:\ProgramData\Norton\Antivirus\wscert.pem"
+    if not os.path.exists(norton_ca):
+        return
+    try:
+        import certifi, shutil
+        os.makedirs("output", exist_ok=True)
+        bundle = os.path.abspath("output/ca_bundle.pem")
+        shutil.copyfile(certifi.where(), bundle)
+        with open(norton_ca, "rb") as f:
+            norton = f.read()
+        with open(bundle, "ab") as f:
+            f.write(b"\n" + norton)
+        os.environ.setdefault("SSL_CERT_FILE", bundle)
+        os.environ.setdefault("REQUESTS_CA_BUNDLE", bundle)
+        os.environ.setdefault("CURL_CA_BUNDLE", bundle)
+    except Exception:
+        pass
+
+_setup_ca_bundle()
+
 FMP_API_KEY = os.getenv("FMP_API_KEY")
 WATCHLIST = ["KGC", "GOLD", "NEM", "AEM"]
 OUTPUT_PATH = "output/analysis.json"

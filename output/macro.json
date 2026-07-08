@@ -34,34 +34,34 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.48,
-      "prev": 4.44,
-      "change": 0.04,
-      "date": "2026-07-01",
+      "value": 4.49,
+      "prev": 4.48,
+      "change": 0.01,
+      "date": "2026-07-02",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.17,
-      "prev": 4.14,
-      "change": 0.03,
-      "date": "2026-07-01",
+      "value": 4.14,
+      "prev": 4.17,
+      "change": -0.03,
+      "date": "2026-07-02",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 16.59,
-      "prev": 16.45,
-      "change": 0.14,
-      "date": "2026-07-01",
+      "value": 15.57,
+      "prev": 15.81,
+      "change": -0.24,
+      "date": "2026-07-06",
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 120.89,
-      "prev": 121.06,
-      "change": -0.17,
-      "date": "2026-06-26",
+      "value": 120.69,
+      "prev": 121.15,
+      "change": -0.46,
+      "date": "2026-07-02",
       "unit": ""
     },
     "oil_wti": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7483.24,
-      "prev": 7483.23,
-      "change": 0.01,
-      "date": "2026-07-02",
+      "value": 7537.43,
+      "prev": null,
+      "change": null,
+      "date": "2026-07-06",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.31,
+      "value": 0.35,
       "unit": "%",
-      "date": "2026-07-01",
+      "date": "2026-07-02",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "The Rise of Active ETFs: Can Fund Managers Outperform Passive Investing?",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/investing/2026/07/03/the-rise-of-active-etfs-can-fund-managers-outperfo/",
-      "publishedAt": "2026-07-04T03:20:00Z"
+      "title": "Stock Market Today: Nasdaq Slides As Samsung Tumbles On Earnings; Micron, Sandisk Lose Big (Live Coverage)",
+      "source": "Investor's Business Daily",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-micron-sandisk-samsung/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-07-07T13:43:18Z"
     },
     {
-      "title": "JEPI Investors Missed 13.21% in Gains While Paying Hidden Taxes on \u2018Monthly\u2019 Income",
+      "title": "Exchange-Traded Funds Lower, Equity Futures Mixed Amid Caution Over Chip Sector Outlook",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-lower-equity-132222461.html",
+      "publishedAt": "2026-07-07T13:22:22Z"
+    },
+    {
+      "title": "Playing It Safe With $1.7 Million in Cash and Bonds Is Costing This Retiree $39,000 a Year",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/03/jepi-investors-missed-13-21-in-gains-while-paying-hidden-taxes-on-monthly-income/",
-      "publishedAt": "2026-07-03T20:09:02Z"
+      "url": "https://247wallst.com/personal-finance/2026/07/07/playing-it-safe-with-1-7-million-in-cash-and-bonds-is-costing-this-retiree-39000-a-year/",
+      "publishedAt": "2026-07-07T12:21:23Z"
     },
     {
-      "title": "Trump Accounts Auto-Buy SPYM on July 4. Here\u2019s the ETF Nobody\u2019s Heard Of",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/07/03/trump-accounts-auto-buy-spym-on-july-4-heres-the-etf-nobodys-heard-of/",
-      "publishedAt": "2026-07-03T19:06:20Z"
-    },
-    {
-      "title": "What Actually Drove IWD Over The Past Year",
+      "title": "Your Biggest Fund May Be A Bad Deal",
       "source": "Trefis",
-      "url": "https://www.trefis.com/articles/605699/what-actually-drove-iwd-over-the-past-year/2026-07-03",
-      "publishedAt": "2026-07-03T12:55:34Z"
+      "url": "https://www.trefis.com/articles/605948/your-biggest-fund-may-be-a-bad-deal/2026-07-07",
+      "publishedAt": "2026-07-07T12:15:57Z"
     },
     {
-      "title": "EWY's Dip Looks Familiar, But Is It A Trap?",
-      "source": "Trefis",
-      "url": "https://www.trefis.com/articles/605701/ewys-dip-looks-familiar-but-is-it-a-trap/2026-07-03",
-      "publishedAt": "2026-07-03T12:55:05Z"
-    },
-    {
-      "title": "ETF Zoo: Mid-Year Check-In  the AI Trade That Won\u2019t Quit",
-      "source": "etf.com",
-      "url": "http://www.etf.com/sections/podcasts/etf-zoo-mid-year-check-ai-trade-wont-quit?utm_source=yahoo-financeutm_medium=rssutm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-07-03T01:16:46Z"
-    },
-    {
-      "title": "SPYI\u2019s 0.68% Fee Could Cost You Thousands Over 20 Years\u2014Here\u2019s Why",
+      "title": "Insiders Are Dumping Micron At The Highest Rate Since 2010. Is It Time To Get Out?",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/02/spyis-0-68-fee-could-cost-you-thousands-over-20-years-heres-why/",
-      "publishedAt": "2026-07-02T22:17:23Z"
+      "url": "https://247wallst.com/investing/2026/07/07/insiders-are-dumping-micron-at-the-highest-rate-since-2010-is-it-time-to-get-out/",
+      "publishedAt": "2026-07-07T12:02:46Z"
     },
     {
-      "title": "The 41-Day Dividend Trap That Quietly Erodes SPY Returns Every Quarter",
+      "title": "The $1,500-A-Month Portfolio: Conservative, Moderate, And High-Yield Paths Compared",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/02/the-41-day-dividend-trap-that-quietly-erodes-spy-returns-every-quarter/",
-      "publishedAt": "2026-07-02T20:06:46Z"
+      "url": "https://247wallst.com/personal-finance/2026/07/07/the-1500-a-month-portfolio-conservative-moderate-and-high-yield-paths-compared/",
+      "publishedAt": "2026-07-07T10:39:57Z"
     },
     {
-      "title": "\u201cDiversification Means Always Having to Say You\u2019re Sorry\"",
-      "source": "etf.com",
-      "url": "http://www.etf.com/sections/conferences/diversification-means-always-having-say-youre-sorry?utm_source=yahoo-finance&utm_medium=rss&utm_campaign=yahoo-finance-rss",
-      "publishedAt": "2026-07-02T19:49:04Z"
+      "title": "Nasdaq Futures Lag After Samsung Selloff Hits AI Chip Trade: Why SPCX, MU, SNDK, RIVN, WMT Are In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/stock-market-today-dow-nasdaq-sp500-futures-spcx-mu-sndk-rivn-wmt-stocks/cZmlX39R7mS",
+      "publishedAt": "2026-07-07T08:43:43Z"
     },
     {
-      "title": "Stocks Soaring, Gas Falling: Inside the July 4th Economy Everyone\u2019s Arguing About",
+      "title": "S&P 500, Nasdaq End Higher On Support From Strong Tech Gains Led By Nvidia, Dow Hits Record Highs \u2014 MSFT, NVDA, LMT, AVGO, SPCX In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-higher-on-support-from-strong-tech-gains-led-by-nvidia-dow-hits-record-highs-msft-nvda-lmt-avgo-spcx-in-focus/cZm1YfaR7lU",
+      "publishedAt": "2026-07-06T21:24:38Z"
+    },
+    {
+      "title": "Top Wall Street Strategist: The S&P 500 Could Hit As High As 8,800 This Year, But a 10-20% Drop May Come First",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/02/stocks-soaring-gas-falling-inside-the-july-4th-economy-everyones-arguing-about/",
-      "publishedAt": "2026-07-02T19:24:32Z"
+      "url": "https://247wallst.com/investing/2026/07/06/top-wall-street-strategist-the-sp-500-could-hit-as-high-as-8800-this-year-but-a-10-20-drop-may-come-first/",
+      "publishedAt": "2026-07-06T20:27:32Z"
     },
     {
-      "title": "The Monthly Income Trap: How JEPQ Investors Gave Up $18,000 Per $10,000 Invested Since Inception",
+      "title": "Microsoft Is Cutting 4,800 Jobs to Feed the AI Machine. Should You Still Own It?",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/04/the-monthly-income-trap-how-jepq-investors-gave-up-18000-per-10000-invested-since-inception/",
-      "publishedAt": "2026-07-04T20:14:44Z"
+      "url": "https://247wallst.com/investing/2026/07/06/microsoft-is-cutting-4800-jobs-to-feed-the-ai-machine-should-you-still-own-it/",
+      "publishedAt": "2026-07-06T19:58:58Z"
     },
     {
-      "title": "FEPI\u2019s 25% Yield Masks a Painful Truth About Call-Writing Income",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/etf/2026/07/04/fepis-25-yield-masks-a-painful-truth-about-call-writing-income/",
-      "publishedAt": "2026-07-04T18:34:23Z"
+      "title": "SpaceX joins Nasdaq 100, SK Hynix makes US debut: What to Watch",
+      "source": "Yahoo Finance Video",
+      "url": "https://finance.yahoo.com/video/spacex-joins-nasdaq-100-sk-230000351.html",
+      "publishedAt": "2026-07-06T23:00:00Z"
+    },
+    {
+      "title": "Will a Spot in the Nasdaq-100 Send SpaceX Stock Flying? Don\u2019t Bet on It",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-07-2026/card/will-a-spot-in-the-nasdaq-100-send-spacex-stock-flying-don-t-bet-on-it-TMmcNx9WbGBoKa99Wt6G?siteid=yhoof2&yptr=yahoo",
+      "publishedAt": "2026-07-07T12:12:16Z"
     }
   ],
-  "fetchedAt": "2026-07-04 18:28 EDT"
+  "fetchedAt": "2026-07-07 10:02 EDT"
 }

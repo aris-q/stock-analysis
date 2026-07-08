@@ -1,35 +1,39 @@
 {
-  "balance": 185.42,
+  "balance": 0.57,
   "holdings": {
-    "BKNG": {
-      "shares": 4,
-      "purchasePrice": 184.56,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "ONDS": {
+      "shares": 115,
+      "purchasePrice": 7.525,
+      "purchasedAt": "2026-07-06 10:42 EDT",
+      "peakPrice": 7.585
     },
-    "AUGO": {
-      "shares": 13,
-      "purchasePrice": 65.46,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "CRWV": {
+      "shares": 10,
+      "purchasePrice": 85.82,
+      "purchasedAt": "2026-07-06 10:42 EDT"
     },
-    "RCI-B.TO": {
-      "shares": 19,
-      "purchasePrice": 44.85,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "IRWD": {
+      "shares": 201,
+      "purchasePrice": 4.3001,
+      "purchasedAt": "2026-07-06 10:42 EDT",
+      "peakPrice": 4.49
     },
-    "CDE": {
-      "shares": 50,
-      "purchasePrice": 17.3,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "BKR": {
+      "shares": 16,
+      "purchasePrice": 53.715,
+      "purchasedAt": "2026-07-06 10:42 EDT",
+      "peakPrice": 54.47
     },
-    "CMG": {
-      "shares": 24,
-      "purchasePrice": 35.39,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "SLB": {
+      "shares": 18,
+      "purchasePrice": 45.91,
+      "purchasedAt": "2026-07-06 10:42 EDT",
+      "peakPrice": 46.42
     },
-    "ARIS": {
-      "shares": 54,
-      "purchasePrice": 16.0,
-      "purchasedAt": "2026-07-03 09:46 EDT"
+    "BMNR": {
+      "shares": 61,
+      "purchasePrice": 15.26,
+      "purchasedAt": "2026-07-07 10:23 EDT"
     }
   },
   "transactions": [
@@ -1052,7 +1056,182 @@
       "date": "2026-07-03 09:46 EDT",
       "balance": 185.42,
       "reason": "Aris Mining demonstrates an accelerating trajectory with robust revenue growth of 136.5% and a significantly lower forward P/E of 4.3, indicating strong future earnings expansion. Excellent gross margins (58.8%) and substantial free cash flow ($200M) provide a solid financial foundation for continued operational growth. High institutional ownership (72%) and a 131% analyst upside target further validate its potential, making the recent price dip an attractive entry point."
+    },
+    {
+      "ticker": "BKNG",
+      "action": "SELL",
+      "shares": 4,
+      "price": 184.56,
+      "amount": 738.24,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 923.66,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "AUGO",
+      "action": "SELL",
+      "shares": 13,
+      "price": 65.46,
+      "amount": 850.98,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 1774.64,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "RCI-B.TO",
+      "action": "SELL",
+      "shares": 19,
+      "price": 44.85,
+      "amount": 852.15,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 2626.79,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "CDE",
+      "action": "SELL",
+      "shares": 50,
+      "price": 17.3,
+      "amount": 865.0,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 3491.79,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "CMG",
+      "action": "SELL",
+      "shares": 24,
+      "price": 35.39,
+      "amount": 849.36,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 4341.15,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "ARIS",
+      "action": "SELL",
+      "shares": 54,
+      "price": 16.0,
+      "amount": 864.0,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 5205.15,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "ONDS",
+      "action": "BUY",
+      "shares": 115,
+      "price": 7.525,
+      "amount": 865.38,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 4339.77,
+      "reason": "Ondas exhibits an accelerating trajectory, evidenced by its astounding 1079.9% revenue growth and recent securing of over $30M in new orders, signaling robust business momentum from a low base. The growing active opportunity pipeline in critical sectors like private wireless and drone technology, coupled with strong analyst conviction, suggests significant future upside. However, the company remains unprofitable with negative free cash flow, indicating reliance on future growth and potential capital raises. Despite these early-stage risks, Ondas's rapid expansion and strategic market positioning make it a compelling high-growth investment opportunity."
+    },
+    {
+      "ticker": "CRWV",
+      "action": "BUY",
+      "shares": 10,
+      "price": 85.82,
+      "amount": 858.2,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 3481.57,
+      "reason": "CoreWeave exhibits an accelerating business trajectory, driven by explosive revenue growth (111.6%) and strong gross margins (69.4%) in the high-demand AI infrastructure sector. While the company faces significant financial risks including massive negative free cash flow and extremely high debt-to-equity, these are characteristic of a hyper-growth firm investing heavily to capture market share. The strong analyst target and institutional ownership suggest confidence in its long-term potential, making it a high-risk, high-reward growth opportunity."
+    },
+    {
+      "ticker": "IRWD",
+      "action": "BUY",
+      "shares": 201,
+      "price": 4.3001,
+      "amount": 864.32,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 2617.25,
+      "reason": "Ironwood exhibits an accelerating trajectory with exceptional revenue growth (158.9%) and a highly attractive forward P/E of 3.1, indicating strong expected earnings expansion. The company boasts excellent gross margins (75.2%) and positive free cash flow, underscoring its operational strength. While the RSI is in overbought territory (74.1), suggesting potential for a short-term pullback, the fundamental growth story, strong profitability, and compelling valuation make IRWD a compelling long-term buy for growth investors."
+    },
+    {
+      "ticker": "BKR",
+      "action": "BUY",
+      "shares": 16,
+      "price": 53.715,
+      "amount": 859.44,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 1757.81,
+      "reason": "BKR is currently at a low base, indicated by its extremely oversold RSI and significant recent price drop, but shows potential for acceleration from this point. Rising WTI crude oil prices provide a tailwind for the energy sector, and strong analyst conviction (33.7% upside, \"buy\" rating) coupled with high institutional ownership suggests underlying value. While revenue growth is modest and forward P/E indicates potential near-term earnings deceleration, the current depressed valuation presents an attractive entry point for a potential rebound."
+    },
+    {
+      "ticker": "VTEX",
+      "action": "BUY",
+      "shares": 213,
+      "price": 4.065,
+      "amount": 865.85,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 891.96,
+      "reason": "VTEX exhibits an accelerating trajectory, primarily driven by a significant implied earnings improvement as indicated by its forward P/E of 14.7 compared to a current P/E of 31.4. This suggests strong operational leverage and profitability growth, complementing its solid 12.1% revenue growth and excellent 78.4% gross margin. While the macro CPI data is concerning (and potentially erroneous), VTEX's positive free cash flow, analyst buy rating with substantial upside, and recent positive price momentum make it an attractive growth opportunity. The company is improving rapidly from a lower base, positioning it well for future appreciation."
+    },
+    {
+      "ticker": "SLB",
+      "action": "BUY",
+      "shares": 18,
+      "price": 45.91,
+      "amount": 826.38,
+      "date": "2026-07-06 10:42 EDT",
+      "balance": 65.58,
+      "reason": "SLB's stock is deeply oversold with an RSI of 11.8 and has experienced a significant 20% decline over the past 30 days, positioning it for potential acceleration from a low base. The attractive forward P/E of 13.8, strong analyst buy recommendation with 35% upside, and high institutional ownership (92.7%) suggest underlying confidence in future performance. While current revenue growth is modest, the company's technology focus within the energy sector and rising WTI crude oil prices provide positive catalysts for a rebound. The current valuation presents a compelling entry point for growth-oriented investors."
+    },
+    {
+      "ticker": "VTEX",
+      "action": "SELL",
+      "shares": 213,
+      "price": 4.065,
+      "amount": 865.85,
+      "date": "2026-07-07 10:23 EDT",
+      "balance": 931.43,
+      "reason": "Composite score collapsed to 0/100 \u2014 exiting position",
+      "composite": 0,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 0.0,
+      "pctFromPeak": 0.0,
+      "stopLoss": false
+    },
+    {
+      "ticker": "BMNR",
+      "action": "BUY",
+      "shares": 61,
+      "price": 15.26,
+      "amount": 930.86,
+      "date": "2026-07-07 10:23 EDT",
+      "balance": 0.57,
+      "reason": "BMNR exhibits an accelerating operational trajectory, marked by exceptional 627.8% revenue growth and a strong 66.6% gross margin, indicating rapid improvement from a low base. While free cash flow is significantly negative, the absence of debt mitigates immediate liquidity concerns, suggesting growth is funded by equity. The stock is trading at a substantial discount from its 52-week high, presenting a high-risk, high-reward opportunity for investors believing in continued execution towards profitability, as implied by the reasonable forward P/E and strong analyst target."
     }
   ],
-  "lastRecommendAt": "2026-07-03 09:46 EDT"
+  "lastRecommendAt": "2026-07-07 20:15 EDT"
 }

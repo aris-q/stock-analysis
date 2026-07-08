@@ -7,6 +7,35 @@ from datetime import datetime, timezone, timedelta
 
 log = logging.getLogger(__name__)
 
+def fetch_live_prices(tickers):
+    """Fetch a fresh market price for each ticker. Returns {ticker: price}.
+    Tickers that fail to fetch are omitted so callers can tell fresh from stale."""
+    prices = {}
+    for t in tickers:
+        try:
+            stock = yf.Ticker(t)
+            price = None
+            try:
+                price = stock.fast_info.last_price
+                if price is not None and math.isnan(float(price)):
+                    price = None
+            except Exception:
+                pass
+            if not price:
+                info = stock.info
+                price = info.get("currentPrice") or info.get("regularMarketPrice")
+            if not price:
+                hist = stock.history(period="5d")
+                if not hist.empty:
+                    price = float(hist["Close"].iloc[-1])
+            if price and price > 0:
+                prices[t] = round(float(price), 4)
+        except Exception as e:
+            log.warning(f"fetch_live_prices FAIL: {t} | {e}")
+    log.info(f"fetch_live_prices: {len(prices)}/{len(tickers)} fetched")
+    return prices
+
+
 def fetch_daily_gainers():
     us_gainers = fetch_us_gainers()
     cdn_gainers = fetch_cdn_gainers()

@@ -8,7 +8,7 @@ except ImportError:
     NEWSAPI_KEY  = None
     MACRO_PATH   = "output/macro.json"
 DREAM_PATH = "output/dream.json"
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze, fetch_live_prices
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -1098,7 +1098,11 @@ SCORING_DEFAULTS = {
         "maxPositions":     5,
         "stopLossHard":     8.0,
         "stopLossSoft":     6.0,
-        "trailingStopPeak": 10.0
+        "trailingStopPeak": 10.0,
+        "minHoldDays":      3
+    },
+    "execution": {
+        "slippagePct": 0.2
     },
     "breakoutScore": {
         "rsiTurning":      8,
@@ -1190,11 +1194,9 @@ def run_tradeai_identify():
     fetch_status = {"running": True, "message": "TradeAI: identifying candidates (3-bucket)...", "operation": "tradeai_identify", "current": 0, "total": 0, "current_ticker": ""}
     log.info("=== TradeAI Identify Started (3-bucket) ===")
     try:
-        trades = load_trades_ai()
-        held_tickers = list(trades.get("holdings", {}).keys())
         dream = load_json(DREAM_PATH, {})
         candidates = dream.get("candidates", [])
-        seen = set(held_tickers)  # still exclude already-held tickers from new picks
+        seen = set()  # held tickers now compete for slots on merit
         result = []
 
         # Helper to safely get breakdown field
@@ -1396,7 +1398,7 @@ def run_tradeai_analyze():
         total = len(eligible)
         fetch_status["total"] = total
 
-        ai_assessments = {}
+        ai_assessments = candidates_data.get("aiAssessments", {})
         for idx, item in enumerate(eligible, 1):
             if stop_flag:
                 log.info(f"[TradeAI Analyze] Stopped by user at {idx}/{total}")
@@ -1462,6 +1464,8 @@ def run_tradeai_recommend():
         RB              = cfg["reversalBonuses"]
         SF              = cfg["signalForecast"]
         SELL_CFG        = cfg["sellThresholds"]
+        EXEC_CFG        = cfg.get("execution", {})
+        slippage        = float(EXEC_CFG.get("slippagePct", 0.2)) / 100.0
         BKT_SC          = cfg.get("breakoutScore", {})
         SD_PENALTY      = cfg.get("sectorDiversity", {}).get("penalty", -15)
 
@@ -1487,15 +1491,24 @@ def run_tradeai_recommend():
             if hs:
                 held_sectors.add(hs)
 
+        scoring_pool = list(identified) + [{"ticker": t, "bucket": "Dream"} for t in holdings if t not in cand_map]
+
+        # ── Fetch fresh market prices — never trade on cached detail prices ──
+        fetch_status["message"] = "TradeAI: fetching live prices..."
+        live_prices = fetch_live_prices([item["ticker"] for item in scoring_pool])
+        missing_live = [item["ticker"] for item in scoring_pool if item["ticker"] not in live_prices]
+        if missing_live:
+            log.warning(f"TradeAI recommend: no live price for {missing_live} — cached prices will NOT be used for trades")
+
         scored = []
-        for item in identified:
+        for item in scoring_pool:
             ticker = item["ticker"]
             bucket = item.get("bucket", "Dream")
             detail = details.get(ticker, {})
             ai = ai_assessments.get(ticker, {})
             d_data = dream_map.get(ticker, {})
             dream_score = d_data.get("score", 0)
-            price = detail.get("price") or d_data.get("price")
+            price = live_prices.get(ticker) or detail.get("price") or d_data.get("price")
 
             ai_score    = ai.get("aiScore") or 0
             trajectory  = ai.get("trajectory", "")
@@ -1627,8 +1640,21 @@ def run_tradeai_recommend():
             scored_entry   = next((s for s in scored if s["ticker"] == ticker), None)
             composite      = scored_entry["composite"] if scored_entry else 0
             buy_signal     = scored_entry["buySignal"] if scored_entry else "Unknown"
-            current_price  = (scored_entry["price"] if scored_entry else None) or pos.get("purchasePrice")
+            current_price  = live_prices.get(ticker)
             purchase_price = pos.get("purchasePrice") or current_price or 0
+
+            if not current_price:
+                log.warning(f"TradeAI SELL-CHECK skip: {ticker} — no live price, holding position (will not trade on stale data)")
+                continue
+
+            # Days held — soft (rotation) sells are blocked before minHoldDays
+            days_held = None
+            try:
+                purchased_at = pos.get("purchasedAt", "")
+                dt = datetime.strptime(purchased_at[:16], "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+                days_held = (datetime.now(TZ) - dt).total_seconds() / 86400.0
+            except Exception:
+                pass
 
             # ── Peak price tracking ───────────────────────────────────────────
             peak_price = pos.get("peakPrice") or purchase_price
@@ -1661,10 +1687,16 @@ def run_tradeai_recommend():
             hard_sell = buy_signal == "Avoid" or composite < SELL_CFG["hardSellFloor"]
             soft_sell = ticker not in top5 and composite < SELL_CFG["softSellFloor"]
 
+            # Hold-time hysteresis: rotation (soft) sells only after minHoldDays.
+            # Stop-loss and hard sells are exempt — risk exits stay immediate.
+            min_hold_days = float(SELL_CFG.get("minHoldDays", 3))
+            if soft_sell and not (stop_loss_triggered or hard_sell):
+                if days_held is not None and days_held < min_hold_days:
+                    log.info(f"TradeAI HOLD (min-hold): {ticker} | held {days_held:.1f}d < {min_hold_days}d — rotation sell deferred")
+                    soft_sell = False
+
             if stop_loss_triggered or hard_sell or soft_sell:
-                price = current_price or pos.get("purchasePrice")
-                if not price:
-                    price = pos.get("purchasePrice")
+                price = round(current_price * (1 - slippage), 4)  # sell fill below market: spread + slippage
                 if price:
                     proceeds = round(price * pos["shares"], 2)
                     balance += proceeds
@@ -1689,6 +1721,8 @@ def run_tradeai_recommend():
                         "pctFromPurchase": round(pct_from_purchase, 2),
                         "pctFromPeak": round(pct_from_peak, 2),
                         "stopLoss": stop_loss_triggered,
+                        "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
+                        "daysHeld": round(days_held, 1) if days_held is not None else None,
                     })
                     transactions.append(sells[-1])
                     del holdings[ticker]
@@ -1744,6 +1778,10 @@ def run_tradeai_recommend():
                 log.warning(f"TradeAI QUALIFY skip (no price): {ticker}")
                 skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "No valid price data"})
                 continue
+            if ticker not in live_prices:
+                log.warning(f"TradeAI QUALIFY skip (no live price): {ticker} — refusing to buy on cached price")
+                skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "No live price — cached data only"})
+                continue
             if s.get("composite", 0) < min_composite:
                 log.info(f"TradeAI QUALIFY skip (composite {s.get('composite')} < min {min_composite}): {ticker}")
                 skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Composite score {s.get('composite')} below minimum {min_composite}"})
@@ -1770,7 +1808,7 @@ def run_tradeai_recommend():
         # ── Step 2: buy top N qualifiers by composite score ───────────────────
         for s in actual_buys:
             ticker = s["ticker"]
-            price  = s["price"]
+            price  = round(s["price"] * (1 + slippage), 4)  # buy fill above market: spread + slippage
             shares = int(equal_budget // price)
             if shares < 1:
                 continue
