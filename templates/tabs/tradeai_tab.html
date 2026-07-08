@@ -1564,12 +1564,15 @@ function _renderInsights(d) {
   const o = d.overall;
   if (o) {
     const expColor = o.expectancyPct > 0 ? 'var(--up)' : 'var(--down)';
-    html += `<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:18px">` +
+    const hasExcess = o.excessExpectancyPct != null;
+    const exColor = o.excessExpectancyPct > 0 ? 'var(--up)' : 'var(--down)';
+    html += `<div style="display:grid;grid-template-columns:repeat(${hasExcess ? 7 : 6},1fr);gap:8px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:18px">` +
       _insightStatCell('TRADES', o.n) +
       _insightStatCell('WIN RATE', o.winRate != null ? o.winRate + '%' : null) +
       _insightStatCell('AVG WIN', o.avgWinPct != null ? '+' + o.avgWinPct + '%' : null, 'var(--up)') +
       _insightStatCell('AVG LOSS', o.avgLossPct != null ? o.avgLossPct + '%' : null, 'var(--down)') +
       _insightStatCell('EXPECT/TRADE', o.expectancyPct != null ? (o.expectancyPct > 0 ? '+' : '') + o.expectancyPct + '%' : null, expColor) +
+      (hasExcess ? _insightStatCell('VS SPY', (o.excessExpectancyPct > 0 ? '+' : '') + o.excessExpectancyPct + '%', exColor) : '') +
       _insightStatCell('PROFIT FACTOR', o.profitFactor) +
       `</div>`;
   } else {

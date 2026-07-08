@@ -1317,6 +1317,21 @@ def fetch_trade_detail(ticker):
         except Exception as e:
             log.warning(f"fetch_trade_detail insider FAIL: {ticker} | {e}")
 
+        # Next earnings date — buys near earnings are coin flips on the gap
+        earnings_date = None
+        try:
+            cal = stock.calendar
+            ed = None
+            if isinstance(cal, dict):
+                eds = cal.get("Earnings Date") or []
+                ed = eds[0] if eds else None
+            elif cal is not None and hasattr(cal, "empty") and not cal.empty and "Earnings Date" in getattr(cal, "index", []):
+                ed = cal.loc["Earnings Date"].iloc[0]
+            if ed is not None:
+                earnings_date = str(ed)[:10]
+        except Exception as e:
+            log.warning(f"fetch_trade_detail earnings date FAIL: {ticker} | {e}")
+
         result = {
             "ticker": ticker,
             "name": info.get("shortName", ticker),
@@ -1357,6 +1372,7 @@ def fetch_trade_detail(ticker):
             "insiderNet": insider_net,
             "insiderBuys90d": insider_buys_90d,
             "insiderSells90d": insider_sells_90d,
+            "earningsDate": earnings_date,
             "description": (info.get("longBusinessSummary") or "")[:400],
         }
 
@@ -1449,6 +1465,8 @@ Debt/Equity: {detail.get('debtToEquity')}
 Analyst Target: {detail.get('analystTarget')} (Upside: {detail.get('analystUpside')}%)
 Analyst Rec: {detail.get('recommendation')}
 Institutional %: {detail.get('institutionalPct')}%
+Insider Activity (90d): {detail.get('insiderNet') or 'Unknown'} (buys: {detail.get('insiderBuys90d')} sh, sells: {detail.get('insiderSells90d')} sh)
+Next Earnings: {detail.get('earningsDate') or 'Unknown'}
 52w High: {detail.get('week52High')} | Price vs 52w High: {detail.get('priceVs52wHigh')}%
 Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
 """.strip()

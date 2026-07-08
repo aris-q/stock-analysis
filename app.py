@@ -9,6 +9,7 @@ except ImportError:
     MACRO_PATH   = "output/macro.json"
 DREAM_PATH = "output/dream.json"
 TRADE_OUTCOMES_PATH = "output/trade_outcomes.json"
+SHADOW_PATH = "output/shadow_candidates.json"
 from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze, fetch_live_prices
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
@@ -1220,7 +1221,9 @@ SCORING_DEFAULTS = {
         "analystUpsideHigh_threshold": 20.0,
         "analystUpsideMed_threshold":  10.0,
         "newsBullish":        6,
-        "newsNeutral":        3
+        "newsNeutral":        3,
+        "insiderNetBuy":      5,
+        "insiderNetSell":     -3
     },
     "reversalBonuses": {
         "rsiDeep":    20,
@@ -1251,7 +1254,14 @@ SCORING_DEFAULTS = {
         "minHoldDays":      3
     },
     "execution": {
-        "slippagePct": 0.2
+        "slippagePct":         0.2,
+        "slippageMidCapPct":   0.4,
+        "slippageSmallCapPct": 0.6,
+        "midCapBelow":         2000000000,
+        "smallCapBelow":       300000000
+    },
+    "regime": {
+        "vixNoBuyAbove": 30
     },
     "selfLearning": {
         "autoRollback": True,
@@ -1276,9 +1286,89 @@ SCORING_DEFAULTS = {
     "purchaseMatrix": {
         "slots":         6,
         "maxDeployPct":  100,
-        "minBuyComposite": 60
+        "minBuyComposite": 60,
+        "earningsBlackoutDays": 3
     }
 }
+
+def _record_shadow_snapshot(scored, live_prices, spy_now, rec_version):
+    """Shadow validation: snapshot EVERY scored candidate (bought or not) so the
+    composite ranking can be graded against 5-day forward returns — ~20 data
+    points per day instead of only the handful of positions actually traded."""
+    db = load_json(SHADOW_PATH, {"snapshots": []})
+    today = datetime.now(TZ).strftime("%Y-%m-%d")
+    if any(s.get("date") == today for s in db["snapshots"]):
+        return
+    rows = []
+    for s in scored:
+        p = live_prices.get(s["ticker"])
+        if not p:
+            continue
+        rows.append({
+            "ticker": s["ticker"], "bucket": s.get("bucket"),
+            "composite": s.get("composite"), "aiScore": s.get("aiScore"),
+            "dreamScore": s.get("dreamScore"), "breakoutScore": s.get("breakoutScore"),
+            "buySignal": s.get("buySignal"), "price": p, "spyPrice": spy_now,
+            "recVersion": rec_version, "fwdReturnPct": None, "fwdExcessPct": None,
+        })
+    if rows:
+        db["snapshots"].append({"date": today, "rows": rows})
+        db["snapshots"] = db["snapshots"][-90:]
+        save_json(SHADOW_PATH, db)
+        log.info(f"[Shadow] snapshot {today}: {len(rows)} candidates recorded")
+
+
+def _grade_shadow_snapshots(min_age_days=5, max_fetches=40):
+    """Fill in forward returns (vs SPY) for shadow snapshots old enough to judge."""
+    db = load_json(SHADOW_PATH, {"snapshots": []})
+    today = datetime.now(TZ).date()
+    pending = []
+    for snap in db["snapshots"]:
+        try:
+            age = (today - datetime.strptime(snap["date"], "%Y-%m-%d").date()).days
+        except Exception:
+            continue
+        if age >= min_age_days and any(r.get("fwdReturnPct") is None for r in snap.get("rows", [])):
+            pending.append((snap, age))
+    if not pending:
+        return 0
+    tickers = {r["ticker"] for snap, _ in pending for r in snap["rows"] if r.get("fwdReturnPct") is None}
+    prices = fetch_live_prices(sorted(tickers)[:max_fetches] + ["SPY"])
+    spy_p = prices.get("SPY")
+    graded = 0
+    for snap, age in pending:
+        for r in snap["rows"]:
+            if r.get("fwdReturnPct") is not None:
+                continue
+            p = prices.get(r["ticker"])
+            if not p or not r.get("price"):
+                continue
+            r["fwdReturnPct"] = round((p - r["price"]) / r["price"] * 100, 2)
+            if spy_p and r.get("spyPrice"):
+                spy_ret = (spy_p - r["spyPrice"]) / r["spyPrice"] * 100
+                r["fwdExcessPct"] = round(r["fwdReturnPct"] - spy_ret, 2)
+            r["gradedAfterDays"] = age
+            graded += 1
+    if graded:
+        save_json(SHADOW_PATH, db)
+        log.info(f"[Shadow] graded {graded} candidate rows")
+    return graded
+
+
+def _slippage_for(detail, exec_cfg):
+    """Liquidity-aware slippage: small caps pay wider spreads than a flat 0.2%.
+    Returns a fraction (e.g. 0.006 for 0.6%). Unknown market cap = assume mid-cap."""
+    cap = (detail or {}).get("marketCap")
+    small = float(exec_cfg.get("slippageSmallCapPct", 0.6)) / 100.0
+    mid   = float(exec_cfg.get("slippageMidCapPct", 0.4)) / 100.0
+    base  = float(exec_cfg.get("slippagePct", 0.2)) / 100.0
+    if cap is None:
+        return mid
+    if cap < float(exec_cfg.get("smallCapBelow", 3e8)):
+        return small
+    if cap < float(exec_cfg.get("midCapBelow", 2e9)):
+        return mid
+    return base
 
 def load_scoring_config():
     saved = load_json(SCORING_CONFIG_PATH, {})
@@ -1643,7 +1733,7 @@ def run_tradeai_recommend():
         SF              = cfg["signalForecast"]
         SELL_CFG        = cfg["sellThresholds"]
         EXEC_CFG        = cfg.get("execution", {})
-        slippage        = float(EXEC_CFG.get("slippagePct", 0.2)) / 100.0
+        REGIME_CFG      = cfg.get("regime", {})
         BKT_SC          = cfg.get("breakoutScore", {})
         SD_PENALTY      = cfg.get("sectorDiversity", {}).get("penalty", -15)
 
@@ -1674,8 +1764,11 @@ def run_tradeai_recommend():
         rec_version = current_recommend_version()
 
         # ── Fetch fresh market prices — never trade on cached detail prices ──
+        # SPY rides along as the benchmark; ^VIX as the regime gauge.
         fetch_status["message"] = "TradeAI: fetching live prices..."
-        live_prices = fetch_live_prices([item["ticker"] for item in scoring_pool])
+        live_prices = fetch_live_prices([item["ticker"] for item in scoring_pool] + ["SPY", "^VIX"])
+        spy_now = live_prices.get("SPY")
+        vix_now = live_prices.get("^VIX")
         missing_live = [item["ticker"] for item in scoring_pool if item["ticker"] not in live_prices]
         if missing_live:
             log.warning(f"TradeAI recommend: no live price for {missing_live} — cached prices will NOT be used for trades")
@@ -1754,8 +1847,13 @@ def run_tradeai_recommend():
                 base      = ((dream_score * w["dream"]) + (ai_score * w["ai"])) * 0.70
                 composite = base + trajectory_bonus + stage_bonus + volume_bonus + analyst_bonus + news_bonus
 
+            # ── Insider activity bonus (all buckets) ──────────────────────────
+            insider_net_status = detail.get("insiderNet")
+            insider_bonus = (SH.get("insiderNetBuy", 5) if insider_net_status == "Net Buyer"
+                             else (SH.get("insiderNetSell", -3) if insider_net_status == "Net Seller" else 0))
+
             # ── Breakout score + sector penalty (all buckets) ─────────────────
-            composite = composite + breakout_score + sector_penalty
+            composite = composite + breakout_score + sector_penalty + insider_bonus
 
             # ── Signal Forecast Boost ─────────────────────────────────────────
             signal_boost = 0
@@ -1786,7 +1884,7 @@ def run_tradeai_recommend():
                 f"[Score] {ticker} bucket:{bucket} dream:{dream_score} ai:{ai_score} "
                 f"traj:{trajectory_bonus} stage:{stage_bonus} "
                 f"vol:{volume_bonus} analyst:{analyst_bonus} news:{news_bonus} "
-                f"breakout:{breakout_score} sector_pen:{sector_penalty} "
+                f"breakout:{breakout_score} sector_pen:{sector_penalty} insider:{insider_bonus} "
                 f"fc_dir:{signal_fc_direction} fc_return:{signal_fc_return}% fc_boost:{signal_boost} "
                 f"composite:{composite}"
             )
@@ -1814,6 +1912,13 @@ def run_tradeai_recommend():
 
         scored.sort(key=lambda x: x["composite"], reverse=True)
         top5 = [s["ticker"] for s in scored[:5]]
+
+        # Shadow validation: record all scored candidates + grade old snapshots
+        try:
+            _record_shadow_snapshot(scored, live_prices, spy_now, rec_version)
+            _grade_shadow_snapshots()
+        except Exception as she:
+            log.error(f"[Shadow] FAIL: {she}")
 
         sells = []
         for ticker, pos in list(holdings.items()):
@@ -1876,7 +1981,8 @@ def run_tradeai_recommend():
                     soft_sell = False
 
             if stop_loss_triggered or hard_sell or soft_sell:
-                price = round(current_price * (1 - slippage), 4)  # sell fill below market: spread + slippage
+                sell_slip = _slippage_for(details.get(ticker), EXEC_CFG)
+                price = round(current_price * (1 - sell_slip), 4)  # sell fill below market: spread + slippage
                 if price:
                     proceeds = round(price * pos["shares"], 2)
                     balance += proceeds
@@ -1908,6 +2014,11 @@ def run_tradeai_recommend():
                     trigger = "stop-loss" if stop_loss_triggered else ("hard" if hard_sell else "soft")
                     # Log closed-trade outcome with buy-time factors for scoring feedback
                     try:
+                        # Benchmark: what did SPY do over the same holding period?
+                        gl_pct = round((price - purchase_price) / purchase_price * 100, 2) if purchase_price else None
+                        spy_buy = pos.get("spyAtBuy")
+                        spy_return_pct = round((spy_now - spy_buy) / spy_buy * 100, 2) if (spy_now and spy_buy) else None
+                        excess_pct = round(gl_pct - spy_return_pct, 2) if (gl_pct is not None and spy_return_pct is not None) else None
                         outcomes_db = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
                         outcomes_db["outcomes"].append({
                             "ticker": ticker,
@@ -1918,7 +2029,10 @@ def run_tradeai_recommend():
                             "buyPrice": purchase_price,
                             "sellPrice": price,
                             "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
-                            "gainLossPct": round((price - purchase_price) / purchase_price * 100, 2) if purchase_price else None,
+                            "gainLossPct": gl_pct,
+                            "spyReturnPct": spy_return_pct,
+                            "excessReturnPct": excess_pct,
+                            "vixAtBuy": pos.get("vixAtBuy"),
                             "trigger": trigger,
                             "sellReason": sell_reason,
                             "sellComposite": composite,
@@ -1984,6 +2098,19 @@ def run_tradeai_recommend():
                 log.warning(f"TradeAI QUALIFY skip (no live price): {ticker} — refusing to buy on cached price")
                 skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": "No live price — cached data only"})
                 continue
+            # Earnings blackout: buying right before earnings is a coin flip on the gap
+            blackout_days = int(pm.get("earningsBlackoutDays", 3))
+            e_date_str = details.get(ticker, {}).get("earningsDate")
+            if blackout_days > 0 and e_date_str:
+                try:
+                    e_date = datetime.strptime(e_date_str, "%Y-%m-%d").date()
+                    days_to_earnings = (e_date - datetime.now(TZ).date()).days
+                    if 0 <= days_to_earnings <= blackout_days:
+                        log.info(f"TradeAI QUALIFY skip (earnings blackout): {ticker} reports in {days_to_earnings}d ({e_date_str})")
+                        skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Earnings in {days_to_earnings} day(s) ({e_date_str}) — inside {blackout_days}-day blackout"})
+                        continue
+                except Exception:
+                    pass
             if s.get("composite", 0) < min_composite:
                 log.info(f"TradeAI QUALIFY skip (composite {s.get('composite')} < min {min_composite}): {ticker}")
                 skip_reasons.append({"ticker": ticker, "bucket": s.get("bucket"), "composite": s.get("composite"), "reason": f"Composite score {s.get('composite')} below minimum {min_composite}"})
@@ -1994,6 +2121,13 @@ def run_tradeai_recommend():
                 continue
             qualified.append(s)
             log.info(f"TradeAI QUALIFIED: {ticker} | bucket:{s.get('bucket')} composite:{s.get('composite')} signal:{s.get('buySignal')}")
+
+        # ── VIX regime gate: no new buys into a volatility spike ─────────────
+        vix_ceiling = float(REGIME_CFG.get("vixNoBuyAbove", 30))
+        if vix_now and vix_now > vix_ceiling:
+            log.warning(f"TradeAI REGIME GATE: VIX {vix_now} > {vix_ceiling} — no new buys this run (sells unaffected)")
+            skip_reasons.append({"ticker": "*", "reason": f"VIX {vix_now} above {vix_ceiling} — regime gate blocked all new buys"})
+            qualified = []
 
         slots_to_fill = max(0, max_slots - held_count)
         qualified_sorted = sorted(qualified, key=lambda x: x.get("composite", 0), reverse=True)
@@ -2010,7 +2144,8 @@ def run_tradeai_recommend():
         # ── Step 2: buy top N qualifiers by composite score ───────────────────
         for s in actual_buys:
             ticker = s["ticker"]
-            price  = round(s["price"] * (1 + slippage), 4)  # buy fill above market: spread + slippage
+            buy_slip = _slippage_for(details.get(ticker), EXEC_CFG)
+            price  = round(s["price"] * (1 + buy_slip), 4)  # buy fill above market: spread + slippage
             shares = int(equal_budget // price)
             if shares < 1:
                 continue
@@ -2031,7 +2166,7 @@ def run_tradeai_recommend():
                 "sectorPenalty": s.get("sectorPenalty"),
             }
             holdings[ticker] = {"shares": shares, "purchasePrice": price, "purchasedAt": ts(), "factors": factors,
-                                "recVersion": rec_version}
+                                "recVersion": rec_version, "spyAtBuy": spy_now, "vixAtBuy": vix_now}
             buys.append({
                 "ticker": ticker, "action": "BUY", "shares": shares,
                 "price": price, "amount": cost, "date": ts(),
@@ -2192,12 +2327,15 @@ def _outcome_stats(rows):
     total_gl = sum(r.get("gainLoss") or 0 for r in rows)
     gross_win  = sum(max(0, r.get("gainLoss") or 0) for r in rows)
     gross_loss = abs(sum(min(0, r.get("gainLoss") or 0) for r in rows))
+    excess = [r["excessReturnPct"] for r in rows if r.get("excessReturnPct") is not None]
     return {
         "n": n,
         "winRate": round(len(wins) / len(pnl_pcts) * 100, 1) if pnl_pcts else None,
         "avgWinPct": round(sum(wins) / len(wins), 2) if wins else None,
         "avgLossPct": round(sum(losses) / len(losses), 2) if losses else None,
         "expectancyPct": round(sum(pnl_pcts) / len(pnl_pcts), 2) if pnl_pcts else None,
+        "excessExpectancyPct": round(sum(excess) / len(excess), 2) if excess else None,
+        "excessN": len(excess),
         "totalGainLoss": round(total_gl, 2),
         "profitFactor": round(gross_win / gross_loss, 2) if gross_loss > 0 else None,
         "avgDaysHeld": round(sum(r["daysHeld"] for r in rows if r.get("daysHeld") is not None) /
@@ -2242,8 +2380,15 @@ def tradeai_stats():
         entry["stats"] = vstats
         entry["current"] = (v["version"] == versions_db["versions"][-1]["version"])
         if vstats and prev_stats and vstats["expectancyPct"] is not None and prev_stats["expectancyPct"] is not None:
+            # Compare on excess-vs-SPY when both versions have it — that removes
+            # market-regime bias (a version tested in a bull week isn't "better")
+            use_excess = (vstats.get("excessExpectancyPct") is not None
+                          and prev_stats.get("excessExpectancyPct") is not None)
+            cur_e  = vstats["excessExpectancyPct"] if use_excess else vstats["expectancyPct"]
+            prev_e = prev_stats["excessExpectancyPct"] if use_excess else prev_stats["expectancyPct"]
             entry["improvement"] = {
-                "expectancyDelta": round(vstats["expectancyPct"] - prev_stats["expectancyPct"], 2),
+                "expectancyDelta": round(cur_e - prev_e, 2),
+                "basis": "excess-vs-SPY" if use_excess else "raw",
                 "winRateDelta": round((vstats["winRate"] or 0) - (prev_stats["winRate"] or 0), 1),
                 "vsVersion": prev_stats_version,
                 "reliable": vstats["n"] >= 10 and prev_stats["n"] >= 10,
@@ -2300,6 +2445,9 @@ def tradeai_stats():
     else:
         if overall and overall["expectancyPct"] is not None and overall["expectancyPct"] < 0:
             suggestions.append(f"Overall expectancy is {overall['expectancyPct']}% per trade — the system is losing on average. Prioritize cutting the worst factor groups below before tuning anything else.")
+        if overall and overall.get("excessExpectancyPct") is not None and overall["excessN"] >= MIN_N \
+                and overall["excessExpectancyPct"] < 0 and (overall["expectancyPct"] or 0) >= 0:
+            suggestions.append(f"Trades average {overall['expectancyPct']}% raw but {overall['excessExpectancyPct']}% vs SPY — the gains are just the market rising. Buying SPY would have done better; the stock selection is not adding value yet.")
         for bucket, s in by_bucket.items():
             if s and s["n"] >= MIN_N and s["expectancyPct"] is not None and s["expectancyPct"] < 0:
                 suggestions.append(f"Bucket '{bucket}': {s['winRate']}% win rate, {s['expectancyPct']}% avg per trade over {s['n']} trades — consider lowering its bucketWeights or excluding it from Identify.")
@@ -2319,8 +2467,51 @@ def tradeai_stats():
         if soft and soft["n"] >= MIN_N and soft["expectancyPct"] is not None and soft["expectancyPct"] > 0 and soft["avgDaysHeld"] is not None and soft["avgDaysHeld"] <= float(load_scoring_config()["sellThresholds"].get("minHoldDays", 3)) + 1:
             suggestions.append(f"Rotation (soft) sells exit at +{soft['expectancyPct']}% avg after only {soft['avgDaysHeld']} days — winners may be cut early. Consider raising sellThresholds.minHoldDays.")
 
+    # ── Shadow validation: does the composite ranking predict forward returns? ──
+    shadow_db = load_json(SHADOW_PATH, {"snapshots": []})
+    shadow = None
+    graded_snaps = [s for s in shadow_db.get("snapshots", [])
+                    if any(r.get("fwdReturnPct") is not None for r in s.get("rows", []))]
+    if graded_snaps:
+        all_graded = [r for s in graded_snaps for r in s["rows"] if r.get("fwdReturnPct") is not None]
+        def _avg(vals):
+            return round(sum(vals) / len(vals), 2) if vals else None
+        band_groups = {}
+        for r in all_graded:
+            band_groups.setdefault(_composite_band(r.get("composite")), []).append(r)
+        by_band_shadow = {
+            band: {"n": len(rs),
+                   "avgFwdPct": _avg([r["fwdReturnPct"] for r in rs]),
+                   "avgExcessPct": _avg([r["fwdExcessPct"] for r in rs if r.get("fwdExcessPct") is not None])}
+            for band, rs in sorted(band_groups.items())
+        }
+        # Top-5 by composite in each snapshot vs the rest — the actual selection test
+        top_excess, rest_excess = [], []
+        for s in graded_snaps:
+            rows_g = sorted([r for r in s["rows"] if r.get("fwdReturnPct") is not None],
+                            key=lambda r: r.get("composite") or 0, reverse=True)
+            for i, r in enumerate(rows_g):
+                val = r.get("fwdExcessPct", r.get("fwdReturnPct"))
+                if val is None:
+                    continue
+                (top_excess if i < 5 else rest_excess).append(val)
+        shadow = {
+            "graded": len(all_graded),
+            "snapshots": len(graded_snaps),
+            "byCompositeBand": by_band_shadow,
+            "top5AvgExcessPct": _avg(top_excess),
+            "restAvgExcessPct": _avg(rest_excess),
+        }
+        if len(top_excess) >= 15 and len(rest_excess) >= 15:
+            edge = (shadow["top5AvgExcessPct"] or 0) - (shadow["restAvgExcessPct"] or 0)
+            if edge <= 0:
+                suggestions.append(f"Shadow test over {shadow['graded']} candidate-days: the composite's top-5 picks averaged {shadow['top5AvgExcessPct']}% vs SPY while the REST averaged {shadow['restAvgExcessPct']}% — the ranking is not selecting winners. Revisit the factor weights before trusting any buy.")
+            else:
+                suggestions.append(f"Shadow test over {shadow['graded']} candidate-days: top-5 picks beat the rest by {round(edge,2)}% (5-day, vs SPY) — the composite ranking is adding real selection value.")
+
     return jsonify({
         "overall": overall,
+        "shadow": shadow,
         "byBucket": by_bucket,
         "byCompositeBand": by_band,
         "byBuySignal": by_signal,

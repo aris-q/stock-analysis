@@ -66,6 +66,7 @@ function buildValidationHTML(stats, trade) {
             <span>trades: <b>${s.n}</b></span>
             <span>win rate: <b>${s.winRate != null ? s.winRate + '%' : '—'}</b></span>
             <span>expectancy: <b style="color:${pctColor(s.expectancyPct)}">${fmtPct(s.expectancyPct)}</b>/trade</span>
+            ${s.excessExpectancyPct != null ? `<span>vs SPY: <b style="color:${pctColor(s.excessExpectancyPct)}">${fmtPct(s.excessExpectancyPct)}</b>/trade</span>` : ''}
             <span>total P&amp;L: <b style="color:${pctColor(s.totalGainLoss)}">$${(s.totalGainLoss||0).toFixed(2)}</b></span>
           </div>`
         : `<div style="font-size:11px;color:var(--muted);margin-top:8px">No closed trades under this version yet.</div>`;
@@ -75,7 +76,7 @@ function buildValidationHTML(stats, trade) {
         const arrow = better ? '▲' : (imp.expectancyDelta < 0 ? '▼' : '＝');
         const col = better ? 'var(--up)' : (imp.expectancyDelta < 0 ? 'var(--down)' : 'var(--muted)');
         impLine = `<div style="margin-top:8px;padding:8px 12px;border-radius:6px;background:${better?'rgba(74,222,128,0.08)':'rgba(239,68,68,0.08)'};border:1px solid ${col};font-size:11px">
-          <span style="color:${col};font-weight:700">${arrow} vs v${imp.vsVersion}: ${imp.expectancyDelta > 0 ? '+' : ''}${imp.expectancyDelta}% expectancy per trade, ${imp.winRateDelta > 0 ? '+' : ''}${imp.winRateDelta}pt win rate</span>
+          <span style="color:${col};font-weight:700">${arrow} vs v${imp.vsVersion}: ${imp.expectancyDelta > 0 ? '+' : ''}${imp.expectancyDelta}% expectancy per trade${imp.basis === 'excess-vs-SPY' ? ' (market-adjusted, vs SPY)' : ''}, ${imp.winRateDelta > 0 ? '+' : ''}${imp.winRateDelta}pt win rate</span>
           ${imp.reliable ? '' : '<span style="color:var(--warn);margin-left:8px">⚠ small sample — needs 10+ trades on both versions to be trusted</span>'}
         </div>`;
       }
@@ -149,6 +150,35 @@ function buildValidationHTML(stats, trade) {
           <th style="padding:7px 10px;text-align:right">P&amp;L</th><th style="padding:7px 10px;text-align:left">BOUGHT</th>
         </tr></thead><tbody>${rows}</tbody></table></div>
       <div style="font-size:10px;color:var(--muted);margin-top:4px">SCORE@BUY shows "—" for positions bought before factor tracking was added.</div>
+    </div>`;
+  }
+
+  // ── SHADOW VALIDATION — grades the ranking on ALL candidates, no risk ────
+  const sh = stats.shadow;
+  if (sh && sh.graded) {
+    const edge = (sh.top5AvgExcessPct != null && sh.restAvgExcessPct != null)
+      ? sh.top5AvgExcessPct - sh.restAvgExcessPct : null;
+    const bandRows = Object.entries(sh.byCompositeBand || {}).map(([band, b]) =>
+      `<tr style="border-bottom:1px solid var(--border)">
+        <td style="padding:6px 10px;font-weight:700">${band}</td>
+        <td style="padding:6px 10px;text-align:right">${b.n}</td>
+        <td style="padding:6px 10px;text-align:right;color:${pctColor(b.avgFwdPct)}">${fmtPct(b.avgFwdPct)}</td>
+        <td style="padding:6px 10px;text-align:right;color:${pctColor(b.avgExcessPct)}">${fmtPct(b.avgExcessPct)}</td>
+      </tr>`).join('');
+    html += `<div style="margin-bottom:22px">
+      <div style="font-size:10px;letter-spacing:1px;color:var(--accent);margin-bottom:6px">SHADOW VALIDATION — ALL SCORED CANDIDATES (5-DAY FORWARD, NO TRADING RISK)</div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;font-family:'DM Mono',monospace;font-size:11px">
+        <span>graded: <b>${sh.graded}</b> candidate-days over <b>${sh.snapshots}</b> snapshots</span>
+        <span>top-5 picks: <b style="color:${pctColor(sh.top5AvgExcessPct)}">${fmtPct(sh.top5AvgExcessPct)}</b> vs SPY</span>
+        <span>the rest: <b style="color:${pctColor(sh.restAvgExcessPct)}">${fmtPct(sh.restAvgExcessPct)}</b> vs SPY</span>
+        ${edge != null ? `<span>selection edge: <b style="color:${pctColor(edge)}">${fmtPct(edge)}</b></span>` : ''}
+      </div>
+      <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'DM Mono',monospace;background:var(--surface);border:1px solid var(--border);border-radius:8px">
+        <thead><tr style="color:var(--muted);border-bottom:1px solid var(--border)">
+          <th style="padding:6px 10px;text-align:left">COMPOSITE AT SCORING</th><th style="padding:6px 10px;text-align:right">N</th>
+          <th style="padding:6px 10px;text-align:right">AVG 5D RETURN</th><th style="padding:6px 10px;text-align:right">VS SPY</th>
+        </tr></thead><tbody>${bandRows}</tbody></table></div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px">If higher composite bands don't show higher forward returns here, the scoring matrix isn't ranking predictively — this table learns ~20× faster than waiting for real trades.</div>
     </div>`;
   }
 

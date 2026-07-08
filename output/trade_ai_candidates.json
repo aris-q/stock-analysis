@@ -3096,7 +3096,7 @@
   "lastRecommend": {
     "buys": [],
     "sells": [],
-    "scoredAt": "2026-07-07 20:15 EDT",
+    "scoredAt": "2026-07-07 21:57 EDT",
     "scored": [
       {
         "ticker": "ECVT",
@@ -3179,24 +3179,24 @@
         "isHeld": true
       },
       {
-        "ticker": "FCX",
-        "bucket": "Reversal",
-        "price": 59.33,
-        "dreamScore": 21,
-        "aiScore": 75,
-        "buySignal": "Buy",
+        "ticker": "IRWD",
+        "bucket": "SmartMoney",
+        "price": 4.47,
+        "dreamScore": 68,
+        "aiScore": 85,
+        "buySignal": "Strong Buy",
         "trajectory": "Accelerating",
         "stage": "Growth",
         "sentiment": "Bullish",
-        "reasoning": "Freeport-McMoRan exhibits an accelerating business trajectory, driven by solid 8.8% revenue growth and a significantly lower forward P/E, indicating strong expected earnings growth. While the stock price has recently declined, its current deeply oversold state (RSI 19.3) presents a compelling \"buy the dip\" opportunity from a low base. Bullish analyst ratings and high institutional ownership further support confidence in its future performance, despite potential headwinds from high inflation and interest rates.",
-        "breakoutScore": 13,
+        "reasoning": "Ironwood Pharmaceuticals demonstrates an accelerating trajectory with an impressive 158.9% revenue growth, indicating rapid expansion from its commercialized linaclotide product. The extremely low forward P/E of 3.1, coupled with a healthy 75.2% gross margin and positive free cash flow, suggests significant undervaluation and strong future earnings potential. While the RSI of 74.4 indicates the stock is currently overbought, the fundamental strength and analyst target of $6.1 (35.9% upside) make it a compelling growth investment.",
+        "breakoutScore": 9,
         "sectorPenalty": 0,
-        "composite": 90.3,
+        "composite": 87.0,
         "signalFcDirection": "",
         "signalFcTarget": null,
         "signalFcReturn": null,
         "signalFcBoost": 0,
-        "isHeld": false
+        "isHeld": true
       },
       {
         "ticker": "CDE",
@@ -3217,26 +3217,6 @@
         "signalFcReturn": null,
         "signalFcBoost": 0,
         "isHeld": false
-      },
-      {
-        "ticker": "IRWD",
-        "bucket": "SmartMoney",
-        "price": 4.47,
-        "dreamScore": 68,
-        "aiScore": 85,
-        "buySignal": "Strong Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Ironwood Pharmaceuticals demonstrates an accelerating trajectory with an impressive 158.9% revenue growth, indicating rapid expansion from its commercialized linaclotide product. The extremely low forward P/E of 3.1, coupled with a healthy 75.2% gross margin and positive free cash flow, suggests significant undervaluation and strong future earnings potential. While the RSI of 74.4 indicates the stock is currently overbought, the fundamental strength and analyst target of $6.1 (35.9% upside) make it a compelling growth investment.",
-        "breakoutScore": 5,
-        "sectorPenalty": 0,
-        "composite": 83.0,
-        "signalFcDirection": "",
-        "signalFcTarget": null,
-        "signalFcReturn": null,
-        "signalFcBoost": 0,
-        "isHeld": true
       },
       {
         "ticker": "XYL",
@@ -3277,6 +3257,26 @@
         "signalFcReturn": null,
         "signalFcBoost": 0,
         "isHeld": true
+      },
+      {
+        "ticker": "FCX",
+        "bucket": "Reversal",
+        "price": 59.33,
+        "dreamScore": 21,
+        "aiScore": 75,
+        "buySignal": "Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "sentiment": "Bullish",
+        "reasoning": "Freeport-McMoRan exhibits an accelerating business trajectory, driven by solid 8.8% revenue growth and a significantly lower forward P/E, indicating strong expected earnings growth. While the stock price has recently declined, its current deeply oversold state (RSI 19.3) presents a compelling \"buy the dip\" opportunity from a low base. Bullish analyst ratings and high institutional ownership further support confidence in its future performance, despite potential headwinds from high inflation and interest rates.",
+        "breakoutScore": 13,
+        "sectorPenalty": 0,
+        "composite": 76.3,
+        "signalFcDirection": "",
+        "signalFcTarget": null,
+        "signalFcReturn": null,
+        "signalFcBoost": 0,
+        "isHeld": false
       },
       {
         "ticker": "ALB",
@@ -3339,26 +3339,6 @@
         "isHeld": false
       },
       {
-        "ticker": "ORCL",
-        "bucket": "Reversal",
-        "price": 141.6,
-        "dreamScore": 36,
-        "aiScore": 72,
-        "buySignal": "Buy",
-        "trajectory": "Accelerating",
-        "stage": "Growth",
-        "sentiment": "Bullish",
-        "reasoning": "Oracle exhibits strong revenue growth (20.6%) driven by its cloud pivot, indicating an accelerating business trajectory from a relatively low base in its cloud segment. While the stock is deeply oversold (RSI 8.2) and analysts see significant upside, the substantial negative Free Cash Flow and high Debt/Equity ratio present considerable financial risks. Despite these risks, its strategic transformation and current valuation make it an intriguing \"buy the dip\" opportunity for growth-oriented investors.",
-        "breakoutScore": 13,
-        "sectorPenalty": -15,
-        "composite": 65.5,
-        "signalFcDirection": "",
-        "signalFcTarget": null,
-        "signalFcReturn": null,
-        "signalFcBoost": 0,
-        "isHeld": false
-      },
-      {
         "ticker": "BKR",
         "bucket": "Reversal",
         "price": 54.47,
@@ -3377,6 +3357,26 @@
         "signalFcReturn": null,
         "signalFcBoost": 0,
         "isHeld": true
+      },
+      {
+        "ticker": "ORCL",
+        "bucket": "Reversal",
+        "price": 141.6,
+        "dreamScore": 36,
+        "aiScore": 72,
+        "buySignal": "Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "sentiment": "Bullish",
+        "reasoning": "Oracle exhibits strong revenue growth (20.6%) driven by its cloud pivot, indicating an accelerating business trajectory from a relatively low base in its cloud segment. While the stock is deeply oversold (RSI 8.2) and analysts see significant upside, the substantial negative Free Cash Flow and high Debt/Equity ratio present considerable financial risks. Despite these risks, its strategic transformation and current valuation make it an intriguing \"buy the dip\" opportunity for growth-oriented investors.",
+        "breakoutScore": 9,
+        "sectorPenalty": -15,
+        "composite": 61.5,
+        "signalFcDirection": "",
+        "signalFcTarget": null,
+        "signalFcReturn": null,
+        "signalFcBoost": 0,
+        "isHeld": false
       },
       {
         "ticker": "IBM",
@@ -3504,7 +3504,7 @@
         "ticker": "ECVT",
         "bucket": "Reversal",
         "composite": 97.4,
-        "reason": "Reversal RSI not yet rising (20.0\u219219.5)"
+        "reason": "Price $11.81 exceeds per-slot budget $0.09"
       },
       {
         "ticker": "ONDS",
@@ -3525,22 +3525,16 @@
         "reason": "Already held in portfolio"
       },
       {
-        "ticker": "FCX",
-        "bucket": "Reversal",
-        "composite": 90.3,
-        "reason": "Reversal RSI not yet rising (18.0\u219217.8)"
+        "ticker": "IRWD",
+        "bucket": "SmartMoney",
+        "composite": 87.0,
+        "reason": "Already held in portfolio"
       },
       {
         "ticker": "CDE",
         "bucket": "SmartMoney",
         "composite": 85.4,
         "reason": "Price $16.04 exceeds per-slot budget $0.09"
-      },
-      {
-        "ticker": "IRWD",
-        "bucket": "SmartMoney",
-        "composite": 83.0,
-        "reason": "Already held in portfolio"
       },
       {
         "ticker": "XYL",
@@ -3555,10 +3549,16 @@
         "reason": "Already held in portfolio"
       },
       {
+        "ticker": "FCX",
+        "bucket": "Reversal",
+        "composite": 76.3,
+        "reason": "Price $59.33 exceeds per-slot budget $0.09"
+      },
+      {
         "ticker": "ALB",
         "bucket": "Reversal",
         "composite": 73.8,
-        "reason": "Reversal RSI not yet rising (12.4\u219212.4)"
+        "reason": "Price $129.02 exceeds per-slot budget $0.09"
       },
       {
         "ticker": "APD",
@@ -3573,16 +3573,16 @@
         "reason": "Price $37.92 exceeds per-slot budget $0.09"
       },
       {
-        "ticker": "ORCL",
-        "bucket": "Reversal",
-        "composite": 65.5,
-        "reason": "Reversal RSI not yet rising (6.9\u21926.8)"
-      },
-      {
         "ticker": "BKR",
         "bucket": "Reversal",
         "composite": 63.2,
         "reason": "Already held in portfolio"
+      },
+      {
+        "ticker": "ORCL",
+        "bucket": "Reversal",
+        "composite": 61.5,
+        "reason": "Price $141.6 exceeds per-slot budget $0.09"
       },
       {
         "ticker": "IBM",
@@ -3606,7 +3606,7 @@
         "ticker": "ODFL",
         "bucket": "Reversal",
         "composite": 51.4,
-        "reason": "Composite score 51.4 below minimum 60.0"
+        "reason": "Reversal RSI not yet rising (21.6\u219220.3)"
       },
       {
         "ticker": "LCID",
@@ -3620,7 +3620,8 @@
         "composite": 28.4,
         "reason": "Composite score 28.4 below minimum 60.0"
       }
-    ]
+    ],
+    "selfLearning": null
   },
   "signalForecastAt": "2026-07-07 20:50 EDT",
   "rsiHistory": {
