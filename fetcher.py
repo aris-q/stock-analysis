@@ -1455,15 +1455,21 @@ Sector: {detail.get('sector')} | Industry: {detail.get('industry')}
 
     description = (detail.get("description") or "")[:300]
 
-    prompt = f"""You are a stock analyst evaluating early-stage and growth investment opportunities.
-Analyze {ticker} and provide a concise assessment. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
+    cohort_block = detail.get("_cohort") or ""
+    cohort_section = f"""
+THE COMPETING CANDIDATES IN THIS BATCH (you are scoring {ticker} against these):
+{cohort_block}
+""" if cohort_block else ""
+
+    prompt = f"""You are a stock analyst ranking candidates for a portfolio that can only hold the top 5.
+Analyze {ticker} and score it RELATIVE to the other candidates in this batch. Focus on TRAJECTORY over current achievement — a company improving rapidly from a low base is more interesting than one plateauing at a high score.
 
 COMPANY: {detail.get('name', ticker)} ({ticker})
 {description}
 
 FINANCIALS:
 {fin_block}
-
+{cohort_section}
 RECENT NEWS (last 7 days):
 {news_block}
 
@@ -1475,13 +1481,17 @@ STAGE: [Early-Stage / Growth / Mature / Declining]
 TRAJECTORY: [Accelerating / Stable / Decelerating]
 SENTIMENT: [Bullish / Neutral / Bearish]
 NEWS_SENTIMENT: [Bullish / Neutral / Bearish — based only on the recent news above, not overall outlook]
-SCORE: [0-100 integer, your conviction score]
+SCORE: [0-100 integer, your conviction score RELATIVE to this batch]
 CONFIDENCE: [High / Medium / Low — how much reliable data supports this score]
 BUY_SIGNAL: [Strong Buy / Buy / Hold / Avoid]
 REASONING: [3-5 sentences covering trajectory, key catalysts or risks, and why this is or isn't worth buying now]
 FORECAST_REASON: [1 sentence explaining the most likely price direction tomorrow based on RSI, BB%, momentum, and macro]
 
-Rules:
+Scoring calibration — this matters more than anything else:
+- Your scores exist to RANK candidates. A batch where everything scores 70-85 is useless. Spread scores across the full 0-100 range.
+- Anchors: 90+ = exceptional, top pick of the batch, rare. 70-89 = clearly better than most of the batch. 40-69 = middle of the pack, unremarkable. 20-39 = weak vs the batch. <20 = clear avoid.
+- Strong Buy is scarce: at most 1-2 stocks in a batch of 20 deserve it. Most candidates are Hold. "Decent company, nothing special vs the others" = Hold, not Buy.
+- Being agreeable helps nobody: an uncritical Buy on a mediocre stock loses real money. When in doubt, score LOWER.
 - SCORE and BUY_SIGNAL must be consistent: Strong Buy>=80, Buy 60-79, Hold 40-59, Avoid<40. If your instinct disagrees, adjust SCORE, not BUY_SIGNAL.
 - If data is thin or contradictory, say so in CONFIDENCE and REASONING rather than guessing.
 """

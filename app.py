@@ -1087,7 +1087,9 @@ SCORING_DEFAULTS = {
         "bbLowerBand_threshold": 0.10
     },
     "signalForecast": {
-        "enabled": True,
+        # Disabled 2026-07-07: 386 graded forecasts showed 49% directional accuracy
+        # (coin flip) and slightly inverted bias — pure noise worth ±20 composite pts.
+        "enabled": False,
         "returnMultiplier": 3.0,
         "maxBoost":  20,
         "maxPenalty": -20,
@@ -1399,6 +1401,18 @@ def run_tradeai_analyze():
         total = len(eligible)
         fetch_status["total"] = total
 
+        # Compact one-line-per-candidate cohort summary so Gemini can score
+        # each ticker RELATIVE to the batch (no extra API calls needed)
+        cohort_lines = []
+        for item in eligible:
+            t = item["ticker"]
+            dt = details.get(t, {})
+            cohort_lines.append(
+                f"- {t} [{item.get('bucket','?')}]: 30d {dt.get('change30d')}% | rev growth {dt.get('revenueGrowth')}% | "
+                f"margin {dt.get('grossMargin')}% | RSI {dt.get('rsi14')} | analyst upside {dt.get('analystUpside')}%"
+            )
+        cohort_block = "\n".join(cohort_lines)
+
         ai_assessments = candidates_data.get("aiAssessments", {})
         for idx, item in enumerate(eligible, 1):
             if stop_flag:
@@ -1421,6 +1435,7 @@ def run_tradeai_analyze():
             detail_with_ctx = dict(detail) if detail else {}
             detail_with_ctx["_bucket"] = bucket
             detail_with_ctx["_selectionReason"] = reason
+            detail_with_ctx["_cohort"] = cohort_block
             assessment = fetch_ai_analyze(ticker, detail_with_ctx, news_items, macro)
             ai_assessments[ticker] = assessment
             candidates_data["aiAssessments"] = ai_assessments
@@ -1903,6 +1918,7 @@ def get_tradeai():
             "purchasePrice": purchase_price, "currentPrice": current_price,
             "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
             "purchasedAt": pos.get("purchasedAt"),
+            "factors": pos.get("factors"),
             "change1d": detail.get("change1d"),
             "change2d": detail.get("change2d"),
             "change3d": detail.get("change3d"),
@@ -2097,6 +2113,7 @@ def tradeai_stats():
         "suggestions": suggestions,
         "outcomesLogged": len(outcomes),
         "outcomesWithFactors": len(with_factors),
+        "recent": list(reversed(outcomes[-100:])),
     })
 
 

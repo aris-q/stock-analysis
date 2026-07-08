@@ -480,19 +480,14 @@ function renderTradeAI(data) {
         const d = details[item.ticker];
         const ai = aiAssessments[item.ticker];
         const newsTs = newsTsMap[item.ticker];
-        const fc = signalFcMap[item.ticker];
         const hasDetail = !!d;
         const hasAI = !!ai;
-        const hasFc = !!fc;
         const fetchTs = d ? d.fetchCompletedAt : null;
-        const fcDirColors = { Bullish:'var(--up)', Bearish:'var(--down)', Neutral:'var(--warn)' };
-        const fcDirColor = fc ? (fcDirColors[fc.direction] || 'var(--muted)') : 'var(--muted)';
         const recBuys  = (lastRec && lastRec.buys)  ? lastRec.buys.map(b => b.ticker || b)  : [];
         const recSells = (lastRec && lastRec.sells) ? lastRec.sells.map(s => s.ticker || s) : [];
         const inAccount = holdings.some(h => h.ticker === item.ticker);
         const recAction = recBuys.includes(item.ticker) ? 'BUY' : recSells.includes(item.ticker) ? 'SELL' : null;
         const recColor  = recAction === 'BUY' ? 'var(--up)' : recAction === 'SELL' ? 'var(--down)' : 'var(--muted)';
-        const fcExtra = hasFc ? '<span style="color:' + fcDirColor + ';font-weight:700;font-size:9px">' + fc.direction + '</span>' : '';
         const recExtra = recAction
           ? '<span style="font-size:9px;font-weight:700;color:' + recColor + '">' + recAction + '</span>' + (inAccount ? ' <span style="font-size:9px;color:var(--up)">★ held</span>' : '')
           : (inAccount ? '<span style="font-size:9px;color:var(--up)">★ held</span>' : '');
@@ -512,8 +507,7 @@ function renderTradeAI(data) {
             ` + pipeRow('②','FETCH INFO', data.detailsFetchedAt, '') + `
             ` + pipeRow('③','MACRO', data.macroFetchedAt, '') + `
             ` + pipeRow('④','AI ANALYZE', data.aiAnalyzedAt, '') + `
-            ` + pipeRow('⑤','SIGNAL', data.signalForecastAt, fcExtra) + `
-            ` + pipeRow('⑥','RECOMMEND', lastRec ? lastRec.scoredAt : null, recExtra) + `
+            ` + pipeRow('⑤','RECOMMEND', lastRec ? lastRec.scoredAt : null, recExtra) + `
           </div>
           <div style="flex:1">
             <div class="trade-candidate-reason">${item.reason || '—'}</div>
@@ -522,7 +516,6 @@ function renderTradeAI(data) {
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px">
             ${(()=>{const bkt=item.bucket||'';const bktColors={'Momentum':'#fbbf24','Reversal':'#60a5fa','SmartMoney':'#a78bfa','Insider':'#f97316','Account':'#4ade80','Dream':'#6b7280'};const bc=bktColors[bkt]||'#6b7280';return bkt?`<span style="font-size:9px;padding:2px 7px;border-radius:4px;background:${bc}22;color:${bc};border:1px solid ${bc}44;font-weight:700">${bkt.toUpperCase()}</span>`:''})()}
             ${hasAI && ai.aiScore != null ? `<span style="font-size:12px;font-weight:800;color:var(--accent);font-family:'DM Mono',monospace">${ai.aiScore}<span style="font-size:9px;color:var(--muted)">/100</span></span>` : ''}
-            ${hasFc && fc.biasScore != null ? `<span style="font-size:10px;font-family:'DM Mono',monospace;color:${fc.biasScore>=0?'var(--up)':'var(--down)'}">${fc.biasScore>0?'+':''}${fc.biasScore.toFixed(2)} bias</span>` : ''}
             <span class="trade-candidate-source">${item.source || ''}</span>
             <button onclick="event.stopPropagation();refreshTickerNews('${item.ticker}', this)" style="font-size:9px;padding:2px 7px;background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--muted);cursor:pointer;font-family:'DM Mono',monospace">🔄 NEWS</button>
             <span id="news-ts-${item.ticker}" style="font-size:9px;color:var(--muted)">${newsTs ? newsTs.slice(0,16) : 'no news'}</span>
@@ -530,15 +523,6 @@ function renderTradeAI(data) {
         </div>
         <div class="trade-detail-expand" id="tai-${i}">
           ${hasDetail ? renderTradeDetailExpand(d) : '<div style="color:var(--muted);font-size:11px;margin-bottom:8px">No detail fetched yet. Run Fetch Info.</div>'}
-          ${hasFc ? `<div style="margin-top:8px;padding:10px 14px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:8px">
-            <div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:6px">⚡ SIGNAL FORECAST</div>
-            <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:11px">
-              <span style="color:${fcDirColor};font-weight:700">${fc.direction}</span>
-              <span style="color:var(--text)">Range: $${fc.forecastLow?.toFixed(2)} – $${fc.forecastHigh?.toFixed(2)}</span>
-              <span style="color:var(--text)">Bias: <span style="color:${fc.biasScore>=0?'var(--up)':'var(--down)'}">${fc.biasScore>0?'+':''}${fc.biasScore?.toFixed(3)}</span></span>
-              <span style="color:var(--muted)">Run: ${fc.generatedAt ? fc.generatedAt.slice(0,16) : '—'}</span>
-            </div>
-          </div>` : '<div style="color:var(--muted);font-size:11px;margin-top:8px">No signal forecast yet. Run Signal Forecast step.</div>'}
           ${hasAI ? `<div style="margin-top:12px;padding:12px 14px;background:rgba(0,0,0,0.2);border:1px solid var(--border);border-radius:8px"><div style="font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:6px">📋 PROMPT SENT TO AI</div><pre style="font-size:10px;color:var(--muted);white-space:pre-wrap;line-height:1.5;margin:0;font-family:'DM Mono',monospace">${ai.promptSent ? ai.promptSent.replace(/</g,'&lt;').replace(/>/g,'&gt;') : '(prompt not saved — backend did not return promptSent)'}</pre></div>` : ''}
           ${hasAI ? renderAIAssessment(ai) : '<div style="color:var(--muted);font-size:11px">No AI analysis yet. Run AI Analyze.</div>'}
         </div>`;
@@ -553,12 +537,12 @@ function renderTradeAI(data) {
 
   return `
   <!-- TRADEAI TOP CONTROL BAR -->
-  <div style="display:grid;grid-template-columns:repeat(6,1fr) auto;gap:12px;margin-bottom:28px;align-items:start">
-    ${['identify','fetch','macro','signal','analyze','recommend'].map((op, i) => {
-      const labels  = ['IDENTIFY','FETCH INFO','REFRESH MACRO','AI ANALYZE','SIGNAL FORECAST','RECOMMEND'];
-      const ops     = ['identify','fetch','macro','analyze','signal','recommend'];
-      const tsKeys  = ['identifiedAt','detailsFetchedAt','macroFetchedAt','aiAnalyzedAt','signalForecastAt','lastRecommendAt'];
-      const tsVals  = [data.identifiedAt, data.detailsFetchedAt, data.macroFetchedAt, data.aiAnalyzedAt, data.signalForecastAt, (data.lastRecommend||{}).scoredAt];
+  <div style="display:grid;grid-template-columns:repeat(5,1fr) auto;gap:12px;margin-bottom:28px;align-items:start">
+    ${['identify','fetch','macro','analyze','recommend'].map((op, i) => {
+      const labels  = ['IDENTIFY','FETCH INFO','REFRESH MACRO','AI ANALYZE','RECOMMEND'];
+      const ops     = ['identify','fetch','macro','analyze','recommend'];
+      const tsKeys  = ['identifiedAt','detailsFetchedAt','macroFetchedAt','aiAnalyzedAt','lastRecommendAt'];
+      const tsVals  = [data.identifiedAt, data.detailsFetchedAt, data.macroFetchedAt, data.aiAnalyzedAt, (data.lastRecommend||{}).scoredAt];
       const lastTs  = tsVals[i] || null;
       return `
       <div style="display:flex;flex-direction:column;gap:6px">
@@ -915,53 +899,6 @@ async function runTradeAIOp(op, btn) {
     } catch(e) {
       _resetTradeAIBtn(btn, orig);
       console.error('[TradeAI] macro refresh FAIL:', e);
-    }
-    return;
-  }
-
-  // ── Signal forecast — handled separately (no polling needed) ────────────
-  if (op === 'signal') {
-    btn.disabled = true;
-    btn.textContent = '⏳ ' + orig;
-    btn.style.animation = 'tai-flash 0.8s ease-in-out infinite';
-    btn.style.borderColor = 'var(--warn)';
-    btn.style.color = 'var(--warn)';
-    btn.style.background = 'rgba(251,191,36,0.12)';
-    // Poll signal/progress while running — show in header status bar
-    const pollSig = setInterval(async () => {
-      try {
-        const p = await fetch('/signal/progress').then(r => r.json());
-        const wrap  = document.getElementById('statusProgressWrap');
-        const bar   = document.getElementById('statusProgressBar');
-        const label = document.getElementById('statusProgressLabel');
-        if (p.total > 0) {
-          if (wrap)  wrap.style.display = 'flex';
-          if (label) label.textContent = p.current + ' / ' + p.total + (p.ticker ? ' — ' + p.ticker : '');
-          if (bar)   bar.style.width = Math.round((p.current / p.total) * 100) + '%';
-        }
-      } catch(e) {}
-    }, 800);
-    try {
-      const r = await fetch('/signal/forecast', { method: 'POST' }).then(r => r.json());
-      clearInterval(pollSig);
-      btn.disabled = false;
-      btn.textContent = orig;
-      btn.style.animation = 'none';
-      btn.style.borderColor = 'var(--border)';
-      btn.style.color = 'var(--muted)';
-      btn.style.background = 'var(--surface2)';
-      if (stopBtn) stopBtn.style.display = 'none';
-      if (stopLbl) stopLbl.textContent = '';
-      const tsEl = document.getElementById('tai-ts-signal');
-      if (tsEl) tsEl.textContent = `✓ ${r.count}/${r.total} forecasted`;
-      // Save signalForecastAt to candidates file via a lightweight patch endpoint
-      await fetch('/tradeai/signal_ts', { method: 'POST' });
-      signalLoaded = false; // force Signal tab to re-fetch next time it's opened
-      await loadTradeAI(true);
-    } catch(e) {
-      clearInterval(pollSig);
-      _resetTradeAIBtn(btn, orig);
-      console.error('[TradeAI] signal forecast FAIL:', e);
     }
     return;
   }
