@@ -11,7 +11,7 @@
       "shares": 201,
       "purchasePrice": 4.3001,
       "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 4.66
+      "peakPrice": 4.675
     },
     "BMNR": {
       "shares": 61,
@@ -36,7 +36,8 @@
       },
       "recVersion": 3,
       "spyAtBuy": 739.73,
-      "vixAtBuy": 18.04
+      "vixAtBuy": 18.04,
+      "peakPrice": 14.9836
     },
     "NBIS": {
       "shares": 4,
@@ -56,7 +57,8 @@
       },
       "recVersion": 3,
       "spyAtBuy": 739.73,
-      "vixAtBuy": 18.04
+      "vixAtBuy": 18.04,
+      "peakPrice": 202.235
     },
     "WCP.TO": {
       "shares": 56,
@@ -1363,5 +1365,5 @@
       "bucket": "SmartMoney"
     }
   ],
-  "lastRecommendAt": "2026-07-08 11:28 EDT"
+  "lastRecommendAt": "2026-07-08 12:12 EDT"
 }

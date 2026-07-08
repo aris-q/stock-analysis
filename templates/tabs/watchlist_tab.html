@@ -351,12 +351,45 @@ function renderAdmin(opTs) {
     </div>
     <div class="admin-row">
       <div class="admin-row-left">
+        <div class="admin-op-label" style="color:var(--warn)">🗑 PURGE DATA BEFORE DATE</div>
+        <div class="admin-op-ts">Removes transactions, closed-trade outcomes, shadow & forecast snapshots dated before the chosen day. Holdings, balance and version history are kept. Irreversible.</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="date" id="purgeBeforeDate" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px">
+        <button class="btn" style="border-color:var(--warn);color:var(--warn)" onclick="purgeDataBefore(this)">PURGE</button>
+      </div>
+    </div>
+    <div class="admin-row">
+      <div class="admin-row-left">
         <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADEAI SIMULATION</div>
         <div class="admin-op-ts">Wipes all AI trades, holdings, resets balance. Irreversible.</div>
       </div>
       <button class="btn" style="border-color:var(--down);color:var(--down)" onclick="resetTradeAISimulation(this)">RESET</button>
     </div>
   </div>`;
+}
+
+async function purgeDataBefore(btn) {
+  const inp = document.getElementById('purgeBeforeDate');
+  const before = inp ? inp.value : '';
+  if (!before) { alert('Pick a date first — everything dated BEFORE that day will be removed.'); return; }
+  if (!confirm(`Permanently remove all transactions, outcomes, shadow and forecast snapshots dated before ${before}?\n\nHoldings, balance and version history are kept. This cannot be undone.`)) return;
+  btn.disabled = true; const orig = btn.textContent; btn.textContent = '⏳';
+  try {
+    const r = await fetch('/admin/purge', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ before })
+    });
+    const d = await r.json();
+    btn.disabled = false; btn.textContent = orig;
+    if (d.error) { alert('Purge failed: ' + d.error); return; }
+    const c = d.removed || {};
+    alert(`Purged data before ${before}:\n· ${c.transactions||0} transactions\n· ${c.outcomes||0} closed-trade outcomes\n· ${c.shadowSnapshots||0} shadow snapshots\n· ${c.forecastSnapshots||0} forecast snapshots`);
+    console.log('[AdminPurge]', d);
+  } catch(e) {
+    btn.disabled = false; btn.textContent = orig;
+    alert('Purge failed: ' + e.message);
+  }
 }
 
 // ── PER-TICKER PRICE REFRESH ────────────────────────────────────────────────

@@ -2241,11 +2241,24 @@ def get_tradeai():
     details = candidates.get("details", {})
     news_db = load_json(NEWS_PATH, {})
 
+    # Watchlist price refresh writes to analysis.json — holdings are synced into
+    # the watchlist, so prefer that price when it's fresher than the Fetch Info one
+    analysis_data = load_json(OUTPUT_PATH, {})
+    wl_map = {s.get("ticker"): s for s in analysis_data.get("watchlist", [])}
+
     holdings_out = []
     for ticker, pos in trades.get("holdings", {}).items():
         detail = details.get(ticker, {})
         d_data = dream_map.get(ticker, {})
-        current_price = detail.get("price") or d_data.get("price") or pos.get("purchasePrice")
+        wl_entry  = wl_map.get(ticker, {})
+        wl_price  = wl_entry.get("price")
+        wl_ts     = wl_entry.get("priceFetchedAt") or ""
+        det_price = detail.get("price")
+        det_ts    = detail.get("fetchCompletedAt") or ""
+        if wl_price and (not det_price or wl_ts >= det_ts):
+            current_price = wl_price
+        else:
+            current_price = det_price or d_data.get("price") or pos.get("purchasePrice")
         purchase_price = pos.get("purchasePrice", 0)
         shares = pos.get("shares", 0)
         gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
@@ -2559,6 +2572,55 @@ def tradeai_stats():
     })
 
 
+@app.route("/admin/purge", methods=["POST"])
+def admin_purge():
+    """Remove trading data dated before a given YYYY-MM-DD: transactions,
+    closed-trade outcomes, shadow snapshots, and signal forecast snapshots.
+    Holdings, balance, watchlist, configs and version history are untouched."""
+    try:
+        body = request.get_json(silent=True) or {}
+        before = (body.get("before") or "").strip()
+        datetime.strptime(before, "%Y-%m-%d")  # validate format
+
+        removed = {}
+
+        trades = load_trades_ai()
+        txns = trades.get("transactions", [])
+        keep = [t for t in txns if (t.get("date") or "9999")[:10] >= before]
+        removed["transactions"] = len(txns) - len(keep)
+        trades["transactions"] = keep
+        save_trades_ai(trades)
+
+        odb = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+        outs = odb.get("outcomes", [])
+        keep_o = [o for o in outs if (o.get("sellDate") or "9999")[:10] >= before]
+        removed["outcomes"] = len(outs) - len(keep_o)
+        odb["outcomes"] = keep_o
+        save_json(TRADE_OUTCOMES_PATH, odb)
+
+        sdb = load_json(SHADOW_PATH, {"snapshots": []})
+        snaps = sdb.get("snapshots", [])
+        keep_s = [s for s in snaps if (s.get("date") or "9999") >= before]
+        removed["shadowSnapshots"] = len(snaps) - len(keep_s)
+        sdb["snapshots"] = keep_s
+        save_json(SHADOW_PATH, sdb)
+
+        fdb = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        fsnaps = fdb.get("snapshots", [])
+        keep_f = [s for s in fsnaps if (s.get("date") or "9999") >= before]
+        removed["forecastSnapshots"] = len(fsnaps) - len(keep_f)
+        fdb["snapshots"] = keep_f
+        save_json(SIGNAL_FORECAST_PATH, fdb)
+
+        log.info(f"[AdminPurge] removed data before {before}: {removed}")
+        return jsonify({"status": "ok", "before": before, "removed": removed})
+    except ValueError:
+        return jsonify({"error": "before must be YYYY-MM-DD"}), 400
+    except Exception as e:
+        log.error(f"[AdminPurge] FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 @app.route("/tradeai/version/rollback", methods=["POST"])
 def tradeai_version_rollback():
     """Restore an earlier version's config as a new forward version."""
@@ -2682,12 +2744,44 @@ def tradeai_edit_transaction():
             return jsonify({"error": "invalid index"}), 400
         old_price = txns[idx].get("price")
         shares = txns[idx].get("shares", 0)
+        action = txns[idx].get("action")
         txns[idx]["price"] = round(new_price, 4)
         txns[idx]["amount"] = round(new_price * shares, 2)
+
+        # Propagate: cash balance moves by the fill-price delta
+        delta = (new_price - (old_price or 0)) * shares
+        if action == "SELL":
+            trades["balance"] = round(trades.get("balance", 0) + delta, 2)
+        elif action == "BUY":
+            trades["balance"] = round(trades.get("balance", 0) - delta, 2)
+            # If still held, the position's cost basis changes too
+            if txns[idx].get("ticker") in trades.get("holdings", {}):
+                trades["holdings"][txns[idx]["ticker"]]["purchasePrice"] = round(new_price, 4)
         trades["transactions"] = txns
         save_json(TRADES_AI_PATH, trades)
-        log.info(f"TradeAI transaction edited: idx:{idx} price:{old_price}→{new_price}")
-        return jsonify({"status": "ok", "index": idx})
+
+        # Propagate: the validation outcome record must match the corrected fill
+        outcome_updated = False
+        if action == "SELL":
+            try:
+                odb = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+                for o in odb["outcomes"]:
+                    if o.get("ticker") == txns[idx].get("ticker") and o.get("sellDate") == txns[idx].get("date"):
+                        o["sellPrice"] = round(new_price, 4)
+                        bp = o.get("buyPrice")
+                        if bp:
+                            o["gainLoss"] = round((new_price - bp) * o.get("shares", shares), 2)
+                            o["gainLossPct"] = round((new_price - bp) / bp * 100, 2)
+                            if o.get("spyReturnPct") is not None:
+                                o["excessReturnPct"] = round(o["gainLossPct"] - o["spyReturnPct"], 2)
+                        outcome_updated = True
+                if outcome_updated:
+                    save_json(TRADE_OUTCOMES_PATH, odb)
+            except Exception as oe:
+                log.error(f"TradeAI edit_transaction outcome sync FAIL: {oe}")
+
+        log.info(f"TradeAI transaction edited: idx:{idx} {action} price:{old_price}→{new_price} | balance delta:{round(delta,2) if action=='SELL' else round(-delta,2)} | outcome synced:{outcome_updated}")
+        return jsonify({"status": "ok", "index": idx, "newBalance": trades.get("balance"), "outcomeUpdated": outcome_updated})
     except Exception as e:
         log.error(f"TradeAI edit_transaction FAIL: {e}")
         return jsonify({"error": str(e)}), 500
