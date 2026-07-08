@@ -23,6 +23,29 @@ def _setup_ca_bundle():
         os.environ.setdefault("SSL_CERT_FILE", bundle)
         os.environ.setdefault("REQUESTS_CA_BUNDLE", bundle)
         os.environ.setdefault("CURL_CA_BUNDLE", bundle)
+
+        # Python 3.13 verifies certs strictly by default and rejects Norton's
+        # proxy CA ("Basic Constraints not marked critical"), which breaks all
+        # requests/urllib3 calls (FRED, NewsAPI, TMX). Relax only that flag —
+        # chain verification against the bundle above still applies.
+        try:
+            import ssl
+            from urllib3.util import ssl_ as _urllib3_ssl
+            _orig_ctx = _urllib3_ssl.create_urllib3_context
+            def _lenient_ctx(*args, **kwargs):
+                ctx = _orig_ctx(*args, **kwargs)
+                try:
+                    ctx.verify_flags &= ~ssl.VERIFY_X509_STRICT
+                except Exception:
+                    pass
+                return ctx
+            _urllib3_ssl.create_urllib3_context = _lenient_ctx
+            # urllib3.connection binds the function by name at import time —
+            # patch that reference too or the fix never takes effect
+            import urllib3.connection as _urllib3_conn
+            _urllib3_conn.create_urllib3_context = _lenient_ctx
+        except Exception:
+            pass
     except Exception:
         pass
 

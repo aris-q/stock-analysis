@@ -1,5 +1,5 @@
 {
-  "balance": 0.57,
+  "balance": 59.33,
   "holdings": {
     "ONDS": {
       "shares": 115,
@@ -7,33 +7,76 @@
       "purchasedAt": "2026-07-06 10:42 EDT",
       "peakPrice": 7.585
     },
-    "CRWV": {
-      "shares": 10,
-      "purchasePrice": 85.82,
-      "purchasedAt": "2026-07-06 10:42 EDT"
-    },
     "IRWD": {
       "shares": 201,
       "purchasePrice": 4.3001,
       "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 4.49
-    },
-    "BKR": {
-      "shares": 16,
-      "purchasePrice": 53.715,
-      "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 54.47
-    },
-    "SLB": {
-      "shares": 18,
-      "purchasePrice": 45.91,
-      "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 46.42
+      "peakPrice": 4.66
     },
     "BMNR": {
       "shares": 61,
       "purchasePrice": 15.26,
       "purchasedAt": "2026-07-07 10:23 EDT"
+    },
+    "CDE": {
+      "shares": 58,
+      "purchasePrice": 14.9198,
+      "purchasedAt": "2026-07-08 11:28 EDT",
+      "factors": {
+        "bucket": "SmartMoney",
+        "composite": 96.1,
+        "aiScore": 85,
+        "dreamScore": 54,
+        "breakoutScore": 21,
+        "buySignal": "Strong Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "signalFcBoost": 0,
+        "sectorPenalty": 0
+      },
+      "recVersion": 3,
+      "spyAtBuy": 739.73,
+      "vixAtBuy": 18.04
+    },
+    "NBIS": {
+      "shares": 4,
+      "purchasePrice": 201.8203,
+      "purchasedAt": "2026-07-08 11:28 EDT",
+      "factors": {
+        "bucket": "SmartMoney",
+        "composite": 87.6,
+        "aiScore": 75,
+        "dreamScore": 51,
+        "breakoutScore": 21,
+        "buySignal": "Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "signalFcBoost": 0,
+        "sectorPenalty": 0
+      },
+      "recVersion": 3,
+      "spyAtBuy": 739.73,
+      "vixAtBuy": 18.04
+    },
+    "WCP.TO": {
+      "shares": 56,
+      "purchasePrice": 15.4558,
+      "purchasedAt": "2026-07-08 11:28 EDT",
+      "factors": {
+        "bucket": "SmartMoney",
+        "composite": 60.4,
+        "aiScore": 80,
+        "dreamScore": 65,
+        "breakoutScore": 0,
+        "buySignal": "Strong Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "signalFcBoost": 0,
+        "sectorPenalty": -15
+      },
+      "recVersion": 3,
+      "spyAtBuy": 739.73,
+      "vixAtBuy": 18.04
     }
   },
   "transactions": [
@@ -1231,7 +1274,94 @@
       "date": "2026-07-07 10:23 EDT",
       "balance": 0.57,
       "reason": "BMNR exhibits an accelerating operational trajectory, marked by exceptional 627.8% revenue growth and a strong 66.6% gross margin, indicating rapid improvement from a low base. While free cash flow is significantly negative, the absence of debt mitigates immediate liquidity concerns, suggesting growth is funded by equity. The stock is trading at a substantial discount from its 52-week high, presenting a high-risk, high-reward opportunity for investors believing in continued execution towards profitability, as implied by the reasonable forward P/E and strong analyst target."
+    },
+    {
+      "ticker": "CRWV",
+      "action": "SELL",
+      "shares": 10,
+      "price": 84.4657,
+      "amount": 844.66,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 845.23,
+      "reason": "Composite score collapsed to 20.2/100 \u2014 exiting position",
+      "composite": 20.2,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -1.38,
+      "pctFromPeak": -1.38,
+      "stopLoss": false,
+      "gainLoss": -13.54,
+      "daysHeld": 2.0
+    },
+    {
+      "ticker": "BKR",
+      "action": "SELL",
+      "shares": 16,
+      "price": 56.6116,
+      "amount": 905.79,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 1751.02,
+      "reason": "Composite score collapsed to 24.7/100 \u2014 exiting position",
+      "composite": 24.7,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 5.6,
+      "pctFromPeak": 0.0,
+      "stopLoss": false,
+      "gainLoss": 46.35,
+      "daysHeld": 2.0
+    },
+    {
+      "ticker": "SLB",
+      "action": "SELL",
+      "shares": 18,
+      "price": 47.0258,
+      "amount": 846.46,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 2597.48,
+      "reason": "Composite score collapsed to 24.7/100 \u2014 exiting position",
+      "composite": 24.7,
+      "buySignal": "Unknown",
+      "pctFromPurchase": 2.64,
+      "pctFromPeak": 0.0,
+      "stopLoss": false,
+      "gainLoss": 20.08,
+      "daysHeld": 2.0
+    },
+    {
+      "ticker": "CDE",
+      "action": "BUY",
+      "shares": 58,
+      "price": 14.9198,
+      "amount": 865.35,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 1732.13,
+      "reason": "Coeur Mining exhibits an accelerating fundamental trajectory, evidenced by its exceptional 137.8% revenue growth and attractive forward P/E of 7.4, indicating strong expected earnings. Despite recent price weakness and an oversold RSI of 25.0, the company boasts a very healthy balance sheet with a Debt/Equity of 7.4 and a substantial analyst upside of 80.6%. This combination of rapid improvement from a currently depressed price point, strong financials, and high analyst conviction makes it a compelling \"buy the dip\" opportunity.",
+      "composite": 96.1,
+      "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "NBIS",
+      "action": "BUY",
+      "shares": 4,
+      "price": 201.8203,
+      "amount": 807.28,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 924.85,
+      "reason": "Nebius Group exhibits an exceptional growth trajectory with 683.9% revenue growth and a strong 72.1% gross margin, indicating rapid expansion in the critical AI infrastructure sector. Its position in this booming industry and a recent price pullback (RSI 34.4) offer a potential entry point for investors seeking high-growth opportunities. However, the company faces significant financial risks due to massive negative free cash flow and a high debt-to-equity ratio, which are exacerbated by the current hyperinflationary macro environment. While its growth is compelling, these financial",
+      "composite": 87.6,
+      "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "WCP.TO",
+      "action": "BUY",
+      "shares": 56,
+      "price": 15.4558,
+      "amount": 865.52,
+      "date": "2026-07-08 11:28 EDT",
+      "balance": 59.33,
+      "reason": "Whitecap Resources demonstrates an accelerating business trajectory with exceptional revenue growth of 114.8% and a healthy gross margin of 62.6%. Its robust financial position, evidenced by low debt/equity and strong free cash flow, provides a solid foundation for continued expansion. While the stock price isn't at a \"low base,\" the significant difference between current and forward P/E suggests strong anticipated earnings growth, making it an attractive growth play despite recent minor price consolidation. This combination of rapid operational improvement and financial strength, coupled with a strong analyst consensus, makes WCP.TO a compelling investment.",
+      "composite": 60.4,
+      "bucket": "SmartMoney"
     }
   ],
-  "lastRecommendAt": "2026-07-07 21:57 EDT"
+  "lastRecommendAt": "2026-07-08 11:28 EDT"
 }

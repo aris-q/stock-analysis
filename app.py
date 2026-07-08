@@ -93,8 +93,34 @@ def _sync_watchlist_from_holdings(holding_tickers):
             log.info(f"[WatchlistSync] added:{added} removed:{removed} | watchlist now:{watchlist}")
         else:
             log.info(f"[WatchlistSync] no changes | holdings:{list(current_holdings)}")
+
+        # New holdings arrive with no watchlist detail data — kick off a full
+        # fetch for them so their table isn't empty until manually fetched.
+        if added:
+            _fetch_new_holdings_async(added)
     except Exception as e:
         log.error(f"[WatchlistSync] FAIL: {e}")
+
+
+def _fetch_new_holdings_async(tickers):
+    """Run a full watchlist fetch for newly held tickers in the background,
+    waiting for whatever operation is currently running (e.g. the Recommend
+    that triggered this sync) to release fetch_status first."""
+    def _worker():
+        import time
+        for _ in range(60):  # wait up to ~2 minutes
+            if not fetch_status.get("running"):
+                break
+            time.sleep(2)
+        if fetch_status.get("running"):
+            log.warning(f"[WatchlistSync] auto-fetch skipped, another operation still running: {tickers}")
+            return
+        log.info(f"[WatchlistSync] auto-fetching watchlist detail for new holdings: {tickers}")
+        try:
+            run_fetch(list(tickers), "single")
+        except Exception as e:
+            log.error(f"[WatchlistSync] auto-fetch FAIL: {tickers} | {e}")
+    threading.Thread(target=_worker, daemon=True).start()
 
 
 def _get_holding_tickers():

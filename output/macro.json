@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.49,
-      "prev": 4.48,
-      "change": 0.01,
-      "date": "2026-07-02",
+      "value": 4.48,
+      "prev": null,
+      "change": null,
+      "date": "2026-07-06",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.14,
-      "prev": 4.17,
-      "change": -0.03,
-      "date": "2026-07-02",
+      "value": 4.13,
+      "prev": null,
+      "change": null,
+      "date": "2026-07-06",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 15.57,
-      "prev": 15.81,
-      "change": -0.24,
-      "date": "2026-07-06",
+      "value": 16.13,
+      "prev": 15.57,
+      "change": 0.56,
+      "date": "2026-07-07",
       "unit": ""
     },
     "dollar_index": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7537.43,
-      "prev": null,
-      "change": null,
-      "date": "2026-07-06",
+      "value": 7503.85,
+      "prev": 7537.43,
+      "change": -33.58,
+      "date": "2026-07-07",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
       "value": 0.35,
       "unit": "%",
-      "date": "2026-07-02",
+      "date": "2026-07-06",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Nasdaq Slides As Samsung Tumbles On Earnings; Micron, Sandisk Lose Big (Live Coverage)",
+      "title": "Stock Market Today: Dow Drops As Trump Says Iran Ceasefire Is 'Over'; These Airline Firms Slump (Live Coverage)",
       "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-micron-sandisk-samsung/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-07-07T13:43:18Z"
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-us-iran-ceasefire-micron-sandisk/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-07-08T14:25:10Z"
     },
     {
-      "title": "Exchange-Traded Funds Lower, Equity Futures Mixed Amid Caution Over Chip Sector Outlook",
+      "title": "The Nasdaq 100 Now Controls a Quarter of Every Growth ETF Dollar",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/the-nasdaq-100-now-controls-a-quarter-of-every-growth-etf-dollar/",
+      "publishedAt": "2026-07-08T13:30:03Z"
+    },
+    {
+      "title": "This Strategist Sees the S&P 500 Hitting 8,500, and One Thing Changed Her Mind",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/this-strategist-sees-the-sp-500-hitting-8500-and-one-thing-changed-her-mind/",
+      "publishedAt": "2026-07-08T13:20:05Z"
+    },
+    {
+      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday as Trump Declares US-Iran Agreement Over",
       "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-lower-equity-132222461.html",
-      "publishedAt": "2026-07-07T13:22:22Z"
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130428931.html",
+      "publishedAt": "2026-07-08T13:04:28Z"
     },
     {
-      "title": "Playing It Safe With $1.7 Million in Cash and Bonds Is Costing This Retiree $39,000 a Year",
+      "title": "This $1,200 Stock Could Be the Next Massive Stock Split Opportunity",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/07/07/playing-it-safe-with-1-7-million-in-cash-and-bonds-is-costing-this-retiree-39000-a-year/",
-      "publishedAt": "2026-07-07T12:21:23Z"
+      "url": "https://247wallst.com/investing/2026/07/08/this-1200-stock-could-be-the-next-massive-stock-split-opportunity/",
+      "publishedAt": "2026-07-08T12:42:30Z"
     },
     {
-      "title": "Your Biggest Fund May Be A Bad Deal",
+      "title": "What Should A VYM Holder Do At This New High?",
       "source": "Trefis",
-      "url": "https://www.trefis.com/articles/605948/your-biggest-fund-may-be-a-bad-deal/2026-07-07",
-      "publishedAt": "2026-07-07T12:15:57Z"
+      "url": "https://www.trefis.com/articles/606192/what-should-a-vym-holder-do-at-this-new-high/2026-07-08",
+      "publishedAt": "2026-07-08T11:58:39Z"
     },
     {
-      "title": "Insiders Are Dumping Micron At The Highest Rate Since 2010. Is It Time To Get Out?",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/07/insiders-are-dumping-micron-at-the-highest-rate-since-2010-is-it-time-to-get-out/",
-      "publishedAt": "2026-07-07T12:02:46Z"
+      "title": "What Is Really Driving MTUM ETF?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/606193/what-is-really-driving-mtum-etf/2026-07-08",
+      "publishedAt": "2026-07-08T11:58:38Z"
     },
     {
-      "title": "The $1,500-A-Month Portfolio: Conservative, Moderate, And High-Yield Paths Compared",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/07/07/the-1500-a-month-portfolio-conservative-moderate-and-high-yield-paths-compared/",
-      "publishedAt": "2026-07-07T10:39:57Z"
+      "title": "Hedging Is Disappearing. It\u2019s a Huge Market Risk.",
+      "source": "Barrons.com",
+      "url": "https://www.barrons.com/articles/hedging-disappearing-huge-market-risk-4511b993?siteid=yhoof2&yptr=yahoo",
+      "publishedAt": "2026-07-08T05:30:00Z"
     },
     {
-      "title": "Nasdaq Futures Lag After Samsung Selloff Hits AI Chip Trade: Why SPCX, MU, SNDK, RIVN, WMT Are In Focus",
+      "title": "Nasdaq, S&P 500 Futures Climb Ahead Of Fed Minutes, Shrugging Off Iran Concerns: FCEL, TE, NVTS, MU Stocks In Focus",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/stock-market-today-dow-nasdaq-sp500-futures-spcx-mu-sndk-rivn-wmt-stocks/cZmlX39R7mS",
-      "publishedAt": "2026-07-07T08:43:43Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-climb-ahead-of-fed-minutes-shrugging-off-iran-concerns/cZmVBc6R7Zs",
+      "publishedAt": "2026-07-08T01:43:25Z"
     },
     {
-      "title": "S&P 500, Nasdaq End Higher On Support From Strong Tech Gains Led By Nvidia, Dow Hits Record Highs \u2014 MSFT, NVDA, LMT, AVGO, SPCX In Focus",
+      "title": "Nasdaq Slides Nearly 2% As Higher Treasury Yields, Soaring Oil Prices Pressure Tech And Chip Stocks \u2014 META, AMZN, SPCX, MSFT In Focus",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-end-higher-on-support-from-strong-tech-gains-led-by-nvidia-dow-hits-record-highs-msft-nvda-lmt-avgo-spcx-in-focus/cZm1YfaR7lU",
-      "publishedAt": "2026-07-06T21:24:38Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-slides-nearly-2-as-higher-treasury-yields-soaring-oil-prices-pressure-tech-and-chip-stocks-meta-amzn-spcx-msft-in-focus/cZmlDzSR7ZV",
+      "publishedAt": "2026-07-07T21:43:09Z"
     },
     {
-      "title": "Top Wall Street Strategist: The S&P 500 Could Hit As High As 8,800 This Year, But a 10-20% Drop May Come First",
+      "title": "SpaceX Mania Just Made This the Busiest Month for the Nasdaq\u2019s Biggest ETF in 6 Years",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/06/top-wall-street-strategist-the-sp-500-could-hit-as-high-as-8800-this-year-but-a-10-20-drop-may-come-first/",
-      "publishedAt": "2026-07-06T20:27:32Z"
+      "url": "https://247wallst.com/investing/2026/07/08/spacex-mania-just-made-this-the-busiest-month-for-the-nasdaqs-biggest-etf-in-6-years/",
+      "publishedAt": "2026-07-08T12:50:56Z"
     },
     {
-      "title": "Microsoft Is Cutting 4,800 Jobs to Feed the AI Machine. Should You Still Own It?",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/06/microsoft-is-cutting-4800-jobs-to-feed-the-ai-machine-should-you-still-own-it/",
-      "publishedAt": "2026-07-06T19:58:58Z"
-    },
-    {
-      "title": "SpaceX joins Nasdaq 100, SK Hynix makes US debut: What to Watch",
-      "source": "Yahoo Finance Video",
-      "url": "https://finance.yahoo.com/video/spacex-joins-nasdaq-100-sk-230000351.html",
-      "publishedAt": "2026-07-06T23:00:00Z"
-    },
-    {
-      "title": "Will a Spot in the Nasdaq-100 Send SpaceX Stock Flying? Don\u2019t Bet on It",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-07-2026/card/will-a-spot-in-the-nasdaq-100-send-spacex-stock-flying-don-t-bet-on-it-TMmcNx9WbGBoKa99Wt6G?siteid=yhoof2&yptr=yahoo",
-      "publishedAt": "2026-07-07T12:12:16Z"
+      "title": "SpaceX Officially Joined the Nasdaq-100 and Received a $300 Price Target From Wall Street. Here's Why the Stock Is Falling Anyway.",
+      "source": "Motley Fool",
+      "url": "https://www.fool.com/investing/2026/07/08/spacex-officially-joined-the-nasdaq-100-and-receiv/",
+      "publishedAt": "2026-07-08T11:20:00Z"
     }
   ],
-  "fetchedAt": "2026-07-07 10:02 EDT"
+  "fetchedAt": "2026-07-08 11:14 EDT"
 }
