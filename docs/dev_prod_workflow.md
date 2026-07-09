@@ -32,11 +32,25 @@ git push -u origin dev
 ```
 
 If the push is rejected with a 403 / permission error, your machine has
-cached the wrong GitHub login. Fix it one of two ways:
-- Push once from **GitHub Desktop** instead (it uses its own stored login), or
-- Clear the cached credential: Windows **Credential Manager** → Windows
-  Credentials → remove the `git:https://github.com` entry → run the push
-  again and log in as the right account.
+cached the wrong GitHub login. Try these in order:
+
+1. **Push once from GitHub Desktop instead** (it uses its own stored login) —
+   often the fastest fix.
+2. **Clear the credential in Windows Credential Manager:** Win key → type
+   "Credential Manager" → **Windows Credentials** tab → find the entry for
+   `git:https://github.com` → **Remove**. Then run the push again and log in
+   as the right account.
+3. **If step 2 didn't work (still shows the wrong account), the real cache is
+   Git Credential Manager (GCM), not the Windows Credential Manager GUI** —
+   GCM keeps its own store and the GUI doesn't always show it. This is the
+   most likely fix if Git for Windows is installed with GCM (default):
+   ```bash
+   git-credential-manager github logout <wrong-username>
+   ```
+   Then push again — it will prompt a fresh login. This is the fix that
+   actually worked when this exact 403 came up in practice; Windows
+   Credential Manager's GUI showed nothing wrong while GCM was silently
+   still handing out the stale login.
 
 **Recreate anything the clone doesn't bring over** (these are normally
 gitignored on purpose — secrets and local environments don't belong in git):
@@ -146,7 +160,8 @@ git checkout -b recovery-branch v1-stable
 | Tag a snapshot | `git tag <name> <commit>` |
 | List all branches (local + remote) | `git branch -a` |
 | Check which branch you're on | `git status -sb` |
-| Fix a rejected push (wrong cached login) | Push once via GitHub Desktop, or clear the credential in Windows Credential Manager |
+| Fix a rejected push (wrong cached login) | Push via GitHub Desktop, or clear it in Windows Credential Manager, or `git-credential-manager github logout <wrong-username>` |
+| See which GitHub account GCM has cached | `git-credential-manager github list` |
 
 ---
 

@@ -2,198 +2,94 @@
   "indicators": {
     "fed_rate": {
       "label": "Fed Funds Rate",
-      "value": 3.64,
-      "prev": 3.64,
+      "value": 3.63,
+      "prev": 3.63,
       "change": 0.0,
-      "date": "2026-04-01",
+      "date": "2026-06-01",
       "unit": "%"
     },
     "cpi": {
       "label": "CPI (YoY)",
-      "value": 332.41,
-      "prev": 330.29,
-      "change": 3.95,
-      "date": "2026-04-01",
+      "value": 333.98,
+      "prev": 332.41,
+      "change": 4.27,
+      "date": "2026-05-01",
       "unit": "%"
     },
     "unemployment": {
       "label": "Unemployment Rate",
-      "value": 4.3,
+      "value": 4.2,
       "prev": 4.3,
-      "change": 0.0,
-      "date": "2026-04-01",
+      "change": -0.1,
+      "date": "2026-06-01",
       "unit": "%"
     },
     "gdp_growth": {
       "label": "GDP Growth",
-      "value": 2.0,
+      "value": 2.1,
       "prev": 0.5,
-      "change": 1.5,
+      "change": 1.6,
       "date": "2026-01-01",
       "unit": "%"
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-<<<<<<< Updated upstream
-      "value": 4.47,
-      "prev": 4.46,
-      "change": 0.01,
-      "date": "2026-05-14",
-=======
       "value": 4.55,
       "prev": 4.48,
       "change": 0.07,
       "date": "2026-07-07",
->>>>>>> Stashed changes
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-<<<<<<< Updated upstream
-      "value": 4.0,
-      "prev": 3.98,
-      "change": 0.02,
-      "date": "2026-05-14",
-=======
       "value": 4.19,
       "prev": 4.13,
       "change": 0.06,
       "date": "2026-07-07",
->>>>>>> Stashed changes
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-<<<<<<< Updated upstream
-      "value": 17.26,
-      "prev": 17.87,
-      "change": -0.61,
-      "date": "2026-05-14",
-=======
       "value": 16.9,
       "prev": 16.13,
       "change": 0.77,
       "date": "2026-07-08",
->>>>>>> Stashed changes
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 118.04,
-      "prev": 118.01,
-      "change": 0.03,
-      "date": "2026-05-08",
+      "value": 120.69,
+      "prev": 121.15,
+      "change": -0.46,
+      "date": "2026-07-02",
       "unit": ""
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
-<<<<<<< Updated upstream
-      "value": 101.56,
-      "prev": 98.87,
-      "change": 2.69,
-      "date": "2026-05-11",
-=======
       "value": 69.6,
       "prev": null,
       "change": null,
       "date": "2026-07-06",
->>>>>>> Stashed changes
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
-<<<<<<< Updated upstream
-      "value": 7408.5,
-      "prev": 7501.24,
-      "change": -92.74,
-      "date": "2026-05-15",
-=======
       "value": 7482.71,
       "prev": 7503.85,
       "change": -21.14,
       "date": "2026-07-08",
->>>>>>> Stashed changes
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-<<<<<<< Updated upstream
-      "value": 0.47,
-      "unit": "%",
-      "date": "2026-05-14",
-=======
       "value": 0.36,
       "unit": "%",
       "date": "2026-07-07",
->>>>>>> Stashed changes
       "change": null
     }
   },
   "headlines": [
     {
-<<<<<<< Updated upstream
-      "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall amid inflation jitters as oil prices climb; Treasury yields are up as U.S. oil prices trade above $100 a barrel; S&P 500's tech sector under pressure - MarketWatch",
-      "source": "MarketWatch",
-      "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-and-nasdaq-set-to-pull-back-as-treasury-yields-climb",
-      "publishedAt": "2026-05-15T17:31:00Z"
-    },
-    {
-      "title": "Honda shows off new hybrids for America as it absorbs $9 billion EV loss - Ars Technica",
-      "source": "Ars Technica",
-      "url": "https://arstechnica.com/cars/2026/05/honda-shows-off-new-hybrids-for-america-as-it-absorbs-9-billion-ev-loss/",
-      "publishedAt": "2026-05-15T15:56:33Z"
-    },
-    {
-      "title": "Trump's Financial Form Shows Purchases Of Paramount, WBD And Netflix - Deadline",
-      "source": "Deadline",
-      "url": "http://deadline.com/2026/05/trump-financial-disclsoure-paramount-warner-bros-1236906103/",
-      "publishedAt": "2026-05-15T15:51:00Z"
-    },
-    {
-      "title": "Stock Market Today: Dow Falls 400 Points Lower on Oil Price Fears \u2014 Live Updates - WSJ",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-05-15-2026",
-      "publishedAt": "2026-05-15T15:34:00Z"
-    },
-    {
-      "title": "Stephen Miran exits the Fed. How he set the stage for Kevin Warsh. - CNBC",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/15/stephen-miran-exits-the-fed-how-he-set-the-stage-for-kevin-warsh.html",
-      "publishedAt": "2026-05-15T15:29:59Z"
-    },
-    {
-      "title": "Bill Ackman has been quietly buying Microsoft since February, when AI fears were dragging the stock - Fortune",
-      "source": "Fortune",
-      "url": "https://fortune.com/2026/05/15/bill-ackman-microsoft-stock-openai-azure-spending/",
-      "publishedAt": "2026-05-15T15:14:00Z"
-    },
-    {
-      "title": "Chip Stocks Slide After U.S.-China Summit Ends Without Major Tech Deals - WSJ",
-      "source": "The Wall Street Journal",
-      "url": "https://www.wsj.com/tech/chip-stocks-slide-after-u-s-china-summit-ends-without-major-tech-deals-c7c757b8",
-      "publishedAt": "2026-05-15T14:33:00Z"
-    },
-    {
-      "title": "Starbucks to lay off 300 U.S. employees, shutter some regional support offices - CNBC",
-      "source": "CNBC",
-      "url": "https://www.cnbc.com/2026/05/15/starbucks-to-lay-off-300-us-employees-close-some-regional-offices.html",
-      "publishedAt": "2026-05-15T13:03:00Z"
-    },
-    {
-      "title": "2 Upstate NY metros among top 100 in US for foreclosure rate in first quarter - Syracuse.com",
-      "source": "syracuse.com",
-      "url": "https://www.syracuse.com/data/2026/05/2-upstate-ny-metros-among-top-100-in-us-for-foreclosure-rate-in-first-quarter.html",
-      "publishedAt": "2026-05-15T12:30:00Z"
-    },
-    {
-      "title": "North America\u2019s largest commuter rail system faces a potential shutdown - AP News",
-      "source": "Associated Press",
-      "url": "https://apnews.com/article/lirr-new-york-commuter-rail-strike-union-eefab0d1f91470934fb89bd1809d0a94",
-      "publishedAt": "2026-05-15T11:52:00Z"
-    }
-  ],
-  "fetchedAt": "2026-05-16 16:54 EDT"
-=======
       "title": "Stock Market Today: Dow Inches Up Amid U.S.-Iran News; Arm Jumps Off Key Level (Live Coverage)",
       "source": "Investor's Business Daily",
       "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-micron-sandisk/?src=A00220&yptr=yahoo",
@@ -267,5 +163,4 @@
     }
   ],
   "fetchedAt": "2026-07-09 10:59 EDT"
->>>>>>> Stashed changes
 }
