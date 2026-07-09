@@ -1,6 +1,7 @@
 {
   "watchlist": [
     {
+<<<<<<< Updated upstream
       "ticker": "KGC",
       "price": 28.17,
       "previousClose": 28.99,
@@ -13,6 +14,20 @@
       "calendarFetchedAt": "2026-05-09 10:44 EDT",
       "sector": "Basic Materials",
       "industry": "Gold",
+=======
+      "ticker": "SPCX",
+      "price": 148.3,
+      "previousClose": 149.47,
+      "volume": 59001351,
+      "marketCap": 1953731969024,
+      "rsi14": 21.5,
+      "bbPercent": null,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+      "fetchedAt": "2026-06-28 14:19 EDT",
+      "calendarFetchedAt": "2026-06-28 14:19 EDT",
+      "sector": "Industrials",
+      "industry": "Aerospace & Defense",
+>>>>>>> Stashed changes
       "calendar": {
         "earningsDateStart": "2026-07-29",
         "earningsDateEnd": null,
@@ -26,6 +41,7 @@
         "dividendPayDate": "2026-06-03"
       },
       "events": {
+<<<<<<< Updated upstream
         "dividendRate": 0.15,
         "dividendYield": 0.46,
         "trailingAnnualDividendRate": 0.145,
@@ -37,6 +53,390 @@
         "earningsTimestamp": "2026-04-29",
         "earningsCallStart": "2026-04-30",
         "earningsCallEnd": "2026-04-30",
+=======
+        "dividendRate": null,
+        "dividendYield": null,
+        "trailingAnnualDividendRate": 0.0,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": null,
+        "lastDividendDate": null,
+        "exDividendDate": null,
+        "dividendDate": null,
+        "earningsTimestamp": null,
+        "earningsCallStart": null,
+        "earningsCallEnd": null,
+        "isEarningsDateEstimate": null,
+        "earningsGrowthYoY": null,
+        "earningsQuarterlyGrowth": null,
+        "lastSplitFactor": null,
+        "lastSplitDate": null
+      },
+      "dividends": [],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 18674000000,
+          "Gross Profit": 9223000000,
+          "Operating Income": -2064000000,
+          "EBITDA": 4427000000,
+          "Net Income": -4937000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1945000000,
+          "Tax Provision": 718000000,
+          "Operating Expense": 11287000000,
+          "Research And Development": 8643000000
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 14015000000,
+          "Gross Profit": 6019000000,
+          "Operating Income": 742000000,
+          "EBITDA": 5646000000,
+          "Net Income": 791000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1580000000,
+          "Tax Provision": -549000000,
+          "Operating Expense": 5277000000,
+          "Research And Development": 3464000000
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 10387000000,
+          "Gross Profit": 4277000000,
+          "Operating Income": 507000000,
+          "EBITDA": -663000000,
+          "Net Income": -4628000000,
+          "Basic EPS": 0,
+          "Interest Expense": 1693000000,
+          "Tax Provision": -363000000,
+          "Operating Expense": 3770000000,
+          "Research And Development": 2105000000
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2026-03-31",
+          "Total Revenue": 4694000000,
+          "Gross Profit": 2306000000,
+          "Operating Income": -1954000000,
+          "EBITDA": -1164000000,
+          "Net Income": -4276000000,
+          "Basic EPS": 0,
+          "Interest Expense": 664000000,
+          "Tax Provision": 6000000,
+          "Operating Expense": 4260000000,
+          "Research And Development": 3514000000
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 4067000000,
+          "Gross Profit": 2105000000,
+          "Operating Income": 55000000,
+          "EBITDA": 1376000000,
+          "Net Income": -528000000,
+          "Basic EPS": 0,
+          "Interest Expense": 447000000,
+          "Tax Provision": 14000000,
+          "Operating Expense": 2050000000,
+          "Research And Development": 1557000000
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 24747000000,
+          "Total Debt": 23318000000,
+          "Total Assets": 92079000000,
+          "Total Liabilities Net Minority Interest": 50754000000,
+          "Stockholders Equity": 41325000000,
+          "Working Capital": 9552000000,
+          "Current Assets": 30952000000,
+          "Current Liabilities": 21400000000,
+          "Long Term Debt": 21968000000,
+          "Retained Earnings": -37035000000
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 11385000000,
+          "Total Debt": 14175000000,
+          "Total Assets": 57062000000,
+          "Total Liabilities Net Minority Interest": 31258000000,
+          "Stockholders Equity": 25804000000,
+          "Working Capital": 4317000000,
+          "Current Assets": 16108000000,
+          "Current Liabilities": 11791000000,
+          "Long Term Debt": 13421000000,
+          "Retained Earnings": -32098000000
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2026-03-31",
+          "Cash And Cash Equivalents": 15852000000,
+          "Total Debt": 30603000000,
+          "Total Assets": 102094000000,
+          "Total Liabilities Net Minority Interest": 60512000000,
+          "Stockholders Equity": 41582000000,
+          "Working Capital": 5296000000,
+          "Current Assets": 29732000000,
+          "Current Liabilities": 24436000000,
+          "Long Term Debt": 28727000000,
+          "Retained Earnings": -41311000000
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": 6785000000,
+          "Capital Expenditure": -20906000000,
+          "Free Cash Flow": -14121000000,
+          "Investing Cash Flow": -19575000000,
+          "Financing Cash Flow": 26350000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1125000000,
+          "Issuance Of Debt": 16055000000,
+          "Repayment Of Debt": -7153000000,
+          "Depreciation And Amortization": 6701000000
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": 5776000000,
+          "Capital Expenditure": -11163000000,
+          "Free Cash Flow": -5387000000,
+          "Investing Cash Flow": -10796000000,
+          "Financing Cash Flow": 11830000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -1021000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -231000000,
+          "Depreciation And Amortization": 3824000000
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 4520000000,
+          "Capital Expenditure": -4415000000,
+          "Free Cash Flow": 105000000,
+          "Investing Cash Flow": -4867000000,
+          "Financing Cash Flow": 422000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -170000000,
+          "Issuance Of Debt": 0,
+          "Repayment Of Debt": -112000000,
+          "Depreciation And Amortization": 2635000000
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2026-03-31",
+          "Operating Cash Flow": 1047000000,
+          "Capital Expenditure": -10114000000,
+          "Free Cash Flow": -9067000000,
+          "Investing Cash Flow": -16724000000,
+          "Financing Cash Flow": 7125000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -4346000000,
+          "Issuance Of Debt": 22694000000,
+          "Repayment Of Debt": -18377000000,
+          "Depreciation And Amortization": 2442000000
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": 727000000,
+          "Capital Expenditure": -4140000000,
+          "Free Cash Flow": -3413000000,
+          "Investing Cash Flow": -4170000000,
+          "Financing Cash Flow": 354000000,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -508000000,
+          "Issuance Of Debt": 4744000000,
+          "Repayment Of Debt": -4811000000,
+          "Depreciation And Amortization": 1443000000
+        }
+      ],
+      "annualProfitMargin": -0.2644,
+      "quarterlyProfitMargin": -0.911,
+      "netCash": 1429000000,
+      "latestFCF": -9067000000,
+      "latestCapex": -10114000000,
+      "latestOCF": 1047000000,
+      "quarterlyChanges": {
+        "revenue_qoq": 0.1542,
+        "revenue_yoy": null,
+        "netIncome_qoq": -7.0985,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": 0.0955,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": -36.5273,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": -1.6566,
+        "fcf_yoy": null,
+        "ocf_qoq": 0.4402,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": 0.3324,
+        "revenue_yoy_2": 0.3493,
+        "netIncome_yoy_1": -7.2415,
+        "netIncome_yoy_2": 1.1709,
+        "grossProfit_yoy_1": 0.5323,
+        "grossProfit_yoy_2": 0.4073,
+        "operatingIncome_yoy_1": -3.7817,
+        "operatingIncome_yoy_2": 0.4635,
+        "fcf_yoy_1": -1.6213,
+        "fcf_yoy_2": -52.3048,
+        "capex_yoy_1": -0.8728,
+        "capex_yoy_2": -1.5284,
+        "totalDebt_yoy_1": 0.645,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marginRank": 2,
+      "netCashRank": 1,
+      "marketCapRank": 1,
+      "fcfRank": 3
+    },
+    {
+      "ticker": "ONDS",
+      "price": 7.52,
+      "previousClose": 7.35,
+      "volume": 60807054,
+      "marketCap": 4285186304,
+      "rsi14": 30.3,
+      "bbPercent": 0.207,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 5
+    },
+    {
+      "ticker": "IRWD",
+      "price": 4.77,
+      "previousClose": 4.47,
+      "volume": 4975581,
+      "marketCap": 785205952,
+      "rsi14": 79.4,
+      "bbPercent": 1.023,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+      "sector": null,
+      "annualProfitMargin": null,
+      "quarterlyProfitMargin": null,
+      "netCash": null,
+      "latestFCF": null,
+      "latestCapex": null,
+      "latestOCF": null,
+      "quarterlyChanges": {
+        "revenue_qoq": null,
+        "revenue_yoy": null,
+        "netIncome_qoq": null,
+        "netIncome_yoy": null,
+        "grossProfit_qoq": null,
+        "grossProfit_yoy": null,
+        "operatingIncome_qoq": null,
+        "operatingIncome_yoy": null,
+        "fcf_qoq": null,
+        "fcf_yoy": null,
+        "ocf_qoq": null,
+        "ocf_yoy": null,
+        "totalDebt_qoq": null,
+        "totalDebt_yoy": null
+      },
+      "annualChanges": {
+        "revenue_yoy_1": null,
+        "revenue_yoy_2": null,
+        "netIncome_yoy_1": null,
+        "netIncome_yoy_2": null,
+        "grossProfit_yoy_1": null,
+        "grossProfit_yoy_2": null,
+        "operatingIncome_yoy_1": null,
+        "operatingIncome_yoy_2": null,
+        "fcf_yoy_1": null,
+        "fcf_yoy_2": null,
+        "capex_yoy_1": null,
+        "capex_yoy_2": null,
+        "totalDebt_yoy_1": null,
+        "totalDebt_yoy_2": null
+      },
+      "bankChecklist": null,
+      "marketCapRank": 6
+    },
+    {
+      "ticker": "BMNR",
+      "price": 14.86,
+      "previousClose": 14.8,
+      "volume": 22858377,
+      "marketCap": 8463911424,
+      "rsi14": 41.3,
+      "bbPercent": 0.444,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+      "fetchedAt": "2026-07-08 12:05 EDT",
+      "calendarFetchedAt": "2026-07-08 12:05 EDT",
+      "sector": "Financial Services",
+      "industry": "Capital Markets",
+      "calendar": {
+        "earningsDateStart": "2026-07-10",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": 0.18,
+        "earningsEPSLow": 0.18,
+        "earningsEPSAvg": 0.18,
+        "revenueEstimateHigh": 97400000,
+        "revenueEstimateLow": 57500000,
+        "revenueEstimateAvg": 77450000,
+        "exDividendDate": "2025-12-04",
+        "dividendPayDate": "2025-12-28"
+      },
+      "events": {
+        "dividendRate": 0.01,
+        "dividendYield": 0.07,
+        "trailingAnnualDividendRate": 0.01,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": 0.01,
+        "lastDividendDate": "2025-12-08",
+        "exDividendDate": "2025-12-05",
+        "dividendDate": "2025-12-29",
+        "earningsTimestamp": null,
+        "earningsCallStart": null,
+        "earningsCallEnd": null,
+>>>>>>> Stashed changes
         "isEarningsDateEstimate": true,
         "earningsGrowthYoY": 1.339,
         "earningsQuarterlyGrowth": 1.291,
@@ -626,6 +1026,7 @@
           "auto": false
         }
       ],
+<<<<<<< Updated upstream
       "marketCapRank": 5,
       "fetchedAt": "2026-05-09 20:24 EDT",
       "calendarFetchedAt": "2026-05-09 20:24 EDT",
@@ -1105,6 +1506,21 @@
       "rsi14": 72.1,
       "bbPercent": 0.725,
       "priceFetchedAt": "2026-06-03 21:26 EDT",
+=======
+      "marginRank": 1,
+      "marketCapRank": 4,
+      "fcfRank": 2
+    },
+    {
+      "ticker": "NBIS",
+      "price": 216.48,
+      "previousClose": 195.19,
+      "volume": 17415931,
+      "marketCap": 54963879936,
+      "rsi14": 38.2,
+      "bbPercent": 0.25,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+>>>>>>> Stashed changes
       "sector": null,
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
@@ -1148,6 +1564,7 @@
       "marketCapRank": 2
     },
     {
+<<<<<<< Updated upstream
       "ticker": "BMO.TO",
       "price": 225.53,
       "previousClose": 228.86,
@@ -1869,6 +2286,16 @@
       "rsi14": 61.1,
       "bbPercent": 0.613,
       "priceFetchedAt": "2026-06-03 21:27 EDT",
+=======
+      "ticker": "CDE",
+      "price": 15.24,
+      "previousClose": 16.04,
+      "volume": 30412925,
+      "marketCap": 15705346048,
+      "rsi14": 25.4,
+      "bbPercent": 0.135,
+      "priceFetchedAt": "2026-07-09 09:15 EDT",
+>>>>>>> Stashed changes
       "sector": null,
       "annualProfitMargin": null,
       "quarterlyProfitMargin": null,
@@ -1912,6 +2339,7 @@
       "marketCapRank": 3
     },
     {
+<<<<<<< Updated upstream
       "ticker": "CPCC.TO",
       "price": 25.91,
       "previousClose": 26.7,
@@ -1977,39 +2405,385 @@
       "latestFCF": null,
       "latestCapex": null,
       "latestOCF": null,
+=======
+      "ticker": "ANGX",
+      "fetchedAt": "2026-07-09 11:15 EDT",
+      "calendarFetchedAt": "2026-07-09 11:15 EDT",
+      "price": 3.975,
+      "volume": 650458,
+      "marketCap": 741354240,
+      "sector": "Communication Services",
+      "industry": "Entertainment",
+      "calendar": {
+        "earningsDateStart": "2026-04-30",
+        "earningsDateEnd": null,
+        "earningsEPSHigh": -0.13,
+        "earningsEPSLow": -0.18,
+        "earningsEPSAvg": -0.155,
+        "revenueEstimateHigh": 124000000,
+        "revenueEstimateLow": 101726000,
+        "revenueEstimateAvg": 110757200,
+        "exDividendDate": null,
+        "dividendPayDate": null
+      },
+      "events": {
+        "dividendRate": null,
+        "dividendYield": null,
+        "trailingAnnualDividendRate": 0.0,
+        "fiveYearAvgDividendYield": null,
+        "lastDividendValue": null,
+        "lastDividendDate": null,
+        "exDividendDate": null,
+        "dividendDate": null,
+        "earningsTimestamp": "2026-04-30",
+        "earningsCallStart": "2026-05-01",
+        "earningsCallEnd": "2026-05-01",
+        "isEarningsDateEstimate": false,
+        "earningsGrowthYoY": null,
+        "earningsQuarterlyGrowth": null,
+        "lastSplitFactor": null,
+        "lastSplitDate": null
+      },
+      "dividends": [],
+      "annualIncome": [
+        {
+          "date": "2025-12-31",
+          "Total Revenue": 321558306,
+          "Gross Profit": 196699281,
+          "Operating Income": -164108478,
+          "EBITDA": -143311560,
+          "Net Income": -170478642,
+          "Basic EPS": -1,
+          "Interest Expense": 11834846,
+          "Tax Provision": 0,
+          "Operating Expense": 360807759,
+          "Research And Development": 15527749
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 96516439,
+          "Gross Profit": 52156696,
+          "Operating Income": -86719551,
+          "EBITDA": -73967701,
+          "Net Income": -88273377,
+          "Basic EPS": 0,
+          "Interest Expense": 2366014,
+          "Tax Provision": 3534602,
+          "Operating Expense": 138876247,
+          "Research And Development": 12842710
+        },
+        {
+          "date": "2023-12-31",
+          "Total Revenue": 202437316,
+          "Gross Profit": 116404776,
+          "Operating Income": 12358479,
+          "EBITDA": 20518973,
+          "Net Income": 13364747,
+          "Basic EPS": 0,
+          "Interest Expense": 3657958,
+          "Tax Provision": -2697435,
+          "Operating Expense": 104046297,
+          "Research And Development": 9704473
+        }
+      ],
+      "quarterlyIncome": [
+        {
+          "date": "2026-03-31",
+          "Total Revenue": 115105066,
+          "Gross Profit": 71102720,
+          "Operating Income": -2666171,
+          "EBITDA": -3777854,
+          "Net Income": -13804520,
+          "Basic EPS": 0,
+          "Interest Expense": 6032609,
+          "Tax Provision": 0,
+          "Operating Expense": 73768891,
+          "Research And Development": 4083938
+        },
+        {
+          "date": "2025-12-31",
+          "Total Revenue": null,
+          "Gross Profit": null,
+          "Operating Income": null,
+          "EBITDA": null,
+          "Net Income": null,
+          "Basic EPS": 0,
+          "Interest Expense": null,
+          "Tax Provision": null,
+          "Operating Expense": null,
+          "Research And Development": null
+        },
+        {
+          "date": "2025-06-30",
+          "Total Revenue": 87641416,
+          "Gross Profit": 60355033,
+          "Operating Income": -21437283,
+          "EBITDA": -13076755,
+          "Net Income": -15882522,
+          "Basic EPS": 0,
+          "Interest Expense": 2742902,
+          "Tax Provision": 0,
+          "Operating Expense": 81792316,
+          "Research And Development": 3757264
+        },
+        {
+          "date": "2025-03-31",
+          "Total Revenue": 47440640,
+          "Gross Profit": 27960436,
+          "Operating Income": -33591563,
+          "EBITDA": -33309770,
+          "Net Income": -37303924,
+          "Basic EPS": 0,
+          "Interest Expense": 1564155,
+          "Tax Provision": 0,
+          "Operating Expense": 61551999,
+          "Research And Development": 3244918
+        },
+        {
+          "date": "2024-12-31",
+          "Total Revenue": 31030641,
+          "Gross Profit": 20303621,
+          "Operating Income": -30282321,
+          "EBITDA": -29877976,
+          "Net Income": -38613421,
+          "Basic EPS": null,
+          "Interest Expense": 396767,
+          "Tax Provision": 8017769,
+          "Operating Expense": 50585942,
+          "Research And Development": 3162875
+        }
+      ],
+      "annualBalance": [
+        {
+          "date": "2025-12-31",
+          "Cash And Cash Equivalents": 44083233,
+          "Total Debt": 100509401,
+          "Total Assets": 241411563,
+          "Total Liabilities Net Minority Interest": 267191887,
+          "Stockholders Equity": -31434161,
+          "Working Capital": -84121185,
+          "Current Assets": 134877955,
+          "Current Liabilities": 218999140,
+          "Long Term Debt": 41692404,
+          "Retained Earnings": -241531068
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 7211826,
+          "Total Debt": 14282698,
+          "Total Assets": 111380567,
+          "Total Liabilities Net Minority Interest": 94672613,
+          "Stockholders Equity": 8485001,
+          "Working Capital": -27111118,
+          "Current Assets": 52949200,
+          "Current Liabilities": 80060318,
+          "Long Term Debt": null,
+          "Retained Earnings": -87014444
+        },
+        {
+          "date": "2023-12-31",
+          "Cash And Cash Equivalents": 25201425,
+          "Total Debt": 5486061,
+          "Total Assets": 98258195,
+          "Total Liabilities Net Minority Interest": 58582535,
+          "Stockholders Equity": 39827330,
+          "Working Capital": 20937596,
+          "Current Assets": 65061599,
+          "Current Liabilities": 44124003,
+          "Long Term Debt": null,
+          "Retained Earnings": -10073191
+        }
+      ],
+      "quarterlyBalance": [
+        {
+          "date": "2026-03-31",
+          "Cash And Cash Equivalents": 38875760,
+          "Total Debt": 105306279,
+          "Total Assets": 213085387,
+          "Total Liabilities Net Minority Interest": 254545158,
+          "Stockholders Equity": -41291276,
+          "Working Capital": -76547881,
+          "Current Assets": 111616884,
+          "Current Liabilities": 188164765,
+          "Long Term Debt": 61802915,
+          "Retained Earnings": -255335588
+        },
+        {
+          "date": "2025-06-30",
+          "Cash And Cash Equivalents": 27999679,
+          "Total Debt": 38052217,
+          "Total Assets": 148091638,
+          "Total Liabilities Net Minority Interest": 140299550,
+          "Stockholders Equity": 2949716,
+          "Working Capital": -14559262,
+          "Current Assets": 109132800,
+          "Current Liabilities": 123692062,
+          "Long Term Debt": 5772849,
+          "Retained Earnings": -137208163
+        },
+        {
+          "date": "2025-03-31",
+          "Cash And Cash Equivalents": 14185031,
+          "Total Debt": 28240224,
+          "Total Assets": 118582516,
+          "Total Liabilities Net Minority Interest": 124538346,
+          "Stockholders Equity": -8381169,
+          "Working Capital": -24109999,
+          "Current Assets": 82660088,
+          "Current Liabilities": 106770087,
+          "Long Term Debt": 3412222,
+          "Retained Earnings": -121325641
+        },
+        {
+          "date": "2024-12-31",
+          "Cash And Cash Equivalents": 7211826,
+          "Total Debt": 14282698,
+          "Total Assets": 111380567,
+          "Total Liabilities Net Minority Interest": 94672613,
+          "Stockholders Equity": 8485001,
+          "Working Capital": -27111118,
+          "Current Assets": 52949200,
+          "Current Liabilities": 80060318,
+          "Long Term Debt": null,
+          "Retained Earnings": -87014444
+        }
+      ],
+      "annualCashflow": [
+        {
+          "date": "2025-12-31",
+          "Operating Cash Flow": -83331965,
+          "Capital Expenditure": -18555551,
+          "Free Cash Flow": -101887516,
+          "Investing Cash Flow": -55585348,
+          "Financing Cash Flow": 175788720,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -437791,
+          "Issuance Of Debt": 157340048,
+          "Repayment Of Debt": -67053622,
+          "Depreciation And Amortization": 15344915
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": -51296510,
+          "Capital Expenditure": -9238585,
+          "Free Cash Flow": -60535095,
+          "Investing Cash Flow": -12843666,
+          "Financing Cash Flow": 46152641,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -706645,
+          "Issuance Of Debt": 23750000,
+          "Repayment Of Debt": -18438039,
+          "Depreciation And Amortization": 8577161
+        },
+        {
+          "date": "2023-12-31",
+          "Operating Cash Flow": 15188775,
+          "Capital Expenditure": -9849046,
+          "Free Cash Flow": 5339729,
+          "Investing Cash Flow": -9964697,
+          "Financing Cash Flow": 9253655,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -107073,
+          "Issuance Of Debt": 28911394,
+          "Repayment Of Debt": -26751117,
+          "Depreciation And Amortization": 6345373
+        }
+      ],
+      "quarterlyCashflow": [
+        {
+          "date": "2026-03-31",
+          "Operating Cash Flow": 1887859,
+          "Capital Expenditure": -2694352,
+          "Free Cash Flow": -806493,
+          "Investing Cash Flow": -2528070,
+          "Financing Cash Flow": -4567262,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -897416,
+          "Issuance Of Debt": 20000000,
+          "Repayment Of Debt": -18744062,
+          "Depreciation And Amortization": 3945593
+        },
+        {
+          "date": "2025-06-30",
+          "Operating Cash Flow": -14938336,
+          "Capital Expenditure": -1908451,
+          "Free Cash Flow": -16846787,
+          "Investing Cash Flow": -4563641,
+          "Financing Cash Flow": 33316625,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -67911,
+          "Issuance Of Debt": 25986048,
+          "Repayment Of Debt": -14647233,
+          "Depreciation And Amortization": -1672867
+        },
+        {
+          "date": "2025-03-31",
+          "Operating Cash Flow": -9760444,
+          "Capital Expenditure": -2484641,
+          "Free Cash Flow": -12245085,
+          "Investing Cash Flow": -3245898,
+          "Financing Cash Flow": 19979547,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -65029,
+          "Issuance Of Debt": 22904952,
+          "Repayment Of Debt": -9691628,
+          "Depreciation And Amortization": 2456207
+        },
+        {
+          "date": "2024-12-31",
+          "Operating Cash Flow": -20149275,
+          "Capital Expenditure": -31866,
+          "Free Cash Flow": -20181141,
+          "Investing Cash Flow": -5102331,
+          "Financing Cash Flow": 21119831,
+          "Dividends Paid": null,
+          "Repurchase Of Capital Stock": -106566,
+          "Issuance Of Debt": 6706981,
+          "Repayment Of Debt": -63725,
+          "Depreciation And Amortization": 405607
+        }
+      ],
+      "annualProfitMargin": -0.5302,
+      "quarterlyProfitMargin": -0.1199,
+      "netCash": -56426168,
+      "latestFCF": -806493,
+      "latestCapex": -2694352,
+      "latestOCF": 1887859,
+>>>>>>> Stashed changes
       "quarterlyChanges": {
         "revenue_qoq": null,
-        "revenue_yoy": null,
+        "revenue_yoy": 2.7094,
         "netIncome_qoq": null,
-        "netIncome_yoy": null,
+        "netIncome_yoy": 0.6425,
         "grossProfit_qoq": null,
-        "grossProfit_yoy": null,
+        "grossProfit_yoy": 2.502,
         "operatingIncome_qoq": null,
-        "operatingIncome_yoy": null,
-        "fcf_qoq": null,
+        "operatingIncome_yoy": 0.912,
+        "fcf_qoq": 0.9521,
         "fcf_yoy": null,
-        "ocf_qoq": null,
+        "ocf_qoq": 1.1264,
         "ocf_yoy": null,
-        "totalDebt_qoq": null,
+        "totalDebt_qoq": 1.7674,
         "totalDebt_yoy": null
       },
       "annualChanges": {
-        "revenue_yoy_1": null,
-        "revenue_yoy_2": null,
-        "netIncome_yoy_1": null,
-        "netIncome_yoy_2": null,
-        "grossProfit_yoy_1": null,
-        "grossProfit_yoy_2": null,
-        "operatingIncome_yoy_1": null,
-        "operatingIncome_yoy_2": null,
-        "fcf_yoy_1": null,
-        "fcf_yoy_2": null,
-        "capex_yoy_1": null,
-        "capex_yoy_2": null,
-        "totalDebt_yoy_1": null,
-        "totalDebt_yoy_2": null
+        "revenue_yoy_1": 2.3316,
+        "revenue_yoy_2": -0.5232,
+        "netIncome_yoy_1": -0.9313,
+        "netIncome_yoy_2": -7.6049,
+        "grossProfit_yoy_1": 2.7713,
+        "grossProfit_yoy_2": -0.5519,
+        "operatingIncome_yoy_1": -0.8924,
+        "operatingIncome_yoy_2": -8.017,
+        "fcf_yoy_1": -0.6831,
+        "fcf_yoy_2": -12.3367,
+        "capex_yoy_1": -1.0085,
+        "capex_yoy_2": 0.062,
+        "totalDebt_yoy_1": 6.0371,
+        "totalDebt_yoy_2": 1.6035
       },
       "bankChecklist": null,
+<<<<<<< Updated upstream
       "marketCapRank": 27
     },
     {
@@ -5854,10 +6628,17 @@
         ]
       },
       "aiSummaryUpdatedAt": "2026-05-11 08:42 EDT"
+=======
+      "marginRank": 3,
+      "netCashRank": 2,
+      "marketCapRank": 7,
+      "fcfRank": 1
+>>>>>>> Stashed changes
     }
   ],
   "dailyGainers": [
     {
+<<<<<<< Updated upstream
       "ticker": "INOD",
       "percentGain": 85.75,
       "price": 84.85,
@@ -5979,6 +6760,129 @@
       "percentGain": 5.64,
       "price": 11.8,
       "volume": 3629972
+=======
+      "ticker": "LASR",
+      "percentGain": 27.87,
+      "price": 75.04,
+      "volume": 2247599
+    },
+    {
+      "ticker": "BBIO",
+      "percentGain": 15.04,
+      "price": 90.11,
+      "volume": 7938557
+    },
+    {
+      "ticker": "MARA",
+      "percentGain": 18.93,
+      "price": 14.295,
+      "volume": 35248530
+    },
+    {
+      "ticker": "QGEN",
+      "percentGain": 11.45,
+      "price": 42.35,
+      "volume": 7788352
+    },
+    {
+      "ticker": "PENG",
+      "percentGain": 13.06,
+      "price": 88.74,
+      "volume": 3888894
+    },
+    {
+      "ticker": "FRVO",
+      "percentGain": 13.92,
+      "price": 26.85,
+      "volume": 1191082
+    },
+    {
+      "ticker": "OPEN",
+      "percentGain": 9.29,
+      "price": 5.235,
+      "volume": 31391122
+    },
+    {
+      "ticker": "ARM",
+      "percentGain": 11.11,
+      "price": 333.6091,
+      "volume": 3615635
+    },
+    {
+      "ticker": "TXG",
+      "percentGain": 10.53,
+      "price": 41.415,
+      "volume": 994619
+    },
+    {
+      "ticker": "ALNY",
+      "percentGain": 6.04,
+      "price": 343.035,
+      "volume": 3144557
+    }
+  ],
+  "lastPriceRefresh": "2026-07-09 09:15 EDT",
+  "dailyGainersCDN": [
+    {
+      "ticker": "CNT.TO",
+      "percentGain": 84.62,
+      "price": 0.12,
+      "volume": 430690
+    },
+    {
+      "ticker": "NEO.TO",
+      "percentGain": 12.38,
+      "price": 42.58,
+      "volume": 324983
+    },
+    {
+      "ticker": "HND.TO",
+      "percentGain": 10.47,
+      "price": 22.8,
+      "volume": 550392
+    },
+    {
+      "ticker": "SNDK.TO",
+      "percentGain": 8.24,
+      "price": 45.98,
+      "volume": 387224
+    },
+    {
+      "ticker": "AG.TO",
+      "percentGain": 8.23,
+      "price": 24.21,
+      "volume": 638538
+    },
+    {
+      "ticker": "KEEL.TO",
+      "percentGain": 7.47,
+      "price": 6.91,
+      "volume": 1433177
+    },
+    {
+      "ticker": "MU.TO",
+      "percentGain": 7.47,
+      "price": 44.88,
+      "volume": 948321
+    },
+    {
+      "ticker": "AMD.TO",
+      "percentGain": 6.83,
+      "price": 100.45,
+      "volume": 327649
+    },
+    {
+      "ticker": "EDR.TO",
+      "percentGain": 6.78,
+      "price": 11.65,
+      "volume": 369229
+    },
+    {
+      "ticker": "TKO.TO",
+      "percentGain": 6.54,
+      "price": 9.78,
+      "volume": 315979
+>>>>>>> Stashed changes
     }
   ],
   "recommendations": {
@@ -6035,8 +6939,14 @@
     "marketContext": "Current market conditions are characterized by rising inflation and interest rates, which may impact growth and valuations. However, opportunities exist in sectors with strong fundamentals and growth catalysts.",
     "generatedAt": "2023-10-27"
   },
+<<<<<<< Updated upstream
   "lastUpdated": "2026-05-11 08:40 EDT",
   "opTimestamps": {
     "prices": "2026-05-11 08:26 EDT"
+=======
+  "lastUpdated": "2026-07-09 11:15 EDT",
+  "opTimestamps": {
+    "prices": "2026-07-09 09:15 EDT"
+>>>>>>> Stashed changes
   }
 }

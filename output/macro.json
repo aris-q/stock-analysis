@@ -34,26 +34,47 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
+<<<<<<< Updated upstream
       "value": 4.47,
       "prev": 4.46,
       "change": 0.01,
       "date": "2026-05-14",
+=======
+      "value": 4.55,
+      "prev": 4.48,
+      "change": 0.07,
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
+<<<<<<< Updated upstream
       "value": 4.0,
       "prev": 3.98,
       "change": 0.02,
       "date": "2026-05-14",
+=======
+      "value": 4.19,
+      "prev": 4.13,
+      "change": 0.06,
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
+<<<<<<< Updated upstream
       "value": 17.26,
       "prev": 17.87,
       "change": -0.61,
       "date": "2026-05-14",
+=======
+      "value": 16.9,
+      "prev": 16.13,
+      "change": 0.77,
+      "date": "2026-07-08",
+>>>>>>> Stashed changes
       "unit": ""
     },
     "dollar_index": {
@@ -66,30 +87,51 @@
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
+<<<<<<< Updated upstream
       "value": 101.56,
       "prev": 98.87,
       "change": 2.69,
       "date": "2026-05-11",
+=======
+      "value": 69.6,
+      "prev": null,
+      "change": null,
+      "date": "2026-07-06",
+>>>>>>> Stashed changes
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
+<<<<<<< Updated upstream
       "value": 7408.5,
       "prev": 7501.24,
       "change": -92.74,
       "date": "2026-05-15",
+=======
+      "value": 7482.71,
+      "prev": 7503.85,
+      "change": -21.14,
+      "date": "2026-07-08",
+>>>>>>> Stashed changes
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
+<<<<<<< Updated upstream
       "value": 0.47,
       "unit": "%",
       "date": "2026-05-14",
+=======
+      "value": 0.36,
+      "unit": "%",
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "change": null
     }
   },
   "headlines": [
     {
+<<<<<<< Updated upstream
       "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall amid inflation jitters as oil prices climb; Treasury yields are up as U.S. oil prices trade above $100 a barrel; S&P 500's tech sector under pressure - MarketWatch",
       "source": "MarketWatch",
       "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-and-nasdaq-set-to-pull-back-as-treasury-yields-climb",
@@ -151,4 +193,79 @@
     }
   ],
   "fetchedAt": "2026-05-16 16:54 EDT"
+=======
+      "title": "Stock Market Today: Dow Inches Up Amid U.S.-Iran News; Arm Jumps Off Key Level (Live Coverage)",
+      "source": "Investor's Business Daily",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-micron-sandisk/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-07-09T14:18:36Z"
+    },
+    {
+      "title": "How Much Palo Alto Networks (PANW) Do You Own By Accident?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/606418/how-much-palo-alto-networks-panw-do-you-own-by-accident/2026-07-09",
+      "publishedAt": "2026-07-09T13:55:17Z"
+    },
+    {
+      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Thursday as Chip Stocks Rebound Despite US-Iran Tensions",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-131219951.html",
+      "publishedAt": "2026-07-09T13:12:19Z"
+    },
+    {
+      "title": "Coca-Cola vs Exxon: Which Blue Chip Won the Decade?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/09/coca-cola-vs-exxon-which-blue-chip-won-the-decade/",
+      "publishedAt": "2026-07-09T11:15:24Z"
+    },
+    {
+      "title": "Wall Street Is Warning of a Market Snapback. For a 73-Year-Old, an RMD Locked to Last Year\u2019s Balance Could Force a Sale at the Bottom.",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/07/09/wall-street-is-warning-of-a-market-snapback-for-a-73-year-old-an-rmd-locked-to-last-years-balance-could-force-a-sale-at-the-bottom/",
+      "publishedAt": "2026-07-09T11:03:13Z"
+    },
+    {
+      "title": "Dow, Nasdaq, S&P 500 Futures Climb Amid US-Iran Tensions, Fed Inflation Worries: WULF, CMPS, ANET, PENG Stocks In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-nasdaq-sp500-futures-climb-amid-us-iran-tensions-fed-inflation-worries/cZmo02NR7Vg",
+      "publishedAt": "2026-07-09T01:38:03Z"
+    },
+    {
+      "title": "Dow Ends Lower To Record Worst Day In Nearly A Month As US-Iran Jitters Push Oil Prices \u2014 TSLA, NVDA, BE, AAPL, WBD  In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-ends-lower-to-record-worst-day-in-nearly-a-month-as-us-iran-jitters-push-oil-prices-tsla-nvda-be-aapl-wbd-in-focus/cZmn5ZFR7VB",
+      "publishedAt": "2026-07-08T22:00:20Z"
+    },
+    {
+      "title": "JEPI vs. JEPQ: Which Is the Better Buy in July?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/jepi-vs-jepq-which-is-the-better-buy-in-july/",
+      "publishedAt": "2026-07-08T15:31:24Z"
+    },
+    {
+      "title": "This Undervalued $40 Billion Company Is Ready To Soar",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/this-undervalued-40-billion-company-is-ready-to-soar/",
+      "publishedAt": "2026-07-08T15:27:49Z"
+    },
+    {
+      "title": "This $6.9 Billion ETF Delivers Consistent Dividends Without Eroding Share Price Like Covered Calls",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/etf/2026/07/08/this-6-9-billion-etf-delivers-consistent-dividends-without-eroding-share-price-like-covered-calls/",
+      "publishedAt": "2026-07-08T15:09:54Z"
+    },
+    {
+      "title": "CRWV Vs. QQQ: Buy CoreWeave for Explosive AI Alpha or Hold QQQ for Insulated Macro Safety?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/crwv-vs-qqq-buy-coreweave-for-explosive-ai-alpha-or-hold-qqq-for-insulated-macro-safety/",
+      "publishedAt": "2026-07-08T20:02:39Z"
+    },
+    {
+      "title": "Exchange-Traded Funds Lower as US Equities Fall After Midday",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/articles/exchange-traded-funds-lower-us-171346843.html",
+      "publishedAt": "2026-07-08T17:13:46Z"
+    }
+  ],
+  "fetchedAt": "2026-07-09 10:59 EDT"
+>>>>>>> Stashed changes
 }
