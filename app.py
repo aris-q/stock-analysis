@@ -1675,7 +1675,19 @@ def run_tradeai_analyze():
             fetch_status = {"running": False, "message": "TradeAI analyze: run Identify + Fetch Info first.", "operation": None, "current": 0, "total": 0, "current_ticker": ""}
             return
 
-        eligible = [item for item in identified if details.get(item["ticker"])]
+        # Holdings FIRST within the 20-call Gemini budget: an unscored holding
+        # used to default to aiScore 0 and get force-sold on a phantom
+        # "score collapse". A shorter candidate tail costs far less than that.
+        MAX_ANALYZE_CALLS = 20
+        held_tickers = list(load_trades_ai().get("holdings", {}).keys())
+        identified_map = {i["ticker"]: i for i in identified}
+        eligible = [
+            identified_map.get(t, {"ticker": t, "bucket": "Holding", "reason": "Currently held position"})
+            for t in held_tickers if details.get(t)
+        ]
+        eligible += [i for i in identified
+                     if details.get(i["ticker"]) and i["ticker"] not in held_tickers]
+        eligible = eligible[:MAX_ANALYZE_CALLS]
         total = len(eligible)
         fetch_status["total"] = total
 
@@ -1929,6 +1941,7 @@ def run_tradeai_recommend():
                 "breakoutScore": breakout_score,
                 "sectorPenalty": sector_penalty,
                 "composite": composite,
+                "hasAI": ai.get("aiScore") is not None,
                 "signalFcDirection": signal_fc_direction,
                 "signalFcTarget": signal_fc_target,
                 "signalFcReturn": signal_fc_return,
@@ -1997,6 +2010,16 @@ def run_tradeai_recommend():
             # ── Score-based sell checks ───────────────────────────────────────
             hard_sell = buy_signal == "Avoid" or composite < SELL_CFG["hardSellFloor"]
             soft_sell = ticker not in top5 and composite < SELL_CFG["softSellFloor"]
+
+            # Missing-data guard: a held ticker with NO fresh AI assessment
+            # computes composite from aiScore=0 — that's absent data, not a
+            # score collapse. Suppress score-based sells; price-based stops
+            # above remain fully active so real losers still get cut.
+            has_ai = bool(scored_entry and scored_entry.get("hasAI"))
+            if not has_ai and (hard_sell or soft_sell):
+                log.warning(f"TradeAI SELL-GUARD: {ticker} has no fresh AI assessment — "
+                            f"score-based sell suppressed (composite {composite} is data-starved); stops still active")
+                hard_sell = soft_sell = False
 
             # Hold-time hysteresis: rotation (soft) sells only after minHoldDays.
             # Stop-loss and hard sells are exempt — risk exits stay immediate.
