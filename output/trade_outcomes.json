@@ -56,6 +56,36 @@
       "sellComposite": 24.7,
       "factors": null,
       "recVersion": 1
+    },
+    {
+      "ticker": "WCP.TO",
+      "buyDate": "2026-07-08 11:28 EDT",
+      "sellDate": "2026-07-09 11:15 EDT",
+      "daysHeld": 1.0,
+      "shares": 56,
+      "buyPrice": 15.4558,
+      "sellPrice": 15.2794,
+      "gainLoss": -9.88,
+      "gainLossPct": -1.14,
+      "spyReturnPct": 1.29,
+      "excessReturnPct": -2.43,
+      "vixAtBuy": 18.04,
+      "trigger": "hard",
+      "sellReason": "Composite score collapsed to 20.2/100 \u2014 exiting position",
+      "sellComposite": 20.2,
+      "factors": {
+        "bucket": "SmartMoney",
+        "composite": 60.4,
+        "aiScore": 80,
+        "dreamScore": 65,
+        "breakoutScore": 0,
+        "buySignal": "Strong Buy",
+        "trajectory": "Accelerating",
+        "stage": "Growth",
+        "signalFcBoost": 0,
+        "sectorPenalty": -15
+      },
+      "recVersion": 3
     }
   ]
 }

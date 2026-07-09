@@ -1,24 +1,58 @@
 {
-  "balance": 59.33,
+<<<<<<< Updated upstream
+  "balance": 62.82,
+  "holdings": {
+    "POET": {
+      "shares": 1707,
+      "purchasePrice": 15.97,
+      "purchasedAt": "2026-05-23 22:06 EDT",
+      "livePrice": 15.38,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+    },
+    "CRWV": {
+      "shares": 258,
+      "purchasePrice": 105.49,
+      "purchasedAt": "2026-05-23 22:06 EDT",
+      "livePrice": 110.93,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+=======
+  "balance": 1.06,
   "holdings": {
     "ONDS": {
       "shares": 115,
       "purchasePrice": 7.525,
       "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 7.585
+      "peakPrice": 7.7277
     },
     "IRWD": {
       "shares": 201,
       "purchasePrice": 4.3001,
       "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 4.675
+      "peakPrice": 4.735
+>>>>>>> Stashed changes
     },
-    "BMNR": {
-      "shares": 61,
-      "purchasePrice": 15.26,
-      "purchasedAt": "2026-07-07 10:23 EDT"
+    "ALAB": {
+      "shares": 77,
+      "purchasePrice": 320.09,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 363.54,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
     },
     "CDE": {
+<<<<<<< Updated upstream
+      "shares": 1277,
+      "purchasePrice": 19.32,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 18.15,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+    },
+    "ASTS": {
+      "shares": 233,
+      "purchasePrice": 105.65,
+      "purchasedAt": "2026-06-01 23:48 EDT",
+      "livePrice": 107.73,
+      "livePriceFetchedAt": "2026-06-03 21:27 EDT"
+=======
       "shares": 58,
       "purchasePrice": 14.9198,
       "purchasedAt": "2026-07-08 11:28 EDT",
@@ -37,7 +71,7 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 14.9836
+      "peakPrice": 15.985
     },
     "NBIS": {
       "shares": 4,
@@ -58,18 +92,18 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 202.235
+      "peakPrice": 215.22
     },
-    "WCP.TO": {
-      "shares": 56,
-      "purchasePrice": 15.4558,
-      "purchasedAt": "2026-07-08 11:28 EDT",
+    "ANGX": {
+      "shares": 229,
+      "purchasePrice": 3.9909,
+      "purchasedAt": "2026-07-09 11:15 EDT",
       "factors": {
         "bucket": "SmartMoney",
-        "composite": 60.4,
-        "aiScore": 80,
-        "dreamScore": 65,
-        "breakoutScore": 0,
+        "composite": 67.1,
+        "aiScore": 88,
+        "dreamScore": 58,
+        "breakoutScore": 5,
         "buySignal": "Strong Buy",
         "trajectory": "Accelerating",
         "stage": "Growth",
@@ -77,8 +111,9 @@
         "sectorPenalty": -15
       },
       "recVersion": 3,
-      "spyAtBuy": 739.73,
-      "vixAtBuy": 18.04
+      "spyAtBuy": 749.29,
+      "vixAtBuy": 16.38
+>>>>>>> Stashed changes
     }
   },
   "transactions": [
@@ -133,338 +168,129 @@
       "reason": "ASTS is rapidly developing its unique space-based cellular network, which has the potential to revolutionize global connectivity. While financials are currently dominated by investment and R&D expenses, the revenue growth rate indicates strong momentum and a clear path to profitability.  Key catalysts include successful satellite deployment and partnerships with mobile operators, though regulatory hurdles and competition in the telecom sector pose risks.  The current valuation reflects uncertainty but the potential rewards for early investors are significant."
     },
     {
-      "ticker": "MU",
-      "action": "SELL",
-      "shares": 27,
-      "price": 996.0,
-      "amount": 26892.0,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 26921.91,
-      "reason": "Outside top 5 AI composite score"
-    },
-    {
       "ticker": "BMNR",
       "action": "SELL",
       "shares": 1012,
-      "price": 17.89,
-      "amount": 18104.68,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 45026.59,
-      "reason": "While BMNR exhibits high financial growth metrics like revenue growth (627.8%) and a respectable gross margin (66.6%), its recent performance has been volatile with a negative 30-day change. However, the company's focus on emerging blockchain technologies and its strong institutional ownership (37.3%) suggest a positive trajectory. The high analyst target price and low debt/equity ratio further support a bullish outlook."
+      "price": 18.88,
+      "amount": 19106.56,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 19136.47,
+      "reason": "Outside top 5 AI composite score"
     },
     {
       "ticker": "GCTS",
       "action": "SELL",
       "shares": 10988,
-      "price": 3.18,
-      "amount": 34941.84,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 79968.43,
-      "reason": "GCTS exhibits strong revenue growth despite negative margins. This indicates rapid expansion from a low base, making it potentially more attractive than established companies.  However, the company is deeply unprofitable and lacks analyst coverage or institutional interest.  Further development of their product line and positive cash flow are crucial catalysts for future success. While the upside potential is enticing, caution is warranted until profitability improves and market recognition increases."
+      "price": 3.39,
+      "amount": 37249.32,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 56385.79,
+      "reason": "Outside top 5 AI composite score"
     },
     {
       "ticker": "ASTS",
       "action": "SELL",
       "shares": 240,
-      "price": 107.29,
-      "amount": 25749.6,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 105718.03,
-      "reason": "AST SpaceMobile boasts impressive revenue growth, indicating a company rapidly scaling its operations.  While the direct-to-smartphone satellite network is innovative and has the potential to disrupt mobile connectivity, it faces significant technical challenges and regulatory hurdles. The high debt/equity ratio and negative free cash flow raise concerns about financial sustainability. Holding for now allows for further observation of how AST SpaceMobile navigates these challenges and delivers on its ambitious vision."
-    },
-    {
-      "ticker": "OLA.TO",
-      "action": "BUY",
-      "shares": 1683,
-      "price": 15.7,
-      "amount": 26423.1,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 79294.93,
-      "reason": "Orla Mining exhibits strong financial performance with impressive revenue growth and profitability.  Its focus on developing the Camino Rojo project in Mexico presents a significant growth catalyst, potentially driving future value creation. While recent market volatility may create short-term headwinds, analysts' positive outlook and high upside potential suggest a compelling investment opportunity for long-term growth."
-    },
-    {
-      "ticker": "TNXP",
-      "action": "BUY",
-      "shares": 2224,
-      "price": 11.88,
-      "amount": 26421.12,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 52873.81,
-      "reason": "TNXP exhibits strong acceleration with impressive revenue growth despite being in the early stages.  The recent analyst target price suggests significant future upside potential. While FCF remains negative, this is typical for a company investing heavily in R&D. The positive news surrounding TONMYA and its applications could drive further growth and warrant consideration as a Strong Buy."
-    },
-    {
-      "ticker": "CRWV",
-      "action": "BUY",
-      "shares": 244,
-      "price": 108.03,
-      "amount": 26359.32,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 26514.49,
-      "reason": "CoreWeave is rapidly gaining traction in the lucrative AI infrastructure market, evidenced by its explosive revenue growth. While financials like FCF and ROE are currently negative due to reinvestment in growth, this suggests a strong commitment to scaling operations. The high analyst target price and institutional ownership indicate confidence in CoreWeave's future potential, making it a compelling buy for investors seeking exposure to the rapidly evolving AI landscape."
+      "price": 105.86,
+      "amount": 25406.4,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 81792.19,
+      "reason": "Outside top 5 AI composite score"
     },
     {
       "ticker": "POET",
       "action": "BUY",
-      "shares": 1713,
-      "price": 15.475,
-      "amount": 26508.67,
-      "date": "2026-06-04 23:07 EDT",
-      "balance": 5.82,
-      "reason": "POET exhibits a rapidly accelerating trajectory with explosive revenue growth. While financials like ROE and Debt/Equity are concerning, the company's focus on innovative semiconductor products positions it well for future gains.  The strong analyst buy recommendation and positive recent price action suggest market confidence despite a lack of recent news.  Further developments and product launches could drive significant value creation."
+      "shares": 1707,
+      "price": 15.97,
+      "amount": 27260.79,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 54531.4,
+      "reason": ""
+    },
+    {
+      "ticker": "OLA.TO",
+      "action": "BUY",
+      "shares": 1648,
+      "price": 16.54,
+      "amount": 27257.92,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 27273.48,
+      "reason": ""
+    },
+    {
+      "ticker": "CRWV",
+      "action": "BUY",
+      "shares": 258,
+      "price": 105.49,
+      "amount": 27216.42,
+      "date": "2026-05-23 22:06 EDT",
+      "balance": 57.06,
+      "reason": ""
+    },
+    {
+      "ticker": "MU",
+      "action": "SELL",
+      "shares": 27,
+      "price": 1035.5,
+      "amount": 27958.5,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 28015.56,
+      "reason": "Micron Technology, Inc. (MU) has shown strong revenue growth and a robust positive free cash flow in the last quarter which is promising for its financial health. However, it also faces high debt levels with a Debt/Equity ratio of 14.9 that could pose risks if not managed properly or during economic downturns. The company's gross margin stands at an impressive 58.4%, indicating efficient operations and pricing power in the market, which is favorable for its profitability outlook. While there are no recent news items to sway sentiment further either positively or negatively, it would be wise not to overextend on a purchase given uncertainties such as potential supply chain disru01:"
     },
     {
       "ticker": "VG",
       "action": "SELL",
       "shares": 1413,
-      "price": 12.8,
-      "amount": 18086.4,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 18092.22,
-      "reason": "Venture Global is rapidly expanding its LNG production capacity, driving impressive revenue growth.  While the company is currently unprofitable and highly leveraged, its focus on long-term contracts with attractive pricing suggests strong future earnings potential. The favorable macro environment for LNG coupled with analyst buy ratings and a significant institutional ownership stake make this a compelling growth opportunity."
+      "price": 12.68,
+      "amount": 17916.84,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 45932.4,
+      "reason": "Venture Global, Inc. (VG) is a mature LNG company with mixed signals in its financial health and market positioning. While the revenue growth rate of 58.9% appears robust on paper, it's essential to consider that this figure may not be sustainable without consistent demand for liquefied natural gas products or expansion into new markets. The negative Free Cash Flow (FCF) and high Debt/Equity ratio are concerning as they indicate the company is struggling with liquidity issues, which could hamper its ability to invest in growth opportunities or weather market downturns. Furthermore, an RSI of 56.6 suggests that VG's stock price has been overbought recently and may be due for a pullback. The absence of recent news might also suggest complacency within the company management regarding strategic initiatives to drive future growth or improve financial health. Given these factors, it is advisable not to buy at this time but rather hold off until there are clearer signs of positive momentum in both financials and market sentiment."
     },
     {
       "ticker": "OLA.TO",
       "action": "SELL",
-      "shares": 1683,
-      "price": 15.06,
-      "amount": 25345.98,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 43438.2,
-      "reason": "Orla Mining exhibits a clear accelerating trajectory with rapid revenue growth and strong margins. The Camino Rojo project has the potential to be a significant gold producer, driven by favorable market conditions and increasing exploration success. While the current price dip presents a buying opportunity, investors should monitor geopolitical risks in Mexico and potential operational challenges during development."
+      "shares": 1648,
+      "price": 17.03,
+      "amount": 28065.44,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 73997.84,
+      "reason": "OLA.TO shows strong revenue growth and a positive free cash flow, which are promising signs for its financial health and operational efficiency in the mining sector. However, it also has high debt levels relative to equity that could pose risks if not managed properly or if commodity prices fall significantly. The company' enduring stability amidst a decelerating growth trajectory suggests caution is warranted at this stage of its lifecycle; hence the Hold rating with moderate confidence in potential for future improvement, assuming debt management and market conditions remain favorable."
     },
     {
-      "ticker": "TNXP",
-      "action": "SELL",
-      "shares": 2224,
-      "price": 11.07,
-      "amount": 24619.68,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 68057.88,
-      "reason": "Tonix shows significant revenue growth despite negative FCF, suggesting rapid expansion. Analyst targets indicate strong belief in future performance, supported by a high institutional ownership percentage and positive RSI. While the stock has declined recently, this could present a buying opportunity given its long-term trajectory and positive macro environment for biotech. Key risks include clinical trial outcomes and competition within the CNS disorder market."
-    },
-    {
-      "ticker": "CRWV",
-      "action": "SELL",
-      "shares": 244,
-      "price": 100.39,
-      "amount": 24495.16,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 92553.04,
-      "reason": "CoreWeave is experiencing rapid revenue growth (111.6%) and enjoys a healthy gross margin (69.4%), indicating strong market demand for its AI infrastructure solutions. While the company is currently unprofitable, this is typical for growth-stage businesses investing heavily in expansion. The high institutional ownership (57.5%) and analyst price targets suggest continued confidence in CoreWeave's long-term potential."
-    },
-    {
-      "ticker": "CRDO",
+      "ticker": "ALAB",
       "action": "BUY",
-      "shares": 111,
-      "price": 206.89,
-      "amount": 22964.79,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 69588.25,
-      "reason": "Credo exhibits strong accelerating growth with impressive revenue figures. While lacking consistent FCF, the company demonstrates a high ROI and positive analyst sentiment. The focus on high-speed connectivity within rapidly expanding tech sectors like AI positions Credo for continued success despite macroeconomic headwinds."
-    },
-    {
-      "ticker": "ONDS",
-      "action": "BUY",
-      "shares": 2223,
-      "price": 10.43,
-      "amount": 23185.89,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 46402.36,
-      "reason": "Ondas exhibits strong growth trajectory with impressive revenue figures despite operating at a loss.  Key catalysts include the expanding private wireless market and their innovative drone solutions. While current financials reflect early-stage development, the high analyst target and institutional ownership suggest significant future potential. However, investors should monitor profitability improvements and competition in the evolving tech landscape."
-    },
-    {
-      "ticker": "ARGX",
-      "action": "BUY",
-      "shares": 26,
-      "price": 891.32,
-      "amount": 23174.32,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 23228.04,
-      "reason": "argenx exhibits strong accelerating growth with revenue surging 62.6% and a positive analyst sentiment driving the price upward.  The recent launch of VYVGART HYTRULO for generalized myasthenia gravis (gMG) adds a promising catalyst to future growth. While the company is not yet profitable, its low debt/equity ratio suggests sound financial management. Current valuation might seem high, but the potential for continued strong performance justifies the \"Strong Buy\" rating."
-    },
-    {
-      "ticker": "NTRA",
-      "action": "BUY",
-      "shares": 107,
-      "price": 215.31,
-      "amount": 23038.17,
-      "date": "2026-06-06 19:13 EDT",
-      "balance": 189.87,
-      "reason": "Natera exhibits strong accelerating growth with revenue surging at 38.8%.  While profitability metrics are lagging, this is common in high-growth companies focused on market expansion. The company's personalized ctDNA blood test holds significant promise in the rapidly evolving oncology diagnostics market, driving future revenue and earnings. Despite a high valuation, the strong analyst consensus and institutional ownership suggest continued investor confidence in Natera's long-term potential."
-    },
-    {
-      "ticker": "POET",
-      "action": "SELL",
-      "shares": 1713,
-      "price": 10.975,
-      "amount": 18800.17,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 18990.04,
-      "reason": "Stop-loss triggered: down 29.1% from purchase $15.47 (hard stop at -8.0%)",
-      "composite": 98.0,
-      "buySignal": "Buy",
-      "pctFromPurchase": -29.08,
-      "pctFromPeak": -29.08,
-      "stopLoss": true
-    },
-    {
-      "ticker": "ONDS",
-      "action": "SELL",
-      "shares": 2223,
-      "price": 9.31,
-      "amount": 20696.13,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 39686.17,
-      "reason": "Stop-loss triggered: down 10.7% from purchase $10.43 (hard stop at -8.0%)",
-      "composite": 3.8,
-      "buySignal": "Unknown",
-      "pctFromPurchase": -10.74,
-      "pctFromPeak": -10.74,
-      "stopLoss": true
-    },
-    {
-      "ticker": "NTRA",
-      "action": "SELL",
-      "shares": 107,
-      "price": 216.5,
-      "amount": 23165.5,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 62851.67,
-      "reason": "Composite score collapsed to 22.4/100 \u2014 exiting position",
-      "composite": 22.4,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 0.55,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "BMNR",
-      "action": "BUY",
-      "shares": 1339,
-      "price": 15.64,
-      "amount": 20941.96,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 41909.71,
-      "reason": "BMNR exhibits strong revenue growth despite negative FCF, suggesting investment in future expansion. The low Debt/Equity ratio and analyst target price exceeding the current share price indicate potential for significant upside. However, the recent downward price trend and lack of news may warrant a wait-and-see approach before committing to a \"Buy.\" Further developments regarding operational profitability and market adoption are key catalysts to watch."
-    },
-    {
-      "ticker": "OLA.TO",
-      "action": "BUY",
-      "shares": 1536,
-      "price": 13.64,
-      "amount": 20951.04,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 20958.67,
-      "reason": "Orla Mining is demonstrating strong revenue growth and high profitability.  The Camino Rojo project has significant potential, with a low current share price suggesting upside based on analyst targets. While macro factors like interest rates and inflation can impact the sector, Orla's trajectory suggests continued expansion and value creation."
-    },
-    {
-      "ticker": "TNXP",
-      "action": "BUY",
-      "shares": 1912,
-      "price": 10.96,
-      "amount": 20955.52,
-      "date": "2026-06-11 09:46 EDT",
-      "balance": 3.15,
-      "reason": "TNXP shows strong revenue growth and a high analyst target price suggesting market optimism.  While the recent price decline is concerning, it presents a potential buying opportunity. Key catalysts include FDA approval for their lead drug candidate TONMYA and further expansion into new therapeutic areas. The risk lies in competition within the CNS drug market and the potential for regulatory hurdles."
-    },
-    {
-      "ticker": "CRDO",
-      "action": "SELL",
-      "shares": 5,
-      "price": 250.81,
-      "amount": 1254.05,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 1257.2,
-      "reason": "Outside top 5 composite (score 25.0/100 (was 87.8/100, delta -62.8)) \u2014 better opportunities available",
-      "composite": 25.0,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 21.23,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "ARGX",
-      "action": "SELL",
-      "shares": 1,
-      "price": 893.52,
-      "amount": 893.52,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 2150.72,
-      "reason": "Composite score collapsed to 22.4/100 \u2014 exiting position",
-      "composite": 22.4,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 0.25,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "BMNR",
-      "action": "SELL",
-      "shares": 74,
-      "price": 16.11,
-      "amount": 1192.14,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 3342.86,
-      "reason": "Composite score collapsed to 21.6/100 \u2014 exiting position",
-      "composite": 21.6,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 3.01,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "OLA.TO",
-      "action": "SELL",
-      "shares": 78,
-      "price": 14.9,
-      "amount": 1162.2,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 4505.06,
-      "reason": "Composite score collapsed to 22.0/100 \u2014 exiting position",
-      "composite": 22.0,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 9.24,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "TNXP",
-      "action": "SELL",
-      "shares": 80,
-      "price": 11.35,
-      "amount": 908.0,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 5413.06,
-      "reason": "Composite score collapsed to 18.2/100 \u2014 exiting position",
-      "composite": 18.2,
-      "buySignal": "Unknown",
-      "pctFromPurchase": 3.56,
-      "pctFromPeak": 0.0,
-      "stopLoss": false
-    },
-    {
-      "ticker": "POET",
-      "action": "BUY",
-      "shares": 86,
-      "price": 12.53,
-      "amount": 1077.58,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 4335.48,
-      "reason": ""
+      "shares": 77,
+      "price": 320.09,
+      "amount": 24646.93,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 49350.91,
+      "reason": "Astera Labs, Inc. (ALAB) shows strong revenue growth and a robust gross margin in the semiconductor connectivity sector for cloud and AI infrastructure\u2014a promising sign of market demand within this high-growth industry segment. The company's positive free cash flow indicates solid operational efficiency, which is essential given its recent rapid expansion phase. Although RSI suggests potential overvaluation concerns due to a score above 75 and the P/E ratio remains elevated at forward estimates, ALAB has not exhibited negative FCF or declining revenue in this period of growth assessment. The company'threat from macroeconomic factors such as inflation is mitigated by its strong financial performance so far; however, investors should remain cautious about the high valuations and potential market saturation risks inherent to rapid expansion phases within technology sectors."
     },
     {
       "ticker": "CDE",
       "action": "BUY",
-      "shares": 63,
-      "price": 17.2,
-      "amount": 1083.6,
-      "date": "2026-06-14 22:17 EDT",
-      "balance": 3251.88,
-      "reason": ""
+      "shares": 1277,
+      "price": 19.32,
+      "amount": 24671.64,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 24679.27,
+      "reason": "Coeur Mining, Inc. (CDE) is in the growth stage with an impressive revenue growth of over 137%, indicating a strong market demand for its products and effective business strategies. The company' enduring gross margin at 58.4% suggests efficient operations despite fluctuating commodity prices, which are common risks within this sector. Positive FCF demonstrates the firm\u2019s ability to generate cash from operating activities that exceed capital expenditures and debt repayments\u2014a sign of financial health. The RSI14 is below 50, indicating a balance between overboughtness and oversoldness in stock price movements without extreme volatility suggesting an unstable market sentiment towards the company's shares. While there are no recent news updates to sway investor confidence positively or negatively at this time, CDE\u2019s strong financial fundamentals combined with its growth trajectory warrant a Buy signal for those looking for opportunities in basic materials within an environment of moderate macroeconomic indicators."
     },
     {
-      "ticker": "ONDS",
+      "ticker": "ASTS",
       "action": "BUY",
+<<<<<<< Updated upstream
+      "shares": 233,
+      "price": 105.65,
+      "amount": 24616.45,
+      "date": "2026-06-01 23:48 EDT",
+      "balance": 62.82,
+      "reason": "AST SpaceMobile, Inc. (ASTS) is an early-stage company with a high revenue growth of 1952.2%, indicating strong market demand for its BlueBird satell0bes and potential expansion in the space industry sector. However, it has negative Free Cash Flow (-$14,127,484), which is concerning as it suggests that ASTS may not be generating enough cash to sustain operations or invest back into growth opportunities without external funding. The company's high Debt/Equity ratio of 112.4 and negative ROE at -37.8% further compound the risk, indicating potential solvency issues in the long term if it cannot manage its debt effectively or improve profitability. While there is no recent news to sway my analysis positively, ASTS's strong growth trajectory paired with significant risks warrants a cautious approach\u2014holding off on buying until more stability and positive financial indicators are evident in the company\u2019s performance."
+    }
+  ],
+  "lastRecommendAt": "2026-06-01 23:48 EDT"
+=======
       "shares": 69,
       "price": 9.33,
       "amount": 643.77,
@@ -1363,7 +1189,37 @@
       "reason": "Whitecap Resources demonstrates an accelerating business trajectory with exceptional revenue growth of 114.8% and a healthy gross margin of 62.6%. Its robust financial position, evidenced by low debt/equity and strong free cash flow, provides a solid foundation for continued expansion. While the stock price isn't at a \"low base,\" the significant difference between current and forward P/E suggests strong anticipated earnings growth, making it an attractive growth play despite recent minor price consolidation. This combination of rapid operational improvement and financial strength, coupled with a strong analyst consensus, makes WCP.TO a compelling investment.",
       "composite": 60.4,
       "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "WCP.TO",
+      "action": "SELL",
+      "shares": 56,
+      "price": 15.2794,
+      "amount": 855.65,
+      "date": "2026-07-09 11:15 EDT",
+      "balance": 914.98,
+      "reason": "Composite score collapsed to 20.2/100 \u2014 exiting position",
+      "composite": 20.2,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -0.94,
+      "pctFromPeak": -0.94,
+      "stopLoss": false,
+      "gainLoss": -9.88,
+      "daysHeld": 1.0
+    },
+    {
+      "ticker": "ANGX",
+      "action": "BUY",
+      "shares": 229,
+      "price": 3.9909,
+      "amount": 913.92,
+      "date": "2026-07-09 11:15 EDT",
+      "balance": 1.06,
+      "reason": "Angel Studios exhibits an exceptional trajectory, marked by a robust 142.6% revenue growth and a strong 42.59% price appreciation over the last 30 days, indicating rapid improvement from its current low base relative to its 52-week high. The \"strong buy\" analyst recommendation with over 100% upside potential further reinforces this positive outlook. While negative FCF and an overbought RSI present short-term risks, the company's fundamental growth and market momentum make it a compelling \"improving rapidly\" candidate within this batch.",
+      "composite": 67.1,
+      "bucket": "SmartMoney"
     }
   ],
-  "lastRecommendAt": "2026-07-08 12:12 EDT"
+  "lastRecommendAt": "2026-07-09 11:15 EDT"
+>>>>>>> Stashed changes
 }

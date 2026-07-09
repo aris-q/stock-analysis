@@ -2,165 +2,270 @@
   "indicators": {
     "fed_rate": {
       "label": "Fed Funds Rate",
-      "value": 3.63,
-      "prev": 3.63,
+      "value": 3.64,
+      "prev": 3.64,
       "change": 0.0,
-      "date": "2026-06-01",
+      "date": "2026-04-01",
       "unit": "%"
     },
     "cpi": {
       "label": "CPI (YoY)",
-      "value": 333.98,
-      "prev": 332.41,
-      "change": 4.27,
-      "date": "2026-05-01",
+      "value": 332.41,
+      "prev": 330.29,
+      "change": 3.95,
+      "date": "2026-04-01",
       "unit": "%"
     },
     "unemployment": {
       "label": "Unemployment Rate",
-      "value": 4.2,
+      "value": 4.3,
       "prev": 4.3,
-      "change": -0.1,
-      "date": "2026-06-01",
+      "change": 0.0,
+      "date": "2026-04-01",
       "unit": "%"
     },
     "gdp_growth": {
       "label": "GDP Growth",
-      "value": 2.1,
+      "value": 2.0,
       "prev": 0.5,
-      "change": 1.6,
+      "change": 1.5,
       "date": "2026-01-01",
       "unit": "%"
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.48,
-      "prev": null,
-      "change": null,
-      "date": "2026-07-06",
+<<<<<<< Updated upstream
+      "value": 4.47,
+      "prev": 4.46,
+      "change": 0.01,
+      "date": "2026-05-14",
+=======
+      "value": 4.55,
+      "prev": 4.48,
+      "change": 0.07,
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.13,
-      "prev": null,
-      "change": null,
-      "date": "2026-07-06",
+<<<<<<< Updated upstream
+      "value": 4.0,
+      "prev": 3.98,
+      "change": 0.02,
+      "date": "2026-05-14",
+=======
+      "value": 4.19,
+      "prev": 4.13,
+      "change": 0.06,
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 16.13,
-      "prev": 15.57,
-      "change": 0.56,
-      "date": "2026-07-07",
+<<<<<<< Updated upstream
+      "value": 17.26,
+      "prev": 17.87,
+      "change": -0.61,
+      "date": "2026-05-14",
+=======
+      "value": 16.9,
+      "prev": 16.13,
+      "change": 0.77,
+      "date": "2026-07-08",
+>>>>>>> Stashed changes
       "unit": ""
     },
     "dollar_index": {
       "label": "USD Dollar Index",
-      "value": 120.69,
-      "prev": 121.15,
-      "change": -0.46,
-      "date": "2026-07-02",
+      "value": 118.04,
+      "prev": 118.01,
+      "change": 0.03,
+      "date": "2026-05-08",
       "unit": ""
     },
     "oil_wti": {
       "label": "WTI Crude Oil",
-      "value": 71.87,
-      "prev": 70.3,
-      "change": 1.57,
-      "date": "2026-06-29",
+<<<<<<< Updated upstream
+      "value": 101.56,
+      "prev": 98.87,
+      "change": 2.69,
+      "date": "2026-05-11",
+=======
+      "value": 69.6,
+      "prev": null,
+      "change": null,
+      "date": "2026-07-06",
+>>>>>>> Stashed changes
       "unit": "$"
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7503.85,
-      "prev": 7537.43,
-      "change": -33.58,
-      "date": "2026-07-07",
+<<<<<<< Updated upstream
+      "value": 7408.5,
+      "prev": 7501.24,
+      "change": -92.74,
+      "date": "2026-05-15",
+=======
+      "value": 7482.71,
+      "prev": 7503.85,
+      "change": -21.14,
+      "date": "2026-07-08",
+>>>>>>> Stashed changes
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.35,
+<<<<<<< Updated upstream
+      "value": 0.47,
       "unit": "%",
-      "date": "2026-07-06",
+      "date": "2026-05-14",
+=======
+      "value": 0.36,
+      "unit": "%",
+      "date": "2026-07-07",
+>>>>>>> Stashed changes
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Dow Drops As Trump Says Iran Ceasefire Is 'Over'; These Airline Firms Slump (Live Coverage)",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-trump-us-iran-ceasefire-micron-sandisk/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-07-08T14:25:10Z"
+<<<<<<< Updated upstream
+      "title": "Stock Market Today: Dow, S&P 500 and Nasdaq fall amid inflation jitters as oil prices climb; Treasury yields are up as U.S. oil prices trade above $100 a barrel; S&P 500's tech sector under pressure - MarketWatch",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/livecoverage/stock-market-today-dow-s-p-500-and-nasdaq-set-to-pull-back-as-treasury-yields-climb",
+      "publishedAt": "2026-05-15T17:31:00Z"
     },
     {
-      "title": "The Nasdaq 100 Now Controls a Quarter of Every Growth ETF Dollar",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/the-nasdaq-100-now-controls-a-quarter-of-every-growth-etf-dollar/",
-      "publishedAt": "2026-07-08T13:30:03Z"
+      "title": "Honda shows off new hybrids for America as it absorbs $9 billion EV loss - Ars Technica",
+      "source": "Ars Technica",
+      "url": "https://arstechnica.com/cars/2026/05/honda-shows-off-new-hybrids-for-america-as-it-absorbs-9-billion-ev-loss/",
+      "publishedAt": "2026-05-15T15:56:33Z"
     },
     {
-      "title": "This Strategist Sees the S&P 500 Hitting 8,500, and One Thing Changed Her Mind",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/this-strategist-sees-the-sp-500-hitting-8500-and-one-thing-changed-her-mind/",
-      "publishedAt": "2026-07-08T13:20:05Z"
+      "title": "Trump's Financial Form Shows Purchases Of Paramount, WBD And Netflix - Deadline",
+      "source": "Deadline",
+      "url": "http://deadline.com/2026/05/trump-financial-disclsoure-paramount-warner-bros-1236906103/",
+      "publishedAt": "2026-05-15T15:51:00Z"
     },
     {
-      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday as Trump Declares US-Iran Agreement Over",
-      "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130428931.html",
-      "publishedAt": "2026-07-08T13:04:28Z"
+      "title": "Stock Market Today: Dow Falls 400 Points Lower on Oil Price Fears \u2014 Live Updates - WSJ",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-05-15-2026",
+      "publishedAt": "2026-05-15T15:34:00Z"
     },
     {
-      "title": "This $1,200 Stock Could Be the Next Massive Stock Split Opportunity",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/this-1200-stock-could-be-the-next-massive-stock-split-opportunity/",
-      "publishedAt": "2026-07-08T12:42:30Z"
+      "title": "Stephen Miran exits the Fed. How he set the stage for Kevin Warsh. - CNBC",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/15/stephen-miran-exits-the-fed-how-he-set-the-stage-for-kevin-warsh.html",
+      "publishedAt": "2026-05-15T15:29:59Z"
     },
     {
-      "title": "What Should A VYM Holder Do At This New High?",
-      "source": "Trefis",
-      "url": "https://www.trefis.com/articles/606192/what-should-a-vym-holder-do-at-this-new-high/2026-07-08",
-      "publishedAt": "2026-07-08T11:58:39Z"
+      "title": "Bill Ackman has been quietly buying Microsoft since February, when AI fears were dragging the stock - Fortune",
+      "source": "Fortune",
+      "url": "https://fortune.com/2026/05/15/bill-ackman-microsoft-stock-openai-azure-spending/",
+      "publishedAt": "2026-05-15T15:14:00Z"
     },
     {
-      "title": "What Is Really Driving MTUM ETF?",
-      "source": "Trefis",
-      "url": "https://www.trefis.com/articles/606193/what-is-really-driving-mtum-etf/2026-07-08",
-      "publishedAt": "2026-07-08T11:58:38Z"
+      "title": "Chip Stocks Slide After U.S.-China Summit Ends Without Major Tech Deals - WSJ",
+      "source": "The Wall Street Journal",
+      "url": "https://www.wsj.com/tech/chip-stocks-slide-after-u-s-china-summit-ends-without-major-tech-deals-c7c757b8",
+      "publishedAt": "2026-05-15T14:33:00Z"
     },
     {
-      "title": "Hedging Is Disappearing. It\u2019s a Huge Market Risk.",
-      "source": "Barrons.com",
-      "url": "https://www.barrons.com/articles/hedging-disappearing-huge-market-risk-4511b993?siteid=yhoof2&yptr=yahoo",
-      "publishedAt": "2026-07-08T05:30:00Z"
+      "title": "Starbucks to lay off 300 U.S. employees, shutter some regional support offices - CNBC",
+      "source": "CNBC",
+      "url": "https://www.cnbc.com/2026/05/15/starbucks-to-lay-off-300-us-employees-close-some-regional-offices.html",
+      "publishedAt": "2026-05-15T13:03:00Z"
     },
     {
-      "title": "Nasdaq, S&P 500 Futures Climb Ahead Of Fed Minutes, Shrugging Off Iran Concerns: FCEL, TE, NVTS, MU Stocks In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-sp500-futures-climb-ahead-of-fed-minutes-shrugging-off-iran-concerns/cZmVBc6R7Zs",
-      "publishedAt": "2026-07-08T01:43:25Z"
+      "title": "2 Upstate NY metros among top 100 in US for foreclosure rate in first quarter - Syracuse.com",
+      "source": "syracuse.com",
+      "url": "https://www.syracuse.com/data/2026/05/2-upstate-ny-metros-among-top-100-in-us-for-foreclosure-rate-in-first-quarter.html",
+      "publishedAt": "2026-05-15T12:30:00Z"
     },
     {
-      "title": "Nasdaq Slides Nearly 2% As Higher Treasury Yields, Soaring Oil Prices Pressure Tech And Chip Stocks \u2014 META, AMZN, SPCX, MSFT In Focus",
-      "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/nasdaq-slides-nearly-2-as-higher-treasury-yields-soaring-oil-prices-pressure-tech-and-chip-stocks-meta-amzn-spcx-msft-in-focus/cZmlDzSR7ZV",
-      "publishedAt": "2026-07-07T21:43:09Z"
-    },
-    {
-      "title": "SpaceX Mania Just Made This the Busiest Month for the Nasdaq\u2019s Biggest ETF in 6 Years",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/spacex-mania-just-made-this-the-busiest-month-for-the-nasdaqs-biggest-etf-in-6-years/",
-      "publishedAt": "2026-07-08T12:50:56Z"
-    },
-    {
-      "title": "SpaceX Officially Joined the Nasdaq-100 and Received a $300 Price Target From Wall Street. Here's Why the Stock Is Falling Anyway.",
-      "source": "Motley Fool",
-      "url": "https://www.fool.com/investing/2026/07/08/spacex-officially-joined-the-nasdaq-100-and-receiv/",
-      "publishedAt": "2026-07-08T11:20:00Z"
+      "title": "North America\u2019s largest commuter rail system faces a potential shutdown - AP News",
+      "source": "Associated Press",
+      "url": "https://apnews.com/article/lirr-new-york-commuter-rail-strike-union-eefab0d1f91470934fb89bd1809d0a94",
+      "publishedAt": "2026-05-15T11:52:00Z"
     }
   ],
-  "fetchedAt": "2026-07-08 11:14 EDT"
+  "fetchedAt": "2026-05-16 16:54 EDT"
+=======
+      "title": "Stock Market Today: Dow Inches Up Amid U.S.-Iran News; Arm Jumps Off Key Level (Live Coverage)",
+      "source": "Investor's Business Daily",
+      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-micron-sandisk/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-07-09T14:18:36Z"
+    },
+    {
+      "title": "How Much Palo Alto Networks (PANW) Do You Own By Accident?",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/606418/how-much-palo-alto-networks-panw-do-you-own-by-accident/2026-07-09",
+      "publishedAt": "2026-07-09T13:55:17Z"
+    },
+    {
+      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Thursday as Chip Stocks Rebound Despite US-Iran Tensions",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-131219951.html",
+      "publishedAt": "2026-07-09T13:12:19Z"
+    },
+    {
+      "title": "Coca-Cola vs Exxon: Which Blue Chip Won the Decade?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/09/coca-cola-vs-exxon-which-blue-chip-won-the-decade/",
+      "publishedAt": "2026-07-09T11:15:24Z"
+    },
+    {
+      "title": "Wall Street Is Warning of a Market Snapback. For a 73-Year-Old, an RMD Locked to Last Year\u2019s Balance Could Force a Sale at the Bottom.",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/personal-finance/2026/07/09/wall-street-is-warning-of-a-market-snapback-for-a-73-year-old-an-rmd-locked-to-last-years-balance-could-force-a-sale-at-the-bottom/",
+      "publishedAt": "2026-07-09T11:03:13Z"
+    },
+    {
+      "title": "Dow, Nasdaq, S&P 500 Futures Climb Amid US-Iran Tensions, Fed Inflation Worries: WULF, CMPS, ANET, PENG Stocks In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-nasdaq-sp500-futures-climb-amid-us-iran-tensions-fed-inflation-worries/cZmo02NR7Vg",
+      "publishedAt": "2026-07-09T01:38:03Z"
+    },
+    {
+      "title": "Dow Ends Lower To Record Worst Day In Nearly A Month As US-Iran Jitters Push Oil Prices \u2014 TSLA, NVDA, BE, AAPL, WBD  In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-ends-lower-to-record-worst-day-in-nearly-a-month-as-us-iran-jitters-push-oil-prices-tsla-nvda-be-aapl-wbd-in-focus/cZmn5ZFR7VB",
+      "publishedAt": "2026-07-08T22:00:20Z"
+    },
+    {
+      "title": "JEPI vs. JEPQ: Which Is the Better Buy in July?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/jepi-vs-jepq-which-is-the-better-buy-in-july/",
+      "publishedAt": "2026-07-08T15:31:24Z"
+    },
+    {
+      "title": "This Undervalued $40 Billion Company Is Ready To Soar",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/this-undervalued-40-billion-company-is-ready-to-soar/",
+      "publishedAt": "2026-07-08T15:27:49Z"
+    },
+    {
+      "title": "This $6.9 Billion ETF Delivers Consistent Dividends Without Eroding Share Price Like Covered Calls",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/etf/2026/07/08/this-6-9-billion-etf-delivers-consistent-dividends-without-eroding-share-price-like-covered-calls/",
+      "publishedAt": "2026-07-08T15:09:54Z"
+    },
+    {
+      "title": "CRWV Vs. QQQ: Buy CoreWeave for Explosive AI Alpha or Hold QQQ for Insulated Macro Safety?",
+      "source": "24/7 Wall St.",
+      "url": "https://247wallst.com/investing/2026/07/08/crwv-vs-qqq-buy-coreweave-for-explosive-ai-alpha-or-hold-qqq-for-insulated-macro-safety/",
+      "publishedAt": "2026-07-08T20:02:39Z"
+    },
+    {
+      "title": "Exchange-Traded Funds Lower as US Equities Fall After Midday",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/articles/exchange-traded-funds-lower-us-171346843.html",
+      "publishedAt": "2026-07-08T17:13:46Z"
+    }
+  ],
+  "fetchedAt": "2026-07-09 10:59 EDT"
+>>>>>>> Stashed changes
 }
