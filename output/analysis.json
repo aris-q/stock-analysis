@@ -12,63 +12,63 @@
     },
     {
       "ticker": "ONDS",
-      "price": 7.3099,
+      "price": 7.26,
       "previousClose": 7.67,
       "volume": 42518440,
       "marketCap": 4165235200,
       "rsi14": 28.3,
       "bbPercent": 0.197,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     },
     {
       "ticker": "IRWD",
-      "price": 4.435,
+      "price": 4.47,
       "previousClose": 4.68,
       "volume": 1522263,
       "marketCap": 730883520,
       "rsi14": 71.8,
       "bbPercent": 0.755,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     },
     {
       "ticker": "BMNR",
-      "price": 15.07,
+      "price": 14.98,
       "previousClose": 14.73,
       "volume": 19146290,
       "marketCap": 8588535296,
       "rsi14": 42.8,
       "bbPercent": 0.515,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     },
     {
       "ticker": "NBIS",
-      "price": 221.72,
+      "price": 219.65,
       "previousClose": 216.14,
       "volume": 7788525,
       "marketCap": 56319696896,
       "rsi14": 33.0,
       "bbPercent": 0.291,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     },
     {
       "ticker": "CDE",
-      "price": 16.02,
+      "price": 15.98,
       "previousClose": 15.95,
       "volume": 5725469,
       "marketCap": 16509163520,
       "rsi14": 38.9,
       "bbPercent": 0.32,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     },
     {
       "ticker": "ANGX",
-      "price": 3.88,
+      "price": 4.0,
       "previousClose": 4.01,
       "volume": 927844,
       "marketCap": 724568832,
       "rsi14": 68.7,
       "bbPercent": 0.887,
-      "priceFetchedAt": "2026-07-10 13:43 EDT"
+      "priceFetchedAt": "2026-07-10 17:26 EDT"
     }
   ],
   "dailyGainers": [

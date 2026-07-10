@@ -38,7 +38,7 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 15.995
+      "peakPrice": 16.02
     },
     "NBIS": {
       "shares": 4,
@@ -1395,5 +1395,5 @@
       "bucket": "SmartMoney"
     }
   ],
-  "lastRecommendAt": "2026-07-09 11:15 EDT"
+  "lastRecommendAt": "2026-07-10 15:00 EDT"
 }

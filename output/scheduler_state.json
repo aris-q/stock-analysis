@@ -3,6 +3,10 @@
     "dreamScan": {
       "at": "2026-07-10 13:30 EDT",
       "note": "ok"
+    },
+    "afternoonChain": {
+      "at": "2026-07-10 15:00 EDT",
+      "note": "ok"
     }
   }
 }
