@@ -34,26 +34,26 @@
     },
     "ten_yr_yield": {
       "label": "10-Yr Treasury Yield",
-      "value": 4.55,
-      "prev": 4.48,
-      "change": 0.07,
-      "date": "2026-07-07",
+      "value": 4.56,
+      "prev": 4.55,
+      "change": 0.01,
+      "date": "2026-07-08",
       "unit": "%"
     },
     "two_yr_yield": {
       "label": "2-Yr Treasury Yield",
-      "value": 4.19,
-      "prev": 4.13,
-      "change": 0.06,
-      "date": "2026-07-07",
+      "value": 4.21,
+      "prev": 4.19,
+      "change": 0.02,
+      "date": "2026-07-08",
       "unit": "%"
     },
     "vix": {
       "label": "VIX (Fear Index)",
-      "value": 16.9,
-      "prev": 16.13,
-      "change": 0.77,
-      "date": "2026-07-08",
+      "value": 15.84,
+      "prev": 16.9,
+      "change": -1.06,
+      "date": "2026-07-09",
       "unit": ""
     },
     "dollar_index": {
@@ -74,93 +74,93 @@
     },
     "sp500": {
       "label": "S&P 500",
-      "value": 7482.71,
-      "prev": 7503.85,
-      "change": -21.14,
-      "date": "2026-07-08",
+      "value": 7543.64,
+      "prev": 7482.71,
+      "change": 60.93,
+      "date": "2026-07-09",
       "unit": ""
     },
     "yield_curve": {
       "label": "Yield Curve (10Y-2Y)",
-      "value": 0.36,
+      "value": 0.35,
       "unit": "%",
-      "date": "2026-07-07",
+      "date": "2026-07-08",
       "change": null
     }
   },
   "headlines": [
     {
-      "title": "Stock Market Today: Dow Inches Up Amid U.S.-Iran News; Arm Jumps Off Key Level (Live Coverage)",
-      "source": "Investor's Business Daily",
-      "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-micron-sandisk/?src=A00220&yptr=yahoo",
-      "publishedAt": "2026-07-09T14:18:36Z"
+      "title": "Exchange-Traded Funds, Equity Futures Mixed Pre-Bell Friday Amid Renewed US-Iran Tensions Ahead of Q2 Earnings Season",
+      "source": "MT Newswires",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-130717862.html",
+      "publishedAt": "2026-07-10T13:07:17Z"
     },
     {
-      "title": "How Much Palo Alto Networks (PANW) Do You Own By Accident?",
+      "title": "What ICLN's Basket Says About Buying This Dip",
       "source": "Trefis",
-      "url": "https://www.trefis.com/articles/606418/how-much-palo-alto-networks-panw-do-you-own-by-accident/2026-07-09",
-      "publishedAt": "2026-07-09T13:55:17Z"
+      "url": "https://www.trefis.com/articles/606627/what-iclns-basket-says-about-buying-this-dip/2026-07-10",
+      "publishedAt": "2026-07-10T11:41:01Z"
     },
     {
-      "title": "Exchange-Traded Funds Higher, Equity Futures Mixed Pre-Bell Thursday as Chip Stocks Rebound Despite US-Iran Tensions",
-      "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-higher-equity-131219951.html",
-      "publishedAt": "2026-07-09T13:12:19Z"
-    },
-    {
-      "title": "Coca-Cola vs Exxon: Which Blue Chip Won the Decade?",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/09/coca-cola-vs-exxon-which-blue-chip-won-the-decade/",
-      "publishedAt": "2026-07-09T11:15:24Z"
-    },
-    {
-      "title": "Wall Street Is Warning of a Market Snapback. For a 73-Year-Old, an RMD Locked to Last Year\u2019s Balance Could Force a Sale at the Bottom.",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/personal-finance/2026/07/09/wall-street-is-warning-of-a-market-snapback-for-a-73-year-old-an-rmd-locked-to-last-years-balance-could-force-a-sale-at-the-bottom/",
-      "publishedAt": "2026-07-09T11:03:13Z"
-    },
-    {
-      "title": "Dow, Nasdaq, S&P 500 Futures Climb Amid US-Iran Tensions, Fed Inflation Worries: WULF, CMPS, ANET, PENG Stocks In Focus",
+      "title": "These Precious Metals ETFs Beat The S&P 500 Over The Past Year \u2014 Can The Rally Survive The Iran Whiplash?",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/dow-nasdaq-sp500-futures-climb-amid-us-iran-tensions-fed-inflation-worries/cZmo02NR7Vg",
-      "publishedAt": "2026-07-09T01:38:03Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/these-precious-metals-etfs-beat-the-sp500-over-the-past-year/cZmAMRFR7FW",
+      "publishedAt": "2026-07-10T05:15:00Z"
     },
     {
-      "title": "Dow Ends Lower To Record Worst Day In Nearly A Month As US-Iran Jitters Push Oil Prices \u2014 TSLA, NVDA, BE, AAPL, WBD  In Focus",
+      "title": "Dow, Nasdaq, S&P 500 Futures Retreat After Chip-Led Gains At Close: META, ONDS, FUBO, FRMI Stocks In Focus",
       "source": "Stocktwits",
-      "url": "https://stocktwits.com/news-articles/markets/equity/dow-ends-lower-to-record-worst-day-in-nearly-a-month-as-us-iran-jitters-push-oil-prices-tsla-nvda-be-aapl-wbd-in-focus/cZmn5ZFR7VB",
-      "publishedAt": "2026-07-08T22:00:20Z"
+      "url": "https://stocktwits.com/news-articles/markets/equity/dow-nasdaq-sp500-futures-retreat-after-chip-led-gains-at-close/cZmAFbyR7F3",
+      "publishedAt": "2026-07-10T01:30:16Z"
     },
     {
-      "title": "JEPI vs. JEPQ: Which Is the Better Buy in July?",
+      "title": "Convert Your IRA While the Market Is Crashing and the IRS Basically Gives You a Discount",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/jepi-vs-jepq-which-is-the-better-buy-in-july/",
-      "publishedAt": "2026-07-08T15:31:24Z"
+      "url": "https://247wallst.com/personal-finance/2026/07/09/convert-your-ira-while-the-market-is-crashing-and-the-irs-basically-gives-you-a-discount/",
+      "publishedAt": "2026-07-09T22:47:36Z"
     },
     {
-      "title": "This Undervalued $40 Billion Company Is Ready To Soar",
+      "title": "S&P 500, Nasdaq, Dow End Higher Led By Chipmaker Stocks As Investors Look Past US-Iran Hostility \u2014 ORCL, SBUX, WULF, PANW, FATE In Focus",
+      "source": "Stocktwits",
+      "url": "https://stocktwits.com/news-articles/markets/equity/s-and-p-500-nasdaq-dow-end-higher-led-by-chipmaker-stocks-as-investors-look-past-us-iran-hostility/cZmY9vSR7nz",
+      "publishedAt": "2026-07-09T21:28:17Z"
+    },
+    {
+      "title": "Your Fund May Carry An Unearned Price",
+      "source": "Trefis",
+      "url": "https://www.trefis.com/articles/606424/your-fund-may-carry-an-unearned-price/2026-07-09",
+      "publishedAt": "2026-07-09T21:14:46Z"
+    },
+    {
+      "title": "Meet the new group of stocks powering the S&P 500 higher",
+      "source": "MarketWatch",
+      "url": "https://www.marketwatch.com/story/meet-the-new-group-of-stocks-powering-the-s-p-500-higher-b749961a",
+      "publishedAt": "2026-07-09T20:42:00Z"
+    },
+    {
+      "title": "Top Wall Street Strategist: Tech Earnings Are the \u201cBest I\u2019ve Seen in My Career.\u201d Here\u2019s the Catch.",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/this-undervalued-40-billion-company-is-ready-to-soar/",
-      "publishedAt": "2026-07-08T15:27:49Z"
+      "url": "https://247wallst.com/investing/2026/07/09/top-wall-street-strategist-tech-earnings-are-the-best-ive-seen-in-my-career-heres-the-catch/",
+      "publishedAt": "2026-07-09T18:47:50Z"
     },
     {
-      "title": "This $6.9 Billion ETF Delivers Consistent Dividends Without Eroding Share Price Like Covered Calls",
+      "title": "U.S. Stock Market \u2018About As Expensive As It\u2019s Ever Been\u2019 \u2014 Here\u2019s How to Retirement Plan Around It",
       "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/etf/2026/07/08/this-6-9-billion-etf-delivers-consistent-dividends-without-eroding-share-price-like-covered-calls/",
-      "publishedAt": "2026-07-08T15:09:54Z"
+      "url": "https://247wallst.com/investing/2026/07/09/u-s-stock-market-about-as-expensive-as-its-ever-been-heres-how-to-retirement-plan-around-it/",
+      "publishedAt": "2026-07-09T18:39:48Z"
     },
     {
-      "title": "CRWV Vs. QQQ: Buy CoreWeave for Explosive AI Alpha or Hold QQQ for Insulated Macro Safety?",
-      "source": "24/7 Wall St.",
-      "url": "https://247wallst.com/investing/2026/07/08/crwv-vs-qqq-buy-coreweave-for-explosive-ai-alpha-or-hold-qqq-for-insulated-macro-safety/",
-      "publishedAt": "2026-07-08T20:02:39Z"
+      "title": "Stock Market Gains Stoke Hopes For Stellar Third Quarter",
+      "source": "Investor's Business Daily",
+      "url": "https://www.investors.com/etfs-and-funds/personal-finance/stock-market-gains-stoke-hopes-for-stellar-third-quarter/?src=A00220&yptr=yahoo",
+      "publishedAt": "2026-07-10T12:00:03Z"
     },
     {
-      "title": "Exchange-Traded Funds Lower as US Equities Fall After Midday",
-      "source": "MT Newswires",
-      "url": "https://finance.yahoo.com/markets/articles/exchange-traded-funds-lower-us-171346843.html",
-      "publishedAt": "2026-07-08T17:13:46Z"
+      "title": "iShares\u2019 New Nasdaq-100 ETF May Be Cheap. But IQQ Is a Giant Red Flag That the AI Bubble Is Getting Ready to Burst.",
+      "source": "Barchart",
+      "url": "https://www.barchart.com/story/news/3211645/ishares-new-nasdaq-100-etf-may-be-cheap-but-iqq-is-a-giant-red-flag-that-the-ai-bubble-is-getting-ready-to-burst",
+      "publishedAt": "2026-07-09T19:24:17Z"
     }
   ],
-  "fetchedAt": "2026-07-09 10:59 EDT"
+  "fetchedAt": "2026-07-10 11:14 EDT"
 }

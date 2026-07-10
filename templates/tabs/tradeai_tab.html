@@ -409,6 +409,17 @@ async function loadTradeAI(force) {
   }
 }
 
+async function refreshAccountPrices(btn) {
+  btn.disabled = true; const orig = btn.textContent; btn.textContent = '⏳ REFRESHING';
+  try {
+    const r = await fetch('/tradeai/refresh_prices', { method: 'POST' });
+    const d = await r.json();
+    if (d.error) { alert('Price refresh failed: ' + d.error); }
+    else { await loadTradeAI(true); return; } // re-render replaces this button
+  } catch(e) { alert('Price refresh failed: ' + e.message); }
+  btn.disabled = false; btn.textContent = orig;
+}
+
 function renderTradeAI(data) {
   const holdings = data.holdings || [];
   const transactions = data.transactions || [];
@@ -431,7 +442,7 @@ function renderTradeAI(data) {
   const monthOptions = months.map(m => `<option value="${m}">${m}</option>`).join('');
 
   const holdingsRows = holdings.length === 0
-    ? `<tr><td colspan="12" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
+    ? `<tr><td colspan="14" style="color:var(--muted);text-align:center;padding:20px">No holdings yet. Run Identify → Fetch Info → AI Analyze → Recommend.</td></tr>`
     : holdings.map(h => {
         const gl = h.gainLoss;
         const glPct = h.gainLossPct;
@@ -446,7 +457,9 @@ function renderTradeAI(data) {
           <td><span style="font-family:'Syne',sans-serif;font-weight:700;font-size:15px">${h.ticker}</span></td>
           <td>${h.shares}</td>
           <td>${fmt$(h.purchasePrice)}</td>
+          <td>${fmt$(h.previousClose)}</td>
           <td>${fmt$(h.currentPrice)}</td>
+          ` + dayPct(h.dayChangePct) + `
           <td class="${glCls}">${fmt$(gl)}</td>
           <td class="${glCls}">${fmtPct(glPct)}</td>
           ` + dayPct(h.change5d) + dayPct(h.change4d) + dayPct(h.change3d) + dayPct(h.change2d) + dayPct(h.change1d) + `
@@ -593,6 +606,7 @@ function renderTradeAI(data) {
           <option value="">— Month —</option>
           ${monthOptions}
         </select>
+        <button class="btn" onclick="refreshAccountPrices(this)">↻ REFRESH PRICES</button>
         <button class="btn" onclick="showAITransactions()">TRANSACTIONS</button>
         <button class="btn" onclick="showAIReport()">📊 REPORT</button>
         <button class="btn" onclick="showAIInsights()">🧠 INSIGHTS</button>
@@ -602,7 +616,7 @@ function renderTradeAI(data) {
     </div>
     <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden">
       <table class="trade-account-table">
-        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>CURRENT</th><th>GAIN/LOSS</th><th>%</th><th style="text-align:right">D-5</th><th style="text-align:right">D-4</th><th style="text-align:right">D-3</th><th style="text-align:right">D-2</th><th style="text-align:right">D-1</th><th></th></tr></thead>
+        <thead><tr><th>TICKER</th><th>SHARES</th><th>PURCHASE</th><th>YEST CLOSE</th><th>CURRENT</th><th style="text-align:right">TODAY %</th><th>GAIN/LOSS</th><th>%</th><th style="text-align:right">D-5</th><th style="text-align:right">D-4</th><th style="text-align:right">D-3</th><th style="text-align:right">D-2</th><th style="text-align:right">D-1</th><th></th></tr></thead>
         <tbody>${holdingsRows}</tbody>
       </table>
     </div>

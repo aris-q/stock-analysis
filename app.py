@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, jsonify, make_response
-import json, os, logging, threading
+import json, os, logging, threading, time
 from config import WATCHLIST, OUTPUT_PATH, NEWS_PATH, WATCHLIST_PATH, TRADES_AI_PATH, TRADE_AI_CANDIDATES_PATH
 try:
     from config import FRED_API_KEY, NEWSAPI_KEY, MACRO_PATH
@@ -10,7 +10,7 @@ except ImportError:
 DREAM_PATH = "output/dream.json"
 TRADE_OUTCOMES_PATH = "output/trade_outcomes.json"
 SHADOW_PATH = "output/shadow_candidates.json"
-from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze, fetch_live_prices
+from fetcher import fetch_yfinance, fetch_daily_gainers, fetch_news, fetch_price_context, fetch_price_only, fetch_macro_data, fetch_dream_candidates, fetch_trade_detail, fetch_ticker_news, fetch_ai_analyze, fetch_live_prices, fetch_prev_closes
 from compute import process_watchlist
 from ai_summary import generate_summary, generate_recommendations, generate_followup, generate_news_impact
 from refresh_manager import check_what_needs_refresh, needs_news_refresh, now
@@ -1277,6 +1277,7 @@ SCORING_DEFAULTS = {
         "stopLossHard":     8.0,
         "stopLossSoft":     6.0,
         "trailingStopPeak": 10.0,
+        "dailyDropStop":    8.0,
         "minHoldDays":      3
     },
     "execution": {
@@ -1395,6 +1396,48 @@ def _slippage_for(detail, exec_cfg):
     if cap < float(exec_cfg.get("midCapBelow", 2e9)):
         return mid
     return base
+
+
+def _log_trade_outcome(ticker, pos, sell_price, sell_reason, trigger, composite, spy_now, days_held):
+    """Log a closed-trade outcome with buy-time factors for scoring feedback,
+    benchmarked against SPY over the same holding period."""
+    purchase_price = pos.get("purchasePrice") or 0
+    gl_pct = round((sell_price - purchase_price) / purchase_price * 100, 2) if purchase_price else None
+    spy_buy = pos.get("spyAtBuy")
+    spy_return_pct = round((spy_now - spy_buy) / spy_buy * 100, 2) if (spy_now and spy_buy) else None
+    excess_pct = round(gl_pct - spy_return_pct, 2) if (gl_pct is not None and spy_return_pct is not None) else None
+    outcomes_db = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+    outcomes_db["outcomes"].append({
+        "ticker": ticker,
+        "buyDate": pos.get("purchasedAt"),
+        "sellDate": ts(),
+        "daysHeld": round(days_held, 1) if days_held is not None else None,
+        "shares": pos["shares"],
+        "buyPrice": purchase_price,
+        "sellPrice": sell_price,
+        "gainLoss": round((sell_price - purchase_price) * pos["shares"], 2) if purchase_price else None,
+        "gainLossPct": gl_pct,
+        "spyReturnPct": spy_return_pct,
+        "excessReturnPct": excess_pct,
+        "vixAtBuy": pos.get("vixAtBuy"),
+        "trigger": trigger,
+        "sellReason": sell_reason,
+        "sellComposite": composite,
+        "factors": pos.get("factors"),
+        "recVersion": pos.get("recVersion", 1),
+    })
+    save_json(TRADE_OUTCOMES_PATH, outcomes_db)
+
+
+def _days_held(pos):
+    """Days since purchase, or None if the timestamp is unparseable."""
+    try:
+        purchased_at = pos.get("purchasedAt", "")
+        dt = datetime.strptime(purchased_at[:16], "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+        return (datetime.now(TZ) - dt).total_seconds() / 86400.0
+    except Exception:
+        return None
+
 
 def load_scoring_config():
     saved = load_json(SCORING_CONFIG_PATH, {})
@@ -1811,6 +1854,9 @@ def run_tradeai_recommend():
         if missing_live:
             log.warning(f"TradeAI recommend: no live price for {missing_live} — cached prices will NOT be used for trades")
 
+        # Yesterday's closes for held tickers — powers the daily-drop stop
+        prev_closes = fetch_prev_closes(list(holdings.keys())) if holdings else {}
+
         scored = []
         for item in scoring_pool:
             ticker = item["ticker"]
@@ -1972,13 +2018,7 @@ def run_tradeai_recommend():
                 continue
 
             # Days held — soft (rotation) sells are blocked before minHoldDays
-            days_held = None
-            try:
-                purchased_at = pos.get("purchasedAt", "")
-                dt = datetime.strptime(purchased_at[:16], "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
-                days_held = (datetime.now(TZ) - dt).total_seconds() / 86400.0
-            except Exception:
-                pass
+            days_held = _days_held(pos)
 
             # ── Peak price tracking ───────────────────────────────────────────
             peak_price = pos.get("peakPrice") or purchase_price
@@ -1989,17 +2029,23 @@ def run_tradeai_recommend():
 
             pct_from_purchase = ((current_price - purchase_price) / purchase_price * 100) if current_price and purchase_price else 0
             pct_from_peak     = ((current_price - peak_price) / peak_price * 100) if current_price and peak_price else 0
+            prev_close        = prev_closes.get(ticker)
+            day_change_pct    = ((current_price - prev_close) / prev_close * 100) if current_price and prev_close else None
 
             # ── Stop-loss checks (price-based, highest priority) ──────────────
             stop_loss_hard  = SELL_CFG.get("stopLossHard", 8.0)
             stop_loss_soft  = SELL_CFG.get("stopLossSoft", 6.0)
             trailing_pct    = SELL_CFG.get("trailingStopPeak", 10.0)
+            daily_drop_stop = SELL_CFG.get("dailyDropStop", 8.0)
 
             stop_loss_triggered = False
             stop_loss_reason    = ""
             if pct_from_purchase <= -stop_loss_hard:
                 stop_loss_triggered = True
                 stop_loss_reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase ${purchase_price:.2f} (hard stop at -{stop_loss_hard}%)"
+            elif day_change_pct is not None and day_change_pct <= -daily_drop_stop:
+                stop_loss_triggered = True
+                stop_loss_reason = f"Daily-drop stop triggered: down {abs(day_change_pct):.1f}% vs yesterday's close ${prev_close:.2f} (stop at -{daily_drop_stop}%)"
             elif pct_from_purchase <= -stop_loss_soft and composite < 50:
                 stop_loss_triggered = True
                 stop_loss_reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase and composite {composite}/100 below 50"
@@ -2055,6 +2101,7 @@ def run_tradeai_recommend():
                         "composite": composite, "buySignal": buy_signal,
                         "pctFromPurchase": round(pct_from_purchase, 2),
                         "pctFromPeak": round(pct_from_peak, 2),
+                        "dayChangePct": round(day_change_pct, 2) if day_change_pct is not None else None,
                         "stopLoss": stop_loss_triggered,
                         "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
                         "daysHeld": round(days_held, 1) if days_held is not None else None,
@@ -2063,32 +2110,7 @@ def run_tradeai_recommend():
                     trigger = "stop-loss" if stop_loss_triggered else ("hard" if hard_sell else "soft")
                     # Log closed-trade outcome with buy-time factors for scoring feedback
                     try:
-                        # Benchmark: what did SPY do over the same holding period?
-                        gl_pct = round((price - purchase_price) / purchase_price * 100, 2) if purchase_price else None
-                        spy_buy = pos.get("spyAtBuy")
-                        spy_return_pct = round((spy_now - spy_buy) / spy_buy * 100, 2) if (spy_now and spy_buy) else None
-                        excess_pct = round(gl_pct - spy_return_pct, 2) if (gl_pct is not None and spy_return_pct is not None) else None
-                        outcomes_db = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
-                        outcomes_db["outcomes"].append({
-                            "ticker": ticker,
-                            "buyDate": pos.get("purchasedAt"),
-                            "sellDate": ts(),
-                            "daysHeld": round(days_held, 1) if days_held is not None else None,
-                            "shares": pos["shares"],
-                            "buyPrice": purchase_price,
-                            "sellPrice": price,
-                            "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
-                            "gainLossPct": gl_pct,
-                            "spyReturnPct": spy_return_pct,
-                            "excessReturnPct": excess_pct,
-                            "vixAtBuy": pos.get("vixAtBuy"),
-                            "trigger": trigger,
-                            "sellReason": sell_reason,
-                            "sellComposite": composite,
-                            "factors": pos.get("factors"),
-                            "recVersion": pos.get("recVersion", 1),
-                        })
-                        save_json(TRADE_OUTCOMES_PATH, outcomes_db)
+                        _log_trade_outcome(ticker, pos, price, sell_reason, trigger, composite, spy_now, days_held)
                     except Exception as oe:
                         log.error(f"[TradeOutcome] log FAIL: {ticker} | {oe}")
                     del holdings[ticker]
@@ -2286,9 +2308,12 @@ def get_tradeai():
         shares = pos.get("shares", 0)
         gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
         gain_loss_pct = round(((current_price - purchase_price) / purchase_price) * 100, 2) if current_price and purchase_price else None
+        prev_close = wl_entry.get("previousClose") or detail.get("previousClose")
+        day_change_pct = round((current_price - prev_close) / prev_close * 100, 2) if (current_price and prev_close) else None
         holdings_out.append({
             "ticker": ticker, "shares": shares,
             "purchasePrice": purchase_price, "currentPrice": current_price,
+            "previousClose": prev_close, "dayChangePct": day_change_pct,
             "gainLoss": gain_loss, "gainLossPct": gain_loss_pct,
             "purchasedAt": pos.get("purchasedAt"),
             "factors": pos.get("factors"),
@@ -2340,6 +2365,180 @@ def get_tradeai():
         "newsTsMap":          news_ts_map,
         "signalFcMap":        signal_fc_map,
     })
+
+
+def run_tradeai_sell_check(trigger="manual"):
+    """Sell-only cycle: refresh holdings prices and run the price-based stops
+    (hard stop, daily-drop vs yesterday's close, soft stop, trailing stop).
+    No scoring, no buys, no Gemini calls — light enough to run every few
+    minutes during market hours. Composite context comes from the last full
+    Recommend; rotation (top-5) sells are deliberately excluded here."""
+    global fetch_status
+    fetch_status = {"running": True, "message": "TradeAI: sell-only stop check...", "operation": "tradeai_sellcheck"}
+    log.info(f"=== TradeAI Sell-Check Started [{trigger}] ===")
+    try:
+        trades = load_trades_ai()
+        holdings = trades.get("holdings", {})
+        if not holdings:
+            fetch_status = {"running": False, "message": "Sell-check: no holdings", "operation": None}
+            log.info("=== TradeAI Sell-Check Complete: no holdings ===")
+            return
+
+        balance      = trades.get("balance", STARTING_BALANCE)
+        transactions = trades.get("transactions", [])
+        cfg      = load_scoring_config()
+        SELL_CFG = cfg["sellThresholds"]
+        EXEC_CFG = cfg.get("execution", {})
+
+        candidates_data = load_json(TRADE_AI_CANDIDATES_PATH, {})
+        details = candidates_data.get("details", {})
+        last_scored = {s["ticker"]: s for s in (candidates_data.get("lastRecommend") or {}).get("scored", [])}
+
+        tickers = list(holdings.keys())
+        live_prices = fetch_live_prices(tickers + ["SPY"])
+        prev_closes = fetch_prev_closes(tickers)
+        spy_now = live_prices.get("SPY")
+
+        sells = []
+        for ticker, pos in list(holdings.items()):
+            current_price = live_prices.get(ticker)
+            if not current_price:
+                log.warning(f"SellCheck skip: {ticker} — no live price, holding position")
+                continue
+            purchase_price = pos.get("purchasePrice") or current_price
+
+            peak_price = pos.get("peakPrice") or purchase_price
+            if current_price > peak_price:
+                peak_price = current_price
+                pos["peakPrice"] = round(peak_price, 4)
+                log.info(f"[Peak] {ticker} new peak: ${peak_price:.2f}")
+
+            entry     = last_scored.get(ticker)
+            composite = entry.get("composite", 0) if entry else 0
+            has_ai    = bool(entry and entry.get("hasAI"))
+
+            pct_from_purchase = ((current_price - purchase_price) / purchase_price * 100) if purchase_price else 0
+            pct_from_peak     = ((current_price - peak_price) / peak_price * 100) if peak_price else 0
+            prev_close        = prev_closes.get(ticker)
+            day_change_pct    = ((current_price - prev_close) / prev_close * 100) if prev_close else None
+
+            stop_loss_hard  = SELL_CFG.get("stopLossHard", 8.0)
+            stop_loss_soft  = SELL_CFG.get("stopLossSoft", 6.0)
+            trailing_pct    = SELL_CFG.get("trailingStopPeak", 10.0)
+            daily_drop_stop = SELL_CFG.get("dailyDropStop", 8.0)
+
+            reason = ""
+            if pct_from_purchase <= -stop_loss_hard:
+                reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase ${purchase_price:.2f} (hard stop at -{stop_loss_hard}%)"
+            elif day_change_pct is not None and day_change_pct <= -daily_drop_stop:
+                reason = f"Daily-drop stop triggered: down {abs(day_change_pct):.1f}% vs yesterday's close ${prev_close:.2f} (stop at -{daily_drop_stop}%)"
+            elif pct_from_purchase <= -stop_loss_soft and has_ai and composite < 50:
+                reason = f"Stop-loss triggered: down {abs(pct_from_purchase):.1f}% from purchase and composite {composite}/100 below 50"
+            elif pct_from_peak <= -trailing_pct and pct_from_purchase > 0:
+                reason = f"Trailing stop triggered: down {abs(pct_from_peak):.1f}% from peak ${peak_price:.2f} — protecting gains"
+
+            if not reason:
+                day_str = f"{day_change_pct:.1f}" if day_change_pct is not None else "n/a"
+                log.info(f"SellCheck HOLD: {ticker} | day:{day_str}% purchase:{pct_from_purchase:.1f}% peak:{pct_from_peak:.1f}%")
+                continue
+
+            days_held = _days_held(pos)
+            sell_slip = _slippage_for(details.get(ticker), EXEC_CFG)
+            price     = round(current_price * (1 - sell_slip), 4)  # sell fill below market: spread + slippage
+            proceeds  = round(price * pos["shares"], 2)
+            balance  += proceeds
+            sells.append({
+                "ticker": ticker, "action": "SELL", "shares": pos["shares"],
+                "price": price, "amount": proceeds, "date": ts(),
+                "balance": round(balance, 2), "reason": reason,
+                "composite": composite, "buySignal": (entry or {}).get("buySignal", "Unknown"),
+                "pctFromPurchase": round(pct_from_purchase, 2),
+                "pctFromPeak": round(pct_from_peak, 2),
+                "dayChangePct": round(day_change_pct, 2) if day_change_pct is not None else None,
+                "stopLoss": True,
+                "gainLoss": round((price - purchase_price) * pos["shares"], 2) if purchase_price else None,
+                "daysHeld": round(days_held, 1) if days_held is not None else None,
+            })
+            transactions.append(sells[-1])
+            try:
+                _log_trade_outcome(ticker, pos, price, reason, "stop-loss", composite, spy_now, days_held)
+            except Exception as oe:
+                log.error(f"[TradeOutcome] log FAIL: {ticker} | {oe}")
+            del holdings[ticker]
+            log.info(f"TradeAI SELL (sell-check): {ticker} | shares:{pos['shares']} price:{price} proceeds:{proceeds} | {reason}")
+
+        trades["balance"]      = round(balance, 2)
+        trades["holdings"]     = holdings
+        trades["transactions"] = transactions
+        save_trades_ai(trades)
+
+        # Push fresh prices into analysis.json so the account tab shows them
+        try:
+            out = load_json(OUTPUT_PATH, {"watchlist": []})
+            now_ts = ts()
+            for s in out.get("watchlist", []):
+                t = s.get("ticker")
+                if t in tickers and t in live_prices:
+                    s["price"] = live_prices[t]
+                    if t in prev_closes:
+                        s["previousClose"] = prev_closes[t]
+                    s["priceFetchedAt"] = now_ts
+            save_json(OUTPUT_PATH, out)
+        except Exception as pe:
+            log.warning(f"SellCheck price sync FAIL: {pe}")
+
+        if sells:
+            _sync_watchlist_from_holdings(list(holdings.keys()))
+
+        fetch_status = {"running": False, "message": f"Sell-check done: {len(sells)} sells", "operation": None}
+        log.info(f"=== TradeAI Sell-Check Complete [{trigger}]: {len(sells)} sells | balance:{trades['balance']} ===")
+    except Exception as e:
+        log.error(f"TradeAI Sell-Check FAIL: {e}")
+        fetch_status = {"running": False, "message": f"Sell-check FAIL: {e}", "operation": None}
+
+
+@app.route("/tradeai/refresh_prices", methods=["POST"])
+def tradeai_refresh_prices():
+    """Refresh live price + yesterday's close for held tickers only (~6 Yahoo
+    calls) and sync into analysis.json so the account view updates. No trading."""
+    try:
+        holdings = load_trades_ai().get("holdings", {})
+        tickers = list(holdings.keys())
+        if not tickers:
+            return jsonify({"status": "ok", "updated": 0})
+        live = fetch_live_prices(tickers)
+        prevs = fetch_prev_closes(tickers)
+        out = load_json(OUTPUT_PATH, {"watchlist": []})
+        wl_map = {s.get("ticker"): s for s in out.get("watchlist", [])}
+        now_ts = ts()
+        updated = 0
+        for t in tickers:
+            if t not in live:
+                continue
+            s = wl_map.get(t)
+            if not s:
+                s = {"ticker": t}
+                out["watchlist"].append(s)
+            s["price"] = live[t]
+            if t in prevs:
+                s["previousClose"] = prevs[t]
+            s["priceFetchedAt"] = now_ts
+            updated += 1
+        save_json(OUTPUT_PATH, out)
+        log.info(f"[AccountRefresh] updated {updated}/{len(tickers)} holding prices")
+        return jsonify({"status": "ok", "updated": updated})
+    except Exception as e:
+        log.error(f"[AccountRefresh] FAIL: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/tradeai/sellcheck", methods=["POST"])
+def tradeai_sellcheck():
+    if fetch_status.get("running"):
+        return jsonify({"error": "Another operation is running"}), 409
+    t = threading.Thread(target=run_tradeai_sell_check, args=("manual",), daemon=True)
+    t.start()
+    return jsonify({"status": "started"})
 
 
 @app.route("/tradeai/identify", methods=["POST"])
@@ -2597,44 +2796,60 @@ def tradeai_stats():
 
 @app.route("/admin/purge", methods=["POST"])
 def admin_purge():
-    """Remove trading data dated before a given YYYY-MM-DD: transactions,
-    closed-trade outcomes, shadow snapshots, and signal forecast snapshots.
-    Holdings, balance, watchlist, configs and version history are untouched."""
+    """Remove trading data dated before a given YYYY-MM-DD. `targets` selects
+    which stores to purge (default: all). Holdings, balance, watchlist,
+    configs and version history are untouched."""
+
+    def _purge_transactions(before):
+        trades = load_trades_ai()
+        txns = trades.get("transactions", [])
+        keep = [t for t in txns if (t.get("date") or "9999")[:10] >= before]
+        trades["transactions"] = keep
+        save_trades_ai(trades)
+        return len(txns) - len(keep)
+
+    def _purge_outcomes(before):
+        odb = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
+        outs = odb.get("outcomes", [])
+        keep = [o for o in outs if (o.get("sellDate") or "9999")[:10] >= before]
+        odb["outcomes"] = keep
+        save_json(TRADE_OUTCOMES_PATH, odb)
+        return len(outs) - len(keep)
+
+    def _purge_shadow(before):
+        sdb = load_json(SHADOW_PATH, {"snapshots": []})
+        snaps = sdb.get("snapshots", [])
+        keep = [s for s in snaps if (s.get("date") or "9999") >= before]
+        sdb["snapshots"] = keep
+        save_json(SHADOW_PATH, sdb)
+        return len(snaps) - len(keep)
+
+    def _purge_forecasts(before):
+        fdb = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
+        fsnaps = fdb.get("snapshots", [])
+        keep = [s for s in fsnaps if (s.get("date") or "9999") >= before]
+        fdb["snapshots"] = keep
+        save_json(SIGNAL_FORECAST_PATH, fdb)
+        return len(fsnaps) - len(keep)
+
+    purge_fns = {
+        "transactions":      _purge_transactions,
+        "outcomes":          _purge_outcomes,
+        "shadowSnapshots":   _purge_shadow,
+        "forecastSnapshots": _purge_forecasts,
+    }
+
     try:
         body = request.get_json(silent=True) or {}
         before = (body.get("before") or "").strip()
         datetime.strptime(before, "%Y-%m-%d")  # validate format
 
-        removed = {}
+        targets = body.get("targets") or list(purge_fns.keys())
+        unknown = [t for t in targets if t not in purge_fns]
+        if unknown:
+            return jsonify({"error": f"unknown purge targets: {unknown}"}), 400
 
-        trades = load_trades_ai()
-        txns = trades.get("transactions", [])
-        keep = [t for t in txns if (t.get("date") or "9999")[:10] >= before]
-        removed["transactions"] = len(txns) - len(keep)
-        trades["transactions"] = keep
-        save_trades_ai(trades)
-
-        odb = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []})
-        outs = odb.get("outcomes", [])
-        keep_o = [o for o in outs if (o.get("sellDate") or "9999")[:10] >= before]
-        removed["outcomes"] = len(outs) - len(keep_o)
-        odb["outcomes"] = keep_o
-        save_json(TRADE_OUTCOMES_PATH, odb)
-
-        sdb = load_json(SHADOW_PATH, {"snapshots": []})
-        snaps = sdb.get("snapshots", [])
-        keep_s = [s for s in snaps if (s.get("date") or "9999") >= before]
-        removed["shadowSnapshots"] = len(snaps) - len(keep_s)
-        sdb["snapshots"] = keep_s
-        save_json(SHADOW_PATH, sdb)
-
-        fdb = load_json(SIGNAL_FORECAST_PATH, {"snapshots": []})
-        fsnaps = fdb.get("snapshots", [])
-        keep_f = [s for s in fsnaps if (s.get("date") or "9999") >= before]
-        removed["forecastSnapshots"] = len(fsnaps) - len(keep_f)
-        fdb["snapshots"] = keep_f
-        save_json(SIGNAL_FORECAST_PATH, fdb)
-
+        removed = {t: purge_fns[t](before) for t in targets}
         log.info(f"[AdminPurge] removed data before {before}: {removed}")
         return jsonify({"status": "ok", "before": before, "removed": removed})
     except ValueError:
@@ -2827,6 +3042,191 @@ def refresh_ticker_news(ticker):
         log.error(f"News refresh FAIL: {ticker} | {e}")
         return jsonify({"error": str(e)}), 500
 
+
+# ── Market-day Scheduler ──────────────────────────────────────────────────────
+# All times US-Eastern. On market days:
+#   sell-only stop checks  :20/:40 during the 9/10/11am hours (post-9:30 only)
+#   full Recommend         10:00, 11:00
+#   price refresh + Dream  13:30  (Dream takes ~75 min → done ~14:45)
+#   Identify→Fetch→Analyze→Recommend  15:00  (Recommend lands ~15:15, pre-close)
+ET = ZoneInfo("America/New_York")
+SCHEDULER_CONFIG_PATH = "output/scheduler_config.json"
+SCHEDULER_STATE_PATH  = "output/scheduler_state.json"
+
+SCHEDULER_DEFAULTS = {
+    "enabled": True,
+    "sellCheckHours":   [9, 10, 11],
+    "sellCheckMinutes": [20, 40],
+    "recommendTimes":   ["10:00", "11:00"],
+    "dreamTime":        "13:30",
+    "chainTime":        "15:00",
+    "marketHolidays": [
+        "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25",
+        "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+        "2027-01-01",
+    ],
+    "earlyCloseDates": ["2026-11-27", "2026-12-24"],  # 1pm ET close — afternoon jobs skipped
+}
+
+def load_scheduler_config():
+    cfg = dict(SCHEDULER_DEFAULTS)
+    cfg.update(load_json(SCHEDULER_CONFIG_PATH, {}))
+    return cfg
+
+_sched_job_lock = threading.Lock()  # serializes scheduler-initiated operations
+
+def _sched_record_run(job_name, note=""):
+    try:
+        st = load_json(SCHEDULER_STATE_PATH, {"lastRuns": {}})
+        st.setdefault("lastRuns", {})[job_name] = {"at": ts(), "note": note}
+        save_json(SCHEDULER_STATE_PATH, st)
+    except Exception as e:
+        log.warning(f"[Scheduler] state save FAIL: {e}")
+
+def _sched_wait_idle(max_wait_sec=1800):
+    """Wait for any in-flight (e.g. manually triggered) operation to finish."""
+    waited = 0
+    while fetch_status.get("running") and waited < max_wait_sec:
+        time.sleep(10)
+        waited += 10
+    return not fetch_status.get("running")
+
+def _sched_dream_scan():
+    """Scheduled dream scan — skip if one already ran in the last few hours
+    (e.g. manually this morning) to avoid a redundant 75-minute Yahoo sweep."""
+    dream = load_json(DREAM_PATH, {})
+    scanned_at = dream.get("scannedAt")
+    if scanned_at:
+        try:
+            last = datetime.strptime(scanned_at[:16], "%Y-%m-%d %H:%M")
+            hours = (datetime.now() - last).total_seconds() / 3600
+            if hours < 3:
+                log.info(f"[Scheduler] dream scan skipped — last ran {hours:.1f}h ago")
+                return
+        except Exception:
+            pass
+    run_dream_scan("scheduler")
+
+def _sched_analyze():
+    """Scheduled AI analyze — skip if assessments were already generated today
+    (e.g. a manual morning run), protecting the daily Gemini budget."""
+    analyzed_at = (load_json(TRADE_AI_CANDIDATES_PATH, {}).get("aiAnalyzedAt") or "")
+    today = datetime.now(TZ).strftime("%Y-%m-%d")
+    if analyzed_at[:10] == today:
+        log.info(f"[Scheduler] analyze skipped — already ran today ({analyzed_at})")
+        return
+    run_tradeai_analyze()
+
+def _sched_run_steps(job_name, steps):
+    """Run pipeline steps sequentially; one scheduled job at a time."""
+    with _sched_job_lock:
+        for label, fn in steps:
+            if not _sched_wait_idle():
+                log.warning(f"[Scheduler] {job_name}: '{label}' skipped — another operation never finished")
+                _sched_record_run(job_name, f"skipped at {label} (busy)")
+                return
+            log.info(f"[Scheduler] {job_name}: step '{label}' starting")
+            try:
+                fn()
+            except Exception as e:
+                log.error(f"[Scheduler] {job_name}: step '{label}' FAIL: {e}")
+                _sched_record_run(job_name, f"failed at {label}: {e}")
+                return
+    _sched_record_run(job_name, "ok")
+    log.info(f"[Scheduler] {job_name}: complete")
+
+def _scheduler_loop():
+    log.info("[Scheduler] thread started")
+    fired = set()
+    while True:
+        try:
+            cfg = load_scheduler_config()
+            if not cfg.get("enabled"):
+                time.sleep(30)
+                continue
+            now_et = datetime.now(ET)
+            today  = now_et.strftime("%Y-%m-%d")
+            if now_et.weekday() >= 5 or today in cfg.get("marketHolidays", []):
+                time.sleep(60)
+                continue
+            early_close = today in cfg.get("earlyCloseDates", [])
+            hhmm = now_et.strftime("%H:%M")
+
+            slots = []
+            if (now_et.hour in cfg.get("sellCheckHours", []) and now_et.minute in cfg.get("sellCheckMinutes", [])
+                    and (now_et.hour, now_et.minute) >= (9, 30) and (early_close is False or now_et.hour < 13)):
+                slots.append((f"sellCheck-{hhmm}", "sellCheck",
+                              [("sell-check", lambda: run_tradeai_sell_check("scheduler"))]))
+            if hhmm in cfg.get("recommendTimes", []):
+                slots.append((f"recommend-{hhmm}", "fullRecommend",
+                              [("recommend", run_tradeai_recommend)]))
+            if hhmm == cfg.get("dreamTime") and not early_close:
+                slots.append((f"dream-{hhmm}", "dreamScan",
+                              [("price-refresh", lambda: run_price_refresh("scheduler")),
+                               ("dream-scan", _sched_dream_scan)]))
+            if hhmm == cfg.get("chainTime") and not early_close:
+                slots.append((f"chain-{hhmm}", "afternoonChain",
+                              [("identify", run_tradeai_identify),
+                               ("fetch", run_tradeai_fetch),
+                               ("analyze", _sched_analyze),
+                               ("recommend", run_tradeai_recommend)]))
+
+            for slot_key, job_name, steps in slots:
+                key = f"{today}-{slot_key}"
+                if key in fired:
+                    continue
+                fired.add(key)
+                log.info(f"[Scheduler] firing {job_name} ({key})")
+                threading.Thread(target=_sched_run_steps, args=(job_name, steps), daemon=True).start()
+
+            if len(fired) > 500:
+                fired = set(sorted(fired)[-200:])
+        except Exception as e:
+            log.error(f"[Scheduler] loop error: {e}")
+        time.sleep(20)
+
+
+@app.route("/admin/scheduler", methods=["GET", "POST"])
+def admin_scheduler():
+    if request.method == "POST":
+        body = request.get_json(force=True, silent=True) or {}
+        saved = load_json(SCHEDULER_CONFIG_PATH, {})
+        if "enabled" in body:
+            saved["enabled"] = bool(body["enabled"])
+            log.info(f"[Scheduler] enabled set to {saved['enabled']}")
+        # Times are matched against strftime("%H:%M") — normalize to zero-padded HH:MM
+        def norm_time(t):
+            return datetime.strptime(str(t).strip(), "%H:%M").strftime("%H:%M")
+        try:
+            if "recommendTimes" in body:
+                saved["recommendTimes"] = [norm_time(t) for t in body["recommendTimes"]]
+            if "dreamTime" in body:
+                saved["dreamTime"] = norm_time(body["dreamTime"])
+            if "chainTime" in body:
+                saved["chainTime"] = norm_time(body["chainTime"])
+            if "sellCheckHours" in body:
+                hours = sorted({int(h) for h in body["sellCheckHours"]})
+                if any(h < 0 or h > 23 for h in hours):
+                    raise ValueError("hours must be 0-23")
+                saved["sellCheckHours"] = hours
+            if "sellCheckMinutes" in body:
+                mins = sorted({int(m) for m in body["sellCheckMinutes"]})
+                if any(m < 0 or m > 59 for m in mins):
+                    raise ValueError("minutes must be 0-59")
+                saved["sellCheckMinutes"] = mins
+        except (ValueError, TypeError) as e:
+            return jsonify({"error": f"Invalid schedule value: {e}"}), 400
+        save_json(SCHEDULER_CONFIG_PATH, saved)
+        if len(body) > 1 or "enabled" not in body:
+            log.info(f"[Scheduler] config updated: {saved}")
+    return jsonify({
+        "config": load_scheduler_config(),
+        "state": load_json(SCHEDULER_STATE_PATH, {"lastRuns": {}}),
+    })
+
+
+_scheduler_thread = threading.Thread(target=_scheduler_loop, daemon=True)
+_scheduler_thread.start()
 
 # Auto price refresh on startup
 _startup_holdings = _get_holding_tickers()

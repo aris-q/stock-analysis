@@ -334,6 +334,28 @@ function renderTickerDetail(s) {
 }
 
 // ── ADMIN TAB RENDERER ──────────────────────────────────────────────────────
+const PURGE_FILES = [
+  ['transactions',      'trades_ai.json',        'TRANSACTIONS',          'Buy/sell transaction log of the AI trading simulation. Holdings and balance are kept.'],
+  ['outcomes',          'trade_outcomes.json',   'CLOSED-TRADE OUTCOMES', 'Closed-trade results (gain/loss %, SPY benchmark, buy-time factors) used for scoring feedback and validation stats.'],
+  ['shadowSnapshots',   'shadow_candidates.json','SHADOW SNAPSHOTS',      'Daily snapshots of every scored candidate, graded against 5-day forward returns to validate the composite ranking.'],
+  ['forecastSnapshots', 'signal_forecasts.json', 'SIGNAL FORECASTS',      'Daily technical price-forecast ranges and their hit/miss accuracy grades.'],
+];
+
+function renderPurgeRows() {
+  const inputStyle = "background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px";
+  return PURGE_FILES.map(([key, file, label, desc]) => `
+    <div class="admin-row">
+      <div class="admin-row-left">
+        <div class="admin-op-label" style="color:var(--warn)">🗑 PURGE ${label} <span style="color:var(--muted);font-weight:400">(${file})</span></div>
+        <div class="admin-op-ts">${desc} Removes entries dated before the chosen day. Irreversible.</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input type="date" id="purgeBefore-${key}" style="${inputStyle}">
+        <button class="btn" style="border-color:var(--warn);color:var(--warn)" onclick="purgeFile('${key}', '${label}', this)">PURGE</button>
+      </div>
+    </div>`).join('');
+}
+
 function renderAdmin(opTs) {
   const ts = opTs || {};
   return `
@@ -344,21 +366,19 @@ function renderAdmin(opTs) {
   <div class="admin-grid">
     <div class="admin-row">
       <div class="admin-row-left">
+        <div class="admin-op-label">⏰ MARKET-DAY SCHEDULER</div>
+        <div class="admin-op-ts" id="schedulerInfo">Loading scheduler status...</div>
+      </div>
+      <button class="btn" id="schedulerToggleBtn" data-enabled="0" onclick="toggleScheduler(this)">…</button>
+    </div>
+    <div class="admin-row">
+      <div class="admin-row-left">
         <div class="admin-op-label">📋 LOGS</div>
         <div class="admin-op-ts">View last 50 lines of app.log</div>
       </div>
       <a href="/logs" target="_blank" class="btn">VIEW LOGS</a>
     </div>
-    <div class="admin-row">
-      <div class="admin-row-left">
-        <div class="admin-op-label" style="color:var(--warn)">🗑 PURGE DATA BEFORE DATE</div>
-        <div class="admin-op-ts">Removes transactions, closed-trade outcomes, shadow & forecast snapshots dated before the chosen day. Holdings, balance and version history are kept. Irreversible.</div>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <input type="date" id="purgeBeforeDate" style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px">
-        <button class="btn" style="border-color:var(--warn);color:var(--warn)" onclick="purgeDataBefore(this)">PURGE</button>
-      </div>
-    </div>
+    ${renderPurgeRows()}
     <div class="admin-row">
       <div class="admin-row-left">
         <div class="admin-op-label" style="color:var(--down)">⚠ RESET TRADEAI SIMULATION</div>
@@ -369,22 +389,99 @@ function renderAdmin(opTs) {
   </div>`;
 }
 
-async function purgeDataBefore(btn) {
-  const inp = document.getElementById('purgeBeforeDate');
+// ── SCHEDULER STATUS ────────────────────────────────────────────────────────
+async function loadSchedulerStatus() {
+  const el = document.getElementById('schedulerInfo');
+  if (!el) return;
+  try {
+    const r = await fetch('/admin/scheduler');
+    const d = await r.json();
+    const cfg = d.config || {};
+    const runs = (d.state || {}).lastRuns || {};
+    const fmt = (j) => runs[j] ? `last: ${runs[j].at}${runs[j].note && runs[j].note !== 'ok' ? ' · ' + runs[j].note : ''}` : 'not run yet';
+    const inp = "background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:3px 6px;color:var(--text);font-family:'DM Mono',monospace;font-size:11px";
+    el.innerHTML = `All times US-Eastern (24h), market days only. Comma-separate multiple values.
+      <div style="display:grid;grid-template-columns:auto auto 1fr;gap:4px 10px;align-items:center;margin-top:8px">
+        <span>Sell-only stop checks — hours</span>
+        <span><input id="schedSellHours" value="${(cfg.sellCheckHours||[]).join(',')}" style="${inp};width:70px"> at minutes <input id="schedSellMins" value="${(cfg.sellCheckMinutes||[]).join(',')}" style="${inp};width:60px"></span>
+        <span>${fmt('sellCheck')}</span>
+        <span>Full Recommend (sells + buys)</span>
+        <span><input id="schedRecTimes" value="${(cfg.recommendTimes||[]).join(', ')}" style="${inp};width:130px"></span>
+        <span>${fmt('fullRecommend')}</span>
+        <span>Price refresh + Dream scan</span>
+        <span><input id="schedDreamTime" value="${cfg.dreamTime||''}" style="${inp};width:60px"></span>
+        <span>${fmt('dreamScan')}</span>
+        <span>Identify→Fetch→Analyze→Recommend</span>
+        <span><input id="schedChainTime" value="${cfg.chainTime||''}" style="${inp};width:60px"></span>
+        <span>${fmt('afternoonChain')}</span>
+      </div>
+      <button class="btn" style="margin-top:8px" onclick="saveSchedule(this)">SAVE TIMES</button>`;
+    const btn = document.getElementById('schedulerToggleBtn');
+    if (btn) {
+      btn.textContent = cfg.enabled ? 'DISABLE' : 'ENABLE';
+      btn.dataset.enabled = cfg.enabled ? '1' : '0';
+      btn.style.borderColor = cfg.enabled ? 'var(--down)' : 'var(--up)';
+      btn.style.color = cfg.enabled ? 'var(--down)' : 'var(--up)';
+    }
+  } catch(e) {
+    el.textContent = 'Scheduler status unavailable';
+    console.error('[Scheduler] status FAIL:', e);
+  }
+}
+
+async function saveSchedule(btn) {
+  const listOf = (id) => (document.getElementById(id).value || '').split(',').map(s => s.trim()).filter(Boolean);
+  const hours    = listOf('schedSellHours').map(Number);
+  const mins     = listOf('schedSellMins').map(Number);
+  const recTimes = listOf('schedRecTimes');
+  const dream    = document.getElementById('schedDreamTime').value.trim();
+  const chain    = document.getElementById('schedChainTime').value.trim();
+  const timeRe = /^([01]?\d|2[0-3]):[0-5]\d$/;
+  if (!hours.length || hours.some(h => isNaN(h) || h < 0 || h > 23)) { alert('Sell-check hours must be numbers 0-23 (e.g. 9,10,11)'); return; }
+  if (!mins.length || mins.some(m => isNaN(m) || m < 0 || m > 59))   { alert('Sell-check minutes must be numbers 0-59 (e.g. 20,40)'); return; }
+  if (!recTimes.length || !recTimes.every(t => timeRe.test(t))) { alert('Recommend times must be HH:MM 24h (e.g. 10:00, 11:00)'); return; }
+  if (!timeRe.test(dream) || !timeRe.test(chain)) { alert('Dream/chain times must be HH:MM 24h (e.g. 13:30)'); return; }
+  btn.disabled = true; const orig = btn.textContent; btn.textContent = '⏳';
+  try {
+    const r = await fetch('/admin/scheduler', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ sellCheckHours: hours, sellCheckMinutes: mins, recommendTimes: recTimes, dreamTime: dream, chainTime: chain })
+    });
+    const d = await r.json();
+    if (d.error) alert('Save failed: ' + d.error);
+  } catch(e) { alert('Save failed: ' + e.message); }
+  btn.disabled = false; btn.textContent = orig;
+  loadSchedulerStatus();
+}
+
+async function toggleScheduler(btn) {
+  const enable = btn.dataset.enabled !== '1';
+  btn.disabled = true;
+  try {
+    await fetch('/admin/scheduler', {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ enabled: enable })
+    });
+  } catch(e) { console.error('[Scheduler] toggle FAIL:', e); }
+  btn.disabled = false;
+  loadSchedulerStatus();
+}
+
+async function purgeFile(target, label, btn) {
+  const inp = document.getElementById('purgeBefore-' + target);
   const before = inp ? inp.value : '';
-  if (!before) { alert('Pick a date first — everything dated BEFORE that day will be removed.'); return; }
-  if (!confirm(`Permanently remove all transactions, outcomes, shadow and forecast snapshots dated before ${before}?\n\nHoldings, balance and version history are kept. This cannot be undone.`)) return;
+  if (!before) { alert('Pick a date first — entries dated BEFORE that day will be removed.'); return; }
+  if (!confirm(`Permanently remove ${label} entries dated before ${before}?\n\nThis cannot be undone.`)) return;
   btn.disabled = true; const orig = btn.textContent; btn.textContent = '⏳';
   try {
     const r = await fetch('/admin/purge', {
       method: 'POST', headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ before })
+      body: JSON.stringify({ before, targets: [target] })
     });
     const d = await r.json();
     btn.disabled = false; btn.textContent = orig;
     if (d.error) { alert('Purge failed: ' + d.error); return; }
-    const c = d.removed || {};
-    alert(`Purged data before ${before}:\n· ${c.transactions||0} transactions\n· ${c.outcomes||0} closed-trade outcomes\n· ${c.shadowSnapshots||0} shadow snapshots\n· ${c.forecastSnapshots||0} forecast snapshots`);
+    alert(`Purged ${(d.removed || {})[target] || 0} ${label} entries dated before ${before}.`);
     console.log('[AdminPurge]', d);
   } catch(e) {
     btn.disabled = false; btn.textContent = orig;
@@ -446,6 +543,7 @@ async function loadData() {
 
     console.log('[loadData] calling renderAdmin');
     try { document.getElementById('adminContent').innerHTML = renderAdmin(data.opTimestamps); } catch(e) { console.error('[loadData] renderAdmin CRASH:', e); }
+    try { loadSchedulerStatus(); } catch(e) { console.error('[loadData] loadSchedulerStatus CRASH:', e); }
 
     console.log('[loadData] calling buildTickerTabs');
     try { buildTickerTabs(stocks, data.opTimestamps); } catch(e) { console.error('[loadData] buildTickerTabs CRASH:', e); throw e; }

@@ -36,6 +36,32 @@ def fetch_live_prices(tickers):
     return prices
 
 
+def fetch_prev_closes(tickers):
+    """Fetch yesterday's official close for each ticker (daily-drop stop checks).
+    Tickers that fail are omitted so callers can tell fresh from missing."""
+    closes = {}
+    for t in tickers:
+        try:
+            stock = yf.Ticker(t)
+            pc = None
+            try:
+                pc = stock.fast_info.previous_close
+                if pc is not None and math.isnan(float(pc)):
+                    pc = None
+            except Exception:
+                pass
+            if not pc:
+                hist = stock.history(period="5d")
+                if len(hist) >= 2:
+                    pc = float(hist["Close"].iloc[-2])
+            if pc and pc > 0:
+                closes[t] = round(float(pc), 4)
+        except Exception as e:
+            log.warning(f"fetch_prev_closes FAIL: {t} | {e}")
+    log.info(f"fetch_prev_closes: {len(closes)}/{len(tickers)} fetched")
+    return closes
+
+
 def fetch_daily_gainers():
     us_gainers = fetch_us_gainers()
     cdn_gainers = fetch_cdn_gainers()

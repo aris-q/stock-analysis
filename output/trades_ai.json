@@ -16,7 +16,8 @@
     "BMNR": {
       "shares": 61,
       "purchasePrice": 15.26,
-      "purchasedAt": "2026-07-07 10:23 EDT"
+      "purchasedAt": "2026-07-07 10:23 EDT",
+      "peakPrice": 15.2677
     },
     "CDE": {
       "shares": 58,
@@ -37,7 +38,7 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 15.985
+      "peakPrice": 15.995
     },
     "NBIS": {
       "shares": 4,
@@ -58,7 +59,7 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 215.22
+      "peakPrice": 223.5
     },
     "ANGX": {
       "shares": 229,

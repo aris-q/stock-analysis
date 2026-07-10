@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "recommendTimes": [
+    "10:00",
+    "11:00"
+  ],
+  "dreamTime": "13:30",
+  "chainTime": "15:00",
+  "sellCheckHours": [
+    9,
+    10,
+    11
+  ],
+  "sellCheckMinutes": [
+    20,
+    40
+  ]
+}
