@@ -17,7 +17,8 @@
       "sellReason": "Composite score collapsed to 20.2/100 \u2014 exiting position",
       "sellComposite": 20.2,
       "factors": null,
-      "recVersion": 1
+      "recVersion": 1,
+      "sellRecVersion": 3
     },
     {
       "ticker": "BKR",
@@ -36,7 +37,8 @@
       "sellReason": "Composite score collapsed to 24.7/100 \u2014 exiting position",
       "sellComposite": 24.7,
       "factors": null,
-      "recVersion": 1
+      "recVersion": 1,
+      "sellRecVersion": 3
     },
     {
       "ticker": "SLB",
@@ -55,7 +57,8 @@
       "sellReason": "Composite score collapsed to 24.7/100 \u2014 exiting position",
       "sellComposite": 24.7,
       "factors": null,
-      "recVersion": 1
+      "recVersion": 1,
+      "sellRecVersion": 3
     },
     {
       "ticker": "WCP.TO",
@@ -85,7 +88,48 @@
         "signalFcBoost": 0,
         "sectorPenalty": -15
       },
-      "recVersion": 3
+      "recVersion": 3,
+      "sellRecVersion": 4
+    },
+    {
+      "ticker": "ONDS",
+      "buyDate": "2026-07-06 10:42 EDT",
+      "sellDate": "2026-07-13 10:00 EDT",
+      "daysHeld": 7.0,
+      "shares": 115,
+      "buyPrice": 7.525,
+      "sellPrice": 6.9211,
+      "gainLoss": -69.45,
+      "gainLossPct": -8.03,
+      "spyReturnPct": null,
+      "excessReturnPct": null,
+      "vixAtBuy": null,
+      "trigger": "stop-loss",
+      "sellReason": "Stop-loss triggered: down 7.8% from purchase and composite 38.7/100 below 50",
+      "sellComposite": 38.7,
+      "factors": null,
+      "recVersion": 1,
+      "sellRecVersion": 4
+    },
+    {
+      "ticker": "ONDS",
+      "buyDate": "2026-07-06 10:42 EDT",
+      "sellDate": "2026-07-13 10:00 EDT",
+      "daysHeld": 7.0,
+      "shares": 115,
+      "buyPrice": 7.525,
+      "sellPrice": 6.9112,
+      "gainLoss": -70.59,
+      "gainLossPct": -8.16,
+      "spyReturnPct": null,
+      "excessReturnPct": null,
+      "vixAtBuy": null,
+      "trigger": "stop-loss",
+      "sellReason": "Stop-loss triggered: down 8.0% from purchase and composite 38.7/100 below 50",
+      "sellComposite": 38.7,
+      "factors": null,
+      "recVersion": 1,
+      "sellRecVersion": 4
     }
   ]
 }

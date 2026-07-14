@@ -14,8 +14,9 @@
           "price": 11.81,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 1.61,
+          "fwdExcessPct": 0.78,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "ONDS",
@@ -28,8 +29,9 @@
           "price": 7.35,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -5.61,
+          "fwdExcessPct": -6.44,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "BMNR",
@@ -42,8 +44,9 @@
           "price": 14.8,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -1.93,
+          "fwdExcessPct": -2.76,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "CRWV",
@@ -56,8 +59,9 @@
           "price": 83.53,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.16,
+          "fwdExcessPct": 1.33,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "IRWD",
@@ -70,8 +74,9 @@
           "price": 4.47,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -3.24,
+          "fwdExcessPct": -4.07,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "CDE",
@@ -84,8 +89,9 @@
           "price": 16.04,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -2.93,
+          "fwdExcessPct": -3.76,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "XYL",
@@ -98,8 +104,9 @@
           "price": 120.65,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 1.51,
+          "fwdExcessPct": 0.68,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "SLB",
@@ -112,8 +119,9 @@
           "price": 46.42,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 3.94,
+          "fwdExcessPct": 3.11,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "FCX",
@@ -126,8 +134,9 @@
           "price": 59.33,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 3.92,
+          "fwdExcessPct": 3.09,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "ALB",
@@ -140,8 +149,9 @@
           "price": 129.02,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -1.87,
+          "fwdExcessPct": -2.7,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "APD",
@@ -154,8 +164,9 @@
           "price": 305.05,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -0.73,
+          "fwdExcessPct": -1.56,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "IP",
@@ -168,8 +179,9 @@
           "price": 37.92,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 0.45,
+          "fwdExcessPct": -0.38,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "BKR",
@@ -182,8 +194,9 @@
           "price": 54.47,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 7.54,
+          "fwdExcessPct": 6.71,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "ORCL",
@@ -196,8 +209,9 @@
           "price": 141.6,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -3.28,
+          "fwdExcessPct": -4.11,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "IBM",
@@ -210,8 +224,9 @@
           "price": 306.13,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -5.22,
+          "fwdExcessPct": -6.05,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "NAT",
@@ -224,8 +239,9 @@
           "price": 5.89,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 5.62,
+          "fwdExcessPct": 4.79,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "JPM",
@@ -238,8 +254,9 @@
           "price": 339.22,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -0.84,
+          "fwdExcessPct": -1.67,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "ODFL",
@@ -252,8 +269,9 @@
           "price": 215.51,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 6.82,
+          "fwdExcessPct": 5.99,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "LCID",
@@ -266,8 +284,9 @@
           "price": 5.995,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -6.92,
+          "fwdExcessPct": -7.75,
+          "gradedAfterDays": 6
         },
         {
           "ticker": "WRB",
@@ -280,8 +299,9 @@
           "price": 71.54,
           "spyPrice": 747.71,
           "recVersion": 2,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.46,
+          "fwdExcessPct": 1.63,
+          "gradedAfterDays": 6
         }
       ]
     },
@@ -299,8 +319,9 @@
           "price": 7.315,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -5.15,
+          "fwdExcessPct": -7.06,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "CDE",
@@ -313,8 +334,9 @@
           "price": 14.89,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 4.57,
+          "fwdExcessPct": 2.66,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "PAAS",
@@ -327,8 +349,9 @@
           "price": 41.74,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.78,
+          "fwdExcessPct": 0.87,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "NBIS",
@@ -341,8 +364,9 @@
           "price": 201.4175,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 4.48,
+          "fwdExcessPct": 2.57,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "BMNR",
@@ -355,8 +379,9 @@
           "price": 14.155,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.54,
+          "fwdExcessPct": 0.63,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "IRWD",
@@ -369,8 +394,9 @@
           "price": 4.66,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -7.19,
+          "fwdExcessPct": -9.1,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "KGC",
@@ -383,8 +409,9 @@
           "price": 22.6366,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 4.52,
+          "fwdExcessPct": 2.61,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "AGI",
@@ -397,8 +424,9 @@
           "price": 28.25,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.27,
+          "fwdExcessPct": 0.36,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "FCX",
@@ -411,8 +439,9 @@
           "price": 56.33,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 9.45,
+          "fwdExcessPct": 7.54,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "CCL",
@@ -425,8 +454,9 @@
           "price": 25.28,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 7.12,
+          "fwdExcessPct": 5.21,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "ALB",
@@ -439,8 +469,9 @@
           "price": 124.75,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 1.49,
+          "fwdExcessPct": -0.42,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "WCP.TO",
@@ -453,8 +484,9 @@
           "price": 15.425,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 0.68,
+          "fwdExcessPct": -1.23,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "LLY",
@@ -467,8 +499,9 @@
           "price": 1227.42,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -3.82,
+          "fwdExcessPct": -5.73,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "ORCL",
@@ -481,8 +514,9 @@
           "price": 137.65,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -0.5,
+          "fwdExcessPct": -2.41,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "CAH",
@@ -495,8 +529,9 @@
           "price": 239.43,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -1.15,
+          "fwdExcessPct": -3.06,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "MTD",
@@ -509,8 +544,9 @@
           "price": 1254.4,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 3.41,
+          "fwdExcessPct": 1.5,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "CP.TO",
@@ -523,8 +559,9 @@
           "price": 124.5,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 3.78,
+          "fwdExcessPct": 1.87,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "ILMN",
@@ -537,8 +574,9 @@
           "price": 185.94,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 1.23,
+          "fwdExcessPct": -0.68,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "BKR",
@@ -551,8 +589,9 @@
           "price": 56.725,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 3.26,
+          "fwdExcessPct": 1.35,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "SLB",
@@ -565,8 +604,9 @@
           "price": 47.12,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.4,
+          "fwdExcessPct": 0.49,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "CRWV",
@@ -579,8 +619,9 @@
           "price": 84.635,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 0.83,
+          "fwdExcessPct": -1.08,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "RSG",
@@ -593,8 +634,9 @@
           "price": 222.785,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": -0.21,
+          "fwdExcessPct": -2.12,
+          "gradedAfterDays": 5
         },
         {
           "ticker": "MKC",
@@ -607,8 +649,9 @@
           "price": 52.18,
           "spyPrice": 739.73,
           "recVersion": 3,
-          "fwdReturnPct": null,
-          "fwdExcessPct": null
+          "fwdReturnPct": 2.26,
+          "fwdExcessPct": 0.35,
+          "gradedAfterDays": 5
         }
       ]
     },
@@ -1204,6 +1247,291 @@
           "buySignal": "Unknown",
           "price": 159.515,
           "spyPrice": 754.46,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        }
+      ]
+    },
+    {
+      "date": "2026-07-13",
+      "rows": [
+        {
+          "ticker": "PLUG",
+          "bucket": "Reversal",
+          "composite": 53.1,
+          "aiScore": 0,
+          "dreamScore": 20,
+          "breakoutScore": 13,
+          "buySignal": "Unknown",
+          "price": 2.22,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ONDS",
+          "bucket": "SmartMoney",
+          "composite": 38.7,
+          "aiScore": 0,
+          "dreamScore": 46,
+          "breakoutScore": 21,
+          "buySignal": "Unknown",
+          "price": 6.925,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "EQPT",
+          "bucket": "Reversal",
+          "composite": 35.1,
+          "aiScore": 0,
+          "dreamScore": 20,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 18.3,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "CDE",
+          "bucket": "SmartMoney",
+          "composite": 34.4,
+          "aiScore": 0,
+          "dreamScore": 64,
+          "breakoutScore": 13,
+          "buySignal": "Unknown",
+          "price": 15.57,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ANGX",
+          "bucket": "SmartMoney",
+          "composite": 30.2,
+          "aiScore": 0,
+          "dreamScore": 63,
+          "breakoutScore": 9,
+          "buySignal": "Unknown",
+          "price": 4.1399,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ENHA",
+          "bucket": "Reversal",
+          "composite": 30.1,
+          "aiScore": 0,
+          "dreamScore": 20,
+          "breakoutScore": 0,
+          "buySignal": "Unknown",
+          "price": 2.73,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "IRWD",
+          "bucket": "SmartMoney",
+          "composite": 27.3,
+          "aiScore": 0,
+          "dreamScore": 68,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 4.325,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "NBIS",
+          "bucket": "SmartMoney",
+          "composite": 26.2,
+          "aiScore": 0,
+          "dreamScore": 44,
+          "breakoutScore": 13,
+          "buySignal": "Unknown",
+          "price": 209.79,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "BMNR",
+          "bucket": "SmartMoney",
+          "composite": 26.2,
+          "aiScore": 0,
+          "dreamScore": 63,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 14.515,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ALB",
+          "bucket": "Reversal",
+          "composite": 23.9,
+          "aiScore": 0,
+          "dreamScore": 28,
+          "breakoutScore": 8,
+          "buySignal": "Unknown",
+          "price": 126.61,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ORCL",
+          "bucket": "Reversal",
+          "composite": 21.8,
+          "aiScore": 0,
+          "dreamScore": 36,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 136.845,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "QRVO",
+          "bucket": "Reversal",
+          "composite": 20.9,
+          "aiScore": 0,
+          "dreamScore": 28,
+          "breakoutScore": 13,
+          "buySignal": "Unknown",
+          "price": 85.315,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "RCI-B.TO",
+          "bucket": "Reversal",
+          "composite": 15.5,
+          "aiScore": 0,
+          "dreamScore": 24,
+          "breakoutScore": 0,
+          "buySignal": "Unknown",
+          "price": 46.92,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "O",
+          "bucket": "Momentum",
+          "composite": 10.0,
+          "aiScore": 0,
+          "dreamScore": 48,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 64.13,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "UPS",
+          "bucket": "Momentum",
+          "composite": 8.5,
+          "aiScore": 0,
+          "dreamScore": 33,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 113.535,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "LIFE",
+          "bucket": "Momentum",
+          "composite": 4.4,
+          "aiScore": 0,
+          "dreamScore": 61,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 20.455,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "KB",
+          "bucket": "Momentum",
+          "composite": 0.7,
+          "aiScore": 0,
+          "dreamScore": 26,
+          "breakoutScore": 9,
+          "buySignal": "Unknown",
+          "price": 124.305,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "CNC",
+          "bucket": "Momentum",
+          "composite": 0,
+          "aiScore": 0,
+          "dreamScore": 41,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 68.21,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "ARCC",
+          "bucket": "Momentum",
+          "composite": 0,
+          "aiScore": 0,
+          "dreamScore": 39,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 18.87,
+          "spyPrice": 753.81,
+          "recVersion": 4,
+          "fwdReturnPct": null,
+          "fwdExcessPct": null
+        },
+        {
+          "ticker": "V",
+          "bucket": "Momentum",
+          "composite": 0,
+          "aiScore": 0,
+          "dreamScore": 48,
+          "breakoutScore": 5,
+          "buySignal": "Unknown",
+          "price": 355.51,
+          "spyPrice": 753.81,
           "recVersion": 4,
           "fwdReturnPct": null,
           "fwdExcessPct": null

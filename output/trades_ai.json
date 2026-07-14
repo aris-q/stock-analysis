@@ -1,12 +1,6 @@
 {
-  "balance": 1.06,
+  "balance": 795.85,
   "holdings": {
-    "ONDS": {
-      "shares": 115,
-      "purchasePrice": 7.525,
-      "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 7.7277
-    },
     "IRWD": {
       "shares": 201,
       "purchasePrice": 4.3001,
@@ -79,7 +73,8 @@
       },
       "recVersion": 3,
       "spyAtBuy": 749.29,
-      "vixAtBuy": 16.38
+      "vixAtBuy": 16.38,
+      "peakPrice": 4.145
     }
   },
   "transactions": [
@@ -1393,7 +1388,25 @@
       "reason": "Angel Studios exhibits an exceptional trajectory, marked by a robust 142.6% revenue growth and a strong 42.59% price appreciation over the last 30 days, indicating rapid improvement from its current low base relative to its 52-week high. The \"strong buy\" analyst recommendation with over 100% upside potential further reinforces this positive outlook. While negative FCF and an overbought RSI present short-term risks, the company's fundamental growth and market momentum make it a compelling \"improving rapidly\" candidate within this batch.",
       "composite": 67.1,
       "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "ONDS",
+      "action": "SELL",
+      "shares": 115,
+      "price": 6.9112,
+      "amount": 794.79,
+      "date": "2026-07-13 10:00 EDT",
+      "balance": 795.85,
+      "reason": "Stop-loss triggered: down 8.0% from purchase and composite 38.7/100 below 50",
+      "composite": 38.7,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -7.97,
+      "pctFromPeak": -10.39,
+      "dayChangePct": -5.01,
+      "stopLoss": true,
+      "gainLoss": -70.59,
+      "daysHeld": 7.0
     }
   ],
-  "lastRecommendAt": "2026-07-10 15:00 EDT"
+  "lastRecommendAt": "2026-07-13 11:00 EDT"
 }

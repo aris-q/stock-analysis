@@ -634,7 +634,10 @@
         }
       },
       "configHash": "ef8fd315b04c",
-      "warning": "Config identical to v3 \u2014 check its results before expecting different ones"
+      "warning": "Config identical to v3 \u2014 check its results before expecting different ones",
+      "assetAtStart": 5206.98,
+      "assetAtStartCapturedAt": "2026-07-13 19:56 EDT",
+      "assetAtStartBackfilled": true
     }
   ]
 }

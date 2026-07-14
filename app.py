@@ -136,6 +136,17 @@ stop_flag = False
 op_timestamps = {"prices": None, "smart": None, "new": None, "all": None}
 last_fetched_tickers = set()
 
+# Guards every read-modify-write cycle against output/analysis.json. Multiple
+# writers (startup price refresh, scheduled sell-checks, manual Fetch, the
+# refresh-prices button) can otherwise interleave: each reads the file, works
+# for seconds while making network calls, then writes back a full replacement
+# built from its now-stale snapshot — silently discarding whatever a
+# different writer saved in between (e.g. wiping fetchedAt/sector/financials
+# that a concurrent Fetch had just written). This became especially likely
+# on 2026-07-13 while the Flask reloader was doubling every background
+# thread (see app.run(..., use_reloader=False) below).
+_output_lock = threading.Lock()
+
 
 
 TZ = ZoneInfo("America/Toronto")
@@ -252,6 +263,14 @@ def bump_recommend_version(changes, label="", config_snapshot=None, based_on=Non
     dup = next((v for v in db["versions"] if v.get("configHash") == entry["configHash"]), None)
     if dup and not based_on:
         entry["warning"] = f"Config identical to v{dup['version']} — check its results before expecting different ones"
+    # Whole-account equity snapshot at the moment this version starts — lets
+    # the Validation tab show a real "before this version vs now" return even
+    # if the version never buys or sells anything itself.
+    try:
+        entry["assetAtStart"] = _snapshot_total_asset()
+        entry["assetAtStartCapturedAt"] = ts()
+    except Exception as se:
+        log.warning(f"[RecVersion] assetAtStart snapshot FAIL for v{new_v}: {se}")
     db["versions"].append(entry)
     save_json(RECOMMEND_VERSIONS_PATH, db)
     log.info(f"[RecVersion] bumped to v{new_v} ({label}): {changes}")
@@ -265,44 +284,166 @@ def _version_stats_map():
         grouped.setdefault(o.get("recVersion", 1), []).append(o)
     return {v: _outcome_stats(rows) for v, rows in grouped.items()}
 
-def _auto_rollback_if_underperforming(sl_cfg):
-    """Champion/challenger ratchet: once the current version has enough closed
-    trades, compare it to the best-proven prior version (the champion). If it
-    underperforms by more than the threshold, restore the champion's config as
-    a NEW version. The champion is only ever replaced by a version that beats
+
+def _resolve_holding_price(ticker, pos, wl_map, details, dream_map):
+    """Best-available current price for a held ticker: prefer the watchlist
+    price when fresher than the Fetch Info detail price, else fall back
+    through detail -> dream -> purchase price."""
+    detail = details.get(ticker, {})
+    d_data = dream_map.get(ticker, {})
+    wl_entry = wl_map.get(ticker, {})
+    wl_price = wl_entry.get("price")
+    wl_ts = wl_entry.get("priceFetchedAt") or ""
+    det_price = detail.get("price")
+    det_ts = detail.get("fetchCompletedAt") or ""
+    if wl_price and (not det_price or wl_ts >= det_ts):
+        return wl_price
+    return det_price or d_data.get("price") or pos.get("purchasePrice")
+
+
+def _snapshot_total_asset():
+    """Whole-account equity right now: cash balance + market value of every
+    currently open position, regardless of which version bought it. Uses
+    cached prices only (analysis.json / Fetch Info detail / dream) — no live
+    network call, safe to run on every version bump and every stats request."""
+    trades = load_trades_ai()
+    holdings = trades.get("holdings", {})
+    balance = trades.get("balance", STARTING_BALANCE)
+    candidates = load_json(TRADE_AI_CANDIDATES_PATH, {})
+    details = candidates.get("details", {})
+    dream = load_json(DREAM_PATH, {})
+    dream_map = {c["ticker"]: c for c in dream.get("candidates", [])}
+    analysis = load_json(OUTPUT_PATH, {})
+    wl_map = {s.get("ticker"): s for s in analysis.get("watchlist", [])}
+    value = balance
+    for ticker, pos in holdings.items():
+        price = _resolve_holding_price(ticker, pos, wl_map, details, dream_map) or pos.get("purchasePrice") or 0
+        value += price * (pos.get("shares") or 0)
+    return round(value, 2)
+
+
+def _version_asset_stats(holdings, price_map, current_version):
+    """Dollar-weighted, per-version account impact under a "management
+    period" model: a version owns whatever happens to the book while it's
+    the live version, not just the trades it personally opened.
+
+    - Closed trades count toward whichever version was ACTIVE WHEN THE SELL
+      FIRED (sellRecVersion) — a position bought under v1 and stopped out
+      today under v4's thresholds is v4's exit, not v1's.
+    - Every position still open right now counts toward the CURRENT version
+      — it inherited the whole book at version-start and is responsible for
+      continuing to hold (or not hold) every position in it, regardless of
+      who originally bought it.
+    - A retired version's contribution is therefore frozen the moment the
+      next version takes over: whatever hadn't been sold yet transferred
+      to the new version's book, so a retired version's own totalReturnPct
+      never changes again once superseded.
+
+    totalReturnPct = totalPnl / totalCost, matching "compare total account
+    asset after N transactions" — not a per-trade average."""
+    outcomes = load_json(TRADE_OUTCOMES_PATH, {"outcomes": []}).get("outcomes", [])
+    closed_by_v = {}
+    for o in outcomes:
+        v = o.get("sellRecVersion", o.get("recVersion", 1))
+        e = closed_by_v.setdefault(v, {"pnl": 0.0, "cost": 0.0, "n": 0})
+        e["pnl"]  += o.get("gainLoss") or 0
+        e["cost"] += (o.get("buyPrice") or 0) * (o.get("shares") or 0)
+        e["n"]    += 1
+
+    open_total = {"pnl": 0.0, "cost": 0.0, "n": 0}
+    for ticker, pos in holdings.items():
+        price = price_map.get(ticker) or pos.get("purchasePrice")
+        buy = pos.get("purchasePrice") or 0
+        shares = pos.get("shares") or 0
+        if not price or not buy:
+            continue
+        open_total["pnl"]  += (price - buy) * shares
+        open_total["cost"] += buy * shares
+        open_total["n"]    += 1
+
+    result = {}
+    for v in set(closed_by_v) | {current_version}:
+        c = closed_by_v.get(v, {"pnl": 0.0, "cost": 0.0, "n": 0})
+        o = open_total if v == current_version else {"pnl": 0.0, "cost": 0.0, "n": 0}
+        total_pnl  = c["pnl"] + o["pnl"]
+        total_cost = c["cost"] + o["cost"]
+        result[v] = {
+            "closedPnl": round(c["pnl"], 2), "closedCost": round(c["cost"], 2), "closedN": c["n"],
+            "openPnl": round(o["pnl"], 2), "openCost": round(o["cost"], 2), "openN": o["n"],
+            "totalPnl": round(total_pnl, 2), "totalCost": round(total_cost, 2),
+            "totalN": c["n"] + o["n"],
+            "totalReturnPct": round(total_pnl / total_cost * 100, 2) if total_cost > 0 else None,
+        }
+    return result
+
+
+ROLLBACK_PROPOSAL_PATH = "output/rollback_proposal.json"
+
+def _check_rollback_candidate(sl_cfg, holdings=None, live_prices=None):
+    """Champion/challenger check: once the current version has enough total
+    buy transactions (closed + still-open) to trust the comparison, does its
+    dollar-weighted asset return lag the best-proven prior version (the
+    champion) by more than the threshold? If so, record a PROPOSAL for the
+    user to review and approve in the TradeAI account area — this never
+    changes the live config on its own. Only /tradeai/rollback/approve does
+    that. The champion itself is only ever replaced by a version that beats
     it on sufficient data — the ratchet moves up, never back and forth."""
     min_n  = int(sl_cfg.get("minTrades", 10))
     thresh = float(sl_cfg.get("rollbackThresholdPct", 1.0))
     db = load_recommend_versions()
     cur = db["versions"][-1]
-    stats_map = _version_stats_map()
+    stats_map = _version_asset_stats(holdings or {}, live_prices or {}, cur["version"])
     cur_s = stats_map.get(cur["version"])
-    if not cur_s or cur_s["n"] < min_n or cur_s["expectancyPct"] is None:
+    if not cur_s or cur_s["totalN"] < min_n or cur_s["totalReturnPct"] is None:
         return None  # still testing — not enough evidence to judge
+
     prior = [v for v in db["versions"][:-1]
              if v.get("configSnapshot")
              and stats_map.get(v["version"])
-             and stats_map[v["version"]]["n"] >= min_n
-             and stats_map[v["version"]]["expectancyPct"] is not None]
+             and stats_map[v["version"]]["totalN"] >= min_n
+             and stats_map[v["version"]]["totalReturnPct"] is not None]
     if not prior:
         return None
-    champ = max(prior, key=lambda v: stats_map[v["version"]]["expectancyPct"])
+    champ = max(prior, key=lambda v: stats_map[v["version"]]["totalReturnPct"])
     champ_s = stats_map[champ["version"]]
-    gap = champ_s["expectancyPct"] - cur_s["expectancyPct"]
-    if gap > thresh:
-        save_json(SCORING_CONFIG_PATH, champ["configSnapshot"])
-        new_v = bump_recommend_version(
-            [f"AUTO-ROLLBACK: v{cur['version']} averaged {cur_s['expectancyPct']}%/trade over {cur_s['n']} trades "
-             f"vs champion v{champ['version']} at {champ_s['expectancyPct']}%/trade — gap {round(gap,2)}% exceeds threshold {thresh}%",
-             f"Restored v{champ['version']} config"],
-            label=f"Auto-rollback to v{champ['version']} config",
-            config_snapshot=champ["configSnapshot"],
-            based_on=champ["version"],
-        )
-        log.warning(f"[SelfLearning] AUTO-ROLLBACK v{cur['version']} → v{new_v} (config of v{champ['version']})")
-        return {"action": "rollback", "newVersion": new_v, "restoredFrom": champ["version"],
-                "reason": f"v{cur['version']} expectancy {cur_s['expectancyPct']}% vs champion {champ_s['expectancyPct']}%"}
-    return None
+    gap = champ_s["totalReturnPct"] - cur_s["totalReturnPct"]
+
+    existing_proposal = load_json(ROLLBACK_PROPOSAL_PATH, None)
+    if gap <= thresh:
+        # No longer underperforming (e.g. an open position swung back) —
+        # clear a stale pending proposal so it doesn't linger after the
+        # numbers improved.
+        if (existing_proposal and existing_proposal.get("status") == "pending"
+                and existing_proposal.get("currentVersion") == cur["version"]):
+            save_json(ROLLBACK_PROPOSAL_PATH, {"status": "none"})
+        return None
+
+    already_dismissed = (existing_proposal and existing_proposal.get("status") == "dismissed"
+                          and existing_proposal.get("currentVersion") == cur["version"]
+                          and existing_proposal.get("championVersion") == champ["version"])
+    if already_dismissed:
+        return None  # user already said no to this exact comparison
+
+    already_pending = (existing_proposal and existing_proposal.get("status") == "pending"
+                        and existing_proposal.get("currentVersion") == cur["version"]
+                        and existing_proposal.get("championVersion") == champ["version"])
+    if already_pending:
+        return existing_proposal
+
+    proposal = {
+        "status": "pending",
+        "currentVersion": cur["version"], "currentLabel": cur.get("label"),
+        "championVersion": champ["version"], "championLabel": champ.get("label"),
+        "currentReturnPct": cur_s["totalReturnPct"], "currentN": cur_s["totalN"],
+        "championReturnPct": champ_s["totalReturnPct"], "championN": champ_s["totalN"],
+        "gapPct": round(gap, 2), "thresholdPct": thresh,
+        "detectedAt": ts(),
+    }
+    save_json(ROLLBACK_PROPOSAL_PATH, proposal)
+    log.warning(f"[SelfLearning] ROLLBACK PROPOSED: v{cur['version']} ({cur_s['totalReturnPct']}%) vs "
+                f"champion v{champ['version']} ({champ_s['totalReturnPct']}%) — gap {round(gap,2)}% "
+                f"exceeds {thresh}% — awaiting approval")
+    return proposal
 
 def _flatten_cfg(d, prefix=""):
     out = {}
@@ -329,9 +470,9 @@ def run_price_refresh(triggered_by="startup"):
     fetch_status = {"running": True, "message": f"⚡ Updating prices for all tickers...", "operation": "prices"}
     log.info(f"=== Price Refresh Started [{triggered_by}]: {watchlist} ===")
 
-    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
-    existing_map = {s["ticker"]: s for s in existing.get("watchlist", [])}
-
+    # Collect price updates in memory only — don't carry an early snapshot of
+    # the rest of the record across this loop's network calls (see _output_lock).
+    price_updates = {}
     for ticker in watchlist:
         log.info(f"--- Price refresh: {ticker} ---")
         try:
@@ -339,8 +480,7 @@ def run_price_refresh(triggered_by="startup"):
             if not price_data:
                 log.error(f"Price refresh no data: {ticker}")
                 continue
-            stock = existing_map.get(ticker, {"ticker": ticker})
-            stock.update({
+            price_updates[ticker] = {
                 "ticker": ticker,
                 "price": price_data.get("price"),
                 "previousClose": price_data.get("previousClose"),
@@ -349,8 +489,7 @@ def run_price_refresh(triggered_by="startup"):
                 "rsi14": price_data.get("rsi14"),
                 "bbPercent": price_data.get("bbPercent"),
                 "priceFetchedAt": ts(),
-            })
-            existing_map[ticker] = stock
+            }
             log.info(f"Price refresh OK: {ticker} | price:{price_data.get('price')} prevClose:{price_data.get('previousClose')} rsi:{price_data.get('rsi14')} bb:{price_data.get('bbPercent')}")
         except Exception as e:
             log.error(f"Price refresh FAIL: {ticker} | {e}")
@@ -358,11 +497,17 @@ def run_price_refresh(triggered_by="startup"):
     now_ts = ts()
     op_timestamps["prices"] = now_ts
 
-    results = [existing_map[t] for t in watchlist if t in existing_map]
-    out = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
-    out["watchlist"] = results
-    out["lastPriceRefresh"] = now_ts
-    save_json(OUTPUT_PATH, out)
+    with _output_lock:
+        out = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
+        out_map = {s["ticker"]: s for s in out.get("watchlist", [])}
+        for ticker in watchlist:
+            stock = out_map.get(ticker, {"ticker": ticker, "fetchedAt": None})
+            if ticker in price_updates:
+                stock.update(price_updates[ticker])
+            out_map[ticker] = stock
+        out["watchlist"] = [out_map[t] for t in watchlist if t in out_map]
+        out["lastPriceRefresh"] = now_ts
+        save_json(OUTPUT_PATH, out)
 
     fetch_status = {"running": False, "message": f"Prices updated: {now_ts}", "operation": None}
     log.info(f"=== Price Refresh Complete [{triggered_by}] ===")
@@ -399,11 +544,11 @@ def run_fetch(tickers_to_fetch, mode="all"):
     fetch_status = {"running": True, "message": f"[{mode.upper()}] Fetching {len(tickers_to_fetch)} ticker(s)...", "operation": mode}
     log.info(f"=== Fetch Started [{mode}]: {tickers_to_fetch} ===")
 
-    existing = load_json(OUTPUT_PATH, {"watchlist": [], "dailyGainers": []})
-    existing_map = reconcile_with_watchlist(
-    {s["ticker"]: s for s in existing.get("watchlist", [])}
-)
-
+    # Collect fetched detail in memory only — merged into a FRESH read of the
+    # file at save time (see _output_lock) so a concurrent writer (scheduled
+    # sell-check, startup price refresh) can't have its update clobbered by
+    # this loop's early snapshot.
+    fetched = {}
     for ticker in tickers_to_fetch:
         log.info(f"--- Fetching [{mode}]: {ticker} ---")
         try:
@@ -411,8 +556,7 @@ def run_fetch(tickers_to_fetch, mode="all"):
             if not yf_data:
                 log.error(f"No data returned for {ticker}")
                 continue
-            stock = existing_map.get(ticker, {"ticker": ticker})
-            stock.update({
+            fetched[ticker] = {
                 "ticker": ticker,
                 "fetchedAt": ts(),
                 "calendarFetchedAt": ts(),
@@ -430,36 +574,44 @@ def run_fetch(tickers_to_fetch, mode="all"):
                 "quarterlyBalance": yf_data.get("quarterlyBalance", []),
                 "annualCashflow": yf_data.get("annualCashflow", []),
                 "quarterlyCashflow": yf_data.get("quarterlyCashflow", []),
-            })
-            existing_map[ticker] = stock
+            }
             last_fetched_tickers.add(ticker)
         except Exception as e:
             log.error(f"Fetch FAIL: {ticker} | {e}")
 
     gainers = fetch_daily_gainers()
-    results = [existing_map[t] for t in watchlist if t in existing_map]
-    results = process_watchlist(results)
-
-    log.info(f"Generating recommendations...")
-    recommendations = generate_recommendations(results)
-    log.info("AI summaries skipped — run per ticker manually.")
-
-    log.info(f"Total before save: {len(results)} | {[r['ticker'] for r in results]}")
     now_ts = ts()
     if mode == "all":
         op_timestamps["all"] = now_ts
     elif mode == "new":
         op_timestamps["new"] = now_ts
-    out = load_json(OUTPUT_PATH, {})
-    out.update({
-        "watchlist": results,
-        "dailyGainers": gainers.get("us", []),
-        "dailyGainersCDN": gainers.get("cdn", []),
-        "recommendations": recommendations,
-        "lastUpdated": now_ts,
-        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
-    })
-    save_json(OUTPUT_PATH, out)
+
+    with _output_lock:
+        out = load_json(OUTPUT_PATH, {})
+        existing_map = reconcile_with_watchlist({s["ticker"]: s for s in out.get("watchlist", [])})
+        for ticker, fields in fetched.items():
+            stock = existing_map.get(ticker, {"ticker": ticker})
+            stock.update(fields)
+            existing_map[ticker] = stock
+
+        results = [existing_map[t] for t in watchlist if t in existing_map]
+        results = process_watchlist(results)
+
+        log.info(f"Generating recommendations...")
+        recommendations = generate_recommendations(results)
+        log.info("AI summaries skipped — run per ticker manually.")
+        log.info(f"Total before save: {len(results)} | {[r['ticker'] for r in results]}")
+
+        out.update({
+            "watchlist": results,
+            "dailyGainers": gainers.get("us", []),
+            "dailyGainersCDN": gainers.get("cdn", []),
+            "recommendations": recommendations,
+            "lastUpdated": now_ts,
+            "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
+        })
+        save_json(OUTPUT_PATH, out)
+
     fetch_status = {"running": False, "message": f"Done! [{mode}] {len(tickers_to_fetch)} ticker(s) updated.", "operation": None}
     log.info("=== Fetch Complete ===")
 
@@ -492,55 +644,67 @@ def run_smart_refresh():
     fetch_status = {"running": True, "message": f"Smart refresh: updating {len(tickers_needing_refresh)} ticker(s)..."}
     log.info(f"Smart refresh: {tickers_needing_refresh}")
 
+    # Collect only the CHANGED fields in memory — merged into a FRESH read of
+    # the file at save time (see _output_lock) rather than carried forward
+    # on the early snapshot across this loop's network calls.
+    updates = {}
     for ticker in tickers_needing_refresh:
         plan = refresh_plans[ticker]
-        stock = existing_map.get(ticker, {"ticker": ticker})
+        fields = {}
         try:
             yf_data = plan.get("_freshData") or fetch_yfinance(ticker)
             if not yf_data:
                 continue
             if plan["price"]:
-                stock.update({
+                fields.update({
                     "fetchedAt": ts(),
                     "price": yf_data.get("price"),
                     "volume": yf_data.get("volume"),
                     "marketCap": yf_data.get("marketCap"),
                 })
             if plan["quarterly"]:
-                stock["quarterlyIncome"] = yf_data.get("quarterlyIncome", [])
-                stock["quarterlyBalance"] = yf_data.get("quarterlyBalance", [])
-                stock["quarterlyCashflow"] = yf_data.get("quarterlyCashflow", [])
+                fields["quarterlyIncome"] = yf_data.get("quarterlyIncome", [])
+                fields["quarterlyBalance"] = yf_data.get("quarterlyBalance", [])
+                fields["quarterlyCashflow"] = yf_data.get("quarterlyCashflow", [])
             if plan["annual"]:
-                stock["annualIncome"] = yf_data.get("annualIncome", [])
-                stock["annualBalance"] = yf_data.get("annualBalance", [])
-                stock["annualCashflow"] = yf_data.get("annualCashflow", [])
+                fields["annualIncome"] = yf_data.get("annualIncome", [])
+                fields["annualBalance"] = yf_data.get("annualBalance", [])
+                fields["annualCashflow"] = yf_data.get("annualCashflow", [])
             if plan["calendar"]:
-                stock["calendar"] = yf_data.get("calendar", {})
-                stock["events"] = yf_data.get("events", {})
-                stock["dividends"] = yf_data.get("dividends", [])
-                stock["calendarFetchedAt"] = ts()
-            existing_map[ticker] = stock
+                fields["calendar"] = yf_data.get("calendar", {})
+                fields["events"] = yf_data.get("events", {})
+                fields["dividends"] = yf_data.get("dividends", [])
+                fields["calendarFetchedAt"] = ts()
+            updates[ticker] = fields
         except Exception as e:
             log.error(f"Smart refresh FAIL: {ticker} | {e}")
 
-    results = list(existing_map.values())
-    results = process_watchlist(results)
-
     gainers = fetch_daily_gainers()
-    recommendations = generate_recommendations(results)
-    log.info("Smart refresh: AI summaries skipped — run per ticker manually.")
-
     now_ts = ts()
     op_timestamps["smart"] = now_ts
-    out = load_json(OUTPUT_PATH, {})
-    out.update({
-        "watchlist": results,
-        "dailyGainers": gainers or existing.get("dailyGainers", []),
-        "recommendations": recommendations,
-        "lastUpdated": now_ts,
-        "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
-    })
-    save_json(OUTPUT_PATH, out)
+
+    with _output_lock:
+        out = load_json(OUTPUT_PATH, {})
+        existing_map = reconcile_with_watchlist({s["ticker"]: s for s in out.get("watchlist", [])})
+        for ticker, fields in updates.items():
+            stock = existing_map.get(ticker, {"ticker": ticker})
+            stock.update(fields)
+            existing_map[ticker] = stock
+
+        results = list(existing_map.values())
+        results = process_watchlist(results)
+        recommendations = generate_recommendations(results)
+        log.info("Smart refresh: AI summaries skipped — run per ticker manually.")
+
+        out.update({
+            "watchlist": results,
+            "dailyGainers": gainers or out.get("dailyGainers", []),
+            "recommendations": recommendations,
+            "lastUpdated": now_ts,
+            "opTimestamps": {**out.get("opTimestamps", {}), **{k: v for k, v in op_timestamps.items() if v}},
+        })
+        save_json(OUTPUT_PATH, out)
+
     fetch_status = {"running": False, "message": f"Smart refresh done: {len(tickers_needing_refresh)} ticker(s) updated.", "operation": None}
     log.info("=== Smart Refresh Complete ===")
 
@@ -1398,9 +1562,17 @@ def _slippage_for(detail, exec_cfg):
     return base
 
 
-def _log_trade_outcome(ticker, pos, sell_price, sell_reason, trigger, composite, spy_now, days_held):
+def _log_trade_outcome(ticker, pos, sell_price, sell_reason, trigger, composite, spy_now, days_held, sell_rec_version=None):
     """Log a closed-trade outcome with buy-time factors for scoring feedback,
-    benchmarked against SPY over the same holding period."""
+    benchmarked against SPY over the same holding period.
+
+    Two different versions can be credited: `recVersion` is whichever
+    version's scoring picked this trade at BUY time (entry attribution —
+    "was this version's stock-picking good?"); `sellRecVersion` is whichever
+    version was live when the SELL decision fired (exit attribution — "was
+    this version's stop-loss/rotation logic good?"). A position bought under
+    v1 and sold today under v4's thresholds shows recVersion=1,
+    sellRecVersion=4 — both are real, answering different questions."""
     purchase_price = pos.get("purchasePrice") or 0
     gl_pct = round((sell_price - purchase_price) / purchase_price * 100, 2) if purchase_price else None
     spy_buy = pos.get("spyAtBuy")
@@ -1425,6 +1597,7 @@ def _log_trade_outcome(ticker, pos, sell_price, sell_reason, trigger, composite,
         "sellComposite": composite,
         "factors": pos.get("factors"),
         "recVersion": pos.get("recVersion", 1),
+        "sellRecVersion": sell_rec_version if sell_rec_version is not None else current_recommend_version(),
     })
     save_json(TRADE_OUTCOMES_PATH, outcomes_db)
 
@@ -2110,7 +2283,7 @@ def run_tradeai_recommend():
                     trigger = "stop-loss" if stop_loss_triggered else ("hard" if hard_sell else "soft")
                     # Log closed-trade outcome with buy-time factors for scoring feedback
                     try:
-                        _log_trade_outcome(ticker, pos, price, sell_reason, trigger, composite, spy_now, days_held)
+                        _log_trade_outcome(ticker, pos, price, sell_reason, trigger, composite, spy_now, days_held, sell_rec_version=rec_version)
                     except Exception as oe:
                         log.error(f"[TradeOutcome] log FAIL: {ticker} | {oe}")
                     del holdings[ticker]
@@ -2255,11 +2428,13 @@ def run_tradeai_recommend():
         save_trades_ai(trades)
 
         # ── Self-learning check: does the current version still deserve to run? ──
+        # Detection only — never changes the live config. A rollback needs the
+        # user's explicit approval via /tradeai/rollback/approve.
         self_learning_action = None
         try:
             sl_cfg = cfg.get("selfLearning", {})
             if sl_cfg.get("autoRollback", True):
-                self_learning_action = _auto_rollback_if_underperforming(sl_cfg)
+                self_learning_action = _check_rollback_candidate(sl_cfg, holdings, live_prices)
         except Exception as sle:
             log.error(f"[SelfLearning] check FAIL: {sle}")
 
@@ -2294,16 +2469,8 @@ def get_tradeai():
     holdings_out = []
     for ticker, pos in trades.get("holdings", {}).items():
         detail = details.get(ticker, {})
-        d_data = dream_map.get(ticker, {})
-        wl_entry  = wl_map.get(ticker, {})
-        wl_price  = wl_entry.get("price")
-        wl_ts     = wl_entry.get("priceFetchedAt") or ""
-        det_price = detail.get("price")
-        det_ts    = detail.get("fetchCompletedAt") or ""
-        if wl_price and (not det_price or wl_ts >= det_ts):
-            current_price = wl_price
-        else:
-            current_price = det_price or d_data.get("price") or pos.get("purchasePrice")
+        wl_entry = wl_map.get(ticker, {})
+        current_price = _resolve_holding_price(ticker, pos, wl_map, details, dream_map)
         purchase_price = pos.get("purchasePrice", 0)
         shares = pos.get("shares", 0)
         gain_loss = round((current_price - purchase_price) * shares, 2) if current_price else None
@@ -2364,6 +2531,7 @@ def get_tradeai():
         "aiAnalyzedAt":       candidates.get("aiAnalyzedAt"),
         "newsTsMap":          news_ts_map,
         "signalFcMap":        signal_fc_map,
+        "rollbackProposal":   load_json(ROLLBACK_PROPOSAL_PATH, {"status": "none"}),
     })
 
 
@@ -2474,16 +2642,17 @@ def run_tradeai_sell_check(trigger="manual"):
 
         # Push fresh prices into analysis.json so the account tab shows them
         try:
-            out = load_json(OUTPUT_PATH, {"watchlist": []})
-            now_ts = ts()
-            for s in out.get("watchlist", []):
-                t = s.get("ticker")
-                if t in tickers and t in live_prices:
-                    s["price"] = live_prices[t]
-                    if t in prev_closes:
-                        s["previousClose"] = prev_closes[t]
-                    s["priceFetchedAt"] = now_ts
-            save_json(OUTPUT_PATH, out)
+            with _output_lock:
+                out = load_json(OUTPUT_PATH, {"watchlist": []})
+                now_ts = ts()
+                for s in out.get("watchlist", []):
+                    t = s.get("ticker")
+                    if t in tickers and t in live_prices:
+                        s["price"] = live_prices[t]
+                        if t in prev_closes:
+                            s["previousClose"] = prev_closes[t]
+                        s["priceFetchedAt"] = now_ts
+                save_json(OUTPUT_PATH, out)
         except Exception as pe:
             log.warning(f"SellCheck price sync FAIL: {pe}")
 
@@ -2508,23 +2677,24 @@ def tradeai_refresh_prices():
             return jsonify({"status": "ok", "updated": 0})
         live = fetch_live_prices(tickers)
         prevs = fetch_prev_closes(tickers)
-        out = load_json(OUTPUT_PATH, {"watchlist": []})
-        wl_map = {s.get("ticker"): s for s in out.get("watchlist", [])}
-        now_ts = ts()
-        updated = 0
-        for t in tickers:
-            if t not in live:
-                continue
-            s = wl_map.get(t)
-            if not s:
-                s = {"ticker": t}
-                out["watchlist"].append(s)
-            s["price"] = live[t]
-            if t in prevs:
-                s["previousClose"] = prevs[t]
-            s["priceFetchedAt"] = now_ts
-            updated += 1
-        save_json(OUTPUT_PATH, out)
+        with _output_lock:
+            out = load_json(OUTPUT_PATH, {"watchlist": []})
+            wl_map = {s.get("ticker"): s for s in out.get("watchlist", [])}
+            now_ts = ts()
+            updated = 0
+            for t in tickers:
+                if t not in live:
+                    continue
+                s = wl_map.get(t)
+                if not s:
+                    s = {"ticker": t}
+                    out["watchlist"].append(s)
+                s["price"] = live[t]
+                if t in prevs:
+                    s["previousClose"] = prevs[t]
+                s["priceFetchedAt"] = now_ts
+                updated += 1
+            save_json(OUTPUT_PATH, out)
         log.info(f"[AccountRefresh] updated {updated}/{len(tickers)} holding prices")
         return jsonify({"status": "ok", "updated": updated})
     except Exception as e:
@@ -2539,6 +2709,51 @@ def tradeai_sellcheck():
     t = threading.Thread(target=run_tradeai_sell_check, args=("manual",), daemon=True)
     t.start()
     return jsonify({"status": "started"})
+
+
+@app.route("/tradeai/rollback/approve", methods=["POST"])
+def tradeai_rollback_approve():
+    """Execute a pending self-learning rollback proposal — the only path that
+    actually changes the live scoring config in response to underperformance."""
+    proposal = load_json(ROLLBACK_PROPOSAL_PATH, None)
+    if not proposal or proposal.get("status") != "pending":
+        return jsonify({"error": "No pending rollback proposal"}), 400
+    db = load_recommend_versions()
+    cur = db["versions"][-1]
+    if cur["version"] != proposal["currentVersion"]:
+        save_json(ROLLBACK_PROPOSAL_PATH, {"status": "none"})
+        return jsonify({"error": "Proposal is stale — the current version changed since it was raised"}), 409
+    champ = next((v for v in db["versions"] if v["version"] == proposal["championVersion"]), None)
+    if not champ or not champ.get("configSnapshot"):
+        return jsonify({"error": "Champion config is no longer available"}), 400
+    save_json(SCORING_CONFIG_PATH, champ["configSnapshot"])
+    new_v = bump_recommend_version(
+        [f"APPROVED ROLLBACK: v{cur['version']} returned {proposal['currentReturnPct']}% on capital deployed over "
+         f"{proposal['currentN']} buys (realized+unrealized) vs champion v{champ['version']} at "
+         f"{proposal['championReturnPct']}% — gap {proposal['gapPct']}% exceeded threshold {proposal['thresholdPct']}%",
+         f"Restored v{champ['version']} config — approved by user"],
+        label=f"Rollback to v{champ['version']} config (approved)",
+        config_snapshot=champ["configSnapshot"],
+        based_on=champ["version"],
+    )
+    save_json(ROLLBACK_PROPOSAL_PATH, {"status": "none"})
+    log.warning(f"[SelfLearning] ROLLBACK APPROVED by user: v{cur['version']} → v{new_v} (config of v{champ['version']})")
+    return jsonify({"status": "ok", "newVersion": new_v, "restoredFrom": champ["version"]})
+
+
+@app.route("/tradeai/rollback/dismiss", methods=["POST"])
+def tradeai_rollback_dismiss():
+    """Decline a pending rollback proposal. It won't resurface for this exact
+    current-vs-champion version pair, but a fresh comparison (new champion,
+    or the current version changing) can raise a new one."""
+    proposal = load_json(ROLLBACK_PROPOSAL_PATH, None)
+    if not proposal or proposal.get("status") != "pending":
+        return jsonify({"error": "No pending rollback proposal"}), 400
+    proposal["status"] = "dismissed"
+    proposal["dismissedAt"] = ts()
+    save_json(ROLLBACK_PROPOSAL_PATH, proposal)
+    log.info(f"[SelfLearning] rollback proposal dismissed by user: v{proposal['currentVersion']} vs champion v{proposal['championVersion']}")
+    return jsonify({"status": "ok"})
 
 
 @app.route("/tradeai/identify", methods=["POST"])
@@ -2628,49 +2843,121 @@ def tradeai_stats():
         return {k: _outcome_stats(v) for k, v in sorted(groups.items())}
 
     # ── Per-version performance: is each Recommend version an improvement? ──
+    # Primary metric is dollar-weighted asset return under a "management
+    # period" model: a version owns every sell that fires while it's live
+    # (regardless of who bought the position) PLUS every position still open
+    # right now (it inherited the whole book at version-start), against
+    # capital deployed. A version with a handful of small closed sells but a
+    # big still-open winner is NOT penalized the way a naive
+    # average-%-per-closed-trade metric would penalize it.
     versions_db = load_recommend_versions()
+
+    # Backfill sellRecVersion for outcomes logged before that field existed —
+    # infer which version was live on the sell date from each version's date
+    # (the same object `outcomes` points into `db`, so this mutates in place).
+    # Runs BEFORE _version_asset_stats below, which keys closed trades off
+    # sellRecVersion — otherwise the very first call after deploy would still
+    # read the un-backfilled file.
+    sorted_versions_by_date = sorted(versions_db["versions"], key=lambda v: v.get("date") or "")
+    backfilled_exits = 0
+    for o in outcomes:
+        if "sellRecVersion" not in o:
+            sell_date = (o.get("sellDate") or "")[:10]
+            active = None
+            for v in sorted_versions_by_date:
+                if (v.get("date") or "") <= sell_date:
+                    active = v["version"]
+            o["sellRecVersion"] = active if active is not None else o.get("recVersion", 1)
+            backfilled_exits += 1
+    if backfilled_exits:
+        save_json(TRADE_OUTCOMES_PATH, db)
+        log.info(f"[Outcomes] backfilled sellRecVersion for {backfilled_exits} legacy outcome(s)")
+
+    trades_now = load_trades_ai()
+    holdings_now = trades_now.get("holdings", {})
+    candidates_now = load_json(TRADE_AI_CANDIDATES_PATH, {})
+    details_now = candidates_now.get("details", {})
+    dream_now = load_json(DREAM_PATH, {})
+    dream_map_now = {c["ticker"]: c for c in dream_now.get("candidates", [])}
+    analysis_now = load_json(OUTPUT_PATH, {})
+    wl_map_now = {s.get("ticker"): s for s in analysis_now.get("watchlist", [])}
+    price_map_now = {t: _resolve_holding_price(t, p, wl_map_now, details_now, dream_map_now)
+                      for t, p in holdings_now.items()}
+    asset_stats_map = _version_asset_stats(holdings_now, price_map_now, versions_db["versions"][-1]["version"])
+
+    # Whole-account equity snapshots let every version show a real return even
+    # with zero trades of its own (a version that just holds inherited
+    # positions still has an answerable "before vs now"). Backfill the
+    # snapshot for the current version if it predates this tracking, then
+    # chain each version's end-equity to the next version's start-equity
+    # (the current version's "end" is right now).
+    latest_v = versions_db["versions"][-1]
+    if latest_v.get("assetAtStart") is None:
+        latest_v["assetAtStart"] = _snapshot_total_asset()
+        latest_v["assetAtStartCapturedAt"] = ts()
+        latest_v["assetAtStartBackfilled"] = True
+        save_json(RECOMMEND_VERSIONS_PATH, versions_db)
+        log.info(f"[Versions] backfilled assetAtStart for v{latest_v['version']}: ${latest_v['assetAtStart']}")
+    current_total_asset = _snapshot_total_asset()
+
     by_version_rows = {}
     for o in outcomes:
         by_version_rows.setdefault(o.get("recVersion", 1), []).append(o)
+    # Exit attribution: which version's sell logic (stop-loss/rotation
+    # thresholds) actually closed this trade — distinct from recVersion,
+    # which credits whichever version's scoring PICKED it at buy time. A
+    # position bought under v1 and stopped out today under v4's thresholds
+    # counts as v1's pick but v4's exit — both are real and answer different
+    # questions. Legacy outcomes logged before this field existed fall back
+    # to their buy-time version so they don't just vanish from the exit view.
+    by_sell_version_rows = {}
+    for o in outcomes:
+        by_sell_version_rows.setdefault(o.get("sellRecVersion", o.get("recVersion", 1)), []).append(o)
     version_report = []
-    prev_stats = None
-    for v in versions_db["versions"]:
+    prev_asset = None
+    for i, v in enumerate(versions_db["versions"]):
         vstats = _outcome_stats(by_version_rows.get(v["version"], []))
+        vexitstats = _outcome_stats(by_sell_version_rows.get(v["version"], []))
+        vasset = asset_stats_map.get(v["version"])
         entry = dict(v)
         entry["hasConfig"] = bool(entry.pop("configSnapshot", None))
         entry["stats"] = vstats
+        entry["exitStats"] = vexitstats
+        entry["assetStats"] = vasset
         entry["current"] = (v["version"] == versions_db["versions"][-1]["version"])
-        if vstats and prev_stats and vstats["expectancyPct"] is not None and prev_stats["expectancyPct"] is not None:
-            # Compare on excess-vs-SPY when both versions have it — that removes
-            # market-regime bias (a version tested in a bull week isn't "better")
-            use_excess = (vstats.get("excessExpectancyPct") is not None
-                          and prev_stats.get("excessExpectancyPct") is not None)
-            cur_e  = vstats["excessExpectancyPct"] if use_excess else vstats["expectancyPct"]
-            prev_e = prev_stats["excessExpectancyPct"] if use_excess else prev_stats["expectancyPct"]
+
+        # Account-level return: whole portfolio, independent of trade count.
+        asset_at_start = v.get("assetAtStart")
+        asset_at_end = versions_db["versions"][i + 1].get("assetAtStart") if i + 1 < len(versions_db["versions"]) else current_total_asset
+        entry["assetAtEnd"] = asset_at_end
+        entry["accountReturnPct"] = (round((asset_at_end - asset_at_start) / asset_at_start * 100, 2)
+                                      if asset_at_start else None)
+
+        if vasset and prev_asset and vasset["totalReturnPct"] is not None and prev_asset["totalReturnPct"] is not None:
             entry["improvement"] = {
-                "expectancyDelta": round(cur_e - prev_e, 2),
-                "basis": "excess-vs-SPY" if use_excess else "raw",
-                "winRateDelta": round((vstats["winRate"] or 0) - (prev_stats["winRate"] or 0), 1),
-                "vsVersion": prev_stats_version,
-                "reliable": vstats["n"] >= 10 and prev_stats["n"] >= 10,
+                "returnDelta": round(vasset["totalReturnPct"] - prev_asset["totalReturnPct"], 2),
+                "basis": "asset-return (realized+unrealized vs capital deployed)",
+                "vsVersion": prev_asset_version,
+                "reliable": vasset["totalN"] >= 10 and prev_asset["totalN"] >= 10,
             }
-        if vstats:
-            prev_stats = vstats
-            prev_stats_version = v["version"]
+        if vasset:
+            prev_asset = vasset
+            prev_asset_version = v["version"]
         version_report.append(entry)
 
-    # Champion = best expectancy among versions with enough trades; the ratchet
+    # Champion = best dollar-weighted asset return among versions with enough
+    # total buy transactions (closed + still-open); the ratchet moves up only.
     sl_cfg = load_scoring_config().get("selfLearning", {})
     sl_min_n = int(sl_cfg.get("minTrades", 10))
     proven = [e for e in version_report
-              if e["stats"] and e["stats"]["n"] >= sl_min_n and e["stats"]["expectancyPct"] is not None]
-    champion_v = max(proven, key=lambda e: e["stats"]["expectancyPct"])["version"] if proven else None
+              if e["assetStats"] and e["assetStats"]["totalN"] >= sl_min_n and e["assetStats"]["totalReturnPct"] is not None]
+    champion_v = max(proven, key=lambda e: e["assetStats"]["totalReturnPct"])["version"] if proven else None
     for e in version_report:
         if champion_v is not None and e["version"] == champion_v:
             e["status"] = "champion"
         elif e["current"]:
             e["status"] = "testing"
-        elif e["stats"] and e["stats"]["n"] >= sl_min_n:
+        elif e["assetStats"] and e["assetStats"]["totalN"] >= sl_min_n:
             e["status"] = "retired"
         else:
             e["status"] = "insufficient-data"
@@ -2786,6 +3073,7 @@ def tradeai_stats():
         "versions": version_report,
         "currentVersion": versions_db["versions"][-1]["version"],
         "championVersion": champion_v,
+        "rollbackProposal": load_json(ROLLBACK_PROPOSAL_PATH, {"status": "none"}),
         "selfLearning": {
             "autoRollback": bool(sl_cfg.get("autoRollback", True)),
             "minTrades": sl_min_n,
@@ -3468,4 +3756,8 @@ def signal_history():
     return jsonify(data)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5050)
+    # use_reloader=False is required: the reloader forks a second process that
+    # re-executes this module, doubling every background thread (scheduler,
+    # startup refresh) and causing duplicate scheduled runs — e.g. two
+    # concurrent Analyze passes blowing the 20-request/day Gemini quota.
+    app.run(debug=True, port=5050, use_reloader=False)

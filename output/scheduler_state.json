@@ -1,11 +1,19 @@
 {
   "lastRuns": {
     "dreamScan": {
-      "at": "2026-07-10 13:30 EDT",
+      "at": "2026-07-13 14:11 EDT",
       "note": "ok"
     },
     "afternoonChain": {
       "at": "2026-07-10 15:00 EDT",
+      "note": "ok"
+    },
+    "sellCheck": {
+      "at": "2026-07-13 11:40 EDT",
+      "note": "ok"
+    },
+    "fullRecommend": {
+      "at": "2026-07-13 11:00 EDT",
       "note": "ok"
     }
   }
