@@ -130,6 +130,26 @@
       "factors": null,
       "recVersion": 1,
       "sellRecVersion": 4
+    },
+    {
+      "ticker": "IRWD",
+      "buyDate": "2026-07-06 10:42 EDT",
+      "sellDate": "2026-07-14 11:00 EDT",
+      "daysHeld": 8.0,
+      "shares": 201,
+      "buyPrice": 4.3001,
+      "sellPrice": 4.0238,
+      "gainLoss": -55.54,
+      "gainLossPct": -6.43,
+      "spyReturnPct": null,
+      "excessReturnPct": null,
+      "vixAtBuy": null,
+      "trigger": "stop-loss",
+      "sellReason": "Stop-loss triggered: down 6.0% from purchase and composite 26.6/100 below 50",
+      "sellComposite": 26.6,
+      "factors": null,
+      "recVersion": 1,
+      "sellRecVersion": 4
     }
   ]
 }

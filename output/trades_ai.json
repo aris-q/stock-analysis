@@ -1,17 +1,11 @@
 {
-  "balance": 795.85,
+  "balance": 30.81,
   "holdings": {
-    "IRWD": {
-      "shares": 201,
-      "purchasePrice": 4.3001,
-      "purchasedAt": "2026-07-06 10:42 EDT",
-      "peakPrice": 4.735
-    },
     "BMNR": {
       "shares": 61,
       "purchasePrice": 15.26,
       "purchasedAt": "2026-07-07 10:23 EDT",
-      "peakPrice": 15.2677
+      "peakPrice": 16.2401
     },
     "CDE": {
       "shares": 58,
@@ -32,7 +26,7 @@
       "recVersion": 3,
       "spyAtBuy": 739.73,
       "vixAtBuy": 18.04,
-      "peakPrice": 16.02
+      "peakPrice": 16.36
     },
     "NBIS": {
       "shares": 4,
@@ -75,6 +69,46 @@
       "spyAtBuy": 749.29,
       "vixAtBuy": 16.38,
       "peakPrice": 4.145
+    },
+    "ONDS": {
+      "shares": 108,
+      "purchasePrice": 7.3811,
+      "purchasedAt": "2026-07-14 15:13 EDT",
+      "factors": {
+        "bucket": "SmartMoney",
+        "composite": 97.1,
+        "aiScore": 92,
+        "dreamScore": 46,
+        "breakoutScore": 13,
+        "buySignal": "Strong Buy",
+        "trajectory": "Accelerating",
+        "stage": "Early-Stage",
+        "signalFcBoost": 0,
+        "sectorPenalty": 0
+      },
+      "recVersion": 4,
+      "spyAtBuy": 752.015,
+      "vixAtBuy": 16.41
+    },
+    "ORCL": {
+      "shares": 6,
+      "purchasePrice": 129.4434,
+      "purchasedAt": "2026-07-14 15:13 EDT",
+      "factors": {
+        "bucket": "Reversal",
+        "composite": 81.9,
+        "aiScore": 75,
+        "dreamScore": 36,
+        "breakoutScore": 13,
+        "buySignal": "Buy",
+        "trajectory": "Accelerating",
+        "stage": "Mature",
+        "signalFcBoost": 0,
+        "sectorPenalty": 0
+      },
+      "recVersion": 4,
+      "spyAtBuy": 752.015,
+      "vixAtBuy": 16.41
     }
   },
   "transactions": [
@@ -1406,7 +1440,49 @@
       "stopLoss": true,
       "gainLoss": -70.59,
       "daysHeld": 7.0
+    },
+    {
+      "ticker": "IRWD",
+      "action": "SELL",
+      "shares": 201,
+      "price": 4.0238,
+      "amount": 808.78,
+      "date": "2026-07-14 11:00 EDT",
+      "balance": 1604.63,
+      "reason": "Stop-loss triggered: down 6.0% from purchase and composite 26.6/100 below 50",
+      "composite": 26.6,
+      "buySignal": "Unknown",
+      "pctFromPurchase": -6.05,
+      "pctFromPeak": -14.68,
+      "dayChangePct": -1.98,
+      "stopLoss": true,
+      "gainLoss": -55.54,
+      "daysHeld": 8.0
+    },
+    {
+      "ticker": "ONDS",
+      "action": "BUY",
+      "shares": 108,
+      "price": 7.3811,
+      "amount": 797.16,
+      "date": "2026-07-14 15:13 EDT",
+      "balance": 807.47,
+      "reason": "Ondas Inc. perfectly embodies the \"improving rapidly from a low base\" criteria with its astounding 1079.9% revenue growth, which is an extreme outlier in this batch. Despite a significant 45.43% price drop over 30 days and negative free cash flow, recent news highlights over $30M in new orders and a growing opportunity pipeline, signaling strong underlying business momentum. The substantial analyst target upside of nearly 170% further reinforces its potential for a significant rebound and continued expansion. This combination of explosive growth, a discounted entry point, and positive business catalysts makes ONDS a compelling \"Strong Buy\" for investors prioritizing trajectory.",
+      "composite": 97.1,
+      "bucket": "SmartMoney"
+    },
+    {
+      "ticker": "ORCL",
+      "action": "BUY",
+      "shares": 6,
+      "price": 129.4434,
+      "amount": 776.66,
+      "date": "2026-07-14 15:13 EDT",
+      "balance": 30.81,
+      "reason": "ORCL presents a compelling reversal opportunity, trading at an extremely oversold level after a near 50% drop in 30 days, establishing a significant low base. Despite the dramatic price collapse, the company demonstrates robust revenue growth of 20.6% and a healthy gross margin, suggesting underlying business strength. The significant analyst upside of 94.3% and attractive forward P/E of 11.9 indicate strong potential for rapid improvement from this low base. However, the negative free cash flow and very high debt-to-equity ratio are considerable risks that require further investigation.",
+      "composite": 81.9,
+      "bucket": "Reversal"
     }
   ],
-  "lastRecommendAt": "2026-07-13 11:00 EDT"
+  "lastRecommendAt": "2026-07-14 15:13 EDT"
 }
